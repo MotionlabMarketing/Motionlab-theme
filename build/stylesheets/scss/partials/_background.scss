@@ -1,0 +1,102 @@
+// Background
+
+
+// Tints
+
+@each $opacity-num, $opacity-val in $opacities {
+
+  .bg-darken-#{$opacity-num} {
+    background-color: rgba(20, 22, 32, $opacity-val);
+  }
+
+  .bg-lighten-#{$opacity-num} {
+    background-color: rgba(255, 255, 255, $opacity-val);
+  }
+
+  .hover-bg-darken-#{$opacity-num}:hover {
+    background-color: rgba(20, 22, 32, $opacity-val);
+  }
+
+  .hover-bg-lighten-#{$opacity-num}:hover {
+    background-color: rgba(255, 255, 255, $opacity-val);
+  }
+
+}
+
+
+// Colours
+
+@each $color-name, $color-hex in $colors {
+
+  .bg-#{$color-name} {
+    background-color: $color-hex;
+  }
+
+  .hover-bg-#{$color-name}:hover {
+    background-color: $color-hex;
+  }
+
+}
+
+
+// Transparency
+
+.bg-transparent { background-color: transparent; }
+.hover-bg-transparent:hover { background-color: transparent; }
+
+
+// Size
+
+.bg-cover { background-size: cover; }
+.bg-contain { background-repeat: no-repeat; background-size: contain; }
+
+
+// Repeat
+
+.bg-repeat { background-repeat: repeat; }
+.bg-repeat-y { background-repeat: repeat-y; }
+.bg-repeat-x { background-repeat: repeat-x; }
+.bg-repeat-none { background-repeat: no-repeat; }
+
+
+// Attachment
+
+.bg-fixed { background-attachment: fixed; }
+.bg-scroll { background-attachment: scroll; }
+
+
+// Position
+
+.bg-top { background-position: top; }
+.bg-top-right { background-position: top right; }
+.bg-top-left { background-position: top left; }
+.bg-right { background-position: right; }
+.bg-left { background-position: left; }
+.bg-bottom { background-position: bottom; }
+.bg-bottom-right { background-position: bottom right; }
+.bg-bottom-left { background-position: bottom left; }
+.bg-center { background-position: center; }
+
+
+@include generate-breakpoint-prefixes {
+
+  &bg-transparent { background-color: transparent; }
+  &bg-cover { background-size: cover; }
+  &bg-contain { background-repeat: no-repeat; background-size: contain; }
+  &bg-repeat { background-repeat: repeat; }
+  &bg-repeat-y { background-repeat: repeat-y; }
+  &bg-repeat-x { background-repeat: repeat-x; }
+  &bg-repeat-none { background-repeat: no-repeat; }
+  &bg-fixed { background-attachment: fixed; }
+  &bg-scroll { background-attachment: scroll; }
+  &bg-top { background-position: top; }
+  &bg-top-right { background-position: top right; }
+  &bg-top-left { background-position: top left; }
+  &bg-right { background-position: right; }
+  &bg-left { background-position: left; }
+  &bg-bottom { background-position: bottom; }
+  &bg-bottom-right { background-position: bottom right; }
+  &bg-bottom-left { background-position: bottom left; }
+  &bg-center { background-position: center; }
+
+}

@@ -1,0 +1,19 @@
+// Line Height
+
+
+.lh1 { line-height: 1; }
+.lh2 { line-height: 1.25; }
+.lh3 { line-height: 1.5; }
+.lh4 { line-height: 1.75; }
+.lh5 { line-height: 2; }
+
+
+@include generate-breakpoint-prefixes {
+
+  &lh1 { line-height: 1; }
+  &lh2 { line-height: 1.25; }
+  &lh3 { line-height: 1.5; }
+  &lh4 { line-height: 1.75; }
+  &lh5 { line-height: 2; }
+
+}

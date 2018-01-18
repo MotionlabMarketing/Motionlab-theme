@@ -1,0 +1,102 @@
+// Type
+
+
+body {
+  color: $body-color;
+  font-family: $body-font-family;
+  font-size: $body-font-size;
+  line-height: $line-height;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading-font-family;
+  font-weight: $heading-font-weight;
+  line-height: $heading-line-height;
+  margin-bottom: $heading-margin-bottom;
+  margin-top: $heading-margin-top;
+}
+
+blockquote,
+dl,
+ol,
+p,
+pre,
+ul {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+pre,
+code,
+samp {
+  font-family: $monospace-font-family;
+  font-size: $pre-font-size;
+  tab-size: $pre-tab-size;
+}
+
+pre {
+  margin-bottom: $pre-margin-bottom;
+  margin-top: $pre-margin-top;
+  overflow-x: auto;
+}
+
+small,
+.small {
+  font-size: $small-font-size;
+}
+
+.h00 { font-size: $h00; }
+.h0 { font-size: $h0; }
+h1, .h1 { font-size: $h1; }
+h2, .h2 { font-size: $h2; }
+h3, .h3 { font-size: $h3; }
+h4, .h4 { font-size: $h4; }
+h5, .h5 { font-size: $h5; }
+h6, .h6 { font-size: $h6; }
+
+a {
+  transition: all $transition;
+  text-decoration: none;
+}
+
+//pulled from old Oakmere
+// a:not(.btn) {
+//   color: $link-color;
+//   transition: all $transition;
+//   text-decoration: none;
+//
+//   &:hover,
+//   &:focus,
+//   &:active {
+//     color: $link-hover-color;
+//     outline: 0;
+//   }
+// }
+
+@include generate-breakpoint-prefixes {
+
+  &h00 { font-size: $h00; }
+  &h0 { font-size: $h0; }
+  &h1 { font-size: $h1; }
+  &h2 { font-size: $h2; }
+  &h3 { font-size: $h3; }
+  &h4 { font-size: $h4; }
+  &h5 { font-size: $h5; }
+  &h6 { font-size: $h6; }
+
+}
+
+details, summary{
+    outline: none;
+    summary{
+        cursor: pointer;
+    }
+}

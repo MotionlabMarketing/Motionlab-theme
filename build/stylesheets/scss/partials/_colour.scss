@@ -1,0 +1,24 @@
+// Colour
+
+
+@each $color-name, $color-hex in $colors {
+
+  .#{$color-name} {
+    color: $color-hex;
+  }
+
+  .hover-#{$color-name}:hover {
+    color: $color-hex;
+  }
+
+}
+
+
+@include generate-breakpoint-prefixes {
+
+  @each $color-name, $color-hex in $colors {
+    &#{$color-name} { color: $color-hex; }
+    &hover-#{$color-name}:hover { color: $color-hex; }
+  }
+
+}

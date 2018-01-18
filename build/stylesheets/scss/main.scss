@@ -1,0 +1,55 @@
+/*
+Theme Name: Oakmere
+Theme URI:
+Author: Jason
+Author URI:
+Description: Motionlab theme using Framework 4 and reusable Flexible content blocks
+Version: 1.0
+*/
+
+// Main
+
+@import 'settings';
+@import 'mixins';
+
+@import 'partials/debug';
+@import 'partials/reset';
+@import 'partials/tables';
+@import 'partials/box-sizing';
+@import 'partials/type';
+@import 'partials/buttons';
+@import 'partials/forms';
+@import 'partials/grid';
+@import 'partials/animate';
+@import 'partials/hover';
+@import 'partials/background';
+@import 'partials/borders';
+@import 'partials/clear';
+@import 'partials/colour';
+@import 'partials/cursor';
+@import 'partials/display';
+@import 'partials/flexbox';
+@import 'partials/floats';
+@import 'partials/gradient';
+@import 'partials/heights';
+@import 'partials/letter-spacing';
+@import 'partials/line-height';
+@import 'partials/opacity';
+@import 'partials/overflow';
+@import 'partials/performance';
+@import 'partials/position';
+@import 'partials/ratio';
+@import 'partials/shadows';
+@import 'partials/spacing';
+@import 'partials/table-styles';
+@import 'partials/typography';
+@import 'partials/vertical-align';
+@import 'partials/widths';
+@import 'partials/z-index';
+
+//@import 'partials/type-responsive';
+
+@import 'plugins/plugins';
+
+@import 'partials/wysiwyg';
+@import 'project/project';

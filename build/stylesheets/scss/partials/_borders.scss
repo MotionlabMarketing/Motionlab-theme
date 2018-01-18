@@ -1,0 +1,146 @@
+// Borders
+
+
+.border {
+  border-style: solid;
+  border-width: $border-width;
+}
+
+.border-none { border: 0; }
+.border-top-none { border-top: 0; }
+.border-right-none { border-right: 0; }
+.border-bottom-none { border-bottom: 0; }
+.border-left-none { border-left: 0; }
+
+
+// Sides
+
+$border-sides: (
+  top: $border-width 0 0 0,
+  right: 0 $border-width 0 0,
+  bottom: 0 0 $border-width 0,
+  left: 0 0 0 $border-width
+);
+
+@each $side-name, $side-val in $border-sides {
+
+  .border-#{$side-name} {
+    border-style: solid;
+    border-width: $side-val;
+  }
+
+}
+
+.border-top{
+    border-top-style: solid;
+    border-top-width: $border-width
+}
+.border-right{
+    border-right-style: solid;
+    border-right-width: $border-width
+}
+.border-bottom{
+    border-bottom-style: solid;
+    border-bottom-width: $border-width
+}
+.border-left{
+    border-left-style: solid;
+    border-left-width: $border-width
+}
+
+
+// Styles
+
+@each $style in $border-styles {
+
+  .border-#{$style} {
+    border-style: #{$style};
+  }
+
+}
+
+
+// Width
+
+@for $i from 1 through $border-width-loop {
+
+  .border-#{$i} {
+    border-width: $border-width * $i;
+  }
+
+}
+
+
+// Tints
+
+@each $opacity-num, $opacity-val in $opacities {
+
+  .border-darken-#{$opacity-num} {
+    border-color: rgba(0, 0, 0, $opacity-val);
+  }
+
+  .border-lighten-#{$opacity-num} {
+    border-color: rgba(255, 255, 255, $opacity-val);
+  }
+
+}
+
+
+// Colour
+
+@each $color-name, $color-hex in $colors {
+
+  .border-#{$color-name} {
+    border-color: $color-hex;
+  }
+
+  .hover-border-#{$color-name}:hover {
+     border-color: $color-hex;
+  }
+
+}
+
+
+
+
+// Transparent
+
+.border-transparent {
+  border-color: transparent;
+}
+
+
+// Radius
+
+.rounded { border-radius: $border-radius; }
+.rounded-top { border-radius: $border-radius $border-radius 0 0; }
+.rounded-right { border-radius: 0 $border-radius $border-radius 0; }
+.rounded-bottom { border-radius: 0 0 $border-radius $border-radius; }
+.rounded-left { border-radius: $border-radius 0 0 $border-radius; }
+.rounded-none { border-radius: 0; }
+
+.circle { border-radius: 50%; }
+.pill { border-radius: 20rem; }
+
+
+@include generate-breakpoint-prefixes {
+
+  &border { border-style: solid; border-width: $border-width; }
+  &border-none { border: 0; }
+  &border-top-none { border-top: 0; }
+  &border-right-none { border-right: 0; }
+  &border-bottom-none { border-bottom: 0; }
+  &border-left-none { border-left: 0; }
+  @each $side-name, $side-val in $border-sides {
+    &border-#{$side-name} { border-style: solid; border-width: $side-val; }
+  }
+  &rounded { border-radius: $border-radius; }
+  &rounded-top { border-radius: $border-radius $border-radius 0 0; }
+  &rounded-right { border-radius: 0 $border-radius $border-radius 0; }
+  &rounded-bottom { border-radius: 0 0 $border-radius $border-radius; }
+  &rounded-left { border-radius: $border-radius 0 0 $border-radius; }
+  &rounded-none { border-radius: 0; }
+  &circle { border-radius: 50%; }
+  &pill { border-radius: 20rem; }
+
+}

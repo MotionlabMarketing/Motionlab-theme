@@ -1,0 +1,39 @@
+// Display
+
+
+.inline { display: inline; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+.table { display: table; }
+.table-row { display: table-row; }
+.table-cell { display: table-cell; }
+
+
+// Remove
+
+.display-none { display: none; }
+.visibility-hidden { visibility: hidden; }
+
+
+// Accessible remove
+
+.hide {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px;
+}
+
+
+@include generate-breakpoint-prefixes {
+
+  &inline { display: inline; }
+  &block { display: block; }
+  &inline-block { display: inline-block; }
+  &table { display: table; }
+  &table-row { display: table-row; }
+  &table-cell { display: table-cell; }
+  &display-none { display: none; }
+
+}

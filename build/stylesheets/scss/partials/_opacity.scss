@@ -1,0 +1,31 @@
+// Opacity
+
+
+@each $opacity-num, $opacity-val in $opacities {
+
+  .opacity-#{$opacity-num} {
+    opacity: $opacity-val;
+  }
+
+}
+
+.opacity-none,.opacity-0,
+.hover-opacity-none:hover,.hover-opacity-0:hover{
+    opacity: 1;
+}
+
+// Hint - Can be used in conjuction with 'hover-unmute'
+
+.muted {
+  opacity: $muted-val;
+}
+
+
+@include generate-breakpoint-prefixes {
+
+  @each $opacity-num, $opacity-val in $opacities {
+    &opacity-#{$opacity-num} { opacity: $opacity-val; }
+  }
+  &muted { opacity: $muted-val; }
+
+}

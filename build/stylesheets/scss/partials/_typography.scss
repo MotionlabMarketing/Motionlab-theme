@@ -1,0 +1,115 @@
+// Typography
+
+
+// Family
+.narrow { font-family: $narrow-font-family; }
+.sans { font-family: $sans-font-family; }
+.serif { font-family: $serif-font-family; }
+.mono { font-family: $monospace-font-family; }
+
+// Transform
+
+.italic { font-style: italic; }
+.capitalize { text-transform: capitalize; }
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.underline,.hover-underline:hover { text-decoration: underline; }
+.line-through { text-decoration: line-through; }
+.text-decoration-none { text-decoration: none; }
+
+
+
+// Weight
+// Note: Be aware that not all typefaces will have these options available
+
+.thin { font-weight: 100; }
+.extra-light { font-weight: 200; }
+.light { font-weight: 300; }
+.regular { font-weight: 400; }
+.medium { font-weight: 500; }
+.semi-bold { font-weight: 600; }
+.bold { font-weight: 700; }
+.extra-bold { font-weight: 800; }
+.ultra-bold { font-weight: 900; }
+
+
+// Variant
+
+.small-caps {
+  font-variant: small-caps;
+}
+
+
+// Alignment
+
+.text-left { text-align: left; }
+.text-center,.aligncenter { text-align: center; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
+
+// Measure
+
+.measure { max-width: $measure; }
+.measure-narrow { max-width: $measure-narrow; }
+.measure-wide { max-width: $measure-wide; }
+
+
+// Wrap
+
+.truncate {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nowrap { white-space: nowrap; }
+.break-word { word-wrap: break-word; }
+
+
+// Indent
+
+.indent {
+  margin-bottom: 0;
+  margin-top: 0;
+  text-indent: 1em;
+}
+
+
+// List
+
+.list-style-none { list-style: none; }
+
+.list-reset {
+  list-style: none;
+  padding-left: 0;
+}
+
+
+@include generate-breakpoint-prefixes {
+
+  &text-left { text-align: left; }
+  &text-center { text-align: center; }
+  &text-right { text-align: right; }
+  &text-justify { text-align: justify; }
+  &nowrap { white-space: nowrap; }
+  &break-word { word-wrap: break-word; }
+  &truncate { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+}
+
+
+// @font-face {
+//   font-family: 'fsj';
+//   src: url('../../fonts/FSJoeyPro-Heavy.eot');
+//   src: url('../../fonts/FSJoeyPro-Heavy.eot?#iefix') format('embedded-opentype'),
+//     url('../../fonts/FSJoeyPro-Heavy.woff2') format('woff2'),
+//     url('../../fonts/FSJoeyPro-Heavy.woff') format('woff'),
+//     url('../../fonts/FSJoeyPro-Heavy.ttf') format('truetype'),
+//     url('../../fonts/FSJoeyPro-Heavy.svg#FSJoeyPro-Heavy') format('svg');
+//   font-weight: 800;
+//   font-style: normal;
+// }
+//
+// .fsj { font-family: 'fsj'; }

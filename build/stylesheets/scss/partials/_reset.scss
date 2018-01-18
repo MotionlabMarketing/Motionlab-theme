@@ -1,0 +1,70 @@
+// Reset
+
+
+html { -webkit-text-size-adjust: 100%; }
+
+body { margin: 0; }
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+article,
+aside,
+footer,
+header,
+nav,
+section,
+figcaption,
+figure,
+main {
+  display: block;
+}
+
+a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+
+  // &:not(.btn) {
+  //   color: $charcoal;
+  // }
+}
+
+img {
+  border-width: 0;
+  height: auto;
+  max-width: 100%;
+}
+
+svg { max-height: 100%; }
+
+hr {
+  border-color: $smoke;
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 $black;
+}

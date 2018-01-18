@@ -1,0 +1,23 @@
+// Table Styles
+
+
+.table-bordered {
+  border: 1px solid $darken-2;
+  border-collapse: collapse;
+
+  th,
+  td {
+    border: 1px solid $darken-2;
+  }
+
+  th {
+    border-bottom: 2px solid $darken-2;
+  }
+}
+
+.table-striped {
+
+  tr:nth-child(even) {
+    background-color: $darken-2;
+  }
+}

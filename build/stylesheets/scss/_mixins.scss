@@ -1,0 +1,71 @@
+// Mixins
+
+
+// This takes a variable and removes the unit value from it.
+// It is necessary for the responsive headline code to work.
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+
+// This makes it cleaner mark up for the gradient classes.
+
+@mixin linear-gradient($direction, $color-stops...) {
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
+
+// These are concerned with creating the responsive classes from the breakpoint sass map.
+
+@mixin media-query($breakpoint) {
+
+  @if (map-get($breakpoints, $breakpoint)) == null {
+
+    @content;
+
+  } @else {
+
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+
+      @content;
+
+    }
+
+  }
+
+}
+
+@mixin generate-breakpoint-prefixes {
+
+  @each $breakpoint-name, $breakpoint-value in $breakpoints {
+
+    $breakpoint-prefix: "#{$breakpoint-name}-";
+
+    @include media-query($breakpoint-name) {
+
+      .#{$breakpoint-prefix} { @content; }
+
+    }
+
+  }
+
+}
+
+@mixin list-breakpoints {
+
+  @each $breakpoint-name, $breakpoint-value in $breakpoints {
+
+    $bp: "#{$breakpoint-name}-";
+
+    .#{$bp} { @content; }
+
+  }
+
+}

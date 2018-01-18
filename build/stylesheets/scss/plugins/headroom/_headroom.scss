@@ -1,0 +1,16 @@
+// Headroom
+
+@media (min-width: $breakpoint-sm) {
+  .headroom {
+    will-change: transform;
+    transition: transform $transition, background $transition;
+  }
+
+  .headroom--pinned {
+    transform: translate3d(0,0,0);
+  }
+
+  .headroom--unpinned {
+    transform: translate3d(0,-140%,0);
+  }
+} 

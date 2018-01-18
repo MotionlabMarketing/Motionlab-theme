@@ -1,0 +1,30 @@
+// Type Responsive
+// Note: This could do with some work to make it cohesive with the rest of the framework
+
+
+$min-heading: $h1;
+$max-heading: $h00;
+
+$min-max-heading: strip-unit($max-heading - $min-heading);
+$sm-lg-breakpoint: strip-unit($breakpoint-lg - $breakpoint-sm);
+
+
+// min-size + (min-size - max-size) * ( (100vw - min-width) / ( max-width - min-width) )
+
+
+.heading-responsive {
+  font-size: calc(#{$min-heading} + #{$min-max-heading} * ( (100vw - #{$breakpoint-sm}) / #{$sm-lg-breakpoint}) );
+}
+
+
+@media screen and (max-width: #{$breakpoint-sm}) {
+  .heading-responsive {
+    font-size: $min-heading;
+  }
+}
+
+@media screen and (min-width: #{$breakpoint-lg}) {
+  .heading-responsive {
+    font-size: $max-heading;
+  }
+}

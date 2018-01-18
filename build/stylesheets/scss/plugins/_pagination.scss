@@ -1,0 +1,13 @@
+// Pagination
+
+.page-numbers{
+    border: $border-width solid $darken-1;
+    padding:0.5rem;
+    color: $black;
+    &:hover{
+        border: $border-width solid $darken-2;
+    }
+    &.current{
+        border: $border-width solid $darken-4;
+    }
+}

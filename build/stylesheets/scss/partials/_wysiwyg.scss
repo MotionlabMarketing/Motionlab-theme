@@ -1,0 +1,109 @@
+// WYSIWYG
+
+
+.wysiwyg {
+
+    :first-child {
+        margin-top: 0;
+    }
+
+    :last-child {
+        margin-bottom: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        line-height: 1.2;
+        + * {
+            margin-top: 0;
+        }
+    }
+
+    p {
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        & + h1,
+        & + h2,
+        & + h3,
+        & + h4,
+        & + h5,
+        & + h6 {
+            margin-top: $space-4;
+        }
+    }
+
+    a {
+        position: relative;
+        text-decoration: none;
+        // text-shadow: 0 0.1em 0 $white, 1px 0.1em 0 $white, -1px 0.1em 0 $white, 2px 0.1em 0 $white, -2px 0.1em 0 $white;
+        border-bottom: 1px solid $primary;
+        color: $primary;
+    }
+
+    a:not(.btn) {
+      color: $primary;
+      transition: all $transition;
+      text-decoration: none;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $link-hover-color;
+        outline: 0;
+      }
+    }
+
+
+    img[style*="float:left"],
+    img[style*="float: left"],
+    .alignleft,
+    img[style*="float:right"],
+    img[style*="float: right"],
+    .alignright {
+        max-width: 40%;
+    }
+
+    img[style*="float:left"],
+    img[style*="float: left"],
+    .alignleft {
+        margin: $space-1 $space-4 $space-4 0;
+    }
+
+    img[style*="float:right"],
+    img[style*="float: right"],
+    .alignright {
+        margin: $space-1 0 $space-4 $space-4;
+    }
+
+    figure {
+        margin: $space-4 0;
+
+        img {
+            display: block;
+        }
+
+        figcaption {
+            font-size: $h5;
+            margin-top: $space-1;
+        }
+    }
+
+    ul {
+        margin: $space-2 0;
+
+        ul {
+            margin: 0;
+        }
+    }
+}

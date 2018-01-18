@@ -1,0 +1,320 @@
+// Settings
+
+
+// Colour
+
+// You can add to or change the colors variables, but remember to add to the sass map below.
+// This map is used to automatically create the utility classes for colors, backgrounds and borders.
+// Make use of the primary and secondary naming convention to easily change colours site wide. Extend as required.
+
+$white: #fff !default;
+$smoke: #e7e6e6 !default;
+$grey: #575E65 !default;
+$charcoal: #393939 !default;
+$black: #111 !default;
+$darkgrey: #282a34 !default;
+$blue: #22298E !default;
+$navy: #04062A !default;
+$red: #CC3737 !default;
+$darkred: #96091E !default;
+$lightBlue: #E8E9F9 !default;
+
+
+$body: $charcoal !default;
+$primary: $blue !default;
+$secondary: $navy !default;
+
+$colors: (
+	"white": $white,
+	"smoke": $smoke,
+	"grey": $grey,
+	"charcoal": $charcoal,
+	"black": $black,
+	"darkgrey": $darkgrey,
+	"blue": $blue,
+	"navy": $navy,
+    "red": $red,
+    "darkred": $darkred,
+	"body": $body,
+	"light-blue": $lightBlue,
+	"primary": $primary,
+	"secondary": $secondary,
+);
+
+
+// Tints
+
+// You can alter the values in the variables depending on your specific needs.
+// This map is used to automatically create the utility classes for backgrounds, gradients, borders and opacity.
+
+$opacity-1: .05 !default;
+$opacity-2: .25 !default;
+$opacity-3: .375 !default;
+$opacity-4: .5 !default;
+$opacity-5: .75 !default;
+$opacity-6: .9 !default;
+
+$opacities: (
+	1: $opacity-1,
+	2: $opacity-2,
+	3: $opacity-3,
+	4: $opacity-4,
+	5: $opacity-5,
+	6: $opacity-6
+);
+
+$darken-1: rgba(20, 22, 32, $opacity-1) !default;
+$darken-2: rgba(20, 22, 32, $opacity-2) !default;
+$darken-3: rgba(20, 22, 32, $opacity-3) !default;
+$darken-4: rgba(20, 22, 32, $opacity-4) !default;
+$darken-5: rgba(20, 22, 32, $opacity-5) !default;
+$darken-6: rgba(20, 22, 32, $opacity-6) !default;
+
+$lighten-1:	rgba(255, 255, 255, $opacity-1) !default;
+$lighten-2:	rgba(255, 255, 255, $opacity-2) !default;
+$lighten-3: rgba(255, 255, 255, $opacity-3) !default;
+$lighten-4: rgba(255, 255, 255, $opacity-4) !default;
+$lighten-5: rgba(255, 255, 255, $opacity-5) !default;
+$lighten-6: rgba(255, 255, 255, $opacity-6) !default;
+
+
+// Spacing
+
+// You can alter the values in the variables depending on your specific needs.
+// This map is used to automatically create the utility classes for margin and padding.
+
+$space-1: .25rem !default;
+$space-2: .5rem !default;
+$space-3: 1rem !default;
+$space-4: 1.5rem !default;
+$space-5: 2rem !default;
+$space-6: 4rem !default;
+$space-7: 8rem !default;
+
+$spacing: (
+  0: 0,
+  1: $space-1,
+  2: $space-2,
+  3: $space-3,
+  4: $space-4,
+  5: $space-5,
+  6: $space-6,
+  7: $space-7
+);
+
+
+// Transition
+
+// This is the default value for transitions, to help with consistency.
+
+$transition: .2s cubic-bezier(.645, .045, .355, 1) !default;
+
+
+// Type Scale
+
+// http://jxnblk.com/writing/posts/mathematical-web-typography/
+
+$h00: 4.5rem !default;
+$h0: 4rem !default;
+$h1: 2.5rem !default;
+$h2: 2rem !default;
+$h3: 1.25rem !default;
+$h4: 1rem !default;
+$h5: .875rem !default;
+$h6: .75rem !default;
+
+
+// Typefaces
+
+// http://mrmrs.io/writing/2016/03/17/webfonts/
+
+$narrow-font-family: 'Poppins','Roboto Condensed',sans-serif !default;
+$sans-font-family: 'Poppins','Rubik', sans-serif;
+$serif-font-family: 'Poppins','Philosopher', Georgia, Times, 'Times New Roman', serif !default;
+$monospace-font-family: 'Source Code Pro', Consolas, monospace !default;
+
+
+// Defaults
+$first-nav-height: 64px !default;
+
+$line-height: 1.5 !default;
+$bold-font-weight: 700 !default;
+$small-font-size: 80% !default;
+
+
+// Body
+
+$body-font-family: $sans-font-family !default;
+$body-font-size: 100% !default;
+$body-color: $body !default;
+
+
+// Headings
+
+//$heading-font-family: inherit !default;
+//'Baloo Da',
+$heading-font-family: 'Playfair Display', sans-serif !default;
+$heading-font-weight: $bold-font-weight !default;
+$heading-line-height: normal !default;
+$heading-margin-top: 0 !default;
+$heading-margin-bottom: .75em !default;
+
+
+// Links
+
+$link-color: $body !default;
+$link-hover-color: $primary !default;
+
+
+// Measure
+
+$measure: 30em !default;
+$measure-narrow: 14em !default;
+$measure-wide: 50em !default;
+
+
+// Preformatted
+
+$pre-font-size: $h5 !default;
+$pre-margin-top: 0 !default;
+$pre-margin-bottom: 1rem !default;
+$pre-tab-size: 2 !default;
+
+
+// Forms
+
+$field-font-family: inherit !default;
+$field-font-size: $h4 !default;
+$field-big-font-size: $h3 !default;
+$field-line-height: normal !default;
+$field-focus-color: $darken-3 !default;
+
+// By tweaking the top and bottom padding values, you can make sure the font is vertically centered correctly.
+
+$field-padding-x: 1rem !default;
+$field-padding-top: 1rem !default;
+$field-padding-bottom: 1rem !default;
+
+$field-big-padding-x: 1.5rem !default;
+$field-big-padding-top: 1.5rem !default;
+$field-big-padding-bottom: 1.5rem !default;
+
+
+// Buttons
+
+$button-font-family: inherit !default;
+$button-font-size: 1rem !default;
+$button-small-font-size: $h6 !default;
+$button-big-font-size: $h3 !default;
+$button-font-weight: 700 !default;
+$button-line-height: normal !default;
+
+// For variations
+$button-background-color: $primary!default;
+$button-color: $white!default;
+
+// By tweaking the top and bottom padding values, you can make sure the font is vertically centered correctly.
+
+$button-padding-x: 1.5rem !default;
+$button-padding-top: 1rem !default;
+$button-padding-bottom: 1rem !default;
+
+$button-small-padding-x: .5rem !default;
+$button-small-padding-top: .25rem !default;
+$button-small-padding-bottom: .25rem !default;
+
+$button-big-padding-x: 1.5rem !default;
+$button-big-padding-top: 1rem !default;
+$button-big-padding-bottom: 1rem !default;
+
+
+// Tables
+
+$table-header-font-weight: $bold-font-weight !default;
+$table-line-height: 1.25 !default;
+
+$table-padding-x: .5rem !default;
+$table-padding-top: .5rem !default;
+$table-padding-bottom: .5rem !default;
+
+
+// Borders
+
+$border-width: 1px !default;
+$border-radius: .25rem !default;
+$border-styles: dotted, dashed !default;
+$border-width-loop: 3 !default;
+
+
+// Shadows
+
+$shadow-x: 0 !default;
+$shadow-y: 0 !default;
+$shadow-blur: .15rem !default;
+$shadow-spread: 0 !default;
+$shadow-color: $darken-3 !default;
+
+$shadow-bottom-x: 0 !default;
+$shadow-bottom-y: .25rem !default;
+$shadow-bottom-blur: .5rem;
+$shadow-bottom-spread: -.05rem;
+$shadow-bottom-color: $darken-3 !default;
+
+$shadow-inset-x: 0 !default;
+$shadow-inset-y: 0 !default;
+$shadow-inset-blur: .5rem !default;
+$shadow-inset-spread: 0 !default;
+$shadow-inset-color: $darken-3 !default;
+
+
+// Debug
+
+$debug: false !default;
+
+
+// Flexbox
+
+$flex-loop: 3 !default;
+
+
+// Letter spacing
+
+$letter-spacing-loop: 4 !default;
+
+
+// Z-index
+
+$z-index-loop: 5 !default;
+
+
+// Muted
+
+$muted-val: .5 !default;
+
+
+// Zoom
+
+$zoom-val: 1.1 !default;
+
+
+// Grid
+
+// You can add to or change the breakpoints variables, but remember to add to the sass map below.
+// This map is used to automatically create all the responsive classes.
+
+$container-width: 75rem !default;
+$grid-columns: 12 !default;
+
+$breakpoint-sm: 32rem !default;
+$breakpoint-md: 48rem !default;
+$breakpoint-lg: 64rem !default;
+$breakpoint-xl: 85rem !default;
+$breakpoint-xxl: 95rem !default;
+
+$breakpoints: (
+	sm: $breakpoint-sm,
+	md: $breakpoint-md,
+	lg: $breakpoint-lg,
+	xl: $breakpoint-xl,
+	xxl: $breakpoint-xxl
+);

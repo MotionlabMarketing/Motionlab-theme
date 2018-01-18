@@ -1,0 +1,7 @@
+{
+    "name": "wordpress-themes/motionlab-theme",
+    "description": "The default motionlab theme, for use by Motionlab",
+    "type": "wordpress-theme",
+    "license": "Copyright Motionlab Ltd",
+    "require": {}
+}

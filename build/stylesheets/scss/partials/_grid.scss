@@ -1,0 +1,51 @@
+// Grid
+
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $container-width;
+}
+
+.col {
+  box-sizing: border-box;
+  float: left;
+}
+
+.col-right {
+  box-sizing: border-box;
+  float: right;
+}
+
+@for $i from 1 through $grid-columns {
+  $c: ($i / $grid-columns * 100%);
+
+  .col-#{$i} {
+    width: $c;
+  }
+
+  .offset-#{$i} {
+    margin-left: $c;
+  }
+
+}
+
+.col-auto {
+  width: auto;
+}
+
+
+@include generate-breakpoint-prefixes {
+
+  @for $i from 1 through $grid-columns {
+    $c: ($i / $grid-columns * 100%);
+    &col-#{$i} { width: $c; }
+    &offset-#{$i} { margin-left: $c; }
+    &col-auto {
+     width: auto;
+    }
+  }
+
+
+
+}

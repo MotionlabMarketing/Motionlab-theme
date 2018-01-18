@@ -1,0 +1,26 @@
+// Tables
+
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  max-width: 100%;
+  width: 100%;
+}
+
+th {
+  font-weight: $table-header-font-weight;
+  text-align: left;
+  vertical-align: bottom;
+}
+
+td { vertical-align: top; }
+
+th,
+td {
+  line-height: $table-line-height;
+  padding: $table-padding-top $table-padding-x $table-padding-bottom;
+  p:last-child{
+      margin:0
+  }
+}

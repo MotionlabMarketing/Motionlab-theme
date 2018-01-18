@@ -1,0 +1,17 @@
+// Box Shadows
+
+
+.shadow { box-shadow: $shadow-x $shadow-y $shadow-blur $shadow-spread $shadow-color; }
+.shadow-bottom { box-shadow: $shadow-bottom-x $shadow-bottom-y $shadow-bottom-blur $shadow-bottom-spread $shadow-bottom-color; }
+.shadow-inset { box-shadow: inset $shadow-inset-x $shadow-inset-y $shadow-inset-blur $shadow-inset-spread $shadow-inset-color; }
+
+.shadow-flat,.hover-shadow-flat:hover { box-shadow: 0 0.25rem 0 $shadow-spread rgba(0,0,0,0.2); }
+.shadow-flat-1,.hover-shadow-flat-1:hover { box-shadow: 0 0.25rem 0 $shadow-spread rgba(0,0,0,0.15); }
+
+
+
+@include generate-breakpoint-prefixes {
+
+  &shadow { box-shadow: $shadow-x $shadow-y $shadow-blur $shadow-spread $shadow-color; }
+
+}

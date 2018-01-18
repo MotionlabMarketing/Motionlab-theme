@@ -1,0 +1,63 @@
+// Spacing
+
+
+.mx-auto { margin-left: auto; margin-right: auto; }
+.ml-auto { margin-left: auto; }
+.mr-auto { margin-right: auto; }
+
+@each $space-num, $space-val in $spacing {
+
+  .m#{$space-num} { margin: $space-val; }
+  .mt#{$space-num} { margin-top: $space-val; }
+  .mr#{$space-num} { margin-right: $space-val; }
+  .mb#{$space-num} { margin-bottom: $space-val; }
+  .ml#{$space-num} { margin-left: $space-val; }
+  .my#{$space-num} { margin-bottom: $space-val; margin-top: $space-val; }
+  .mx#{$space-num} { margin-left: $space-val; margin-right: $space-val; }
+
+  @if $space-num > 0 {
+
+    .mxn#{$space-num} { margin-left: -$space-val; margin-right: -$space-val; }
+    .mtn#{$space-num} { margin-top: -$space-val; }
+    .mbn#{$space-num} { margin-bottom: -$space-val; }
+
+  }
+
+  .p#{$space-num} { padding: $space-val; }
+  .pt#{$space-num} { padding-top: $space-val; }
+  .pr#{$space-num} { padding-right: $space-val; }
+  .pb#{$space-num} { padding-bottom: $space-val; }
+  .pl#{$space-num} { padding-left: $space-val; }
+  .py#{$space-num} { padding-bottom: $space-val; padding-top: $space-val; }
+  .px#{$space-num} { padding-left: $space-val; padding-right: $space-val; }
+
+}
+
+@include generate-breakpoint-prefixes {
+
+  &mx-auto { margin-left: auto; margin-right: auto; }
+  &ml-auto { margin-left: auto; }
+  &mr-auto { margin-right: auto; }
+  @each $space-num, $space-val in $spacing {
+    &m#{$space-num} { margin: $space-val; }
+    &mt#{$space-num} { margin-top: $space-val; }
+    &mr#{$space-num} { margin-right: $space-val; }
+    &mb#{$space-num} { margin-bottom: $space-val; }
+    &ml#{$space-num} { margin-left: $space-val; }
+    &my#{$space-num} { margin-bottom: $space-val; margin-top: $space-val; }
+    &mx#{$space-num} { margin-left: $space-val; margin-right: $space-val; }
+    @if $space-num > 0 {
+      &mxn#{$space-num} { margin-left: -$space-val; margin-right: -$space-val; }
+      &mtn#{$space-num} { margin-top: -$space-val; }
+      &mbn#{$space-num} { margin-bottom: -$space-val; }
+    }
+    &p#{$space-num} { padding: $space-val; }
+    &pt#{$space-num} { padding-top: $space-val; }
+    &pr#{$space-num} { padding-right: $space-val; }
+    &pb#{$space-num} { padding-bottom: $space-val; }
+    &pl#{$space-num} { padding-left: $space-val; }
+    &py#{$space-num} { padding-bottom: $space-val; padding-top: $space-val; }
+    &px#{$space-num} { padding-left: $space-val; padding-right: $space-val; }
+  }
+
+}

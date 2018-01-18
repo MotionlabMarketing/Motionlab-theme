@@ -1,0 +1,49 @@
+// Heights
+
+.height-auto { height: auto; }
+
+.height-25 { height: 25%; }
+.height-50 { height: 50%; }
+.height-75 { height: 75%; }
+.height-100 { height: 100%; }
+
+.height-v25 { height: 25vh; }
+.height-v35 { height: 35vh; }
+.height-v50 { height: 50vh; }
+.height-v75 { height: 75vh; }
+.height-v85 { height: 85vh; }
+.height-v100 { height: 100vh; }
+
+.min-height-auto { min-height: auto; }
+.min-height-100 { min-height: 100%; }
+
+.min-height-v25 { min-height: 25vh; }
+.min-height-v35 { min-height: 35vh; }
+.min-height-v50 { min-height: 50vh; }
+.min-height-v75 { min-height: 75vh; }
+.min-height-v85 { min-height: 85vh; }
+.min-height-v100 { min-height: 100vh; }
+
+
+@include generate-breakpoint-prefixes {
+
+    &height-auto { height: auto; }
+    &height-50 { height: 50%; }
+    &height-100 { height: 100%; }
+
+    &height-v35 { height: 35vh; }
+    &height-v50 { height: 50vh; }
+    &height-v75 { height: 75vh; }
+    &height-v85 { height: 85vh; }
+    &height-v100 { height: 100vh; }
+
+    &min-height-auto { min-height: auto; }
+    &min-height-100 { min-height: 100%; }
+    &min-height-v25 { min-height: 25vh; }
+    &min-height-v35 { min-height: 35vh; }
+    &min-height-v50 { min-height: 50vh; }
+    &min-height-v75 { min-height: 75vh; }
+    &min-height-v85 { min-height: 85vh; }
+    &min-height-v100 { min-height: 100vh; }
+
+}

@@ -1,0 +1,26 @@
+// Gradient
+
+// @each $opacity-num, $opacity-val in $opacities {
+//
+//   .bg-grad-darken-#{$opacity-num} {
+//     background-image: linear-gradient(transparent, rgba(0, 0, 0, $opacity-val));
+//   }
+//
+//   .bg-grad-lighten-#{$opacity-num} {
+//     background-image: linear-gradient(rgba(255, 255, 255, $opacity-val), transparent);
+//   }
+//
+// }
+
+
+@each $color-name, $color-hex in $colors {
+
+  .banner-top-gradient-#{$color-name} {
+    background-image: linear-gradient($color-hex, transparent 35%);
+  }
+
+  .banner-bottom-gradient-#{$color-name} {
+    background-image: linear-gradient(transparent 35%, $color-hex 90%);
+  }
+
+}

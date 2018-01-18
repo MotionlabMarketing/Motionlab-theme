@@ -1,0 +1,20 @@
+// Z Index
+
+
+@for $i from 0 through $z-index-loop {
+  $z: ($i * 100);
+
+  .z#{$i} {
+    z-index: $z;
+  }
+
+}
+
+@for $i from 1 through $z-index-loop {
+  $zn: ($i * -100);
+
+  .zn#{$i} {
+    z-index: $zn;
+  }
+
+}

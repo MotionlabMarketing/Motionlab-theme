@@ -1,0 +1,20 @@
+// Widths
+
+
+.width-auto { width: auto; }
+
+.width-100 { width: 100%; }
+
+.min-width-100 { min-width: 100%; }
+
+.max-width-100 { max-width: 100%; }
+
+
+@include generate-breakpoint-prefixes {
+
+  &width-auto { width: auto; }
+  &width-100 { width: 100%; }
+  &min-width-100 { min-width: 100%; }
+  &max-width-100 { max-width: 100%; }
+
+}

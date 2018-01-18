@@ -1,0 +1,71 @@
+// Forms
+
+
+*:focus {
+    outline: none;
+}
+
+.input,
+.textarea,
+.select {
+  appearance: none;
+  border: $border-width solid $smoke;
+  border-radius: 0;
+  display: inline-block;
+  font-size: $field-font-size;
+  line-height: $field-line-height;
+  padding: $field-padding-top $field-padding-x $field-padding-bottom;
+
+  &:focus {
+    border-color: $field-focus-color;
+    outline: 0;
+  }
+
+  &:disabled {
+    background-color: $darken-3;
+    opacity: .5;
+  }
+}
+
+.input,
+.textarea {
+
+  &:read-only {
+    background-color: $smoke;
+  }
+}
+
+.select {
+  background-color: $white;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUCAMAAACzvE1FAAAADFBMVEUzMzMzMzMzMzMzMzMKAG/3AAAAA3RSTlMAf4C/aSLHAAAAPElEQVR42q3NMQ4AIAgEQTn//2cLdRKppSGzBYwzVXvznNWs8C58CiussPJj8h6NwgorrKRdTvuV9v16Afn0AYFOB7aYAAAAAElFTkSuQmCC);
+  background-repeat: no-repeat;
+  background-position: right .75rem center;
+  background-size: .5rem .625rem;
+  padding-right:2em;
+}
+
+.textarea {
+  resize: vertical;
+}
+
+
+// Sizes
+
+.input-big,
+.select-big,
+.textarea-big {
+  //font-size: $field-big-font-size;
+  padding: $field-big-padding-top $field-big-padding-x $field-big-padding-bottom;
+}
+
+
+@include generate-breakpoint-prefixes {
+
+  &input-big,
+  &select-big,
+  &textarea-big {
+    //font-size: $field-big-font-size;
+    padding: $field-big-padding-top $field-big-padding-x $field-big-padding-bottom;
+  }
+
+}
