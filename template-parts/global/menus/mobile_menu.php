@@ -1,7 +1,8 @@
 <?php
 include_once(get_template_directory() . '/inc/MenuController.php');
 $menuController = new MenuController();
-$menu = $menuController->menuWalk(wp_get_nav_menu_items('Main Menu'));
+
+$menu = has_nav_menu('Main Menu') ? motionlab_menu_walker('Main Menu') : [];
 ?>
 
 <!-- mobile menu -->

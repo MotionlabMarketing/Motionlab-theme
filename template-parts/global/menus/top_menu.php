@@ -2,7 +2,9 @@
 <?php
 include_once(get_template_directory() . '/inc/MenuController.php');
 $menuController = new MenuController();
-$menu = $menuController->menuWalk(wp_get_nav_menu_items('Top Menu'));
+
+$menu = has_nav_menu('Top Menu') ? motionlab_menu_walker('Top Menu') : [];
+
 ?>
 
 <div class="display-none p2 lg-flex justify-between items-center bg-navy">

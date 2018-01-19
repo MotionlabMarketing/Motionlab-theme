@@ -1,7 +1,8 @@
 <?php
 include_once(get_template_directory() . '/inc/MenuController.php');
 $menuController = new MenuController();
-$menu = $menuController->menuWalk(wp_get_nav_menu_items('Footer TnC'));
+
+$menu = has_nav_menu('Footer TnC') ? motionlab_menu_walker('Footer TnC') : [];
 ?>
 
 

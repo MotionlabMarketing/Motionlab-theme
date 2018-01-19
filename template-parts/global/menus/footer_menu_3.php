@@ -1,7 +1,8 @@
 <?php
 include_once(get_template_directory() . '/inc/MenuController.php');
 $menuController = new MenuController();
-$menu = $menuController->menuWalk(wp_get_nav_menu_items('Footer 3'));
+
+$menu = has_nav_menu('Footer 3') ? motionlab_menu_walker('Footer 3') : [];
 ?>
 
 <div class="col col-12 mb4 md-mb0 md-col-3 px5">
