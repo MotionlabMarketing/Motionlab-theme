@@ -14,6 +14,7 @@ $menu = has_nav_menu('Top Menu') ? motionlab_menu_walker('Top Menu') : [];
             <li class="inline-block <?php if($i!=1) : ?>border-left border-lighten-2<?php endif; ?>">
                 <a href="<?php echo $menuitem->url; ?>" class="px3 py0 bold white hover-primary"><?php echo $menuitem->title; ?></a>
             </li>
+
             <?php $i++; ?>
         <?php endforeach ?>
     </ul>
