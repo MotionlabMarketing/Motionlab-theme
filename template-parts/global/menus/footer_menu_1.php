@@ -2,7 +2,7 @@
 include_once(get_template_directory() . '/inc/MenuController.php');
 $menuController = new MenuController();
 
-$menu = has_nav_menu('Footer 1') ? motionlab_menu_walker('Footer 1') : [];
+$menu = motionlab_menu_walker('footer_1');
 ?>
 
 

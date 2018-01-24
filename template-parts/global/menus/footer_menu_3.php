@@ -2,7 +2,7 @@
 include_once(get_template_directory() . '/inc/MenuController.php');
 $menuController = new MenuController();
 
-$menu = has_nav_menu('Footer 3') ? motionlab_menu_walker('Footer 3') : [];
+$menu = motionlab_menu_walker('footer_3');
 ?>
 
 <div class="col col-12 mb4 md-mb0 md-col-3 px5">

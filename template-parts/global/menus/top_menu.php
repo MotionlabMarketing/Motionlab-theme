@@ -3,7 +3,7 @@
 include_once(get_template_directory() . '/inc/MenuController.php');
 $menuController = new MenuController();
 
-$menu = has_nav_menu('Top Menu') ? motionlab_menu_walker('Top Menu') : [];
+$menu = motionlab_menu_walker('top-menu');
 
 ?>
 

@@ -2,7 +2,7 @@
 include_once(get_template_directory() . '/inc/MenuController.php');
 $menuController = new MenuController();
 
-$menu = has_nav_menu('Main Menu') ? motionlab_menu_walker('Main Menu') : [];
+$menu = motionlab_menu_walker('primary');
 ?>
 
 <!-- mobile menu -->
