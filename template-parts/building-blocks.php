@@ -54,6 +54,8 @@ if( have_rows('building_blocks') ) {
             include(get_template_directory() .'/template-parts/newBlocks/parallax.php');
         } elseif( get_row_layout() == 'test'){
             include(get_template_directory() .'/template-parts/newBlocks/test.php');
+        } elseif (get_row_layout() == 'block_button') {
+            include(get_template_directory() .'/template-parts/newBlocks/_block_buttons.php');
         }
 
         $previousBg = $bgColor;
