@@ -69,7 +69,7 @@ if (get_sub_field('centre_tabs') == true) {
                             <div class="col col-6 p4">
                                 <div class="wysiwyg">
                                     <?php
-                                    $blockTitle = get_sub_field('title');
+                                    $blockTitle = get_sub_field('col_one_title_title');
                                     include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php') ?>
                                     <?=get_sub_field('col_one_title_content') ?>
                                 </div>
@@ -78,7 +78,7 @@ if (get_sub_field('centre_tabs') == true) {
                             <div class="col col-6 p4">
                                 <div class="wysiwyg">
                                     <?php
-                                    $blockTitle = get_sub_field('title');
+                                    $blockTitle = get_sub_field('col_two_title_title');
                                     include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php') ?>
                                     <?=get_sub_field('col_two_title_content') ?>
                                 </div>
