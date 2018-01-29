@@ -16,6 +16,11 @@ if( get_sub_field('banner_height_banner_height') == 'lg-min-height-v100' ) {
     $bannerHeight = get_sub_field('banner_height_banner_height');
 };
 
+
+$buttons        = get_sub_field('buttons');
+$enable_buttons = get_sub_field('enabled_buttons');
+$size           = get_sub_field('block_buttons_size');
+
 ?>
 
 <!-- full width banner -->
@@ -58,7 +63,22 @@ if( get_sub_field('banner_height_banner_height') == 'lg-min-height-v100' ) {
                         <div class="wysiwyg mb5 pt2"><?php echo get_sub_field('copy') ?></div>
                     <?php } ?>
 
-                    <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/button.php') ?>
+
+                    <?php if ($enable_buttons == true):?>
+
+                        <div class="my2">
+
+                        <?php foreach ($buttons as $btn): ?>
+
+                            <a href="<?=$btn['button_link']['url']?>" class="btn btn-<?=$size?> border-radius-<?=$border?> white inline-block bg-<?=$btn['colour_color']?> <?=$btn['custom_class']?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
+                                <?=$btn['button_text']?>
+                            </a>
+
+                        <?php endforeach; ?>
+
+                        </div>
+
+                    <?php endif; ?>
 
                 </div>
             </div>
