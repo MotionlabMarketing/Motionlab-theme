@@ -8,9 +8,8 @@
  *
  * @version 1.00
  */
+?>
 
- $title = get_sub_field('title'); ?>
-
-<<?=$title[0]['heading']?> class="<?=$title[0]['size_heading_size']?>">
-    <?=$title[0]['title']?>
-</<?=$title[0]['heading']?>>
+<<?=$blockTitle[0]['heading']?> class="<?=$blockTitle[0]['size_heading_size']?>">
+    <?=$blockTitle[0]['title']?>
+</<?=$blockTitle[0]['heading']?>>

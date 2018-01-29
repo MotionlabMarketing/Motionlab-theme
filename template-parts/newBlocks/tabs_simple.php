@@ -54,7 +54,9 @@ if (get_sub_field('centre_tabs') == true) {
                         <section id="tab<?php echo $i ?>" class="<?php echo $content ?> <?php echo ($i > 1) ? 'hide' : '' ?> bg-white p4">
 
                             <div class="wysiwyg p4">
-                                <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php') ?>
+                                <?php
+                                $blockTitle = get_sub_field('title');
+                                include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php') ?>
                                 <?=get_sub_field('col_one_title_content') ?>
                             </div>
 
@@ -66,14 +68,18 @@ if (get_sub_field('centre_tabs') == true) {
 
                             <div class="col col-6 p4">
                                 <div class="wysiwyg">
-                                    <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php') ?>
+                                    <?php
+                                    $blockTitle = get_sub_field('title');
+                                    include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php') ?>
                                     <?=get_sub_field('col_one_title_content') ?>
                                 </div>
                             </div>
 
                             <div class="col col-6 p4">
                                 <div class="wysiwyg">
-                                    <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php') ?>
+                                    <?php
+                                    $blockTitle = get_sub_field('title');
+                                    include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php') ?>
                                     <?=get_sub_field('col_two_title_content') ?>
                                 </div>
                             </div>

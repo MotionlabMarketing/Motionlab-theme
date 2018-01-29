@@ -12,7 +12,7 @@
 $membersShow = get_sub_field('number_of_profiles');
 $bgColor = get_sub_field('profile_background_system_background_colours');
 
-$blockTitle = get_sub_field('block_team_title_title')
+$blockTitle = get_sub_field('block_team_title_title');
 
 // BACKEND NOTES – REMOVE ONCE ADDED
 // Get posts from Custom Post Type.
