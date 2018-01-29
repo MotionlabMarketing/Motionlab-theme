@@ -12,7 +12,7 @@
 
  $buttons = get_sub_field('block_buttons');
  $size    = get_sub_field('block_buttons_size');
- $border  = str_replace(".", "-", get_sub_field('border_radius_strength'));
+ $border  = str_replace(".", "-", str_replace(".", "-", get_field('buttons_border_radius', 'option')));
 
 ?>
 

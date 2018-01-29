@@ -14,12 +14,17 @@ $columnTitle          = get_sub_field('column_title');
 $columnButtonsText    = get_sub_field('button_text');
 $columnButtonsLink    = get_sub_field('button_link');
 $columnButtonsColour  = get_sub_field('colour');
-$columnButtonsClass   = get_sub_field('custom_class');
+$columnButtonsClass   = get_sub_field('button_custom_class');
+
+$buttonBorderRadius   = str_replace(".", "-", get_field('buttons_border_radius', 'option'));
+
+$columnsCustomClass   = get_sub_field('columns_custom_class');
 
 ?>
 
+<?php //print_r(get_field_objects()); ?>
 <?php if(!empty(get_sub_field('copy'))){?>
-	<div class="<?php echo $columnWidth ?> <?php echo $textAlign ?> || js-match-height">
+	<div class="<?php echo $columnWidth ?> <?php echo $textAlign ?> <?=$columnsCustomClass?> || js-match-height">
 		<div class="flex flex-column height-100 <?php echo $anchorButtons ?>">
 			<div>
 
@@ -40,7 +45,7 @@ $columnButtonsClass   = get_sub_field('custom_class');
 			</div>
 
             <?php if (!empty($columnButtonsLink) && !empty($columnButtonsText)):?>
-                <a href="<?=$columnButtonsLink['url']?>" class="btn btn-<?=$size?> border-radius-<?=$border?> white inline-block bg-<?=$columnButtonsColour?> <?=$btn['custom_class']?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
+                <a href="<?=$columnButtonsLink['url']?>" class="btn btn-<?=$size?> border-radius-<?=$buttonBorderRadius['border_radius_strength']?> white inline-block bg-<?=$columnButtonsColour?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
                     <?=$columnButtonsText?>
                 </a>
             <?php endif; ?>
