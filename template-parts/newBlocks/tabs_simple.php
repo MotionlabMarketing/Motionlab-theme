@@ -9,15 +9,21 @@ if ( get_sub_field('vertical_tabs') ){
 } else {
 	$tabNav= 'flex flex-column';
 	$tabName = 'flex border-bottom border-smoke';
-	$tab= 'btn md-text-left border-bottom-none || rounded-top mr1 px3';
+	$tab= 'btn md-text-left border-bottom-none || mr1 px3';
 	$content = 'pt4';
 	$pad = '';
 	$contentPad = '';
 }
+
+if (get_sub_field('centre_tabs') == true) {
+
+    $tabName .= "|| flex items-center justify-center";
+
+}
 ?>
 
 <!-- tabs - simple -->
-<section class="pt4 <?php echo $bgColor ?> <?php echo $txtColor ?>">
+<section class="py4 <?php echo $bgColor ?> <?php echo $txtColor ?>">
 	<div data-tabs="wrapper" class="container <?php echo $extraPadding ;?> <?php echo $tabNav ?> <?php echo $measureWide ?> || traditional-tabs">
 		<div class="col col-12 <?php echo $pad ?> <?php echo $tabName ?>">
 			<?php if( have_rows('tabs')){
@@ -39,7 +45,7 @@ if ( get_sub_field('vertical_tabs') ){
 				$i = 1 ;
 				while ( have_rows('tabs')){
 					the_row() ?>
-					<section id="tab<?php echo $i ?>" class="<?php echo $content ?> <?php echo ($i > 1) ? 'hide' : '' ?>">
+					<section id="tab<?php echo $i ?>" class="<?php echo $content ?> <?php echo ($i > 1) ? 'hide' : '' ?> bg-white p4">
 						<div class="wysiwyg">
 							<h4><?php echo get_sub_field('title') ?></h4>
 							<p><?php echo get_sub_field('content') ?></p>
