@@ -10,9 +10,10 @@
  */
 
 $membersShow = get_sub_field('number_of_profiles');
-$bgColor = get_sub_field('profile_background_system_background_colours');
+$bgColor     = get_sub_field('profile_background_system_background_colours');
+$txtColor    = get_sub_field('block_team_text_system_text_colours');
 
-$blockTitle = get_sub_field('block_team_title_title');
+$blockTitle  = get_sub_field('block_team_title_title');
 
 // BACKEND NOTES – REMOVE ONCE ADDED
 // Get posts from Custom Post Type.
@@ -41,7 +42,7 @@ $blockTitle = get_sub_field('block_team_title_title');
 
         <div class="col col-2 p2">
 
-            <a href="{{ProfileLink}}" class="black">
+            <a href="{{ProfileLink}}" class="<?=$txtColor?>">
 
                 <div class="member || <?= $bgColor ?> || p3">
 
@@ -58,7 +59,7 @@ $blockTitle = get_sub_field('block_team_title_title');
 
         <div class="col col-2 p2">
 
-            <a href="{{ProfileLink}}" class="black">
+            <a href="{{ProfileLink}}" class="<?=$txtColor?>">
 
                 <div class="member || <?= $bgColor ?> || p3">
 
@@ -75,7 +76,7 @@ $blockTitle = get_sub_field('block_team_title_title');
 
         <div class="col col-2 p2">
 
-            <a href="{{ProfileLink}}" class="black">
+            <a href="{{ProfileLink}}" class="<?=$txtColor?>">
 
                 <div class="member || <?= $bgColor ?> || p3">
 
@@ -92,7 +93,7 @@ $blockTitle = get_sub_field('block_team_title_title');
 
         <div class="col col-2 p2">
 
-            <a href="{{ProfileLink}}" class="black">
+            <a href="{{ProfileLink}}" class="<?=$txtColor?>">
 
                 <div class="member || <?= $bgColor ?> || p3">
 
@@ -109,7 +110,7 @@ $blockTitle = get_sub_field('block_team_title_title');
 
         <div class="col col-2 p2">
 
-            <a href="{{ProfileLink}}" class="black">
+            <a href="{{ProfileLink}}" class="<?=$txtColor?>">
 
                 <div class="member || <?= $bgColor ?> || p3">
 
@@ -126,7 +127,7 @@ $blockTitle = get_sub_field('block_team_title_title');
 
         <div class="col col-2 p2">
 
-            <a href="{{ProfileLink}}" class="black">
+            <a href="{{ProfileLink}}" class="<?=$txtColor?>">
 
                 <div class="member || <?= $bgColor ?> || p3">
 
