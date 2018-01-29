@@ -8,7 +8,7 @@ if ( get_sub_field('vertical_tabs') ){
 	$contentPad = 'md-px4 py3';
 } else {
 	$tabNav= 'flex flex-column';
-	$tabName = 'flex border-bottom border-smoke';
+	$tabName = 'flex';
 	$tab= 'btn md-text-left border-bottom-none || mr1 px3';
 	$content = 'pt4';
 	$pad = '';
@@ -17,6 +17,7 @@ if ( get_sub_field('vertical_tabs') ){
 
 if (get_sub_field('centre_tabs') == true) {
 
+    $tab .= "|| tab-center bg-smoke btn-medium tab-arrowBottom";
     $tabName .= "|| flex items-center justify-center";
 
 }
@@ -31,7 +32,7 @@ if (get_sub_field('centre_tabs') == true) {
 				while ( have_rows('tabs')){
 					the_row() ?>
 
-					<span data-section="tab<?php echo $i ?>" class="border border-smoke cursor-pointer narrow uppercase py3 bold || tab <?php echo $tab ?> || <?php echo $i <= 1 ? 'tab-active' : '' ?>">
+					<span data-section="tab<?php echo $i ?>" class="border border-smoke cursor-pointer narrow uppercase py3 bold relative || tab <?php echo $tab ?> || <?php echo $i <= 1 ? 'tab-active' : '' ?>">
 						<?php echo get_sub_field('tab_name') ?>
 					</span>
 
@@ -45,12 +46,44 @@ if (get_sub_field('centre_tabs') == true) {
 				$i = 1 ;
 				while ( have_rows('tabs')){
 					the_row() ?>
-					<section id="tab<?php echo $i ?>" class="<?php echo $content ?> <?php echo ($i > 1) ? 'hide' : '' ?> bg-white p4">
-						<div class="wysiwyg">
-							<h4><?php echo get_sub_field('title') ?></h4>
-							<p><?php echo get_sub_field('content') ?></p>
-						</div>
-					</section>
+
+                    <?php $cols = get_sub_field('number_of_columns');
+
+                    if ($cols == 1): ?>
+
+                        <section id="tab<?php echo $i ?>" class="<?php echo $content ?> <?php echo ($i > 1) ? 'hide' : '' ?> bg-white p4">
+
+                            <div class="wysiwyg p4">
+                                <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php') ?>
+                                <?=get_sub_field('col_one_title_content') ?>
+                            </div>
+
+                        </section>
+
+                    <?php else: ?>
+
+                        <section id="tab<?php echo $i ?>" class="<?php echo $content ?> <?php echo ($i > 1) ? 'hide' : '' ?> bg-white p4">
+
+                            <div class="col col-6 p4">
+                                <div class="wysiwyg">
+                                    <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php') ?>
+                                    <?=get_sub_field('col_one_title_content') ?>
+                                </div>
+                            </div>
+
+                            <div class="col col-6 p4">
+                                <div class="wysiwyg">
+                                    <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php') ?>
+                                    <?=get_sub_field('col_two_title_content') ?>
+                                </div>
+                            </div>
+
+                        </section>
+
+                    <?php endif; ?>
+
+
+
 					<?php $i++ ; ?>
 				<?php } ?>
 			<?php } ?>
