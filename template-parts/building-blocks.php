@@ -1,5 +1,5 @@
 <?php
-$index = 0;
+$index = 0; // NOTE: No idea what this does.
 $previousBgColor = "";
 $blockNumber = 0;
 
@@ -15,11 +15,13 @@ if( have_rows('building_blocks') ) {
         $blocks = ['block_button', 'block_debug', 'block_team'];
         if (in_array(get_row_layout(), $blocks)) {
 
+            // TODO: Need to move blocks folder structure and update the routing.
             include(get_template_directory() . '/template-parts/newBlocks/_'. get_row_layout() .'.php');
 
         } else {
 
             // OLD BLOCK SUPPORT //
+            // TODO: Old blocks need updating to support new settings and controller.
             if (get_row_layout() == 'heading') {
                 include(get_template_directory() . '/template-parts/newBlocks/heading.php');
             } elseif (get_row_layout() == 'columns') {
