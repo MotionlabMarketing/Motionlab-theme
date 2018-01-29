@@ -9,12 +9,24 @@ if( get_sub_field('button_type') == 'page' ){
 } else{
 	$buttonURL = get_sub_field('url_custom');
 }
+
+$columnTitle          = get_sub_field('column_title');
+$columnButtonsText    = get_sub_field('button_text');
+$columnButtonsLink    = get_sub_field('button_link');
+$columnButtonsColour  = get_sub_field('colour');
+$columnButtonsClass   = get_sub_field('custom_class');
+
 ?>
 
 <?php if(!empty(get_sub_field('copy'))){?>
 	<div class="<?php echo $columnWidth ?> <?php echo $textAlign ?> || js-match-height">
 		<div class="flex flex-column height-100 <?php echo $anchorButtons ?>">
-			<div class="">
+			<div>
+
+                <?php if ($columnTitle == true):?>
+                    <h3><?=$columnTitle?></h3>
+                <?php endif; ?>
+
 				<?php if ( have_rows('icon')){
 					while ( have_rows('icon')){
 						the_row();?>
@@ -26,13 +38,14 @@ if( get_sub_field('button_type') == 'page' ){
 					<?php echo get_sub_field('copy'); ?>
 				</div>
 			</div>
-			<?php if (get_sub_field('button_text')){ ?>
-				<div class="">
-					<a href="<?php echo $buttonURL ?>" class="btn regular uppercase mt4 text-center <?php echo $btnBgcolor ?> <?php echo $btnTxtcolor ?>">
-						<span class=""><?php echo get_sub_field('button_text'); ?></span>
-					</a>
-				</div>
-			<?php } ?>
+
+            <?php if (!empty($columnButtonsLink) && !empty($columnButtonsText)):?>
+                <a href="<?=$columnButtonsLink['url']?>" class="btn btn-<?=$size?> border-radius-<?=$border?> white inline-block bg-<?=$columnButtonsColour?> <?=$btn['custom_class']?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
+                    <?=$columnButtonsText?>
+                </a>
+            <?php endif; ?>
+
+
 		</div>
 	</div>
 <?php } ?>
