@@ -10,9 +10,8 @@ if( have_rows('building_blocks') ) {
         // Varibales for the Blocks – TODO: Needs looking over!
         include(get_template_directory() .'/inc/block-variables.php');
 
-
         // CHECK FOR NEW BLOCKS //
-        $blocks = ['block_button', 'block_debug', 'block_team', 'block_cta', 'block_linkBoxes', 'block_videos'];
+        $blocks = ['block_button', 'block_debug', 'block_team', 'block_cta', 'block_linkBoxes', 'block_videos', 'block_social'];
         if (in_array(get_row_layout(), $blocks)) {
 
             // TODO: Need to move blocks folder structure and update the routing.
