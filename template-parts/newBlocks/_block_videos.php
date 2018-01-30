@@ -13,9 +13,9 @@
 
     switch ($layout):
         case "basic":
-            include_once ('video/__basic.php');
+            include ('video/__basic.php');
             break;
         default:
-            include_once ('video/__basic.php');
+            include ('video/__basic.php');
             break;
     endswitch;

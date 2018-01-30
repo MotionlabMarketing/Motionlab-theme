@@ -800,7 +800,108 @@ $arrow-size: 10px;
 .darken-background-9 { background: rgba(0, 0, 0, 0.9); }
 
 
+/**
+    -------------------
+    -- PROFILE IMAGES -
+    -------------------
+
+    Added support for
+    tags to darken
+    background colour.
+    30 Jan 2018
+    Joe Curran
+*/
 
 .profile-small  { max-width: 2rem; }
 .profile-medium { max-width: 3rem; }
 .profile-large  { max-width: 5rem; }
+
+/**
+    -------------------
+    -- PROFILE IMAGES -
+    -------------------
+
+    Added support for
+    tags to darken
+    background colour.
+    30 Jan 2018
+    Joe Curran
+*/
+.social-share {
+
+  // BUTTON COLOURS
+  .nss-twitter {
+    background-color: #4ba3eb;
+  }
+  .nss-facebook {
+    background-color: #334f8d;
+  }
+  .nss-linkedin {
+    background-color: #006cac;
+  }
+  .nss-pinterest {
+    background-color: #bd081c;
+  }
+  .nss-stumbleupon {
+    background-color: #f74425;
+  }
+  .nss-google {
+    background-color: #db4130;
+  }
+
+  // STYING FOR BASIC BLOCK
+  &.social-basic {
+    ul {
+      padding: 0;
+      list-style: none;
+
+      li {
+        margin: 0 0.4rem;
+        display: inline-block;
+        padding: 0.3rem 1.2rem;
+        border-radius: 0.4rem;
+
+        a {
+          color: white;
+          font-weight: bold;
+
+          .fa {
+            margin-right: 0.3rem;
+          }
+        }
+      }
+    }
+  }
+
+  // HIDE BUTTONS
+  &.hide-twitter {
+    .nss-twitter {
+      display: none;
+    }
+  }
+  &.hide-facebook {
+    .nss-facebook {
+      display: none;
+    }
+  }
+  &.hide-linkedin {
+    .nss-linkedin {
+      display: none;
+    }
+  }
+  &.hide-pinterest {
+    .nss-pinterest {
+      display: none;
+    }
+  }
+  &.hide-stumbleupon {
+    .nss-stumbleupon {
+      display: none;
+    }
+  }
+  &.hide-google {
+    .nss-google {
+      display: none;
+    }
+  }
+}
