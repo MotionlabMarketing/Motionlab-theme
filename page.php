@@ -6,10 +6,10 @@ get_header();
 $masterPad = 'px5';
 ?>
 
-<section>
+<section style="margin-top: 6rem">
 	<?php while ( have_posts() ) : the_post();?>
 
-		<?php if(!empty(get_field('remove_default_page_title'))) : ?>
+		<?php if(!empty(get_field('remove_default_page_title'))): ?>
 		<?php else: ?>
 			<div class="container px5">
 				<h1 class="xl-h0 xl-lsn2 lh1 py6 pt7"><?php echo the_title() ?></h1>
