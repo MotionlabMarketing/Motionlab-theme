@@ -13,10 +13,10 @@ $team_layout = get_sub_field('block_linkBoxes_layout');
 
 switch ($team_layout):
     case "basic":
-        include_once ('linkedBoxes/__basic.php');
+        include ('linkedBoxes/__basic.php');
         break;
     default:
-        include_once ('linkedBoxes/__basic.php');
+        include ('linkedBoxes/__basic.php');
         break;
 endswitch;
 

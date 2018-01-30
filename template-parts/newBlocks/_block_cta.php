@@ -13,10 +13,10 @@
 
     switch ($team_layout):
         case "basic":
-            include_once ('cta/__basic.php');
+            include ('cta/__basic.php');
             break;
         default:
-            include_once ('cta/__basic.php');
+            include ('cta/__basic.php');
             break;
     endswitch;
 

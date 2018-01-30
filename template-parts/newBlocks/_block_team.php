@@ -14,10 +14,10 @@
 
     switch ($team_layout):
         case "basic":
-            include_once ('team/__basic.php');
+            include ('team/__basic.php');
             break;
         default:
-            include_once ('team/__basic.php');
+            include ('team/__basic.php');
             break;
     endswitch;
 
