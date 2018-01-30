@@ -1,0 +1,37 @@
+<?php
+/**
+ * TEAM – BASIC LAYOUT BLOCK ------------------------
+ * A basic listing layout for some of the team members.
+ *
+ * @author Joe Curran
+ * @created 29 Jan 2018
+ *
+ * @version 1.00
+ */
+
+$bgColor     = get_sub_field('block_cta_background_system_background_colours');
+$txtColor    = get_sub_field('block_cta_text_system_text_colours');
+
+$blockTitle  = get_sub_field('block_cta_title_title');
+
+?>
+
+<section class="cta-basic || clearfix || <?=$bgColor?> <?=$txtColor?>">
+
+    <div class="container">
+
+        <div class="col-12 || py5 || text-center">
+
+            <?php
+            if (!empty($blockTitle)) {
+            include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
+
+            <div class="wysiwyg || mx6 px6">
+                <?=get_sub_field('block_cta_content');?>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
