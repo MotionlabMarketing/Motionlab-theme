@@ -713,3 +713,54 @@ $arrow-size: 10px;
   }
 }
 
+/**
+    -------------------
+    --- LINKED BOXES --
+    -------------------
+
+    Added Basic Boxes
+    29 Jan 2018
+    Joe Curran
+*/
+
+.linkedBox-basic {
+  .item {
+    height: 8rem;
+    a {
+      height: 8rem;
+    }
+  }
+}
+
+/**
+    -------------------
+    -DARKEN BACKGROUND-
+    -------------------
+
+    Added support for
+    tags to darken
+    background colour.
+    30 Jan 2018
+    Joe Curran
+*/
+
+.darken-background {
+
+  &:after {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+}
+.darken-background-1 { background: rgba(0, 0, 0, 0.1); }
+.darken-background-2 { background: rgba(0, 0, 0, 0.2); }
+.darken-background-3 { background: rgba(0, 0, 0, 0.3); }
+.darken-background-4 { background: rgba(0, 0, 0, 0.4); }
+.darken-background-5 { background: rgba(0, 0, 0, 0.5); }
+.darken-background-6 { background: rgba(0, 0, 0, 0.6); }
+.darken-background-7 { background: rgba(0, 0, 0, 0.7); }
+.darken-background-8 { background: rgba(0, 0, 0, 0.8); }
+.darken-background-9 { background: rgba(0, 0, 0, 0.9); }

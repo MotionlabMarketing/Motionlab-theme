@@ -1,7 +1,7 @@
 <?php
 /**
- * TEAM – BASIC LAYOUT BLOCK ------------------------
- * A basic listing layout for some of the team members.
+ * CTA – BASIC LAYOUT BLOCK ------------------------
+ * A basic message which can be linked to a page.
  *
  * @author Joe Curran
  * @created 29 Jan 2018
