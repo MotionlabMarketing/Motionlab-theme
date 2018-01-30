@@ -9,8 +9,18 @@
  * @version 1.00
  */
 
-$bgColor     = get_sub_field($current . '_background_system_background_colours');
-$txtColor    = get_sub_field($current . '_text_system_text_colours');
+//TODO: Need to move this to a general settings page.
+$bgColor          = get_sub_field($current . '_background_system_background_colours');
+$txtColor         = get_sub_field($current . '_text_system_text_colours');
+
+$borders          = "";
+$bordersColor     = get_sub_field($current . '_borders_border_colour');
+$bordersSides     = get_sub_field($current . '_borders_border_sides');
+
+foreach ($bordersSides as $item) {
+    $borders = $borders . " " . $item;
+}
+$borders          = "||" . $borders . " " . $bordersColor;
 
 $blockTitle  = get_sub_field($current . '_title_title');
 
@@ -18,7 +28,7 @@ $blockItems  = get_sub_field($current . '_icons');
 
 ?>
 
-<section class="<?=$bgColor?> <?=$txtColor?>">
+<section class=" mb4 || <?=$bgColor?> <?=$txtColor?> <?=$borders?>">
 
     <div class="container">
 
