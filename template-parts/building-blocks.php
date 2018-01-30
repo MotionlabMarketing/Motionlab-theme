@@ -63,8 +63,6 @@ if( have_rows('building_blocks') ) {
                 include(get_template_directory() . '/template-parts/newBlocks/hotspots.php');
             } elseif (get_row_layout() == 'parallax') {
                 include(get_template_directory() . '/template-parts/newBlocks/parallax.php');
-            } elseif (get_row_layout() == 'test') {
-                include(get_template_directory() . '/template-parts/newBlocks/test.php');
             }
         }
 
