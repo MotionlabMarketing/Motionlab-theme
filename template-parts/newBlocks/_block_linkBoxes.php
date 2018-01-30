@@ -9,7 +9,7 @@
  * @version 1.00
  */
 
-$team_layout = get_sub_field('block_cta_layout');
+$team_layout = get_sub_field('block_linkBoxes_layout');
 
 switch ($team_layout):
     case "basic":

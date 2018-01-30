@@ -295,6 +295,17 @@ return $query;}
 add_filter('pre_get_posts','SearchFilter');
 
 
+/*==================================================================
+CUT STRING AFTER SET WORK COUNT
+==================================================================*/
+function limit_words($words, $limit, $append = ' &hellip;') {
+    $limit = $limit+1;
+    $words = explode(' ', $words, $limit);
+    array_pop($words);
+    $words = implode(' ', $words) . $append;
+    return $words;
+}
+
 
 // update_option( 'siteurl', 'http://docs.framework.d3z.uk' );
 // update_option( 'home', 'http://docs.framework.d3z.uk' );

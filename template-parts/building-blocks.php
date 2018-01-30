@@ -12,7 +12,7 @@ if( have_rows('building_blocks') ) {
 
 
         // CHECK FOR NEW BLOCKS //
-        $blocks = ['block_button', 'block_debug', 'block_team', 'block_cta', 'block_linkBoxes'];
+        $blocks = ['block_button', 'block_debug', 'block_team', 'block_cta', 'block_linkBoxes', 'block_videos'];
         if (in_array(get_row_layout(), $blocks)) {
 
             // TODO: Need to move blocks folder structure and update the routing.

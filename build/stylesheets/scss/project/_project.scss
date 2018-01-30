@@ -86,6 +86,19 @@
 .border-radius-9-5  {border-radius: 9.5rem;}
 .border-radius-10-5 {border-radius: 10.5rem;}
 
+//$i: 0;
+//$br-step: 0;
+//
+//@for $i from 1 through 10 {
+//  $border-radius: $br-step * 0.5;
+//  $br-step: $border-radius;
+//
+//  .br-c1-#{$i} {
+//    border-radius: $border-radius;
+//  }
+//}
+
+
 
 
 .product-tile{
@@ -764,3 +777,9 @@ $arrow-size: 10px;
 .darken-background-7 { background: rgba(0, 0, 0, 0.7); }
 .darken-background-8 { background: rgba(0, 0, 0, 0.8); }
 .darken-background-9 { background: rgba(0, 0, 0, 0.9); }
+
+
+
+.profile-small  { max-width: 2rem; }
+.profile-medium { max-width: 3rem; }
+.profile-large  { max-width: 5rem; }
