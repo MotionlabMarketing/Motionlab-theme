@@ -390,6 +390,27 @@ address {
 }
 
 
+/**
+    -------------------
+    ----- SPACERS -----
+    -------------------
+
+    Added Styles Options
+    26 Jan 2018
+    Joe Curran
+*/
+
+hr.border-lighten-1 {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+hr.border-darken-1 {
+  border-color: rgba(0, 0, 0, 0.6);
+}
+hr.border-0 {
+  border-color: transparent;
+}
+
+
 // Tabs
 .tab-active{
     background: $primary;
