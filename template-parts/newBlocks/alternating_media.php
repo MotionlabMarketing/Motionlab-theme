@@ -1,4 +1,7 @@
 <?php
+
+// TODO: This block need refining. Short content with left align results in text looking centered.
+
 if( get_sub_field('media_placement') =='left' ){
 	$layout = "left";
 	$textAlign = "text-left";
