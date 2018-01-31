@@ -1,4 +1,4 @@
-$(document).ready(function() {
+jQuery(document).ready(function($) {
 
     /*========================
     Simple Parallax
@@ -678,33 +678,6 @@ $(document).ready(function() {
         stickyDiv();
     });
 
-
-    /*======================================================
-    GOOGLE MAP ON CASE STUDY
-    ========================================================*/
-
-    // // initiate Google maps
-    // initialize();
-    // // make a .hover event
-    // $('#markers_info .marker').hover(
-    //     // mouse in
-    //     function () {
-    //         // first we need to know which <div class="marker"></div> we hovered
-    //         var index = $('#markers_info .marker').index(this);
-    //         markers[index].setIcon(highlightedIcon());
-    //         markers[index].setAnimation(google.maps.Animation.BOUNCE);
-    //     },
-    //     // mouse out
-    //     function () {
-    //         // first we need to know which <div class="marker"></div> we hovered
-    //         var index = $('#markers_info .marker').index(this);
-    //         markers[index].setIcon(normalIcon());
-    //         markers[index].setAnimation(null);
-    //     }
-    //
-    // );
-
-
 }); // ENDS DOC READY AT TOP
 
 
@@ -772,9 +745,10 @@ function highlightedIcon() {
 }
 //google.maps.event.addDomListener(window, 'load', initialize);
 
-
-
-setTimeout(function(){
-    $('[data-content]').fadeTo(600, 1);
-    $('[data-loader]').delay(200).fadeOut(600);
-}, 2000); 2000;
+jQuery(document).ready(function($) {
+    setTimeout(function () {
+        $('[data-content]').fadeTo(600, 1);
+        $('[data-loader]').delay(200).fadeOut(600);
+    }, 2000);
+    2000;
+});
