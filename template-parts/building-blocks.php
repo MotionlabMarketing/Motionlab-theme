@@ -11,12 +11,12 @@ if( have_rows('building_blocks') ) {
         include(get_template_directory() .'/inc/block-variables.php');
 
         // CHECK FOR NEW BLOCKS //
-        $blocks = ['block_button', 'block_debug', 'block_team', 'block_cta', 'block_linkBoxes', 'block_videos', 'block_social', 'block_pods'];
+        $blocks = ['block_button', 'block_debug', 'block_team', 'block_cta', 'block_linkBoxes', 'block_videos', 'block_social', 'block_pods', 'block_button'];
         if (in_array(get_row_layout(), $blocks)) {
 
             $current = get_row_layout();
             // TODO: Need to move blocks folder structure and update the routing.
-            include(get_template_directory() . '/template-parts/newBlocks/_'. get_row_layout() .'.php');
+            include(get_template_directory() . '/template-parts/newBlocks/_'. $current .'.php');
 
         } else {
 
