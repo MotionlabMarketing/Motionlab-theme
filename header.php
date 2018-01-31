@@ -12,9 +12,7 @@
     <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5a033b1e69fde30011eef3d0&product=inline-share-buttons"></script>
     <?php wp_head(); ?>
 </head>
-<body class="bg-white<?php echo get_field('page_color') ?>">
+<body <?=body_class()?>>
 
-    <?php //include(get_template_directory() .'/template-parts/global/loader.php'); ?>
     <?php include(get_template_directory() .'/template-parts/global/header.php'); ?>
-
-    <div class="content clearfix || js-header-space">
+    <div class="js-header-space"></div>
