@@ -11,7 +11,7 @@ if( have_rows('building_blocks') ) {
         include(get_template_directory() .'/inc/block-variables.php');
 
         // CHECK FOR NEW BLOCKS //
-        $blocks = ['block_button', 'block_debug', 'block_team', 'block_cta', 'block_linkBoxes', 'block_videos', 'block_social', 'block_pods', 'block_button'];
+        $blocks = ['block_button', 'block_debug', 'block_team', 'block_cta', 'block_linkBoxes', 'block_videos', 'block_social', 'block_pods', 'block_button', 'block_logos'];
         if (in_array(get_row_layout(), $blocks)) {
 
             $current = get_row_layout();
@@ -38,8 +38,6 @@ if( have_rows('building_blocks') ) {
                 include(get_template_directory() . '/template-parts/newBlocks/alternating_media.php');
             } elseif (get_row_layout() == 'gallery_simple') {
                 include(get_template_directory() . '/template-parts/newBlocks/gallery_simple.php');
-            } elseif (get_row_layout() == 'pods') {
-                include(get_template_directory() . '/template-parts/newBlocks/pods.php');
             } elseif (get_row_layout() == 'form') {
                 include(get_template_directory() . '/template-parts/newBlocks/form.php');
             } elseif (get_row_layout() == 'table') {
@@ -50,8 +48,6 @@ if( have_rows('building_blocks') ) {
                 include(get_template_directory() . '/template-parts/newBlocks/menu_sticky.php');
             } elseif (get_row_layout() == 'sticky_menu_anchor') {
                 include(get_template_directory() . '/template-parts/newBlocks/menu_sticky_anchor.php');
-            } elseif (get_row_layout() == 'logo_slider') {
-                include(get_template_directory() . '/template-parts/newBlocks/logo_slider.php');
             } elseif (get_row_layout() == 'hotspot_image') {
                 include(get_template_directory() . '/template-parts/newBlocks/hotspots.php');
             } elseif (get_row_layout() == 'testimonial') {
