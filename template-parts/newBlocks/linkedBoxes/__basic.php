@@ -10,8 +10,17 @@
  * @version 1.00
  */
 
-$bgColor     = get_sub_field('block_cta_background_system_background_colours');
-$txtColor    = get_sub_field('block_cta_text_system_text_colours');
+$bgColor     = get_sub_field($current . '_background_system_background_colours');
+$txtColor    = get_sub_field($current . '_text_system_text_colours');
+
+$borders          = ""; // TODO: Needs Fixing...
+$bordersColor     = get_sub_field($current . '_borders_border_colour');
+$bordersSides     = get_sub_field($current . '_borders_border_sides');
+
+foreach ($bordersSides as $item) {
+    $borders = $borders . " " . $item;
+}
+$borders          = "||" . $borders . " " . $bordersColor;
 
 $blockTitle  = get_sub_field('block_linkBoxes_title_title');
 
@@ -19,7 +28,7 @@ $blockItems  = get_sub_field('block_linkBoxes_items');
 
 ?>
 
-<section class="<?=$bgColor?>">
+<section class="<?=$bgColor?> <?=$borders?>">
 
     <div class="container">
 
@@ -27,7 +36,7 @@ $blockItems  = get_sub_field('block_linkBoxes_items');
 
             <div class="m4 text-center">
                 <?php
-                if (!empty($blockTitle)) {
+                if (!empty($blockTitle['title'])) {
                 include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
             </div>
 

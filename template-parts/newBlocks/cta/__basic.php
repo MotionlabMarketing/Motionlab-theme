@@ -9,29 +9,30 @@
  * @version 1.00
  */
 
-$bgColor     = get_sub_field('block_cta_background_system_background_colours');
-$txtColor    = get_sub_field('block_cta_text_system_text_colours');
+$bgColor     = get_sub_field($current . '_background_system_background_colours');
+$txtColor    = get_sub_field($current . '_text_system_text_colours');
+$blockWidth  = get_sub_field($current . '_width_block_width');
 
-$blockTitle  = get_sub_field('block_cta_title_title');
+$blockTitle  = get_sub_field($current . '_title_title');
 
 ?>
 
 <section class="cta-basic || clearfix || <?=$bgColor?> <?=$txtColor?>">
 
-    <div class="container">
+    <?php ($blockWidth == "container")? '<div class="container">' : ''; ?>
 
-        <div class="col-12 || py5 || text-center">
+        <div class="col-12 || text-center">
 
             <?php
-            if (!empty($blockTitle)) {
+            if (!empty($blockTitle['title'])) {
             include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
 
-            <div class="wysiwyg || mx6 px6">
+            <div class="wysiwyg || mx6 px6 <?=$txtColor?>">
                 <?=get_sub_field('block_cta_content');?>
             </div>
 
         </div>
 
-    </div>
+    <?php ($blockWidth == "container")? '</div>' : ''; ?>
 
 </section>

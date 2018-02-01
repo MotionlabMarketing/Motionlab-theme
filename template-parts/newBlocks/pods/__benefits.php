@@ -38,7 +38,7 @@ $blockItems  = get_sub_field($current . '_icons');
 
                 <div class="mb4">
                 <?php
-                if (!empty($blockTitle)) {
+                if (!empty($blockTitle['title'])) {
                     include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
                 </div>
 
@@ -54,7 +54,7 @@ $blockItems  = get_sub_field($current . '_icons');
                     <a href="<?=$item['pod_item_link']['url']?>" class="<?=$txtColor?>" <?=($item['pod_item_link']['title'] ? 'title="'.$item['pod_item_link']['title'].'"' : '')?> <?=($item['pod_item_link']['target'] ? 'target="'.$item['pod_item_link']['target'].'"' : '')?>>
                 <?php endif; ?>
 
-                <div class="col col-3 px4 mb5 || text-center || col-grid-5">
+                <div class="col col-3 px4 mb5 || text-center <?=$txtColor?> || col-grid-5">
 
                     <p class="block mb2 || h1 text-center"><?=$item['pod_item_icon']?></p>
 

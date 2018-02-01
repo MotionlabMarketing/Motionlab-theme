@@ -22,7 +22,7 @@ $blockTitle = get_sub_field('block_videos_title_title');
 
             <div class="mb4">
                 <?php
-                if (!empty($blockTitle)) {
+                if (!empty($blockTitle['title'])) {
                     include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php');
                 } ?>
             </div>

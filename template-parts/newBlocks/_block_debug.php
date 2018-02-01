@@ -13,7 +13,7 @@
 
 ?>
 
-<section class="overflow-hidden p3 mb4" style="background: lightcyan">
+<section class="overflow-hidden p3 mb4" style="background: lightcyan" id="debug-block">
 
     <div class="container">
 
@@ -37,20 +37,6 @@
     </div>
 
 </section>
-
-<style>
-
-    #debug {
-        display: none;
-        background: lightcoral;
-        color: black;
-    }
-    .btn.toggle {
-        color: white;
-        background: lightcoral;
-    }
-
-</style>
 
 <script>
 
