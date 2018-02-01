@@ -901,3 +901,91 @@ $arrow-size: 10px;
     }
   }
 }
+
+
+
+.first-bold p:first-child {
+  font-weight: bold;
+}
+
+/**
+    -------------------
+    -- IMAGE HOLDERS --
+    -------------------
+
+    Added support for
+    image holders.
+    30 Jan 2018
+    Joe Curran
+*/
+
+.image-holder {
+  background-size: cover;
+
+  &.img-center {
+    background-position: center;
+  }
+
+  &.img-top {
+    background-position: top;
+  }
+
+  &.img-bottom {
+    background-position: bottom;
+  }
+
+
+  &.img-square {
+
+    &.img-s1 {
+      width:  1rem;
+      height: 1rem;
+    }
+
+    &.img-s2 {
+      width:  2rem;
+      height: 2rem;
+    }
+
+    &.img-s3 {
+      width:  3rem;
+      height: 3rem;
+    }
+
+    &.img-s4 {
+      width:  4rem;
+      height: 4rem;
+    }
+
+    &.img-s5 {
+      width:  5rem;
+      height: 5rem;
+    }
+
+    &.img-s6 {
+      width:  6rem;
+      height: 6rem;
+    }
+
+    &.img-s8 {
+      width:  8rem;
+      height: 8rem;
+    }
+
+    &.img-s10 {
+      width:  10rem;
+      height: 10rem;
+    }
+
+    &.img-s12 {
+      width:  12rem;
+      height: 12rem;
+    }
+
+    &.img-s20 {
+      width:  20rem;
+      height: 20rem;
+    }
+
+  }
+}

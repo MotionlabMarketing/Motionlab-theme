@@ -1,0 +1,119 @@
+
+/**
+ * BRAND SETTINGS
+ */
+
+$brand-primary:     #ef336b;
+$brand-secondary:   #625bef;
+$brand-tertiary:    #5def90;
+$brand-quaternary:  #efa04c;
+
+$brand-white:       #ffffff;
+$brand-gray:        #555555;
+$brand-black:       #000000;
+
+$brand-linkColour:  $brand-gray;
+
+$brand-whiteFade:   rgba(255, 255, 255, 0.4);
+
+$brand-body:        #ffffff;
+
+
+body {
+  background-color: $brand-body;
+}
+
+h1, a {
+  color: $brand-primary;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    color: darken($brand-primary, 10%);
+  }
+}
+
+
+/**
+ * BRAND COLOURS
+ */
+
+// TEXT COLOURS //
+.brand-primary {
+  color: $brand-primary;
+}
+.brand-secondary {
+  color: $brand-secondary;
+}
+.brand-tertiary {
+  color: $brand-tertiary;
+}
+.brand-quaternary {
+  color: $brand-quaternary;
+}
+
+// BACKGROUND COLOURS //
+.bg-brand-primary {
+  background-color: $brand-primary;
+}
+.bg-brand-secondary {
+  background-color: $brand-secondary;
+}
+.bg-brand-tertiary {
+  background-color: $brand-tertiary;
+}
+.bg-brand-quaternary {
+  background-color: $brand-quaternary;
+}
+
+
+
+
+
+
+// TEMPLATES & SINGLES //
+
+// SINGLE TEAM PAGE //
+#single-team {
+
+  .profile {
+
+
+  }
+}
+
+
+.cta-basic {
+  padding: 3rem 0;
+
+  a {
+    padding: 0 2rem;
+    border-left: 1px solid $brand-whiteFade;
+
+    &:last-child {
+      border-right: 1px solid $brand-whiteFade;
+    }
+  }
+
+  .wysiwyg {
+    h1, h2, h3, h4, h5, h6, p, a {
+      color: inherit;
+    }
+    a:hover {
+      color: darken($brand-gray, 5%);
+    }
+  }
+}
+
+#debug-block {
+  margin: 2rem 0;
+  border-top: 3px dashed red;
+  border-bottom: 3px dashed red;
+
+  .btn {
+    color: $brand-white;
+    background-color: $brand-primary !important;
+  }
+}
