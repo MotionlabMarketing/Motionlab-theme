@@ -10,7 +10,6 @@
  */
 ?>
 
-
-<<?=$blockTitle[0]['heading']?> class="<?=$blockTitle[0]['size_heading_size']?> <?=$blockTitle[0]['color_system_text_colours']?>">
+<<?=$blockTitle[0]['type']['heading']?> class="<?=$blockTitle[0]['size']['heading_size']?> || <?=$blockTitle[0]['color']['system_text_colours']?> <?=$blockTitle[0]['title_case']['system_text_transform']?>">
     <?=$blockTitle[0]['title']?>
 </<?=$blockTitle[0]['heading']?>>
