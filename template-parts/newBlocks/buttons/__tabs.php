@@ -18,9 +18,10 @@ $buttons     = get_sub_field('block_buttons');
 
 $size        = get_sub_field('block_buttons_size');
 
+$current_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 ?>
 
-<section class="overflow-hidden p3 mb4 || <?=$bgColor?>">
+<section class="buttons-tabs || overflow-hidden p3 mb4 || <?=$bgColor?>">
 
     <div class="container">
 
@@ -28,7 +29,7 @@ $size        = get_sub_field('block_buttons_size');
 
             <?php foreach ($buttons as $btn): ?>
 
-                <a href="<?=$btn['button_link']['url']?>" class="btn btn-<?=$size?> <?=$btn['system_text_colours']?> inline-block <?=$btn['system_background_colours']?> <?=$btn['custom_class']?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
+                <a href="<?=$btn['button_link']['url']?>" class="btn btn-<?=$size?> <?=$btn['system_text_colours']?> inline-block <?=$btn['system_background_colours']?> <?=$btn['custom_class']?> <?=($current_url == $btn['button_link']['url'])? 'active' : '';?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
                     <?=$btn['button_text']?>
                 </a>
 

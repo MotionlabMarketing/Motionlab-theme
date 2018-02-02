@@ -364,6 +364,23 @@ a {
   }
 }
 
+.buttons-basic {
+
+}
+
+.buttons-tabs {
+  .btn {
+    border-top:   1px solid $brand-grayLightest;
+    border-left:  1px solid $brand-grayLightest;
+    border-right: 1px solid $brand-grayLightest;
+
+    &.active {
+      color: $brand-white;
+      background-color: $brand-primary;
+    }
+  }
+}
+
 .team-basic {
 
   .member {
