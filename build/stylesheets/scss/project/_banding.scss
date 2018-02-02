@@ -3,20 +3,22 @@
  * BRAND SETTINGS
  */
 
-$brand-primary:     #ef336b;
-$brand-secondary:   #625bef;
-$brand-tertiary:    #5def90;
-$brand-quaternary:  #efa04c;
+$brand-primary:      #ef336b;
+$brand-secondary:    #625bef;
+$brand-tertiary:     #5def90;
+$brand-quaternary:   #efa04c;
 
-$brand-white:       #ffffff;
-$brand-gray:        #555555;
-$brand-black:       #000000;
+$brand-white:        #ffffff;
+$brand-grayLightest: #ebebeb;
+$brand-gray:         #555555;
+$brand-black:        #000000;
 
-$brand-linkColour:  $brand-gray;
+$brand-linkColour:   $brand-gray;
 
-$brand-whiteFade:   rgba(255, 255, 255, 0.4);
+$brand-whiteFade:    rgba(255, 255, 255, 0.4);
 
-$brand-body:        #ffffff;
+$brand-body:         #ffffff;
+$brand-base:         $brand-black;
 
 
 body {
@@ -115,6 +117,36 @@ a {
   background-image: linear-gradient(transparent 60%, $brand-primary 90%);
 }
 
+/**
+ * Utilities
+ */
+.limit-p p {
+  margin: 0 auto;
+}
+.limit-p-40 p {
+  max-width: 40%;
+}
+.limit-p-50 p {
+  max-width: 50%;
+}
+.limit-p-60 p {
+  max-width: 60%;
+}
+.limit-p-70 p {
+  max-width: 70%;
+}
+.limit-p-80 p {
+    max-width: 80%;
+}
+@media (max-width: $breakpoint-sm){
+  .limit-p-40 p,
+  .limit-p-50 p,
+  .limit-p-60 p,
+  .limit-p-70 p,
+  .limit-p-80 p {
+    max-width: none;
+  }
+}
 
 // TEMPLATES & SINGLES //
 
@@ -184,6 +216,121 @@ a {
   .fa {
     font-size: 3.5rem;
     margin-bottom: 1rem;
+  }
+}
+
+.tabs-basic {
+
+  .tab {
+    background-color: $brand-white;
+    border-top:   1px solid $brand-grayLightest;
+    border-left:  1px solid $brand-grayLightest;
+    border-right: 1px solid $brand-grayLightest;
+
+    &.tab-active {
+      background-color: $brand-primary;
+      border-top:   1px solid $brand-primary;
+      border-left:  1px solid $brand-primary;
+      border-right: 1px solid $brand-primary;
+    }
+  }
+  .tab-content {
+    border: 1px solid $brand-grayLightest;
+  }
+}
+
+.tabs-dots {
+
+  .tabs {
+    @media (max-width: $breakpoint-sm){
+      margin-bottom: 0;
+      display: block !important;
+    }
+  }
+
+  .tab {
+    margin: 0 2rem;
+    cursor: pointer;
+    min-width: 8rem;
+    position: relative;
+
+    @media (max-width: $breakpoint-md){
+      min-width: 3rem;
+    }
+
+    @media (max-width: $breakpoint-sm){
+      margin: 0.3rem 0;
+      width: 100%;
+      padding: 0.6rem 0;
+      color: $brand-base;
+      display: block !important;
+      background-color: $brand-white;
+      border: 1px solid $brand-grayLightest;
+    }
+
+    &.tab-active {
+      color: $brand-base;
+      background-color: transparent;
+
+      @media (max-width: $breakpoint-sm){
+        color: $brand-white;
+        background-color: $brand-primary;
+      }
+
+      &:before {
+        background-color: $brand-primary;
+      }
+      &:after {
+        background-color: transparent;
+        border-top: 2px solid $brand-primary;
+      }
+    }
+
+    &:before {
+      content: " ";
+      width: 1.5rem;
+      display: block;
+      height: 1.5rem;
+      border-radius: 2rem;
+      margin: 0 auto 0.7rem;
+      background-color: #fafafa;
+      border: 2px solid $brand-primary;
+
+      @media (max-width: $breakpoint-sm){
+        display: none;
+      }
+    }
+
+    &:after {
+      left: 60%;
+      height: 2px;
+      top: 0.8rem;
+      content: " ";
+      display: block;
+      position: absolute;
+      width: calc(100% + 3rem);
+      background-color: $brand-primary;
+
+      @media (max-width: $breakpoint-md){
+        left: 75%;
+      }
+
+      @media (max-width: $breakpoint-sm){
+        display: none;
+      }
+    }
+
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  .tab-content {
+    @media (max-width: $breakpoint-sm){
+      padding: 0;
+    }
   }
 }
 
