@@ -12,6 +12,7 @@
 $videosShow = get_sub_field('number_of_videos');
 
 $blockTitle = get_sub_field('block_videos_title_title');
+
 ?>
 
 <section class="video-basic || clearfix my4 mb6">
@@ -22,7 +23,7 @@ $blockTitle = get_sub_field('block_videos_title_title');
 
             <div class="mb4">
                 <?php
-                if (!empty($blockTitle['title'])) {
+                if (!empty($blockTitle[0]['title'])) {
                     include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php');
                 } ?>
             </div>
@@ -37,21 +38,20 @@ $blockTitle = get_sub_field('block_videos_title_title');
 
     <div class="container">
 
-        <div class="col col-4">
+        <div class="col col-4 hover-zoom">
 
-            <div class="m2 || border border-smoke">
+            <div class="m2 || border border-smoke zoom">
 
                 <div class="video || block relative min-height-v25">
 
                     <iframe width="100%" height="285" src="https://www.youtube.com/embed/Tby7FnaCqAo" frameborder="0"
                             allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-                    <p class="absolute bottom-0 right-0 white p2 pl3 px4 mb0 bg-lighten-4"
-                       style="bottom: 0.4rem; border-radius: 1rem 0 0 0; right: -0.05rem; ">0:00</p>
+                    <p class="absolute bottom-0 right-0 white p2 pl3 px4 mb0 bg-lighten-4">0:00</p>
 
                 </div>
 
-                <div class="image || p4">
+                <div class="content || p4">
 
                     <h3 class="mb2">Video Title</h3>
 
@@ -62,7 +62,7 @@ $blockTitle = get_sub_field('block_videos_title_title');
                         <img src="<?= get_avatar_url(get_current_user_id()); ?>" alt=""
                              class="circle mr2 left profile-small">
 
-                        <p class="inline-block h6 muted">John Doe</p>
+                        <p class="inline-block h6 bold">John Doe</p>
 
                     </div>
 
@@ -72,21 +72,20 @@ $blockTitle = get_sub_field('block_videos_title_title');
 
         </div>
 
-        <div class="col col-4">
+        <div class="col col-4 hover-zoom">
 
-            <div class="m2 || border border-smoke">
+            <div class="m2 || border border-smoke || zoom">
 
                 <div class="video || block relative min-height-v25">
 
                     <iframe width="100%" height="285" src="https://www.youtube.com/embed/Tby7FnaCqAo" frameborder="0"
                             allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-                    <p class="absolute bottom-0 right-0 white p2 pl3 px4 mb0 bg-lighten-4"
-                       style="bottom: 0.4rem; border-radius: 1rem 0 0 0; right: -0.05rem; ">0:00</p>
+                    <p class="absolute bottom-0 right-0 white p2 pl3 px4 mb0 bg-lighten-4">0:00</p>
 
                 </div>
 
-                <div class="image || p4">
+                <div class="content || p4">
 
                     <h3 class="mb2">Video Title</h3>
 
@@ -97,7 +96,7 @@ $blockTitle = get_sub_field('block_videos_title_title');
                         <img src="<?= get_avatar_url(get_current_user_id()); ?>" alt=""
                              class="circle mr2 left profile-small">
 
-                        <p class="inline-block h6 muted">John Doe</p>
+                        <p class="inline-block h6 bold">John Doe</p>
 
                     </div>
 
@@ -107,21 +106,20 @@ $blockTitle = get_sub_field('block_videos_title_title');
 
         </div>
 
-        <div class="col col-4">
+        <div class="col col-4 hover-zoom">
 
-            <div class="m2 || border border-smoke">
+            <div class="m2 || border border-smoke || zoom">
 
                 <div class="video || block relative min-height-v25">
 
                     <iframe width="100%" height="285" src="https://www.youtube.com/embed/Tby7FnaCqAo" frameborder="0"
                             allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-                    <p class="absolute bottom-0 right-0 white p2 pl3 px4 mb0 bg-lighten-4"
-                       style="bottom: 0.4rem; border-radius: 1rem 0 0 0; right: -0.05rem; ">0:00</p>
+                    <p class="absolute bottom-0 right-0 white p2 pl3 px4 mb0 bg-lighten-4">0:00</p>
 
                 </div>
 
-                <div class="image || p4">
+                <div class="content || p4">
 
                     <h3 class="mb2">Video Title</h3>
 
@@ -132,7 +130,7 @@ $blockTitle = get_sub_field('block_videos_title_title');
                         <img src="<?= get_avatar_url(get_current_user_id()); ?>" alt=""
                              class="circle mr2 left profile-small">
 
-                        <p class="inline-block h6 muted">John Doe</p>
+                        <p class="inline-block h6 bold">John Doe</p>
 
                     </div>
 

@@ -21,7 +21,7 @@
 
         <a href="#" class="btn toggle">Toggle Debug</a>
 
-        <div class="my4 p4" id="debug">
+        <div class="my4 p4 debug">
 
             <h2 style="font-size: 1.4rem;color: white;">Debug All AFC Fields</h2>
 
@@ -32,7 +32,7 @@
 
         </div>
 
-        <a href="#" class="btn toggle">Toggle Debug</a>
+        <a href="" class="btn toggle">Toggle Debug</a>
 
     </div>
 
@@ -43,7 +43,7 @@
     jQuery(document).ready(function($) {
 
         $('.toggle').on('click', function () {
-            $('#debug').toggle();
+            $('.debug').toggle();
         })
 
     });

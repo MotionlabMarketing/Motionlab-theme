@@ -1,4 +1,6 @@
 <?php
+//TODO: NEEDS FADE TO WHITE OPTION ADDING //
+
 $ctaId = get_sub_field('cta_picker');
 $buttonText = get_field('button_text', $ctaId);
 
@@ -16,12 +18,14 @@ if( get_sub_field('banner_height_banner_height') == 'lg-min-height-v100' ) {
     $bannerHeight = get_sub_field('banner_height_banner_height');
 };
 
+$blockTitle  = get_sub_field('block_title_title');
 
 $buttons        = get_sub_field('buttons');
 $enable_buttons = get_sub_field('enabled_buttons');
 $size           = get_sub_field('block_buttons_size');
 
 ?>
+
 
 <!-- full width banner -->
 
@@ -56,7 +60,9 @@ $size           = get_sub_field('block_buttons_size');
                         <?php if(!empty(get_sub_field('subtitle'))){ ?>
                            <h5 class="sans uppercase ls3 md-ls4 lh1 md-mb4"><?php echo get_sub_field('subtitle') ?></h5>
                         <?php } ?>
-                        <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/title-loop.php') ?>
+                        <?php
+                        if (!empty($blockTitle[0]['title'])) {
+                            include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
                     </div>
 
                     <?php if (get_sub_field('copy')){ ?>
@@ -70,7 +76,7 @@ $size           = get_sub_field('block_buttons_size');
 
                         <?php foreach ($buttons as $btn): ?>
 
-                            <a href="<?=$btn['button_link']['url']?>" class="btn btn-<?=$size?> border-radius-<?=$border?> white inline-block bg-<?=$btn['colour_color']?> <?=$btn['custom_class']?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
+                            <a href="<?=$btn['button_link']['url']?>" class="btn btn-<?=$size?> border-radius-<?=$border?> <?=$btn['system_text_colours']?> inline-block <?=$btn['system_background_colours']?> <?=$btn['custom_class']?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
                                 <?=$btn['button_text']?>
                             </a>
 

@@ -28,17 +28,17 @@ $blockItems  = get_sub_field($current . '_icons');
 
 ?>
 
-<section class=" mb4 || <?=$bgColor?> <?=$txtColor?> <?=$borders?>">
+<section class="pod-benefits mb4 || <?=$bgColor?> <?=$txtColor?> <?=$borders?>">
 
     <div class="container">
 
         <div class="clearfix py5">
 
-            <div class="m4 mb5 || text-center">
+            <div class="m4 mb6 || text-center">
 
-                <div class="mb4">
+                <div class="mb3">
                 <?php
-                if (!empty($blockTitle['title'])) {
+                if (!empty($blockTitle[0]['title'])) {
                     include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
                 </div>
 
@@ -54,13 +54,13 @@ $blockItems  = get_sub_field($current . '_icons');
                     <a href="<?=$item['pod_item_link']['url']?>" class="<?=$txtColor?>" <?=($item['pod_item_link']['title'] ? 'title="'.$item['pod_item_link']['title'].'"' : '')?> <?=($item['pod_item_link']['target'] ? 'target="'.$item['pod_item_link']['target'].'"' : '')?>>
                 <?php endif; ?>
 
-                <div class="col col-3 px4 mb5 || text-center <?=$txtColor?> || col-grid-5">
+                <div class="item || col col-3 px4 mb5 || text-center <?=$txtColor?> || col-grid-5 || js-match-height">
 
-                    <p class="block mb2 || h1 text-center"><?=$item['pod_item_icon']?></p>
+                    <p class="block mb2 || text-center"><?=$item['pod_item_icon']?></p>
 
-                    <h4 class="h4"><?=$item['pod_item_title']?></h4>
+                    <h4 class="h3"><?=$item['pod_item_title']?></h4>
 
-                    <p class="h6"><?=strip_tags($item['pod_item_description'])?></p>
+                    <p class="h5"><?=strip_tags($item['pod_item_description'])?></p>
 
                 </div>
 

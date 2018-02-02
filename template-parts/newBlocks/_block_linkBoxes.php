@@ -15,6 +15,9 @@ switch ($team_layout):
     case "basic":
         include ('linkedBoxes/__basic.php');
         break;
+    case "title_below":
+        include ('linkedBoxes/__title_below.php');
+        break;
     default:
         include ('linkedBoxes/__basic.php');
         break;

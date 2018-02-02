@@ -15,6 +15,8 @@ $txtColor    = get_sub_field('block_team_text_system_text_colours');
 
 $blockTitle  = get_sub_field('block_team_title_title');
 
+$button = get_sub_field('block_team_page');
+
 // BACKEND NOTES – REMOVE ONCE ADDED
 // Get posts from Custom Post Type.
 // $membersShow – Number of Items to show.
@@ -30,7 +32,7 @@ $blockTitle  = get_sub_field('block_team_title_title');
 
             <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php') ?>
 
-            <div class="wysiwyg || mx6 px6">
+            <div class="wysiwyg || mx6 px6 || <?=$txtColor?> regular">
                 <?=get_sub_field('block_team_content');?>
             </div>
 
@@ -38,13 +40,13 @@ $blockTitle  = get_sub_field('block_team_title_title');
 
     </div>
 
-    <div class="container">
+    <div class="container clearfix">
 
-        <div class="col col-2 p2">
+        <div class="col col-grid-5 p4 || hover-zoom">
 
             <a href="{{ProfileLink}}" class="<?=$txtColor?>">
 
-                <div class="member || <?= $bgColor ?> || p3">
+                <div class="member || pb3 || <?= $bgColor ?> box-shadow-3 || zoom">
 
                     <div class="profile || mb4 || bg-center bg-cover" style="background: url('http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg<?php // Photo ?>'); background-size: cover"></div>
 
@@ -57,11 +59,11 @@ $blockTitle  = get_sub_field('block_team_title_title');
 
         </div>
 
-        <div class="col col-2 p2">
+        <div class="col col-grid-5 p4 || hover-zoom">
 
             <a href="{{ProfileLink}}" class="<?=$txtColor?>">
 
-                <div class="member || <?= $bgColor ?> || p3">
+                <div class="member || pb3 || <?= $bgColor ?> box-shadow-3 || zoom">
 
                     <div class="profile || mb4 || bg-center bg-cover" style="background: url('http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg<?php // Photo ?>'); background-size: cover"></div>
 
@@ -74,11 +76,11 @@ $blockTitle  = get_sub_field('block_team_title_title');
 
         </div>
 
-        <div class="col col-2 p2">
+        <div class="col col-grid-5 p4 || hover-zoom">
 
             <a href="{{ProfileLink}}" class="<?=$txtColor?>">
 
-                <div class="member || <?= $bgColor ?> || p3">
+                <div class="member || pb3 || <?= $bgColor ?> box-shadow-3 || zoom">
 
                     <div class="profile || mb4 || bg-center bg-cover" style="background: url('http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg<?php // Photo ?>'); background-size: cover"></div>
 
@@ -91,11 +93,11 @@ $blockTitle  = get_sub_field('block_team_title_title');
 
         </div>
 
-        <div class="col col-2 p2">
+        <div class="col col-grid-5 p4 || hover-zoom">
 
             <a href="{{ProfileLink}}" class="<?=$txtColor?>">
 
-                <div class="member || <?= $bgColor ?> || p3">
+                <div class="member || pb3 || <?= $bgColor ?> box-shadow-3 || zoom">
 
                     <div class="profile || mb4 || bg-center bg-cover" style="background: url('http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg<?php // Photo ?>'); background-size: cover"></div>
 
@@ -108,11 +110,11 @@ $blockTitle  = get_sub_field('block_team_title_title');
 
         </div>
 
-        <div class="col col-2 p2">
+        <div class="col col-grid-5 p4 || hover-zoom">
 
             <a href="{{ProfileLink}}" class="<?=$txtColor?>">
 
-                <div class="member || <?= $bgColor ?> || p3">
+                <div class="member || pb3 || <?= $bgColor ?> box-shadow-3 || zoom">
 
                     <div class="profile || mb4 || bg-center bg-cover" style="background: url('http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg<?php // Photo ?>'); background-size: cover"></div>
 
@@ -125,11 +127,11 @@ $blockTitle  = get_sub_field('block_team_title_title');
 
         </div>
 
-        <div class="col col-2 p2">
+        <div class="col col-grid-5 p4 || hover-zoom">
 
             <a href="{{ProfileLink}}" class="<?=$txtColor?>">
 
-                <div class="member || <?= $bgColor ?> || p3">
+                <div class="member || pb3 || <?= $bgColor ?> box-shadow-3 || zoom">
 
                     <div class="profile || mb4 || bg-center bg-cover" style="background: url('http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg<?php // Photo ?>'); background-size: cover"></div>
 
@@ -143,5 +145,17 @@ $blockTitle  = get_sub_field('block_team_title_title');
         </div>
 
     </div>
+
+    <?php if (!empty($button['button_link']['url'])): ?>
+    <div class="container clearfix mt4">
+
+        <div class="mb5 clearfix || text-center">
+
+            <a href="<?=$button['button_link']['url']?>" class="btn <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>"><?=$button['button_text'];?></a>
+
+        </div>
+
+    </div>
+    <?php endif; ?>
 
 </section>
