@@ -27,7 +27,7 @@ if ( ! function_exists( 'motionlabtheme_setup' ) ) :
 			'footer_1' => esc_html__( 'Footer 1', 'motionlabtheme' ),
 			'footer_2' => esc_html__( 'Footer 2', 'motionlabtheme' ),
 			'footer_3' => esc_html__( 'Footer 3', 'motionlabtheme' ),
-			'tnc' => esc_html__( 'TnC', 'motionlabtheme' ),
+			'tnc' => esc_html__( 'Footer – Legal Links', 'motionlabtheme' ), // TODO: Update the naming on this.
 		) );
 
 		add_theme_support( 'html5', array(

@@ -28,7 +28,7 @@
             <p>Page: <?=get_query_var('pagename')?></p>
             <p>User: <?php $user = wp_get_current_user(); echo $user->user_login ?> – <?=$user->ID?></p>
 
-            <p style="font-size: 0.8rem"><?php $block = get_field_objects(); print_r($block['building_blocks']) ?></p>
+            <p style="font-size: 0.8rem"><?php $block = get_field_objects(); print_r($block['building_blocks']['value']) ?></p>
 
         </div>
 
@@ -42,7 +42,8 @@
 
     jQuery(document).ready(function($) {
 
-        $('.toggle').on('click', function () {
+        $('.toggle').on('click', function (e) {
+            e.preventDefault();
             $('.debug').toggle();
         })
 

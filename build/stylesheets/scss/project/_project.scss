@@ -943,12 +943,22 @@ $arrow-size: 10px;
     min-height: 8rem;
   }
 
+  &.img-banner {
+    height: 30rem;
+  }
+
   &.img-cover {
     background-size: cover;
   }
 
   &.img-contain {
     background-size: contain;
+  }
+
+  &.measure-wide {
+    // TODO: Remove this with the new system once built.
+    margin-left: auto;
+    margin-right: auto;
   }
 
   &.img-square {

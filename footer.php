@@ -17,7 +17,8 @@
 </section>
 
 <footer class="bg-secondary clear-both">
-    <div class="container p5 md-py7">
+
+    <div class="container p5 md-py6">
         <div class="mxn5 clearfix">
             <div class="px5 col col-12 lg-col-12">
                 <div class="mxn5">
@@ -29,11 +30,13 @@
             </div>
         </div>
     </div>
-    <div class="container px5 py5 || text-right">
+
+    <div class="container px2 py2 h6 pb4 || muted">
         <div class="mxn5 clearfix">
             <?php include(get_template_directory() . '/template-parts/global/menus/tnc_menu.php'); ?>
         </div>
     </div>
+
 </footer>
 
 
