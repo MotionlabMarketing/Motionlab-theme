@@ -11,6 +11,9 @@
     <script src="https://use.fontawesome.com/22d4621214.js"></script>
     <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5a033b1e69fde30011eef3d0&product=inline-share-buttons"></script>
     <?php wp_head(); ?>
+
+    <?=get_field('header_code',   'option');?>
+    <?=get_field('tracking_code', 'option');?>
 </head>
 <body <?=body_class()?>>
 
