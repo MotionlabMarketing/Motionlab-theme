@@ -118,6 +118,13 @@ a {
 }
 
 /**
+ * BUTTONS
+ */
+.btn-primary {
+  background-color: $brand-primary;
+}
+
+/**
  * Utilities
  */
 .limit-p p {
@@ -148,6 +155,45 @@ a {
   }
 }
 
+/**
+ * TAGS & CATEGORIES
+ */
+.tags {
+  padding: 0;
+
+  &.tags-center {
+    text-align: center;
+  }
+
+  &.tags-right {
+    text-align: right;
+  }
+
+  &.border-radius {
+    li {
+      border-radius: 0.5rem;
+    }
+  }
+
+  li {
+    font-size: 0.7rem;
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background-color: $brand-grayLightest;
+
+    a {
+      color: $brand-base;
+    }
+
+    &:hover {
+      background-color: darken($brand-grayLightest, 5%);
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
 // TEMPLATES & SINGLES //
 
 // SINGLE TEAM PAGE //
@@ -158,6 +204,15 @@ a {
 
   }
 }
+
+#single-job {
+
+}
+
+#news-featuredListing {
+
+}
+
 
 .linkedBox-basic {
   .item {
@@ -352,14 +407,36 @@ a {
     }
   }
 
-
-
   .wysiwyg {
     h1, h2, h3, h4, h5, h6, p, a {
       color: inherit;
     }
     a:hover {
       color: darken($brand-gray, 5%);
+    }
+  }
+}
+
+.cta-footer {
+  p a {
+    text-align: center;
+    padding: 0 5rem;
+
+    @media (max-width: $breakpoint-lg){
+      font-size: 1.2rem;
+      padding: 0 1.4rem;
+    }
+
+    @media (max-width: $breakpoint-md){
+      display: block;
+      border-left: 1px solid $brand-whiteFade;
+      border-right: 1px solid $brand-whiteFade;
+    }
+  }
+  p {
+    @media (max-width: $breakpoint-md){
+      width: 100%;
+      margin-bottom: 1rem;
     }
   }
 }

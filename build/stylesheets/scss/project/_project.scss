@@ -938,6 +938,18 @@ $arrow-size: 10px;
     background-position: bottom;
   }
 
+  &.img-100 {
+    min-width: 100%;
+    min-height: 8rem;
+  }
+
+  &.img-cover {
+    background-size: cover;
+  }
+
+  &.img-contain {
+    background-size: contain;
+  }
 
   &.img-square {
 

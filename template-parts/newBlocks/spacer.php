@@ -13,7 +13,7 @@
 $borderLine = get_sub_field('border_style');
 ?>
 
-<section class="relative z1 overflow-hidden || <?php echo $bgColor ?> || my<?php echo get_sub_field('line_space')?>">
+<section class="relative z1 overflow-hidden || <?php echo $bgColor ?> || py<?php echo get_sub_field('line_space')?>">
 <?php if ($borderLine !== "0"):?>
     <div class="container">
         <hr class="border-<?=$borderLine?>">
