@@ -8,8 +8,10 @@ $brand-tertiary:     #5def90;
 $brand-quaternary:   #efa04c;
 
 $brand-white:        #ffffff;
-$brand-grayLightest: #ebebeb;
 $brand-gray:         #555555;
+$brand-grayLightest: #ebebeb;
+$brand-grayLight:    lighten($brand-gray, 55%);
+
 $brand-black:        #000000;
 
 $brand-linkColour:   $brand-gray;
@@ -525,6 +527,7 @@ a {
 
   .member {
     text-align: center;
+    border: 1px solid $brand-grayLight;
 
     h4 {
       color: $brand-primary;
