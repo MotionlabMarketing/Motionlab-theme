@@ -19,6 +19,8 @@ $brand-whiteFade:    rgba(255, 255, 255, 0.4);
 $brand-body:         #ffffff;
 $brand-base:         $brand-black;
 
+$arrow-size: 10px;
+
 
 body {
   background-color: $brand-body;
@@ -479,6 +481,42 @@ a {
     &.active {
       color: $brand-white;
       background-color: $brand-primary;
+    }
+  }
+}
+
+.buttons-bar {
+
+  a {
+    margin: 0 -0.2rem;
+    padding-left:  1.5rem;
+    padding-right: 1.5rem;
+
+    border-top:     1px solid $brand-grayLightest;
+    border-left:    1px solid $brand-grayLightest;
+    border-bottom:  1px solid $brand-grayLightest;
+
+    &:last-child {
+      border-right: 1px solid $brand-grayLightest;
+    }
+
+    &.active {
+      color: $brand-white;
+      border-color: $brand-primary;
+      background-color: $brand-primary;
+
+      &:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: calc(50% - #{$arrow-size});
+        bottom: -$arrow-size;
+        border-left: $arrow-size solid transparent;
+        border-right: $arrow-size solid transparent;
+        border-top: $arrow-size solid $brand-primary;
+      }
     }
   }
 }

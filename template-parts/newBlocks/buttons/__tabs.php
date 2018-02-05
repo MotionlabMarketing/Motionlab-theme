@@ -19,9 +19,11 @@ $buttons     = get_sub_field('block_buttons');
 $size        = get_sub_field('block_buttons_size');
 
 $current_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+$customCSS  = get_sub_field('block_button_css');
 ?>
 
-<section class="buttons-tabs || overflow-hidden p3 mb4 || <?=$bgColor?>">
+<section class="buttons-tabs || overflow-hidden p3 mb4 || <?=$bgColor?> || <?=$customCSS?>">
 
     <div class="container">
 
