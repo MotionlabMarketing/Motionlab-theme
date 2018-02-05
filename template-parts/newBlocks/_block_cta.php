@@ -12,6 +12,9 @@
     $team_layout = get_sub_field('block_cta_layout');
 
     switch ($team_layout):
+        case "sections":
+            include ('cta/__sections.php');
+            break;
         case "basic":
             include ('cta/__basic.php');
             break;

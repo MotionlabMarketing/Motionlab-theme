@@ -24,7 +24,7 @@ $blockTitle  = get_sub_field($current . '_title_title');
         <div class="col-12 || text-center">
 
             <?php
-            if (!empty($blockTitle['title'])) {
+            if (!empty($blockTitle[0]['title'])) {
             include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
 
             <div class="wysiwyg || mx6 px6 <?=$txtColor?>">
