@@ -6,7 +6,7 @@ get_header();
 $masterPad = 'px5';
 ?>
 
-<section style="margin-top: 6rem">
+<section>
 	<?php while ( have_posts() ) : the_post();?>
 
 		<?php if(!empty(get_field('remove_default_page_title'))): ?>
