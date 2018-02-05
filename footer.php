@@ -39,7 +39,7 @@
 
 </footer>
 
-
+<?=get_field('footer_code', 'option');?>
 <?php wp_footer(); ?>
 
 </body>

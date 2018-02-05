@@ -20,6 +20,8 @@ $buttonBorderRadius   = str_replace(".", "-", get_field('buttons_border_radius',
 
 $columnsCustomClass   = get_sub_field('columns_custom_class');
 
+$blockTitle           = get_sub_field('column_title_title');
+
 ?>
 
 <?php //print_r(get_field_objects()); ?>
@@ -28,9 +30,9 @@ $columnsCustomClass   = get_sub_field('columns_custom_class');
 		<div class="flex flex-column height-100 <?php echo $anchorButtons ?>">
 			<div>
 
-                <?php if ($columnTitle == true):?>
-                    <h3><?=$columnTitle?></h3>
-                <?php endif; ?>
+                <?php
+                if (!empty($blockTitle[0]['title'])) {
+                include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
 
 				<?php if ( have_rows('icon')){
 					while ( have_rows('icon')){

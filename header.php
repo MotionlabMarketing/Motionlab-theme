@@ -11,6 +11,22 @@
     <script src="https://use.fontawesome.com/22d4621214.js"></script>
     <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5a033b1e69fde30011eef3d0&product=inline-share-buttons"></script>
     <?php wp_head(); ?>
+
+    <?=get_field('header_code',   'option');?>
+    <?=get_field('tracking_code', 'option');?>
+
+    <?php if (get_field('google_analytics', 'option')): ?>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-<?=get_field('google_analytics', 'option')?>"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-<?=get_field('google_analytics', 'option')?>');
+    </script>
+    <?php endif; ?>
+
 </head>
 <body <?=body_class()?>>
 
