@@ -9,12 +9,12 @@ include_once(get_template_directory() . '/inc/MenuController.php');
 $menu = motionlab_menu_walker('primary');
 ?>
 
-<nav class="js-priority-nav">
-    <ul class="list-reset inline-block m0 p0">
+<nav class="js-priority-nav border-bottom border-light">
+    <ul class="list-reset inline-block m0 p0 text-right">
 
         <?php foreach($menu as $menuitem) : ?>
-            <li class="inline-block hover-bg-darken-2 animate <?php if(!empty($menuitem->children)){ ?>has-dropdown <?php } ?>">
-                <a href="<?php echo $menuitem->url ?>" class="btn border-none text-center block white bold p3 xl-p4 nowrap">
+            <li class="inline-block <?php if(!empty($menuitem->children)){ ?>has-dropdown <?php } ?>">
+                <a href="<?php echo $menuitem->url ?>" class="btn border-none text-center block brand-primary bold p3 xl-p4 nowrap">
                     <?php echo $menuitem->title; ?>
                     <?php if(!empty($menuitem->children)) : ?>
                         <small class="ml2"><i class="fa fa-chevron-down primary"></i></small>

@@ -7,8 +7,8 @@ $menu = motionlab_menu_walker('top-menu');
 
 ?>
 
-<div class="display-none p2 lg-flex justify-between items-center bg-navy">
-    <ul class="ml-auto list-reset mb0 p0 ">
+<div class="display-none lg-flex justify-between items-center">
+    <ul class="ml-auto list-reset mb0 p0 bg-navy p2">
         <?php $i=1; ?>
         <?php foreach($menu as $menuitem) : ?>
             <li class="inline-block <?php if($i!=1) : ?>border-left border-lighten-2<?php endif; ?>">

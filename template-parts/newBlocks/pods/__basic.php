@@ -31,22 +31,27 @@ if( get_sub_field('full_width_full_width') == 'container'){
     $extraContentPadding = $masterPad;
     $negativePod = 'px3';
 }
+
+$blockTitle  = get_sub_field($current . '_title_title');
 ?>
 
 <!-- pods -->
 <section class="<?php echo $bgColor ?> <?php echo $txtColor ?> <?php echo get_sub_field('animate_block') == TRUE ? 'overflow-hidden' : '' ?>">
     <div class="pb4 md-pb5 || <?php echo $paddingTop == 'collapse-top' ? 'pt0' : 'pt4 md-pt5' ?> <?php echo get_sub_field('full_width_full_width') ?> <?php echo $extraPadding ;?> <?php echo get_sub_field('narrow_columns') == TRUE ? 'measure-wide' : '' ?>">
 
-        <?php if ( have_rows('block_title_title')) : ?>
-            <?php while ( have_rows('block_title_title')) : ?>
-                <?php the_row() ?>
-                <?php if(!empty(get_sub_field('title'))) : ?>
-                    <div class="container text-center mx-auto <?php echo $extraContentPadding ;?> ml-px0 pb4 lg-pb5 wysiwyg">
-                        <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/title.php') ?>
-                    </div>
-                <?php endif; ?>
-            <?php endwhile; ?>
-        <?php endif; ?>
+        <div class="m4 mb5 || text-center">
+
+            <div class="mb3">
+                <?php
+                if (!empty($blockTitle[0]['title'])) {
+                    include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
+            </div>
+
+            <div class="text-center limit-p limit-p-80">
+                <?=get_sub_field('block_pods_content')?>
+            </div>
+
+        </div>
 
         <div class="clearfix <?php echo $negativePod ;?> || <?php echo get_sub_field('text_align_align') ?> <?php echo get_sub_field('pod_text_color') ?>">
             <?php if ( have_rows('pods')) { ?>
@@ -59,6 +64,7 @@ if( get_sub_field('full_width_full_width') == 'container'){
                     } else{
                         $buttonURL = get_sub_field('button_url_custom');
                     }
+                    $blockTitle  = get_sub_field('block_title_title');
                     ?>
 
                     <?php
@@ -73,7 +79,7 @@ if( get_sub_field('full_width_full_width') == 'container'){
                                     <div class="flex items-center justify-center absolute left-0 top-0 width-100 height-100 bg-darken-5 z1 reveal || white">
 
                                         <?php if ($overlayCopy == true): ?>
-                                            <div class="pt2"><?=$copy?></div>
+                                            <div class="p4 text-center"><?=$copy?></div>
                                         <?php endif; ?>
 
                                     </div>
@@ -82,8 +88,10 @@ if( get_sub_field('full_width_full_width') == 'container'){
                                     </figure>
                                 </a>
                             <?php } ?>
-                            <div class="<?php echo $removePadding ?> py3 md-mb3">
-                                <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/title-loop.php') ?>
+                            <div class="<?php echo $removePadding ?> py3 md-mb3 border border-light">
+                                <?php
+                                if (!empty($blockTitle[0]['title'])) {
+                                    include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
 
                                 <?php if ($overlayCopy == false): ?>
                                     <div class="pt3"><?php echo get_sub_field('copy') ?></div>

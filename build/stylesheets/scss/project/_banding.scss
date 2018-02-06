@@ -137,6 +137,8 @@ a {
 
 /**
  * Utilities
+ *
+ * TODO: add classes for tick lists
  */
 .limit-p p {
   margin: 0 auto;
@@ -417,7 +419,7 @@ a {
   }
 }
 
-.pod-numbered {
+.pod-numbered-square {
 
   .item {
 
@@ -442,6 +444,22 @@ a {
       }
     }
   }
+}
+.pod-numbered-circles {
+
+    $itemHeight: 12rem;
+    .content {
+      position: relative;
+      width: $itemHeight;
+      height: $itemHeight;
+      border-radius: $itemHeight;
+      background-color: $brand-primary;
+
+      p {
+        display: block;
+        width: 100%;
+      }
+    }
 }
 
 .tabs-basic {

@@ -34,12 +34,12 @@ $blockItems = $blockItems['logos'];
 
         <div class="m4 text-center">
             <?php
-            if (!empty($blockTitle['title'])) {
+            if (!empty($blockTitle[0]['title'])) {
                 include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php');
             } ?>
         </div>
 
-        <div class="wysiwyg mb4 || text-center">
+        <div class="wysiwyg mb4 || text-center limit-p limit-p-70">
             <?=get_sub_field($current . '_content')?>
         </div>
 
