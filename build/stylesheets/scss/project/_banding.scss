@@ -197,22 +197,24 @@ a {
     }
   }
 }
-// TEMPLATES & SINGLES //
-.post-standard {
+// ------ TEMPLATES AND SINGLE STYLES ------ //
 
-  .post {
+// LISTING TESTIMONIALS //
+#listing-testimonials {
 
+  .grid-item div {
+    background-color: $brand-white;
   }
 
-}
+  .video {
 
-
-// SINGLE TEAM PAGE //
-#single-team {
-
-  .profile {
-
-
+    p {
+      right: 0px;
+      bottom: 6px;
+      border-radius: 0;
+      font-size: 0.9rem;
+      background-color: $brand-primary;
+    }
   }
 }
 
@@ -234,16 +236,11 @@ a {
   }
 }
 
-#single-job {
 
-}
-
-#news-featuredListing {
-
-}
-
+// ------ BLOCK STYLES ------ //
 
 .linkedBox-basic {
+
   .item {
     height: 16rem;
 
@@ -263,28 +260,35 @@ a {
 }
 
 .linkedBox-titleBelow {
+
   .item {
+
     .image-holder {
       min-height: 16rem;
     }
+
     .content {
       padding: 1rem;
       font-weight: bold;
       text-align: center;
       background-color: $brand-white;
     }
+
     .content-breakout {
       padding: 2rem 2rem;
+
       .icon {
         float: left;
         font-size: 4rem;
         margin-right: 1rem;
       }
+
       h3 {
         margin: 1rem 0;
         color: $brand-primary;
         display: block;
       }
+
       p {
         clear: both;
       }
@@ -297,6 +301,7 @@ a {
   h4 {
     color: $brand-primary;
   }
+
   .fa {
     font-size: 3.5rem;
     margin-bottom: 1rem;
@@ -345,6 +350,7 @@ a {
       border-right: 1px solid $brand-primary;
     }
   }
+
   .tab-content {
     border: 1px solid $brand-grayLightest;
   }
@@ -496,6 +502,7 @@ a {
 }
 
 .cta-footer {
+
   p a {
     text-align: center;
     padding: 0 5rem;
@@ -511,6 +518,7 @@ a {
       border-right: 1px solid $brand-whiteFade;
     }
   }
+
   p {
     @media (max-width: $breakpoint-md){
       width: 100%;
@@ -524,6 +532,7 @@ a {
 }
 
 .buttons-tabs {
+
   .btn {
     border-top:   1px solid $brand-grayLightest;
     border-left:  1px solid $brand-grayLightest;
@@ -587,6 +596,7 @@ a {
 .video-basic {
 
   .video {
+
     p {
       right: 0px;
       bottom: 6px;
@@ -595,6 +605,7 @@ a {
       background-color: $brand-primary;
     }
   }
+
   .content {
     background-color: $brand-white;
 

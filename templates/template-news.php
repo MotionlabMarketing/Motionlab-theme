@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: News - Listing
+ * Template Name: News – Listing
  *
  * TODO: Needs converting to news index when CPT has been added.
  */

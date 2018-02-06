@@ -1,3 +1,7 @@
+/**
+ * TODO: Review all of these functions and remove any that are not used. We are loading a large number of plugins which may not be used.
+ */
+
 jQuery(document).ready(function($) {
 
     /*========================
@@ -751,4 +755,10 @@ jQuery(document).ready(function($) {
         $('[data-loader]').delay(200).fadeOut(600);
     }, 2000);
     2000;
+
+    $('.grid').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: '.grid-sizer',
+        percentPosition: true
+    });
 });
