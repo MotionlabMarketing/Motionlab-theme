@@ -58,6 +58,9 @@ a {
 .brand-quaternary {
   color: $brand-quaternary;
 }
+.brand-base {
+  color: $brand-base;
+}
 
 // BACKGROUND COLOURS //
 .bg-brand-primary {
@@ -71,6 +74,11 @@ a {
 }
 .bg-brand-quaternary {
   background-color: $brand-quaternary;
+}
+
+// BACKGROUND OVERLAY //
+.bg-brand-primary-overlay {
+  background-color: rgba($brand-primary, 0.8);
 }
 
 /**
@@ -206,6 +214,10 @@ a {
     background-color: $brand-white;
   }
 
+  .grid-sizer,
+  .grid-item { width: 33%; }
+  .grid-item--width2 { width: 66%; }
+
   .video {
 
     p {
@@ -234,6 +246,103 @@ a {
       background-color: $brand-grayLightest;
     }
   }
+}
+
+// TEAM LISTING PAGE //
+#listing-team {
+
+  $itemHeight:        10rem;
+  $itemContentHeight: 5rem;
+  $itemSpacing: 1.5rem;
+
+  .grid-sizer,
+  .grid-item {
+    width: 20%;
+
+    @media (max-width: $breakpoint-md) {
+      width: 25%;
+      height: auto;
+    }
+    @media (max-width: 700px) {
+      width: 50%;
+      height: ($itemHeight * 2 + 10rem);
+    }
+    @media (max-width: 450px) {
+      width: 100%;
+      height: ($itemHeight * 2 + 10rem);
+    }
+
+  }
+
+  .grid-item--double {
+    width: 40%;
+    height: ((($itemHeight * 2) + 11) + $itemContentHeight + 5rem);
+
+    @media (max-width: $breakpoint-md) {
+      width: 50%;
+      height: auto;
+    }
+    @media (max-width: 700px) {
+      width: 50%;
+      height: ($itemHeight * 2 + 10rem);
+    }
+    @media (max-width: 450px) {
+      width: 100%;
+      height: ($itemHeight * 2 + 10rem);
+    }
+
+
+
+  }
+
+  .grid-item {
+
+    .member {
+
+      .profile {
+        height: $itemHeight;
+        background-position: center;
+
+        @media (max-width: 700px) {
+          height: ($itemHeight * 2);
+        }
+      }
+
+      .content {
+        height: $itemContentHeight;
+
+      }
+
+      .overlay {
+        display: none;
+      }
+
+      &:hover {
+
+        .overlay {
+          display: flex;
+        }
+      }
+    }
+
+    &.grid-item--double {
+
+      .member {
+
+        .profile {
+          height: (($itemHeight * 2) + 10.5);
+
+          @media (max-width: 700px) {
+            height: ($itemHeight * 2);
+          }
+        }
+        .content {
+          height: ($itemContentHeight);
+        }
+      }
+    }
+  }
+
 }
 
 
@@ -447,6 +556,16 @@ a {
   .tab-content {
     @media (max-width: $breakpoint-sm){
       padding: 0;
+    }
+  }
+}
+
+.team-basic {
+
+  .member {
+
+    .profile {
+      min-height: 10rem;
     }
   }
 }

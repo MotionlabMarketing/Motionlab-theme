@@ -727,27 +727,6 @@ $arrow-size: 10px;
     }
   }
 
-
-/**
-    -------------------
-    ------ TEAM -------
-    -------------------
-
-    Added Styling
-    29 Jan 2018
-    Joe Curran
-*/
-
-.team-basic {
-
-  .member {
-
-    .profile {
-      min-height: 10rem;
-    }
-  }
-}
-
 /**
     -------------------
     --- LINKED BOXES --
@@ -1091,7 +1070,4 @@ $arrow-size: 10px;
   width: 100%;
   height: auto;
 }
-
-.grid-sizer,
-.grid-item { width: 33%; }
-.grid-item--width2 { width: 66%; }
+// GRID SIZES SET PER PAGE/TEMPLATE //
