@@ -14,7 +14,7 @@ if( get_sub_field('full_width_full_width') == 'container'){
 } else {
    $extraPadding = '';
 }
-
+$blockTitle  = get_sub_field('block_title_title');
 $sections    = get_sub_field($current . '_sections');
 ?>
 
