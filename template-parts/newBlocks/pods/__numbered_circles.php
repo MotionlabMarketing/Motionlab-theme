@@ -1,6 +1,6 @@
 <?php
 /**
- * NUMBERED POD – LAYOUT BLOCK ------------------------
+ * NUMBERED POD CIRCLES – LAYOUT BLOCK ------------------------
  * A block which output a gird of icons with content.
  *
  * @author Joe Curran
@@ -28,7 +28,7 @@ $blockItems  = get_sub_field($current . '_basic');
 
 ?>
 
-<section class="pod-numbered mb4 || <?=$bgColor?> <?=$txtColor?> <?=$borders?>">
+<section class="pod-numbered-circles mb4 || <?=$bgColor?> <?=$txtColor?> <?=$borders?>">
 
     <div class="container">
 
@@ -50,15 +50,13 @@ $blockItems  = get_sub_field($current . '_basic');
             <div class="px2 md-px6">
             <?php $i = 1; foreach ($blockItems as $item):?>
 
-                <div class="item || col col-3 px2 mb3 || text-center <?=$txtColor?> || col-grid-5">
+                <div class="item || col col-3 px2 mb3 ||  <?=$txtColor?> || col-grid-5">
 
-                    <div class="content p3 || js-match-height">
+                    <div class="content p3 || js-match-height flex items-center flex-wrap justify-center content-center">
 
-                        <p class="block mb2 || text-center || brand-primary h2 bold"><?=$i?>.</p>
+                        <p class="block m0 width-100 || text-center || white h2">#<?=$i?>.</p>
 
-                        <p class="h5"><?=$item['pod_content']?></p>
-
-                        <div class="rule"></div>
+                        <p class="h3 m0 text-center white bold"><?=$item['pod_content']?></p>
 
                     </div>
 

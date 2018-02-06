@@ -18,16 +18,19 @@ $totalPages = $loop->max_num_pages;
 
 			<?php echo (new MenuController())->get_hansel_and_gretel_breadcrumbs(); ?>
 
+            <?php $blockTitle[0]['title'] = get_the_archive_title('', false); $blockTitle[0]['title'] = str_replace("Archives: ", "", $blockTitle[0]['title']); $blockTitle[0]['type']['heading'] = "h3"; $blockTitle[0]['color']['system_text_colours'] = "brand-primary"; $blockTitle[0]['size']['heading_size'] = "h1" ?>
+            <div class="m4 mb5 || text-center">
 
-			<div class="container bg-black px5 py7 white text-center bg-center bg-cover" style="background-image:url(<?php echo $featured_image; ?>)">
-				<h1 class="xl-h0 mb0 xl-lsn2 lh1"><?php echo post_type_archive_title() ?></h1>
-			</div>
+                <div class="mb3">
+                    <?php
+                    if (!empty($blockTitle[0]['title'])) {
+                        include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
+                </div>
 
-			<div class="flex items-center mb3 mt4">
-				<h1 class="m0"><?php echo post_type_archive_title(); ?></h1>
-				<span class="ml-auto"><?php echo $currentPosts ?> of <?php echo $totalPosts ?> posts</span>
-			</div>
-
+                <div class="text-center limit-p limit-p-80">
+                    <?=get_sub_field('block_pods_content')?>
+                </div>
+            </div>
 
 			<div class="clearfix mb4">
 				<form action="" method="get" class="flex">
