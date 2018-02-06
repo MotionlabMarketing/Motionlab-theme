@@ -41,7 +41,7 @@ $blockTitle           = get_sub_field('column_title_title');
 					<?php };
 				};?>
 
-				<div class="wysiwyg col-12 <?php echo $textAlign ?>">
+				<div class="wysiwyg col-12 <?php echo $textAlign ?> limit-p limit-p-80">
 					<?php echo get_sub_field('copy'); ?>
 				</div>
 			</div>

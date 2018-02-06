@@ -303,6 +303,33 @@ a {
   }
 }
 
+.pod-numbered {
+
+  .item {
+
+    .content {
+      font-size: 0.9rem;
+      position: relative;
+      @include transition(.5s);
+      background-color: lighten($brand-grayLightest, 05%);
+
+      &:hover {
+        background-color: $brand-grayLightest;
+      }
+
+      .rule {
+          bottom: 1rem;
+          width: 30%;
+          left: calc((100% - 30%) / 2);
+          display: block;
+          position: absolute;
+          margin: 0.3rem auto 0;
+          border-bottom: 2px solid $brand-grayLight;
+      }
+    }
+  }
+}
+
 .tabs-basic {
 
   .tab {

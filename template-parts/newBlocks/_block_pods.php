@@ -12,6 +12,9 @@
     $layout = get_sub_field('block_pods_layout');
 
     switch ($layout):
+        case "numbered":
+            include ('pods/__numbered.php');
+            break;
         case "benefits":
             include ('pods/__benefits.php');
             break;
