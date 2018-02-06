@@ -32,7 +32,7 @@ $blockItems  = get_sub_field($current . '_items');
 
     <div class="container">
 
-        <div class="clearfix py5">
+        <div class="clearfix pb5">
 
             <div class="m4 text-center">
                 <?php

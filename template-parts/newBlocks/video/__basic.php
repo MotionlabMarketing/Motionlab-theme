@@ -15,7 +15,7 @@ $blockTitle = get_sub_field('block_videos_title_title');
 
 ?>
 
-<section class="video-basic || clearfix my4 mb6">
+<section class="video-basic || clearfix my4 mb4">
 
     <div class="container">
 
