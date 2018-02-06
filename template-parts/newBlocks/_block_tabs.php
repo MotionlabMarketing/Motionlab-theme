@@ -12,8 +12,8 @@
 $layout = get_sub_field($current . '_layout');
 
 switch ($layout):
-    case "basic":
-        include ('tabs/__basic.php');
+    case "contentAside":
+        include ('tabs/__contentAside.php');
         break;
     case "dot_tabs":
         include ('tabs/__dot_tabs.php');

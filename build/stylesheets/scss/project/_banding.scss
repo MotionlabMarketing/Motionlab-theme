@@ -578,6 +578,53 @@ a {
   }
 }
 
+.tabs-contentAside {
+
+  .tab {
+    padding: 0.4rem 1rem;
+
+    background-color: $brand-white;
+    border-top:   1px solid $brand-grayLightest;
+    border-left:  1px solid $brand-grayLightest;
+    border-right: 1px solid $brand-grayLightest;
+
+    &.tab-33 {
+      width: 33.33336%;
+    }
+
+    &.tab-50 {
+      width: 50%;
+    }
+
+    &.tab-active {
+      background-color: $brand-primary;
+      border-top:   1px solid $brand-primary;
+      border-left:  1px solid $brand-primary;
+      border-right: 1px solid $brand-primary;
+
+      &:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: calc(50% - #{$arrow-size});
+        bottom: -$arrow-size;
+        border-left: $arrow-size solid transparent;
+        border-right: $arrow-size solid transparent;
+        border-top: $arrow-size solid $brand-primary;
+      }
+    }
+
+
+  }
+
+  .tab-content {
+    background-color: lighten($brand-grayLightest, 5%);
+    border: 1px solid $brand-grayLightest;
+  }
+}
+
 .team-basic {
 
   .member {
