@@ -4934,6 +4934,565 @@ $.magnificPopup.registerModule(RETINA_NS, {
 }));
 
 !function(e,t){"function"==typeof define&&define.amd?define([],t):"object"==typeof module&&module.exports?module.exports=t():e.Rellax=t()}(this,function(){var e=function(t,n){"use strict";var o=Object.create(e.prototype),r=0,i=0,s=[],a=!1,l=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.msRequestAnimationFrame||window.oRequestAnimationFrame||function(e){setTimeout(e,1e3/60)},c=window.transformProp||function(){var e=document.createElement("div");if(null==e.style.transform){var t=["Webkit","Moz","ms"];for(var n in t)if(void 0!==e.style[t[n]+"Transform"])return t[n]+"Transform"}return"transform"}(),d=function(e,t,n){return e<=t?t:e>=n?n:e};o.options={speed:-2,center:!1,round:!0,callback:function(){}},n&&Object.keys(n).forEach(function(e){o.options[e]=n[e]}),o.options.speed=d(o.options.speed,-10,10),t||(t=".rellax");var u=document.querySelectorAll(t);if(!(u.length>0))throw new Error("The elements you're trying to select don't exist.");o.elems=u;var f=function(e){var t=e.dataset.rellaxPercentage,n=e.dataset.rellaxSpeed,r=t||o.options.center?window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop:0,s=r+e.getBoundingClientRect().top,a=e.clientHeight||e.offsetHeight||e.scrollHeight,l=t||(r-s+i)/(a+i);o.options.center&&(l=.5);var c=n?d(n,-10,10):o.options.speed;(t||o.options.center)&&(c=d(n||o.options.speed,-5,5));var u=p(l,c),f=e.style.cssText,m="";if(f.indexOf("transform")>=0){var w=f.indexOf("transform"),v=f.slice(w),g=v.indexOf(";");m=g?" "+v.slice(11,g).replace(/\s/g,""):" "+v.slice(11).replace(/\s/g,"")}return{base:u,top:s,height:a,speed:c,style:f,transform:m}},m=function(){var e=r;return r=void 0!==window.pageYOffset?window.pageYOffset:(document.documentElement||document.body.parentNode||document.body).scrollTop,e!=r},p=function(e,t){var n=t*(100*(1-e));return o.options.round?Math.round(10*n)/10:n},w=function(){m()&&!1===a&&v(),l(w)},v=function(){for(var e=0;e<o.elems.length;e++){var t=(r-s[e].top+i)/(s[e].height+i),n=p(t,s[e].speed)-s[e].base,a="translate3d(0,"+n+"px,0) "+s[e].transform;o.elems[e].style[c]=a}o.options.callback(n)};return o.destroy=function(){for(var e=0;e<o.elems.length;e++)o.elems[e].style.cssText=s[e].style;a=!0},function(){i=window.innerHeight,m();for(var e=0;e<o.elems.length;e++){var t=f(o.elems[e]);s.push(t)}window.addEventListener("resize",function(){v()}),w(),v()}(),o};return e});
+// Sticky Plugin v1.0.4 for jQuery
+// =============
+// Author: Anthony Garand
+// Improvements by German M. Bravo (Kronuz) and Ruud Kamphuis (ruudk)
+// Improvements by Leonardo C. Daronco (daronco)
+// Created: 02/14/2011
+// Date: 07/20/2015
+// Website: http://stickyjs.com/
+// Description: Makes an element on the page stick on the screen as you scroll
+//              It will only set the 'top' and 'position' of your element, you
+//              might need to adjust the width in some cases.
+
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['jquery'], factory);
+    } else if (typeof module === 'object' && module.exports) {
+        // Node/CommonJS
+        module.exports = factory(require('jquery'));
+    } else {
+        // Browser globals
+        factory(jQuery);
+    }
+}(function ($) {
+    var slice = Array.prototype.slice; // save ref to original slice()
+    var splice = Array.prototype.splice; // save ref to original slice()
+
+  var defaults = {
+      topSpacing: 0,
+      bottomSpacing: 0,
+      className: 'is-sticky',
+      wrapperClassName: 'sticky-wrapper',
+      center: false,
+      getWidthFrom: '',
+      widthFromWrapper: true, // works only when .getWidthFrom is empty
+      responsiveWidth: false,
+      zIndex: 'auto'
+    },
+    $window = $(window),
+    $document = $(document),
+    sticked = [],
+    windowHeight = $window.height(),
+    scroller = function() {
+      var scrollTop = $window.scrollTop(),
+        documentHeight = $document.height(),
+        dwh = documentHeight - windowHeight,
+        extra = (scrollTop > dwh) ? dwh - scrollTop : 0;
+
+      for (var i = 0, l = sticked.length; i < l; i++) {
+        var s = sticked[i],
+          elementTop = s.stickyWrapper.offset().top,
+          etse = elementTop - s.topSpacing - extra;
+
+        //update height in case of dynamic content
+        s.stickyWrapper.css('height', s.stickyElement.outerHeight());
+
+        if (scrollTop <= etse) {
+          if (s.currentTop !== null) {
+            s.stickyElement
+              .css({
+                'width': '',
+                'position': '',
+                'top': '',
+                'z-index': ''
+              });
+            s.stickyElement.parent().removeClass(s.className);
+            s.stickyElement.trigger('sticky-end', [s]);
+            s.currentTop = null;
+          }
+        }
+        else {
+          var newTop = documentHeight - s.stickyElement.outerHeight()
+            - s.topSpacing - s.bottomSpacing - scrollTop - extra;
+          if (newTop < 0) {
+            newTop = newTop + s.topSpacing;
+          } else {
+            newTop = s.topSpacing;
+          }
+          if (s.currentTop !== newTop) {
+            var newWidth;
+            if (s.getWidthFrom) {
+                newWidth = $(s.getWidthFrom).width() || null;
+            } else if (s.widthFromWrapper) {
+                newWidth = s.stickyWrapper.width();
+            }
+            if (newWidth == null) {
+                newWidth = s.stickyElement.width();
+            }
+            s.stickyElement
+              .css('width', newWidth)
+              .css('position', 'fixed')
+              .css('top', newTop)
+              .css('z-index', s.zIndex);
+
+            s.stickyElement.parent().addClass(s.className);
+
+            if (s.currentTop === null) {
+              s.stickyElement.trigger('sticky-start', [s]);
+            } else {
+              // sticky is started but it have to be repositioned
+              s.stickyElement.trigger('sticky-update', [s]);
+            }
+
+            if (s.currentTop === s.topSpacing && s.currentTop > newTop || s.currentTop === null && newTop < s.topSpacing) {
+              // just reached bottom || just started to stick but bottom is already reached
+              s.stickyElement.trigger('sticky-bottom-reached', [s]);
+            } else if(s.currentTop !== null && newTop === s.topSpacing && s.currentTop < newTop) {
+              // sticky is started && sticked at topSpacing && overflowing from top just finished
+              s.stickyElement.trigger('sticky-bottom-unreached', [s]);
+            }
+
+            s.currentTop = newTop;
+          }
+
+          // Check if sticky has reached end of container and stop sticking
+          var stickyWrapperContainer = s.stickyWrapper.parent();
+          var unstick = (s.stickyElement.offset().top + s.stickyElement.outerHeight() >= stickyWrapperContainer.offset().top + stickyWrapperContainer.outerHeight()) && (s.stickyElement.offset().top <= s.topSpacing);
+
+          if( unstick ) {
+            s.stickyElement
+              .css('position', 'absolute')
+              .css('top', '')
+              .css('bottom', 0)
+              .css('z-index', '');
+          } else {
+            s.stickyElement
+              .css('position', 'fixed')
+              .css('top', newTop)
+              .css('bottom', '')
+              .css('z-index', s.zIndex);
+          }
+        }
+      }
+    },
+    resizer = function() {
+      windowHeight = $window.height();
+
+      for (var i = 0, l = sticked.length; i < l; i++) {
+        var s = sticked[i];
+        var newWidth = null;
+        if (s.getWidthFrom) {
+            if (s.responsiveWidth) {
+                newWidth = $(s.getWidthFrom).width();
+            }
+        } else if(s.widthFromWrapper) {
+            newWidth = s.stickyWrapper.width();
+        }
+        if (newWidth != null) {
+            s.stickyElement.css('width', newWidth);
+        }
+      }
+    },
+    methods = {
+      init: function(options) {
+        return this.each(function() {
+          var o = $.extend({}, defaults, options);
+          var stickyElement = $(this);
+
+          var stickyId = stickyElement.attr('id');
+          var wrapperId = stickyId ? stickyId + '-' + defaults.wrapperClassName : defaults.wrapperClassName;
+          var wrapper = $('<div></div>')
+            .attr('id', wrapperId)
+            .addClass(o.wrapperClassName);
+
+          stickyElement.wrapAll(function() {
+            if ($(this).parent("#" + wrapperId).length == 0) {
+                    return wrapper;
+            }
+});
+
+          var stickyWrapper = stickyElement.parent();
+
+          if (o.center) {
+            stickyWrapper.css({width:stickyElement.outerWidth(),marginLeft:"auto",marginRight:"auto"});
+          }
+
+          if (stickyElement.css("float") === "right") {
+            stickyElement.css({"float":"none"}).parent().css({"float":"right"});
+          }
+
+          o.stickyElement = stickyElement;
+          o.stickyWrapper = stickyWrapper;
+          o.currentTop    = null;
+
+          sticked.push(o);
+
+          methods.setWrapperHeight(this);
+          methods.setupChangeListeners(this);
+        });
+      },
+
+      setWrapperHeight: function(stickyElement) {
+        var element = $(stickyElement);
+        var stickyWrapper = element.parent();
+        if (stickyWrapper) {
+          stickyWrapper.css('height', element.outerHeight());
+        }
+      },
+
+      setupChangeListeners: function(stickyElement) {
+        if (window.MutationObserver) {
+          var mutationObserver = new window.MutationObserver(function(mutations) {
+            if (mutations[0].addedNodes.length || mutations[0].removedNodes.length) {
+              methods.setWrapperHeight(stickyElement);
+            }
+          });
+          mutationObserver.observe(stickyElement, {subtree: true, childList: true});
+        } else {
+          if (window.addEventListener) {
+            stickyElement.addEventListener('DOMNodeInserted', function() {
+              methods.setWrapperHeight(stickyElement);
+            }, false);
+            stickyElement.addEventListener('DOMNodeRemoved', function() {
+              methods.setWrapperHeight(stickyElement);
+            }, false);
+          } else if (window.attachEvent) {
+            stickyElement.attachEvent('onDOMNodeInserted', function() {
+              methods.setWrapperHeight(stickyElement);
+            });
+            stickyElement.attachEvent('onDOMNodeRemoved', function() {
+              methods.setWrapperHeight(stickyElement);
+            });
+          }
+        }
+      },
+      update: scroller,
+      unstick: function(options) {
+        return this.each(function() {
+          var that = this;
+          var unstickyElement = $(that);
+
+          var removeIdx = -1;
+          var i = sticked.length;
+          while (i-- > 0) {
+            if (sticked[i].stickyElement.get(0) === that) {
+                splice.call(sticked,i,1);
+                removeIdx = i;
+            }
+          }
+          if(removeIdx !== -1) {
+            unstickyElement.unwrap();
+            unstickyElement
+              .css({
+                'width': '',
+                'position': '',
+                'top': '',
+                'float': '',
+                'z-index': ''
+              })
+            ;
+          }
+        });
+      }
+    };
+
+  // should be more efficient than using $window.scroll(scroller) and $window.resize(resizer):
+  if (window.addEventListener) {
+    window.addEventListener('scroll', scroller, false);
+    window.addEventListener('resize', resizer, false);
+  } else if (window.attachEvent) {
+    window.attachEvent('onscroll', scroller);
+    window.attachEvent('onresize', resizer);
+  }
+
+  $.fn.sticky = function(method) {
+    if (methods[method]) {
+      return methods[method].apply(this, slice.call(arguments, 1));
+    } else if (typeof method === 'object' || !method ) {
+      return methods.init.apply( this, arguments );
+    } else {
+      $.error('Method ' + method + ' does not exist on jQuery.sticky');
+    }
+  };
+
+  $.fn.unstick = function(method) {
+    if (methods[method]) {
+      return methods[method].apply(this, slice.call(arguments, 1));
+    } else if (typeof method === 'object' || !method ) {
+      return methods.unstick.apply( this, arguments );
+    } else {
+      $.error('Method ' + method + ' does not exist on jQuery.sticky');
+    }
+  };
+  $(function() {
+    setTimeout(scroller, 0);
+  });
+}));
+
+// Generated by CoffeeScript 1.6.2
+/**
+@license Sticky-kit v1.1.3 | MIT | Leaf Corcoran 2015 | http://leafo.net
+*/
+
+
+(function() {
+  var $, win;
+
+  $ = this.jQuery || window.jQuery;
+
+  win = $(window);
+
+  $.fn.stick_in_parent = function(opts) {
+    var doc, elm, enable_bottoming, inner_scrolling, manual_spacer, offset_top, outer_width, parent_selector, recalc_every, sticky_class, _fn, _i, _len;
+
+    if (opts == null) {
+      opts = {};
+    }
+    sticky_class = opts.sticky_class, inner_scrolling = opts.inner_scrolling, recalc_every = opts.recalc_every, parent_selector = opts.parent, offset_top = opts.offset_top, manual_spacer = opts.spacer, enable_bottoming = opts.bottoming;
+    if (offset_top == null) {
+      offset_top = 0;
+    }
+    if (parent_selector == null) {
+      parent_selector = void 0;
+    }
+    if (inner_scrolling == null) {
+      inner_scrolling = true;
+    }
+    if (sticky_class == null) {
+      sticky_class = "is_stuck";
+    }
+    doc = $(document);
+    if (enable_bottoming == null) {
+      enable_bottoming = true;
+    }
+    outer_width = function(el) {
+      var computed, w, _el;
+
+      if (window.getComputedStyle) {
+        _el = el[0];
+        computed = window.getComputedStyle(el[0]);
+        w = parseFloat(computed.getPropertyValue("width")) + parseFloat(computed.getPropertyValue("margin-left")) + parseFloat(computed.getPropertyValue("margin-right"));
+        if (computed.getPropertyValue("box-sizing") !== "border-box") {
+          w += parseFloat(computed.getPropertyValue("border-left-width")) + parseFloat(computed.getPropertyValue("border-right-width")) + parseFloat(computed.getPropertyValue("padding-left")) + parseFloat(computed.getPropertyValue("padding-right"));
+        }
+        return w;
+      } else {
+        return el.outerWidth(true);
+      }
+    };
+    _fn = function(elm, padding_bottom, parent_top, parent_height, top, height, el_float, detached) {
+      var bottomed, detach, fixed, last_pos, last_scroll_height, offset, parent, recalc, recalc_and_tick, recalc_counter, spacer, tick;
+
+      if (elm.data("sticky_kit")) {
+        return;
+      }
+      elm.data("sticky_kit", true);
+      last_scroll_height = doc.height();
+      parent = elm.parent();
+      if (parent_selector != null) {
+        parent = parent.closest(parent_selector);
+      }
+      if (!parent.length) {
+        throw "failed to find stick parent";
+      }
+      fixed = false;
+      bottomed = false;
+      spacer = manual_spacer != null ? manual_spacer && elm.closest(manual_spacer) : $("<div />");
+      if (spacer) {
+        spacer.css('position', elm.css('position'));
+      }
+      recalc = function() {
+        var border_top, padding_top, restore;
+
+        if (detached) {
+          return;
+        }
+        last_scroll_height = doc.height();
+        border_top = parseInt(parent.css("border-top-width"), 10);
+        padding_top = parseInt(parent.css("padding-top"), 10);
+        padding_bottom = parseInt(parent.css("padding-bottom"), 10);
+        parent_top = parent.offset().top + border_top + padding_top;
+        parent_height = parent.height();
+        if (fixed) {
+          fixed = false;
+          bottomed = false;
+          if (manual_spacer == null) {
+            elm.insertAfter(spacer);
+            spacer.detach();
+          }
+          elm.css({
+            position: "",
+            top: "",
+            width: "",
+            bottom: ""
+          }).removeClass(sticky_class);
+          restore = true;
+        }
+        top = elm.offset().top - (parseInt(elm.css("margin-top"), 10) || 0) - offset_top;
+        height = elm.outerHeight(true);
+        el_float = elm.css("float");
+        if (spacer) {
+          spacer.css({
+            width: outer_width(elm),
+            height: height,
+            display: elm.css("display"),
+            "vertical-align": elm.css("vertical-align"),
+            "float": el_float
+          });
+        }
+        if (restore) {
+          return tick();
+        }
+      };
+      recalc();
+      if (height === parent_height) {
+        return;
+      }
+      last_pos = void 0;
+      offset = offset_top;
+      recalc_counter = recalc_every;
+      tick = function() {
+        var css, delta, recalced, scroll, will_bottom, win_height;
+
+        if (detached) {
+          return;
+        }
+        recalced = false;
+        if (recalc_counter != null) {
+          recalc_counter -= 1;
+          if (recalc_counter <= 0) {
+            recalc_counter = recalc_every;
+            recalc();
+            recalced = true;
+          }
+        }
+        if (!recalced && doc.height() !== last_scroll_height) {
+          recalc();
+          recalced = true;
+        }
+        scroll = win.scrollTop();
+        if (last_pos != null) {
+          delta = scroll - last_pos;
+        }
+        last_pos = scroll;
+        if (fixed) {
+          if (enable_bottoming) {
+            will_bottom = scroll + height + offset > parent_height + parent_top;
+            if (bottomed && !will_bottom) {
+              bottomed = false;
+              elm.css({
+                position: "fixed",
+                bottom: "",
+                top: offset
+              }).trigger("sticky_kit:unbottom");
+            }
+          }
+          if (scroll < top) {
+            fixed = false;
+            offset = offset_top;
+            if (manual_spacer == null) {
+              if (el_float === "left" || el_float === "right") {
+                elm.insertAfter(spacer);
+              }
+              spacer.detach();
+            }
+            css = {
+              position: "",
+              width: "",
+              top: ""
+            };
+            elm.css(css).removeClass(sticky_class).trigger("sticky_kit:unstick");
+          }
+          if (inner_scrolling) {
+            win_height = win.height();
+            if (height + offset_top > win_height) {
+              if (!bottomed) {
+                offset -= delta;
+                offset = Math.max(win_height - height, offset);
+                offset = Math.min(offset_top, offset);
+                if (fixed) {
+                  elm.css({
+                    top: offset + "px"
+                  });
+                }
+              }
+            }
+          }
+        } else {
+          if (scroll > top) {
+            fixed = true;
+            css = {
+              position: "fixed",
+              top: offset
+            };
+            css.width = elm.css("box-sizing") === "border-box" ? elm.outerWidth() + "px" : elm.width() + "px";
+            elm.css(css).addClass(sticky_class);
+            if (manual_spacer == null) {
+              elm.after(spacer);
+              if (el_float === "left" || el_float === "right") {
+                spacer.append(elm);
+              }
+            }
+            elm.trigger("sticky_kit:stick");
+          }
+        }
+        if (fixed && enable_bottoming) {
+          if (will_bottom == null) {
+            will_bottom = scroll + height + offset > parent_height + parent_top;
+          }
+          if (!bottomed && will_bottom) {
+            bottomed = true;
+            if (parent.css("position") === "static") {
+              parent.css({
+                position: "relative"
+              });
+            }
+            return elm.css({
+              position: "absolute",
+              bottom: padding_bottom,
+              top: "auto"
+            }).trigger("sticky_kit:bottom");
+          }
+        }
+      };
+      recalc_and_tick = function() {
+        recalc();
+        return tick();
+      };
+      detach = function() {
+        detached = true;
+        win.off("touchmove", tick);
+        win.off("scroll", tick);
+        win.off("resize", recalc_and_tick);
+        $(document.body).off("sticky_kit:recalc", recalc_and_tick);
+        elm.off("sticky_kit:detach", detach);
+        elm.removeData("sticky_kit");
+        elm.css({
+          position: "",
+          bottom: "",
+          top: "",
+          width: ""
+        });
+        parent.position("position", "");
+        if (fixed) {
+          if (manual_spacer == null) {
+            if (el_float === "left" || el_float === "right") {
+              elm.insertAfter(spacer);
+            }
+            spacer.remove();
+          }
+          return elm.removeClass(sticky_class);
+        }
+      };
+      win.on("touchmove", tick);
+      win.on("scroll", tick);
+      win.on("resize", recalc_and_tick);
+      $(document.body).on("sticky_kit:recalc", recalc_and_tick);
+      elm.on("sticky_kit:detach", detach);
+      return setTimeout(tick, 0);
+    };
+    for (_i = 0, _len = this.length; _i < _len; _i++) {
+      elm = this[_i];
+      _fn($(elm));
+    }
+    return this;
+  };
+
+}).call(this);
+
 /*
  slick-animation.js
 
@@ -8058,565 +8617,6 @@ $.magnificPopup.registerModule(RETINA_NS, {
 
 }));
 
-// Sticky Plugin v1.0.4 for jQuery
-// =============
-// Author: Anthony Garand
-// Improvements by German M. Bravo (Kronuz) and Ruud Kamphuis (ruudk)
-// Improvements by Leonardo C. Daronco (daronco)
-// Created: 02/14/2011
-// Date: 07/20/2015
-// Website: http://stickyjs.com/
-// Description: Makes an element on the page stick on the screen as you scroll
-//              It will only set the 'top' and 'position' of your element, you
-//              might need to adjust the width in some cases.
-
-(function (factory) {
-    if (typeof define === 'function' && define.amd) {
-        // AMD. Register as an anonymous module.
-        define(['jquery'], factory);
-    } else if (typeof module === 'object' && module.exports) {
-        // Node/CommonJS
-        module.exports = factory(require('jquery'));
-    } else {
-        // Browser globals
-        factory(jQuery);
-    }
-}(function ($) {
-    var slice = Array.prototype.slice; // save ref to original slice()
-    var splice = Array.prototype.splice; // save ref to original slice()
-
-  var defaults = {
-      topSpacing: 0,
-      bottomSpacing: 0,
-      className: 'is-sticky',
-      wrapperClassName: 'sticky-wrapper',
-      center: false,
-      getWidthFrom: '',
-      widthFromWrapper: true, // works only when .getWidthFrom is empty
-      responsiveWidth: false,
-      zIndex: 'auto'
-    },
-    $window = $(window),
-    $document = $(document),
-    sticked = [],
-    windowHeight = $window.height(),
-    scroller = function() {
-      var scrollTop = $window.scrollTop(),
-        documentHeight = $document.height(),
-        dwh = documentHeight - windowHeight,
-        extra = (scrollTop > dwh) ? dwh - scrollTop : 0;
-
-      for (var i = 0, l = sticked.length; i < l; i++) {
-        var s = sticked[i],
-          elementTop = s.stickyWrapper.offset().top,
-          etse = elementTop - s.topSpacing - extra;
-
-        //update height in case of dynamic content
-        s.stickyWrapper.css('height', s.stickyElement.outerHeight());
-
-        if (scrollTop <= etse) {
-          if (s.currentTop !== null) {
-            s.stickyElement
-              .css({
-                'width': '',
-                'position': '',
-                'top': '',
-                'z-index': ''
-              });
-            s.stickyElement.parent().removeClass(s.className);
-            s.stickyElement.trigger('sticky-end', [s]);
-            s.currentTop = null;
-          }
-        }
-        else {
-          var newTop = documentHeight - s.stickyElement.outerHeight()
-            - s.topSpacing - s.bottomSpacing - scrollTop - extra;
-          if (newTop < 0) {
-            newTop = newTop + s.topSpacing;
-          } else {
-            newTop = s.topSpacing;
-          }
-          if (s.currentTop !== newTop) {
-            var newWidth;
-            if (s.getWidthFrom) {
-                newWidth = $(s.getWidthFrom).width() || null;
-            } else if (s.widthFromWrapper) {
-                newWidth = s.stickyWrapper.width();
-            }
-            if (newWidth == null) {
-                newWidth = s.stickyElement.width();
-            }
-            s.stickyElement
-              .css('width', newWidth)
-              .css('position', 'fixed')
-              .css('top', newTop)
-              .css('z-index', s.zIndex);
-
-            s.stickyElement.parent().addClass(s.className);
-
-            if (s.currentTop === null) {
-              s.stickyElement.trigger('sticky-start', [s]);
-            } else {
-              // sticky is started but it have to be repositioned
-              s.stickyElement.trigger('sticky-update', [s]);
-            }
-
-            if (s.currentTop === s.topSpacing && s.currentTop > newTop || s.currentTop === null && newTop < s.topSpacing) {
-              // just reached bottom || just started to stick but bottom is already reached
-              s.stickyElement.trigger('sticky-bottom-reached', [s]);
-            } else if(s.currentTop !== null && newTop === s.topSpacing && s.currentTop < newTop) {
-              // sticky is started && sticked at topSpacing && overflowing from top just finished
-              s.stickyElement.trigger('sticky-bottom-unreached', [s]);
-            }
-
-            s.currentTop = newTop;
-          }
-
-          // Check if sticky has reached end of container and stop sticking
-          var stickyWrapperContainer = s.stickyWrapper.parent();
-          var unstick = (s.stickyElement.offset().top + s.stickyElement.outerHeight() >= stickyWrapperContainer.offset().top + stickyWrapperContainer.outerHeight()) && (s.stickyElement.offset().top <= s.topSpacing);
-
-          if( unstick ) {
-            s.stickyElement
-              .css('position', 'absolute')
-              .css('top', '')
-              .css('bottom', 0)
-              .css('z-index', '');
-          } else {
-            s.stickyElement
-              .css('position', 'fixed')
-              .css('top', newTop)
-              .css('bottom', '')
-              .css('z-index', s.zIndex);
-          }
-        }
-      }
-    },
-    resizer = function() {
-      windowHeight = $window.height();
-
-      for (var i = 0, l = sticked.length; i < l; i++) {
-        var s = sticked[i];
-        var newWidth = null;
-        if (s.getWidthFrom) {
-            if (s.responsiveWidth) {
-                newWidth = $(s.getWidthFrom).width();
-            }
-        } else if(s.widthFromWrapper) {
-            newWidth = s.stickyWrapper.width();
-        }
-        if (newWidth != null) {
-            s.stickyElement.css('width', newWidth);
-        }
-      }
-    },
-    methods = {
-      init: function(options) {
-        return this.each(function() {
-          var o = $.extend({}, defaults, options);
-          var stickyElement = $(this);
-
-          var stickyId = stickyElement.attr('id');
-          var wrapperId = stickyId ? stickyId + '-' + defaults.wrapperClassName : defaults.wrapperClassName;
-          var wrapper = $('<div></div>')
-            .attr('id', wrapperId)
-            .addClass(o.wrapperClassName);
-
-          stickyElement.wrapAll(function() {
-            if ($(this).parent("#" + wrapperId).length == 0) {
-                    return wrapper;
-            }
-});
-
-          var stickyWrapper = stickyElement.parent();
-
-          if (o.center) {
-            stickyWrapper.css({width:stickyElement.outerWidth(),marginLeft:"auto",marginRight:"auto"});
-          }
-
-          if (stickyElement.css("float") === "right") {
-            stickyElement.css({"float":"none"}).parent().css({"float":"right"});
-          }
-
-          o.stickyElement = stickyElement;
-          o.stickyWrapper = stickyWrapper;
-          o.currentTop    = null;
-
-          sticked.push(o);
-
-          methods.setWrapperHeight(this);
-          methods.setupChangeListeners(this);
-        });
-      },
-
-      setWrapperHeight: function(stickyElement) {
-        var element = $(stickyElement);
-        var stickyWrapper = element.parent();
-        if (stickyWrapper) {
-          stickyWrapper.css('height', element.outerHeight());
-        }
-      },
-
-      setupChangeListeners: function(stickyElement) {
-        if (window.MutationObserver) {
-          var mutationObserver = new window.MutationObserver(function(mutations) {
-            if (mutations[0].addedNodes.length || mutations[0].removedNodes.length) {
-              methods.setWrapperHeight(stickyElement);
-            }
-          });
-          mutationObserver.observe(stickyElement, {subtree: true, childList: true});
-        } else {
-          if (window.addEventListener) {
-            stickyElement.addEventListener('DOMNodeInserted', function() {
-              methods.setWrapperHeight(stickyElement);
-            }, false);
-            stickyElement.addEventListener('DOMNodeRemoved', function() {
-              methods.setWrapperHeight(stickyElement);
-            }, false);
-          } else if (window.attachEvent) {
-            stickyElement.attachEvent('onDOMNodeInserted', function() {
-              methods.setWrapperHeight(stickyElement);
-            });
-            stickyElement.attachEvent('onDOMNodeRemoved', function() {
-              methods.setWrapperHeight(stickyElement);
-            });
-          }
-        }
-      },
-      update: scroller,
-      unstick: function(options) {
-        return this.each(function() {
-          var that = this;
-          var unstickyElement = $(that);
-
-          var removeIdx = -1;
-          var i = sticked.length;
-          while (i-- > 0) {
-            if (sticked[i].stickyElement.get(0) === that) {
-                splice.call(sticked,i,1);
-                removeIdx = i;
-            }
-          }
-          if(removeIdx !== -1) {
-            unstickyElement.unwrap();
-            unstickyElement
-              .css({
-                'width': '',
-                'position': '',
-                'top': '',
-                'float': '',
-                'z-index': ''
-              })
-            ;
-          }
-        });
-      }
-    };
-
-  // should be more efficient than using $window.scroll(scroller) and $window.resize(resizer):
-  if (window.addEventListener) {
-    window.addEventListener('scroll', scroller, false);
-    window.addEventListener('resize', resizer, false);
-  } else if (window.attachEvent) {
-    window.attachEvent('onscroll', scroller);
-    window.attachEvent('onresize', resizer);
-  }
-
-  $.fn.sticky = function(method) {
-    if (methods[method]) {
-      return methods[method].apply(this, slice.call(arguments, 1));
-    } else if (typeof method === 'object' || !method ) {
-      return methods.init.apply( this, arguments );
-    } else {
-      $.error('Method ' + method + ' does not exist on jQuery.sticky');
-    }
-  };
-
-  $.fn.unstick = function(method) {
-    if (methods[method]) {
-      return methods[method].apply(this, slice.call(arguments, 1));
-    } else if (typeof method === 'object' || !method ) {
-      return methods.unstick.apply( this, arguments );
-    } else {
-      $.error('Method ' + method + ' does not exist on jQuery.sticky');
-    }
-  };
-  $(function() {
-    setTimeout(scroller, 0);
-  });
-}));
-
-// Generated by CoffeeScript 1.6.2
-/**
-@license Sticky-kit v1.1.3 | MIT | Leaf Corcoran 2015 | http://leafo.net
-*/
-
-
-(function() {
-  var $, win;
-
-  $ = this.jQuery || window.jQuery;
-
-  win = $(window);
-
-  $.fn.stick_in_parent = function(opts) {
-    var doc, elm, enable_bottoming, inner_scrolling, manual_spacer, offset_top, outer_width, parent_selector, recalc_every, sticky_class, _fn, _i, _len;
-
-    if (opts == null) {
-      opts = {};
-    }
-    sticky_class = opts.sticky_class, inner_scrolling = opts.inner_scrolling, recalc_every = opts.recalc_every, parent_selector = opts.parent, offset_top = opts.offset_top, manual_spacer = opts.spacer, enable_bottoming = opts.bottoming;
-    if (offset_top == null) {
-      offset_top = 0;
-    }
-    if (parent_selector == null) {
-      parent_selector = void 0;
-    }
-    if (inner_scrolling == null) {
-      inner_scrolling = true;
-    }
-    if (sticky_class == null) {
-      sticky_class = "is_stuck";
-    }
-    doc = $(document);
-    if (enable_bottoming == null) {
-      enable_bottoming = true;
-    }
-    outer_width = function(el) {
-      var computed, w, _el;
-
-      if (window.getComputedStyle) {
-        _el = el[0];
-        computed = window.getComputedStyle(el[0]);
-        w = parseFloat(computed.getPropertyValue("width")) + parseFloat(computed.getPropertyValue("margin-left")) + parseFloat(computed.getPropertyValue("margin-right"));
-        if (computed.getPropertyValue("box-sizing") !== "border-box") {
-          w += parseFloat(computed.getPropertyValue("border-left-width")) + parseFloat(computed.getPropertyValue("border-right-width")) + parseFloat(computed.getPropertyValue("padding-left")) + parseFloat(computed.getPropertyValue("padding-right"));
-        }
-        return w;
-      } else {
-        return el.outerWidth(true);
-      }
-    };
-    _fn = function(elm, padding_bottom, parent_top, parent_height, top, height, el_float, detached) {
-      var bottomed, detach, fixed, last_pos, last_scroll_height, offset, parent, recalc, recalc_and_tick, recalc_counter, spacer, tick;
-
-      if (elm.data("sticky_kit")) {
-        return;
-      }
-      elm.data("sticky_kit", true);
-      last_scroll_height = doc.height();
-      parent = elm.parent();
-      if (parent_selector != null) {
-        parent = parent.closest(parent_selector);
-      }
-      if (!parent.length) {
-        throw "failed to find stick parent";
-      }
-      fixed = false;
-      bottomed = false;
-      spacer = manual_spacer != null ? manual_spacer && elm.closest(manual_spacer) : $("<div />");
-      if (spacer) {
-        spacer.css('position', elm.css('position'));
-      }
-      recalc = function() {
-        var border_top, padding_top, restore;
-
-        if (detached) {
-          return;
-        }
-        last_scroll_height = doc.height();
-        border_top = parseInt(parent.css("border-top-width"), 10);
-        padding_top = parseInt(parent.css("padding-top"), 10);
-        padding_bottom = parseInt(parent.css("padding-bottom"), 10);
-        parent_top = parent.offset().top + border_top + padding_top;
-        parent_height = parent.height();
-        if (fixed) {
-          fixed = false;
-          bottomed = false;
-          if (manual_spacer == null) {
-            elm.insertAfter(spacer);
-            spacer.detach();
-          }
-          elm.css({
-            position: "",
-            top: "",
-            width: "",
-            bottom: ""
-          }).removeClass(sticky_class);
-          restore = true;
-        }
-        top = elm.offset().top - (parseInt(elm.css("margin-top"), 10) || 0) - offset_top;
-        height = elm.outerHeight(true);
-        el_float = elm.css("float");
-        if (spacer) {
-          spacer.css({
-            width: outer_width(elm),
-            height: height,
-            display: elm.css("display"),
-            "vertical-align": elm.css("vertical-align"),
-            "float": el_float
-          });
-        }
-        if (restore) {
-          return tick();
-        }
-      };
-      recalc();
-      if (height === parent_height) {
-        return;
-      }
-      last_pos = void 0;
-      offset = offset_top;
-      recalc_counter = recalc_every;
-      tick = function() {
-        var css, delta, recalced, scroll, will_bottom, win_height;
-
-        if (detached) {
-          return;
-        }
-        recalced = false;
-        if (recalc_counter != null) {
-          recalc_counter -= 1;
-          if (recalc_counter <= 0) {
-            recalc_counter = recalc_every;
-            recalc();
-            recalced = true;
-          }
-        }
-        if (!recalced && doc.height() !== last_scroll_height) {
-          recalc();
-          recalced = true;
-        }
-        scroll = win.scrollTop();
-        if (last_pos != null) {
-          delta = scroll - last_pos;
-        }
-        last_pos = scroll;
-        if (fixed) {
-          if (enable_bottoming) {
-            will_bottom = scroll + height + offset > parent_height + parent_top;
-            if (bottomed && !will_bottom) {
-              bottomed = false;
-              elm.css({
-                position: "fixed",
-                bottom: "",
-                top: offset
-              }).trigger("sticky_kit:unbottom");
-            }
-          }
-          if (scroll < top) {
-            fixed = false;
-            offset = offset_top;
-            if (manual_spacer == null) {
-              if (el_float === "left" || el_float === "right") {
-                elm.insertAfter(spacer);
-              }
-              spacer.detach();
-            }
-            css = {
-              position: "",
-              width: "",
-              top: ""
-            };
-            elm.css(css).removeClass(sticky_class).trigger("sticky_kit:unstick");
-          }
-          if (inner_scrolling) {
-            win_height = win.height();
-            if (height + offset_top > win_height) {
-              if (!bottomed) {
-                offset -= delta;
-                offset = Math.max(win_height - height, offset);
-                offset = Math.min(offset_top, offset);
-                if (fixed) {
-                  elm.css({
-                    top: offset + "px"
-                  });
-                }
-              }
-            }
-          }
-        } else {
-          if (scroll > top) {
-            fixed = true;
-            css = {
-              position: "fixed",
-              top: offset
-            };
-            css.width = elm.css("box-sizing") === "border-box" ? elm.outerWidth() + "px" : elm.width() + "px";
-            elm.css(css).addClass(sticky_class);
-            if (manual_spacer == null) {
-              elm.after(spacer);
-              if (el_float === "left" || el_float === "right") {
-                spacer.append(elm);
-              }
-            }
-            elm.trigger("sticky_kit:stick");
-          }
-        }
-        if (fixed && enable_bottoming) {
-          if (will_bottom == null) {
-            will_bottom = scroll + height + offset > parent_height + parent_top;
-          }
-          if (!bottomed && will_bottom) {
-            bottomed = true;
-            if (parent.css("position") === "static") {
-              parent.css({
-                position: "relative"
-              });
-            }
-            return elm.css({
-              position: "absolute",
-              bottom: padding_bottom,
-              top: "auto"
-            }).trigger("sticky_kit:bottom");
-          }
-        }
-      };
-      recalc_and_tick = function() {
-        recalc();
-        return tick();
-      };
-      detach = function() {
-        detached = true;
-        win.off("touchmove", tick);
-        win.off("scroll", tick);
-        win.off("resize", recalc_and_tick);
-        $(document.body).off("sticky_kit:recalc", recalc_and_tick);
-        elm.off("sticky_kit:detach", detach);
-        elm.removeData("sticky_kit");
-        elm.css({
-          position: "",
-          bottom: "",
-          top: "",
-          width: ""
-        });
-        parent.position("position", "");
-        if (fixed) {
-          if (manual_spacer == null) {
-            if (el_float === "left" || el_float === "right") {
-              elm.insertAfter(spacer);
-            }
-            spacer.remove();
-          }
-          return elm.removeClass(sticky_class);
-        }
-      };
-      win.on("touchmove", tick);
-      win.on("scroll", tick);
-      win.on("resize", recalc_and_tick);
-      $(document.body).on("sticky_kit:recalc", recalc_and_tick);
-      elm.on("sticky_kit:detach", detach);
-      return setTimeout(tick, 0);
-    };
-    for (_i = 0, _len = this.length; _i < _len; _i++) {
-      elm = this[_i];
-      _fn($(elm));
-    }
-    return this;
-  };
-
-}).call(this);
-
 /**
  * TODO: Review all of these functions and remove any that are not used. We are loading a large number of plugins which may not be used.
  */
@@ -9194,49 +9194,49 @@ jQuery(document).ready(function($) {
     ROTATING SEARCH PLACEHOLDER
     ========================================================*/
 
-    var vals = $('.js-search').data('placeholder').split(',');
-    var keyframes = [vals[0]];
-
-    // generate keyframes
-    var count = 0;
-    while (count < vals.length) {
-        last_frame = keyframes[keyframes.length - 1];
-        if (vals[(count + 1) % vals.length] == last_frame) { // if the keyframe is the current string
-            count++;
-        } else if (vals[(count + 1) % vals.length].lastIndexOf(last_frame, 0) === 0) { // if the current keyframe is part of the desired goal
-            keyframes.push(last_frame + vals[(count + 1) % vals.length][last_frame.length]);
-        } else { // delete from keyframe
-            keyframes.push(last_frame.substring(0, last_frame.length - 1));
-        }
-    }
-
-    var input = document.getElementById('js-search-id');
-
-    function ph_add(i) {
-        setTimeout(function() {
-            input.setAttribute('placeholder', keyframes[i]);
-            if (keyframes[(i + 1) % keyframes.length].length > keyframes[i].length) {
-                ph_add((i + 1) % keyframes.length);
-            } else {
-                setTimeout(function() {
-                    ph_del((i + 1) % keyframes.length);
-                }, 2500)
-            }
-        }, 110 * Math.random());
-    }
-
-    function ph_del(i) {
-        setTimeout(function() {
-            input.setAttribute('placeholder', keyframes[i]);
-            if (keyframes[(i + 1) % keyframes.length].length > keyframes[i].length) {
-                ph_add((i + 1) % keyframes.length);
-            } else {
-                ph_del((i + 1) % keyframes.length);
-            }
-        }, 65);
-    }
-
-    ph_add(0);
+    // var vals = $('.js-search').data('placeholder').split(',');
+    // var keyframes = [vals[0]];
+    //
+    // // generate keyframes
+    // var count = 0;
+    // while (count < vals.length) {
+    //     last_frame = keyframes[keyframes.length - 1];
+    //     if (vals[(count + 1) % vals.length] == last_frame) { // if the keyframe is the current string
+    //         count++;
+    //     } else if (vals[(count + 1) % vals.length].lastIndexOf(last_frame, 0) === 0) { // if the current keyframe is part of the desired goal
+    //         keyframes.push(last_frame + vals[(count + 1) % vals.length][last_frame.length]);
+    //     } else { // delete from keyframe
+    //         keyframes.push(last_frame.substring(0, last_frame.length - 1));
+    //     }
+    // }
+    //
+    // var input = document.getElementById('js-search-id');
+    //
+    // function ph_add(i) {
+    //     setTimeout(function() {
+    //         input.setAttribute('placeholder', keyframes[i]);
+    //         if (keyframes[(i + 1) % keyframes.length].length > keyframes[i].length) {
+    //             ph_add((i + 1) % keyframes.length);
+    //         } else {
+    //             setTimeout(function() {
+    //                 ph_del((i + 1) % keyframes.length);
+    //             }, 2500)
+    //         }
+    //     }, 110 * Math.random());
+    // }
+    //
+    // function ph_del(i) {
+    //     setTimeout(function() {
+    //         input.setAttribute('placeholder', keyframes[i]);
+    //         if (keyframes[(i + 1) % keyframes.length].length > keyframes[i].length) {
+    //             ph_add((i + 1) % keyframes.length);
+    //         } else {
+    //             ph_del((i + 1) % keyframes.length);
+    //         }
+    //     }, 65);
+    // }
+    //
+    // ph_add(0);
 
 
 
@@ -9381,3 +9381,184 @@ jQuery(document).ready(function($) {
         percentPosition: true
     });
 });
+(function($) {
+
+    /*
+    *  new_map
+    *
+    *  This function will render a Google Map onto the selected jQuery element
+    *
+    *  @type	function
+    *  @date	8/11/2013
+    *  @since	4.3.0
+    *
+    *  @param	$el (jQuery element)
+    *  @return	n/a
+    */
+
+    function new_map( $el ) {
+
+        // var
+        var $markers = $el.find('.marker');
+
+
+        // // vars
+        // var args = {
+        //     zoom		: 16,
+        //     center		: new google.maps.LatLng(0, 0),
+        //     mapTypeId	: google.maps.MapTypeId.ROADMAP
+        // };
+        var args = {
+            zoom: 15,
+            center: new google.maps.LatLng(0, 0),
+            mapTypeControl: false,
+            panControl: false,
+            scrollwheel: true,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.SMALL,
+                position: google.maps.ControlPosition.RIGHT_CENTER
+            },
+            styles: [{"featureType":"administrative","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","elementType":"all","stylers":[{"saturation":-100},{"lightness":"50"},{"visibility":"simplified"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"lightness":"30"}]},{"featureType":"road.local","elementType":"all","stylers":[{"lightness":"40"}]},{"featureType":"transit","elementType":"all","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]},{"featureType":"water","elementType":"labels","stylers":[{"lightness":-25},{"saturation":-100}]}]
+        };
+
+
+        // create map
+        var map = new google.maps.Map( $el[0], args);
+
+
+        // add a markers reference
+        map.markers = [];
+
+
+        // add markers
+        $markers.each(function(){
+
+            add_marker( $(this), map );
+
+        });
+
+
+        // center map
+        center_map( map );
+
+
+        // return
+        return map;
+
+    }
+
+    /*
+    *  add_marker
+    *
+    *  This function will add a marker to the selected Google Map
+    *
+    *  @type	function
+    *  @date	8/11/2013
+    *  @since	4.3.0
+    *
+    *  @param	$marker (jQuery element)
+    *  @param	map (Google Map object)
+    *  @return	n/a
+    */
+
+    function add_marker( $marker, map ) {
+
+        // var
+        var latlng = new google.maps.LatLng( $marker.attr('data-lat'), $marker.attr('data-lng') );
+
+        // create marker
+        var marker = new google.maps.Marker({
+            position	: latlng,
+            map			: map
+        });
+
+        // add to array
+        map.markers.push( marker );
+
+        // if marker contains HTML, add it to an infoWindow
+        if( $marker.html() )
+        {
+            // create info window
+            var infowindow = new google.maps.InfoWindow({
+                content		: $marker.html()
+            });
+
+            // show info window when marker is clicked
+            google.maps.event.addListener(marker, 'click', function() {
+
+                infowindow.open( map, marker );
+
+            });
+        }
+
+    }
+
+    /*
+    *  center_map
+    *
+    *  This function will center the map, showing all markers attached to this map
+    *
+    *  @type	function
+    *  @date	8/11/2013
+    *  @since	4.3.0
+    *
+    *  @param	map (Google Map object)
+    *  @return	n/a
+    */
+
+    function center_map( map ) {
+
+        // vars
+        var bounds = new google.maps.LatLngBounds();
+
+        // loop through all markers and create bounds
+        $.each( map.markers, function( i, marker ){
+
+            var latlng = new google.maps.LatLng( marker.position.lat(), marker.position.lng() );
+
+            bounds.extend( latlng );
+
+        });
+
+        // only 1 marker?
+        if( map.markers.length == 1 )
+        {
+            // set center of map
+            map.setCenter( bounds.getCenter() );
+            map.setZoom( 16 );
+        }
+        else
+        {
+            // fit to bounds
+            map.fitBounds( bounds );
+        }
+
+    }
+
+    /*
+    *  document ready
+    *
+    *  This function will render each map when the document is ready (page has loaded)
+    *
+    *  @type	function
+    *  @date	8/11/2013
+    *  @since	5.0.0
+    *
+    *  @param	n/a
+    *  @return	n/a
+    */
+// global var
+    var map = null;
+
+    $(document).ready(function(){
+
+        $('.acf-map').each(function(){
+
+            // create map
+            map = new_map( $(this) );
+
+        });
+
+    });
+
+})(jQuery);

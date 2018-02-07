@@ -10,6 +10,9 @@ if (!empty($bgColor)):
     $bgColor = "bg-white";
 endif;
 
+$blockTitle  = get_field('page_title');
+$blockTitle  = $blockTitle['title'];
+
 get_header(); ?>
 
     <section class="clearfix my4 mb4" id="listing-team">
@@ -20,10 +23,13 @@ get_header(); ?>
 
                 <div class="col col-12 md-col-12 lg-col-12 || mb5 text-center p3 limit-p limit-p-70">
 
-                    <h1 class="h2 mb2 || brand-primary">Meet the Team</h1>
+                    <?php
+                    if (!empty($blockTitle[0]['title'])) {
+                        include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
 
-                    <p class="h4">Let us help futureproof your business by sourcing the best talent, first time
-                        around.</p>
+                    <div class="wysiwyg h4">
+                        <?=get_field('page_introduction')?>
+                    </div>
 
                 </div>
 

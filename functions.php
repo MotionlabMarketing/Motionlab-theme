@@ -306,6 +306,14 @@ function limit_words($words, $limit, $append = ' &hellip;') {
     return $words;
 }
 
+/*==================================================================
+SETUP ACF GOOGLE MAPS
+==================================================================*/
+function my_acf_init() {
+
+    acf_update_setting('google_api_key', 'AIzaSyAmmvkoPA2evn0of5_sXcmyk5uoiDRBe-Q');
+}
+add_action('acf/init', 'my_acf_init');
 
 // update_option( 'siteurl', 'http://docs.framework.d3z.uk' );
 // update_option( 'home', 'http://docs.framework.d3z.uk' );

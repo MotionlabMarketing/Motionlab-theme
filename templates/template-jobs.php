@@ -4,6 +4,9 @@
  *
  * TODO: Needs converting to single when CPT has been added.
  */
+
+$blockTitle  = get_field('page_title');
+$blockTitle  = $blockTitle['title'];
 get_header(); ?>
 
 <div class="clearfix || mt6" id="listing-job">
@@ -12,9 +15,13 @@ get_header(); ?>
 
         <div class="col col-12 md-col-12 lg-col-12 || mb5 text-center || limit-p limit-p-80">
 
-            <h1 class="h2 mb2 || brand-primary">Latest News</h1>
+            <?php
+            if (!empty($blockTitle[0]['title'])) {
+                include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
 
-            <p class="h4">Aenean finibus risus nisl, eget ornare velit pretium vel. Nunc vitae pretium felis, quis venenatis leo. Cras quis porta nulla. Aenean ex eros, efficitur in porttitor vel, bibendum scelerisque libero. Aenean justo risus, pretium ac mi vel, ultricies.</p>
+            <div class="wysiwyg h4">
+                <?=get_field('page_introduction')?>
+            </div>
 
         </div>
 
@@ -138,7 +145,7 @@ get_header(); ?>
 
             </div>
 
-            <div class="col col-12 md-col-4 my5 p4 clearfix">
+            <div class="col col-12 md-col-4 my5 p4">
 
                 <div class="block relative mb4 || min-height-v25 bg-cover bg-center bg-darken-3" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/ludovic-fremondiere-386793.jpg')">
 
