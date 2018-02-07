@@ -9,8 +9,7 @@
  * @version 1.00
  */
 
-//$bgColor     = get_sub_field('profile_background_system_background_colours');
-//$txtColor    = get_sub_field('block_team_text_system_text_colours');
+$txtColor         = get_sub_field('text_color_color');
 
 // BACKEND NOTES – REMOVE ONCE ADDED
 // Get posts from Custom Post Type.
@@ -23,10 +22,19 @@
     $contentPad = '';
 
     $blockTitle  = get_sub_field($current . '_title_title');
+
+    $blockSettingsAll = get_sub_field("block_tabs_settings");
+
+    if ($blockSettingsAll['enable_image_background'] == true):
+        $blockSettings['image']['url']        = $blockSettingsAll['image']['basic_image']['url'];
+        $blockSettings['image']['position']   = "bg-" . $blockSettingsAll['position']['background_position'];
+        $blockSettings['overlay']['tint']     = $blockSettingsAll['tint']['system_background_tint'];
+        $blockSettings['overlay']['strength'] = $blockSettingsAll['tint_strength']['system_tint_strength'];
+    endif;
+
 ?>
 
-<!-- tabs - simple -->
-<section class="tabs-dots || p2 md-p5 <?php echo $bgColor ?> <?php echo $txtColor ?>">
+<section class="tabs-dots || p2 md-p5 <?php echo $bgColor ?> <?php echo $txtColor ?> || <?=$blockSettings['image']['position']?> <?=$blockSettings['overlay']['strength']?> <?=$blockSettings['overlay']['tint']?>" <?=(!empty($blockSettings['image']['url']))? 'style="background-image: url(\''.$blockSettings['image']['url'].'\');"' : '';?>>
 
     <div class="container">
 
