@@ -1003,6 +1003,42 @@ form {
   }
 }
 
+.timeline-basic {
+
+  #timeline {
+
+
+    @media (max-width: 670px) {
+     display: none;
+    }
+  }
+
+  #changeDropdown {
+    @media (min-width: 670px) {
+      display: none;
+    }
+  }
+
+  .gt-timeline div.main_line {
+    background-color: $brand-gray;
+  }
+
+  .gt-timeline div.event {
+    top: 46px;
+    width: 12px;
+    height: 12px;
+  }
+
+  .e-message {
+    display: none;
+  }
+
+  .image img {
+    height: 26vh;
+  }
+
+}
+
 .cta-basic {
   padding: 3rem 0;
 

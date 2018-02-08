@@ -37,6 +37,7 @@ $blockTitle  = get_sub_field($current . '_title_title');
                     <span data-section="tab<?php echo $i ?>" class="border border-smoke cursor-pointer narrow uppercase py3 bold relative || tab <?php echo $tab ?> || <?php echo $i <= 1 ? 'tab-active' : '' ?>">
 						<?php echo get_sub_field('tab_name') ?>
 					</span>
+					</span>
 
                     <?php $i++ ; ?>
                 <?php } ?>

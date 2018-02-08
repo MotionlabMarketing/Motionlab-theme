@@ -12,12 +12,12 @@
 
 $layout = get_sub_field($current . '_layout');
 
-switch ($layout):
+switch ($team_layout):
     case "basic":
-        include('team/__basic.php');
+        include('timelines/__basic.php');
         break;
     default:
-        include('team/__basic.php');
+        include('timelines/__basic.php');
         break;
 endswitch;
 

@@ -542,6 +542,16 @@ jQuery(document).ready(function($) {
         $wrapper.find('[data-tabs="content"]').find('section[id=' + target + ']').removeClass('hide');
     });
 
+    // TODO: EDIT THE TIMELINE STUFF //
+    $('#changeDropdown').on('change', function () {
+        changeTimeline($(this).val());
+    });
+
+    function changeTimeline(ev) {
+        var $wrapper = $('[data-tabs="wrapper"]');
+        $wrapper.find('[data-tabs="content"]').children('section').addClass('hide');
+        $wrapper.find('[data-tabs="content"]').find('section[id=date-id-' + ev + ']').removeClass('hide');
+    }
 
     /*======================================================
     HOTSPOT : HOVER
@@ -761,6 +771,7 @@ jQuery(document).ready(function($) {
         percentPosition: true
     });
 });
+
 (function($) {
 
     /*
@@ -827,20 +838,6 @@ jQuery(document).ready(function($) {
 
     }
 
-    /*
-    *  add_marker
-    *
-    *  This function will add a marker to the selected Google Map
-    *
-    *  @type	function
-    *  @date	8/11/2013
-    *  @since	4.3.0
-    *
-    *  @param	$marker (jQuery element)
-    *  @param	map (Google Map object)
-    *  @return	n/a
-    */
-
     function add_marker( $marker, map ) {
 
         // var
@@ -873,19 +870,6 @@ jQuery(document).ready(function($) {
 
     }
 
-    /*
-    *  center_map
-    *
-    *  This function will center the map, showing all markers attached to this map
-    *
-    *  @type	function
-    *  @date	8/11/2013
-    *  @since	4.3.0
-    *
-    *  @param	map (Google Map object)
-    *  @return	n/a
-    */
-
     function center_map( map ) {
 
         // vars
@@ -915,19 +899,6 @@ jQuery(document).ready(function($) {
 
     }
 
-    /*
-    *  document ready
-    *
-    *  This function will render each map when the document is ready (page has loaded)
-    *
-    *  @type	function
-    *  @date	8/11/2013
-    *  @since	5.0.0
-    *
-    *  @param	n/a
-    *  @return	n/a
-    */
-// global var
     var map = null;
 
     $(document).ready(function(){
