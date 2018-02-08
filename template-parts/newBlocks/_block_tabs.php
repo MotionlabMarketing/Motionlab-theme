@@ -12,6 +12,9 @@
 $layout = get_sub_field($current . '_layout');
 
 switch ($layout):
+    case "employer":
+        include('tabs/__employer_tabs.php');
+        break;
     case "contentAside":
         include('tabs/__contentAside.php');
         break;

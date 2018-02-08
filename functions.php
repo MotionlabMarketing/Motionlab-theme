@@ -317,3 +317,25 @@ add_action('acf/init', 'my_acf_init');
 
 // update_option( 'siteurl', 'http://docs.framework.d3z.uk' );
 // update_option( 'home', 'http://docs.framework.d3z.uk' );
+
+/*==================================================================
+CUSTOM POST TYPES
+==================================================================*/
+function create_posttype() {
+
+    register_post_type( 'videos',
+        // CPT Options
+        array(
+            'labels' => array(
+                'name' => __( 'Videos' ),
+                'singular_name' => __( 'Video' )
+            ),
+            'public' => true,
+            'has_archive' => false,
+            'rewrite' => array('slug' => 'videos'),
+            'menu_icon'           => 'dashicons-format-video',
+        )
+    );
+}
+// Hooking up our function to theme setup
+add_action( 'init', 'create_posttype' );

@@ -944,6 +944,36 @@ form {
   }
 }
 
+.tabs-employer {
+
+  .tab {
+    padding: 1rem 3rem;
+    min-width: 30%;
+
+    background-color: $brand-white;
+    border:   1px solid $brand-grayLightest;
+
+
+    &.tab-active {
+      background-color: $brand-primary;
+      border: 1px solid $brand-primary;
+
+      &:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: calc(50% - #{$arrow-size});
+        bottom: -$arrow-size;
+        border-left: $arrow-size solid transparent;
+        border-right: $arrow-size solid transparent;
+        border-top: $arrow-size solid $brand-primary;
+      }
+    }
+  }
+}
+
 .team-basic {
 
   .member {

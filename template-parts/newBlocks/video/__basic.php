@@ -1,7 +1,7 @@
 <?php
 /**
- * TEAM – BASIC LAYOUT BLOCK ------------------------
- * A basic listing layout for some of the team members.
+ * VIDEO – BASIC LAYOUT BLOCK ------------------------
+ * A basic listing layout for some of the videos.
  *
  * @author Joe Curran
  * @created 29 Jan 2018
@@ -9,13 +9,17 @@
  * @version 1.00
  */
 
+$bgColor          = get_sub_field($current . '_background_system_background_colours');
+$txtColor         = get_sub_field($current . '_text_system_text_colours');
+
+
 $videosShow = get_sub_field('number_of_videos');
 
 $blockTitle = get_sub_field('block_videos_title_title');
 
 ?>
 
-<section class="video-basic || clearfix my4 mb4">
+<section class="video-basic || clearfix my4 mb4 <?=$bgColor?> <?=$txtColor?>">
 
     <div class="container">
 

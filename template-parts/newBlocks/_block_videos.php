@@ -12,8 +12,8 @@
 $layout = get_sub_field($current . '_layout');
 
 switch ($layout):
-    case "basic":
-        include('video/__basic.php');
+    case "video_stories":
+        include('video/__video_stories.php');
         break;
     default:
         include('video/__basic.php');
