@@ -640,6 +640,25 @@ form {
 
 }
 
+#package {
+  .md-hidden-down {
+    @media (max-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+  .md-hidden-up {
+    @media (min-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+
+  .row {
+    @media (max-width: $breakpoint-md) {
+     border-width: 1px;
+    }
+  }
+}
+
 
 // ------ BLOCK STYLES ------ //
 
