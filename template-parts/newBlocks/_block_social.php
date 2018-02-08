@@ -9,13 +9,13 @@
  * @version 1.00
  */
 
-    $layout = get_sub_field('block_social_layout');
+$layout = get_sub_field($current . '_layout');
 
-    switch ($layout):
-        case "basic":
-            include ('social/__basic.php');
-            break;
-        default:
-            include ('social/__basic.php');
-            break;
-    endswitch;
+switch ($layout):
+    case "basic":
+        include('social/__basic.php');
+        break;
+    default:
+        include('social/__basic.php');
+        break;
+endswitch;

@@ -10,14 +10,14 @@
  * @version 1.00
  */
 
-    $team_layout = get_sub_field('block_team_layout');
+$layout = get_sub_field($current . '_layout');
 
-    switch ($team_layout):
-        case "basic":
-            include ('team/__basic.php');
-            break;
-        default:
-            include ('team/__basic.php');
-            break;
-    endswitch;
+switch ($team_layout):
+    case "basic":
+        include('team/__basic.php');
+        break;
+    default:
+        include('team/__basic.php');
+        break;
+endswitch;
 

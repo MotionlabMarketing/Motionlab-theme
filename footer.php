@@ -5,7 +5,7 @@
 
     <div class="col-12 || text-center">
 
-        <div class="wysiwyg || mx6 px6 white">
+        <div class="wysiwyg || md-mx6 md-px6 white">
 
             <?=get_field('footer_cta_content', 'option')?>
 

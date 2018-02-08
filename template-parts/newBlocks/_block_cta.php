@@ -9,17 +9,17 @@
  * @version 1.00
  */
 
-    $team_layout = get_sub_field('block_cta_layout');
+$layout = get_sub_field($current . '_layout');
 
-    switch ($team_layout):
-        case "sections":
-            include ('cta/__sections.php');
-            break;
-        case "basic":
-            include ('cta/__basic.php');
-            break;
-        default:
-            include ('cta/__basic.php');
-            break;
-    endswitch;
+switch ($team_layout):
+    case "sections":
+        include('cta/__sections.php');
+        break;
+    case "basic":
+        include('cta/__basic.php');
+        break;
+    default:
+        include('cta/__basic.php');
+        break;
+endswitch;
 

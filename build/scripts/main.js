@@ -474,7 +474,6 @@ jQuery(document).ready(function($) {
 
     $.fn.matchHeight._afterUpdate = function(resize) {
         $.fn.matchHeight._apply('.js-match-height-alt');
-        console.log('done');
     }
 
 

@@ -11,7 +11,7 @@ if( have_rows('building_blocks') ) {
         include(get_template_directory() .'/inc/block-variables.php');
 
         // CHECK FOR NEW BLOCKS //
-        $blocks = ['block_button', 'block_debug', 'block_team', 'block_cta', 'block_linkBoxes', 'block_videos', 'block_social', 'block_pods', 'block_button', 'block_logos', 'block_tabs'];
+        $blocks = ['block_button', 'block_debug', 'block_team', 'block_cta', 'block_linkBoxes', 'block_videos', 'block_social', 'block_pods', 'block_button', 'block_logos', 'block_tabs', 'block_jobs'];
         if (in_array(get_row_layout(), $blocks)) {
 
             $current = get_row_layout();

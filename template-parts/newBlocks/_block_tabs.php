@@ -13,13 +13,13 @@ $layout = get_sub_field($current . '_layout');
 
 switch ($layout):
     case "contentAside":
-        include ('tabs/__contentAside.php');
+        include('tabs/__contentAside.php');
         break;
     case "dot_tabs":
-        include ('tabs/__dot_tabs.php');
+        include('tabs/__dot_tabs.php');
         break;
     default:
-        include ('tabs/__basic.php');
+        include('tabs/__basic.php');
         break;
 endswitch;
 

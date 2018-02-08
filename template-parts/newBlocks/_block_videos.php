@@ -9,13 +9,13 @@
  * @version 1.00
  */
 
-    $layout = get_sub_field('block_videos_layout');
+$layout = get_sub_field($current . '_layout');
 
-    switch ($layout):
-        case "basic":
-            include ('video/__basic.php');
-            break;
-        default:
-            include ('video/__basic.php');
-            break;
-    endswitch;
+switch ($layout):
+    case "basic":
+        include('video/__basic.php');
+        break;
+    default:
+        include('video/__basic.php');
+        break;
+endswitch;
