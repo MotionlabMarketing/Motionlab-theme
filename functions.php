@@ -7,6 +7,8 @@
 * @package motionlabtheme
 */
 
+define("BLOCKS_DIR", get_template_directory() . "/template-parts/newBLocks/");
+
 
 /*==================================================================
 UNDERSCORES STUFF
