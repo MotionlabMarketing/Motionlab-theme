@@ -9,9 +9,9 @@ $brand-quaternary:   #efa04c;
 
 $brand-white:        #ffffff;
 $brand-gray:         #555555;
-$brand-grayLightest: #ebebeb;
 $brand-grayLight:    lighten($brand-gray, 55%);
-
+$brand-grayDark:      darken($brand-gray, 10%);
+$brand-grayLightest: #ebebeb;
 $brand-black:        #000000;
 
 $brand-linkColour:   $brand-gray;
@@ -22,7 +22,6 @@ $brand-body:         #ffffff;
 $brand-base:         $brand-black;
 
 $arrow-size: 10px;
-
 
 body {
   background-color: $brand-body;
@@ -462,6 +461,121 @@ form {
 }
 
 /**
+ * BORDERS
+ * TODO: Change this to use SCSS functions.
+ */
+
+// BORDER RESETS.
+.border-1 {
+  border-width: 0;
+}
+
+.border-2 {
+  border-width: 0;
+}
+
+.border-3 {
+  border-width: 0;
+}
+
+.border-none {
+  border: 0;
+}
+
+// RULE BORDERS.
+hr.border-1 {
+  border-bottom-width: 1px;
+}
+hr.border-2 {
+  border-bottom-width: 2px;
+}
+hr.border-3 {
+  border-bottom-width: 3px;
+}
+hr.border-4 {
+  border-bottom-width: 4px;
+}
+hr.border-5 {
+  border-bottom-width: 5px;
+}
+
+// BORDER COLOURS.
+.border-light-1 {
+  border-color: $brand-grayLight;
+}
+
+.border-dark-1 {
+  border-color: $brand-grayDark;
+}
+
+// BORDER STYLES.
+.border-solid {
+  border-style: double;
+}
+
+.border-dashed {
+  border-style: dashed;
+}
+
+.border-dotted {
+  border-style: dotted;
+}
+
+.border-double {
+  border-style: double;
+}
+
+// BORDERS SIDES.
+.border-top {
+  border-top-width: 1px;
+
+  &.border-2 {
+    border-top-width: 2px;
+  }
+
+  &.border-3 {
+    border-top-width: 3px;
+  }
+}
+
+.border-bottom {
+  border-bottom-width: 1px;
+
+  &.border-2 {
+    border-bottom-width: 2px;
+  }
+
+  &.border-3 {
+    border-bottom-width: 3px;
+  }
+}
+
+.border-left {
+  border-left-width: 1px;
+
+  &.border-2 {
+    border-left-width: 2px;
+  }
+
+  &.border-3 {
+    border-left-width: 3px;
+  }
+}
+
+.border-right {
+  border-right-width: 1px;
+
+  &.border-2 {
+    border-right-width: 2px;
+  }
+
+  &.border-3 {
+    border-right-width: 3px;
+  }
+}
+
+
+/**
  * TAGS & CATEGORIES
  */
 .tags {
@@ -500,6 +614,9 @@ form {
     }
   }
 }
+
+
+
 // ------ TEMPLATES AND SINGLE STYLES ------ //
 
 // LISTING TESTIMONIALS //

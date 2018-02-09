@@ -11,12 +11,18 @@ if( have_rows('building_blocks') ) {
         include(get_template_directory() .'/inc/block-variables.php');
 
         // CHECK FOR NEW BLOCKS //
-        $blocks = ['block_button', 'block_debug', 'block_team', 'block_cta', 'block_linkBoxes', 'block_videos', 'block_social', 'block_pods', 'block_button', 'block_logos', 'block_tabs', 'block_jobs', 'block_timeline', 'block_utilities'];
+        $blocks = ['block_spacers', 'block_button', 'block_debug', 'block_team', 'block_cta', 'block_linkBoxes', 'block_videos', 'block_social', 'block_pods', 'block_button', 'block_logos', 'block_tabs', 'block_jobs', 'block_timeline', 'block_utilities'];
         if (in_array(get_row_layout(), $blocks)) {
 
             $current = get_row_layout();
-            // TODO: Need to move blocks folder structure and update the routing.
-            include(BLOCKS_DIR . '_'. $current .'.php');
+            include (BLOCKS_DIR . '_blocks_settings.php');
+
+            if ($block['enabled'] == true || empty($block['enabled'])): // TODO: ONCE ALL BLOCKS ARE UPDATED THIS NEED TO BE UPDATED.
+
+                // TODO: Need to move blocks folder structure and update the routing.
+                include(BLOCKS_DIR . '_'. $current .'.php');
+
+            endif;
 
         } else {
 
@@ -29,7 +35,7 @@ if( have_rows('building_blocks') ) {
             } elseif (get_row_layout() == 'tabs_simple') {
                 include(BLOCKS_DIR . 'tabs_simple.php');
             } elseif (get_row_layout() == 'full_width_banner') {
-                include(BLOCKS_DIR . 'full_width_banner.php');  
+                include(BLOCKS_DIR . 'full_width_banner.php');
             } elseif (get_row_layout() == 'media_object') {
                 include(BLOCKS_DIR . 'media_object.php');
             } elseif (get_row_layout() == 'slider_simple') {
