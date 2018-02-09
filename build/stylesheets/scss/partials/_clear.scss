@@ -1,5 +1,7 @@
 // Clear
-
+.clearfix {
+  clear: both;
+}
 
 .clearfix::before,
 .clearfix::after {

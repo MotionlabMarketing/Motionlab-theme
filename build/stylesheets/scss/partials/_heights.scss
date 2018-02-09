@@ -17,11 +17,13 @@
 .min-height-auto { min-height: auto; }
 .min-height-100 { min-height: 100%; }
 
-.min-height-v25 { min-height: 25vh; }
-.min-height-v35 { min-height: 35vh; }
-.min-height-v50 { min-height: 50vh; }
-.min-height-v75 { min-height: 75vh; }
-.min-height-v85 { min-height: 85vh; }
+.min-height-v15  { min-height: 15vh; }
+.min-height-v20  { min-height: 20vh; }
+.min-height-v25  { min-height: 25vh; }
+.min-height-v35  { min-height: 35vh; }
+.min-height-v50  { min-height: 50vh; }
+.min-height-v75  { min-height: 75vh; }
+.min-height-v85  { min-height: 85vh; }
 .min-height-v100 { min-height: 100vh; }
 
 
@@ -38,7 +40,9 @@
     &height-v100 { height: 100vh; }
 
     &min-height-auto { min-height: auto; }
+    &min-height-v15  { min-height: 15vh; }
     &min-height-100 { min-height: 100%; }
+    &min-height-v20  { min-height: 20vh; }
     &min-height-v25 { min-height: 25vh; }
     &min-height-v35 { min-height: 35vh; }
     &min-height-v50 { min-height: 50vh; }

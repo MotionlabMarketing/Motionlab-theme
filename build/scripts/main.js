@@ -1,4 +1,8 @@
-$(document).ready(function() {
+/**
+ * TODO: Review all of these functions and remove any that are not used. We are loading a large number of plugins which may not be used.
+ */
+
+jQuery(document).ready(function($) {
 
     /*========================
     Simple Parallax
@@ -470,7 +474,6 @@ $(document).ready(function() {
 
     $.fn.matchHeight._afterUpdate = function(resize) {
         $.fn.matchHeight._apply('.js-match-height-alt');
-        console.log('done');
     }
 
 
@@ -539,6 +542,16 @@ $(document).ready(function() {
         $wrapper.find('[data-tabs="content"]').find('section[id=' + target + ']').removeClass('hide');
     });
 
+    // TODO: EDIT THE TIMELINE STUFF //
+    $('#changeDropdown').on('change', function () {
+        changeTimeline($(this).val());
+    });
+
+    function changeTimeline(ev) {
+        var $wrapper = $('[data-tabs="wrapper"]');
+        $wrapper.find('[data-tabs="content"]').children('section').addClass('hide');
+        $wrapper.find('[data-tabs="content"]').find('section[id=date-id-' + ev + ']').removeClass('hide');
+    }
 
     /*======================================================
     HOTSPOT : HOVER
@@ -571,49 +584,49 @@ $(document).ready(function() {
     ROTATING SEARCH PLACEHOLDER
     ========================================================*/
 
-    var vals = $('.js-search').data('placeholder').split(',');
-    var keyframes = [vals[0]];
-
-    // generate keyframes
-    var count = 0;
-    while (count < vals.length) {
-        last_frame = keyframes[keyframes.length - 1];
-        if (vals[(count + 1) % vals.length] == last_frame) { // if the keyframe is the current string
-            count++;
-        } else if (vals[(count + 1) % vals.length].lastIndexOf(last_frame, 0) === 0) { // if the current keyframe is part of the desired goal
-            keyframes.push(last_frame + vals[(count + 1) % vals.length][last_frame.length]);
-        } else { // delete from keyframe
-            keyframes.push(last_frame.substring(0, last_frame.length - 1));
-        }
-    }
-
-    var input = document.getElementById('js-search-id');
-
-    function ph_add(i) {
-        setTimeout(function() {
-            input.setAttribute('placeholder', keyframes[i]);
-            if (keyframes[(i + 1) % keyframes.length].length > keyframes[i].length) {
-                ph_add((i + 1) % keyframes.length);
-            } else {
-                setTimeout(function() {
-                    ph_del((i + 1) % keyframes.length);
-                }, 2500)
-            }
-        }, 110 * Math.random());
-    }
-
-    function ph_del(i) {
-        setTimeout(function() {
-            input.setAttribute('placeholder', keyframes[i]);
-            if (keyframes[(i + 1) % keyframes.length].length > keyframes[i].length) {
-                ph_add((i + 1) % keyframes.length);
-            } else {
-                ph_del((i + 1) % keyframes.length);
-            }
-        }, 65);
-    }
-
-    ph_add(0);
+    // var vals = $('.js-search').data('placeholder').split(',');
+    // var keyframes = [vals[0]];
+    //
+    // // generate keyframes
+    // var count = 0;
+    // while (count < vals.length) {
+    //     last_frame = keyframes[keyframes.length - 1];
+    //     if (vals[(count + 1) % vals.length] == last_frame) { // if the keyframe is the current string
+    //         count++;
+    //     } else if (vals[(count + 1) % vals.length].lastIndexOf(last_frame, 0) === 0) { // if the current keyframe is part of the desired goal
+    //         keyframes.push(last_frame + vals[(count + 1) % vals.length][last_frame.length]);
+    //     } else { // delete from keyframe
+    //         keyframes.push(last_frame.substring(0, last_frame.length - 1));
+    //     }
+    // }
+    //
+    // var input = document.getElementById('js-search-id');
+    //
+    // function ph_add(i) {
+    //     setTimeout(function() {
+    //         input.setAttribute('placeholder', keyframes[i]);
+    //         if (keyframes[(i + 1) % keyframes.length].length > keyframes[i].length) {
+    //             ph_add((i + 1) % keyframes.length);
+    //         } else {
+    //             setTimeout(function() {
+    //                 ph_del((i + 1) % keyframes.length);
+    //             }, 2500)
+    //         }
+    //     }, 110 * Math.random());
+    // }
+    //
+    // function ph_del(i) {
+    //     setTimeout(function() {
+    //         input.setAttribute('placeholder', keyframes[i]);
+    //         if (keyframes[(i + 1) % keyframes.length].length > keyframes[i].length) {
+    //             ph_add((i + 1) % keyframes.length);
+    //         } else {
+    //             ph_del((i + 1) % keyframes.length);
+    //         }
+    //     }, 65);
+    // }
+    //
+    // ph_add(0);
 
 
 
@@ -677,33 +690,6 @@ $(document).ready(function() {
     $(window).on('resize', function() {
         stickyDiv();
     });
-
-
-    /*======================================================
-    GOOGLE MAP ON CASE STUDY
-    ========================================================*/
-
-    // // initiate Google maps
-    // initialize();
-    // // make a .hover event
-    // $('#markers_info .marker').hover(
-    //     // mouse in
-    //     function () {
-    //         // first we need to know which <div class="marker"></div> we hovered
-    //         var index = $('#markers_info .marker').index(this);
-    //         markers[index].setIcon(highlightedIcon());
-    //         markers[index].setAnimation(google.maps.Animation.BOUNCE);
-    //     },
-    //     // mouse out
-    //     function () {
-    //         // first we need to know which <div class="marker"></div> we hovered
-    //         var index = $('#markers_info .marker').index(this);
-    //         markers[index].setIcon(normalIcon());
-    //         markers[index].setAnimation(null);
-    //     }
-    //
-    // );
-
 
 }); // ENDS DOC READY AT TOP
 
@@ -772,9 +758,158 @@ function highlightedIcon() {
 }
 //google.maps.event.addDomListener(window, 'load', initialize);
 
+jQuery(document).ready(function($) {
+    setTimeout(function () {
+        $('[data-content]').fadeTo(600, 1);
+        $('[data-loader]').delay(200).fadeOut(600);
+    }, 2000);
+    2000;
+
+    $('.grid').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: '.grid-sizer',
+        percentPosition: true
+    });
+});
+
+(function($) {
+
+    /*
+    *  new_map
+    *
+    *  This function will render a Google Map onto the selected jQuery element
+    *
+    *  @type	function
+    *  @date	8/11/2013
+    *  @since	4.3.0
+    *
+    *  @param	$el (jQuery element)
+    *  @return	n/a
+    */
+
+    function new_map( $el ) {
+
+        // var
+        var $markers = $el.find('.marker');
 
 
-setTimeout(function(){
-    $('[data-content]').fadeTo(600, 1);
-    $('[data-loader]').delay(200).fadeOut(600);
-}, 2000); 2000;
+        // // vars
+        // var args = {
+        //     zoom		: 16,
+        //     center		: new google.maps.LatLng(0, 0),
+        //     mapTypeId	: google.maps.MapTypeId.ROADMAP
+        // };
+        var args = {
+            zoom: 15,
+            center: new google.maps.LatLng(0, 0),
+            mapTypeControl: false,
+            panControl: false,
+            scrollwheel: true,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.SMALL,
+                position: google.maps.ControlPosition.RIGHT_CENTER
+            },
+            styles: [{"featureType":"administrative","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","elementType":"all","stylers":[{"saturation":-100},{"lightness":"50"},{"visibility":"simplified"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"lightness":"30"}]},{"featureType":"road.local","elementType":"all","stylers":[{"lightness":"40"}]},{"featureType":"transit","elementType":"all","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]},{"featureType":"water","elementType":"labels","stylers":[{"lightness":-25},{"saturation":-100}]}]
+        };
+
+
+        // create map
+        var map = new google.maps.Map( $el[0], args);
+
+
+        // add a markers reference
+        map.markers = [];
+
+
+        // add markers
+        $markers.each(function(){
+
+            add_marker( $(this), map );
+
+        });
+
+
+        // center map
+        center_map( map );
+
+
+        // return
+        return map;
+
+    }
+
+    function add_marker( $marker, map ) {
+
+        // var
+        var latlng = new google.maps.LatLng( $marker.attr('data-lat'), $marker.attr('data-lng') );
+
+        // create marker
+        var marker = new google.maps.Marker({
+            position	: latlng,
+            map			: map
+        });
+
+        // add to array
+        map.markers.push( marker );
+
+        // if marker contains HTML, add it to an infoWindow
+        if( $marker.html() )
+        {
+            // create info window
+            var infowindow = new google.maps.InfoWindow({
+                content		: $marker.html()
+            });
+
+            // show info window when marker is clicked
+            google.maps.event.addListener(marker, 'click', function() {
+
+                infowindow.open( map, marker );
+
+            });
+        }
+
+    }
+
+    function center_map( map ) {
+
+        // vars
+        var bounds = new google.maps.LatLngBounds();
+
+        // loop through all markers and create bounds
+        $.each( map.markers, function( i, marker ){
+
+            var latlng = new google.maps.LatLng( marker.position.lat(), marker.position.lng() );
+
+            bounds.extend( latlng );
+
+        });
+
+        // only 1 marker?
+        if( map.markers.length == 1 )
+        {
+            // set center of map
+            map.setCenter( bounds.getCenter() );
+            map.setZoom( 16 );
+        }
+        else
+        {
+            // fit to bounds
+            map.fitBounds( bounds );
+        }
+
+    }
+
+    var map = null;
+
+    $(document).ready(function(){
+
+        $('.acf-map').each(function(){
+
+            // create map
+            map = new_map( $(this) );
+
+        });
+
+    });
+
+})(jQuery);

@@ -1,5 +1,28 @@
 // Project
 
+.admin-bar {
+  margin-bottom: 32px;
+}
+.admin-bar header.top-0 {
+  top: 32px;
+}
+
+.bg-smoke {
+  background-color: #fafafa;
+}
+
+.acf-map {
+  width: 100%;
+  height: 400px;
+  border: #ccc solid 1px;
+  margin: 20px 0;
+}
+
+/* fixes potential theme css conflict */
+.acf-map img {
+  max-width: inherit !important;
+}
+
 
 
 .videoWrapper {
@@ -29,7 +52,7 @@
 
 .btn {
    display: block;
-   margin: 0 0.4rem;
+   margin: 0 0.4rem 0 0;
    text-align: center;
 
    @media (min-width: $breakpoint-sm) {
@@ -62,29 +85,31 @@
     Joe Curran
 */
 
-.border-radius-0  {border-radius: 0;}
-.border-radius-1  {border-radius: 1rem;}
-.border-radius-2  {border-radius: 2rem;}
-.border-radius-3  {border-radius: 3rem;}
-.border-radius-4  {border-radius: 4rem;}
-.border-radius-5  {border-radius: 5rem;}
-.border-radius-6  {border-radius: 6rem;}
-.border-radius-7  {border-radius: 7rem;}
-.border-radius-8  {border-radius: 8rem;}
-.border-radius-9  {border-radius: 9rem;}
-.border-radius-10 {border-radius: 10rem;}
+.border-radius-0   {border-radius: 0;}
+.border-radius-1   {border-radius: 0.2rem;}
+.border-radius-2   {border-radius: 0.4rem;}
+.border-radius-3   {border-radius: 0.6rem;}
+.border-radius-4   {border-radius: 0.8rem;}
+.border-radius-5   {border-radius: 1rem;}
+.border-radius-6   {border-radius: 1.2rem;}
+.border-radius-7   {border-radius: 1.4rem;}
+.border-radius-8   {border-radius: 1.6rem;}
+.border-radius-9   {border-radius: 1.8rem;}
+.border-radius-10  {border-radius: 2rem;}
+.border-radius-max {border-radius: 10rem;}
 
-.border-radius-0-5  {border-radius: 0.5rem;}
-.border-radius-1-5  {border-radius: 1.5rem;}
-.border-radius-2-5  {border-radius: 2.5rem;}
-.border-radius-3-5  {border-radius: 3.5rem;}
-.border-radius-4-5  {border-radius: 4.5rem;}
-.border-radius-5-5  {border-radius: 5.5rem;}
-.border-radius-6-5  {border-radius: 6.5rem;}
-.border-radius-7-5  {border-radius: 7.5rem;}
-.border-radius-8-5  {border-radius: 8.5rem;}
-.border-radius-9-5  {border-radius: 9.5rem;}
-.border-radius-10-5 {border-radius: 10.5rem;}
+//$i: 0;
+//$br-step: 0;
+//
+//@for $i from 1 through 10 {
+//  $border-radius: $br-step * 0.5;
+//  $br-step: $border-radius;
+//
+//  .br-c1-#{$i} {
+//    border-radius: $border-radius;
+//  }
+//}
+
 
 
 
@@ -92,6 +117,7 @@
    position: relative;
    transform: scale(1, 1);
    transition: $transition;
+
    &:hover{
       box-shadow: 0px 0px 2rem $darken-1;
       z-index: 2;
@@ -377,6 +403,27 @@ address {
 }
 
 
+/**
+    -------------------
+    ----- SPACERS -----
+    -------------------
+
+    Added Styles Options
+    26 Jan 2018
+    Joe Curran
+*/
+
+hr.border-lighten-1 {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+hr.border-darken-1 {
+  border-color: rgba(0, 0, 0, 0.6);
+}
+hr.border-0 {
+  border-color: transparent;
+}
+
+
 // Tabs
 .tab-active{
     background: $primary;
@@ -396,66 +443,93 @@ address {
     }
 }
 
+.tab-center {
+  min-width: 8rem;
+}
 
-// Pagination
-.page-numbers {
+$arrow-size: 10px;
+.tab-arrowBottom {
+
+  &:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 42%;
+    bottom: -$arrow-size;
+    border-left: $arrow-size solid transparent;
+    border-right: $arrow-size solid transparent;
+    border-top: $arrow-size solid $smoke;
+  }
+}
+
+.tab-active {
+  &:after {
+    border-top: $arrow-size solid $primary;
+  }
+}
+
+
+  // Pagination
+  .page-numbers {
     @extend .px2;
     @extend .bold;
     .number{
-        opacity: 0.5;
+      opacity: 0.5;
     }
     &.current .number{
-        opacity: 1;
+      opacity: 1;
     }
-}
+  }
 
 
 
-.priority-nav {
+  .priority-nav {
     white-space: nowrap;
-}
+  }
 
-.priority-nav > ul {
+  .priority-nav > ul {
     display: inline-block;
-}
+  }
 
-.priority-nav > ul > li {
+  .priority-nav > ul > li {
     display: inline-block;
-}
+  }
 
-.priority-nav-has-dropdown .priority-nav__dropdown-toggle {
+  .priority-nav-has-dropdown .priority-nav__dropdown-toggle {
     position: relative;
-}
+  }
 
-.priority-nav__wrapper {
+  .priority-nav__wrapper {
     position: relative;
-}
+  }
 
-.priority-nav__dropdown {
+  .priority-nav__dropdown {
     position: absolute;
     visibility: hidden;
-}
+  }
 
-.priority-nav__dropdown.show {
+  .priority-nav__dropdown.show {
     visibility: visible;
-}
+  }
 
-.priority-nav__dropdown-toggle {
+  .priority-nav__dropdown-toggle {
     visibility: hidden;
     position: absolute;
-}
+  }
 
-.priority-nav-is-visible {
+  .priority-nav-is-visible {
     visibility: visible;
-}
+  }
 
-.priority-nav-is-hidden {
+  .priority-nav-is-hidden {
     visibility: hidden;
-}
+  }
 
-//theme for priority nav
+  //theme for priority nav
 
-.priority-nav__dropdown-toggle{
+  .priority-nav__dropdown-toggle{
     appearance: none;
     border: $border-width solid transparent;
     display: inline-block;
@@ -467,200 +541,545 @@ address {
     text-transform: uppercase;
     background: none;
     &:after{
-        font-family: "fontAwesome";
-        font-size: 14px;
-        content: "\f142";
-        margin-left: $space-2;
+      font-family: "fontAwesome";
+      font-size: 14px;
+      content: "\f142";
+      margin-left: $space-2;
     }
-}
+  }
 
-.nav__dropdown{
+  .nav__dropdown{
     .dropdown{
-        transition: 0s;
+      transition: 0s;
     }
     &.show{
-        list-style-type: none;
-        margin:0;
-        padding:0;
-        width: 240px;
-        background: $secondary;
-        a{
-            display: block;
-            border-bottom: 1px solid $darken-1;
-            border-right:none;
+      list-style-type: none;
+      margin:0;
+      padding:0;
+      width: 240px;
+      background: $secondary;
+      a{
+        display: block;
+        border-bottom: 1px solid $darken-1;
+        border-right:none;
+      }
+      .has-dropdown{
+        &.active .dropdown{
+          height: auto;
+          z-index: 1;
+          visibility: visible;
+          opacity: 1;
         }
-        .has-dropdown{
-            &.active .dropdown{
-                height: auto;
-                z-index: 1;
-                visibility: visible;
-                opacity: 1;
-            }
-            .dropdown{
-                position: relative;
-                top: auto;
-                height: 0;
-                a{
-                    background: darken($secondary, 5%);
-                }
-            }
+        .dropdown{
+          position: relative;
+          top: auto;
+          height: 0;
+          a{
+            background: darken($secondary, 5%);
+          }
         }
+      }
     }
-}
+  }
 
 
 
-// isotope
-.grid-item {
+  // isotope
+  .grid-item {
     width: 100%;
     @media (min-width: $breakpoint-md) {
-        width:50%;
+      width:50%;
     }
     @media (min-width: $breakpoint-lg) {
-        width: 33.3%;
+      width: 33.3%;
     }
-}
+  }
 
 
 
-// slick slider-height
+  // slick slider-height
 
-.js-hero-slider-image{
-   height:100%;
-   .slick-list, .slick-track{
+  .js-hero-slider-image{
+    height:100%;
+    .slick-list, .slick-track{
       height:100%;
-   }
-}
-
-
-.productSliderNav .slick-current .border{
-   border-color: $darken-3;
-}
-
-
-// hot spot pulse
-
-.pulse {
-  display: block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  box-shadow: 0 0 0 rgba(255,255,255, 1);
-  animation: pulse 2s infinite;
-  transition: $transition;
-  margin-left: -5px;
-  margin-top: -5px;
-}
-
-
-.hotspot-active.pulse {
-  width:16px;
-  height:16px;
-  box-shadow: 0 0 0 rgba(204,55,55, 1);
-  animation: pulsehover 2s infinite;
-  transition: $transition;
-  margin-left: -8px;
-  margin-top: -8px;
-  border-color: $white;
-}
-
-@-webkit-keyframes pulse {
-  0% {
-    -webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 1);
+    }
   }
-  70% {
+
+
+  .productSliderNav .slick-current .border{
+    border-color: $darken-3;
+  }
+
+
+  // hot spot pulse
+
+  .pulse {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 rgba(255,255,255, 1);
+    animation: pulse 2s infinite;
+    transition: $transition;
+    margin-left: -5px;
+    margin-top: -5px;
+  }
+
+
+  .hotspot-active.pulse {
+    width:16px;
+    height:16px;
+    box-shadow: 0 0 0 rgba(204,55,55, 1);
+    animation: pulsehover 2s infinite;
+    transition: $transition;
+    margin-left: -8px;
+    margin-top: -8px;
+    border-color: $white;
+  }
+
+  @-webkit-keyframes pulse {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 1);
+    }
+    70% {
       -webkit-box-shadow: 0 0 0 10px rgba(255,255,255, 0);
-  }
-  100% {
+    }
+    100% {
       -webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+    }
   }
-}
-@keyframes pulse{
-  0% {
-    -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 1);
-    box-shadow: 0 0 0 0 rgba(255,255,255, 1);
-  }
-  70% {
+  @keyframes pulse{
+    0% {
+      -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 1);
+      box-shadow: 0 0 0 0 rgba(255,255,255, 1);
+    }
+    70% {
       -moz-box-shadow: 0 0 0 10px rgba(255,255,255, 0);
       box-shadow: 0 0 0 10px rgba(255,255,255, 0);
-  }
-  100% {
+    }
+    100% {
       -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0);
       box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+    }
   }
-}
 
 
-@-webkit-keyframes pulsehover {
-  0% {
-    -webkit-box-shadow: 0 0 0 0 rgba(204,55,55, 1);
-  }
-  70% {
+  @-webkit-keyframes pulsehover {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 rgba(204,55,55, 1);
+    }
+    70% {
       -webkit-box-shadow: 0 0 0 20px rgba(204,55,55, 0);
-  }
-  100% {
+    }
+    100% {
       -webkit-box-shadow: 0 0 0 0 rgba(204,55,55, 0);
+    }
   }
-}
-@keyframes pulsehover {
-  0% {
-    -moz-box-shadow: 0 0 0 0 rgba(204,55,55, 1);
-    box-shadow: 0 0 0 0 rgba(204,55,55, 1);
-  }
-  70% {
+  @keyframes pulsehover {
+    0% {
+      -moz-box-shadow: 0 0 0 0 rgba(204,55,55, 1);
+      box-shadow: 0 0 0 0 rgba(204,55,55, 1);
+    }
+    70% {
       -moz-box-shadow: 0 0 0 20px rgba(204,55,55, 0);
       box-shadow: 0 0 0 20px rgba(204,55,55, 0);
-  }
-  100% {
+    }
+    100% {
       -moz-box-shadow: 0 0 0 0 rgba(204,55,55, 0);
       box-shadow: 0 0 0 0 rgba(204,55,55, 0);
+    }
+  }
+
+
+
+  // site numeric pagination
+  .pagination{
+    .page-numbers{
+      display: inline-block;
+      //border-radius: $border-radius;
+      //border:1px solid $darken-1;
+      background: $white;
+      color: $body-color;
+      opacity: .4;
+      padding: 0.25rem 0.5rem;
+      &:hover{
+        background: $darken-1;
+      }
+      &.current{
+        //background: $darken-4;
+        //color: $white;
+        opacity: 1;
+      }
+      &.next,.previous{
+        opacity: 1;
+      }
+    }
+    .page-titles div{
+      display: inline-block;
+      border-radius: $border-radius;
+      border:1px solid $darken-1;
+      background: $white;
+      a{
+        color: $body-color;
+      }
+      padding: 0.25rem 0.5rem;
+      &:hover{
+        background: $darken-1;
+      }
+    }
+  }
+
+
+
+
+  @media (min-width: $breakpoint-md) {
+    .my-gym-addons{
+      width: 300px;
+    }
+  }
+
+/**
+    -------------------
+    --- LINKED BOXES --
+    -------------------
+
+    Added Basic Boxes
+    29 Jan 2018
+    Joe Curran
+*/
+
+.linkedBox-basic {
+  .item {
+    height: 8rem;
+    a {
+      height: 8rem;
+    }
+  }
+}
+
+/**
+    -------------------
+    -DARKEN BACKGROUND-
+    -------------------
+
+    Added support for
+    tags to darken
+    background colour.
+    30 Jan 2018
+    Joe Curran
+*/
+
+.darken-background {
+
+  &:after {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+}
+.darken-background-1 { background: rgba(0, 0, 0, 0.1); }
+.darken-background-2 { background: rgba(0, 0, 0, 0.2); }
+.darken-background-3 { background: rgba(0, 0, 0, 0.3); }
+.darken-background-4 { background: rgba(0, 0, 0, 0.4); }
+.darken-background-5 { background: rgba(0, 0, 0, 0.5); }
+.darken-background-6 { background: rgba(0, 0, 0, 0.6); }
+.darken-background-7 { background: rgba(0, 0, 0, 0.7); }
+.darken-background-8 { background: rgba(0, 0, 0, 0.8); }
+.darken-background-9 { background: rgba(0, 0, 0, 0.9); }
+
+
+/**
+    -------------------
+    -- PROFILE IMAGES -
+    -------------------
+
+    Added support for
+    tags to darken
+    background colour.
+    30 Jan 2018
+    Joe Curran
+*/
+
+.profile-small  { max-width: 2rem; }
+.profile-medium { max-width: 3rem; }
+.profile-large  { max-width: 5rem; }
+
+/**
+    -------------------
+    -- PROFILE IMAGES -
+    -------------------
+
+    Added support for
+    tags to darken
+    background colour.
+    30 Jan 2018
+    Joe Curran
+*/
+.social-share {
+
+  // BUTTON COLOURS
+  .nss-twitter {
+    background-color: #4ba3eb;
+  }
+  .nss-facebook {
+    background-color: #334f8d;
+  }
+  .nss-linkedin {
+    background-color: #006cac;
+  }
+  .nss-pinterest {
+    background-color: #bd081c;
+  }
+  .nss-stumbleupon {
+    background-color: #f74425;
+  }
+  .nss-google {
+    background-color: #db4130;
+  }
+
+  // STYING FOR BASIC BLOCK
+  &.social-basic {
+    ul {
+      padding: 0;
+      list-style: none;
+
+      li {
+        margin: 0 0.4rem;
+        display: inline-block;
+        padding: 0.3rem 1.2rem;
+        border-radius: 0.4rem;
+
+        a {
+          color: white;
+          font-weight: bold;
+
+          .fa {
+            margin-right: 0.3rem;
+          }
+        }
+      }
+    }
+  }
+
+  // HIDE BUTTONS
+  &.hide-twitter {
+    .nss-twitter {
+      display: none;
+    }
+  }
+  &.hide-facebook {
+    .nss-facebook {
+      display: none;
+    }
+  }
+  &.hide-linkedin {
+    .nss-linkedin {
+      display: none;
+    }
+  }
+  &.hide-pinterest {
+    .nss-pinterest {
+      display: none;
+    }
+  }
+  &.hide-stumbleupon {
+    .nss-stumbleupon {
+      display: none;
+    }
+  }
+  &.hide-google {
+    .nss-google {
+      display: none;
+    }
   }
 }
 
 
 
-// site numeric pagination
-.pagination{
-    .page-numbers{
-        display: inline-block;
-        //border-radius: $border-radius;
-        //border:1px solid $darken-1;
-        background: $white;
-        color: $body-color;
-        opacity: .4;
-        padding: 0.25rem 0.5rem;
-        &:hover{
-            background: $darken-1;
-        }
-        &.current{
-            //background: $darken-4;
-            //color: $white;
-            opacity: 1;
-        }
-        &.next,.previous{
-            opacity: 1;
-        }
-    }
-    .page-titles div{
-        display: inline-block;
-        border-radius: $border-radius;
-        border:1px solid $darken-1;
-        background: $white;
-        a{
-            color: $body-color;
-        }
-        padding: 0.25rem 0.5rem;
-        &:hover{
-            background: $darken-1;
-        }
-    }
+.first-bold p:first-child {
+  font-weight: bold;
 }
 
+/**
+    -------------------
+    -- IMAGE HOLDERS --
+    -------------------
 
+    Added support for
+    image holders.
+    30 Jan 2018
+    Joe Curran
+*/
 
+.image-holder {
+  background-size: cover;
 
-@media (min-width: $breakpoint-md) {
-   .my-gym-addons{
-      width: 300px;
-   }
+  &.img-center {
+    background-position: center;
+  }
+
+  &.img-top {
+    background-position: top;
+  }
+
+  &.img-bottom {
+    background-position: bottom;
+  }
+
+  &.img-100 {
+    min-width: 100%;
+    min-height: 8rem;
+  }
+
+  &.img-banner {
+    height: 30rem;
+  }
+
+  &.img-cover {
+    background-size: cover;
+  }
+
+  &.img-contain {
+    background-size: contain;
+  }
+
+  &.measure-wide {
+    // TODO: Remove this with the new system once built.
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &.img-square {
+
+    &.img-s1 {
+      width:  1rem;
+      height: 1rem;
+    }
+
+    &.img-s2 {
+      width:  2rem;
+      height: 2rem;
+    }
+
+    &.img-s3 {
+      width:  3rem;
+      height: 3rem;
+    }
+
+    &.img-s4 {
+      width:  4rem;
+      height: 4rem;
+    }
+
+    &.img-s5 {
+      width:  5rem;
+      height: 5rem;
+    }
+
+    &.img-s6 {
+      width:  6rem;
+      height: 6rem;
+    }
+
+    &.img-s8 {
+      width:  8rem;
+      height: 8rem;
+    }
+
+    &.img-s10 {
+      width:  10rem;
+      height: 10rem;
+    }
+
+    &.img-s12 {
+      width:  12rem;
+      height: 12rem;
+    }
+
+    &.img-s20 {
+      width:  20rem;
+      height: 20rem;
+    }
+
+  }
 }
+
+// TODO: CONVERT TO MIXIN.
+.negative-mt1 {
+   margin-top: -1rem;
+}
+.negative-mt2 {
+  margin-top: -2rem;
+}
+.negative-mt3 {
+  margin-top: -3rem;
+}
+.negative-mt4 {
+  margin-top: -4rem;
+}
+.negative-mt5 {
+  margin-top: -5rem;
+}
+.negative-mt6 {
+  margin-top: -6rem;
+}
+.negative-mt7 {
+  margin-top: -7rem;
+}
+.negative-mt8 {
+  margin-top: -8rem;
+}
+
+// TODO: CONVERT TO MIXIN //
+.z-index-10 {
+  z-index: 10;
+}
+.z-index-20 {
+  z-index: 20;
+}
+.z-index-30 {
+  z-index: 30;
+}
+.z-index-40 {
+  z-index: 40;
+}
+.z-index-50 {
+  z-index: 50;
+}
+.z-index-60 {
+  z-index: 60;
+}
+.z-index-70 {
+  z-index: 70;
+}
+.z-index-80 {
+  z-index: 80;
+}
+.z-index-90 {
+  z-index: 90;
+}
+.z-index-100 {
+  z-index: 100;
+}
+
+/**
+    -------------------
+    ----- MASONRY -----
+    -------------------
+
+    Added support for
+    masonry.
+    6 Feb 2018
+    Joe Curran
+*/
+
+.grid-item {
+  float: left;
+  width: 100%;
+  height: auto;
+}
+// GRID SIZES SET PER PAGE/TEMPLATE //

@@ -8,16 +8,25 @@ if ( get_sub_field('vertical_tabs') ){
 	$contentPad = 'md-px4 py3';
 } else {
 	$tabNav= 'flex flex-column';
-	$tabName = 'flex border-bottom border-smoke';
-	$tab= 'btn md-text-left border-bottom-none || rounded-top mr1 px3';
+	$tabName = 'flex';
+	$tab= 'btn md-text-left border-bottom-none || mr1 px3';
 	$content = 'pt4';
 	$pad = '';
 	$contentPad = '';
 }
+
+if (get_sub_field('centre_tabs') == true) {
+
+    $tab .= "|| tab-center bg-smoke btn-medium tab-arrowBottom";
+    $tabName .= "|| flex items-center justify-center";
+
+}
+
+$blockTitle  = get_sub_field($current . '_title_title');
 ?>
 
 <!-- tabs - simple -->
-<section class="pt4 <?php echo $bgColor ?> <?php echo $txtColor ?>">
+<section class="py4 <?php echo $bgColor ?> <?php echo $txtColor ?>">
 	<div data-tabs="wrapper" class="container <?php echo $extraPadding ;?> <?php echo $tabNav ?> <?php echo $measureWide ?> || traditional-tabs">
 		<div class="col col-12 <?php echo $pad ?> <?php echo $tabName ?>">
 			<?php if( have_rows('tabs')){
@@ -25,7 +34,7 @@ if ( get_sub_field('vertical_tabs') ){
 				while ( have_rows('tabs')){
 					the_row() ?>
 
-					<span data-section="tab<?php echo $i ?>" class="border border-smoke cursor-pointer narrow uppercase py3 bold || tab <?php echo $tab ?> || <?php echo $i <= 1 ? 'tab-active' : '' ?>">
+					<span data-section="tab<?php echo $i ?>" class="border border-smoke cursor-pointer narrow uppercase py3 bold relative || tab <?php echo $tab ?> || <?php echo $i <= 1 ? 'tab-active' : '' ?>">
 						<?php echo get_sub_field('tab_name') ?>
 					</span>
 
@@ -39,12 +48,56 @@ if ( get_sub_field('vertical_tabs') ){
 				$i = 1 ;
 				while ( have_rows('tabs')){
 					the_row() ?>
-					<section id="tab<?php echo $i ?>" class="<?php echo $content ?> <?php echo ($i > 1) ? 'hide' : '' ?>">
-						<div class="wysiwyg">
-							<h4><?php echo get_sub_field('title') ?></h4>
-							<p><?php echo get_sub_field('content') ?></p>
-						</div>
-					</section>
+
+                    <?php $cols = get_sub_field('number_of_columns');
+
+                    if ($cols == 1): ?>
+
+                        <section id="tab<?php echo $i ?>" class="<?php echo $content ?> <?php echo ($i > 1) ? 'hide' : '' ?> bg-white p4">
+
+                            <div class="wysiwyg p4">
+                                <?php
+                                if (!empty($blockTitle[0]['title'])) {
+                                    include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
+                                <?=get_sub_field('col_one_title_content') ?>
+                            </div>
+
+                        </section>
+
+                    <?php else: ?>
+
+                        <section id="tab<?php echo $i ?>" class="<?php echo $content ?> <?php echo ($i > 1) ? 'hide' : '' ?> bg-white p4">
+
+                            <div class="col col-6 p4">
+                                <div class="wysiwyg">
+                                    <?php
+                                    $blockTitleCol1 = get_sub_field('col_one_title_title');?>
+                                    <<?=$blockTitleCol1[0]['type']['heading']?> class="pb2 <?=$blockTitleCol1[0]['size']['heading_size']?> || <?=$blockTitleCol1[0]['color']['system_text_colours']?> <?=$blockTitleCol1[0]['title_case']['system_text_transform']?>">
+                                        <?=$blockTitleCol1[0]['title']?>
+                                    </<?=$blockTitleCol1[0]['type']['heading']?>>
+
+                                    <?=get_sub_field('col_one_title_content') ?>
+                                </div>
+                            </div>
+
+                            <div class="col col-6 p4">
+                                <div class="wysiwyg">
+                                    <?php
+                                    $blockTitleCol2 = get_sub_field('col_two_title_title');?>
+                                    <<?=$blockTitleCol2[0]['type']['heading']?> class="pb2 <?=$blockTitleCol2[0]['size']['heading_size']?> || <?=$blockTitleCol2[0]['color']['system_text_colours']?> <?=$blockTitleCol2[0]['title_case']['system_text_transform']?>">
+                                        <?=$blockTitleCol2[0]['title']?>
+                                    </<?=$blockTitleCol2[0]['type']['heading']?>>
+
+                                    <?=get_sub_field('col_two_title_content') ?>
+                                </div>
+                            </div>
+
+                        </section>
+
+                    <?php endif; ?>
+
+
+
 					<?php $i++ ; ?>
 				<?php } ?>
 			<?php } ?>

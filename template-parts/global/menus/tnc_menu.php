@@ -16,5 +16,5 @@ $menu = motionlab_menu_walker('tnc');
     <?php endif; ?>
 </div>
 <div class="col col-12 md-col-4 text-center md-text-right px5">
-    <p class="mb0 white">Site design by <a href="#" target="_blank" class="white underline hover-primary">motionlab</a></p>
+    <p class="mb0 white">Site design by <a href="#" target="_blank" class="white underline hover-primary">Motionlab</a></p>
 </div>

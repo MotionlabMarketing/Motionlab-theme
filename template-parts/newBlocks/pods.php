@@ -60,25 +60,45 @@ if( get_sub_field('full_width_full_width') == 'container'){
                         $buttonURL = get_sub_field('button_url_custom');
                     }
                     ?>
+
+                    <?php
+                    $overlayCopy = get_sub_field('enable_overlay_copy');
+                    $copy        = get_sub_field('copy');
+                    ?>
+
                     <div class="col <?php echo $class ?> px3 mb3 || js-match-height" <?php echo $animationType ?> <?php echo $animationSpeed ?> <?php echo $animationDelay ?> <?php echo $animationRepeat ?>>
                         <div class="height-100 <?php echo $podBgColor ?>">
                             <?php if( get_sub_field('image')) { ?>
                                 <a <?php if(get_sub_field('button_add')) { ?>href="<?php echo $buttonURL ?>"<?php } ?> class="block col-12 bg-cover bg-center relative hover-zoom hover-reveal overflow-hidden" style="min-height:10rem; background-image:url('<?php echo get_sub_field('image')['sizes']['large'] ?>');">
-                                    <div class="absolute left-0 top-0 width-100 height-100 bg-darken-2 z1 reveal"></div>
+                                    <div class="flex items-center justify-center absolute left-0 top-0 width-100 height-100 bg-darken-5 z1 reveal || white">
+
+                                        <?php if ($overlayCopy == true): ?>
+                                            <div class="pt2"><?=$copy?></div>
+                                        <?php endif; ?>
+
+                                    </div>
                                     <figure class="m0 overflow-hidden" style="will-change:transform;">
-                                        <img src="<?php echo get_sub_field('image')['sizes']['large'] ?>" class="display-none md-block mx-auto zoom">
+                                        <img src="<?php echo get_sub_field('image')['sizes']['large'] ?>" class="display-none md-block mx-auto">
                                     </figure>
                                 </a>
                             <?php } ?>
                             <div class="<?php echo $removePadding ?> py3 md-mb3">
                                 <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/title-loop.php') ?>
-                                <div class="pt3"><?php echo get_sub_field('copy') ?></div>
+
+                                <?php if ($overlayCopy == false): ?>
+                                    <div class="pt3"><?php echo get_sub_field('copy') ?></div>
+                                <?php endif; ?>
+
                                 <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/button.php') ?>
                             </div>
                         </div>
                     </div>
+
                 <?php } ?>
             <?php } ?>
+
+
+
         </div>
     </div>
 </section>

@@ -45,7 +45,15 @@
      width: auto;
     }
   }
+}
 
+.col-grid-5 {
+  width: 20%;
 
-
+  @media (max-width: $breakpoint-md) {
+    width: 33.33339%;
+  }
+  @media (max-width: $breakpoint-sm) {
+    width: 50%;
+  }
 }

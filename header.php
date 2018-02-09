@@ -7,14 +7,28 @@
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
     <title><?php echo get_field('website_name','option'); ?></title>
     <meta name="description" content="<?php echo get_field('website_meta','option'); ?>">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Open+Sans" rel="stylesheet">
     <script src="https://use.fontawesome.com/22d4621214.js"></script>
     <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5a033b1e69fde30011eef3d0&product=inline-share-buttons"></script>
     <?php wp_head(); ?>
+
+    <?=get_field('header_code',   'option');?>
+    <?=get_field('tracking_code', 'option');?>
+
+    <?php if (get_field('google_analytics', 'option')): ?>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-<?=get_field('google_analytics', 'option')?>"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-<?=get_field('google_analytics', 'option')?>');
+    </script>
+    <?php endif; ?>
+
 </head>
-<body class="bg-white<?php echo get_field('page_color') ?>">
+<body <?=body_class()?>>
 
-    <?php //include(get_template_directory() .'/template-parts/global/loader.php'); ?>
     <?php include(get_template_directory() .'/template-parts/global/header.php'); ?>
-
-    <div class="content clearfix || js-header-space">
+    <div class="js-header-space"></div>

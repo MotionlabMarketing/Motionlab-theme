@@ -10,6 +10,8 @@ include(get_template_directory() .'/inc/filters-order-paging.php');
 $totalPosts = $loop->found_posts;
 $currentPosts = $loop->post_count;
 $totalPages = $loop->max_num_pages;
+
+//TODO: NEED TO BE SORTED TO ALLOW FULL WIDTH BLOCKS //
 ?>
 
 <section>

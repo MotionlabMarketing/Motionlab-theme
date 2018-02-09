@@ -27,7 +27,7 @@ if ( ! function_exists( 'motionlabtheme_setup' ) ) :
 			'footer_1' => esc_html__( 'Footer 1', 'motionlabtheme' ),
 			'footer_2' => esc_html__( 'Footer 2', 'motionlabtheme' ),
 			'footer_3' => esc_html__( 'Footer 3', 'motionlabtheme' ),
-			'tnc' => esc_html__( 'TnC', 'motionlabtheme' ),
+			'tnc' => esc_html__( 'Footer – Legal Links', 'motionlabtheme' ), // TODO: Update the naming on this.
 		) );
 
 		add_theme_support( 'html5', array(
@@ -295,6 +295,47 @@ return $query;}
 add_filter('pre_get_posts','SearchFilter');
 
 
+/*==================================================================
+CUT STRING AFTER SET WORK COUNT
+==================================================================*/
+function limit_words($words, $limit, $append = ' &hellip;') {
+    $limit = $limit+1;
+    $words = explode(' ', $words, $limit);
+    array_pop($words);
+    $words = implode(' ', $words) . $append;
+    return $words;
+}
+
+/*==================================================================
+SETUP ACF GOOGLE MAPS
+==================================================================*/
+function my_acf_init() {
+
+    acf_update_setting('google_api_key', 'AIzaSyAmmvkoPA2evn0of5_sXcmyk5uoiDRBe-Q');
+}
+add_action('acf/init', 'my_acf_init');
 
 // update_option( 'siteurl', 'http://docs.framework.d3z.uk' );
 // update_option( 'home', 'http://docs.framework.d3z.uk' );
+
+/*==================================================================
+CUSTOM POST TYPES
+==================================================================*/
+function create_posttype() {
+
+    register_post_type( 'videos',
+        // CPT Options
+        array(
+            'labels' => array(
+                'name' => __( 'Videos' ),
+                'singular_name' => __( 'Video' )
+            ),
+            'public' => true,
+            'has_archive' => false,
+            'rewrite' => array('slug' => 'videos'),
+            'menu_icon'           => 'dashicons-format-video',
+        )
+    );
+}
+// Hooking up our function to theme setup
+add_action( 'init', 'create_posttype' );

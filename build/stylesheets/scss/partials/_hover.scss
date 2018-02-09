@@ -104,6 +104,7 @@
   &:focus {
 
     .zoom {
+      z-index: 100;
       transform: scale($zoom-val, $zoom-val);
     }
   }

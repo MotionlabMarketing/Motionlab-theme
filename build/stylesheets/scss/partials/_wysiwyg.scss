@@ -46,24 +46,7 @@
     a {
         position: relative;
         text-decoration: none;
-        // text-shadow: 0 0.1em 0 $white, 1px 0.1em 0 $white, -1px 0.1em 0 $white, 2px 0.1em 0 $white, -2px 0.1em 0 $white;
-        border-bottom: 1px solid $primary;
-        color: $primary;
     }
-
-    a:not(.btn) {
-      color: $primary;
-      transition: all $transition;
-      text-decoration: none;
-
-      &:hover,
-      &:focus,
-      &:active {
-        color: $link-hover-color;
-        outline: 0;
-      }
-    }
-
 
     img[style*="float:left"],
     img[style*="float: left"],

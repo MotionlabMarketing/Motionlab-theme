@@ -48,6 +48,22 @@ $border-sides: (
     border-left-width: $border-width
 }
 
+.border-thin {
+  border-width: 1px;
+}
+
+.border-think {
+  border-width: 3px;
+}
+
+.border-light {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.border-dark {
+  border-color: rgba(0, 0, 0, 0.8);
+}
+
 
 // Styles
 

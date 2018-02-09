@@ -7,7 +7,6 @@
                     <?php the_row() ?>
                         <li>
                             <a target="_blank" href="<?php echo get_sub_field('link','option') ?>" class="white hover-primary">
-                                <span class="fa fa-fw <?php echo get_sub_field('icon','option') ?> m0 mr2"></span>
                                 <span class="sm-show"><?php echo get_sub_field('title','option') ?></span>
                             </a>
                         </li>

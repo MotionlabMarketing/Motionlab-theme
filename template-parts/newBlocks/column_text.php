@@ -24,11 +24,13 @@ if( get_sub_field('anchor_buttons_bottom') == TRUE ) {
 } else {
     $anchorButtons = '';
 }
+
+$blockCustomClass = get_sub_field('columns_custom_class');
 ?>
 
 <!-- column text NEW -->
 
-<section class="<?php echo $bgColor ?> <?php echo $txtColor ?>">
+<section class="<?php echo $bgColor ?> <?php echo $txtColor ?> relative <?=$blockCustomClass?>">
     <div class="<?php echo $masterPad; ?> pb4 md-pb5 mx-auto ||
     <?php echo $paddingTop == 'collapse-top' ? 'pt4 lg-pt0' : 'pt4 md-pt5' ?>
     <?php echo get_sub_field('full_width_full_width') ?>

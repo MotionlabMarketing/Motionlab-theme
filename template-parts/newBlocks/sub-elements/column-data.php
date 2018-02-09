@@ -9,12 +9,31 @@ if( get_sub_field('button_type') == 'page' ){
 } else{
 	$buttonURL = get_sub_field('url_custom');
 }
+
+$columnTitle          = get_sub_field('column_title');
+$columnButtonsText    = get_sub_field('button_text');
+$columnButtonsLink    = get_sub_field('button_link');
+$columnButtonsColour  = get_sub_field('colour');
+$columnButtonsClass   = get_sub_field('button_custom_class');
+
+$buttonBorderRadius   = str_replace(".", "-", get_field('buttons_border_radius', 'option'));
+
+$columnsCustomClass   = get_sub_field('columns_custom_class');
+
+$blockTitle           = get_sub_field('column_title_title');
+
 ?>
 
+<?php //print_r(get_field_objects()); ?>
 <?php if(!empty(get_sub_field('copy'))){?>
-	<div class="<?php echo $columnWidth ?> <?php echo $textAlign ?> || js-match-height">
+	<div class="<?php echo $columnWidth ?> <?php echo $textAlign ?> <?=$columnsCustomClass?> || js-match-height">
 		<div class="flex flex-column height-100 <?php echo $anchorButtons ?>">
-			<div class="">
+			<div>
+
+                <?php
+                if (!empty($blockTitle[0]['title'])) {
+                include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
+
 				<?php if ( have_rows('icon')){
 					while ( have_rows('icon')){
 						the_row();?>
@@ -22,17 +41,18 @@ if( get_sub_field('button_type') == 'page' ){
 					<?php };
 				};?>
 
-				<div class="wysiwyg col-12 <?php echo $textAlign ?>">
+				<div class="wysiwyg col-12 <?php echo $textAlign ?> limit-p limit-p-80">
 					<?php echo get_sub_field('copy'); ?>
 				</div>
 			</div>
-			<?php if (get_sub_field('button_text')){ ?>
-				<div class="">
-					<a href="<?php echo $buttonURL ?>" class="btn regular uppercase mt4 text-center <?php echo $btnBgcolor ?> <?php echo $btnTxtcolor ?>">
-						<span class=""><?php echo get_sub_field('button_text'); ?></span>
-					</a>
-				</div>
-			<?php } ?>
+
+            <?php if (!empty($columnButtonsLink) && !empty($columnButtonsText)):?>
+                <a href="<?=$columnButtonsLink['url']?>" class="btn btn-<?=$size?> border-radius-<?=$buttonBorderRadius['border_radius_strength']?> white inline-block bg-<?=$columnButtonsColour?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
+                    <?=$columnButtonsText?>
+                </a>
+            <?php endif; ?>
+
+
 		</div>
 	</div>
 <?php } ?>

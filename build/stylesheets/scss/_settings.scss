@@ -128,9 +128,9 @@ $h6: .75rem !default;
 
 // http://mrmrs.io/writing/2016/03/17/webfonts/
 
-$narrow-font-family: 'Poppins','Roboto Condensed',sans-serif !default;
-$sans-font-family: 'Poppins','Rubik', sans-serif;
-$serif-font-family: 'Poppins','Philosopher', Georgia, Times, 'Times New Roman', serif !default;
+$narrow-font-family: 'Open Sans','Roboto Condensed',sans-serif !default;
+$sans-font-family: 'Open Sans', serif;;
+$serif-font-family: 'Open Sans','Philosopher', Georgia, Times, 'Times New Roman', serif !default;
 $monospace-font-family: 'Source Code Pro', Consolas, monospace !default;
 
 
@@ -153,7 +153,7 @@ $body-color: $body !default;
 
 //$heading-font-family: inherit !default;
 //'Baloo Da',
-$heading-font-family: 'Playfair Display', sans-serif !default;
+$heading-font-family: 'Open Sans', sans-serif !default;
 $heading-font-weight: $bold-font-weight !default;
 $heading-line-height: normal !default;
 $heading-margin-top: 0 !default;
