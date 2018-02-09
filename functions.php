@@ -9,6 +9,8 @@
 
 define("BLOCKS_DIR", get_template_directory() . "/template-parts/newBLocks/");
 
+define("GOOGLEFONTTEST", get_field('GF_body_font', 'option'));
+
 
 /*==================================================================
 UNDERSCORES STUFF

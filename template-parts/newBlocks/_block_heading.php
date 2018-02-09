@@ -11,6 +11,9 @@
  */
 
 switch ($block['layout']):
+    case "logo":
+        include('headers/__logo.php');
+        break;
     default:
         include('headers/__basic.php');
         break;

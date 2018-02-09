@@ -29,7 +29,7 @@ if( have_rows('building_blocks') ) {
             // OLD BLOCK SUPPORT //
             // TODO: Old blocks need updating to support new settings and controller.
             if (get_row_layout() == 'heading') {
-                include(BLOCKS_DIR . 'heading.php');
+                include(BLOCKS_DIR . 'heading.php'); // REMOVED //
             } elseif (get_row_layout() == 'columns') {
                 include(BLOCKS_DIR . 'column_text.php');
             } elseif (get_row_layout() == 'tabs_simple') {
