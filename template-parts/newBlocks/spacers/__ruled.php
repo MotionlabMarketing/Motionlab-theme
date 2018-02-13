@@ -11,9 +11,9 @@
  */
 
 ?>
-<section class="clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?>">
+<section class="spacer-ruled || clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?>">
 
-    <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
+    <?=($block['grid'] == 'container')? '<div class="container '.$block['padding'].'">' : ""?>
 
         <div class="block py3">
 

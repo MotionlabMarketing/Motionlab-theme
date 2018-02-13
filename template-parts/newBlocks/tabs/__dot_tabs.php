@@ -96,10 +96,11 @@ $txtColor         = get_sub_field('text_color_color');
                         <div class="col col-12 md-col-6 p4">
                             <div class="wysiwyg">
                                 <?php
-                                $blockTitleCol1 = get_sub_field('col_one_title_title');?>
+                                $blockTitleCol1 = get_sub_field('col_one_title_title'); if (!empty($blockTitleCol1[0]['title'])):?>
                                 <<?=$blockTitleCol1[0]['type']['heading']?> class="pb2 <?=$blockTitleCol1[0]['size']['heading_size']?> || <?=$blockTitleCol1[0]['color']['system_text_colours']?> <?=$blockTitleCol1[0]['title_case']['system_text_transform']?>">
                                     <?=$blockTitleCol1[0]['title']?>
                                 </<?=$blockTitleCol1[0]['type']['heading']?>>
+                                 <?php endif; ?>
 
                                 <?=get_sub_field('col_one_title_content') ?>
                              </div>
@@ -108,10 +109,11 @@ $txtColor         = get_sub_field('text_color_color');
                         <div class="col col-12 md-col-6 p4">
                             <div class="wysiwyg">
                                 <?php
-                                $blockTitleCol2 = get_sub_field('col_two_title_title');?>
+                                $blockTitleCol2 = get_sub_field('col_two_title_title'); if (!empty($blockTitleCol2[0]['title'])):?>
                                 <<?=$blockTitleCol2[0]['type']['heading']?> class="pb2 <?=$blockTitleCol2[0]['size']['heading_size']?> || <?=$blockTitleCol2[0]['color']['system_text_colours']?> <?=$blockTitleCol2[0]['title_case']['system_text_transform']?>">
                                 <?=$blockTitleCol2[0]['title']?>
                             </<?=$blockTitleCol2[0]['type']['heading']?>>
+                            <?php endif; ?>
 
                             <?=get_sub_field('col_two_title_content') ?>
                             </div>

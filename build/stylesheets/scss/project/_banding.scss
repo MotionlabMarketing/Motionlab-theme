@@ -13,6 +13,7 @@ $brand-grayLight:    lighten($brand-gray, 55%);
 $brand-grayDark:      darken($brand-gray, 10%);
 $brand-grayLightest: #ebebeb;
 $brand-black:        #000000;
+$brand-grayDarker:   #2e2d2b;
 
 $brand-linkColour:   $brand-gray;
 
@@ -41,6 +42,10 @@ a {
 }
 
 
+h3, .h3 {
+  font-size: 1.6rem;
+}
+
 /**
  * BRAND COLOURS
  */
@@ -60,6 +65,10 @@ a {
 }
 .brand-base {
   color: $brand-base;
+}
+
+.hover-primary {
+  color: darken($brand-white, 20%);
 }
 
 // BACKGROUND COLOURS //
@@ -230,10 +239,73 @@ a {
 /**
  * BUTTONS
  */
+
+.btn {
+  padding: 0.3rem 1.2rem;
+
+  &:hover {
+    color: darken($brand-white, 10%);
+  }
+}
+
 .btn-primary {
   background-color: $brand-primary;
 }
 
+.btn-outline {
+  border-color: $brand-grayLight !important;
+
+  &:hover {
+    color: $brand-primary;
+  }
+}
+
+/**
+ * LIST STYLES
+ */
+.tick-list,
+.tick-list ul {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding-left: 0;
+
+    &:before {
+      content: "\f00c";
+      margin-right: 0.3rem;
+      font-family: FontAwesome, sans-serif;
+    }
+  }
+}
+
+/**
+ * HEADERS & FOOTERS
+ */
+
+footer {
+  background-color: $brand-grayDarker;
+
+  nav {
+    h3 {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    li {
+      margin-bottom: 0.3rem;
+    }
+  }
+
+  .overlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+  }
+}
 
 /**
  * FORM STYLING
@@ -458,6 +530,25 @@ form {
   .limit-p-80 p {
     max-width: none;
   }
+}
+
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  height: auto;
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /**
@@ -797,6 +888,13 @@ hr.border-5 {
       padding: 2rem;
     }
   }
+
+  &.show-hover .item .content {
+    font-size: 1.4rem;
+  }
+  &.show-hover .item:hover .content {
+    background-color: rgba($brand-primary, 0.8);
+  }
 }
 
 .linkedBox-titleBelow {
@@ -846,16 +944,24 @@ hr.border-5 {
       }
     }
 
+    .btn {
+      font-size: 0.8rem;
+    }
+
     &:nth-child(even) {
-
-
-
       @media (max-width: $breakpoint-sm) {
         padding-top: 1.5rem;
         margin-bottom: 1.5rem;
         background-color: darken($brand-white, 5%);
       }
     }
+  }
+}
+
+.spacer-ruled {
+
+  .border-lighten-1 {
+    border-color: $brand-grayLight;
   }
 }
 
@@ -873,6 +979,10 @@ hr.border-5 {
 
 .pod-numbered-square {
 
+  .h3 {
+    font-size: 1.6rem;
+  }
+
   .item {
 
     .content {
@@ -887,8 +997,8 @@ hr.border-5 {
 
       .rule {
           bottom: 1rem;
-          width: 30%;
-          left: calc((100% - 30%) / 2);
+          width: 20%;
+          left: calc((100% - 20%) / 2);
           display: block;
           position: absolute;
           margin: 0.3rem auto 0;
@@ -959,7 +1069,7 @@ hr.border-5 {
     }
 
     @media (max-width: $breakpoint-sm){
-      margin: 0.3rem 0;
+      margin: 0;
       width: 100%;
       padding: 0.6rem 0;
       color: $brand-base;
@@ -969,6 +1079,7 @@ hr.border-5 {
     }
 
     &.tab-active {
+      color: $brand-base;
       background-color: transparent;
 
       @media (max-width: $breakpoint-sm){
@@ -1027,8 +1138,20 @@ hr.border-5 {
   }
 
   .tab-content {
+
+    img {
+      width: 75%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
     @media (max-width: $breakpoint-sm){
       padding: 0;
+
+      img {
+        width: 100%;
+      }
     }
   }
 }
@@ -1045,10 +1168,18 @@ hr.border-5 {
 
     &.tab-33 {
       width: 33.33336%;
+
+      @media (max-width: $breakpoint-md){
+        width: 100%;
+      }
     }
 
     &.tab-50 {
       width: 50%;
+
+      @media (max-width: $breakpoint-md){
+        width: 100%;
+      }
     }
 
     &.tab-active {
@@ -1115,7 +1246,14 @@ hr.border-5 {
   .member {
 
     .profile {
-      min-height: 10rem;
+      min-height: 12rem;
+    }
+
+
+  }
+  .member-box {
+    &:last-child {
+      margin-right: 0 !important;
     }
   }
 }
@@ -1186,12 +1324,23 @@ hr.border-5 {
 
 .cta-sections {
 
+  .h3 {
+    font-size: 1.2rem;
+  }
+
   .section {
     border-right: 1px solid $brand-grayLight;
 
     &:hover {
       color: $brand-white;
       background-color: darken($brand-primary, 20%);
+
+      small {
+
+        color: $brand-primary;
+        padding: 0.3rem 1rem;
+        background-color: $brand-white;
+      }
     }
 
     &:last-child {
@@ -1232,10 +1381,6 @@ hr.border-5 {
   }
 }
 
-.buttons-basic {
-
-}
-
 .buttons-tabs {
 
   .btn {
@@ -1253,6 +1398,7 @@ hr.border-5 {
 .buttons-bar {
 
   a {
+    font-size: 0.9rem;
     margin: 0 -0.15rem;
     padding-left:  1.5rem;
     padding-right: 1.5rem;
@@ -1260,6 +1406,10 @@ hr.border-5 {
     border-top:     1px solid $brand-grayLightest;
     border-left:    1px solid $brand-grayLightest;
     border-bottom:  1px solid $brand-grayLightest;
+
+    @media (max-width: $breakpoint-md){
+      border-right:  1px solid $brand-grayLightest;
+    }
 
     &:last-child {
       border-right: 1px solid $brand-grayLightest;
@@ -1270,6 +1420,8 @@ hr.border-5 {
       border-color: $brand-primary;
       background-color: $brand-primary;
 
+      $arrow-size: 25px;
+      $arrow-point: 15px;
       &:after {
         content: " ";
         display: block;
@@ -1277,10 +1429,10 @@ hr.border-5 {
         width: 0;
         height: 0;
         left: calc(50% - #{$arrow-size});
-        bottom: -$arrow-size;
+        bottom: -$arrow-point;
         border-left: $arrow-size solid transparent;
         border-right: $arrow-size solid transparent;
-        border-top: $arrow-size solid $brand-primary;
+        border-top: $arrow-point solid $brand-primary;
       }
     }
   }
@@ -1304,10 +1456,30 @@ hr.border-5 {
 
     p {
       right: 0px;
-      bottom: 6px;
       border-radius: 0;
       font-size: 0.9rem;
       background-color: $brand-primary;
+    }
+  }
+
+  .content {
+    background-color: $brand-white;
+
+    h3 {
+      color: $brand-primary;
+    }
+  }
+
+}
+
+.video-stories {
+
+  .video {
+
+    p {
+      right: 0px;
+      border-radius: 0;
+      font-size: 0.9rem;
     }
   }
 

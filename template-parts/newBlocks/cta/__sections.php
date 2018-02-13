@@ -22,9 +22,9 @@ $sections    = get_sub_field($current . '_sections');
 
 <section class="cta-sections || <?=($blockWidth == "container")? 'container' : '';?> mt6 mb6 clearfix || <?=$bgColor?> <?=$txtColor?>">
 
-        <div class="col-12 || flex items-center justify-center">
+        <div class="col-12 || md-flex items-center justify-center">
 
-            <div class="section || col col-6 md-col-3 || py4 px4 || js-match-height">
+            <a class="section || col col-12 md-col-3 || py4 px4 || js-match-height text-center md-text-left">
                 <?php
                 if (!empty($blockTitle[0]['title'])) {
                     include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
@@ -35,12 +35,12 @@ $sections    = get_sub_field($current . '_sections');
                         <?=get_sub_field('block_cta_content');?>
                     </div>
                 <?php endif; ?>
-            </div>
+            </a>
 
             <?php foreach ($sections as $section): ?>
 
-                <a href="<?=$section['link']['url']?>" class="section || col col-6 md-col-3 p4 || text-center <?=$txtColor?> || js-match-height">
-                    <p class="h3 mb1"><?=$section['title']?></p>
+                <a href="<?=$section['link']['url']?>" class="section || col col-12 md-col-3 p4 || text-center <?=$txtColor?> || js-match-height">
+                    <p class="h3 mb2"><?=$section['title']?></p>
                     <p class="mb0"><small><?=$section['button_content']?></small></p>
                 </a>
 

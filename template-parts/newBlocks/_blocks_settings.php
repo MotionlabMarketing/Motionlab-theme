@@ -15,7 +15,7 @@ $block = [];
 // HAS THIS BLOCK BEEN ENABLED?
 $block['enabled'] = get_sub_field($current . '_settings_enable_block');
 
-if ($block['enabled'] == true):
+if ($block['enabled'] == true || empty($block['enabled'])): // TODO: Needs correcting after all blocks updated.
 
     // GET THE BLOCK LAYOUT.
     $block['layout']            = get_sub_field($current . '_layout');

@@ -27,7 +27,7 @@ $customCSS  = get_sub_field('block_button_css');
 
             <?php foreach ($buttons as $btn): ?>
 
-                <a href="<?=$btn['button_link']['url']?>" class="btn btn-<?=$size?> relative border-radius-<?=$border['border_radius_strength']?> <?=$btn['system_text_colours']?> inline-block <?=$btn['system_background_colours']?> <?=($arrows == true)? "btn-arrows" : " ";?><?=$btn['custom_class']?> <?=($current_url == $btn['button_link']['url'])? 'active' : '';?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
+                <a href="<?=$btn['button_link']['url']?>" class="btn btn-<?=$size?> relative regular border-radius-<?=$border['border_radius_strength']?> <?=$btn['system_text_colours']?> inline-block <?=$btn['system_background_colours']?> <?=($arrows == true)? "btn-arrows" : " ";?><?=$btn['custom_class']?> <?=($current_url == $btn['button_link']['url'])? 'active' : '';?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
                     <?=$btn['button_text']?>
                 </a>
 

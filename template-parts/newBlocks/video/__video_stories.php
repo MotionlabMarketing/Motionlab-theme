@@ -39,11 +39,11 @@ foreach ($videosAll as $video):
     $i++;
 endforeach;?>
 
-<section class="video-basic || clearfix my4 mb4 <?=$bgColor?> <?=$txtColor?>">
+<section class="video-stories || clearfix my4 mb4 <?=$txtColor?>">
 
-    <div class="container p3">
+    <div class="container clearfix p3 <?=$bgColor?>">
 
-        <div class="col col-12 md-col-6 || mb5 p3 md-pl5 lg-pt6">
+        <div class="col col-12 md-col-6 || mb5 p3 md-pl5 lg-pt4">
 
             <div class="mb2">
                 <?php
@@ -52,7 +52,7 @@ endforeach;?>
                 } ?>
             </div>
 
-            <div class="wysiwyg">
+            <div class="wysiwyg mb3">
                 <?= get_sub_field('block_video_content'); ?>
             </div>
 
@@ -60,12 +60,12 @@ endforeach;?>
 
                 <?php $i = 1; foreach ($videos as $video): while ($i < $videosShow): ?>
 
-                    <div class="inline-block">
+                    <div class="video || inline-block">
 
                         <a href="<?=$videos[$i]['link']?>" class="inline-block mr2">
                             <?= wp_get_attachment_image($videos[$i]['thumbnail_id'], array(120, 140), "", ["class" => "box-shadow-3"]  )?>
                         </a>
-                        <p class="h6" style="max-width: 120px"><?=$videos[$i]['title']?></p>
+                        <p class="h7" style="max-width: 120px; font-size: 0.8rem"><?=$videos[$i]['title']?></p>
 
                     </div>
 
@@ -74,7 +74,7 @@ endforeach;?>
 
         </div>
 
-        <div class="col col-12 md-col-6 || mb5 lg-pt6 lg-pl6 lg-pr6">
+        <div class="col col-12 md-col-6 || mb2 lg-mb0 lg-pt4 lg-pl6 lg-pr6">
 
             <?php if (get_sub_field('block_videos_embed') == true): ?>
 
@@ -82,7 +82,7 @@ endforeach;?>
 
                     <iframe width="100%" height="280" src="https://www.youtube.com/embed/<?=$videos[$videosShow]['id']?>" frameborder="0" allow="encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-                <?php else: // Vimio ?>
+                <?php else: // Vimeo ?>
 
                     <iframe src="https://player.vimeo.com/video/<?=$videos[$videosShow]['id']?>?portrait=0&badge=0" width="100%" height="272" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
@@ -99,7 +99,7 @@ endforeach;?>
 
             <?php endif; ?>
 
-            <h3 class="h3 brand-primary px2 mt4 mb0"><?=$videos[$videosShow]['author']?></h3>
+            <h3 class="h3 brand-primary px2 mt3 md-mt3 mb0"><?=$videos[$videosShow]['author']?></h3>
             <p class="px2 h4 muted"><?=$videos[$videosShow]['role']?></p>
 
         </div>

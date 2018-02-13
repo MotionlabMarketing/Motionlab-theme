@@ -9,9 +9,7 @@
  * @version 1.00
  */
 
-$layout = get_sub_field($current . '_layout');
-
-switch ($team_layout):
+switch ($block['layout']):
     case "sections":
         include('cta/__sections.php');
         break;

@@ -10,27 +10,21 @@
  * @version 1.00
  */
 
-$bgColor = get_sub_field($current . '_background_system_background_colours');
-$txtColor = get_sub_field($current . '_text_system_text_colours');
+$bgColor          = get_sub_field($current . '_background_system_background_colours');
+$txtColor         = get_sub_field($current . '_text_system_text_colours');
 
-$borders = ""; // TODO: Needs Fixing...
-$bordersColor = get_sub_field($current . '_borders_border_colour');
-$bordersSides = get_sub_field($current . '_borders_border_sides');
+$blockTitle       = get_sub_field($current . '_title_title');
+$blockColumns     = get_sub_field($current . '_columns');
 
-foreach ($bordersSides as $item) {
-    $borders = $borders . " " . $item;
-}
-$borders = "||" . $borders . " " . $bordersColor;
+$block['columns'] = 12 / $blockColumns;
 
-$blockTitle = get_sub_field($current . '_title_title');
-
-$blockItems = get_sub_field($current . '_items');
+$blockItems       = get_sub_field($current . '_items');
 
 ?>
 
-<section class="linkedBox-titleBelow || <?= $bgColor ?> <?= $borders ?>">
+<section class="linkedBox-titleBelow || clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?>">
 
-    <div class="container">
+    <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
         <div class="clearfix py5">
 
@@ -45,7 +39,6 @@ $blockItems = get_sub_field($current . '_items');
 
             <?php foreach ($blockItems as $item): ?>
 
-
                 <?php
                 // STANDARD BOXES WITH IMAGE AND TITLE //
                 if ($item['block_linkBoxes_breakout_true'] !== true):?>
@@ -56,7 +49,7 @@ $blockItems = get_sub_field($current . '_items');
                             <div class="image-holder || js-match-height || <?= $txtColor ?>"
                                  style="background-image: url('<?= $item['block_linkBoxes_image_basic_image']['url']; ?>')"></div>
                             <div class="content || h3">
-                                <?php print_r($item['block_linkBoxes_title']) ?>
+                                <?= $item[$current . '_title'] ?>
                             </div>
                         </a>
                     </div>
@@ -78,11 +71,10 @@ $blockItems = get_sub_field($current . '_items');
 
                 <?php endif; ?>
 
-
             <?php endforeach; ?>
 
         </div>
 
-    </div>
+    <?=($block['grid'] == 'container')? '</div>' : ""?>
 
 </section>

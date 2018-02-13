@@ -46,7 +46,7 @@ $blockTitle = get_sub_field('block_videos_title_title');
 
             <div class="m2 || border border-smoke zoom">
 
-                <div class="video || block relative min-height-v25">
+                <div class="video || block relative">
 
                     <iframe width="100%" height="285" src="https://www.youtube.com/embed/Tby7FnaCqAo" frameborder="0"
                             allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -57,7 +57,7 @@ $blockTitle = get_sub_field('block_videos_title_title');
 
                 <div class="content || p4">
 
-                    <h3 class="mb2">Video Title</h3>
+                    <h3 class="mb2 h4">Video Title</h3>
 
                     <p><?=limit_words(strip_tags("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin molestie erat tempus sem commodo, in sagittis odio hendrerit."), "10")?></p>
 
@@ -91,7 +91,7 @@ $blockTitle = get_sub_field('block_videos_title_title');
 
                 <div class="content || p4">
 
-                    <h3 class="mb2">Video Title</h3>
+                    <h3 class="mb2 h4">Video Title</h3>
 
                     <p><?=limit_words(strip_tags("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin molestie erat tempus sem commodo, in sagittis odio hendrerit."), "10")?></p>
 
@@ -125,7 +125,7 @@ $blockTitle = get_sub_field('block_videos_title_title');
 
                 <div class="content || p4">
 
-                    <h3 class="mb2">Video Title</h3>
+                    <h3 class="mb2 h4">Video Title</h3>
 
                     <p><?=limit_words(strip_tags("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin molestie erat tempus sem commodo, in sagittis odio hendrerit."), "10")?></p>
 
