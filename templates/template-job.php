@@ -12,22 +12,23 @@ get_header(); ?>
 
         <div class="col col-12 md-col-8 lg-col-8 || pt3">
 
-            <h1 class="h1 mb2 bold">Assistant Accountant (Interim)</h1>
-            <h2 class="h3">Chorley <span class="muted">|</span> Job ID: CMRAcc03 <span class="muted">|</span> £20000 - £30000 per annum</h2>
+            <h1 class="h2 mb2 bold">Assistant Accountant (Interim)</h1>
+            <h2 class="h4">Chorley <span class="muted">|</span> Job ID: CMRAcc03 <span class="muted">|</span> £20000 - £30000 per annum</h2>
 
-            <p>{{ Share Options }}</p>
         </div>
 
         <div class="col col-12 md-col-4 lg-col-4 || text-right || pt5">
 
             <a href="#apply" class="btn block btn-primary btn-medium">Apply Now</a>
-            <p class="mt4 bold">Expiry Date: 31st January, 18</p>
+            <p class="mt2 bold brand-primary">Expiry Date: 31st January, 18</p>
 
         </div>
 
-        <div class="col col-12 md-col-12 lg-col-12 clearfix || first-bold">
+        <hr class="my4 clearfix">
 
-            <hr class="my4">
+        <div class="col col-12 md-col-8 lg-col-8 || first-bold">
+
+
 
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum volutpat condimentum. Morbi quis feugiat elit. Vivamus viverra efficitur elementum. Proin commodo finibus lacus, a pharetra justo viverra et. Duis id rutrum velit. Fusce nibh ipsum, placerat.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum volutpat condimentum. Morbi quis feugiat elit. Vivamus viverra efficitur elementum. Proin commodo finibus lacus, a pharetra justo viverra et. Duis id rutrum velit. Fusce nibh ipsum, placerat.</p>
@@ -57,6 +58,17 @@ get_header(); ?>
             </ul>
 
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum volutpat condimentum. Morbi quis feugiat elit. Vivamus viverra efficitur elementum. Proin commodo finibus lacus, a pharetra justo viverra et. Duis id rutrum velit. Fusce nibh ipsum, placerat.</p>
+
+        </div>
+
+        <div class="col col-12 md-col-4 lg-col-4 px3 || first-bold">
+
+            <div class="p3 bg-smoke">
+
+                <h3 class="h3 brand-primary">Share</h3>
+                {{ SHARE FORM }}
+
+            </div>
 
         </div>
 
@@ -65,7 +77,9 @@ get_header(); ?>
             <h3>Apply for this job</h3>
 
             <div class="col col-12 md-col-8">
-                {{ APPLY NOW FORM }}
+
+                {{ FORM }}
+
             </div>
 
             <div class="col col-12 md-col-4">

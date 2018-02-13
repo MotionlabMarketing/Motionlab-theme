@@ -29,21 +29,21 @@ get_header(); ?>
 
             <div class="col col-12 mb5">
 
-                <form action="#" class="width-100 || flex justify-center">
+                <form action="#" class="mx-auto inline-block p3 bg-brand-primary || flex justify-center">
 
-                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
+                    <select style="min-width:20%; margin-left: 0" class="select md-ml3 width-100 md-width-auto" onchange="this.form.submit()" name="orderby" id="orderby">
                         <option value="title">By Sector</option>
                     </select>
 
-                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
+                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto" onchange="this.form.submit()" name="orderby" id="orderby">
                         <option value="title">By Type</option>
                     </select>
 
-                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
+                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto" onchange="this.form.submit()" name="orderby" id="orderby">
                         <option value="title">By Salary</option>
                     </select>
 
-                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
+                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto" onchange="this.form.submit()" name="orderby" id="orderby">
                         <option value="title">By Location</option>
                     </select>
 
@@ -51,13 +51,13 @@ get_header(); ?>
 
             </div>
 
-            <div class="col col-12 md-col-8 my6 clearfix">
+            <div class="col col-12 md-col-8 mb6 clearfix">
 
-                <div class="listItem || relative clearfix border-bottom border-light px3 py3">
+                <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2">
 
                     <div class="col col-9">
 
-                        <a href=""><h3 class="brand-primary mb2 h4">Part Time Marketing Coordinator – East Lancashire, £28,000 (pro rata)</h3></a>
+                        <a href=""><h3 class="mb2 h4">Part Time Marketing Coordinator – East Lancashire, £28,000 (pro rata)</h3></a>
 
                         <p class="h5 mb0">Accrington <span class="muted">•</span> Up to £28,000 per annum <span class="muted">•</span> Permanent</p>
 
@@ -71,11 +71,11 @@ get_header(); ?>
 
                 </div>
 
-                <div class="listItem || relative clearfix border-bottom border-light px3 py3">
+                <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2">
 
                     <div class="col col-9">
 
-                        <a href=""><h3 class="brand-primary mb2 h4">Part Time Marketing Coordinator – East Lancashire, £28,000 (pro rata)</h3></a>
+                        <a href=""><h3 class="mb2 h4">Part Time Marketing Coordinator – East Lancashire, £28,000 (pro rata)</h3></a>
 
                         <p class="h5 mb0">Accrington <span class="muted">•</span> Up to £28,000 per annum <span class="muted">•</span> Permanent</p>
 
@@ -89,11 +89,11 @@ get_header(); ?>
 
                 </div>
 
-                <div class="listItem || relative clearfix border-bottom border-light px3 py3">
+                <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2">
 
                     <div class="col col-9">
 
-                        <a href=""><h3 class="brand-primary mb2 h4">Part Time Marketing Coordinator – East Lancashire, £28,000 (pro rata)</h3></a>
+                        <a href=""><h3 class="mb2 h4">Part Time Marketing Coordinator – East Lancashire, £28,000 (pro rata)</h3></a>
 
                         <p class="h5 mb0">Accrington <span class="muted">•</span> Up to £28,000 per annum <span class="muted">•</span> Permanent</p>
 
@@ -107,11 +107,11 @@ get_header(); ?>
 
                 </div>
 
-                <div class="listItem || relative clearfix border-bottom border-light px3 py3">
+                <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2">
 
                     <div class="col col-9">
 
-                        <a href=""><h3 class="brand-primary mb2 h4">Part Time Marketing Coordinator – East Lancashire, £28,000 (pro rata)</h3></a>
+                        <a href=""><h3 class="mb2 h4">Part Time Marketing Coordinator – East Lancashire, £28,000 (pro rata)</h3></a>
 
                         <p class="h5 mb0">Accrington <span class="muted">•</span> Up to £28,000 per annum <span class="muted">•</span> Permanent</p>
 
@@ -125,11 +125,11 @@ get_header(); ?>
 
                 </div>
 
-                <div class="listItem || relative clearfix border-bottom border-light px3 py3">
+                <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2">
 
                     <div class="col col-9">
 
-                        <a href=""><h3 class="brand-primary mb2 h4">Part Time Marketing Coordinator – East Lancashire, £28,000 (pro rata)</h3></a>
+                        <a href=""><h3 class="mb2 h4">Part Time Marketing Coordinator – East Lancashire, £28,000 (pro rata)</h3></a>
 
                         <p class="h5 mb0">Accrington <span class="muted">•</span> Up to £28,000 per annum <span class="muted">•</span> Permanent</p>
 
@@ -145,39 +145,41 @@ get_header(); ?>
 
             </div>
 
-            <div class="col col-12 md-col-4 my5 p4">
+            <div class="col col-12 md-col-4 mb5 px4">
 
-                <div class="block relative mb4 || min-height-v25 bg-cover bg-center bg-darken-3" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/ludovic-fremondiere-386793.jpg')">
+                <div class="p4 bg-smoke">
 
-                    <a href="#1" class="flex items-center justify-center || min-height-v25 || darken-background darken-background-4">
+                    <div class="block relative mb4 || min-height-v15 bg-cover bg-center bg-darken-3" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/ludovic-fremondiere-386793.jpg')">
 
-                        <h5 class="h3 white mb0">Box Title to Go Here</h5>
+                        <a href="#1" class="flex items-center justify-center || min-height-v15 || darken-background darken-background-4">
 
-                    </a>
+                            <h5 class="h3 white mb0">Box Title to Go Here</h5>
+
+                        </a>
+
+                    </div>
+
+                    <div class="block relative mb4 || min-height-v15 bg-cover bg-center bg-darken-3" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/ludovic-fremondiere-386793.jpg')">
+
+                        <a href="#2" class="flex items-center justify-center || min-height-v15 || darken-background darken-background-4">
+
+                            <h5 class="h3 white mb0">Box Title to Go Here</h5>
+
+                        </a>
+
+                    </div>
+
+                    <div class="block relative mb4 || min-height-v15 bg-cover bg-center bg-darken-3" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/ludovic-fremondiere-386793.jpg')">
+
+                        <a href="#3" class="flex items-center justify-center || min-height-v15 || darken-background darken-background-4">
+
+                            <h5 class="h3 white mb0">Box Title to Go Here</h5>
+
+                        </a>
+
+                    </div>
 
                 </div>
-
-                <div class="block relative mb4 || min-height-v25 bg-cover bg-center bg-darken-3" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/ludovic-fremondiere-386793.jpg')">
-
-                    <a href="#2" class="flex items-center justify-center || min-height-v25 || darken-background darken-background-4">
-
-                        <h5 class="h3 white mb0">Box Title to Go Here</h5>
-
-                    </a>
-
-                </div>
-
-                <div class="block relative mb4 || min-height-v25 bg-cover bg-center bg-darken-3" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/ludovic-fremondiere-386793.jpg')">
-
-                    <a href="#3" class="flex items-center justify-center || min-height-v25 || darken-background darken-background-4">
-
-                        <h5 class="h3 white mb0">Box Title to Go Here</h5>
-
-                    </a>
-
-                </div>
-
-
 
             </div>
 
@@ -185,8 +187,6 @@ get_header(); ?>
         </div>
 
     </div>
-
-    <?php include(get_template_directory() .'/template-parts/building-blocks.php' ); ?>
 
 </div>
 
