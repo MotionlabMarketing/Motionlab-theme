@@ -19,7 +19,7 @@ $menu = motionlab_menu_walker('top-menu');
         <?php endforeach ?>
 
         <li class="inline-block <?php if($i!=1) : ?>border-lighten-2 bg-brand-primary<?php endif; ?> hover-bg-darken-6 white">
-            <a href="tel:<?= str_replace(" ", "", get_field('brand_phone', 'option'));  ?>" class="px4 py2 block bold white hover-white"><i class="fa fa-phone pr2 mr2 border-right border-light"></i> <?= get_field('website_name_phone', 'option') ?></a>
+            <a href="tel:<?= str_replace(" ", "", get_field('brand_phone', 'option'));  ?>" class="px4 py2 block bold white hover-white"><i class="fa fa-phone pr2 mr2 border-right border-light"></i> <?= get_field('brand_phone', 'option') ?></a>
         </li>
     </ul>
 </div>
