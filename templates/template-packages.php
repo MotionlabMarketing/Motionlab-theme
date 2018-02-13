@@ -82,11 +82,11 @@ get_header(); ?>
                             <span class="md-hidden-up bold mb2"><?=$packageOne['title']?></span>
 
                             <div class="col col-12 md-col-6">
-                                <p class="mb0"><?=$packageOne['weekly_cost']?></p>
+                                <p class="mb0 bold"><?=$packageOne['weekly_cost']?></p>
                             </div>
 
                             <div class="col col-12 md-col-6">
-                                <p class="mb0"><?=$packageOne['monthly_cost']?></p>
+                                <p class="mb0 bold"><?=$packageOne['monthly_cost']?></p>
                             </div>
 
                         </div>
@@ -98,11 +98,11 @@ get_header(); ?>
                             <span class="md-hidden-up bold mb2"><?=$packageTwo['title']?></span>
 
                             <div class="col col-12 md-col-6">
-                                <p class="mb0"><?=$packageTwo['weekly_cost']?></p>
+                                <p class="mb0 bold"><?=$packageTwo['weekly_cost']?></p>
                             </div>
 
                             <div class="col col-12 md-col-6">
-                                <p class="mb0"><?=$packageTwo['monthly_cost']?></p>
+                                <p class="mb0 bold"><?=$packageTwo['monthly_cost']?></p>
                             </div>
 
                         </div>
@@ -112,11 +112,11 @@ get_header(); ?>
                         <div class="block width-100 min-width-100" style="opacity: 0">1</div>
                     </div>
 
-                    <div class="col col-12 md-col-3 pt3 md-hidden-down">
+                    <div class="col col-12 md-col-3 pt3 md-pl3 md-hidden-down">
                         <p class="h6 brand-primary bold"><a href="<?=$packageOne['package_page']['url']?>"><?=$packageOne['package_page']['title']?></a></p>
                     </div>
 
-                    <div class="col col-12 md-col-3 pt3 md-hidden-down">
+                    <div class="col col-12 md-col-3 pt3 md-pl3 md-hidden-down">
                         <p class="h6 brand-primary bold"><a href="<?=$packageTwo['package_page']['url']?>"><?=$packageTwo['package_page']['title']?></a></p>
                     </div>
 

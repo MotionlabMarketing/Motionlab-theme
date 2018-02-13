@@ -6,7 +6,7 @@ get_header();
 $masterPad = 'px5';
 ?>
 
-<section>
+<main>
 	<?php while ( have_posts() ) : the_post();?>
 
 		<?php if(!empty(get_field('remove_default_page_title'))): ?>
@@ -22,6 +22,6 @@ $masterPad = 'px5';
 
 
 	<?php endwhile;?>
-</section>
+</main>
 
 <?php get_footer(); ?>

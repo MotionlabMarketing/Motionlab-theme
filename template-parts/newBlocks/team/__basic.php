@@ -24,7 +24,7 @@ $button = get_sub_field('block_team_page');
 ?>
 
 
-<section class="team-basic || clearfix my4 mb6">
+<section class="team-basic || clearfix my4 mb6 p3">
 
     <div class="container">
 
@@ -32,7 +32,7 @@ $button = get_sub_field('block_team_page');
 
             <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php') ?>
 
-            <div class="wysiwyg || mx6 px6 || <?=$txtColor?> regular">
+            <div class="wysiwyg || md-mx6 md-px6 || <?=$txtColor?> regular">
                 <?=get_sub_field('block_team_content');?>
             </div>
 
@@ -42,16 +42,18 @@ $button = get_sub_field('block_team_page');
 
     <div class="container clearfix">
 
-        <div class="col col-grid-5 p4 || hover-zoom">
+        <?php $i = 0; while ($i < 5): ?>
+
+        <div class="member-box || col col-grid-5 p3 || hover-zoom">
 
             <a href="{{ProfileLink}}" class="<?=$txtColor?>">
 
-                <div class="member || pb3 || <?= $bgColor ?> box-shadow-3 || zoom">
+                <div class="member || pb2 || <?= $bgColor ?> box-shadow-3 || zoom">
 
-                    <div class="profile || mb4 || bg-center bg-cover" style="background: url('http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg<?php // Photo ?>'); background-size: cover"></div>
+                    <div class="profile || mb2 || bg-center bg-cover" style="background: url('http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg<?php // Photo ?>'); background-size: cover"></div>
 
-                    <h4>{{Staff Name}}</h4>
-                    <p class="postion">{{Position}}</p>
+                    <h4 class="mt3">Oscar</h4>
+                    <p class="postion mb2">Dog</p>
 
                 </div>
 
@@ -59,90 +61,10 @@ $button = get_sub_field('block_team_page');
 
         </div>
 
-        <div class="col col-grid-5 p4 || hover-zoom">
+        <?php $i++; endwhile; ?>
 
-            <a href="{{ProfileLink}}" class="<?=$txtColor?>">
 
-                <div class="member || pb3 || <?= $bgColor ?> box-shadow-3 || zoom">
 
-                    <div class="profile || mb4 || bg-center bg-cover" style="background: url('http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg<?php // Photo ?>'); background-size: cover"></div>
-
-                    <h4>{{Staff Name}}</h4>
-                    <p class="postion">{{Position}}</p>
-
-                </div>
-
-            </a>
-
-        </div>
-
-        <div class="col col-grid-5 p4 || hover-zoom">
-
-            <a href="{{ProfileLink}}" class="<?=$txtColor?>">
-
-                <div class="member || pb3 || <?= $bgColor ?> box-shadow-3 || zoom">
-
-                    <div class="profile || mb4 || bg-center bg-cover" style="background: url('http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg<?php // Photo ?>'); background-size: cover"></div>
-
-                    <h4>{{Staff Name}}</h4>
-                    <p class="postion">{{Position}}</p>
-
-                </div>
-
-            </a>
-
-        </div>
-
-        <div class="col col-grid-5 p4 || hover-zoom">
-
-            <a href="{{ProfileLink}}" class="<?=$txtColor?>">
-
-                <div class="member || pb3 || <?= $bgColor ?> box-shadow-3 || zoom">
-
-                    <div class="profile || mb4 || bg-center bg-cover" style="background: url('http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg<?php // Photo ?>'); background-size: cover"></div>
-
-                    <h4>{{Staff Name}}</h4>
-                    <p class="postion">{{Position}}</p>
-
-                </div>
-
-            </a>
-
-        </div>
-
-        <div class="col col-grid-5 p4 || hover-zoom">
-
-            <a href="{{ProfileLink}}" class="<?=$txtColor?>">
-
-                <div class="member || pb3 || <?= $bgColor ?> box-shadow-3 || zoom">
-
-                    <div class="profile || mb4 || bg-center bg-cover" style="background: url('http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg<?php // Photo ?>'); background-size: cover"></div>
-
-                    <h4>{{Staff Name}}</h4>
-                    <p class="postion">{{Position}}</p>
-
-                </div>
-
-            </a>
-
-        </div>
-
-        <div class="col col-grid-5 p4 || hover-zoom">
-
-            <a href="{{ProfileLink}}" class="<?=$txtColor?>">
-
-                <div class="member || pb3 || <?= $bgColor ?> box-shadow-3 || zoom">
-
-                    <div class="profile || mb4 || bg-center bg-cover" style="background: url('http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg<?php // Photo ?>'); background-size: cover"></div>
-
-                    <h4>{{Staff Name}}</h4>
-                    <p class="postion">{{Position}}</p>
-
-                </div>
-
-            </a>
-
-        </div>
 
     </div>
 
@@ -151,7 +73,7 @@ $button = get_sub_field('block_team_page');
 
         <div class="mb5 clearfix || text-center">
 
-            <a href="<?=$button['button_link']['url']?>" class="btn <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>"><?=$button['button_text'];?></a>
+            <a href="<?=$button['button_link']['url']?>" class="btn btn-outline btn-medium black <?=$button['system_background_colours']?>"><?=$button['button_text'];?></a>
 
         </div>
 

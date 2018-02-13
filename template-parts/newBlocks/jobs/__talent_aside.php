@@ -20,11 +20,11 @@ $sections    = get_sub_field($current . '_sections');
 
 ?>
 
-<section class="jobs-talent || mt6 mb6 clearfix || <?=$bgColor?> <?=$txtColor?>">
+<section class="jobs-talent || mt2 mb2 p2 md-p0 clearfix || <?=$bgColor?> <?=$txtColor?>">
 
     <div class="container">
 
-        <div class="col-12 || mb5 || text-center">
+        <div class="col-12 || md-mb5 || px4 md-px0 text-center">
 
             <div class="mb4">
                 <?php
@@ -33,7 +33,7 @@ $sections    = get_sub_field($current . '_sections');
                 } ?>
             </div>
 
-            <div class="wysiwyg || mx6 px6">
+            <div class="wysiwyg || md-mx6 md-px6 text-left md-text-center">
                 <?= get_sub_field($current . '_content'); ?>
             </div>
 
@@ -53,7 +53,7 @@ $sections    = get_sub_field($current . '_sections');
                 </div>
             </div>
 
-            <div class="col-12 md-col-6 || p4 left">
+            <div class="col-12 md-col-6 || p4 md-px6 left">
 
                 <?php
                 $content = get_sub_field('block_jobs_listing_content');
@@ -74,9 +74,9 @@ $sections    = get_sub_field($current . '_sections');
                     <h4 class="h4 mb1">Stacy M Unknown</h4>
                     <p class="bold mb2"><small class="inline-block mr4">Accrington</small><small>Permanent</small></p>
 
-                    <div class="block mb4"><span class="mr3">Roles available for</span>
+                    <div class="block mb2 md-mb4 h6"><span class="mr3 mb2 md-mb0 block md-inline brand-primary">Roles available for</span>
 
-                        <ul class="inline-block tags tags-right right">
+                        <ul class="inline-block tags tags-right md-right border-radius">
                             <li>Administration</li>
                             <li>Accounts Clerk</li>
                             <li>Payroll</li>
@@ -90,6 +90,8 @@ $sections    = get_sub_field($current . '_sections');
                 </div>
 
                 <?php $i++; endwhile; ?>
+
+                <a href="#" class="btn btn-small btn-outline">View all Talent</a>
 
             </div>
 

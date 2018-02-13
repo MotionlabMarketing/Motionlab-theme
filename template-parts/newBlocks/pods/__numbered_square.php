@@ -32,9 +32,9 @@ $blockItems  = get_sub_field($current . '_basic');
 
     <div class="container">
 
-        <div class="clearfix py5">
+        <div class="clearfix md-py5 text-center">
 
-            <div class="m4 mb5 || text-center">
+            <div class="m4 mb5">
 
                 <div class="mb3">
                 <?php
@@ -42,7 +42,7 @@ $blockItems  = get_sub_field($current . '_basic');
                     include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
                 </div>
 
-                <div class="text-center limit-p limit-p-80">
+                <div class="text-left md-text-center limit-p limit-p-80">
                     <?=get_sub_field('block_pods_content')?>
                 </div>
             </div>
@@ -54,7 +54,7 @@ $blockItems  = get_sub_field($current . '_basic');
 
                     <div class="content p3 || js-match-height">
 
-                        <p class="block mb2 || text-center || brand-primary h2 bold"><?=$i?>.</p>
+                        <p class="block mb2 || text-center || brand-primary h3 bold"><?=$i?>.</p>
 
                         <p class="h5"><?=$item['pod_content']?></p>
 

@@ -10,7 +10,7 @@ $blockTitle = $blockTitle['title'];
 
 get_header(); ?>
 
-    <section class="clearfix my4 mb4" id="listing-team">
+    <section class="clearfix my4 mb4" id="templete-contact">
 
         <div class="container">
 
@@ -37,13 +37,13 @@ get_header(); ?>
 
                     <div class="">
 
-                        <h2 class="h3 mb4">General Enquiries & Registation</h2>
+                        <h2 class="h4 mb4">General Enquiries & Registation</h2>
 
                         <p class="mb0"><span class="mr1">T:</span><a
-                                    href="tel:<?= trim(str_replace(" ", "", strtolower(get_field('main_contact_phone')))) ?>"><?= get_field('main_contact_phone') ?></a>
+                                    href="tel:<?= trim(str_replace(" ", "", strtolower(get_field('main_contact_phone')))) ?>" class="bold"><?= get_field('main_contact_phone') ?></a>
                         </p>
                         <p><span class="mr1">E:</span><a
-                                    href="mailto:<?= trim(strtolower(get_field('main_contact_email'))) ?>"><?= get_field('main_contact_email') ?></a>
+                                    href="mailto:<?= trim(strtolower(get_field('main_contact_email'))) ?>" class="bold"><?= get_field('main_contact_email') ?></a>
                         </p>
 
                         <?= get_field('main_contact_address'); ?>

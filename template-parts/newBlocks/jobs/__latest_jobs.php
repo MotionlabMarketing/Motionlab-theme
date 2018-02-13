@@ -24,22 +24,22 @@ $sections    = get_sub_field($current . '_sections');
 
     <div class="container">
 
-        <div class="col-12 || mb5 || text-center">
+        <div class="col-12 || mb3 || text-center">
 
-            <div class="mb4">
+            <div class="mb2">
                 <?php
                 if (!empty($blockTitle[0]['title'])) {
                     include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php');
                 } ?>
             </div>
 
-            <div class="wysiwyg limit-p limit-p-70 p2">
+            <div class="wysiwyg limit-p limit-p-70">
                 <?= get_sub_field($current . '_content'); ?>
             </div>
 
         </div>
 
-        <div class="col-12 clearfix || md-my6">
+        <div class="col-12 clearfix || md-px6 md-my6">
 
             <?php $i = 0; while($i < 6): ?>
 
@@ -49,15 +49,15 @@ $sections    = get_sub_field($current . '_sections');
 
                         <div class="col col-12  md-col-9 || js-match-height">
 
-                            <a href=""><h3 class="brand-primary mb2 h4">Part Time Marketing Coordinator – East Lancashire, £28,000 (pro rata)</h3></a>
+                            <a href=""><h3 class="mb2 black h5">Account Manager – £POA</h3></a>
 
-                            <p class="h5 mb0">Accrington <span class="muted">•</span> Up to £28,000 per annum <span class="muted">•</span> Permanent</p>
+                            <p class="h6 mb0 bold">Blackburn <span class="black">•</span> £18,000 – £20,000 <span class="black">•</span> Permanent</p>
 
                         </div>
 
-                        <div class="col col-12 md-col-3 mt1 || js-match-height || flex sm-items-center sm-justify-center">
+                        <div class="col col-12 md-col-3 || js-match-height || flex sm-items-center sm-justify-center">
 
-                            <a href="" class="btn btn-primary btn-small white right">Apply Now</a>
+                            <a href="" class="btn btn-primary btn-small white width-100 h6 right">Apply Now</a>
 
                         </div>
 

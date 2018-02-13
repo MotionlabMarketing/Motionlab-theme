@@ -11,55 +11,61 @@ if( have_rows('building_blocks') ) {
         include(get_template_directory() .'/inc/block-variables.php');
 
         // CHECK FOR NEW BLOCKS //
-        $blocks = ['block_button', 'block_debug', 'block_team', 'block_cta', 'block_linkBoxes', 'block_videos', 'block_social', 'block_pods', 'block_button', 'block_logos', 'block_tabs', 'block_jobs', 'block_timeline', 'block_utilities'];
+        $blocks = ['block_spacers', 'block_heading', 'block_button', 'block_debug', 'block_team', 'block_cta', 'block_linkBoxes', 'block_videos', 'block_social', 'block_pods', 'block_button', 'block_logos', 'block_tabs', 'block_jobs', 'block_timeline', 'block_utilities'];
         if (in_array(get_row_layout(), $blocks)) {
 
             $current = get_row_layout();
-            // TODO: Need to move blocks folder structure and update the routing.
-            include(get_template_directory() . '/template-parts/newBlocks/_'. $current .'.php');
+            include (BLOCKS_DIR . '_blocks_settings.php');
+
+            if ($block['enabled'] == true || empty($block['enabled'])): // TODO: ONCE ALL BLOCKS ARE UPDATED THIS NEED TO BE UPDATED.
+
+                // TODO: Need to move blocks folder structure and update the routing.
+                include(BLOCKS_DIR . '_'. $current .'.php');
+
+            endif;
 
         } else {
 
             // OLD BLOCK SUPPORT //
             // TODO: Old blocks need updating to support new settings and controller.
             if (get_row_layout() == 'heading') {
-                include(get_template_directory() . '/template-parts/newBlocks/heading.php');
+                include(BLOCKS_DIR . 'heading.php'); // REMOVED //
             } elseif (get_row_layout() == 'columns') {
-                include(get_template_directory() . '/template-parts/newBlocks/column_text.php');
+                include(BLOCKS_DIR . 'column_text.php');
             } elseif (get_row_layout() == 'tabs_simple') {
-                include(get_template_directory() . '/template-parts/newBlocks/tabs_simple.php');
+                include(BLOCKS_DIR . 'tabs_simple.php');
             } elseif (get_row_layout() == 'full_width_banner') {
-                include(get_template_directory() . '/template-parts/newBlocks/full_width_banner.php');
+                include(BLOCKS_DIR . 'full_width_banner.php');
             } elseif (get_row_layout() == 'media_object') {
-                include(get_template_directory() . '/template-parts/newBlocks/media_object.php');
+                include(BLOCKS_DIR . 'media_object.php');
             } elseif (get_row_layout() == 'slider_simple') {
-                include(get_template_directory() . '/template-parts/newBlocks/slider_simple.php');
+                include(BLOCKS_DIR . 'slider_simple.php');
             } elseif (get_row_layout() == 'alternating_media') {
-                include(get_template_directory() . '/template-parts/newBlocks/alternating_media.php');
+                include(BLOCKS_DIR . 'alternating_media.php');
             } elseif (get_row_layout() == 'gallery_simple') {
-                include(get_template_directory() . '/template-parts/newBlocks/gallery_simple.php');
+                include(BLOCKS_DIR . 'gallery_simple.php');
             } elseif (get_row_layout() == 'form') {
-                include(get_template_directory() . '/template-parts/newBlocks/form.php');
+                include(BLOCKS_DIR . 'form.php');
             } elseif (get_row_layout() == 'table') {
-                include(get_template_directory() . '/template-parts/newBlocks/table.php');
+                include(BLOCKS_DIR . 'table.php');
             } elseif (get_row_layout() == 'spacer') {
-                include(get_template_directory() . '/template-parts/newBlocks/spacer.php');
+                include(BLOCKS_DIR . 'spacer.php');
             } elseif (get_row_layout() == 'sticky_menu') {
-                include(get_template_directory() . '/template-parts/newBlocks/menu_sticky.php');
+                include(BLOCKS_DIR . 'menu_sticky.php');
             } elseif (get_row_layout() == 'sticky_menu_anchor') {
-                include(get_template_directory() . '/template-parts/newBlocks/menu_sticky_anchor.php');
+                include(BLOCKS_DIR . 'menu_sticky_anchor.php');
             } elseif (get_row_layout() == 'hotspot_image') {
-                include(get_template_directory() . '/template-parts/newBlocks/hotspots.php');
+                include(BLOCKS_DIR . 'hotspots.php');
             } elseif (get_row_layout() == 'testimonial') {
-                include(get_template_directory() . '/template-parts/newBlocks/testimonial.php');
+                include(BLOCKS_DIR . 'testimonial.php');
             } elseif (get_row_layout() == 'post_news') {
-                include(get_template_directory() . '/template-parts/newBlocks/post_news.php');
+                include(BLOCKS_DIR . 'post_news.php');
             } elseif (get_row_layout() == 'post_cpt') {
-                include(get_template_directory() . '/template-parts/newBlocks/post_cpt.php');
+                include(BLOCKS_DIR . 'post_cpt.php');
             } elseif (get_row_layout() == 'hotspots') {
-                include(get_template_directory() . '/template-parts/newBlocks/hotspots.php');
+                include(BLOCKS_DIR . 'hotspots.php');
             } elseif (get_row_layout() == 'parallax') {
-                include(get_template_directory() . '/template-parts/newBlocks/parallax.php');
+                include(BLOCKS_DIR . 'parallax.php');
             }
         }
 

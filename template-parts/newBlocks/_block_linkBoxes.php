@@ -11,7 +11,7 @@
 
 $layout = get_sub_field($current . '_layout');
 
-switch ($team_layout):
+switch ($layout):
     case "basic":
         include ('linkedBoxes/__basic.php');
         break;

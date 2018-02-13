@@ -8,7 +8,7 @@ if ( get_sub_field('vertical_tabs') ){
     $contentPad = 'md-px4 py3';
 } else {
     $tabNav= 'flex flex-column';
-    $tabName = 'flex';
+    $tabName = 'md-flex';
     $tab= 'btn md-text-left border-bottom-none || mr1 px3';
     $content = 'pt4';
     $pad = '';
@@ -31,7 +31,7 @@ $blockTitle  = get_sub_field($current . '_title_title');
 
     <div class="container">
 
-        <div class="col col-6 || p4">
+        <div class="col col-12 md-col-6 || p4">
 
             <div class="mb3">
                 <?php
@@ -46,9 +46,9 @@ $blockTitle  = get_sub_field($current . '_title_title');
         </div>
 
 
-        <div class="col col-6 || p4" data-tabs="wrapper">
+        <div class="col col-12 md-col-6 || p4" data-tabs="wrapper">
 
-            <div class="tabs || col col-12 || mb0 <?php echo $tabName ?> || flex items-center">
+            <div class="tabs || col col-12 || mb0 <?php echo $tabName ?> || md-flex items-center">
 
             <?php
                 /**
@@ -64,7 +64,7 @@ $blockTitle  = get_sub_field($current . '_title_title');
 
                 if( have_rows('tabs')): $i = 1; while ( have_rows('tabs')): the_row() ?>
 
-                    <div data-section="tab<?php echo $i ?>" class="tab <?=$tabClass?> || relative text-center bold <?=($i <= 1)? 'tab-active' : ''?>">
+                    <div data-section="tab<?php echo $i ?>" class="tab <?=$tabClass?> || relative text-center <?=($i <= 1)? 'tab-active' : ''?>">
 						<?=get_sub_field('tab_name')?>
 					</div>
 
@@ -92,10 +92,11 @@ $blockTitle  = get_sub_field($current . '_title_title');
 
                             <div class="wysiwyg p4">
                                 <?php
-                                $blockTitleCol1 = get_sub_field('col_one_title_title');?>
+                                $blockTitleCol1 = get_sub_field('col_one_title_title'); if (!empty($blockTitleCol1[0]['title'])):?>
                                 <<?=$blockTitleCol1[0]['type']['heading']?> class="pb2 <?=$blockTitleCol1[0]['size']['heading_size']?> || <?=$blockTitleCol1[0]['color']['system_text_colours']?> <?=$blockTitleCol1[0]['title_case']['system_text_transform']?>">
                                     <?=$blockTitleCol1[0]['title']?>
                                 </<?=$blockTitleCol1[0]['type']['heading']?>>
+                                <?php endif; ?>
                                 <?=get_sub_field('col_one_title_content') ?>
                             </div>
 
@@ -113,10 +114,11 @@ $blockTitle  = get_sub_field($current . '_title_title');
                         <div class="col col-12 md-col-6 p3">
                             <div class="wysiwyg">
                                 <?php
-                                $blockTitleCol1 = get_sub_field('col_one_title_title');?>
+                                $blockTitleCol1 = get_sub_field('col_one_title_title'); if (!empty($blockTitleCol1[0]['title'])):?>
                                 <<?=$blockTitleCol1[0]['type']['heading']?> class="pb2 <?=$blockTitleCol1[0]['size']['heading_size']?> || <?=$blockTitleCol1[0]['color']['system_text_colours']?> <?=$blockTitleCol1[0]['title_case']['system_text_transform']?>">
                                     <?=$blockTitleCol1[0]['title']?>
                                 </<?=$blockTitleCol1[0]['type']['heading']?>>
+                                <?php endif; ?>
 
                                 <?=get_sub_field('col_one_title_content') ?>
                              </div>
@@ -125,10 +127,11 @@ $blockTitle  = get_sub_field($current . '_title_title');
                         <div class="col col-12 md-col-6 p3">
                             <div class="wysiwyg">
                                 <?php
-                                $blockTitleCol2 = get_sub_field('col_two_title_title');?>
+                                $blockTitleCol2 = get_sub_field('col_two_title_title'); if (!empty($blockTitleCol2[0]['title'])):?>
                                 <<?=$blockTitleCol2[0]['type']['heading']?> class="pb2 <?=$blockTitleCol2[0]['size']['heading_size']?> || <?=$blockTitleCol2[0]['color']['system_text_colours']?> <?=$blockTitleCol2[0]['title_case']['system_text_transform']?>">
                                 <?=$blockTitleCol2[0]['title']?>
                             </<?=$blockTitleCol2[0]['type']['heading']?>>
+                            <?php endif; ?>
 
                             <?=get_sub_field('col_two_title_content') ?>
                             </div>
