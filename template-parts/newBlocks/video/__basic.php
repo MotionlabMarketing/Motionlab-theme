@@ -23,7 +23,7 @@ $blockTitle = get_sub_field('block_videos_title_title');
 
     <div class="container">
 
-        <div class="col-12 || mb5 || text-center">
+        <div class="col-12 || md-mb5 p3 || text-center">
 
             <div class="mb4">
                 <?php
@@ -32,7 +32,7 @@ $blockTitle = get_sub_field('block_videos_title_title');
                 } ?>
             </div>
 
-            <div class="wysiwyg || mx6 px6">
+            <div class="wysiwyg || md-mx6 md-px6">
                 <?= get_sub_field('block_video_content'); ?>
             </div>
 
@@ -42,9 +42,9 @@ $blockTitle = get_sub_field('block_videos_title_title');
 
     <div class="container">
 
-        <div class="col col-4 hover-zoom">
+        <div class="col col-12 md-col-4">
 
-            <div class="m2 || border border-smoke zoom">
+            <div class="m2 || border border-smoke">
 
                 <div class="video || block relative">
 
@@ -76,9 +76,9 @@ $blockTitle = get_sub_field('block_videos_title_title');
 
         </div>
 
-        <div class="col col-4 hover-zoom">
+        <div class="col col-12 md-col-4">
 
-            <div class="m2 || border border-smoke || zoom">
+            <div class="m2 || border border-smoke">
 
                 <div class="video || block relative min-height-v25">
 
@@ -110,9 +110,9 @@ $blockTitle = get_sub_field('block_videos_title_title');
 
         </div>
 
-        <div class="col col-4 hover-zoom">
+        <div class="col col-12 md-col-4">
 
-            <div class="m2 || border border-smoke || zoom">
+            <div class="m2 || border border-smoke">
 
                 <div class="video || block relative min-height-v25">
 
