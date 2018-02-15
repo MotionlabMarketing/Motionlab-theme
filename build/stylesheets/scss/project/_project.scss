@@ -73,6 +73,8 @@
   padding: 1rem 2rem;
 }
 
+.btn-extra { padding: 1.2rem 3rem; }
+
 .btn-boxshadow { box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); }
 
 
@@ -86,18 +88,7 @@
     Joe Curran
 */
 
-.border-radius-0   {border-radius: 0;}
-.border-radius-1   {border-radius: 0.2rem;}
-.border-radius-2   {border-radius: 0.4rem;}
-.border-radius-3   {border-radius: 0.6rem;}
-.border-radius-4   {border-radius: 0.8rem;}
-.border-radius-5   {border-radius: 1rem;}
-.border-radius-6   {border-radius: 1.2rem;}
-.border-radius-7   {border-radius: 1.4rem;}
-.border-radius-8   {border-radius: 1.6rem;}
-.border-radius-9   {border-radius: 1.8rem;}
-.border-radius-10  {border-radius: 2rem;}
-.border-radius-max {border-radius: 10rem;}
+
 
 //$i: 0;
 //$br-step: 0;

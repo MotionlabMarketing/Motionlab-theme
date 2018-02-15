@@ -780,6 +780,35 @@ jQuery(document).ready(function($) {
         $(this).removeAttr('height').removeAttr('width').wrap( "<div class='embed-container'></div>" );
 
     });
+
+
+    // NAVIGATION SMALLIFICATION //
+
+    function navigationSmallification() {
+        var viewportWidth   = $(window).width();
+        var viewportHeight  = $(window).height();
+        var headerHeight    = $('header').height();
+
+        if (viewportWidth > 680) {
+
+                if($(window).scrollTop() > (viewportHeight - (headerHeight * 4))){
+                    $('header').addClass("smallification");
+                } else {
+                    $('header').removeClass("smallification");
+                }
+        }
+    }
+    
+    $(window).scroll(function() {
+        navigationSmallification();
+    });
+
+    $(window).resize(function() {
+        navigationSmallification();
+    });
+
+    navigationSmallification();
+
 });
 
 (function($) {
