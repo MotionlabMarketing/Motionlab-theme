@@ -17,7 +17,7 @@
 
         <div class="block py3">
 
-            <hr class="<?=get_sub_field($current . '_rule')?> border-<?=get_sub_field($current . '_ruleSize')?> <?=get_sub_field($current . '_ruleStyle')?>">
+            <hr class="relative <?=get_sub_field($current . '_rule')?> border-<?=get_sub_field($current . '_ruleSize')?> <?=get_sub_field($current . '_ruleStyle')?>">
 
         </div>
 
