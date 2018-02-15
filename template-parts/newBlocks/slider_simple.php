@@ -33,7 +33,7 @@ if ( get_sub_field('text_color_color') ){
 <?php } ?>
 
 
-<section class="<?php echo 'bg-' . get_sub_field('background_color_color') ?> <?php echo $txtColor ?>" slider>
+<section class="<?php echo $txtColor ?>" slider>
     <div class="<?php echo $fullHeight ?> <?php echo $height ?>  <?php echo get_sub_field('text_align_align') ?>">
 
         <?php if ( have_rows('block_title_title')){
@@ -48,7 +48,7 @@ if ( get_sub_field('text_color_color') ){
         <?php } ?>
 
         <?php if (have_rows('slide')){ ?>
-            <div data-slick="slider-auto-arrows">
+            <div data-slick="slider-auto-arrows" style="z-index: -1;">
                 <?php while (have_rows('slide')){
                     the_row(); ?>
                     <div class="z1 bg-cover bg-center items-center js-match-height <?php echo $height ?>" style="background-image:url(<?php echo get_sub_field('slider_image')['sizes']['large'] ?>)">

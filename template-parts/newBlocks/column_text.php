@@ -1,4 +1,7 @@
 <?php
+
+// TODO: NEEDS UPDATING SOON.
+
 if( get_sub_field('columns') == 4 ) {
     $columnWidth= "col col-12 pb3 md-pb0 md-col-3 px3";
     $MarginNegative = 'mxn3';
@@ -26,12 +29,42 @@ if( get_sub_field('anchor_buttons_bottom') == TRUE ) {
 }
 
 $blockCustomClass = get_sub_field('columns_custom_class');
+
+$current = "block_columns";
+
+$block['custom_css'] = get_sub_field('block_columns_settings_block_customClass');
+$block['custom_id'] = get_sub_field('block_columns_settings_block_customID');
+
+// GET THE SPACING (MARGIN) BEFORE AND AFTER THIS BLOCK.
+$block['temp']['top']       = get_sub_field($current . '_settings_enable_block_bspacing');
+$block['temp']['bottom']    = get_sub_field($current . '_settings_enable_block_aspacing');
+
+foreach ($block['temp'] as $a):
+
+    $block['spacing'] = $block['spacing'] . $a . " ";
+
+endforeach;
+
+
+// GET THE BLOCK INTERNAL (PADDING) SPACING.
+$block['temp']['top']       = get_sub_field($current . '_settings_block_tpadding');
+$block['temp']['bottom']    = get_sub_field($current . '_settings_block_bpadding');
+$block['temp']['left']      = get_sub_field($current . '_settings_block_lpadding');
+$block['temp']['right']     = get_sub_field($current . '_settings_block_rpadding');
+
+foreach ($block['temp'] as $a):
+
+    $block['padding'] = $block['padding'] . $a . " ";
+
+endforeach;
+
+unset($block['temp']);
 ?>
 
 <!-- column text NEW -->
 
-<section class="<?php echo $bgColor ?> <?php echo $txtColor ?> relative <?=$blockCustomClass?>">
-    <div class="<?php echo $masterPad; ?> pb4 md-pb5 mx-auto ||
+<section id="<?=$block['custom_id']?>" class="<?=$block['custom_css']?> <?=$block['padding']?> <?=$block['spacing']?> relative <?php echo $bgColor ?> <?php echo $txtColor ?> relative p4 ">
+    <div class="container <?php echo $masterPad; ?> mx-auto || <?=$blockCustomClass?> ||
     <?php echo $paddingTop == 'collapse-top' ? 'pt4 lg-pt0' : 'pt4 md-pt5' ?>
     <?php echo get_sub_field('full_width_full_width') ?>
     <?php echo $measureWide ?>">

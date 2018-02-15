@@ -35,18 +35,18 @@ $size           = get_sub_field('block_buttons_size');
     </div>
 <?php } ?>
 
-<section class="relative z1 overflow-hidden || bg-cover ||
+<section class="relative overflow-hidden || bg-cover ||
 <?php echo 'bg-' . get_sub_field('background_color_color') ?> <?php echo $txtColor ?> <?php echo 'bg-' . get_sub_field('background_position_background_position') ?> <?php echo get_sub_field('fake_parallax') == TRUE ? 'bg-fixed' : '' ?>" style="background-image:url('<?php echo $image?>')">
 
 <?php if ( get_sub_field('overlay_add_overlay')){ ?>
-    <div class="zn1 absolute top-0 left-0 right-0 bottom-0 <?php echo 'bg-' . get_sub_field('overlay_type') . '-' . get_sub_field('overlay_strength') ?> <?php echo $halfAsMuch ?>" data-aos="fade" <?php echo $animationSpeed ?> <?php echo $animationDelay ?> <?php echo $animationRepeat ?>></div>
+    <div class="absolute top-0 left-0 right-0 bottom-0 <?php echo 'bg-' . get_sub_field('overlay_type') . '-' . get_sub_field('overlay_strength') ?> <?php echo $halfAsMuch ?>" data-aos="fade" <?php echo $animationSpeed ?> <?php echo $animationDelay ?> <?php echo $animationRepeat ?>></div>
 <?php } ?>
 
 <?php if (get_sub_field('bleed_out_colour') == TRUE && get_sub_field('bleed_color_top')) { ?>
-    <div class="zn1 absolute top-0 left-0 right-0 bottom-0 banner-top-gradient-<?php echo get_sub_field('background_color_color') ?>"></div>
+    <div class="absolute top-0 left-0 right-0 bottom-0 banner-top-gradient-<?php echo get_sub_field('background_color_color') ?>"></div>
 <?php } ?>
 <?php if (get_sub_field('bleed_out_colour') == TRUE && get_sub_field('bleed_color_bottom')){ ?>
-    <div class="zn1 absolute top-0 left-0 right-0 bottom-0 banner-bottom-gradient-<?php echo get_sub_field('background_color_color') ?>"></div>
+    <div class="absolute top-0 left-0 right-0 bottom-0 banner-bottom-gradient-<?php echo get_sub_field('background_color_color') ?>"></div>
 <?php } ?>
 
 <div class="<?php echo $halfAsMuch ?>">
@@ -55,18 +55,20 @@ $size           = get_sub_field('block_buttons_size');
         <div class="col-12 flex flex-column lg-flex-row my2 <?php echo get_sub_field('text_align_align') ?>">
             <div class="spacer || display-none lg-block" <?php if( get_sub_field('banner_height_banner_height') == 'lg-min-height-v100' && $index == 0 ){ ?> headroom-space <?php } ?>> </div>
 
-                <div class="flex flex-column col-12" >
+                <div class="flex flex-column col-12">
                     <div class="">
                         <?php if(!empty(get_sub_field('subtitle'))){ ?>
-                           <h5 class="sans uppercase ls3 md-ls4 lh1 md-mb4"><?php echo get_sub_field('subtitle') ?></h5>
+                           <h5 class="sans lh1 h4"><?php echo get_sub_field('subtitle') ?></h5>
                         <?php } ?>
+                        <div class="heading-contrast h3">
                         <?php
                         if (!empty($blockTitle[0]['title'])) {
                             include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
+                        </div>
                     </div>
 
                     <?php if (get_sub_field('copy')){ ?>
-                        <div class="wysiwyg mb5 pt2"><?php echo get_sub_field('copy') ?></div>
+                        <div class="wysiwyg mb4 pt2 h3"><?php echo get_sub_field('copy') ?></div>
                     <?php } ?>
 
 
@@ -76,7 +78,7 @@ $size           = get_sub_field('block_buttons_size');
 
                         <?php foreach ($buttons as $btn): ?>
 
-                            <a href="<?=$btn['button_link']['url']?>" class="btn btn-<?=$size?> border-radius-<?=$border?> <?=$btn['system_text_colours']?> inline-block <?=$btn['system_background_colours']?> <?=$btn['custom_class']?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
+                            <a href="<?=$btn['button_link']['url']?>" class="btn btn-large <?=$btn['system_text_colours']?> inline-block <?=$btn['system_background_colours']?> <?=$btn['custom_class']?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
                                 <?=$btn['button_text']?>
                             </a>
 

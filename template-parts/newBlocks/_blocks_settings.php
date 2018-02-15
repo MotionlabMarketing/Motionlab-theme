@@ -20,6 +20,10 @@ if ($block['enabled'] == true || empty($block['enabled'])): // TODO: Needs corre
     // GET THE BLOCK LAYOUT.
     $block['layout']            = get_sub_field($current . '_layout');
 
+    // GET CUSTOM CLASS & IDS.
+    $block['custom_id']         = get_sub_field($current . '_settings_block_customID');
+    $block['custom_css']        = get_sub_field($current . '_settings_block_customClass');
+
     // GET THE SPACING (MARGIN) BEFORE AND AFTER THIS BLOCK.
     $block['temp']['top']       = get_sub_field($current . '_settings_enable_block_bspacing');
     $block['temp']['bottom']    = get_sub_field($current . '_settings_enable_block_aspacing');
