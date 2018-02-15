@@ -26,13 +26,17 @@ $blockTitle           = get_sub_field('column_title_title');
 
 <?php //print_r(get_field_objects()); ?>
 <?php if(!empty(get_sub_field('copy'))){?>
-	<div class="<?php echo $columnWidth ?> <?php echo $textAlign ?> <?=$columnsCustomClass?> || js-match-height">
-		<div class="flex flex-column height-100 <?php echo $anchorButtons ?>">
-			<div>
+	<div class="<?php echo $columnWidth ?> <?php echo $textAlign ?> || js-match-height">
+		<div class="flex flex-column height-100 <?php echo $anchorButtons ?> <?=$columnsCustomClass?>">
+			<div class="">
 
-                <?php
-                if (!empty($blockTitle[0]['title'])) {
-                include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
+                <div class="mb4">
+
+                    <?php
+                    if (!empty($blockTitle[0]['title'])) {
+                    include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
+
+                </div>
 
 				<?php if ( have_rows('icon')){
 					while ( have_rows('icon')){
@@ -43,14 +47,18 @@ $blockTitle           = get_sub_field('column_title_title');
 
 				<div class="wysiwyg col-12 <?php echo $textAlign ?> limit-p limit-p-80">
 					<?php echo get_sub_field('copy'); ?>
+
+                    <?php if (!empty($columnButtonsLink) && !empty($columnButtonsText)):?>
+                    <div class="mt4">
+                        <a href="<?=$columnButtonsLink['url']?>" class="btn btn-<?=$size?> border-radius-<?=$buttonBorderRadius['border_radius_strength']?> white inline-block bg-<?=$columnButtonsColour?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
+                            <?=$columnButtonsText?>
+                        </a>
+                    </div>
+                    <?php endif; ?>
 				</div>
 			</div>
 
-            <?php if (!empty($columnButtonsLink) && !empty($columnButtonsText)):?>
-                <a href="<?=$columnButtonsLink['url']?>" class="btn btn-<?=$size?> border-radius-<?=$buttonBorderRadius['border_radius_strength']?> white inline-block bg-<?=$columnButtonsColour?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
-                    <?=$columnButtonsText?>
-                </a>
-            <?php endif; ?>
+
 
 
 		</div>
