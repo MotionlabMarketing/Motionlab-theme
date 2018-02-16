@@ -311,6 +311,44 @@ jQuery(document).ready(function($) {
         ]
     });
 
+    $('[data-slick="galleryThin-slider"]').slick({
+        slidesToShow: 4,
+        variableWidth: false,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        arrows: true,
+        centerPadding: '30px',
+        draggable: false,
+        pauseOnHover: false,
+        mobileFirst: false,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 4
+                }
+            },
+            {
+                breakpoint: 960,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
+        ]
+    });
+
     $('.js-hero-slider-image').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
