@@ -18,7 +18,7 @@
     </section>
 <?php endif; ?>
 
-<footer class="relative clearfix">
+<footer class="relative clearfix p4">
 
     <?php include_once(TEMPLATE_DIR . '/_footers.php'); ?>
 
