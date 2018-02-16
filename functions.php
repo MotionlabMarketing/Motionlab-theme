@@ -7,7 +7,8 @@
 * @package motionlabtheme
 */
 
-define("BLOCKS_DIR", get_template_directory() . "/template-parts/newBLocks/");
+define("TEMPLATE_DIR", get_template_directory() . "/template-parts/");
+define("BLOCKS_DIR"  , get_template_directory() . "/template-parts/newBLocks/");
 
 define("GOOGLEFONTTEST", get_field('GF_body_font', 'option'));
 
@@ -44,6 +45,40 @@ if ( ! function_exists( 'motionlabtheme_setup' ) ) :
 	}
 endif;
 add_action( 'after_setup_theme', 'motionlabtheme_setup' );
+
+
+function custom_widgets_init() {
+
+    register_sidebar( array(
+        'name'          => 'Footer Column 1',
+        'id'            => 'footer_column_1',
+        'before_widget' => '<div class="footer-menu relative">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="mb4">',
+        'after_title'   => '</h4>',
+    ) );
+
+    register_sidebar( array(
+        'name'          => 'Footer Column 2',
+        'id'            => 'footer_column_2',
+        'before_widget' => '<div class="footer-menu relative">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="mb4 h4">',
+        'after_title'   => '</h4>',
+    ) );
+
+    register_sidebar( array(
+        'name'          => 'Footer Column 3',
+        'id'            => 'footer_column_3',
+        'before_widget' => '<div class="footer-menu relative">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="mb4">',
+        'after_title'   => '</h4>',
+    ) );
+
+}
+add_action( 'widgets_init', 'custom_widgets_init' );
+
 
 
 
@@ -169,7 +204,7 @@ add_filter( 'get_the_archive_title', function ($title) {
 /*==================================================================
 WORK OUT MENU NAMES
 ==================================================================*/
-function gymgear_get_menu_by_location( $location ) {
+function get_menu_by_location( $location ) {
 	if( empty($location) ) return false;
 
 	$locations = get_nav_menu_locations();
