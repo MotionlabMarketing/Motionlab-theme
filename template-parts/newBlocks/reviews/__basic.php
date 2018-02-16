@@ -13,8 +13,7 @@
 $blockTitle  = get_sub_field($current . '_title_title');
 ?>
 
-<section
-        class="clearfix <?= $block['spacing'] ?> <?= $block['padding'] ?> <?= $block['background']['colour'] ?> <?= $block['border']['sides'] ?> <?= $block['border']['size'] ?> <?= $block['border']['colour'] ?>">
+<section class="clearfix <?= $block['spacing'] ?> <?= $block['padding'] ?> <?= $block['background']['colour'] ?> <?= $block['border']['sides'] ?> <?= $block['border']['size'] ?> <?= $block['border']['colour'] ?>">
 
     <?= ($block['grid'] == 'container') ? '<div class="container">' : "" ?>
 
@@ -55,7 +54,7 @@ $blockTitle  = get_sub_field($current . '_title_title');
                         <?= get_field('reviewer_body'); ?>
                     </div>
 
-                    <h4 class="h3 mb0 brand-primary"><?= get_field('reviewer_name') ?></h4>
+                    <h4 class="h4 mb0 brand-primary bold"><?= get_field('reviewer_name') ?></h4>
                     <p class="h4 brand-primary"><?= get_field('reviewer_locations') ?></p>
 
                 </div>

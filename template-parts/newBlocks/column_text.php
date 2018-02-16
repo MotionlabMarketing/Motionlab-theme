@@ -63,7 +63,7 @@ unset($block['temp']);
 
 <!-- column text NEW -->
 
-<section id="<?=$block['custom_id']?>" class="<?=$block['custom_css']?> <?=$block['padding']?> <?=$block['spacing']?> relative <?php echo $bgColor ?> <?php echo $txtColor ?> relative p4 ">
+<section id="<?=$block['custom_id']?>" class="clearfix <?=$block['custom_css']?> <?=$block['padding']?> <?=$block['spacing']?> relative <?php echo $bgColor ?> <?php echo $txtColor ?> relative p4 ">
     <div class="container <?php echo $masterPad; ?> mx-auto || <?=$blockCustomClass?> ||
     <?php echo $paddingTop == 'collapse-top' ? 'pt4 lg-pt0' : 'pt4 md-pt5' ?>
     <?php echo get_sub_field('full_width_full_width') ?>
