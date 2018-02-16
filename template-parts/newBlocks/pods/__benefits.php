@@ -25,10 +25,20 @@ $borders          = "||" . $borders . " " . $bordersColor;
 $blockTitle  = get_sub_field($current . '_title_title');
 
 $blockItems  = get_sub_field($current . '_icons');
+$columns     = get_sub_field($current . '_columns');
+
+$content         = get_sub_field($current . '_content');
+$contentLocation = get_sub_field($current . '_content_location');
+
+if ($columns == 4):
+    $col = "col-6 sm-col-3";
+elseif ($columns == 5):
+    $col = "col-grid-5";
+endif;
 
 ?>
 
-<section class="pod-benefits mb4 || <?=$bgColor?> <?=$txtColor?> <?=$borders?>">
+<section class="pod-benefits || <?=$bgColor?> <?=$txtColor?> <?=$borders?>">
 
     <div class="container">
 
@@ -36,15 +46,18 @@ $blockItems  = get_sub_field($current . '_icons');
 
             <div class="m4 mb6 || text-center">
 
-                <div class="mb2">
-                <?php
-                if (!empty($blockTitle[0]['title'])) {
-                    include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
-                </div>
+                <?php if (!empty($blockTitle[0]['title'])):?>
+                    <div class="mb2">
+                        <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php');?>
+                    </div>
+                <?php endif; ?>
 
-                <div class="text-center">
-                    <?=get_sub_field('block_pods_content')?>
-                </div>
+                <?php if ($contentLocation == "before" && !empty($content)): ?>
+                    <div class="clearfix text-center limit-p limit-p-70">
+                        <?=$content?>
+                    </div>
+                <?php endif; ?>
+
             </div>
 
             <div class="px2 md-px6">
@@ -54,11 +67,15 @@ $blockItems  = get_sub_field($current . '_icons');
                     <a href="<?=$item['pod_item_link']['url']?>" class="<?=$txtColor?>" <?=($item['pod_item_link']['title'] ? 'title="'.$item['pod_item_link']['title'].'"' : '')?> <?=($item['pod_item_link']['target'] ? 'target="'.$item['pod_item_link']['target'].'"' : '')?>>
                 <?php endif; ?>
 
-                <div class="item || col col-6 sm-col-3 px4 mb5 || text-center <?=$txtColor?> || <?php //col-grid-5?> || js-match-height">
+                <div class="item || col <?=$col?> px4 mb5 || text-center <?=$txtColor?> || <?php //col-grid-5?> || js-match-height">
 
-                    <p class="block mb2 || text-center"><?=$item['pod_item_icon']?></p>
+                    <?php if ($item['enable_custom_icons'] == true): ?>
+                        <img src="<?=$item['pod_item_custom_icon']?>" style="max-width: 6rem; max-height: 6rem">
+                    <?php else: ?>
+                        <p class="block mb2 || text-center"><?=$item['pod_item_icon']?></p>
+                    <?php endif; ?>
 
-                    <h4 class="h4"><?=$item['pod_item_title']?></h4>
+                    <h4 class="h4 brand-primary"><?=$item['pod_item_title']?></h4>
 
                     <p class="h5"><?=strip_tags($item['pod_item_description'])?></p>
 
@@ -70,6 +87,12 @@ $blockItems  = get_sub_field($current . '_icons');
 
             <?php endforeach; ?>
             </div>
+
+            <?php if ($contentLocation == "after" && !empty($content)): ?>
+                <div class="clearfix text-center limit-p limit-p-70">
+                    <?=$content?>
+                </div>
+            <?php endif; ?>
 
         </div>
 
