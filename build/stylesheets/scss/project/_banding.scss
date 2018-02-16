@@ -33,6 +33,9 @@ body {
   font-family: $fonts-heading;
   font-weight: 400;
 }
+.bg-body {
+  background-color: $brand-white;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $fonts-heading;
@@ -466,6 +469,9 @@ form {
         float: left;
         clear: none;
 
+        @media (max-width: $breakpoint-sm) {
+          width: 100%;
+        }
       }
 
       .ginput_complex {
@@ -557,13 +563,24 @@ form {
 
     div, label {
       display: inline-block;
+      @media (max-width: $breakpoint-sm) {
+        display: block;
+      }
     }
 
     label {
       min-width: 20%;
+
+      @media (max-width: $breakpoint-sm) {
+        width: 100%;
+      }
     }
     div {
       width: 80%;
+
+      @media (max-width: $breakpoint-sm) {
+        width: 100%;
+      }
     }
   }
 
@@ -574,6 +591,10 @@ form {
     }
     div {
       margin-left: 20%;
+
+      @media (max-width: $breakpoint-sm) {
+        margin-left: 0;
+      }
     }
   }
 
