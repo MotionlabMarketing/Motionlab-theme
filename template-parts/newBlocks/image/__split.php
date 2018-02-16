@@ -17,7 +17,7 @@ $minHeight = get_sub_field($current . '_height_min_height');
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-        <div class="col col-12 md-col-6 pt2 pr2 pb2 relative <?=$minHeight?>">
+        <div class="col col-12 md-col-6 mb2 md-pt2 md-pr2 md-pb2 relative <?=$minHeight?>">
 
             <?=(!empty($images[0]['link']['url']))? '<a href="'.$images[0]['link']['url'].'">' : '' ?>
 
@@ -27,7 +27,7 @@ $minHeight = get_sub_field($current . '_height_min_height');
 
         </div>
 
-        <div class="col col-12 md-col-6 pt2 pl2 pb2 relative <?=$minHeight?>">
+        <div class="col col-12 md-col-6 mb2 md-pt2 md-pl2 md-pb2 relative <?=$minHeight?>">
 
             <?=(!empty($images[1]['link']['url']))? '<a href="'.$images[1]['link']['url'].'">' : '' ?>
 
