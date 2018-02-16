@@ -10,6 +10,8 @@
  * @version 1.00
  */
 
+/* TODO: ADD SUPPORT FOR BLOCK TITLE AND CONTENT */
+
 $block = [];
 
 // HAS THIS BLOCK BEEN ENABLED?

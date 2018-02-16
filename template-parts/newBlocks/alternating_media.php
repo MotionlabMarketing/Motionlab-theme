@@ -25,12 +25,13 @@ endforeach;
 
 // BLOCK TITLE //
 $blockTitle  = get_sub_field('block_title_title');
+
+$customCSS = get_sub_field('settings_block_customClass');
+$customID  = get_sub_field('settings_block_customID');
 ?>
 
-
-
 <!-- alternating media -->
-<section class=" md-mt3 md-mb3 p4 <?php echo $bgColor ?> <?php echo $txtColor ?> overflow-hidden">
+<section id="<?=$customID?>" class=" md-mt3 md-mb3 p4 <?php echo $bgColor ?> <?php echo $txtColor ?> overflow-hidden <?=$customCSS?>">
 	<div class="<?=$borderSides?> <?=$borderColour?> <?php echo get_sub_field('full_width_full_width') ?> || lg-height-100 flex flex-column lg-flex-row items-center <?php echo get_sub_field('spacing_top') == TRUE ? 'pt6' : '' ?> <?php echo get_sub_field('spacing_bottom') == TRUE ? 'pb6' : '' ?>">
 		<?php if(get_sub_field('media_type') == 'Image') : ?>
 			<div class="self-stretch bg-center <?php if ($layout == "left"){ ?> order-0 <?php } else { ?> order-1 <?php } ?> || col-12 lg-col-6 || <?php echo get_sub_field('background_position_background_position') ?> bg-cover || min-height-v25">
@@ -43,7 +44,7 @@ $blockTitle  = get_sub_field('block_title_title');
 				</div>
 			</div>
 		<?php endif; ?>
-		<div class="<?php if($layout == 'left'){ ?> order-0 lg-p5 lg-order-1 self-stretch flex items-center <?php } else { ?> order-1 lg-p5 lg-order-0 self-stretch flex items-center <?php } ?> || col-12 lg-col-6 || py4"  <?php echo $animationType ?> <?php echo $animationSpeed ?> <?php echo $animationDelay ?>>
+		<div class="content || <?php if($layout == 'left'){ ?> order-0 lg-p5 lg-order-1 self-stretch flex items-center <?php } else { ?> order-1 lg-p5 lg-order-0 self-stretch flex items-center <?php } ?> || col-12 lg-col-6 || py4"  <?php echo $animationType ?> <?php echo $animationSpeed ?> <?php echo $animationDelay ?>>
 			<div class="container p3 <?php echo get_sub_field('text_align_align') ?> <?php echo $measureWide ?>">
 
                 <?php
