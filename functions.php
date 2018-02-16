@@ -388,6 +388,19 @@ function create_posttype() {
             'menu_icon'         => 'dashicons-images-alt2',
         )
     );
+
+    register_post_type( 'reviews',
+        array(
+            'labels' => array(
+                'name'          => __( 'Reviews' ),
+                'singular_name' => __( 'Reviews' )
+            ),
+            'public'            => true,
+            'has_archive'       => false,
+            'rewrite'           => array('slug' => 'reviews'),
+            'menu_icon'         => 'dashicons-thumbs-up',
+        )
+    );
 }
 add_action( 'init', 'create_posttype' );
 

@@ -274,6 +274,39 @@ h3, .h3 {
     background-color: $brand-secondary;
   }
 }
+.opacity-0 {
+  opacity: 0;
+}
+.opacity-1 {
+  opacity: .1;
+}
+.opacity-2 {
+  opacity: .2;
+}
+.opacity-3 {
+  opacity: .3;
+}
+.opacity-4 {
+  opacity: .4;
+}
+.opacity-5 {
+  opacity: .5;
+}
+.opacity-6 {
+  opacity: .6;
+}
+.opacity-7 {
+  opacity: .7;
+}
+.opacity-8 {
+  opacity: .8;
+}
+.opacity-9 {
+  opacity: .9;
+}
+.opacity-10 {
+  opacity: 1;
+}
 
 /**
  * BUTTONS
@@ -356,7 +389,10 @@ header {
 }
 
 footer {
-  background-color: $brand-grayDarker;
+
+  .bg-footer {
+    background-color: $brand-grayDark;
+  }
 
   nav {
     h3 {
@@ -376,6 +412,28 @@ footer {
     position: absolute;
     background-repeat: no-repeat;
     background-position: right bottom;
+  }
+
+  .footer-menu {
+
+    .menu {
+      transform: none;
+      list-style: none;
+      position: relative;
+      visibility: visible;
+      padding: 0 !important;
+    }
+  }
+
+  nav.social {
+
+    &.social-inline li {
+      display: inline-block;
+    }
+
+    .fa {
+      font-size: 1.8rem;
+    }
   }
 }
 
@@ -807,11 +865,11 @@ hr.border-5 {
 .divide-lines {
 
   .divide-line {
-    border-right-width: 1px;
-    border-right-style: solid;
+    border-left-width: 1px;
+    border-left-style: solid;
 
-    &:last-child {
-      border-right: none;
+    &:first-child {
+      border-left: none;
     }
   }
 }
@@ -1010,6 +1068,17 @@ hr.border-5 {
     border-color: $brand-primary;
   }
 }
+.slick-prev {
+  left: -45px;
+}
+.slick-next {
+  right: -45px;
+}
+.slick-next:before, .slick-prev:before {
+  font-size: 30px;
+  color: $brand-primary;
+}
+
 
 #package {
   .md-hidden-down {
