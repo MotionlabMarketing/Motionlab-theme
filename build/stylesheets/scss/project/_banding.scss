@@ -750,10 +750,21 @@ form {
   height: 100%;
 }
 
-/**
- * BORDERS
- * TODO: Change this to use SCSS functions.
- */
+@media (max-width: $breakpoint-sm) {
+  .sm-noresize .embed-container {
+    height: 100%;
+  }
+  .sm-noresize .embed-container iframe {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+  }
+}
+
+  /**
+   * BORDERS
+   * TODO: Change this to use SCSS functions.
+   */
 
 // BORDER RESETS.
 .border-1 {

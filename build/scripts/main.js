@@ -2,12 +2,12 @@
  * TODO: Review all of these functions and remove any that are not used. We are loading a large number of plugins which may not be used.
  */
 
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
 
     /*========================
     Simple Parallax
     ==========================*/
-    if ($('.rellax').length > 0) { 
+    if ($('.rellax').length > 0) {
         var rellax = new Rellax('.rellax', {
             speed: -2,
             center: false,
@@ -28,10 +28,10 @@ jQuery(document).ready(function($) {
     ==========================*/
 
     // Push mobile menu below header
-    function mobileMenuSpacer(){
+    function mobileMenuSpacer() {
         var header = $('[data-role="header"]');
         var headerHeight = header.outerHeight();
-        $('.menu').css('padding-top',headerHeight);
+        $('.menu').css('padding-top', headerHeight);
     }
 
     // Mobile menu
@@ -48,7 +48,7 @@ jQuery(document).ready(function($) {
     mobileMenuSpacer();
 
     //Run 'em on resize'
-    $(window).resize(function() {
+    $(window).resize(function () {
         mobileMenuSpacer();
     });
 
@@ -101,7 +101,6 @@ jQuery(document).ready(function($) {
     // });
 
 
-
     /*======================================================
     Mega Menu
     ========================================================*/
@@ -136,8 +135,6 @@ jQuery(document).ready(function($) {
     // });
 
 
-
-
     /*======================================================
     LAZYLOAD
     ========================================================*/
@@ -154,28 +151,26 @@ jQuery(document).ready(function($) {
     HEADER SPACE
     ========================================================*/
 
-    function headerSpace(){
+    function headerSpace() {
         var headerHeight = $('#masthead').outerHeight();
-        $('.js-header-space').css('padding-top', + headerHeight + "px");
+        $('.js-header-space').css('padding-top', +headerHeight + "px");
     }
 
     headerSpace();
-    $(window).resize(function(){
+    $(window).resize(function () {
         headerSpace();
     });
 
 
-
-    function heightHeaderSpace(){
+    function heightHeaderSpace() {
         var headerHeight = $('#masthead').outerHeight();
-        $('.minus-js-header-height').css('min-height', 'calc(100vh - '+ headerHeight + "px)");
+        $('.minus-js-header-height').css('min-height', 'calc(100vh - ' + headerHeight + "px)");
     }
 
     heightHeaderSpace();
-    $(window).resize(function(){
+    $(window).resize(function () {
         heightHeaderSpace();
     });
-
 
 
     // function negativeHeaderSpace(){
@@ -405,24 +400,23 @@ jQuery(document).ready(function($) {
         infinite: true,
     });
     $('.productSliderNav').slick({
-        speed:800,
-        slidesToShow:3,
-        slidesToScroll:1,
-        pauseOnHover:false,
-        vertical:true,
-        verticalSwiping:true,
+        speed: 800,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        vertical: true,
+        verticalSwiping: true,
         asNavFor: '.productSlider',
         focusOnSelect: true,
         easing: 'easeInOutExpo'
     });
 
 
-
     /*======================
     POPOVER
     ======================*/
 
-    $('[data-toggle="popover"]').on('click', function(e) {
+    $('[data-toggle="popover"]').on('click', function (e) {
         e.preventDefault();
     });
 
@@ -432,12 +426,11 @@ jQuery(document).ready(function($) {
     });
 
 
-
     /*======================================================
     COLLAPSE / ACCORDION
     ========================================================*/
 
-    $('[data-toggle="collapse"]').on('click', function(e) {
+    $('[data-toggle="collapse"]').on('click', function (e) {
 
         e.preventDefault();
 
@@ -481,9 +474,9 @@ jQuery(document).ready(function($) {
 
     });
 
-    function resizeCollapse(){
-        $('[data-toggle="collapse"]').each(function(){
-            if ($(this).is(':hidden')){
+    function resizeCollapse() {
+        $('[data-toggle="collapse"]').each(function () {
+            if ($(this).is(':hidden')) {
                 $(this).removeClass('active');
                 $(this).next().removeAttr('style').removeClass('open');
             }
@@ -491,10 +484,9 @@ jQuery(document).ready(function($) {
     }
 
 
-    $(window).on('resize', function() {
+    $(window).on('resize', function () {
         resizeCollapse();
     });
-
 
 
     /*======================================================
@@ -503,14 +495,14 @@ jQuery(document).ready(function($) {
 
     $('.js-match-height').matchHeight();
 
-    $.fn.matchHeight._afterUpdate = function(resize) {
+    $.fn.matchHeight._afterUpdate = function (resize) {
         $.fn.matchHeight._apply('.js-match-height');
     }
 
 
     $('.js-match-height-alt').matchHeight();
 
-    $.fn.matchHeight._afterUpdate = function(resize) {
+    $.fn.matchHeight._afterUpdate = function (resize) {
         $.fn.matchHeight._apply('.js-match-height-alt');
     }
 
@@ -519,7 +511,7 @@ jQuery(document).ready(function($) {
     SMOOTH SCROLL
     ==========================*/
 
-    $('a[href*=\\#]:not([href=\\#]):not([data-toggle])').on('click', function() {
+    $('a[href*=\\#]:not([href=\\#]):not([data-toggle])').on('click', function () {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
             var target = $(this.hash);
             var headerHeight = $('#masthead').outerHeight();
@@ -549,8 +541,8 @@ jQuery(document).ready(function($) {
     $('.gallery').magnificPopup({
         delegate: 'a', // child items selector, by clicking on it popup will open
         type: 'image',
-        gallery:{
-            enabled:true
+        gallery: {
+            enabled: true
         }
         // other options
     });
@@ -562,13 +554,11 @@ jQuery(document).ready(function($) {
     });
 
 
-
-
     /*======================================================
     TABS
     ========================================================*/
 
-    $('[data-section]').on('click', function(e) {
+    $('[data-section]').on('click', function (e) {
         e.preventDefault();
         var $wrapper = $(this).parents('[data-tabs="wrapper"]');
         var target = $(this).attr('data-section');
@@ -595,27 +585,25 @@ jQuery(document).ready(function($) {
     HOTSPOT : HOVER
     ========================================================*/
 
-    $('[data-spot]').each(function(){
+    $('[data-spot]').each(function () {
         var $wrapper = $(this).parents('[data-hotspot="wrapper"]');
         var target = $(this).attr('data-spot');
-        $(this).mouseover(function() {
+        $(this).mouseover(function () {
             $wrapper.find('[data-hotspot="content"]').find('div[id=' + target + ']').addClass('hotspot-active');
-        }).mouseout(function() {
+        }).mouseout(function () {
             $wrapper.find('[data-hotspot="content"]').children('div').removeClass('hotspot-active');
         });
     });
 
 
-
     /*======================================================
     PRELOADER
     ========================================================*/
-    var timer = function(){
+    var timer = function () {
         $('[data-content]').fadeTo(600, 1);
         $('[data-loader]').delay(200).fadeOut(600);
     };
     timer();
-
 
 
     /*======================================================
@@ -667,28 +655,27 @@ jQuery(document).ready(function($) {
     // ph_add(0);
 
 
-
     /*======================================================
     HIDE / SHOW
     ========================================================*/
 
 
-    $('.js-hide-show').each(function(){
+    $('.js-hide-show').each(function () {
 
-        $(this).click(function(){
+        $(this).click(function () {
 
             var show = $(this).attr('data-show');
             data_icon_show = $(this).data('icon-show');
             data_icon_hide = $(this).data('icon-hide');
-            iconToggle = ($(this).find('i').html() === data_icon_show) ? data_icon_hide:data_icon_show;
+            iconToggle = ($(this).find('i').html() === data_icon_show) ? data_icon_hide : data_icon_show;
 
-            $("#"+show).toggle();
+            $("#" + show).toggle();
             $(this).find('i').text(iconToggle);
 
             $('[toggle-relative-search]').toggleClass('relative');
 
-            if($(this).data('blur') == true){
-                $("#"+show).find('input')[0].focus();
+            if ($(this).data('blur') == true) {
+                $("#" + show).find('input')[0].focus();
             }
 
             return false;
@@ -698,17 +685,16 @@ jQuery(document).ready(function($) {
     });
 
 
-
     /*======================================================
     UNSTICK FIXED POSITION ELEMENT (used on case study page)
     ========================================================*/
 
-    $('.product-tile button').click(function(){
+    $('.product-tile button').click(function () {
         alert('hi')
     });
 
     function stickyDiv() {
-        if ( $('[data-stick]').length ) {
+        if ($('[data-stick]').length) {
             var div = $('[data-stick]');
             var winHeight = $(window).height();
             var ftrOffsetTop = $('[data-unstick-trigger]').offset().top;
@@ -725,19 +711,36 @@ jQuery(document).ready(function($) {
         stickyDiv();
     });
 
-    $(window).on('resize', function() {
+    $(window).on('resize', function () {
         stickyDiv();
     });
 
 }); // ENDS DOC READY AT TOP
 
 
-
 /*======================================================
 GOOGLE MAP
 ========================================================*/
 //https://snazzymaps.com/style/60/blue-gray
-var styles=[{featureType:"water",stylers:[{visibility:"on"},{color:"#b5cbe4"}]},{featureType:"landscape",stylers:[{color:"#efefef"}]},{featureType:"road.highway",elementType:"geometry",stylers:[{color:"#83a5b0"}]},{featureType:"road.arterial",elementType:"geometry",stylers:[{color:"#bdcdd3"}]},{featureType:"road.local",elementType:"geometry",stylers:[{color:"#ffffff"}]},{featureType:"poi.park",elementType:"geometry",stylers:[{color:"#e3eed3"}]},{featureType:"administrative",stylers:[{visibility:"on"},{lightness:33}]},{featureType:"road"},{featureType:"poi.park",elementType:"labels",stylers:[{visibility:"on"},{lightness:20}]},{},{featureType:"road",stylers:[{lightness:20}]}];
+var styles = [{featureType: "water", stylers: [{visibility: "on"}, {color: "#b5cbe4"}]}, {
+    featureType: "landscape",
+    stylers: [{color: "#efefef"}]
+}, {featureType: "road.highway", elementType: "geometry", stylers: [{color: "#83a5b0"}]}, {
+    featureType: "road.arterial",
+    elementType: "geometry",
+    stylers: [{color: "#bdcdd3"}]
+}, {featureType: "road.local", elementType: "geometry", stylers: [{color: "#ffffff"}]}, {
+    featureType: "poi.park",
+    elementType: "geometry",
+    stylers: [{color: "#e3eed3"}]
+}, {
+    featureType: "administrative",
+    stylers: [{visibility: "on"}, {lightness: 33}]
+}, {featureType: "road"}, {
+    featureType: "poi.park",
+    elementType: "labels",
+    stylers: [{visibility: "on"}, {lightness: 20}]
+}, {}, {featureType: "road", stylers: [{lightness: 20}]}];
 var map;
 var markers = [];
 var infowindow = [];
@@ -752,7 +755,7 @@ function initialize() {
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     var bound = new google.maps.LatLngBounds();
 
-    for (var i=0; i<markerData.length; i++) {
+    for (var i = 0; i < markerData.length; i++) {
         markers.push(
             new google.maps.Marker({
                 position: new google.maps.LatLng(markerData[i].lat, markerData[i].lng),
@@ -777,26 +780,29 @@ function initialize() {
     map.fitBounds(bound, 50);
 
     // center google map on window resize
-    google.maps.event.addDomListener(window, "resize", function() {
+    google.maps.event.addDomListener(window, "resize", function () {
         var center = map.getCenter();
         google.maps.event.trigger(map, "resize");
         map.setCenter(center);
     });
 }
+
 // functions that return icons.  Make or find your own markers.
 function normalIcon() {
     return {
         url: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|1d202a'
     };
 }
+
 function highlightedIcon() {
     return {
         url: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|cc3737'
     };
 }
+
 //google.maps.event.addDomListener(window, 'load', initialize);
 
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
     setTimeout(function () {
         $('[data-content]').fadeTo(600, 1);
         $('[data-loader]').delay(200).fadeOut(600);
@@ -813,9 +819,13 @@ jQuery(document).ready(function($) {
     // SUPPORT FOR RESPONSIVE EMBEDDED VIDEOS //
     var $all_oembed_videos = $("iframe[src*='youtube']");
 
-    $all_oembed_videos.each(function() {
+    $all_oembed_videos.each(function () {
 
-        $(this).removeAttr('height').removeAttr('width').wrap( "<div class='embed-container'></div>" );
+        if ($all_oembed_videos.parent().hasClass('no-resize')) {
+
+        } else {
+            $(this).removeAttr('height').removeAttr('width').wrap("<div class='embed-container'></div>");
+        }
 
     });
 
@@ -823,25 +833,29 @@ jQuery(document).ready(function($) {
     // NAVIGATION SMALLIFICATION //
 
     function navigationSmallification() {
-        var viewportWidth   = $(window).width();
-        var viewportHeight  = $(window).height();
-        var headerHeight    = $('header').height();
+        var viewportWidth    = $(window).width();
+        var viewportHeight   = $(window).height();
+        var headerHeight     = $('header').height();
+        var headerLogo       = $('#main-logo').data('logo');
+        var headerLogoScroll = $('#main-logo').data('scrolllogo');
 
         if (viewportWidth > 680) {
 
-                if($(window).scrollTop() > (viewportHeight - (headerHeight * 4))){
-                    $('header').addClass("smallification");
-                } else {
-                    $('header').removeClass("smallification");
-                }
+            if ($(window).scrollTop() > (viewportHeight - (headerHeight * 4))) {
+                $('#main-logo').attr('src', headerLogoScroll);
+                $('header').addClass("smallification");
+            } else {
+                $('#main-logo').attr('src', headerLogo);
+                $('header').removeClass("smallification");
+            }
         }
     }
-    
-    $(window).scroll(function() {
+
+    $(window).scroll(function () {
         navigationSmallification();
     });
 
-    $(window).resize(function() {
+    $(window).resize(function () {
         navigationSmallification();
     });
 
@@ -849,7 +863,7 @@ jQuery(document).ready(function($) {
 
 });
 
-(function($) {
+(function ($) {
 
     /*
     *  new_map
@@ -864,7 +878,7 @@ jQuery(document).ready(function($) {
     *  @return	n/a
     */
 
-    function new_map( $el ) {
+    function new_map($el) {
 
         // var
         var $markers = $el.find('.marker');
@@ -886,12 +900,52 @@ jQuery(document).ready(function($) {
                 style: google.maps.ZoomControlStyle.SMALL,
                 position: google.maps.ControlPosition.RIGHT_CENTER
             },
-            styles: [{"featureType":"administrative","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","elementType":"all","stylers":[{"saturation":-100},{"lightness":"50"},{"visibility":"simplified"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"lightness":"30"}]},{"featureType":"road.local","elementType":"all","stylers":[{"lightness":"40"}]},{"featureType":"transit","elementType":"all","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]},{"featureType":"water","elementType":"labels","stylers":[{"lightness":-25},{"saturation":-100}]}]
+            styles: [{
+                "featureType": "administrative",
+                "elementType": "all",
+                "stylers": [{"saturation": "-100"}]
+            }, {
+                "featureType": "administrative.province",
+                "elementType": "all",
+                "stylers": [{"visibility": "off"}]
+            }, {
+                "featureType": "landscape",
+                "elementType": "all",
+                "stylers": [{"saturation": -100}, {"lightness": 65}, {"visibility": "on"}]
+            }, {
+                "featureType": "poi",
+                "elementType": "all",
+                "stylers": [{"saturation": -100}, {"lightness": "50"}, {"visibility": "simplified"}]
+            }, {
+                "featureType": "road",
+                "elementType": "all",
+                "stylers": [{"saturation": "-100"}]
+            }, {
+                "featureType": "road.highway",
+                "elementType": "all",
+                "stylers": [{"visibility": "simplified"}]
+            }, {
+                "featureType": "road.arterial",
+                "elementType": "all",
+                "stylers": [{"lightness": "30"}]
+            }, {
+                "featureType": "road.local",
+                "elementType": "all",
+                "stylers": [{"lightness": "40"}]
+            }, {
+                "featureType": "transit",
+                "elementType": "all",
+                "stylers": [{"saturation": -100}, {"visibility": "simplified"}]
+            }, {
+                "featureType": "water",
+                "elementType": "geometry",
+                "stylers": [{"hue": "#ffff00"}, {"lightness": -25}, {"saturation": -97}]
+            }, {"featureType": "water", "elementType": "labels", "stylers": [{"lightness": -25}, {"saturation": -100}]}]
         };
 
 
         // create map
-        var map = new google.maps.Map( $el[0], args);
+        var map = new google.maps.Map($el[0], args);
 
 
         // add a markers reference
@@ -899,15 +953,15 @@ jQuery(document).ready(function($) {
 
 
         // add markers
-        $markers.each(function(){
+        $markers.each(function () {
 
-            add_marker( $(this), map );
+            add_marker($(this), map);
 
         });
 
 
         // center map
-        center_map( map );
+        center_map(map);
 
 
         // return
@@ -915,75 +969,72 @@ jQuery(document).ready(function($) {
 
     }
 
-    function add_marker( $marker, map ) {
+    function add_marker($marker, map) {
 
         // var
-        var latlng = new google.maps.LatLng( $marker.attr('data-lat'), $marker.attr('data-lng') );
+        var latlng = new google.maps.LatLng($marker.attr('data-lat'), $marker.attr('data-lng'));
 
         // create marker
         var marker = new google.maps.Marker({
-            position	: latlng,
-            map			: map
+            position: latlng,
+            map: map
         });
 
         // add to array
-        map.markers.push( marker );
+        map.markers.push(marker);
 
         // if marker contains HTML, add it to an infoWindow
-        if( $marker.html() )
-        {
+        if ($marker.html()) {
             // create info window
             var infowindow = new google.maps.InfoWindow({
-                content		: $marker.html()
+                content: $marker.html()
             });
 
             // show info window when marker is clicked
-            google.maps.event.addListener(marker, 'click', function() {
+            google.maps.event.addListener(marker, 'click', function () {
 
-                infowindow.open( map, marker );
+                infowindow.open(map, marker);
 
             });
         }
 
     }
 
-    function center_map( map ) {
+    function center_map(map) {
 
         // vars
         var bounds = new google.maps.LatLngBounds();
 
         // loop through all markers and create bounds
-        $.each( map.markers, function( i, marker ){
+        $.each(map.markers, function (i, marker) {
 
-            var latlng = new google.maps.LatLng( marker.position.lat(), marker.position.lng() );
+            var latlng = new google.maps.LatLng(marker.position.lat(), marker.position.lng());
 
-            bounds.extend( latlng );
+            bounds.extend(latlng);
 
         });
 
         // only 1 marker?
-        if( map.markers.length == 1 )
-        {
+        if (map.markers.length == 1) {
             // set center of map
-            map.setCenter( bounds.getCenter() );
-            map.setZoom( 16 );
+            map.setCenter(bounds.getCenter());
+            map.setZoom(16);
         }
-        else
-        {
+        else {
             // fit to bounds
-            map.fitBounds( bounds );
+            map.fitBounds(bounds);
         }
 
     }
 
     var map = null;
 
-    $(document).ready(function(){
+    $(document).ready(function () {
 
-        $('.acf-map').each(function(){
+        $('.acf-map').each(function () {
 
             // create map
-            map = new_map( $(this) );
+            map = new_map($(this));
 
         });
 

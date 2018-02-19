@@ -56,7 +56,7 @@ if ( get_sub_field('text_color_color') ){
                         <?php if ( get_sub_field('overlay_add_overlay')){ ?>
                             <div class="zn1 absolute top-0 left-0 right-0 bottom-0 <?php echo 'bg-' . get_sub_field('overlay_type') . '-' . get_sub_field('overlay_strength') ?>"></div>
                         <?php } ?>
-                        <div class="py5 lg-py0 px4 table height-100 width-100" data-animation-in="fadeIn" data-delay-in=".5" data-duration-in="1"  style="min-height:350px;">
+                        <div class="py5 lg-py0 px4 table height-100 width-100" data-animation-in="fadeIn" data-delay-in=".5" data-duration-in="1" style="min-height:350px;">
                             <div class="table-cell align-middle height-100 width-100">
                                 <div class="container <?php echo $measureWide ?> <?php echo get_sub_field('text_align_align') ?>">
 
