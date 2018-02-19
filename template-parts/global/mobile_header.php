@@ -1,6 +1,6 @@
-<div class="p3 bg-brand-primary flex items-center h3">
+<div class="p1 pl2 py3 bg-brand-primary flex items-center h3">
     <a href="/" class="flex items-center height-100 border-box">
-        <img src="<?php the_field('brand_logo', 'options') ?>" alt="" class="block mx-auto width-100" style="max-width:7rem;">
+        <img src="<?php the_field('brand_logo_white', 'options') ?>" alt="" class="block mx-auto width-100" style="max-width:12rem;">
     </a>
     <div class="flex-auto">
         <div class="flex justify-end">
