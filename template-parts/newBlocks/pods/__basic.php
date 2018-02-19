@@ -36,7 +36,7 @@ $blockTitle  = get_sub_field($current . '_title_title');
 ?>
 
 <!-- pods -->
-<section id="<?= $block['custom_id'] ?>" class="<?= $block['custom_css'] ?> <?php echo $bgColor ?> <?php echo $txtColor ?> <?php echo get_sub_field('animate_block') == TRUE ? 'overflow-hidden' : '' ?>">
+<section id="<?= $block['custom_id'] ?>" class="relative || <?= $block['custom_css'] ?> <?php echo $bgColor ?> <?php echo $txtColor ?> <?php echo get_sub_field('animate_block') == TRUE ? 'overflow-hidden' : '' ?> p4">
     <div class="<?php echo get_sub_field('full_width_full_width') ?> <?php echo $extraPadding ;?> <?php echo get_sub_field('narrow_columns') == TRUE ? 'measure-wide' : '' ?>">
 
         <div class="m4 mb5 || text-center">
@@ -71,9 +71,8 @@ $blockTitle  = get_sub_field($current . '_title_title');
                     $overlayCopy = get_sub_field('enable_overlay_copy');
                     $copy        = get_sub_field('copy');
                     ?>
-
                     <div class="col <?php echo $class ?> px3 mb3 || js-match-height" <?php echo $animationType ?> <?php echo $animationSpeed ?> <?php echo $animationDelay ?> <?php echo $animationRepeat ?>>
-                        <div class="height-100 <?php echo $podBgColor ?> bg-white hover-box-shadow-3">
+                        <div class="height-100 bg-white hover-box-shadow-3">
 
                             <div class="item bg-white">
                                 <?php if( get_sub_field('image')) { ?>
@@ -113,6 +112,13 @@ $blockTitle  = get_sub_field($current . '_title_title');
 
         </div>
     </div>
+
+    <?php if($block['bgImage']['enable'] == true): ?>
+
+        <div class="bg-image || absolute width-100 height-100 top-0 left-0 zn1 <?=$block['bgImage']['occupancy']?>" style="background-image: url('<?=$block['bgImage']['image']['url']?>'); background-position: <?=$block['bgImage']['position']?>; background-size: cover"></div>
+
+    <?php endif; ?>
+
 </section>
 
 <?php unset ($narrowColumns); ?>

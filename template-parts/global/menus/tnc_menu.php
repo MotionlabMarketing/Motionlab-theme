@@ -6,7 +6,7 @@
 ?>
 
 
-<div class="col col-12 md-col-8 px5">
+<div class="col col-12 md-col-8">
 
     <?php if ($hidden == true):?>
     <?php if(!empty($menu)) : ?>
@@ -23,6 +23,6 @@
     </ul>
 
 </div>
-<div class="col col-12 md-col-4 text-center md-text-right px5">
+<div class="col col-12 md-col-4 text-center md-text-right">
     <p class="mb0 white">Site design by <a href="#" target="_blank" class="white underline hover-primary">Motionlab</a></p>
 </div>

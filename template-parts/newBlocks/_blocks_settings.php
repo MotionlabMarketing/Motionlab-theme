@@ -10,6 +10,8 @@
  * @version 1.00
  */
 
+/* TODO: ADD SUPPORT FOR BLOCK TITLE AND CONTENT */
+
 $block = [];
 
 // HAS THIS BLOCK BEEN ENABLED?
@@ -71,6 +73,25 @@ if ($block['enabled'] == true || empty($block['enabled'])): // TODO: Needs corre
 
         // GET THE BORDER COLOUR OPTION.
         $block['border']['colour'] = get_sub_field($current . '_settings_block_border_sides_colour');
+
+    endif;
+
+    // HAS BORDERS FOR THIS BLOCK BEEN ENABLED.
+    $block['bgImage']['enable']     = get_sub_field($current . '_settings_enable_image_background');
+
+    if ($block['bgImage']['enable'] == true):
+
+        print_r(get_sub_field('block_pods_settings'));
+
+        $block['bgImage']['image']        = get_sub_field($current . '_settings_background_image');
+        $block['bgImage']['position']     = get_sub_field($current . '_settings_background_position');
+        $block['bgImage']['tint']         = get_sub_field($current . '_settings_background_tint');
+        $block['bgImage']['tintStrength'] = get_sub_field($current . '_settings_background_tint_strength');
+        $block['bgImage']['occupancy']    = get_sub_field($current . '_settings_background_occupancy');
+
+        $block['bgImage']['position']     = $block['bgImage']['position']['background_position'];
+        $block['bgImage']['image']['url'] = $block['bgImage']['image']['basic_image']['url'];
+        $block['bgImage']['occupancy']    = $block['bgImage']['occupancy']['system_occupancy'];
 
     endif;
 

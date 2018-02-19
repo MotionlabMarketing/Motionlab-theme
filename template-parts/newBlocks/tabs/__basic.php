@@ -23,12 +23,14 @@ if (get_sub_field('centre_tabs') == true) {
 }
 
 $blockTitle  = get_sub_field($current . '_title_title');
+
+// TODO: Need mobile fix.
 ?>
 
 <!-- tabs - simple -->
 <section class="tabs-basic || p4 <?php echo $bgColor ?> <?php echo $txtColor ?>">
     <div data-tabs="wrapper" class="container <?php echo $extraPadding ;?> <?php echo $tabNav ?> <?php echo $measureWide ?> || traditional-tabs">
-        <div class="col col-12 <?php echo $pad ?> <?php echo $tabName ?>">
+        <div class="tabs-bar || col col-12 <?php echo $pad ?> <?php echo $tabName ?>">
             <?php if( have_rows('tabs')){
                 $i = 1 ;
                 while ( have_rows('tabs')){
@@ -44,7 +46,7 @@ $blockTitle  = get_sub_field($current . '_title_title');
             <?php } ?>
         </div>
 
-        <div data-tabs="content" class="col-12 <?php echo $contentPad ?> <?php echo $txtColor ?>">
+        <div data-tabs="content" class="content || col-12 <?php echo $contentPad ?> <?php echo $txtColor ?>">
             <?php if( have_rows('tabs')){
             $i = 1;
             while ( have_rows('tabs')){
@@ -69,7 +71,7 @@ $blockTitle  = get_sub_field($current . '_title_title');
 
                 <?php else: ?>
 
-                <section id="tab<?php echo $i ?>" class="tab-content || <?php echo $content ?> <?php echo ($i > 1) ? 'hide' : '' ?> bg-white p4  || clearfix">
+                <section id="tab<?php echo $i ?>" class="tab-content || <?php echo $content ?> <?php echo ($i > 1) ? 'hide' : '' ?> bg-white p4  || clearfix flex items-center">
 
                     <div class="col col-6 p4">
                         <div class="wysiwyg">
