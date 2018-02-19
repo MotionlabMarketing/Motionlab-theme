@@ -49,6 +49,12 @@ endif;
 
             <div class="image-holder || absolute height-100 width-100 bg-<?=$banner['align'] ?> bg-<?=$banner['image']['position']?>" style="background-image: url('<?=$banner['image']['url']?>');">
 
+                <?php if ($banner['image']['overlay'] == true): ?>
+
+                    <div class="absolute top-0 left-0 width-100 height-100 z-index-10 bg-<?=$banner['image']['overlayType']?>-<?=$banner['image']['overlayStrength']?>"></div>
+
+                <?php endif; ?>
+
                 <div class="flex items-center justify-<?=$banner['align']?> || z-index-50 absolute width-100 height-100 || p3 md-p6">
 
                     <div class="content || max-width-50 || p4 z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
@@ -82,11 +88,7 @@ endif;
                         <?php endif; ?>
                     </div>
 
-                    <?php if ($banner['image']['overlay'] == true): ?>
 
-                        <div class="absolute top-0 left-0 width-100 height-100 z-index-10 bg-<?=$banner['image']['overlayType']?>-<?=$banner['image']['overlayStrength']?>"></div>
-
-                    <?php endif; ?>
 
                 </div>
 
