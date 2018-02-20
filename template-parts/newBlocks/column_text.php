@@ -36,17 +36,19 @@ $block['custom_css'] = get_sub_field('block_columns_settings_block_customClass')
 $block['custom_id'] = get_sub_field('block_columns_settings_block_customID');
 
 // GET THE SPACING (MARGIN) BEFORE AND AFTER THIS BLOCK.
+$block['spacing']           = "";
 $block['temp']['top']       = get_sub_field($current . '_settings_enable_block_bspacing');
 $block['temp']['bottom']    = get_sub_field($current . '_settings_enable_block_aspacing');
 
 foreach ($block['temp'] as $a):
 
-    $block['spacing'] = $block['spacing'] . $a . " ";
+    $block['spacing'] .= $a[0] . " ";
 
 endforeach;
 
 
 // GET THE BLOCK INTERNAL (PADDING) SPACING.
+$block['padding']           = "";
 $block['temp']['top']       = get_sub_field($current . '_settings_block_tpadding');
 $block['temp']['bottom']    = get_sub_field($current . '_settings_block_bpadding');
 $block['temp']['left']      = get_sub_field($current . '_settings_block_lpadding');
@@ -54,7 +56,7 @@ $block['temp']['right']     = get_sub_field($current . '_settings_block_rpadding
 
 foreach ($block['temp'] as $a):
 
-    $block['padding'] = $block['padding'] . $a . " ";
+    $block['padding'] .=  $a[0] . " ";
 
 endforeach;
 
@@ -63,7 +65,7 @@ unset($block['temp']);
 
 <!-- column text NEW -->
 
-<section id="<?=$block['custom_id']?>" class="clearfix <?=$block['custom_css']?> <?=$block['padding']?> <?=$block['spacing']?> relative <?php echo $bgColor ?> <?php echo $txtColor ?> relative p4 ">
+<section id="<?=$block['custom_id']?>" class="clearfix \<?=$block['custom_css']?> <?=$block['padding']?> <?=$block['spacing']?> relative <?php echo $bgColor ?> <?php echo $txtColor ?> relative p4 ">
     <div class="container <?php echo $masterPad; ?> mx-auto || <?=$blockCustomClass?> ||
     <?php echo $paddingTop == 'collapse-top' ? 'pt4 lg-pt0' : 'pt4 md-pt5' ?>
     <?php echo get_sub_field('full_width_full_width') ?>

@@ -73,4 +73,3 @@ if( have_rows('building_blocks') ) {
         $index++;
     }
 }
-?>
