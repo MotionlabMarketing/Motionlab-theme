@@ -23,13 +23,13 @@ $rows = get_sub_field($current . '_rows');
             $i = 1;
             foreach ($rows as $row): ?>
 
-                <div class="row bg-white bg-base p4 box-shadow-1 border-light-1 border-radius-2 border-top border-left border-right border-bottom border-solid mb4">
+                <div class="row bg-white bg-base p3 box-shadow-1 border-light-1 border-radius-2 border-top border-left border-right border-bottom border-solid mb4">
 
                     <input type="radio" name="row" id="row-<?=$i?>" class="width-100 display-none" />
                     <label for="row-<?=$i?>" class="width-100 block"><span class="px2 brand-primary width-100 cursor-pointer bold h3 mb3"><?=$row['title']?></span></label>
 
                     <div class="wysiwyg bg-white bg-base width-100 px2 block overflow-hidden">
-                        <?=$row['content'];?>
+                            <?=$row['content'];?>
                     </div>
 
                 </div>

@@ -42,7 +42,7 @@ $block['temp']['bottom']    = get_sub_field($current . '_settings_enable_block_a
 
 foreach ($block['temp'] as $a):
 
-    $block['spacing'] .= $a[0] . " ";
+    $block['spacing'] .= $a . " ";
 
 endforeach;
 
@@ -56,7 +56,7 @@ $block['temp']['right']     = get_sub_field($current . '_settings_block_rpadding
 
 foreach ($block['temp'] as $a):
 
-    $block['padding'] .=  $a[0] . " ";
+    $block['padding'] .=  $a . " ";
 
 endforeach;
 
@@ -65,7 +65,7 @@ unset($block['temp']);
 
 <!-- column text NEW -->
 
-<section id="<?=$block['custom_id']?>" class="clearfix \<?=$block['custom_css']?> <?=$block['padding']?> <?=$block['spacing']?> relative <?php echo $bgColor ?> <?php echo $txtColor ?> relative p4 ">
+<section id="<?=$block['custom_id']?>" class="clearfix <?=$block['custom_css']?> <?=$block['padding']?> <?=$block['spacing']?> relative <?php echo $bgColor ?> <?php echo $txtColor ?> relative p4 ">
     <div class="container <?php echo $masterPad; ?> mx-auto || <?=$blockCustomClass?> ||
     <?php echo $paddingTop == 'collapse-top' ? 'pt4 lg-pt0' : 'pt4 md-pt5' ?>
     <?php echo get_sub_field('full_width_full_width') ?>
