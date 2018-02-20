@@ -8,10 +8,7 @@
 */
 
 define("TEMPLATE_DIR", get_template_directory() . "/template-parts/");
-define("BLOCKS_DIR"  , get_template_directory() . "/template-parts/newBLocks/");
-
-define("GOOGLEFONTTEST", get_field('GF_body_font', 'option'));
-
+define("BLOCKS_DIR"  , get_template_directory() . "/template-parts/newBlocks/");
 
 /*==================================================================
 UNDERSCORES STUFF

@@ -27,6 +27,7 @@ if ($block['enabled'] == true || empty($block['enabled'])): // TODO: Needs corre
     $block['custom_css']        = get_sub_field($current . '_settings_block_customClass');
 
     // GET THE SPACING (MARGIN) BEFORE AND AFTER THIS BLOCK.
+    $block['spacing']           = "";
     $block['temp']['top']       = get_sub_field($current . '_settings_enable_block_bspacing');
     $block['temp']['bottom']    = get_sub_field($current . '_settings_enable_block_aspacing');
 
@@ -37,6 +38,7 @@ if ($block['enabled'] == true || empty($block['enabled'])): // TODO: Needs corre
     endforeach;
 
     // GET THE BLOCK INTERNAL (PADDING) SPACING.
+    $block['padding']           = "";
     $block['temp']['top']       = get_sub_field($current . '_settings_block_tpadding');
     $block['temp']['bottom']    = get_sub_field($current . '_settings_block_bpadding');
     $block['temp']['left']      = get_sub_field($current . '_settings_block_lpadding');
@@ -80,8 +82,6 @@ if ($block['enabled'] == true || empty($block['enabled'])): // TODO: Needs corre
     $block['bgImage']['enable']     = get_sub_field($current . '_settings_enable_image_background');
 
     if ($block['bgImage']['enable'] == true):
-
-        print_r(get_sub_field('block_pods_settings'));
 
         $block['bgImage']['image']        = get_sub_field($current . '_settings_background_image');
         $block['bgImage']['position']     = get_sub_field($current . '_settings_background_position');
