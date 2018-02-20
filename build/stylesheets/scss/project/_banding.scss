@@ -1501,6 +1501,26 @@ hr.border-5 {
   }
 }
 
+.accordion-basic {
+
+  .row input[type='radio']:checked ~ .wysiwyg {
+    height: 130px;
+    transition: .3s ease-in;
+  }
+
+  input[type='radio'] {
+    width: 100%;
+    display: none;
+  }
+
+  .wysiwyg {
+    height: 0;
+    box-sizing: border-box;
+    transition: .3s ease-out;
+  }
+
+}
+
 .team-basic {
 
   .member {
