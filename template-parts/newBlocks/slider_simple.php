@@ -33,7 +33,7 @@ if ( get_sub_field('text_color_color') ){
 <?php } ?>
 
 
-<section class="<?php echo 'bg-' . get_sub_field('background_color_color') ?> <?php echo $txtColor ?>" slider>
+<section class="<?php echo $txtColor ?>" slider>
     <div class="<?php echo $fullHeight ?> <?php echo $height ?>  <?php echo get_sub_field('text_align_align') ?>">
 
         <?php if ( have_rows('block_title_title')){
@@ -48,7 +48,7 @@ if ( get_sub_field('text_color_color') ){
         <?php } ?>
 
         <?php if (have_rows('slide')){ ?>
-            <div data-slick="slider-auto-arrows">
+            <div data-slick="slider-auto-arrows" style="z-index: -1;">
                 <?php while (have_rows('slide')){
                     the_row(); ?>
                     <div class="z1 bg-cover bg-center items-center js-match-height <?php echo $height ?>" style="background-image:url(<?php echo get_sub_field('slider_image')['sizes']['large'] ?>)">
@@ -56,7 +56,7 @@ if ( get_sub_field('text_color_color') ){
                         <?php if ( get_sub_field('overlay_add_overlay')){ ?>
                             <div class="zn1 absolute top-0 left-0 right-0 bottom-0 <?php echo 'bg-' . get_sub_field('overlay_type') . '-' . get_sub_field('overlay_strength') ?>"></div>
                         <?php } ?>
-                        <div class="py5 lg-py0 px4 table height-100 width-100" data-animation-in="fadeIn" data-delay-in=".5" data-duration-in="1"  style="min-height:350px;">
+                        <div class="py5 lg-py0 px4 table height-100 width-100" data-animation-in="fadeIn" data-delay-in=".5" data-duration-in="1" style="min-height:350px;">
                             <div class="table-cell align-middle height-100 width-100">
                                 <div class="container <?php echo $measureWide ?> <?php echo get_sub_field('text_align_align') ?>">
 

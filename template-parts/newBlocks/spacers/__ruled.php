@@ -11,13 +11,13 @@
  */
 
 ?>
-<section class="spacer-ruled || clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?>">
+<section id="<?=$block['custom_id']?>" class="spacer-ruled || clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>">
 
     <?=($block['grid'] == 'container')? '<div class="container '.$block['padding'].'">' : ""?>
 
         <div class="block py3">
 
-            <hr class="<?=get_sub_field($current . '_rule')?> border-<?=get_sub_field($current . '_ruleSize')?> <?=get_sub_field($current . '_ruleStyle')?>">
+            <hr class="relative <?=get_sub_field($current . '_rule')?> border-<?=get_sub_field($current . '_ruleSize')?> <?=get_sub_field($current . '_ruleStyle')?>">
 
         </div>
 

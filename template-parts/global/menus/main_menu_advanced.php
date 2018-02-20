@@ -15,12 +15,12 @@ $menu = motionlab_menu_walker('primary');
 
         <?php foreach($menu as $menuitem) : ?>
 
-            <li class="inline-block bg-white <?php if(!empty($menuitem->children)){ ?>has-dropdown <?php } ?>">
+            <li class="inline-block <?php if(!empty($menuitem->children)){ ?>has-dropdown <?php } ?>">
 
-                <a href="<?php echo $menuitem->url ?>" class="border-none text-center block black bold p3 xl-p4 nowrap">
+                <a href="<?php echo $menuitem->url ?>" class="border-none text-center block <?=(is_front_page())? "white" : "black";?> hover-bg-none bold p3 xl-p4 nowrap">
                     <?php echo $menuitem->title; ?>
                     <?php if(!empty($menuitem->children)) : ?>
-                        <small class="ml2"><i class="fa fa-chevron-down brand-primary"></i></small>
+                        <small class="ml2"><?php //<i class="fa fa-chevron-down brand-primary"></i>?></small>
                     <?php endif; ?>
                 </a>
 

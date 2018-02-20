@@ -7,10 +7,8 @@
 * @package motionlabtheme
 */
 
-define("BLOCKS_DIR", get_template_directory() . "/template-parts/newBLocks/");
-
-define("GOOGLEFONTTEST", get_field('GF_body_font', 'option'));
-
+define("TEMPLATE_DIR", get_template_directory() . "/template-parts/");
+define("BLOCKS_DIR"  , get_template_directory() . "/template-parts/newBlocks/");
 
 /*==================================================================
 UNDERSCORES STUFF
@@ -44,6 +42,40 @@ if ( ! function_exists( 'motionlabtheme_setup' ) ) :
 	}
 endif;
 add_action( 'after_setup_theme', 'motionlabtheme_setup' );
+
+
+function custom_widgets_init() {
+
+    register_sidebar( array(
+        'name'          => 'Footer Column 1',
+        'id'            => 'footer_column_1',
+        'before_widget' => '<div class="footer-menu relative">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="mb4">',
+        'after_title'   => '</h4>',
+    ) );
+
+    register_sidebar( array(
+        'name'          => 'Footer Column 2',
+        'id'            => 'footer_column_2',
+        'before_widget' => '<div class="footer-menu relative">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="mb4 h4">',
+        'after_title'   => '</h4>',
+    ) );
+
+    register_sidebar( array(
+        'name'          => 'Footer Column 3',
+        'id'            => 'footer_column_3',
+        'before_widget' => '<div class="footer-menu relative">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="mb4">',
+        'after_title'   => '</h4>',
+    ) );
+
+}
+add_action( 'widgets_init', 'custom_widgets_init' );
+
 
 
 
@@ -84,10 +116,10 @@ function websiteadvanced_scripts() {
 
 	//Main Scripts
 	wp_enqueue_script ('map', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAmmvkoPA2evn0of5_sXcmyk5uoiDRBe-Q&#038;extension=.js', array('jquery'),'', true);
-	wp_enqueue_script ('main', get_template_directory_uri() . '/assets/scripts/main-min.js', array('jquery'),'', true);
+	wp_enqueue_script ('motionlab-theme-js', get_template_directory_uri() . '/assets/scripts/main-min.js', array('jquery'),'', true);
 
 	//Main Styles
-	wp_enqueue_style( 'maincss', get_template_directory_uri() . '/assets/css/main-min.css' );
+	wp_enqueue_style( 'motionlab-theme-css', get_template_directory_uri() . '/assets/css/main-min.css' );
 
 	//Maps
 	//wp_enqueue_script ('map-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDEN3LHOOKqILWrucfQaF1THTHI2bCw-00', array('jquery'),'', true);
@@ -169,7 +201,7 @@ add_filter( 'get_the_archive_title', function ($title) {
 /*==================================================================
 WORK OUT MENU NAMES
 ==================================================================*/
-function gymgear_get_menu_by_location( $location ) {
+function get_menu_by_location( $location ) {
 	if( empty($location) ) return false;
 
 	$locations = get_nav_menu_locations();
@@ -328,7 +360,6 @@ CUSTOM POST TYPES
 function create_posttype() {
 
     register_post_type( 'videos',
-        // CPT Options
         array(
             'labels' => array(
                 'name' => __( 'Videos' ),
@@ -340,6 +371,116 @@ function create_posttype() {
             'menu_icon'           => 'dashicons-format-video',
         )
     );
+
+    register_post_type( 'gallery',
+        array(
+            'labels' => array(
+                'name'          => __( 'Gallery' ),
+                'singular_name' => __( 'Gallery' )
+            ),
+            'taxonomies'        => array('galleries'),
+            'public'            => true,
+            'has_archive'       => false,
+            'rewrite'           => array('slug' => 'gallery-image'),
+            'menu_icon'         => 'dashicons-images-alt2',
+        )
+    );
+
+    register_post_type( 'reviews',
+        array(
+            'labels' => array(
+                'name'          => __( 'Reviews' ),
+                'singular_name' => __( 'Reviews' )
+            ),
+            'public'            => true,
+            'has_archive'       => false,
+            'rewrite'           => array('slug' => 'reviews'),
+            'menu_icon'         => 'dashicons-thumbs-up',
+        )
+    );
 }
-// Hooking up our function to theme setup
 add_action( 'init', 'create_posttype' );
+
+function create_collections_hierarchical_taxonomy() {
+
+    $labels = array(
+        'name' => _x( 'Collections', 'Collections' ),
+        'singular_name' => _x( 'Collection', 'Collection' ),
+        'search_items' =>  __( 'Search Collections' ),
+        'all_items' => __( 'All Collections' ),
+        'parent_item' => __( 'Parent Collection' ),
+        'parent_item_colon' => __( 'Parent Collections:' ),
+        'edit_item' => __( 'Edit Collection' ),
+        'update_item' => __( 'Update Collection' ),
+        'add_new_item' => __( 'Add New Collection' ),
+        'new_item_name' => __( 'New Collections Name' ),
+        'menu_name' => __( 'Collections' ),
+    );
+
+// Now register the taxonomy
+
+    register_taxonomy('collections', array('gallery'), array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => array( 'slug' => 'collections' ),
+    ));
+
+}
+add_action( 'init', 'create_collections_hierarchical_taxonomy', 0 );
+
+
+function ml_get_contact($type, $id = null, $array) {
+
+    $value = "";
+
+    if (!is_array($id)) {
+        $id = strtolower(trim(str_replace(" ", "", $id)));
+    }
+
+    $phoneCalls = ["number", "phone", "tel"];
+
+    if (in_array($type, $phoneCalls)) {
+
+        $contacts = get_field("brand_contactNumbers", "option");
+
+        $value = $contacts;
+
+        if ($id !== null) {
+
+            if (is_array($id)) {
+
+                $value = [];
+
+                foreach ($id as $i) {
+                    foreach ($contacts as $contact) {
+                        if ($contact['slug'] == $i) {
+
+                            $value[] = ["name" => $contact['name'], "number" => $contact['number']];
+                        }
+                    }
+                }
+
+                return $value;
+
+            } else {
+
+                foreach ($contacts as $contact) {
+
+                    if ($contact['slug'] == $id) {
+
+                        return $value = $contact['number'];
+                    }
+
+                }
+            }
+
+        }
+
+    }
+
+    return $value;
+
+}

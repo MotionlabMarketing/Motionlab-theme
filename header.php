@@ -6,8 +6,8 @@
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
     <title><?php echo get_field('brand_name','option'); ?></title>
-    <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Open+Sans" rel="stylesheet">
     <script src="https://use.fontawesome.com/22d4621214.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/fcz6wxe.css">
     <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5a033b1e69fde30011eef3d0&product=inline-share-buttons"></script>
     <?php wp_head(); ?>
 
@@ -30,4 +30,7 @@
 <body <?=body_class()?>>
 
     <?php include(get_template_directory() .'/template-parts/global/header.php'); ?>
-    <div class="js-header-space"></div>
+
+    <?php if (!is_front_page()):?>
+        <div class="js-header-space"></div>
+    <?php endif; ?>

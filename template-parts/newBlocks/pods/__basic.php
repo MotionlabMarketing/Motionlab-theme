@@ -36,8 +36,8 @@ $blockTitle  = get_sub_field($current . '_title_title');
 ?>
 
 <!-- pods -->
-<section class="<?php echo $bgColor ?> <?php echo $txtColor ?> <?php echo get_sub_field('animate_block') == TRUE ? 'overflow-hidden' : '' ?>">
-    <div class="pb4 md-pb5 || <?php echo $paddingTop == 'collapse-top' ? 'pt0' : 'pt4 md-pt5' ?> <?php echo get_sub_field('full_width_full_width') ?> <?php echo $extraPadding ;?> <?php echo get_sub_field('narrow_columns') == TRUE ? 'measure-wide' : '' ?>">
+<section id="<?= $block['custom_id'] ?>" class="relative || <?= $block['custom_css'] ?> <?php echo $bgColor ?> <?php echo $txtColor ?> <?php echo get_sub_field('animate_block') == TRUE ? 'overflow-hidden' : '' ?> p4">
+    <div class="<?php echo get_sub_field('full_width_full_width') ?> <?php echo $extraPadding ;?> <?php echo get_sub_field('narrow_columns') == TRUE ? 'measure-wide' : '' ?>">
 
         <div class="m4 mb5 || text-center">
 
@@ -71,34 +71,37 @@ $blockTitle  = get_sub_field($current . '_title_title');
                     $overlayCopy = get_sub_field('enable_overlay_copy');
                     $copy        = get_sub_field('copy');
                     ?>
-
                     <div class="col <?php echo $class ?> px3 mb3 || js-match-height" <?php echo $animationType ?> <?php echo $animationSpeed ?> <?php echo $animationDelay ?> <?php echo $animationRepeat ?>>
-                        <div class="height-100 <?php echo $podBgColor ?>">
-                            <?php if( get_sub_field('image')) { ?>
-                                <a <?php if(get_sub_field('button_add')) { ?>href="<?php echo $buttonURL ?>"<?php } ?> class="block col-12 bg-cover bg-center relative hover-zoom hover-reveal overflow-hidden" style="min-height:10rem; background-image:url('<?php echo get_sub_field('image')['sizes']['large'] ?>');">
-                                    <div class="flex items-center justify-center absolute left-0 top-0 width-100 height-100 bg-darken-5 z1 reveal || white">
+                        <div class="height-100 bg-white hover-box-shadow-3">
+
+                            <div class="item bg-white">
+                                <?php if( get_sub_field('image')) { ?>
+                                    <a <?php if(get_sub_field('button_add')) { ?>href="<?php echo $buttonURL ?>"<?php } ?> class="block col-12 bg-cover bg-center relative hover-reveal overflow-hidden" style="min-height:10rem; background-image:url('<?php echo get_sub_field('image')['sizes']['large'] ?>');">
 
                                         <?php if ($overlayCopy == true): ?>
-                                            <div class="p4 text-center"><?=$copy?></div>
+                                            <div class="flex items-center justify-center absolute left-0 top-0 width-100 height-100 bg-darken-5 z1 reveal || white">
+                                                <div class="p4 text-center"><?=$copy?></div>
+                                            </div>
                                         <?php endif; ?>
 
-                                    </div>
-                                    <figure class="m0 overflow-hidden" style="will-change:transform;">
-                                        <img src="<?php echo get_sub_field('image')['sizes']['large'] ?>" class="display-none md-block mx-auto">
-                                    </figure>
-                                </a>
-                            <?php } ?>
-                            <div class="<?php echo $removePadding ?> py3 md-mb3 border border-light">
-                                <?php
-                                if (!empty($blockTitle[0]['title'])) {
-                                    include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
+                                        <figure class="m0 overflow-hidden" style="will-change:transform;">
+                                            <img src="<?php echo get_sub_field('image')['sizes']['large'] ?>" class="display-none md-block mx-auto">
+                                        </figure>
+                                    </a>
+                                <?php } ?>
+                                <div class="<?php echo $removePadding ?> py3 md-mb3">
+                                    <?php
+                                    if (!empty($blockTitle[0]['title'])) {
+                                        include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
 
-                                <?php if ($overlayCopy == false): ?>
-                                    <div class="pt3"><?php echo get_sub_field('copy') ?></div>
-                                <?php endif; ?>
+                                    <?php if ($overlayCopy == false): ?>
+                                        <div class="pt3"><?php echo get_sub_field('copy') ?></div>
+                                    <?php endif; ?>
 
-                                <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/button.php') ?>
+                                    <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/button.php') ?>
+                                </div>
                             </div>
+
                         </div>
                     </div>
 
@@ -109,6 +112,13 @@ $blockTitle  = get_sub_field($current . '_title_title');
 
         </div>
     </div>
+
+    <?php if($block['bgImage']['enable'] == true): ?>
+
+        <div class="bg-image || absolute width-100 height-100 top-0 left-0 zn1 <?=$block['bgImage']['occupancy']?>" style="background-image: url('<?=$block['bgImage']['image']['url']?>'); background-position: <?=$block['bgImage']['position']?>; background-size: cover"></div>
+
+    <?php endif; ?>
+
 </section>
 
 <?php unset ($narrowColumns); ?>
