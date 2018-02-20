@@ -43,8 +43,9 @@ $hoverContent     = get_sub_field($current . '_hoverContent');
                 <div class="item || col col-12 md-col-<?=$block['columns']?> p2 || block relative || hover-zoom">
                     <a href="<?=$item['block_linkBoxes_link']['url']?>" class="block relative overflow-hidden || bg-cover bg-center box-shadow-3 <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?> || zoom" <?=($item['block_linkBoxes_link']['title'] ? 'title="'.$item['block_linkBoxes_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_link']['target'] ? 'target="'.$item['block_linkBoxes_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image_basic_image']['url'];?>')">
 
-                        <div class="content || js-match-height || <?=$txtColor?> py6 || flex items-center justify-center || darken-background darken-background-4">
-                            <p class="m0 bold text-center hover"><?=strip_tags($item['block_linkBoxes_content']); ?></p>
+                        <div class="content relative || js-match-height || <?=$txtColor?> py6 || flex items-center justify-center || darken-background darken-background-4 ">
+                            <p class="m0 bold text-center hover z-index-20"><?=strip_tags($item['block_linkBoxes_content']); ?></p>
+                            <div class="overlay || absolute width-100 height-100 bg-brand-primary-overlay"></div>
                         </div>
                     </a>
                 </div>

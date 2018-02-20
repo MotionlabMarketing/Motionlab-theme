@@ -50,7 +50,7 @@ $size           = get_sub_field('block_buttons_size');
 <?php } ?>
 
 <div class="<?php echo $halfAsMuch ?>">
-    <div class=" container || lg-flex flex-column lg-flex-row items-center || px4 py5 || <?php echo get_sub_field('narrow_columns') == TRUE ? 'measure-wide' : '' ?> <?php echo $bannerHeight; ?>" <?php echo $animationType ?> <?php echo $animationSpeed ?> <?php echo $animationDelay ?> <?php echo $animationRepeat ?>>
+    <div class="container || relative z-index-20 lg-flex flex-column lg-flex-row items-center || px4 py5 || <?php echo get_sub_field('narrow_columns') == TRUE ? 'measure-wide' : '' ?> <?php echo $bannerHeight; ?>" <?php echo $animationType ?> <?php echo $animationSpeed ?> <?php echo $animationDelay ?> <?php echo $animationRepeat ?>>
         <!-- echo get_sub_field('banner_height_banner_height') -->
         <div class="col-12 flex flex-column lg-flex-row my2 <?php echo get_sub_field('text_align_align') ?>">
             <div class="spacer || display-none lg-block" <?php if( get_sub_field('banner_height_banner_height') == 'lg-min-height-v100' && $index == 0 ){ ?> headroom-space <?php } ?>> </div>

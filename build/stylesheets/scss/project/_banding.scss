@@ -1156,8 +1156,11 @@ hr.border-5 {
   &.show-hover .item .content {
     font-size: 1.4rem;
   }
-  &.show-hover .item:hover .content {
-    background-color: rgba($brand-primary, 0.8);
+  &.show-hover .item .content .overlay {
+    display: none;
+  }
+  &.show-hover .item:hover .content .overlay {
+    display: block;
   }
 }
 
@@ -1504,8 +1507,8 @@ hr.border-5 {
 .accordion-basic {
 
   .row input[type='radio']:checked ~ .wysiwyg {
-    height: 130px;
-    transition: .3s ease-in;
+    height: auto;
+    transition: height .3s ease-in;
   }
 
   input[type='radio'] {
@@ -1517,6 +1520,12 @@ hr.border-5 {
     height: 0;
     box-sizing: border-box;
     transition: .3s ease-out;
+
+    p {
+      &:first-child {
+        margin-top: 1.2rem;
+      }
+    }
   }
 
 }
@@ -1524,13 +1533,14 @@ hr.border-5 {
 .team-basic {
 
   .member {
+    text-align: center;
+    border: 1px solid $brand-grayLight;
 
     .profile {
       min-height: 12rem;
     }
-
-
   }
+
   .member-box {
     &:last-child {
       margin-right: 0 !important;
@@ -1714,18 +1724,6 @@ hr.border-5 {
         border-right: $arrow-size solid transparent;
         border-top: $arrow-point solid $brand-primary;
       }
-    }
-  }
-}
-
-.team-basic {
-
-  .member {
-    text-align: center;
-    border: 1px solid $brand-grayLight;
-
-    h4 {
-      color: $brand-primary;
     }
   }
 }

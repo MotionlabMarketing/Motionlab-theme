@@ -24,7 +24,7 @@ $sections    = get_sub_field($current . '_sections');
 
         <div class="col-12 || md-flex items-center justify-center">
 
-            <a class="section || col col-12 md-col-3 || py4 px4 || js-match-height text-center md-text-left">
+            <a class="section || flex items-center || col col-12 md-col-3 || py4 px4 || js-match-height text-center md-text-left">
                 <?php
                 if (!empty($blockTitle[0]['title'])) {
                     include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
