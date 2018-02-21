@@ -10,19 +10,37 @@
  * @version 1.00
  */
 
-$banner['height']             = get_sub_field($current . '_height_min_height');
-$banner['align']              = get_sub_field($current . '_content_alignment');
+$banner['height']                 = get_sub_field($current . '_height_min_height');
+$banner['align']                  = get_sub_field($current . '_content_alignment');
 
 
-$banner['title']              = get_sub_field($current . '_title_title');
-$banner['content']            = get_sub_field($current . '_content');
-$banner['text-align']         = get_sub_field($current . '_text_alignment_align');
-$banner['text-color']         = get_sub_field($current . '_text_colour_system_text_colours');
+$banner['title']                  = get_sub_field($current . '_title_title');
+$banner['content']                = get_sub_field($current . '_content');
+$banner['text-align']             = get_sub_field($current . '_text_alignment_align');
+$banner['text-color']             = get_sub_field($current . '_text_colour_system_text_colours');
 
-$banner['button']             = get_sub_field($current . '_button');
+$banner['button']                 = get_sub_field($current . '_button');
 
-$banner['image']              = get_sub_field($current . '_image');
-$banner['image']['position']  = get_sub_field($current . '_image_position_background_position');
+$banner['image']                  = get_sub_field($current . '_image');
+$banner['image']['position']      = get_sub_field($current . '_image_position_background_position');
+
+$banner['subheading']['position'] = get_sub_field($current . '_subheading_position');
+$banner['subheading']['title']    = get_sub_field($current . '_titleSub_title');
+
+$banner['logos']['before']        = get_sub_field($current . '_logo_enableBefore');
+$banner['logos']['after']         = get_sub_field($current . '_logo_enableAfter');
+
+if ($banner['logos']['before'] == true):
+
+    $banner['logos']['before']    = get_sub_field($current . '_logo_before');
+
+endif;
+
+if ($banner['logos']['after'] == true):
+
+    $banner['logos']['after']    = get_sub_field($current . '_logo_after');
+
+endif;
 
 if ($banner['button'] == true):
 
@@ -38,7 +56,6 @@ if ($banner['image']['overlay'] == true):
     $banner['image']['overlayStrength'] = get_sub_field($current . '_image_overlay_strength');
 
 endif;
-
 ?>
 
 <section id="<?=$block['custom_id']?>" class="clearfix relative z0 overflow-hidden <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> overlay-<?=$banner['align']?> <?=$block['custom_css']?>">
@@ -59,16 +76,48 @@ endif;
 
                     <div class="content || max-width-50 || p4 z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
 
-                        <?php $blockTitle = $banner['title'];
+                        <?php if (!empty($banner['logos']['before']['url'])): ?>
+
+                            <img src="<?=$banner['logos']['before']['url']?>" alt="<?=$banner['logos']['before']['alt']?>" class="logo-top || block mb3 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
+
+                        <?php endif; ?>
+
+                        <?php /*SUBTITLE*/ if ($banner['subheading']['position'] == "top" && !empty($banner['subheading']['title'])): ?>
+
+                            <?php $blockTitle = $banner['subheading']['title'];
                             if (!empty($blockTitle[0]['title'])): ?>
 
-                            <div class="mb4">
+                                <div class="subheading || mb2">
+
+                                    <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
+
+                                </div>
+
+                            <?php endif; endif; ?>
+
+                        <?php /*MAIN*/ $blockTitle = $banner['title'];
+                        if (!empty($blockTitle[0]['title'])): ?>
+
+                            <div class="title || mb2">
 
                                 <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
 
                             </div>
 
                         <?php endif; ?>
+
+                        <?php /*SUBTITLE*/ if ($banner['subheading']['position'] == "bottom" && !empty($banner['subheading']['title'])): ?>
+
+                            <?php $blockTitle = $banner['subheading']['title'];
+                            if (!empty($blockTitle[0]['title'])): ?>
+
+                                <div class="subheading || mb2">
+
+                                    <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
+
+                                </div>
+
+                            <?php endif; endif; ?>
 
 
                         <?php if (!empty($banner['content'])): ?>
@@ -84,6 +133,12 @@ endif;
                         <?php if (!empty($banner['button']['title']) && !empty($banner['button']['url'])): ?>
 
                             <a href="<?=$banner['button']['url']?>" class="btn btn-medium" <?=($banner['button']['title'] ? 'title="'.$banner['button']['title'].'"' : '')?> <?=($banner['button']['target'] ? 'target="'.$banner['button']['target'].'"' : '')?> ><?=$banner['button']['title']?></a>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($banner['logos']['after']['url'])): ?>
+
+                            <img src="<?=$banner['logos']['after']['url']?>" alt="<?=$banner['logos']['after']['alt']?>" class="logo-bottom || block mt3 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
 
                         <?php endif; ?>
                     </div>
