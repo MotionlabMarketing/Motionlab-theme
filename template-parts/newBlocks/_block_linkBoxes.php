@@ -12,6 +12,9 @@
 $layout = get_sub_field($current . '_layout');
 
 switch ($layout):
+    case "grid":
+        include ('linkedBoxes/__grid.php');
+        break;
     case "title_below":
         include ('linkedBoxes/__title_below.php');
         break;
