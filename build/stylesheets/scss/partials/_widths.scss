@@ -3,8 +3,11 @@
 
 .width-auto { width: auto; }
 
+.width-50 { width: 50%; }
 .width-100 { width: 100%; }
 
+.min-width-20 { min-width: 20%; }
+.min-width-50 { min-width: 50%; }
 .min-width-100 { min-width: 100%; }
 
 .max-width-50 { max-width: 50%; }
@@ -14,7 +17,10 @@
 @include generate-breakpoint-prefixes {
 
   &width-auto { width: auto; }
+  &width-50 { width: 50%; }
   &width-100 { width: 100%; }
+  &min-width-20 { min-width: 20%; }
+  &min-width-50 { min-width: 50%; }
   &min-width-100 { min-width: 100%; }
   &max-width-50 { max-width: 50%; }
   &max-width-100 { max-width: 100%; }

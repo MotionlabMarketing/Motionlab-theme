@@ -10,14 +10,16 @@
  * @version 1.00
  */
 
-$banner['height']             = get_sub_field($current . '_height_min_height');
-$banner['align']              = get_sub_field($current . '_content_alignment');
+$banner['height']                 = get_sub_field($current . '_height_min_height');
+$banner['align']                  = get_sub_field($current . '_content_alignment');
 
-$banner['text-align']         = get_sub_field($current . '_text_alignment_align');
-$banner['text-color']         = get_sub_field($current . '_text_colour_system_text_colours');
+$banner['text-align']             = get_sub_field($current . '_text_alignment_align');
+$banner['text-color']             = get_sub_field($current . '_text_colour_system_text_colours');
 
-$banner['slides']             = get_sub_field($current . '_sliders');
-$banner['image']['position']  = get_sub_field($current . '_image_position_background_position');
+$banner['slides']                 = get_sub_field($current . '_sliders');
+$banner['image']['position']      = get_sub_field($current . '_image_position_background_position');
+
+$banner['subheading']['position'] = get_sub_field($current . '_subheading_position');
 
 if ($banner['button'] == true):
 
@@ -25,7 +27,7 @@ if ($banner['button'] == true):
 
 endif;
 
-$banner['image']['overlay']   = get_sub_field($current . '_image_overlay_add_overlay');
+$banner['image']['overlay']       = get_sub_field($current . '_image_overlay_add_overlay');
 
 if ($banner['image']['overlay'] == true):
 
@@ -50,17 +52,48 @@ endif;
 
                 <div class="content || max-width-50 || p4 <?=$banner['text-align']?> <?=$banner['text-color']?>">
 
-                    <?php $blockTitle = $slide['title'];
-                    if (!empty($blockTitle[0]['title'])): ?>
+                    <?php if ($slide['logo_enableBefore'] == true && !empty($slide['logo_before']['url'])): ?>
 
-                        <div class="mb4">
-
-                            <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
-
-                        </div>
+                        <img src="<?=$slide['logo_before']['url']?>" alt="<?=$slide['logo_before']['alt']?>" class="logo-top || block mb3 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
 
                     <?php endif; ?>
 
+                    <?php /*SUBTITLE*/ if ($banner['subheading']['position'] == "top" && !empty($slide['titleSub_title'])): ?>
+
+                        <?php $blockTitle = $slide['titleSub_title'];
+                        if (!empty($blockTitle[0]['title'])): ?>
+
+                            <div class="subheading || mb2">
+
+                                <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
+
+                            </div>
+
+                    <?php endif; endif; ?>
+
+                    <?php /*MAIN*/ $blockTitle = $slide['title'];
+                        if (!empty($blockTitle[0]['title'])): ?>
+
+                            <div class="title || mb2">
+
+                                <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
+
+                            </div>
+
+                    <?php endif; ?>
+
+                    <?php /*SUBTITLE*/ if ($banner['subheading']['position'] == "bottom" && !empty($slide['titleSub_title'])): ?>
+
+                        <?php $blockTitle = $slide['titleSub_title'];
+                        if (!empty($blockTitle[0]['title'])): ?>
+
+                            <div class="subheading || mb2">
+
+                                <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
+
+                            </div>
+
+                    <?php endif; endif; ?>
 
                     <?php if (!empty($slide['content'])): ?>
 
@@ -75,6 +108,12 @@ endif;
                     <?php if (!empty($slide['button_text_link']['title']) && !empty($slide['button_text_link']['url'])): ?>
 
                         <a href="<?=$slide['button_text_link']['url']?>" class="btn btn-medium" <?=($slide['button_text_link']['title'] ? 'title="'.$slide['button_text_link']['title'].'"' : '')?> <?=($slide['button_text_link']['target'] ? 'target="'.$slide['button_text_link']['target'].'"' : '')?> ><?=$slide['button_text_link']['title']?></a>
+
+                    <?php endif; ?>
+
+                    <?php if ($slide['logo_enableAfter'] == true && !empty($slide['logo_after']['url'])): ?>
+
+                        <img src="<?=$slide['logo_after']['url']?>" alt="<?=$slide['logo_after']['alt']?>" class="logo-bottom || block mt3 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
 
                     <?php endif; ?>
                 </div>
