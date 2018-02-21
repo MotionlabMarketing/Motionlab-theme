@@ -16,6 +16,11 @@ $txtColor         = get_sub_field($current . '_text_system_text_colours');
 $blockTitle       = get_sub_field($current . '_title_title');
 $blockColumns     = get_sub_field($current . '_columns');
 
+$overlayEnabled   = get_sub_field($current . '_enableOverlay');
+
+$darkenImages     = get_sub_field($current . '_darken');
+$darkenStrength   = get_sub_field($current . '_darkenStrength');
+
 $block['columns'] = 12 / $blockColumns;
 
 $blockItems       = get_sub_field($current . '_items');
@@ -40,12 +45,21 @@ $hoverContent     = get_sub_field($current . '_hoverContent');
 
             <?php foreach ($blockItems as $item): ?>
 
-                <div class="item || col col-12 md-col-<?=$block['columns']?> p2 || block relative || hover-zoom">
+                <div class="item || col col-12 md-col-<?=$block['columns']?> p2 || block relative">
                     <a href="<?=$item['block_linkBoxes_link']['url']?>" class="block relative overflow-hidden || bg-cover bg-center box-shadow-3 <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?> || zoom" <?=($item['block_linkBoxes_link']['title'] ? 'title="'.$item['block_linkBoxes_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_link']['target'] ? 'target="'.$item['block_linkBoxes_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image_basic_image']['url'];?>')">
 
-                        <div class="content relative || js-match-height || <?=$txtColor?> py6 || flex items-center justify-center || darken-background darken-background-4 ">
-                            <p class="m0 bold text-center hover z-index-20"><?=strip_tags($item['block_linkBoxes_content']); ?></p>
-                            <div class="overlay || absolute width-100 height-100 bg-brand-primary-overlay"></div>
+                        <div class="content relative || js-match-height || <?=$txtColor?> py6 || flex items-center justify-center || <?=($darkenImages == true)? "darken-background" : ""?> <?=($darkenImages == true)? $darkenStrength : ""?>">
+                            <div class="z-index-40">
+                                <p class="mb0 bold text-center z-index-20 h4"><?=strip_tags($item['block_linkBoxes_content']); ?></p>
+
+                                <?php if (!empty($item['block_linkBoxes_link']['title'])):?>
+                                    <p class="block mt2 text-center mb0 h5"><?=$item['block_linkBoxes_link']['title']?></p>
+                                <?php endif; ?>
+                            </div>
+
+                            <?php if ($overlayEnabled == true): ?>
+                                <div class="overlay || absolute width-100 height-100 z-index-20 bg-brand-primary-overlay"></div>
+                            <?php endif; ?>
                         </div>
                     </a>
                 </div>
