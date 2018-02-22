@@ -89,6 +89,9 @@ if ($block['enabled'] == true || empty($block['enabled'])): // TODO: Needs corre
         $block['bgImage']['tintStrength'] = get_sub_field($current . '_settings_background_tint_strength');
         $block['bgImage']['occupancy']    = get_sub_field($current . '_settings_background_occupancy');
 
+
+        $block['bgImage']['tint']         = $block['bgImage']['tint']['system_background_tint'];
+        $block['bgImage']['tintStrength'] = $block['bgImage']['tintStrength']['system_tint_strength'];
         $block['bgImage']['position']     = $block['bgImage']['position']['background_position'];
         $block['bgImage']['image']['url'] = $block['bgImage']['image']['basic_image']['url'];
         $block['bgImage']['occupancy']    = $block['bgImage']['occupancy']['system_occupancy'];

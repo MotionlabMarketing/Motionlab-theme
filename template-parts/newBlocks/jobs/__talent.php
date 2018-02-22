@@ -26,7 +26,7 @@ $sections    = get_sub_field($current . '_sections');
 
         <div class="col-12 || mb5 || text-center">
 
-            <div class="mb4">
+            <div class="mb2">
                 <?php
                 if (!empty($blockTitle[0]['title'])) {
                     include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php');
@@ -61,14 +61,14 @@ $sections    = get_sub_field($current . '_sections');
 
         <div class="col-12 clearfix|| my6">
 
-            <?php $i = 0; while($i < 5): ?>
+            <?php $i = 0; while($i < 6): ?>
 
             <div class="col-12 md-col-6 || p4 left">
 
                 <h4 class="h4 mb1">Stacy M Unknown</h4>
                 <p class="bold mb2"><small class="inline-block mr4">Accrington</small><small>Permanent</small></p>
 
-                <div class="block mb4"><span class="mr3">Roles available for</span>
+                <div class="block mb4"><span class="mr3 brand-primary">Roles available for</span>
 
                     <ul class="inline-block tags tags-right right">
                         <li>Administration</li>

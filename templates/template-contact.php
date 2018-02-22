@@ -23,7 +23,7 @@ get_header(); ?>
                         include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php');
                     } ?>
 
-                    <div class="wysiwyg h4">
+                    <div class="wysiwyg h4 p3">
                         <?= get_field('page_introduction') ?>
                     </div>
 
@@ -33,11 +33,11 @@ get_header(); ?>
 
             <div class="col-12 clearfix || mt5 pt5 || border-light border-top">
 
-                <div class="col col-12 md-col-6 || mb5 pt4 p3 py5 || flex items-center js-match-height">
+                <div class="col col-12 md-col-6 || mb5 pt4 p3 md-py6">
 
-                    <div class="">
+                    <div>
 
-                        <h2 class="h4 mb4">General Enquiries & Registation</h2>
+                        <h2 class="h3 mb4">General Enquiries & Registation</h2>
 
                         <p class="mb0"><span class="mr1">T:</span><a
                                     href="tel:<?= trim(str_replace(" ", "", strtolower(get_field('main_contact_phone')))) ?>" class="bold"><?= get_field('main_contact_phone') ?></a>
@@ -48,12 +48,12 @@ get_header(); ?>
 
                         <?= get_field('main_contact_address'); ?>
 
-                        <div class="my4">
+                        <div class="my4 overflow-hidden">
 
                             <?php foreach (get_field('main_contact_buttons') as $btn): ?>
 
                                 <a href="<?= $btn['button_button_link']['url'] ?>"
-                                   class="btn btn-medium <?= $btn['button_system_background_colours'] ?> <?= $btn['button_system_text_colours'] ?>" <?= ($btn['button_button_link']['title'] ? 'title="' . $btn['button_button_link']['title'] . '"' : '') ?> <?= ($btn['button_button_link']['target'] ? 'target="' . $btn['button_button_link']['target'] . '"' : '') ?>><?= $btn['button_button_text'] ?></a>
+                                   class="btn btn-medium mb2 block min-width-20 <?= $btn['button_system_background_colours'] ?> <?= $btn['button_system_text_colours'] ?>" <?= ($btn['button_button_link']['title'] ? 'title="' . $btn['button_button_link']['title'] . '"' : '') ?> <?= ($btn['button_button_link']['target'] ? 'target="' . $btn['button_button_link']['target'] . '"' : '') ?>><?= $btn['button_button_text'] ?></a>
 
                             <?php endforeach; ?>
 
@@ -63,7 +63,7 @@ get_header(); ?>
 
                 </div>
 
-                <div class="col col-12 md-col-6 || pl6 pr6 pb1 pt0 || js-match-height">
+                <div class="col col-12 md-col-6 || px2 md-pl6 md-pr6 pb1 pt0">
 
                     <?php $location = get_field('location_map');
                     if (!empty($location)):
@@ -86,9 +86,9 @@ get_header(); ?>
                  */
                 foreach (get_field('specific_contacts') as $item): ?>
 
-                    <div class="col col-12 sm-col-6 md-col-3 || mb1 p2">
+                    <div class="col col-12 md-col-6 md-col-3 lg-col-3 || mb1 p2">
 
-                        <div class="bg-smoke p4 relative md-min-height-v20 || js-match-height">
+                        <div class="bg-smoke p4 relative md-min-height-v25 || js-match-height">
 
                             <p class="brand-base h4"><strong><?= $item['specific_contacts_name'] ?></strong></p>
 
@@ -117,11 +117,11 @@ get_header(); ?>
 
             <hr>
 
-            <div class="col-12 || mb5">
+            <div class="col-12 || py5">
 
                 <div class="mb3">
 
-                    <div class="col col-12 md-col-12 lg-col-12 || mb5 text-center p3 limit-p limit-p-70">
+                    <div class="col col-12 md-col-12 lg-col-12 || text-left p3 limit-p limit-p-70">
 
                         <?php
                         $blockTitle = get_field('contact_form_title');
@@ -140,7 +140,7 @@ get_header(); ?>
 
                 <div class="clearfix || flex justify-center">
 
-                    <div class="col col-12 md-col-6 || mb5">
+                    <div class="col col-12">
 
                         <?= do_shortcode('[gravityform id="' . get_field('contact_form_id') . '" title="false" description="false"]') ?>
 

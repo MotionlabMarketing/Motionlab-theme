@@ -50,9 +50,9 @@ $button = get_sub_field('block_team_page');
 
                 <div class="member || pb2 || <?= $bgColor ?> box-shadow-3 || zoom">
 
-                    <div class="profile || mb2 || bg-center bg-cover" style="background: url('http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg<?php // Photo ?>'); background-size: cover"></div>
+                    <div class="profile || mb2" style="background: url('http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg'); background-position: center; background-size: cover;"></div>
 
-                    <h4 class="mt3 brand-primary">Oscar</h4>
+                    <h4 class="mt3 mb1 <?=$txtColor?>">Oscar</h4>
                     <p class="postion mb2">Dog</p>
 
                 </div>

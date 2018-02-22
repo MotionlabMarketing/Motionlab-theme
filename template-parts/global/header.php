@@ -10,7 +10,7 @@
             </div>
 
 
-            <div class="flex-auto width-100 black text-right">
+            <div class="flex-auto width-100 black text-right border-bottom border-solid border-light">
                 <?php include(get_template_directory() .'/template-parts/global/menus/top_menu.php')?>
                 <div class="flex">
                     <div class="flex-auto" toggle-relative-search>

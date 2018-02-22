@@ -834,14 +834,14 @@ jQuery(document).ready(function ($) {
 
     function navigationSmallification() {
         var viewportWidth    = $(window).width();
-        var viewportHeight   = $(window).height();
+        // var viewportHeight   = $(window).height();
         var headerHeight     = $('header').height();
         var headerLogo       = $('#main-logo').data('logo');
         var headerLogoScroll = $('#main-logo').data('scrolllogo');
 
         if (viewportWidth > 680) {
 
-            if ($(window).scrollTop() > (viewportHeight - (headerHeight * 4))) {
+            if ($(window).scrollTop() > ((headerHeight * 3))) {
                 $('#main-logo').attr('src', headerLogoScroll);
                 $('header').addClass("smallification");
             } else {

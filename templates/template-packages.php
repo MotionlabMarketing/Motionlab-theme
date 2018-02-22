@@ -21,13 +21,13 @@ get_header(); ?>
             if (!empty($blockTitle[0]['title'])) {
                 include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
 
-            <div class="wysiwyg h4">
+            <div class="wysiwyg h4 p3">
                 <?=get_field('page_introduction')?>
             </div>
 
         </div>
 
-            <div class="col col-12 clearfix text-center mb4 md-p3">
+            <div class="col col-12 clearfix text-center mb4 p3 md-p3">
 
 
                 <div class="header || col col-12 md-hidden-down">
@@ -112,11 +112,11 @@ get_header(); ?>
                         <div class="block width-100 min-width-100" style="opacity: 0">1</div>
                     </div>
 
-                    <div class="col col-12 md-col-3 pt3 md-pl3 md-hidden-down">
+                    <div class="col col-12 md-col-3 p2 md-pt3 md-pl3 md-hidden-down">
                         <p class="h6 brand-primary bold"><a href="<?=$packageOne['package_page']['url']?>"><?=$packageOne['package_page']['title']?></a></p>
                     </div>
 
-                    <div class="col col-12 md-col-3 pt3 md-pl3 md-hidden-down">
+                    <div class="col col-12 md-col-3 p2 md-pt3 md-pl3 md-hidden-down">
                         <p class="h6 brand-primary bold"><a href="<?=$packageTwo['package_page']['url']?>"><?=$packageTwo['package_page']['title']?></a></p>
                     </div>
 
