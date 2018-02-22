@@ -14,6 +14,7 @@ $bgColor          = get_sub_field($current . '_background_system_background_colo
 $txtColor         = get_sub_field($current . '_text_system_text_colours');
 
 $blockTitle       = get_sub_field($current . '_title_title');
+$blockContent     = get_sub_field($current . '_content');
 $blockColumns     = get_sub_field($current . '_columns');
 
 $overlayEnabled   = get_sub_field($current . '_enableOverlay');
@@ -29,7 +30,7 @@ $hoverContent     = get_sub_field($current . '_hoverContent');
 
 ?>
 
-<section class="linkedBox-basic || clearfix <?=($hoverContent == true)? "show-hover" : "";?> <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?>">
+<section class="linkedBox-grid || mt6 clearfix <?=($hoverContent == true)? "show-hover" : "";?> <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?>">
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
@@ -40,15 +41,16 @@ $hoverContent     = get_sub_field($current . '_hoverContent');
                 if (!empty($blockTitle[0]['title'])) {
                     include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
 
-                <?=get_sub_field('block_linkBoxes_content')?>
+                <?=$blockContent?>
             </div>
 
-            <?php foreach ($blockItems as $item): ?>
+            <?php $i = 1; foreach ($blockItems as $item): ?>
 
-                <div class="item || col col-12 md-col-<?=$block['columns']?> p2 || block relative">
-                    <a href="<?=$item['block_linkBoxes_link']['url']?>" class="block relative overflow-hidden || bg-cover bg-center box-shadow-3 <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?> || zoom" <?=($item['block_linkBoxes_link']['title'] ? 'title="'.$item['block_linkBoxes_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_link']['target'] ? 'target="'.$item['block_linkBoxes_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image_basic_image']['url'];?>')">
+                <div class="item item-<?=$i?> || p2 || block relative">
 
-                        <div class="content relative || js-match-height || <?=$txtColor?> py6 || flex items-center justify-center || <?=($darkenImages == true)? "darken-background" : ""?> <?=($darkenImages == true)? $darkenStrength : ""?>">
+                    <a href="<?=$item['block_linkBoxes_link']['url']?>" class="block relative width-100 height-100 overflow-hidden hover-white || bg-cover bg-center box-shadow-3 <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?> || zoom" <?=($item['block_linkBoxes_link']['title'] ? 'title="'.$item['block_linkBoxes_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_link']['target'] ? 'target="'.$item['block_linkBoxes_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image_basic_image']['url'];?>')">
+
+                        <div class="content relative width-100 height-100 || <?=$txtColor?> py6 || flex items-center justify-center || <?=($darkenImages == true)? "darken-background" : ""?> <?=($darkenImages == true)? $darkenStrength : ""?>">
                             <div class="z-index-40">
                                 <p class="mb0 bold text-center z-index-20 h4"><?=strip_tags($item['block_linkBoxes_content']); ?></p>
 
@@ -62,9 +64,10 @@ $hoverContent     = get_sub_field($current . '_hoverContent');
                             <?php endif; ?>
                         </div>
                     </a>
+
                 </div>
 
-            <?php endforeach; ?>
+            <?php $i++; endforeach; ?>
 
         </div>
 

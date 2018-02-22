@@ -1156,10 +1156,18 @@ hr.border-5 {
   &.show-hover .item .content {
     font-size: 1.4rem;
   }
-  &.show-hover .item .content .overlay {
+
+  &.show-hover .item .content {
     display: none;
   }
-  &.show-hover .item:hover .content .overlay {
+  &.show-hover .item:hover .content {
+    display: flex;
+  }
+
+  .item .content .overlay {
+    display: none;
+  }
+  .item:hover .content .overlay {
     display: block;
   }
 }
@@ -1198,6 +1206,71 @@ hr.border-5 {
         clear: both;
       }
     }
+  }
+}
+
+.linkedBox-grid {
+
+  $height: 60vh;
+  .item {
+    float: left;
+  }
+  .item-1 {
+    height: $height;
+    width: 50%;
+
+    @media (max-width: $breakpoint-md) {
+      height: calc(#{$height} / 2);
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      width: 100%;
+    }
+
+  }
+  .item-2 {
+    height: calc(#{$height} / 2);
+    width: 50%;
+
+    @media (max-width: $breakpoint-md) {
+      height: calc(#{$height} / 2);
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      width: 100%;
+    }
+  }
+  .item-3,
+  .item-4 {
+    height: calc(#{$height} / 2);
+    width: 25%;
+
+    @media (max-width: $breakpoint-md) {
+      height: calc(#{$height} / 2);
+      width: 50%;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      width: 100%;
+    }
+  }
+
+  &.show-hover .item .content {
+    font-size: 1.4rem;
+  }
+
+  &.show-hover .item .content {
+    display: none;
+  }
+  &.show-hover .item:hover .content {
+    display: flex;
+  }
+
+  .item .content .overlay {
+    display: none;
+  }
+  .item:hover .content .overlay {
+    display: block;
   }
 }
 
