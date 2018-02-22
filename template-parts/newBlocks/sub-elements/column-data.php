@@ -30,7 +30,7 @@ $blockTitle           = get_sub_field('column_title_title');
 		<div class="flex flex-column height-100 <?php echo $anchorButtons ?> <?=$columnsCustomClass?>">
 			<div class="">
 
-                <div class="mb4">
+                <div class="mb2">
 
                     <?php
                     if (!empty($blockTitle[0]['title'])) {

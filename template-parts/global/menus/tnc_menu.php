@@ -24,5 +24,5 @@
 
 </div>
 <div class="col col-12 md-col-4 text-center md-text-right">
-    <p class="mb0 white">Site design by <a href="#" target="_blank" class="white underline hover-primary">Motionlab</a></p>
+    <p class="mb0 white">Site design by <a href="#" target="_blank" class="white underline brand-primary">Motionlab</a></p>
 </div>

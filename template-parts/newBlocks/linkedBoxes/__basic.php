@@ -48,9 +48,9 @@ $hoverContent     = get_sub_field($current . '_hoverContent');
                 <div class="item || col col-12 md-col-<?=$block['columns']?> p2 || block relative">
                     <a href="<?=$item['block_linkBoxes_link']['url']?>" class="block relative overflow-hidden || bg-cover bg-center box-shadow-3 <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?> || zoom" <?=($item['block_linkBoxes_link']['title'] ? 'title="'.$item['block_linkBoxes_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_link']['target'] ? 'target="'.$item['block_linkBoxes_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image_basic_image']['url'];?>')">
 
-                        <div class="content relative || js-match-height || <?=$txtColor?> py6 || flex items-center justify-center || <?=($darkenImages == true)? "darken-background" : ""?> <?=($darkenImages == true)? $darkenStrength : ""?>">
+                        <div class="content relative || js-match-height || <?=$txtColor?> bg-grey py6 || flex items-center justify-center || <?=($darkenImages == true)? "darken-background" : ""?> <?=($darkenImages == true)? $darkenStrength : ""?>">
                             <div class="z-index-40">
-                                <p class="mb0 bold text-center z-index-20 h4"><?=strip_tags($item['block_linkBoxes_content']); ?></p>
+                                <p class="mb0 bold text-center z-index-20 h3"><?=strip_tags($item['block_linkBoxes_content']); ?></p>
 
                                 <?php if (!empty($item['block_linkBoxes_link']['title'])):?>
                                     <p class="block mt2 text-center mb0 h5"><?=$item['block_linkBoxes_link']['title']?></p>

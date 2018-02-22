@@ -37,13 +37,17 @@ foreach ($videosAll as $video):
     $videos[$i]['thumbnail']    = $videos[$i]['thumbnail']['sizes']['medium_large'];
 
     $i++;
-endforeach;?>
+endforeach; ?>
 
-<section class="video-stories || clearfix my4 mb4 <?=$txtColor?>">
+<section id="<?=$block['custom_id']?>" class="video-stories  || relative clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>">
 
-    <div class="container clearfix p3 <?=$bgColor?>">
+    <?=($block['grid'] == 'container' || $block['grid'] == 'full_width')? '<div class="container">' : ""?>
 
-        <div class="col col-12 md-col-6 || mb5 p3 md-pl5 lg-pt4">
+    <div class="clearfix || relative">
+
+        <div class="lg-flex items-center p5">
+
+        <div class="col col-12 md-col-6 || md-pr3">
 
             <div class="mb2">
                 <?php
@@ -52,7 +56,7 @@ endforeach;?>
                 } ?>
             </div>
 
-            <div class="wysiwyg mb3">
+            <div class="wysiwyg mb3 <?=$txtColor?>">
                 <?= get_sub_field('block_video_content'); ?>
             </div>
 
@@ -63,18 +67,18 @@ endforeach;?>
                     <div class="video || inline-block">
 
                         <a href="<?=$videos[$i]['link']?>" class="inline-block mr2">
-                            <?= wp_get_attachment_image($videos[$i]['thumbnail_id'], array(120, 140), "", ["class" => "box-shadow-3"]  )?>
+                            <?= wp_get_attachment_image($videos[$i]['thumbnail_id'], array(120, 140), "", ["class" => "box-shadow-1"]  )?>
                         </a>
-                        <p class="h7" style="max-width: 120px; font-size: 0.8rem"><?=$videos[$i]['title']?></p>
+                        <p class="h7 <?=$txtColor?> white" style="max-width: 120px; font-size: 0.8rem"><?=$videos[$i]['title']?></p>
 
                     </div>
 
-                <?php $i++; endwhile; endforeach; ?>
+                    <?php $i++; endwhile; endforeach; ?>
             </div>
 
         </div>
 
-        <div class="col col-12 md-col-6 || mb2 lg-mb0 lg-pt4 lg-pl6 lg-pr6">
+        <div class="col col-12 md-col-6 || md-p5">
 
             <?php if (get_sub_field('block_videos_embed') == true): ?>
 
@@ -88,22 +92,40 @@ endforeach;?>
 
                 <?php endif; ?>
 
-
-
             <?php else: ?>
 
                 <a href="<?=$videos[$videosShow]['link']?>" class="block relative">
-                    <img src="<?=$videos[$videosShow]['thumbnail']?>" alt="<?=$videos[$videosShow]['title']?>" class="box-shadow-3">
-                    <div class="absolute px4 py2 bottom-0 right-0 bg-brand-primary white" style="margin-bottom: 0.4rem"><?=$videos[$videosShow]['length']?></div>
+                    <img src="<?=$videos[$videosShow]['thumbnail']?>" alt="<?=$videos[$videosShow]['title']?>" class="box-shadow-1">
+                    <div class="absolute px4 py2 bottom-0 right-0 bg-brand-primary <?=$txtColor?>" style="margin-bottom: 0.4rem"><?=$videos[$videosShow]['length']?></div>
                 </a>
 
             <?php endif; ?>
 
-            <h3 class="h3 brand-primary px2 mt3 md-mt3 mb0"><?=$videos[$videosShow]['author']?></h3>
-            <p class="px2 h4 muted"><?=$videos[$videosShow]['role']?></p>
+            <h3 class="h3 <?=$txtColor?> px2 mt3 md-mt3 mb0"><?=$videos[$videosShow]['author']?></h3>
+            <p class="px2 h4 <?=$txtColor?> muted"><?=$videos[$videosShow]['role']?></p>
 
         </div>
 
+        </div>
+
+        <?php if ($block['bgImage']['enable']  && $block['grid'] == 'container'): ?>
+
+            <div class="absolute top-0 left-0 width-100 height-100 bg-center bg-cover zn1 <?=$block['bgImage']['tint']?> <?=$block['bgImage']['tintStrength']?> bg-<?=$block['bgImage']['occupancy']?>" style="background-image: url('<?=$block['bgImage']['image']['url']?>')"></div>
+
+        <?php endif; ?>
+
     </div>
 
+    <?=($block['grid'] == 'container'  || $block['grid'] == 'full_width')? '</div>' : ""?>
+
+    <?php if ($block['grid'] == 'full_width' && $block['bgImage']['enable']): ?>
+
+        <div class="absolute top-0 left-0 width-100 height-100 bg-center bg-cover zn1 <?=$block['bgImage']['tint']?> <?=$block['bgImage']['tintStrength']?> bg-<?=$block['bgImage']['occupancy']?>" style="background-image: url('<?=$block['bgImage']['image']['url']?>')"></div>
+
+    <?php endif; ?>
+
 </section>
+
+<?php if ($block['bgImage']['enable']): ?>
+
+<?php endif; ?>

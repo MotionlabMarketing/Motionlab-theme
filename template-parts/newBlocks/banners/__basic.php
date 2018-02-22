@@ -74,7 +74,7 @@ endif;
 
                 <div class="flex items-center justify-<?=$banner['align']?> || z-index-50 absolute width-100 height-100 || p3 md-p6">
 
-                    <div class="content || max-width-50 || p4 z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
+                    <div class="content || lg-max-width-50 || p4 z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
 
                         <?php if (!empty($banner['logos']['before']['url'])): ?>
 

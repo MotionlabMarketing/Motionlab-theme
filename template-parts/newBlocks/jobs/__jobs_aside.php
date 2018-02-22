@@ -77,13 +77,15 @@ $sections    = get_sub_field($current . '_sections');
 
                             <p class="h5 mb3">Accrington <span class="muted">•</span> Up to £28,000 per annum <span class="muted">•</span> Permanent</p>
 
-                            <a href="" class="btn btn-primary btn-small white">Read More</a>
+                            <a href="/" class="btn btn-primary btn-small white px5">Read More</a>
 
                         </div>
 
                     </div>
 
                 <?php $i++; endwhile; ?>
+
+                <a href="/" class="btn btn-outline mt3">View all accountancy jobs</a>
 
             </div>
 
