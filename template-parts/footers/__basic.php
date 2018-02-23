@@ -1,4 +1,4 @@
-<div class="bg-footer">
+<div class="bg-footer pt5 md-pt0">
 <?php if (get_field('footer_enable_overlay', 'option') == true): ?>
     <div class="overlay" style="background-image: url('<?= get_field('footer_overlay_image', 'option') ?>');">
 
@@ -14,7 +14,7 @@
                 <?php include(get_template_directory() . '/template-parts/global/menus/footer_menu_2.php'); ?>
                 <?php include(get_template_directory() . '/template-parts/global/menus/footer_menu_3.php'); ?>
 
-                <div class="col col-12 sm-col-4 md-col-2 mb3 md-mb0 text-center md-text-left white">
+                <div class="col col-12 md-col-2 mb3 md-mb0 text-center md-text-left white">
 
                     <?php dynamic_sidebar( 'footer_column_1' ); ?>
 
