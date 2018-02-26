@@ -1494,6 +1494,7 @@ hr.border-5 {
     &:after {
       left: 62%;
       height: 2px;
+      height: 2px;
       top: 0.8rem;
       content: " ";
       display: block;
@@ -1583,11 +1584,6 @@ hr.border-5 {
     }
 
 
-  }
-
-  .tab-content {
-    background-color: lighten($brand-grayLightest, 5%);
-    border: 1px solid $brand-grayLightest;
   }
 }
 

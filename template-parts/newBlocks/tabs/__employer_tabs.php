@@ -15,7 +15,8 @@ if (get_sub_field('centre_tabs') == true) {
 
 $blockTitle  = get_sub_field($current . '_title_title');
 
-// TODO: ADD BLOCK BORDER SETTINGS //
+$block['tabs_settings']['tab_size']      = get_sub_field($current . '_size');
+$block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
 ?>
 
 <section class="tabs-employer || clearfix pb4">
@@ -49,7 +50,7 @@ $blockTitle  = get_sub_field($current . '_title_title');
 
                 if( have_rows('block_tabs_employer')): $i = 1; while ( have_rows('block_tabs_employer')): the_row() ?>
 
-                    <div data-section="tab<?php echo $i ?>" class="tab <?=$tabClass?> || relative text-center bold <?=($i <= 1)? 'tab-active' : ''?>">
+                    <div data-section="tab<?php echo $i ?>" class="tab <?=$tabClass?> || relative text-center <?=$block['tabs_settings']['tab_size']?> <?=$block['tabs_settings']['tab_weight']?> <?=($i <= 1)? 'tab-active' : ''?>">
 						<?=get_sub_field('tab_title')?>
 					</div>
 
