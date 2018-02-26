@@ -924,6 +924,19 @@ hr.border-5 {
 .border-radius-10  { border-radius:   2rem; }
 .border-radius-max { border-radius:  10rem; }
 
+.tab-border-radius {
+
+  span {
+    &:first-child {
+      border-top-left-radius: 1rem;
+    }
+    &:last-child {
+      border-top-right-radius: 1rem;
+    }
+  }
+
+}
+
 // ITEM DIVIDERS.
 .divide-lines {
 
@@ -1479,7 +1492,7 @@ hr.border-5 {
     }
 
     &:after {
-      left: 60%;
+      left: 62%;
       height: 2px;
       top: 0.8rem;
       content: " ";
