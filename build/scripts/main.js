@@ -152,7 +152,7 @@ jQuery(document).ready(function ($) {
     ========================================================*/
 
     function headerSpace() {
-        var headerHeight = $('#masthead').outerHeight();
+        var headerHeight = $('header').outerHeight();
         $('.js-header-space').css('padding-top', +headerHeight + "px");
     }
 
@@ -163,7 +163,8 @@ jQuery(document).ready(function ($) {
 
 
     function heightHeaderSpace() {
-        var headerHeight = $('#masthead').outerHeight();
+
+        var headerHeight = $('header').outerHeight();
         $('.minus-js-header-height').css('min-height', 'calc(100vh - ' + headerHeight + "px)");
     }
 
