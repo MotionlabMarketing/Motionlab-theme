@@ -53,17 +53,26 @@ get_header(); ?>
             <?php
             $collection = $_GET['t'];
 
-            $args = array(
-                'post_status' => 'publish',
-                'posts_per_page' => -1,
-                'post_type' => 'gallery',
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'collections',
-                        'terms' => $collection
+            if (empty($collection)) {
+                $args = array(
+                    'post_status' => 'publish',
+                    'posts_per_page' => -1,
+                    'post_type' => 'gallery',
+                );
+            } else {
+                $args = array(
+                    'post_status' => 'publish',
+                    'posts_per_page' => -1,
+                    'post_type' => 'gallery',
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'collections',
+                            'terms' => $collection
+                        )
                     )
-                )
-            );
+                );
+            }
+
             $query = new WP_Query($args);
             if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
 

@@ -484,3 +484,12 @@ function ml_get_contact($type, $id = null, $array) {
     return $value;
 
 }
+
+// RETURN THE NAME OF THE FUNCTIONS FILES.
+function ml_get_template() {
+
+    $template = get_page_template_slug();
+    $template = explode('templates/', $template);
+
+    return $template[1];
+}

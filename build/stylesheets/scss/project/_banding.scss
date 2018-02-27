@@ -112,7 +112,7 @@ h3, .h3 {
 
 // BACKGROUND OVERLAY //
 .bg-brand-primary-overlay {
-  background-color: rgba($brand-primary, 0.8);
+  background-color: rgba(80, 80, 80, 0.8);
 }
 
 /**
@@ -924,6 +924,11 @@ hr.border-5 {
 .border-radius-10  { border-radius:   2rem; }
 .border-radius-max { border-radius:  10rem; }
 
+// MASONRY BASIC SETTINGS.
+.grid-sizer,
+.grid-item { width: 33%; }
+.grid-item--width2 { width: 66%; }
+
 .tab-border-radius {
 
   span {
@@ -1727,35 +1732,18 @@ hr.border-5 {
 
 .cta-sections {
 
-  .h3 {
-    font-size: 1.2rem;
-  }
-
   .section {
-    border-right: 1px solid $brand-grayLight;
+    border-right: 1px solid white;
 
     &:hover {
       color: $brand-white;
-      background-color: darken($brand-primary, 20%);
-
-      small {
-
-        color: $brand-primary;
-        padding: 0.3rem 1rem;
-        background-color: $brand-white;
-      }
+      background-color: rgb(80, 80, 80);
     }
 
     &:last-child {
       border: 0;
     }
   }
-  .section:not(a) {
-    &:hover {
-      background-color: darken($brand-primary, 0);
-    }
-  }
-
 }
 
 .cta-footer {
