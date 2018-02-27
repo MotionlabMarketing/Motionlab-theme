@@ -924,6 +924,11 @@ hr.border-5 {
 .border-radius-10  { border-radius:   2rem; }
 .border-radius-max { border-radius:  10rem; }
 
+// MASONRY BASIC SETTINGS.
+.grid-sizer,
+.grid-item { width: 33%; }
+.grid-item--width2 { width: 66%; }
+
 .tab-border-radius {
 
   span {
