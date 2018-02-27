@@ -21,12 +21,6 @@ $featured_image = $img[0];
     <div class="container px5 bg-white">
         <div class="clearfix py5">
 
-            <?php echo (new MenuController())->get_hansel_and_gretel_breadcrumbs(); ?>
-
-            <div class="container bg-black px5 py7 white text-center bg-center bg-cover mb4" style="background-image:url(<?php echo $featured_image; ?>)">
-                <h1 class="xl-h0 mb0 xl-lsn2 lh1"><?php echo the_title() ?></h1>
-            </div>
-
             <?php include(get_template_directory() .'/template-parts/building-blocks.php' ); ?>
 
             <div class="flex items-center || clearfix mb4">

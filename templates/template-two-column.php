@@ -13,8 +13,6 @@ get_header();
 	<?php while ( have_posts() ) : the_post();?>
 
 		<div class="container px5">
-			<h1 class="xl-h0 xl-lsn2 lh1 border-bottom border-smoke py6 mb6 pt7"><?php echo the_title() ?></h1>
-
 
 			<div class="mxn3 clearfix">
 				<section class="col col-12 lg-col-9 px3 mb5 sm-mb0">
