@@ -26,41 +26,31 @@ $blockTitle           = get_sub_field('column_title_title');
 
 <?php //print_r(get_field_objects()); ?>
 <?php if(!empty(get_sub_field('copy'))){?>
-	<div class="<?php echo $columnWidth ?> <?php echo $textAlign ?> || js-match-height">
-		<div class="flex flex-column height-100 <?php echo $anchorButtons ?> <?=$columnsCustomClass?>">
-			<div class="">
+	<div class="flex flex-column <?php echo $columnWidth ?> <?php echo $textAlign ?> <?=$columnsCustomClass?>">
 
-                <div class="mb2">
+		<?php if (!empty($blockTitle[0]['title'])): ?>
+        <div class="mb2">
+            <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
+        </div>
+		<?php endif; ?>
 
-                    <?php
-                    if (!empty($blockTitle[0]['title'])) {
-                    include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
+		<?php if ( have_rows('icon')){
+			while ( have_rows('icon')){
+				the_row();?>
+				<div class="col-12 fa fa-fw <?php echo get_sub_field('icon_size'); ?> <?php echo get_sub_field('icon'); ?> || mb3 pt1  <?php echo $textAlign ?> <?php echo $icons ?>"></div>
+			<?php };
+		};?>
 
-                </div>
-
-				<?php if ( have_rows('icon')){
-					while ( have_rows('icon')){
-						the_row();?>
-						<div class="col-12 fa fa-fw <?php echo get_sub_field('icon_size'); ?> <?php echo get_sub_field('icon'); ?> || mb3 pt1  <?php echo $textAlign ?> <?php echo $icons ?>"></div>
-					<?php };
-				};?>
-
-				<div class="wysiwyg col-12 <?php echo $textAlign ?> limit-p limit-p-80">
-					<?php echo get_sub_field('copy'); ?>
-
-                    <?php if (!empty($columnButtonsLink) && !empty($columnButtonsText)):?>
-                    <div class="mt4">
-                        <a href="<?=$columnButtonsLink['url']?>" class="btn btn-<?=$size?> border-radius-<?=$buttonBorderRadius['border_radius_strength']?> white inline-block bg-<?=$columnButtonsColour?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
-                            <?=$columnButtonsText?>
-                        </a>
-                    </div>
-                    <?php endif; ?>
-				</div>
-			</div>
-
-
-
-
+		<div class="flex flex-column height-100 <?php echo $textAlign ?> <?php echo $anchorButtons ?>">
+			<?php echo get_sub_field('copy'); ?>
+            <?php if (!empty($columnButtonsLink) && !empty($columnButtonsText)):?>
+            <div class="my3">
+                <a href="<?=$columnButtonsLink['url']?>" class="btn btn-<?=$size?> border-radius-<?=$buttonBorderRadius['border_radius_strength']?> white inline-block bg-<?=$columnButtonsColour?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
+                    <?=$columnButtonsText?>
+                </a>
+            </div>
+            <?php endif; ?>
 		</div>
+
 	</div>
 <?php } ?>

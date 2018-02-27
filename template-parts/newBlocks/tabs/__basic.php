@@ -24,7 +24,7 @@ $block['tabs_settings']['box_bg']        = $block['tabs_settings']['box_bg']['sy
 ?>
 
 
-<section id="<?=$block['custom_id']?>" class="basic-tabs || clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>">
+<section id="<?=$block['custom_id']?>" class="tabs-basic || clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>">
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
@@ -42,7 +42,7 @@ $block['tabs_settings']['box_bg']        = $block['tabs_settings']['box_bg']['sy
 
         </div>
 
-        <div class="content clearfix || col-12  ||  border-top border-light <?=$block['tabs_settings']['box_bg']?><?=($block['tabs_settings']['box_borders'] == true)? ' border-left border-right border-bottom':''?><?=($block['tabs_settings']['box_radius'] == true)? ' border-radius-4':'' ?>" data-tabs="content">
+        <div class="content clearfix  <?=$block['tabs_settings']['box_bg']?><?=($block['tabs_settings']['box_borders'] == true)? ' border-left border-right border-bottom border-top border-light':''?><?=($block['tabs_settings']['box_radius'] == true)? ' border-radius-4':'' ?>" data-tabs="content">
 
             <?php $i = 1; foreach ($block['tabs'] as $tab): ?>
 
@@ -50,7 +50,7 @@ $block['tabs_settings']['box_bg']        = $block['tabs_settings']['box_bg']['sy
 
                     <?php if (!empty($tab['column_1']['column_content'])): ?>
 
-                        <div class="col col-12 md-col-<?=($tab['columns'] == 2)? "6":"12"?> p4 <?=$tab['column_1']['align']?> <?=$tab['column_1']['system_text_colours']?>">
+                        <div class="col-12 md-col-<?=($tab['columns'] == 2)? "col 6":"12"?> p4 <?=$tab['column_1']['align']?> <?=$tab['column_1']['system_text_colours']?>">
 
                             <?php
                             $blockTitle = $tab['column_1']['title'];
