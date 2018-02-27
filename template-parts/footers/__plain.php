@@ -2,7 +2,7 @@
 
     <div class="container">
 
-        <div class="col col-12 lg-col-12 text-left p4 md-pb3 lg-pt3 lg-pb6 md-mb4">
+        <div class="col col-12 lg-col-12 text-left p4 md-pb3 lg-pt6 lg-pb6 md-mb4">
 
             <div class="col col-12 sm-col-4 md-col-2 mb3 md-mb0 || black || js-match-height">
 
