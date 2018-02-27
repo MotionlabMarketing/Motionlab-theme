@@ -39,4 +39,3 @@ switch ($block['layout']):
         include('cta/__basic.php');
         break;
 endswitch;
-
