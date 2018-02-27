@@ -39,15 +39,15 @@ foreach ($videosAll as $video):
     $i++;
 endforeach; ?>
 
-<section id="<?=$block['custom_id']?>" class="video-stories  || relative clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>">
+<section id="<?=$block['custom_id']?>" class="video-stories  || relative clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=($block['grid'] == 'full_width')? $block['background']['colour'] : ""?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>">
 
-    <?=($block['grid'] == 'container' || $block['grid'] == 'full_width')? '<div class="container">' : ""?>
+    <?=($block['grid'] == 'container' || $block['grid'] == 'full_width')? '<div class="container '.$block['background']['colour'].'">' : ""?>
 
     <div class="clearfix || relative">
 
         <div class="lg-flex items-center p5">
 
-        <div class="col col-12 md-col-6 || md-pr3">
+        <div class="col col-12 md-col-6 || md-pr3 md-pl3">
 
             <div class="mb2">
                 <?php
@@ -78,7 +78,7 @@ endforeach; ?>
 
         </div>
 
-        <div class="col col-12 md-col-6 || md-p5">
+        <div class="col col-12 md-col-6 ||  md-pl5 md-pr0">
 
             <?php if (get_sub_field('block_videos_embed') == true): ?>
 
@@ -96,13 +96,13 @@ endforeach; ?>
 
                 <a href="<?=$videos[$videosShow]['link']?>" class="block relative">
                     <img src="<?=$videos[$videosShow]['thumbnail']?>" alt="<?=$videos[$videosShow]['title']?>" class="box-shadow-1">
-                    <div class="absolute px4 py2 bottom-0 right-0 bg-brand-primary <?=$txtColor?>" style="margin-bottom: 0.4rem"><?=$videos[$videosShow]['length']?></div>
+                    <div class="absolute px4 py2 bottom-0 right-0 bg-brand-primary white" style="margin-bottom: 0.4rem"><?=$videos[$videosShow]['length']?></div>
                 </a>
 
             <?php endif; ?>
 
             <h3 class="h3 <?=$txtColor?> px2 mt3 md-mt3 mb0"><?=$videos[$videosShow]['author']?></h3>
-            <p class="px2 h4 <?=$txtColor?> muted"><?=$videos[$videosShow]['role']?></p>
+            <p class="px2 h4 <?=$txtColor?> muted mb0"><?=$videos[$videosShow]['role']?></p>
 
         </div>
 

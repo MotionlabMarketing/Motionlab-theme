@@ -21,12 +21,6 @@ $banner['image']['position']      = get_sub_field($current . '_image_position_ba
 
 $banner['subheading']['position'] = get_sub_field($current . '_subheading_position');
 
-if ($banner['button'] == true):
-
-    $banner['button'] = get_sub_field($current . '_button_content');
-
-endif;
-
 $banner['image']['overlay']       = get_sub_field($current . '_image_overlay_add_overlay');
 
 if ($banner['image']['overlay'] == true):
@@ -35,7 +29,6 @@ if ($banner['image']['overlay'] == true):
     $banner['image']['overlayStrength'] = get_sub_field($current . '_image_overlay_strength');
 
 endif;
-
 ?>
 
 <section id="<?=$block['custom_id']?>" class="clearfix relative z0 overflow-hidden <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> overlay-<?=$banner['align']?> <?=$block['custom_css']?>">
@@ -104,6 +97,12 @@ endif;
                         </div>
 
                     <?php endif; ?>
+
+                        <?php foreach ($slide['button_buttons'] as $button):?>
+
+                            <a href="<?=$button['button_link']['url']?>" class="btn <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>"><?=$button['button_link']['title']?></a>
+                    
+                        <?php endforeach; ?>
 
                     <?php if (!empty($slide['button_text_link']['title']) && !empty($slide['button_text_link']['url'])): ?>
 

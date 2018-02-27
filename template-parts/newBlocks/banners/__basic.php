@@ -44,7 +44,7 @@ endif;
 
 if ($banner['button'] == true):
 
-    $banner['button'] = get_sub_field($current . '_button_content');
+    $banner['buttons'] = get_sub_field($current . '_buttons');
 
 endif;
 
@@ -57,7 +57,6 @@ if ($banner['image']['overlay'] == true):
 
 endif;
 ?>
-
 <section id="<?=$block['custom_id']?>" class="clearfix relative z0 overflow-hidden <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> overlay-<?=$banner['align']?> <?=$block['custom_css']?>">
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
@@ -130,20 +129,19 @@ endif;
 
                         <?php endif; ?>
 
-                        <?php if (!empty($banner['button']['title']) && !empty($banner['button']['url'])): ?>
+                        <?php foreach ($banner['buttons'] as $button): ?>
 
-                            <a href="<?=$banner['button']['url']?>" class="btn btn-medium" <?=($banner['button']['title'] ? 'title="'.$banner['button']['title'].'"' : '')?> <?=($banner['button']['target'] ? 'target="'.$banner['button']['target'].'"' : '')?> ><?=$banner['button']['title']?></a>
+                            <a href="<?=$button['buttons_button_link']['url']?>" class="btn btn-medium <?=$button['buttons_system_text_colours']?> <?=$button['buttons_system_background_colours']?>" <?=($button['buttons_button_link']['title'] ? 'title="'.$button['button']['title'].'"' : '')?> <?=($button['buttons_button_link']['target'] ? 'target="'.$button['button']['target'].'"' : '')?> ><?=$button['buttons_button_link']['title']?></a>
 
-                        <?php endif; ?>
+                        <?php endforeach; ?>
 
                         <?php if (!empty($banner['logos']['after']['url'])): ?>
 
                             <img src="<?=$banner['logos']['after']['url']?>" alt="<?=$banner['logos']['after']['alt']?>" class="logo-bottom || block mt3 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
 
                         <?php endif; ?>
+
                     </div>
-
-
 
                 </div>
 

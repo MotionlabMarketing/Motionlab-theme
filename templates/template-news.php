@@ -55,26 +55,26 @@ get_header(); ?>
 
         </div>
 
-        <div class="col col-12 md-col-12 lg-col-12 || mb5 px4">
+        <div class="col col-12 md-col-12 lg-col-12 || mb5 px4 mxn2">
 
             <div class="col col-12 md-col-4">
 
-                <p class="bold brand-primary h3">All Categories</p>
+                <p class="bold brand-primary h3 text-center md-text-left">All Categories</p>
 
             </div>
 
-            <div class="col col-12 md-col-8 md-text-right">
+            <div class="col col-12 md-col-8 md-text-right flex justify-center md-justify-end">
 
                 <form method="get">
 
                     <span class="mt3 h5 inline-block mr4 hidden-md hidden-xs sm-mb2">Filter by: </span>
 
-                    <select style="min-width:13rem;" class="select md-ml3 width-100 md-width-auto box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
+                    <select style="min-width:13rem;" class="select md-ml3 width-100 sm-width-auto md-width-auto box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
                         <option value="title" <?php echo ($orderby == 'title') ? 'selected' : '' ; ?>>Title</option>
                         <option value="date" <?php echo ($orderby == 'date') ? 'selected' : '' ; ?>>Date</option>
                     </select>
 
-                    <select style="min-width:13rem;" class="select width-100 md-width-auto md-ml3 box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
+                    <select style="min-width:13rem;" class="select width-100 sm-width-auto md-width-auto md-ml3 box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
                         <?php
                         $categories = get_categories();
                         foreach($categories as $category) : ?>
@@ -88,7 +88,7 @@ get_header(); ?>
 
         </div>
 
-        <div class="col col-12 md-col-12 lg-col-12 mb4">
+        <div class="col col-12 md-col-12 lg-col-12 mb4 mxn2">
 
             <div class="col col-12 sm-col-6 md-col-3 lg-col-3 || p4 || js-match-height">
 

@@ -19,12 +19,6 @@ $banner['text-color']         = get_sub_field($current . '_text_colour_system_te
 $banner['slides']             = get_sub_field($current . '_sliders');
 $banner['image']['position']  = get_sub_field($current . '_image_position_background_position');
 
-if ($banner['button'] == true):
-
-    $banner['button'] = get_sub_field($current . '_button_content');
-
-endif;
-
 $banner['image']['overlay']   = get_sub_field($current . '_image_overlay_add_overlay');
 
 if ($banner['image']['overlay'] == true):

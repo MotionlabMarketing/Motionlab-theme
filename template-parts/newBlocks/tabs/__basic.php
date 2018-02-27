@@ -1,112 +1,132 @@
 <?php
-if ( get_sub_field('vertical_tabs') ){
-    $tabNav= 'md-flex md-flex-row';
-    $tabName= 'mb4 md-col-4 lg-col-3 md-mb0 md-border-right border-smoke';
-    $tab= 'hover-bg-smoke inline-block md-block md-border-bottom-none md-border-left-none md-border-right-none px2';
-    $content = '';
-    $pad = '';
-    $contentPad = 'md-px4 py3';
-} else {
-    $tabNav= 'flex flex-column';
-    $tabName = 'flex';
-    $tab= 'btn md-text-left border-bottom-none || mr1 px3';
-    $content = 'pt4';
-    $pad = '';
-    $contentPad = '';
-}
+/**
+ * TABS BLOCKS ---------------------------------------
+ * Adds a basic tab set to the page with lots of
+ * settings.
+ *
+ * @author Joe Curran
+ * @created 26 Feb 2018
+ *
+ * @version 1.00
+ */
 
-if (get_sub_field('centre_tabs') == true) {
+$block['tabs']                           = get_sub_field($current . '_tabs');
+$block['tabs_settings']['tab_position']  = get_sub_field($current . '_position');
+$block['tabs_settings']['tab_size']      = get_sub_field($current . '_size');
+$block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
+$block['tabs_settings']['box_borders']   = get_sub_field($current . '_box_borders');
+$block['tabs_settings']['box_radius']    = get_sub_field($current . '_box_radius');
 
-    $tab .= "|| tab-center bg-smoke btn-medium tab-arrowBottom";
-    $tabName .= "|| flex items-center justify-center";
+$block['tabs_settings']['box_bg']        = get_sub_field($current . '_box_background');
+$block['tabs_settings']['box_bg']        = $block['tabs_settings']['box_bg']['system_background_colours'];
 
-}
-
-$blockTitle  = get_sub_field($current . '_title_title');
-
-// TODO: Need mobile fix.
+// TODO: Add support for background images.
 ?>
 
-<!-- tabs - simple -->
-<section class="tabs-basic || p4 <?php echo $bgColor ?> <?php echo $txtColor ?>">
-    <div data-tabs="wrapper" class="container <?php echo $extraPadding ;?> <?php echo $tabNav ?> <?php echo $measureWide ?> || traditional-tabs">
-        <div class="tabs-bar || col col-12 <?php echo $pad ?> <?php echo $tabName ?>">
-            <?php if( have_rows('tabs')){
-                $i = 1 ;
-                while ( have_rows('tabs')){
-                    the_row() ?>
 
-                    <span data-section="tab<?php echo $i ?>" class="border border-smoke cursor-pointer narrow uppercase py3 bold relative || tab <?php echo $tab ?> || <?php echo $i <= 1 ? 'tab-active' : '' ?>">
-						<?php echo get_sub_field('tab_name') ?>
-					</span>
-					</span>
+<section id="<?=$block['custom_id']?>" class="basic-tabs || clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>">
 
-                    <?php $i++ ; ?>
-                <?php } ?>
-            <?php } ?>
+    <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
+
+    <div class="tabs" data-tabs="wrapper">
+
+        <div class="tabs-bar clearfix || col col-12 || sm-flex items-start justify-<?=$block['tabs_settings']['tab_position']?><?=($block['tabs_settings']['box_radius'] == true)? " tab-border-radius":"" ?>">
+
+            <?php $i = 1; foreach ($block['tabs'] as $tab): ?>
+
+                <span data-section="tab<?=$i?>" class="tab || block bg-white border-top border-left <?=(count($block['tabs']) == $i)? ' border-right':''?> border-light cursor-pointer <?=$block['tabs_settings']['tab_size']?> <?=$block['tabs_settings']['tab_weight']?> relative || <?=($i <= 1)? 'tab-active' : '' ?>">
+                        <?=$tab['tab_title_short']?>
+                    </span>
+
+                <?php $i++; endforeach; ?>
+
         </div>
 
-        <div data-tabs="content" class="content || col-12 <?php echo $contentPad ?> <?php echo $txtColor ?>">
-            <?php if( have_rows('tabs')){
-            $i = 1;
-            while ( have_rows('tabs')){
-            the_row() ?>
+        <div class="content clearfix || col-12  ||  border-top border-light <?=$block['tabs_settings']['box_bg']?><?=($block['tabs_settings']['box_borders'] == true)? ' border-left border-right border-bottom':''?><?=($block['tabs_settings']['box_radius'] == true)? ' border-radius-4':'' ?>" data-tabs="content">
 
-                <?php $cols = get_sub_field('number_of_columns');
+            <?php $i = 1; foreach ($block['tabs'] as $tab): ?>
 
-                if ($cols == 1): ?>
+                <section id="tab<?=$i?>" class="tab-content || <?=($i > 1)? 'hide' : '' ?> p4">
 
-                    <section id="tab<?php echo $i ?>" class="tab-content || <?php echo $content ?> <?php echo ($i > 1) ? 'hide' : '' ?> bg-white p4">
+                    <?php if (!empty($tab['column_1']['column_content'])): ?>
 
-                        <div class="wysiwyg p4">
+                        <div class="col col-12 md-col-<?=($tab['columns'] == 2)? "6":"12"?> p4 <?=$tab['column_1']['align']?> <?=$tab['column_1']['system_text_colours']?>">
+
                             <?php
-                            $blockTitleCol1 = get_sub_field('col_one_title_title');?>
-                            <<?=$blockTitleCol1[0]['type']['heading']?> class="pb2 <?=$blockTitleCol1[0]['size']['heading_size']?> || <?=$blockTitleCol1[0]['color']['system_text_colours']?> <?=$blockTitleCol1[0]['title_case']['system_text_transform']?>">
-                                <?=$blockTitleCol1[0]['title']?>
-                            </<?=$blockTitleCol1[0]['type']['heading']?>>
-                            <?=get_sub_field('col_one_title_content') ?>
+                            $blockTitle = $tab['column_1']['title'];
+                            if (!empty($blockTitle[0]['title'])) {
+                                include(BLOCKS_DIR . 'sub-elements/_block_titles.php'); }
+                            ?>
+
+                            <div class="wysiwyg">
+
+                                <?=$tab['column_1']['column_content']?>
+
+                            </div>
+
+
+                            <?php if (!empty($tab['column_1']['column_buttons'])): ?>
+                                <div class="mt3">
+
+                                    <?php foreach ($tab['column_1']['column_buttons'] as $button): ?>
+
+                                        <a href="<?=$button['button_link']['url']?>" class="btn <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>"><?=$button['button_link']['title']?></a>
+
+                                    <?php endforeach; ?>
+
+                                </div>
+                            <?php endif; ?>
+
                         </div>
 
-                    </section>
+                    <?php endif; ?>
 
-                <?php else: ?>
 
-                <section id="tab<?php echo $i ?>" class="tab-content || <?php echo $content ?> <?php echo ($i > 1) ? 'hide' : '' ?> bg-white p4  || clearfix flex items-center">
 
-                    <div class="col col-6 p4">
-                        <div class="wysiwyg">
-                            <?php
-                            $blockTitleCol1 = get_sub_field('col_one_title_title');?>
-                            <<?=$blockTitleCol1[0]['type']['heading']?> class="pb2 <?=$blockTitleCol1[0]['size']['heading_size']?> || <?=$blockTitleCol1[0]['color']['system_text_colours']?> <?=$blockTitleCol1[0]['title_case']['system_text_transform']?>">
-                                <?=$blockTitleCol1[0]['title']?>
-                            </<?=$blockTitleCol1[0]['type']['heading']?>>
+                    <?php if ($tab['columns'] > 1): ?>
 
-                            <?=get_sub_field('col_one_title_content') ?>
-                         </div>
-                    </div>
+                        <?php if (!empty($tab['column_2']['column_content'])): ?>
 
-                    <div class="col col-6 p4">
-                        <div class="wysiwyg">
-                            <?php
-                            $blockTitleCol2 = get_sub_field('col_two_title_title');?>
-                            <<?=$blockTitleCol2[0]['type']['heading']?> class="pb2 <?=$blockTitleCol2[0]['size']['heading_size']?> || <?=$blockTitleCol2[0]['color']['system_text_colours']?> <?=$blockTitleCol2[0]['title_case']['system_text_transform']?>">
-                            <?=$blockTitleCol2[0]['title']?>
-                        </<?=$blockTitleCol2[0]['type']['heading']?>>
+                            <div class="col col-12 md-col-6 p4 <?=$tab['column_1']['align']?> <?=$tab['column_1']['system_text_colours']?>">
 
-                        <?=get_sub_field('col_two_title_content') ?>
-                        </div>
-                    </div>
+                                <?php
+                                $blockTitle = $tab['column_2']['title'];
+                                if (!empty($blockTitle[0]['title'])) {
+                                    include(BLOCKS_DIR . 'sub-elements/_block_titles.php'); }
+                                ?>
+
+                                <div class="wysiwyg">
+
+                                    <?=$tab['column_2']['column_content']?>
+
+                                </div>
+
+                                <?php if (!empty($tab['column_2']['column_buttons'])): ?>
+                                    <div class="mt3">
+
+                                        <?php foreach ($tab['column_2']['column_buttons'] as $button): ?>
+
+                                            <a href="<?=$button['button_link']['url']?>" class="btn <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>"><?=$button['button_link']['title']?></a>
+
+                                        <?php endforeach; ?>
+
+                                    </div>
+                                <?php endif; ?>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                    <?php endif; ?>
 
                 </section>
 
-                <?php endif; ?>
-
-                <?php $i++ ; ?>
-                <?php } ?>
-                <?php } ?>
+                <?php $i++; endforeach; ?>
 
         </div>
 
     </div>
+
+    <?=($block['grid'] == 'container')? '</div>' : ""?>
 
 </section>
