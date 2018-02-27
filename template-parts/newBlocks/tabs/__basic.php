@@ -50,7 +50,7 @@ $block['tabs_settings']['box_bg']        = $block['tabs_settings']['box_bg']['sy
 
                     <?php if (!empty($tab['column_1']['column_content'])): ?>
 
-                        <div class="col-12 md-col-<?=($tab['columns'] == 2)? "6":"12"?> p4 <?=$tab['column_1']['align']?> <?=$tab['column_1']['system_text_colours']?>">
+                        <div class="col col-12 md-col-<?=($tab['columns'] == 2)? "6":"12"?> p4 <?=$tab['column_1']['align']?> <?=$tab['column_1']['system_text_colours']?>">
 
                             <?php
                             $blockTitle = $tab['column_1']['title'];
