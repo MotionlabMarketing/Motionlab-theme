@@ -830,7 +830,6 @@ jQuery(document).ready(function ($) {
 
     });
 
-
     // NAVIGATION SMALLIFICATION //
 
     function navigationSmallification() {
@@ -842,7 +841,7 @@ jQuery(document).ready(function ($) {
 
         if (viewportWidth > 680) {
 
-            if ($(window).scrollTop() > ((headerHeight * 3))) {
+            if ($(window).scrollTop() > ((headerHeight))) {
                 $('#main-logo').attr('src', headerLogoScroll);
                 $('header').addClass("smallification");
             } else {
