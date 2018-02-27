@@ -66,47 +66,43 @@ unset($block['temp']);
 <!-- column text NEW -->
 
 <section id="<?=$block['custom_id']?>" class="clearfix <?=$block['custom_css']?> <?=$block['padding']?> <?=$block['spacing']?> relative <?php echo $bgColor ?> <?php echo $txtColor ?> relative p4 ">
-    <div class="container <?php echo $masterPad; ?> mx-auto || <?=$blockCustomClass?> ||
-    <?php echo $paddingTop == 'collapse-top' ? 'pt4 lg-pt0' : 'pt4 md-pt5' ?>
-    <?php echo get_sub_field('full_width_full_width') ?>
-    <?php echo $measureWide ?>">
+    <div class="container mx-auto <?=$blockCustomClass?> <?=$measureWide?>">
+        <div class="md-flex clearfix <?php echo $MarginNegative ?>">
 
-    <div class="clearfix || <?php echo $MarginNegative ?>">
-
-        <?php if ( have_rows('column_1')){
-            while ( have_rows('column_1')){
-                the_row();
-                include(get_template_directory() .'/template-parts/newBlocks/sub-elements/column-data.php');
-            }
-        }
-
-        if ( get_sub_field('columns') == 2 || get_sub_field('columns') == 3  || get_sub_field('columns') == 4 ){
-            if ( have_rows('column_2')){
-                while ( have_rows('column_2')){
+            <?php if ( have_rows('column_1')){
+                while ( have_rows('column_1')){
                     the_row();
                     include(get_template_directory() .'/template-parts/newBlocks/sub-elements/column-data.php');
                 }
             }
-        }
 
-        if ( get_sub_field('columns') == 3 || get_sub_field('columns') == 4 ){
-            if ( have_rows('column_3')){
-                while ( have_rows('column_3')){
-                    the_row();
-                    include(get_template_directory() .'/template-parts/newBlocks/sub-elements/column-data.php');
+            if ( get_sub_field('columns') == 2 || get_sub_field('columns') == 3  || get_sub_field('columns') == 4 ){
+                if ( have_rows('column_2')){
+                    while ( have_rows('column_2')){
+                        the_row();
+                        include(get_template_directory() .'/template-parts/newBlocks/sub-elements/column-data.php');
+                    }
                 }
             }
-        }
 
-        if ( get_sub_field('columns') == 4 ){
-            if ( have_rows('column_4')){
-                while ( have_rows('column_4')){
-                    the_row();
-                    include(get_template_directory() .'/template-parts/newBlocks/sub-elements/column-data.php');
+            if ( get_sub_field('columns') == 3 || get_sub_field('columns') == 4 ){
+                if ( have_rows('column_3')){
+                    while ( have_rows('column_3')){
+                        the_row();
+                        include(get_template_directory() .'/template-parts/newBlocks/sub-elements/column-data.php');
+                    }
                 }
             }
-        }
-        ?>
+
+            if ( get_sub_field('columns') == 4 ){
+                if ( have_rows('column_4')){
+                    while ( have_rows('column_4')){
+                        the_row();
+                        include(get_template_directory() .'/template-parts/newBlocks/sub-elements/column-data.php');
+                    }
+                }
+            }
+            ?>
+        </div>
     </div>
-</div>
 </section>
