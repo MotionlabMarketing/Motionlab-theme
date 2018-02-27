@@ -1,51 +1,57 @@
 <?php
 /**
- * CTA – SECTIONS LAYOUT BLOCK ------------------------
- * This block add support for a CTA block allowing the
- * user to link to other website areas.
+ * CTA – STRIP SECTIONS ---------------------------
+ * A CTA with a message and three linked sections.
  *
  * @author Joe Curran
- * @created 5 Feb 2018
+ * @created 29 Jan 2018
  *
  * @version 1.00
  */
 
-$bgColor     = get_sub_field($current . '_background_system_background_colours');
-$txtColor    = get_sub_field($current . '_text_system_text_colours');
-$blockWidth  = get_sub_field($current . '_width_block_width');
-
-$blockTitle  = get_sub_field($current . '_title_title');
-
-$sections    = get_sub_field($current . '_sections');
-
+$sections = get_sub_field($current . '_sections');
 ?>
 
-<section class="cta-sections || <?=($blockWidth == "container")? 'container' : '';?> mt6 mb6 clearfix || <?=$bgColor?> <?=$txtColor?>">
+<section id="<?=$block['custom_id']?>" class="cta-sections || clearfix relative || <?=($block['grid'] == 'container')? 'container' : ""?> <?=$block['spacing']?> <?=$block['padding']?> <?=($block['bgImage']['enable'] !== true)? $block['background']['colour']:''?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>">
 
-        <div class="col-12 || md-flex items-center justify-center">
+        <div class="content">
 
-            <a class="section || flex items-center || col col-12 md-col-3 || py4 px4 || js-match-height text-center md-text-left">
-                <?php
-                if (!empty($blockTitle[0]['title'])) {
-                    include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
+            <a class="section || flex items-center || col col-12 lg-col-3 || py4 px4 || js-match-height text-center lg-text-left">
 
-                <?php
-                    if (!empty(get_sub_field('block_cta_content'))): ?>
-                    <div class="wysiwyg || mx6 px6 <?=$txtColor?>">
-                        <?=get_sub_field('block_cta_content');?>
-                    </div>
-                <?php endif; ?>
+                <div class="introduction">
+
+                    <?php $blockTitle = $block['content']['title'];
+                    if (!empty($blockTitle[0]['title'])): ?>
+                        <div class="mb2">
+                            <?php include(BLOCKS_DIR . 'sub-elements/_block_titles.php'); ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($block['content']['content'])): ?>
+                        <div class="wysiwyg <?=$block['content']['txtColor']?>">
+                            <?=$block['content']['content']?>
+                        </div>
+                    <?php endif; ?>
+
+                </div>
+
             </a>
 
             <?php foreach ($sections as $section): ?>
 
-                <a href="<?=$section['link']['url']?>" class="section || col col-12 md-col-3 p4 || text-center <?=$txtColor?> || js-match-height">
+                <a href="<?=$section['link']['url']?>" class="section relative || col col-12 lg-col-3 p4 || text-center <?=$block['content']['txtColor']?> || js-match-height">
                     <p class="h3 mb2"><?=$section['title']?></p>
-                    <p class="mb0"><small><?=$section['button_content']?></small></p>
+                    <p class="mb0 || btn btn-small bg-<?=$block['content']['txtColor']?> brand-primary"><?=$section['link']['title']?></p>
                 </a>
 
             <?php endforeach; ?>
 
         </div>
+
+        <?php if($block['bgImage']['enable'] == true): ?>
+
+            <div class="bg-image || absolute width-100 height-100 top-0 left-0 zn1 <?=$block['bgImage']['occupancy']?> <?=$block['bgImage']['tint']?> <?=$block['bgImage']['tintStrength']?>" style="background-image: url('<?=$block['bgImage']['image']['url']?>'); background-position: center; background-size: cover"></div>
+
+        <?php endif; ?>
 
 </section>
