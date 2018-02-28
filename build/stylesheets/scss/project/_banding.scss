@@ -561,6 +561,10 @@ form {
 
   select {
     background-color: $brand-white;
+    background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUCAMAAACzvE1FAAAADFBMVEUzMzMzMzMzMzMzMzMKAG/3AAAAA3RSTlMAf4C/aSLHAAAAPElEQVR42q3NMQ4AIAgEQTn//2cLdRKppSGzBYwzVXvznNWs8C58CiussPJj8h6NwgorrKRdTvuV9v16Afn0AYFOB7aYAAAAAElFTkSuQmCC);
+    background-repeat: no-repeat;
+    background-size: .5rem .625rem;
+    background-position: right .75rem center;
   }
 
   .left_label li {
@@ -1887,4 +1891,3 @@ hr.border-5 {
     background-color: $brand-primary !important;
   }
 }
-
