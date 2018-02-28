@@ -11,7 +11,7 @@ if( have_rows('building_blocks') ) {
         include(get_template_directory() .'/inc/block-variables.php');
 
         // CHECK FOR NEW BLOCKS //
-        $blocks = ['block_accordion', 'block_banners', 'block_image', 'block_reviews', 'block_gallery', 'block_form', 'block_spacers', 'block_heading', 'block_button', 'block_debug', 'block_team', 'block_cta', 'block_linkBoxes', 'block_videos', 'block_social', 'block_pods', 'block_button', 'block_logos', 'block_tabs', 'block_jobs', 'block_timeline', 'block_utilities'];
+        $blocks = ['block_menus', 'block_accordion', 'block_banners', 'block_image', 'block_reviews', 'block_gallery', 'block_form', 'block_spacers', 'block_heading', 'block_button', 'block_debug', 'block_team', 'block_cta', 'block_linkBoxes', 'block_videos', 'block_social', 'block_pods', 'block_button', 'block_logos', 'block_tabs', 'block_jobs', 'block_timeline', 'block_utilities'];
         if (in_array(get_row_layout(), $blocks)) {
 
             $current = get_row_layout();
@@ -50,10 +50,6 @@ if( have_rows('building_blocks') ) {
                 include(BLOCKS_DIR . 'table.php');
             } elseif (get_row_layout() == 'spacer') {
                 include(BLOCKS_DIR . 'spacer.php');
-            } elseif (get_row_layout() == 'sticky_menu') {
-                include(BLOCKS_DIR . 'menu_sticky.php');
-            } elseif (get_row_layout() == 'sticky_menu_anchor') {
-                include(BLOCKS_DIR . 'menu_sticky_anchor.php');
             } elseif (get_row_layout() == 'hotspot_image') {
                 include(BLOCKS_DIR . 'hotspots.php');
             } elseif (get_row_layout() == 'testimonial') {
