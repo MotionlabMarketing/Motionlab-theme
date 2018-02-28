@@ -1,44 +1,31 @@
 <?php
 /**
  * TABS BUTTON BLOCK --------------------------------
- * Adds support for tabs buttons to link to other
- * pages.
+ * Add
  *
  * @author Joe Curran
  * @created 26 Jan 2018
  *
  * @version 1.00
  */
-
-
-$bgColor     = get_sub_field( $current . '_background_system_background_colours');
-
-$blockTitle  = get_sub_field('block_linkBoxes_title_title');
-$buttons     = get_sub_field('block_buttons');
-
-$size        = get_sub_field('block_buttons_size');
-
-$current_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
-$customCSS  = get_sub_field('block_button_css');
 ?>
 
-<section class="buttons-tabs || overflow-hidden p3 mb4 || <?=$bgColor?> || <?=$customCSS?>">
+<section id="<?=$block['custom_id']?>" class="buttons-tabs || relative clearfix || <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>">
 
-    <div class="container">
+    <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-        <div class="px4 lg-px0 text-center border-bottom border-light">
+    <div class="<?=$block['button']['alignment']?> border-bottom border-light">
 
-            <?php foreach ($buttons as $btn): ?>
+        <?php foreach ($block['buttons'] as $button): ?>
 
-                <a href="<?=$btn['button_link']['url']?>" class="btn btn-<?=$size?> <?=$btn['system_text_colours']?> inline-block <?=$btn['system_background_colours']?> <?=$btn['custom_class']?> <?=($current_url == $btn['button_link']['url'])? 'active' : '';?>" <?=($btn['button_link']['title'] ? 'title="'.$btn['button_link']['title'].'"' : '')?> <?=($btn['button_link']['target'] ? 'target="'.$btn['button_link']['target'].'"' : '')?>>
-                    <?=$btn['button_text']?>
-                </a>
+            <a href="<?=$button['button_link']['url']?>" class="btn <?=$block['button']['size']?> inline-block <?=$button['system_text_colours']?> <?=$button['system_background_colours']?> <?=($block['button']['current'] == $button['button_link']['url'])? 'active' : '';?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> style="border-radius: 0">
+                <?=$button['button_link']['title']?>
+            </a>
 
-            <?php endforeach; ?>
-
-        </div>
+        <?php endforeach; ?>
 
     </div>
+
+    <?=($block['grid'] == 'container')? '</div>' : ""?>
 
 </section>

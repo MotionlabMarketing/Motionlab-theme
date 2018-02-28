@@ -224,7 +224,6 @@ jQuery(document).ready(function ($) {
 
     // $(".js-fitvids").fitVids();
 
-
     /*======================================================
     SLIDER
     ========================================================*/
@@ -269,12 +268,13 @@ jQuery(document).ready(function ($) {
     });
     $('[data-slick="slider-auto"]').slickAnimation();
 
+    // LOGO SLIDER SETTINGS.
     $('[data-slick="logo-slider"]').slick({
-        slidesToShow: 3,
-        variableWidth: true,
-        centerMode: true,
+        slidesToShow: 5,
+        variableWidth: false,
         autoplay: true,
         autoplaySpeed: 3000,
+        centerPadding: '30px',
         arrows: false,
         draggable: false,
         pauseOnHover: false,
@@ -283,7 +283,7 @@ jQuery(document).ready(function ($) {
             {
                 breakpoint: 1200,
                 settings: {
-                    slidesToShow: 3
+                    slidesToShow: 4
                 }
             },
             {
@@ -295,18 +295,20 @@ jQuery(document).ready(function ($) {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 1
+                    slidesToShow: 2
                 }
             },
             {
                 breakpoint: 480,
+                centerMode: true,
                 settings: {
-                    slidesToShow: 1
+                    slidesToShow: 2,
                 }
             }
         ]
     });
 
+    // GALLERY SLIDER SETTINGS.
     $('[data-slick="galleryThin-slider"]').slick({
         slidesToShow: 4,
         variableWidth: false,

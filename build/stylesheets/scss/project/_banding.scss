@@ -910,6 +910,43 @@ hr.border-5 {
   }
 }
 
+.border-top-none {
+  border-top: 0;
+}
+.border-bottom-none {
+  border-bottom: 0;
+}
+.border-left-none {
+  border-left: 0;
+}
+.border-right-none {
+  border-right: 0;
+}
+
+.border-last-top-none {
+  &:last-child {
+    border-right: 0;
+  }
+}
+
+.border-last-bottom-none {
+  &:last-child {
+    border-right: 0;
+  }
+}
+
+.border-last-right-none {
+  &:last-child {
+    border-right: 0;
+  }
+}
+
+.border-last-left-none {
+  &:last-child {
+    border-right: 0;
+  }
+}
+
 // BORDER RADIUS.
 .border-radius-0   { border-radius:   0;    }
 .border-radius-1   { border-radius: 0.2rem; }
