@@ -1,17 +1,22 @@
 <?php
 /**
- * VIDEO BLOCK --------------------------------------
- * Add support for Videos.
+ * LOGOS BLOCK --------------------------------------
+ * Add support for logos to be added to the page.
  *
  * @author Joe Curran
  * @created 26 Jan 2018
+ * @updated 28 Feb 2018
  *
- * @version 1.00
+ * @version 2.00
  */
 
-$layout = get_sub_field($current . '_layout');
+$block['title']   = get_sub_field($current . '_title_title');
+$block['content'] = get_sub_field($current . '_content');
+$block['logos']   = get_sub_field($current . '_items');
 
-switch ($layout):
+$blockTitle = $block['title']; // REPLACE WHEN HEADER UPDATED.
+
+switch ($block['layout']):
     case "partners":
         include('logos/__partners.php');
         break;
