@@ -24,7 +24,7 @@ $button = get_sub_field('block_team_page');
 ?>
 
 
-<section class="team-basic || clearfix my4 mb6 p3">
+<section class="team-basic || clearfix mt4 p3">
 
     <div class="container">
 
@@ -63,9 +63,6 @@ $button = get_sub_field('block_team_page');
 
         <?php $i++; endwhile; ?>
 
-
-
-
     </div>
 
     <?php if (!empty($button['button_link']['url'])): ?>
@@ -73,7 +70,7 @@ $button = get_sub_field('block_team_page');
 
         <div class="mb5 clearfix || text-center">
 
-            <a href="<?=$button['button_link']['url']?>" class="btn btn-outline btn-medium black <?=$button['system_background_colours']?>"><?=$button['button_text'];?></a>
+            <a href="<?=$button['button_link']['url']?>" class="btn btn-outline btn-medium black <?=$button['system_background_colours']?>"><?=$button['button_link']['title'];?></a>
 
         </div>
 

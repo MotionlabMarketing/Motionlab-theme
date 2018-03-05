@@ -50,7 +50,7 @@ $blockItems  = get_sub_field($current . '_basic');
             <div class="px2 md-px6">
             <?php $i = 1; foreach ($blockItems as $item):?>
 
-                <div class="item || col col-3 px2 mb3 ||  <?=$txtColor?> || col-grid-5">
+                <div class="item || col col-3 px2 mb3 || flex items-center justify-center  <?=$txtColor?> || col-grid-5">
 
                     <div class="content p3 || js-match-height flex items-center flex-wrap justify-center content-center">
 

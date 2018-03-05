@@ -51,7 +51,7 @@ $blockItems       = get_sub_field($current . '_items');
                 if ($item['block_linkBoxes_breakout_true'] !== true):?>
                     <div class="item || col col-12 md-col-<?=$block['columns']?> p2 || block relative">
                         <a href="<?= $item['block_linkBoxes_link']['url'] ?>"
-                           class="block relative overflow-hidden || bg-cover bg-center box-shadow-3 <?= $item['background_colour']['system_background_colours'] ?> <?= $item['text_colour']['system_text_colours'] ?> || zoom" <?= ($item['block_linkBoxes_link']['title'] ? 'title="' . $item['block_linkBoxes_link']['title'] . '"' : '') ?> <?= ($item['block_linkBoxes_link']['target'] ? 'target="' . $item['block_linkBoxes_link']['target'] . '"' : '') ?>>
+                           class="block relative overflow-hidden || bg-cover bg-center border-light border-top border-left border-right border-bottom box-shadow-3 <?= $item['background_colour']['system_background_colours'] ?> <?= $item['text_colour']['system_text_colours'] ?> || zoom" <?= ($item['block_linkBoxes_link']['title'] ? 'title="' . $item['block_linkBoxes_link']['title'] . '"' : '') ?> <?= ($item['block_linkBoxes_link']['target'] ? 'target="' . $item['block_linkBoxes_link']['target'] . '"' : '') ?>>
 
                             <div class="image-holder || js-match-height || bg-grey <?= $txtColor ?>"
                                  style="background-image: url('<?= $item['block_linkBoxes_image_basic_image']['url']; ?>')"></div>
@@ -64,7 +64,7 @@ $blockItems       = get_sub_field($current . '_items');
                 // BOX WITH JUST CONTENT AND ICON - BREAKOUT BOX //
                 else: ?>
 
-                    <div class="item || col col-12 md-col-<?=$block['columns']?> p2 || block relative">
+                    <div class="item || col col-12 md-col-<?=$block['columns']?> p4 || block relative">
 
                         <div class="content-breakout">
 

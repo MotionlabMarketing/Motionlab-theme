@@ -1395,6 +1395,27 @@ hr.border-5 {
   }
 }
 
+.jobs-keyareas {
+
+  .footer {
+
+    ul {
+      padding: 0;
+      list-style: none;
+
+      li {
+        width: 49%;
+        margin: 0.3rem 0 0 0;
+        display: inline-block;
+
+        @media (max-width: $breakpoint-sm) {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
 .spacer-ruled {
 
   .border-lighten-1 {
@@ -1531,9 +1552,9 @@ hr.border-5 {
 
     &:before {
       content: " ";
-      width: 1.5rem;
+      width: 1.2rem;
       display: block;
-      height: 1.5rem;
+      height: 1.2rem;
       border-radius: 2rem;
       margin: 0 auto 0.7rem;
       background-color: #fafafa;
@@ -1548,11 +1569,11 @@ hr.border-5 {
       left: 62%;
       height: 2px;
       height: 2px;
-      top: 0.8rem;
+      top: 0.6rem;
       content: " ";
       display: block;
       position: absolute;
-      width: calc(100% + 3rem);
+      width: calc(100% + 2.5rem);
       background-color: $brand-primary;
 
       @media (max-width: $breakpoint-md){
