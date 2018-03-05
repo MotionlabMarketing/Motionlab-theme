@@ -28,35 +28,57 @@ $blockItems = get_sub_field($current . '_slider');
 $blockItems = $blockItems['logos'];
 ?>
 
-<section class="py4 pb6 mb4 || <?=$bgColor?> <?=$txtColor?> <?=$borders?>">
+<?php
+/**
+ * LOGO BASICS BLOCKS ---------------------------------------
+ * This block add logos to the page in a single line that
+ * will auto scroll if needed.
+ *
+ * @author Joe Curran
+ * @created 28 Feb 2018
+ *
+ * @version 2.00
+ */
+?>
 
-    <div class="container">
+<section id="<?= $block['custom_id'] ?>" class="clearfix <?= $block['spacing'] ?> <?= $block['padding'] ?> <?= $block['background']['colour'] ?> <?= $block['border']['sides'] ?> <?= $block['border']['size'] ?> <?= $block['border']['colour'] ?> <?= $block['custom_css'] ?>">
 
-        <div class="m4 text-center">
-            <?php
-            if (!empty($blockTitle[0]['title'])) {
-                include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php');
-            } ?>
-        </div>
+    <?= ($block['grid'] == 'container') ? '<div class="container">' : "" ?>
 
-        <div class="wysiwyg mb4 || text-center limit-p limit-p-70">
-            <?=get_sub_field($current . '_content')?>
-        </div>
+    <?php if (!empty($blockTitle[0]['title'])): ?>
 
-        <div class="mxn2 clearfix">
+        <?php if (!empty($block['title']) || !empty($block['content'])): ?>
+            <div class="col-12 md-col-12 lg-col-12 mb5 text-center">
 
-            <div class="flex justify-center flex-wrap" <?=get_sub_field('scroll_logos') == TRUE ? 'data-slick="logo-slider"' : '' ?>>
-                <?php foreach ($blockItems as $item): ?>
-
-                    <div class="px4 mb3 col-6 md-col-3 sm-col-4 lg-col-2 flex items-center justify-center">
-                        <img src="<?=$item['sizes']['large']?>" alt="<?=$item['alt']?>"/>
+                <?php if (!empty($blockTitle[0]['title'])): ?>
+                    <div class="m4 text-center">
+                        <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
                     </div>
+                <?php endif; ?>
 
-                <?php endforeach; ?>
+                <?php if (!empty($block['content'])): ?>
+                    <div class="text-center mb2 limit-p limit-p-70">
+                        <?= $block['content'] ?>
+                    </div>
+                <?php endif; ?>
+
+            </div>
+        <?php endif; ?>
+
+    <?php endif; ?>
+
+    <div class="col-12 flex justify-center flex-wrap">
+
+        <?php foreach ($block['logos'] as $logo): ?>
+
+            <div class="col px4 mb3 col-6 md-col-3 sm-col-4 lg-col-2 flex items-center justify-center">
+                <?=wp_get_attachment_image($logo['ID'], "large", "", ["class" => "block mx-auto"]);?>
             </div>
 
-        </div>
-
+        <?php endforeach; ?>
     </div>
 
+    <?= ($block['grid'] == 'container') ? '</div>' : "" ?>
+
 </section>
+

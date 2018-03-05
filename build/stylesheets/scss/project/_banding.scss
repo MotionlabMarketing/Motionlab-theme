@@ -728,6 +728,13 @@ form {
   }
 }
 
+img.alignright  { float: right; margin: 0 0 1em 1em; }
+img.alignleft   { float: left;  margin: 0 1em 1em 0; }
+img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+.alignright { float: right; }
+.alignleft { float: left; }
+.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+
 
 /**
  * Utilities
@@ -914,6 +921,43 @@ hr.border-5 {
   }
 }
 
+.border-top-none {
+  border-top: 0;
+}
+.border-bottom-none {
+  border-bottom: 0;
+}
+.border-left-none {
+  border-left: 0;
+}
+.border-right-none {
+  border-right: 0;
+}
+
+.border-last-top-none {
+  &:last-child {
+    border-right: 0;
+  }
+}
+
+.border-last-bottom-none {
+  &:last-child {
+    border-right: 0;
+  }
+}
+
+.border-last-right-none {
+  &:last-child {
+    border-right: 0;
+  }
+}
+
+.border-last-left-none {
+  &:last-child {
+    border-right: 0;
+  }
+}
+
 // BORDER RADIUS.
 .border-radius-0   { border-radius:   0;    }
 .border-radius-1   { border-radius: 0.2rem; }
@@ -933,7 +977,7 @@ hr.border-5 {
 .grid-item { width: 33%; }
 .grid-item--width2 { width: 66%; }
 
-.tab-border-radius {
+.tab-border-radius { 
 
   span {
     &:first-child {
@@ -1890,4 +1934,13 @@ hr.border-5 {
     color: $brand-white;
     background-color: $brand-primary !important;
   }
+}
+
+.alternating-basic {
+  .slick-list,
+  .slick-track {
+    height: 100%;
+  }
+
+
 }

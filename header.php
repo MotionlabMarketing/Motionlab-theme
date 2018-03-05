@@ -31,6 +31,8 @@
 
     <?php include(get_template_directory() .'/template-parts/global/header.php'); ?>
 
-    <?php if (!is_front_page()):?>
+    <?php
+    $template = ml_get_template();
+    if (!is_front_page() && get_field('remove_headerClearance', get_the_ID()) == false):?>
         <div class="js-header-space"></div>
     <?php endif; ?>
