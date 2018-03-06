@@ -19,13 +19,31 @@ $block['tabs_settings']['box_radius']    = get_sub_field($current . '_box_radius
 $block['tabs_settings']['box_bg']        = get_sub_field($current . '_box_background');
 $block['tabs_settings']['box_bg']        = $block['tabs_settings']['box_bg']['system_background_colours'];
 
+$blockTitle = get_sub_field($current . '_title_title');
+$content    = get_sub_field($current . '_content');
 // TODO: Add support for background images.
 ?>
 
 
-<section id="<?=$block['custom_id']?>" class="tabs-dots || clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>">
+<section id="<?=$block['custom_id']?>" class="tabs-dots <?=($block['bgImage']['enable'] == true)? 'bg-image-active' : '';?> || relative clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>">
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
+
+        <div class="mt4 mb2 || text-center">
+
+            <?php if (!empty($blockTitle[0]['title'])):?>
+                <div class="mb2">
+                    <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php');?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (!empty($content)): ?>
+                <div class="clearfix text-center limit-p limit-p-70">
+                    <?=$content?>
+                </div>
+            <?php endif; ?>
+
+        </div>
 
        <div class="tabs" data-tabs="wrapper">
 
@@ -33,7 +51,7 @@ $block['tabs_settings']['box_bg']        = $block['tabs_settings']['box_bg']['sy
 
                <?php $i = 1; foreach ($block['tabs'] as $tab): ?>
 
-                    <span data-section="tab<?=$i?>" class="tab || block <?=$block['tabs_settings']['tab_weight']?> text-center sm-text-left relative || <?=($i <= 1)? 'tab-active' : '' ?>">
+                    <span data-section="tab<?=$i?>" class="tab || block <?=$block['tabs_settings']['tab_weight']?> text-left md-text-center relative || <?=($i <= 1)? 'tab-active' : '' ?>">
                         <?=$tab['tab_title_short']?>
                     </span>
 
@@ -127,5 +145,11 @@ $block['tabs_settings']['box_bg']        = $block['tabs_settings']['box_bg']['sy
        </div>
 
     <?=($block['grid'] == 'container')? '</div>' : ""?>
+
+    <?php if($block['bgImage']['enable'] == true): ?>
+
+        <div class="bg-image || absolute width-100 height-100 top-0 left-0 zn1 <?=$block['bgImage']['occupancy']?> <?=$block['bgImage']['tint']?> <?=$block['bgImage']['tintStrength']?>" style="background-image: url('<?=$block['bgImage']['image']['url']?>'); background-position: center; background-size: cover"></div>
+
+    <?php endif; ?>
 
 </section>

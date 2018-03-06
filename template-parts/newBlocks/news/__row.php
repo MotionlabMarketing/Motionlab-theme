@@ -32,7 +32,7 @@
 
                     <div class="col col-12 md-col-5">
 
-                        <?= wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1"]  )?>
+                        <?= wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1"]) // NEEDS IMAGE ID ADDING. ?>
 
                     </div>
 

@@ -53,7 +53,7 @@ $hoverContent     = get_sub_field($current . '_hoverContent');
 
                             <div class="z-index-40">
 
-                                <p class="mb0 z-index-20 h3"><?=$item['block_linkBoxes_content']; ?></p>
+                                <h3 class="mb0 z-index-20 h3 white"><?=$item['block_linkBoxes_content']; ?></h3>
 
                                 <?php if (!empty($item['block_linkBoxes_link']['title'])):?>
                                     <p class="inline-block mx-auto mt1 mb0 h5 <?=($item['enableButton'] == true)? $item['button_background']['system_background_colours'] . ' btn-medium ' . $item['button_textColor']['system_text_colours'] : ''?> "><?=$item['block_linkBoxes_link']['title']?></p>
