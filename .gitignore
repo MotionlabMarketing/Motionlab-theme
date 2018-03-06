@@ -125,3 +125,4 @@ $RECYCLE.BIN/
 /sitemap.xml.gz
 
 node_modules
+vendor
