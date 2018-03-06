@@ -863,6 +863,12 @@ jQuery(document).ready(function ($) {
 
     navigationSmallification();
 
+    // VIDEO MATCH HEIGHT FOR ALTERNATING MEDIA.
+    $('[data-imatch]').each( function() {
+        var height = $('[data-imatchto="' + $(this).data('imatch') + '"]').height();
+        $('[data-imatch="'+$(this).data('imatch')+'"]').height(height);
+    });
+
 });
 
 (function ($) {

@@ -20,7 +20,7 @@ $sections    = get_sub_field($current . '_sections');
 
 ?>
 
-<section class="jobs-talent || mt2 mb2 p2 md-p0 clearfix || <?=$bgColor?> <?=$txtColor?>">
+<section class="jobs-talent || mt2 mb2 p2 md-p0 clearfix || <?=$bgColor?> <?=$txtColor?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
 
     <div class="container">
 

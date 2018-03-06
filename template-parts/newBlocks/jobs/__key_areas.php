@@ -18,7 +18,7 @@ $sections    = get_sub_field($current . '_keyarea');
 
 ?>
 
-<section class="jobs-keyareas || relative clearfix || <?=$bgColor?> <?=$txtColor?>">
+<section class="jobs-keyareas || relative clearfix || <?=$bgColor?> <?=$txtColor?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
 
     <div class="container">
 
