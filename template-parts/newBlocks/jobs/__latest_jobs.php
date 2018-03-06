@@ -10,17 +10,16 @@
  * @version 1.00
  */
 
-$bgColor     = get_sub_field($current . '_background_system_background_colours');
-$txtColor    = get_sub_field($current . '_text_system_text_colours');
-$blockWidth  = get_sub_field($current . '_width_block_width');
-
-$blockTitle  = get_sub_field($current . '_title_title');
-
-$sections    = get_sub_field($current . '_sections');
-
+//$block['bg_color']     = get_sub_field($current . '_background_system_background_colours');
+//$block['text_color']    = get_sub_field($current . '_text_system_text_colours');
+//$block['block_width']  = get_sub_field($current . '_width_block_width');
+//
+//$block['block_title']  = get_sub_field($current . '_title_title');
+//
+//$block['sections']    = get_sub_field($current . '_sections');
 ?>
 
-<section class="jobs-latest || mt6 mb6 clearfix || <?=$bgColor?> <?=$txtColor?>">
+<section class="jobs-latest || mt6 mb6 clearfix || <?=$block['bg_color']?> <?=$block['text_color']?>">
 
     <div class="container">
 
@@ -28,7 +27,8 @@ $sections    = get_sub_field($current . '_sections');
 
             <div class="mb2">
                 <?php
-                if (!empty($blockTitle[0]['title'])) {
+
+                if (!empty($block['block_title'][0]['title'])) {
                     include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php');
                 } ?>
             </div>
@@ -36,6 +36,26 @@ $sections    = get_sub_field($current . '_sections');
             <div class="wysiwyg limit-p limit-p-70">
                 <?= get_sub_field($current . '_content'); ?>
             </div>
+
+        </div>
+
+         <div class="col-12 mb4">
+
+            <form action="#" class="width-100 || flex justify-center">
+
+                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
+                    <option value="title">By Sector</option>
+                </select>
+
+                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
+                    <option value="title">By Role</option>
+                </select>
+
+                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
+                    <option value="title">By Type</option>
+                </select>
+
+            </form>
 
         </div>
 

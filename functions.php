@@ -9,6 +9,8 @@
 
 define("TEMPLATE_DIR", get_template_directory() . "/template-parts/");
 define("BLOCKS_DIR"  , get_template_directory() . "/template-parts/newBlocks/");
+define("CONTROLLERS_DIR"  , get_template_directory() . "/controllers/");
+define("MODELS_DIR"  , get_template_directory() . "/models/");
 
 /*==================================================================
 UNDERSCORES STUFF

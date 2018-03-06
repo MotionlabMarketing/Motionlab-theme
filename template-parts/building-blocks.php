@@ -20,7 +20,11 @@ if( have_rows('building_blocks') ) {
             if ($block['enabled'] == true || empty($block['enabled'])): // TODO: ONCE ALL BLOCKS ARE UPDATED THIS NEED TO BE UPDATED.
 
                 // TODO: Need to move blocks folder structure and update the routing.
-                include(BLOCKS_DIR . '_'. $current .'.php');
+	            if(file_exists(MODELS_DIR . '_' . $current . '.php')) {
+					include_once(CONTROLLERS_DIR . 'BlocksController.php');
+	            } else {
+            	    include(BLOCKS_DIR . '_'. $current .'.php');
+	            }
 
             endif;
 
