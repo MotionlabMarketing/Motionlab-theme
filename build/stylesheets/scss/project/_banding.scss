@@ -728,8 +728,8 @@ form {
   }
 }
 
-img.alignright  { float: right; margin: 0 0 1em 1em; }
-img.alignleft   { float: left;  margin: 0 1em 1em 0; }
+img.alignright  { float: right; margin: 1rem 0 1em 1em; }
+img.alignleft   { float: left;  margin: 1rem 1em 1em 0; }
 img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
 .alignright { float: right; }
 .alignleft { float: left; }
@@ -1515,7 +1515,7 @@ hr.border-5 {
   .tab {
     margin: 0 2rem;
     cursor: pointer;
-    min-width: 6rem;
+    min-width: 9rem;
     position: relative;
 
     @media (max-width: $breakpoint-md){
@@ -1545,6 +1545,7 @@ hr.border-5 {
         background-color: $brand-primary;
       }
       &:after {
+        top: 0.5rem;
         background-color: transparent;
         border-top: 2px solid $brand-primary;
       }
@@ -1566,18 +1567,17 @@ hr.border-5 {
     }
 
     &:after {
-      left: 62%;
-      height: 2px;
+      left: 58%;
       height: 2px;
       top: 0.6rem;
       content: " ";
       display: block;
       position: absolute;
-      width: calc(100% + 2.5rem);
+      width: calc(100% + 2.7rem);
       background-color: $brand-primary;
 
       @media (max-width: $breakpoint-md){
-        left: 75%;
+        //left: 75%;
       }
 
       @media (max-width: $breakpoint-sm){

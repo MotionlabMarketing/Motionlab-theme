@@ -26,7 +26,7 @@ $blockTitle           = get_sub_field('column_title_title');
 
 <?php //print_r(get_field_objects()); ?>
 <?php if(!empty(get_sub_field('copy'))){?>
-	<div class="flex flex-column <?php echo $columnWidth ?> <?php echo $textAlign ?> <?=$columnsCustomClass?>">
+	<div class="column-data relative flex flex-column <?php echo $columnWidth ?> <?php echo $textAlign ?> <?=$columnsCustomClass?>">
 
 		<?php if (!empty($blockTitle[0]['title'])): ?>
         <div class="mb2">
@@ -41,7 +41,7 @@ $blockTitle           = get_sub_field('column_title_title');
 			<?php };
 		};?>
 
-		<div class="flex flex-column height-100 <?php echo $textAlign ?> <?php echo $anchorButtons ?>">
+		<div class="height-100 <?php echo $textAlign ?> <?php echo $anchorButtons ?>">
 			<?php echo get_sub_field('copy'); ?>
             <?php if (!empty($columnButtonsLink) && !empty($columnButtonsText)):?>
             <div class="my3">

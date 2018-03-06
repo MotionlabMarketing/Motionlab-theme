@@ -39,13 +39,33 @@ $sections    = get_sub_field($current . '_sections');
 
         </div>
 
+        <div class="col-12 mb4">
+
+            <form action="#" class="width-100 || flex justify-center">
+
+                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
+                    <option value="title">By Sector</option>
+                </select>
+
+                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
+                    <option value="title">By Role</option>
+                </select>
+
+                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
+                    <option value="title">By Type</option>
+                </select>
+
+            </form>
+
+        </div>
+
         <div class="col-12 clearfix || md-px6 md-my6">
 
             <?php $i = 0; while($i < 6): ?>
 
-                <div class="listItem || col-12 md-col-6 relative left px4 pb3">
+                <div class="listItem || col-12 md-col-6 relative left px2 pb2 mb2">
 
-                    <div class="border-bottom border-light clearfix pb3">
+                    <div class="border-bottom border-light clearfix p4 box-shadow-2">
 
                         <div class="col col-12  md-col-9 || js-match-height">
 

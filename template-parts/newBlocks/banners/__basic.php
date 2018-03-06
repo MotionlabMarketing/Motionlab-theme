@@ -73,7 +73,7 @@ endif;
 
                 <div class="flex items-center justify-<?=$banner['align']?> || z-index-50 absolute width-100 height-100 || p3 md-p6">
 
-                    <div class="content || lg-max-width-50 || p4 z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
+                    <div class="content || width-100 || p4 z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
 
                         <?php if (!empty($banner['logos']['before']['url'])): ?>
 
@@ -129,11 +129,13 @@ endif;
 
                         <?php endif; ?>
 
+                        <div class="mt4">
                         <?php foreach ($banner['buttons'] as $button): ?>
 
-                            <a href="<?=$button['buttons_button_link']['url']?>" class="btn btn-medium <?=$button['buttons_system_text_colours']?> <?=$button['buttons_system_background_colours']?>" <?=($button['buttons_button_link']['title'] ? 'title="'.$button['button']['title'].'"' : '')?> <?=($button['buttons_button_link']['target'] ? 'target="'.$button['button']['target'].'"' : '')?> ><?=$button['buttons_button_link']['title']?></a>
+                                <a href="<?=$button['buttons_button_link']['url']?>" class="btn btn-medium <?=$button['buttons_system_text_colours']?> <?=$button['buttons_system_background_colours']?>" <?=($button['buttons_button_link']['title'] ? 'title="'.$button['button']['title'].'"' : '')?> <?=($button['buttons_button_link']['target'] ? 'target="'.$button['button']['target'].'"' : '')?> ><?=$button['buttons_button_link']['title']?></a>
 
                         <?php endforeach; ?>
+                        </div>
 
                         <?php if (!empty($banner['logos']['after']['url'])): ?>
 
