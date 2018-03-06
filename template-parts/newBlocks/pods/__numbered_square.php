@@ -28,7 +28,7 @@ $blockItems  = get_sub_field($current . '_basic');
 
 ?>
 
-<section class="pod-numbered-square mb4 || <?=$bgColor?> <?=$txtColor?> <?=$borders?>">
+<section class="pod-numbered-square mb4 || <?=$bgColor?> <?=$txtColor?> <?=$borders?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
 
     <div class="container">
 

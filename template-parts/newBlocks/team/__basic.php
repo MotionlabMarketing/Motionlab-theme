@@ -24,7 +24,7 @@ $button = get_sub_field('block_team_page');
 ?>
 
 
-<section class="team-basic || clearfix mt4 p3">
+<section class="team-basic || clearfix mt4 p3" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
 
     <div class="container">
 

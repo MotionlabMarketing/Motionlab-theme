@@ -14,6 +14,9 @@
 
 $block = [];
 
+$block['id']   = get_the_ID() . "-" . get_row_index();
+$block['name'] = get_row_layout();
+
 // HAS THIS BLOCK BEEN ENABLED?
 $block['enabled'] = get_sub_field($current . '_settings_enable_block');
 
@@ -96,6 +99,9 @@ if ($block['enabled'] == true || empty($block['enabled'])): // TODO: Needs corre
         $block['bgImage']['occupancy']    = $block['bgImage']['occupancy']['system_occupancy'];
 
     endif;
+
+    $block['content']['title']   = get_sub_field($current . '_title_title');
+    $block['content']['content'] = get_sub_field($current . '_content');
 
 endif;
 
