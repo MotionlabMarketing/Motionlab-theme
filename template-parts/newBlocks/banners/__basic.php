@@ -25,7 +25,7 @@ $banner['image']                  = get_sub_field($current . '_image');
 $banner['image']['position']      = get_sub_field($current . '_image_position_background_position');
 
 $banner['subheading']['position'] = get_sub_field($current . '_subheading_position');
-$banner['subheading']['title']    = get_sub_field($current . '_titleSub_title');
+$banner['subheading']['title']    = get_sub_field($current . '_titleSub');
 
 $banner['logos']['before']        = get_sub_field($current . '_logo_enableBefore');
 $banner['logos']['after']         = get_sub_field($current . '_logo_enableAfter');
@@ -55,8 +55,7 @@ if ($banner['image']['overlay'] == true):
     $banner['image']['overlayType']     = get_sub_field($current . '_image_overlay_type');
     $banner['image']['overlayStrength'] = get_sub_field($current . '_image_overlay_strength');
 
-endif;
-?>
+endif; ?>
 <section id="<?=$block['custom_id']?>" class="clearfix relative z0 overflow-hidden <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> overlay-<?=$banner['align']?> <?=$block['custom_css']?>">
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
@@ -73,17 +72,17 @@ endif;
 
                 <div class="flex items-center justify-<?=$banner['align']?> || z-index-50 absolute width-100 height-100 || p3 md-p6">
 
-                    <div class="content || width-100 || p4 z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
+                    <div class="content || width-100 || mt6 p4 z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
 
                         <?php if (!empty($banner['logos']['before']['url'])): ?>
 
-                            <img src="<?=$banner['logos']['before']['url']?>" alt="<?=$banner['logos']['before']['alt']?>" class="logo-top || block mb3 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
+                            <img src="<?=$banner['logos']['before']['url']?>" alt="<?=$banner['logos']['before']['alt']?>" class="logo-top || block mb4 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
 
                         <?php endif; ?>
 
-                        <?php /*SUBTITLE*/ if ($banner['subheading']['position'] == "top" && !empty($banner['subheading']['title'])): ?>
+                        <?php /*SUBTITLE*/ if ($banner['subheading']['position'] == "top" && !empty($banner['subheading']['title']['title'])): ?>
 
-                            <?php $blockTitle = $banner['subheading']['title'];
+                            <?php $blockTitle = $banner['subheading']['title']['title'];
                             if (!empty($blockTitle[0]['title'])): ?>
 
                                 <div class="subheading || mb2">
@@ -97,7 +96,7 @@ endif;
                         <?php /*MAIN*/ $blockTitle = $banner['title'];
                         if (!empty($blockTitle[0]['title'])): ?>
 
-                            <div class="title || mb2">
+                            <div class="title || mt4 mb2">
 
                                 <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
 
@@ -105,9 +104,9 @@ endif;
 
                         <?php endif; ?>
 
-                        <?php /*SUBTITLE*/ if ($banner['subheading']['position'] == "bottom" && !empty($banner['subheading']['title'])): ?>
+                        <?php /*SUBTITLE*/ if ($banner['subheading']['position'] == "bottom" && !empty($banner['subheading']['title']['title'])): ?>
 
-                            <?php $blockTitle = $banner['subheading']['title'];
+                            <?php $blockTitle = $banner['subheading']['title']['title'];
                             if (!empty($blockTitle[0]['title'])): ?>
 
                                 <div class="subheading || mb2">
@@ -121,7 +120,7 @@ endif;
 
                         <?php if (!empty($banner['content'])): ?>
 
-                            <div class="wysiwyg || my4">
+                            <div class="wysiwyg || my4 limit-p limit-p-60">
 
                                 <?=$banner['content']?>
 
