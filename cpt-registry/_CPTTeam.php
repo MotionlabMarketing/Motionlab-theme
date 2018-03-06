@@ -2,7 +2,7 @@
 
 Class CPTTeam extends CPTCore{
 
-	public $enabled = false;
+	public $enabled = true;
 
 	/**
 	 * CPTTeam constructor.
