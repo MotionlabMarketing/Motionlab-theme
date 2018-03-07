@@ -38,7 +38,9 @@
 
                     <div class="col col-12 md-col-7 py2 md-p4">
 
-                        <p class="h6 mt2 sm-mb0 md-left bold sm-inline <?=$block['content']['txtColor']?>">2 March 2018</p>
+                        <?php if ($block['content']['date'] == true): ?>
+                            <p class="h6 mt2 sm-mb0 md-left bold sm-inline <?=$block['content']['txtColor']?>">2 March 2018</p>
+                        <?php endif; ?>
 
                         <ul class="inline-block tags tags-right sm-right border-radius cursor-pointer">
                             <li>Administration</li>
@@ -52,7 +54,9 @@
 
                             <p class="h6">Vivamus ipsum lorem, elementum sed volutpat non, dapibus sit amet ante. Sed congue mollis neque non posuere. Nulla nec velit condimentum quam fermentum bibendum. Curabitur condimentum ante vitae tincidunt volutpat.</p>
 
-                            <a href="/" class="block brand-primary bold">Read More</a>
+                            <?php if($block['content']['buttons'] = true): ?>
+                                <a href="/" class="btn <?=$block['content']['button']['button_text_colour']['system_text_colours']?> <?=$block['content']['button']['button_background_colour']['system_background_colours']?> bold "><?=$block['content']['button']['button_link']['title']?></a>
+                            <?php endif; ?>
 
                         </div>
 
