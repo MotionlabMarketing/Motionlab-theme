@@ -32,7 +32,9 @@
 
                     <div class="col col-12 md-col-5">
 
-                        <?= wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1"]) // NEEDS IMAGE ID ADDING. ?>
+                        <a href=""></a>
+                            <?= wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1"]) // NEEDS IMAGE ID ADDING. ?>
+                        </a>
 
                     </div>
 
@@ -50,7 +52,7 @@
 
                         <div class="clearfix <?=$block['content']['txtColor']?>">
 
-                            <h3 class="mb1 brand-primary" style="font-size: 1.3rem">The Blog Title should be added to this post listing here</h3>
+                            <h3 class="mb1 brand-primary" style="font-size: 1.3rem"><a href="">Blog Title should be added to this post listing here</a></h3>
 
                             <p class="h6">Vivamus ipsum lorem, elementum sed volutpat non, dapibus sit amet ante. Sed congue mollis neque non posuere. Nulla nec velit condimentum quam fermentum bibendum. Curabitur condimentum ante vitae tincidunt volutpat.</p>
 

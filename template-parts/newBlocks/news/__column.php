@@ -30,7 +30,9 @@
 
                 <div class="col col-12 md-col-4 mb4 p2">
 
-                    <?= wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1 js-match-height"]) // NEEDS IMAGE ID ADDING. ?>
+                    <a href="/">
+                        <?= wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1 js-match-height"]) // NEEDS IMAGE ID ADDING. ?>
+                    </a>
 
                     <div class="<?=$block['content']['txtColor']?> py2 px3">
 
@@ -38,7 +40,7 @@
                             <p class="h6 mt2 bold <?=$block['content']['txtColor']?>">2 March 2018</p>
                         <?php endif; ?>
 
-                        <h3 class="mb2 brand-primary" style="font-size: 1.3rem">The Blog Title should be added to this post listing here</h3>
+                        <h3 class="mb2 brand-primary" style="font-size: 1.3rem"><a href="/">The Blog Title should be added to this post listing here</a></h3>
 
                         <p class="h5">Vivamus ipsum lorem, elementum sed volutpat non, dapibus sit amet ante. Sed congue mollis neque non posuere. Nulla nec velit condimentum quam fermentum bibendum. Curabitur condimentum ante vitae tincidunt volutpat.</p>
 
