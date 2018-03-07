@@ -11,6 +11,8 @@ define("TEMPLATE_DIR", get_template_directory() . "/template-parts/");
 define("BLOCKS_DIR"  , get_template_directory() . "/template-parts/newBlocks/");
 define("CONTROLLERS_DIR"  , get_template_directory() . "/controllers/");
 define("MODELS_DIR"  , get_template_directory() . "/models/");
+define("MASTER_CPT_DIR", get_template_directory() . "/cpt-registry/");
+define("CHILD_CPT_DIR", get_stylesheet_directory() . "/cpt-registry/");
 
 /*==================================================================
 UNDERSCORES STUFF
@@ -44,6 +46,14 @@ if ( ! function_exists( 'motionlabtheme_setup' ) ) :
 	}
 endif;
 add_action( 'after_setup_theme', 'motionlabtheme_setup' );
+
+/*==================================================================
+CUSTOM POST TYPE REGISTRATION CONTROLLER
+==================================================================*/
+add_action('init', 'ml_register_custom_post_types', 0);
+function ml_register_custom_post_types() {
+	include_once(CONTROLLERS_DIR . 'CPTController.php');
+}
 
 
 function custom_widgets_init() {

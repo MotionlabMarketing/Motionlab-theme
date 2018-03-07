@@ -12,6 +12,9 @@
 $layout = get_sub_field($current . '_layout');
 
 switch ($layout):
+    case "key_areas":
+        include('jobs/__key_areas.php');
+        break;
     case "jobs_aside":
         include('jobs/__jobs_aside.php');
         break;

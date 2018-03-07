@@ -11,6 +11,8 @@
 
 $layout = get_sub_field($current . '_layout');
 
+$block['content']['buttons'] = get_sub_field($current . '_button_button_link');
+
 switch ($layout):
     case "grid":
         include ('linkedBoxes/__grid.php');

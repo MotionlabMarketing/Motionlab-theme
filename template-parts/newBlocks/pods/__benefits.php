@@ -38,7 +38,7 @@ endif;
 
 ?>
 
-<section class="pod-benefits || <?=$bgColor?> <?=$txtColor?> <?=$borders?>">
+<section class="pod-benefits || <?=$bgColor?> <?=$txtColor?> <?=$borders?>"  data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
 
     <div class="container">
 
@@ -70,7 +70,7 @@ endif;
                 <div class="item || col <?=$col?> px4 mb5 || text-center <?=$txtColor?> || <?php //col-grid-5?> || js-match-height">
 
                     <?php if ($item['enable_custom_icons'] == true): ?>
-                        <img src="<?=$item['pod_item_custom_icon']?>" style="max-width: 6rem; max-height: 6rem">
+                        <img src="<?=wp_get_attachment_image_url($item['pod_item_custom_icon'], array(70, 70))?>" style="max-width: 6rem; max-height: 6rem">
                     <?php else: ?>
                         <p class="block mb2 || text-center"><?=$item['pod_item_icon']?></p>
                     <?php endif; ?>

@@ -13,7 +13,7 @@
 $blockTitle  = get_sub_field($current . '_title_title');
 ?>
 
-<section id="<?=$block['custom_id']?>" class="clearfix relative || <?= $block['spacing'] ?> <?= $block['padding'] ?> <?= $block['background']['colour'] ?> <?= $block['border']['sides'] ?> <?= $block['border']['size'] ?> <?= $block['border']['colour'] ?> <?=$block['custom_css']?>">
+<section id="<?=$block['custom_id']?>" class="clearfix relative || <?= $block['spacing'] ?> <?= $block['padding'] ?> <?= $block['background']['colour'] ?> <?= $block['border']['sides'] ?> <?= $block['border']['size'] ?> <?= $block['border']['colour'] ?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
 
     <?= ($block['grid'] == 'container') ? '<div class="container">' : "" ?>
 

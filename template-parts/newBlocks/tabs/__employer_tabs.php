@@ -20,7 +20,7 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
 
 ?>
 
-<section class="tabs-employer || clearfix pb4">
+<section class="tabs-employer || clearfix" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
 
     <div class="container">
 

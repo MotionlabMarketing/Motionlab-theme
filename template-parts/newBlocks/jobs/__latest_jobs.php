@@ -19,7 +19,7 @@
 //$block['sections']    = get_sub_field($current . '_sections');
 ?>
 
-<section class="jobs-latest || mt6 mb6 clearfix || <?=$block['bg_color']?> <?=$block['text_color']?>">
+<section class="jobs-latest || mt6 mb6 clearfix || <?=$bgColor?> <?=$txtColor?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
 
     <div class="container">
 
@@ -39,7 +39,7 @@
 
         </div>
 
-         <div class="col-12 mb4">
+        <div class="col-12 mb4">
 
             <form action="#" class="width-100 || flex justify-center">
 
@@ -63,9 +63,9 @@
 
             <?php $i = 0; while($i < 6): ?>
 
-                <div class="listItem || col-12 md-col-6 relative left px4 pb3">
+                <div class="listItem || col-12 md-col-6 relative left px2 pb2 mb2">
 
-                    <div class="border-bottom border-light clearfix pb3">
+                    <div class="border-bottom border-light clearfix p4 box-shadow-2">
 
                         <div class="col col-12  md-col-9 || js-match-height">
 
