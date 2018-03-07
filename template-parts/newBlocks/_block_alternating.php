@@ -30,6 +30,7 @@ $block['content']['title']            = get_sub_field($current . '_title_title')
 $block['content']['content']          = get_sub_field($current . '_content');
 $block['content']['buttons']          = get_sub_field($current . '_buttons');
 $block['content']['image']            = get_sub_field($current . '_image');
+$block['content']['video']            = get_sub_field($current . '_video');
 $block['content']['gallery']          = get_sub_field($current . '_gallery');
 $block['content']['cta']['append']    = get_sub_field($current . '_ctaAppend');
 $block['content']['cta']['link']      = get_sub_field($current . '_ctaLink');

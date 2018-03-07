@@ -36,7 +36,7 @@ $blockTitle  = get_sub_field($current . '_title_title');
 ?>
 
 <!-- pods -->
-<section id="<?= $block['custom_id'] ?>" class="relative || <?= $block['custom_css'] ?> <?php echo $bgColor ?> <?php echo $txtColor ?> <?php echo get_sub_field('animate_block') == TRUE ? 'overflow-hidden' : '' ?> p4">
+<section id="<?= $block['custom_id'] ?>" class="relative || <?= $block['custom_css'] ?> <?php echo $bgColor ?> <?php echo $txtColor ?> <?php echo get_sub_field('animate_block') == TRUE ? 'overflow-hidden' : '' ?> p4"  data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
     <div class="<?php echo get_sub_field('full_width_full_width') ?> <?php echo $extraPadding ;?> <?php echo get_sub_field('narrow_columns') == TRUE ? 'measure-wide' : '' ?>">
 
         <div class="m4 mb5 || text-center">

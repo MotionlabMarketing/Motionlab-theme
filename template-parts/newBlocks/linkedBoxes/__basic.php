@@ -16,7 +16,8 @@ $txtColor         = get_sub_field($current . '_text_system_text_colours');
 $blockTitle       = get_sub_field($current . '_title_title');
 $blockColumns     = get_sub_field($current . '_columns');
 
-$overlayEnabled   = get_sub_field($current . '_enableOverlay');
+$block['content']['overlay']  = get_sub_field($current . '_enableOverlay');
+$block['content']['txtColor'] = get_sub_field($current . '_txtColour_system_text_colours');
 
 $darkenImages     = get_sub_field($current . '_darken');
 $darkenStrength   = get_sub_field($current . '_darkenStrength');
@@ -30,40 +31,36 @@ $hoverContent     = get_sub_field($current . '_hoverContent');
 //TODO: Update to new block array system and move block specific settings to controller.
 ?>
 
-<section class="linkedBox-basic || clearfix <?=($hoverContent == true)? "show-hover" : "";?> <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?>">
+<section id="<?=$block['custom_id']?>" class="linkedBox-basic || relative clearfix <?=($hoverContent == true)? "show-hover" : "";?> <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
         <div class="clearfix pb5">
 
-            <div class="m4 text-center">
-                <?php
-                if (!empty($blockTitle[0]['title'])) {
-                    include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
+            <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-                <?=get_sub_field('block_linkBoxes_content')?>
-            </div>
-
-            <?php foreach ($blockItems as $item):?>
+            <?php foreach ($blockItems as $item): ?>
 
                 <div class="item || col col-12 md-col-<?=$block['columns']?> p2 || block relative">
-                    <a href="<?=$item['block_linkBoxes_link']['url']?>" class="block relative overflow-hidden || bg-cover bg-center box-shadow-3 <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?> || zoom" <?=($item['block_linkBoxes_link']['title'] ? 'title="'.$item['block_linkBoxes_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_link']['target'] ? 'target="'.$item['block_linkBoxes_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image_basic_image']['url'];?>')">
+                    <a href="<?=$item['block_linkBoxes_link']['url']?>" class="block relative overflow-hidden || bg-cover bg-center <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?> || zoom" <?=($item['block_linkBoxes_link']['title'] ? 'title="'.$item['block_linkBoxes_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_link']['target'] ? 'target="'.$item['block_linkBoxes_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image_basic_image']['url'];?>')">
 
-                        <div class="content relative || js-match-height || <?=$txtColor?> bg-grey py6 || flex items-center justify-center text-center || <?=($darkenImages == true)? "darken-background" : ""?> <?=($darkenImages == true)? $darkenStrength : ""?>">
+                        <div class="content relative || js-match-height || <?=$txtColor?> py6 || flex items-center justify-center text-center || <?=($darkenImages == true)? "darken-background" : ""?> <?=($darkenImages == true)? $darkenStrength : ""?>">
 
-                            <div class="z-index-40">
 
-                                <h3 class="mb0 z-index-20 h3 white"><?=$item['block_linkBoxes_content']; ?></h3>
+                            <div class="z-index-40 <?=($block['content']['overlay'] == true)? "opacity-10" : ""; ?>">
 
-                                <?php if (!empty($item['block_linkBoxes_link']['title'])):?>
-                                    <p class="inline-block mx-auto mt1 mb0 h5 <?=($item['enableButton'] == true)? $item['button_background']['system_background_colours'] . ' btn-medium ' . $item['button_textColor']['system_text_colours'] : ''?> "><?=$item['block_linkBoxes_link']['title']?></p>
+                                <h3 class="mb0 z-index-20 white"><?=$item['block_linkBoxes_content']; ?></h3>
+
+                                <?php if (!empty($item['block_linkBoxes_button_button_link']['url'])):?>
+                                    <p class="inline-block mx-auto mt1 mb0 h5 bold <?=($item['enableButton'] == true)? $item['block_linkBoxes_button_system_text_colours'] . ' btn-medium ' . $item['block_linkBoxes_button_system_background_colours'] : ''?> "><?=$item['block_linkBoxes_button_button_link']['title']?></p>
                                 <?php endif; ?>
 
                             </div>
 
-                            <?php if ($overlayEnabled == true): ?>
-                                <div class="overlay || absolute width-100 height-100 z-index-20 bg-brand-primary-overlay"></div>
+                            <?php if ($block['content']['overlay'] == true): ?>
+                                <div class="overlay || absolute width-100 height-100 z-index-20 bg-gray bg-brand-primary-overlay"></div>
                             <?php endif; ?>
+
 
                         </div>
                     </a>

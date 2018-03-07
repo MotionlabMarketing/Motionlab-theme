@@ -20,29 +20,20 @@ $content          = get_sub_field($current . '_content');
 
 $block['columns'] = 12 / $blockColumns;
 
+$block['content']['txtColor'] = get_sub_field($current . '_txtColour_system_text_colours');
+
 $blockItems       = get_sub_field($current . '_items');
 
+$block['content']['button'] = get_sub_field($current . '_button_button_link');
 ?>
 
-<section class="linkedBox-titleBelow || clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?>">
+<section id="<?=$block['custom_id']?>" class="linkedBox-titleBelow || clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
         <div class="clearfix py5">
 
-
-                <?php if (!empty($blockTitle[0]['title'])): ?>
-                    <div class="m4 text-center">
-                        <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
-                    </div>
-                <?php endif; ?>
-
-                <?php if (!empty($content)): ?>
-                <div class="text-center mb2 limit-p limit-p-70">
-                    <?=$content?>
-                </div>
-                <?php endif; ?>
-
+            <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
             <?php foreach ($blockItems as $item): ?>
 
@@ -50,11 +41,18 @@ $blockItems       = get_sub_field($current . '_items');
                 // STANDARD BOXES WITH IMAGE AND TITLE //
                 if ($item['block_linkBoxes_breakout_true'] !== true):?>
                     <div class="item || col col-12 md-col-<?=$block['columns']?> p2 || block relative">
-                        <a href="<?= $item['block_linkBoxes_link']['url'] ?>"
-                           class="block relative overflow-hidden || bg-cover bg-center border-light border-top border-left border-right border-bottom box-shadow-3 <?= $item['background_colour']['system_background_colours'] ?> <?= $item['text_colour']['system_text_colours'] ?> || zoom" <?= ($item['block_linkBoxes_link']['title'] ? 'title="' . $item['block_linkBoxes_link']['title'] . '"' : '') ?> <?= ($item['block_linkBoxes_link']['target'] ? 'target="' . $item['block_linkBoxes_link']['target'] . '"' : '') ?>>
+                        <a href="<?= $item[$current . '_button_button_link']['url'] ?>"
+                           class="block relative overflow-hidden || bg-cover bg-center border-light border-top border-left border-right border-bottom <?= $item['background_colour']['system_background_colours'] ?> <?= $item['text_colour']['system_text_colours'] ?> || zoom" <?= ($item['block_linkBoxes_link']['title'] ? 'title="' . $item['block_linkBoxes_link']['title'] . '"' : '') ?> <?= ($item['block_linkBoxes_link']['target'] ? 'target="' . $item['block_linkBoxes_link']['target'] . '"' : '') ?>>
 
-                            <div class="image-holder || js-match-height || bg-grey <?= $txtColor ?>"
+                            <?php if ($item['block_linkBoxes_media'] == "video"): ?>
+                                <div class="no-resize" style="margin-bottom: -8px">
+                                    <?php $video['id'] = explode("=", $item['block_linkBoxes_videoURL']); ?>
+                                    <iframe width="100%" height="270" src="https://www.youtube.com/embed/<?=$video['id'][1]?>" class="js-match-height" frameborder="0" allow="encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                </div>
+                            <?php else: ?>
+                                <div class="image-holder || js-match-height || bg-grey <?= $txtColor ?>"
                                  style="background-image: url('<?= $item['block_linkBoxes_image_basic_image']['url']; ?>')"></div>
+                            <?php endif; ?>
                             <div class="content || h3">
                                 <?= $item[$current . '_title'] ?>
                             </div>
