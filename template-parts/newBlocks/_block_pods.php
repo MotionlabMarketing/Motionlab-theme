@@ -27,7 +27,7 @@ switch ($temp['columns']):
         $block['columns'] = "col-12 sm-col-12 md-col-4";
         break;
     case "4":
-        $block['columns'] = "col-6 sm-col-3";
+        $block['columns'] = "col-12oep sm-col-3";
         break;
     case "5":
         $block['columns'] = "col-grid-5";
@@ -46,6 +46,10 @@ switch ($block['layout']):
         break;
     case "benefits":
         include('pods/__benefits.php');
+        break;
+    case "pillars_icons":
+        $block['content']  = get_sub_field($current . '_icons');
+        include('pods/__'.$block['layout'].'.php');
         break;
     case "belowTitle":
         $block['content']  = get_sub_field($current . '_basic');
