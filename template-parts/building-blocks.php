@@ -43,13 +43,11 @@ if( have_rows('building_blocks') ) {
             } elseif (get_row_layout() == 'alternating_media') {
                 include(BLOCKS_DIR . 'alternating_media.php'); // REMOVEAL //
             } elseif (get_row_layout() == 'gallery_simple') {
-                include(BLOCKS_DIR . 'gallery_simple.php');
+                include(BLOCKS_DIR . 'gallery_simple.php'); // REMOVED //
             } elseif (get_row_layout() == 'form') {
-                include(BLOCKS_DIR . 'form.php');
+                include(BLOCKS_DIR . 'form.php'); // REMOVED //
             } elseif (get_row_layout() == 'table') {
                 include(BLOCKS_DIR . 'table.php');
-            } elseif (get_row_layout() == 'spacer') {
-                include(BLOCKS_DIR . 'spacer.php');
             } elseif (get_row_layout() == 'hotspot_image') {
                 include(BLOCKS_DIR . 'hotspots.php');
             } elseif (get_row_layout() == 'testimonial') {
