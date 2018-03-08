@@ -3,9 +3,11 @@
     <!-- desktop header view -->
     <div class="display-none lg-block">
         <div class="holder || bg-repeat <?=(!is_front_page())? "bg-white" : "";?> flex">
+
             <div class="self-stretch flex items-center || logo-wrapper ml4 bg-brand-primary hover-bg-brand-dark mbn4">
-                <a href="/" class="logo block px2 bg-brand-primary hover-bg-brand-dark white fw400 js-match-parent">
-                    <img src="<?php the_field('brand_logo', 'options') ?>" alt="" class="block mx-auto">
+                <a href="/" class="logo block white">
+                    <img src="<?=get_field('brand_logo', 'options')?>" alt="" id="main-logo" class="block mx-auto" data-logo="<?=get_field('brand_logo', 'options')?>" data-scrolllogo="<?=get_field('brand_logo_white', 'options')?>">
+                    <img src="<?=get_field('brand_logo_white', 'options')?>" style="display: none">
                 </a>
             </div>
 
@@ -18,6 +20,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
