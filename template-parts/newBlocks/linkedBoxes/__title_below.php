@@ -51,7 +51,7 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
                                 </div>
                             <?php else: ?>
                                 <div class="image-holder || js-match-height || bg-grey <?= $txtColor ?>"
-                                 style="background-image: url('<?= $item['block_linkBoxes_image_basic_image']['url']; ?>')"></div>
+                                 style="background-image: url('<?= $item['block_linkBoxes_image']; ?>')"></div>
                             <?php endif; ?>
                             <div class="content || h3">
                                 <?= $item[$current . '_title'] ?>

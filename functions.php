@@ -13,6 +13,13 @@ define("CONTROLLERS_DIR"  , get_template_directory() . "/controllers/");
 define("MASTER_CPT_DIR", get_template_directory() . "/cpt-registry/");
 define("CHILD_CPT_DIR", get_stylesheet_directory() . "/cpt-registry/");
 
+define('WP_POST_REVISIONS', 2);
+
+add_filter( 'wp_revisions_to_keep', 'filter_function_name', 10, 2 );
+function filter_function_name( $num, $post ) {
+    return $num;
+}
+
 /*==================================================================
 UNDERSCORES STUFF
 ==================================================================*/

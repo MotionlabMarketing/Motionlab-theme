@@ -17,6 +17,10 @@ $block['content']['articles']  = get_sub_field($current . '_articles');
 $block['content']['link']      = get_sub_field($current . '_news_link');
 $block['content']['txtColor']  = get_sub_field($current . '_txtColor_system_text_colours');
 
+$block['content']['date']      = get_sub_field($current . '_enablePostDate');
+$block['content']['buttons']   = get_sub_field($current . '_enableButtons');
+$block['content']['button']    = get_sub_field($current . '_buttons');
+
 // GET THE COLUMN SIZES NEEDED IF SOCIAL IS INCLUDED.
 if ($block['content']['feeds'] == true):
 
