@@ -27,7 +27,7 @@ switch ($temp['columns']):
         $block['columns'] = "col-12 sm-col-12 md-col-4";
         break;
     case "4":
-        $block['columns'] = "col-12oep sm-col-3";
+        $block['columns'] = "col-12 md-col-3";
         break;
     case "5":
         $block['columns'] = "col-grid-5";
