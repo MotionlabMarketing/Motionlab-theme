@@ -18,49 +18,53 @@
 
         <div class="col col-12 md-col-<?=$block['content']['cols'][0]?> mxn2 p2 js-match-height">
 
-                <?php foreach ($block['content'] as $item): ?>
+                <?php foreach ($block['content'] as $item): pa ?>
 
-                    <div class="col <?=$block['columns']?> mb4 p2 relative">
+                    <div class="pod || col <?=$block['columns']?>  mb4 p2 relative">
 
-                        <?php if ($item['type'] == "image"): ?>
+                        <div class="internal-padding <?=$block['pod']['bgColour']?> <?=$block['pod']['padding']?>">
 
-                            <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'">' : "")?>
-
-                                <?= wp_get_attachment_image($item['image'], "large", "", ["class" => "box-shadow-1 js-match-height"]) // NEEDS IMAGE ID ADDING. ?>
-
-                            <?=(!empty($item['button']['button_link']['url'])? '</a>' : "")?>
-
-                        <?php elseif ($item['type'] == "slider"): ?>
-
-                            <div class="mb2" data-slick="slider-auto-arrows">
-                            <?php foreach ($item['slider'] as $slide): ?>
-
-                                <img src="<?=$slide['url']?>" alt="" class="js-match-height">
-
-                            <?php endforeach; ?>
-                            </div>
-
-                        <?php else: ?>
-                            <?php // DO NOTHING. ?>
-                        <?php endif; ?>
-
-                        <div class="<?=$block['pod']['textColor']?>  py3 px3 mb5 js-match-height-alt">
-
-                            <h3 class="mb2 brand-primary" style="font-size: 1.3rem">
+                            <?php if ($item['type'] == "image"): ?>
 
                                 <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'">' : "")?>
 
-                                    <?=$item['title']?>
+                                    <?= wp_get_attachment_image($item['image'], "large", "", ["class" => "box-shadow-1 js-match-height"]) // NEEDS IMAGE ID ADDING. ?>
 
                                 <?=(!empty($item['button']['button_link']['url'])? '</a>' : "")?>
 
-                            </h3>
+                            <?php elseif ($item['type'] == "slider"): ?>
 
-                            <p class="h5"><?=$item['pod_content']?></p>
+                                <div class="mb2" data-slick="slider-auto-arrows">
+                                <?php foreach ($item['slider'] as $slide): ?>
 
-                            <?php if(!empty($item['button']['button_link']['url'])): ?>
-                                <a href="<?=$item['button']['button_link']['url']?>" class="absolute bottom-1 btn <?=$item['button']['button_text_colour']['system_text_colours']?> <?=$item['button']['button_background_colour']['system_background_colours']?> bold "><?=$item['button']['button_link']['title']?></a>
+                                    <img src="<?=$slide['url']?>" alt="" class="js-match-height">
+
+                                <?php endforeach; ?>
+                                </div>
+
+                            <?php else: ?>
+                                <?php // DO NOTHING. ?>
                             <?php endif; ?>
+
+                            <div class="<?=$block['pod']['textColor']?> <?=$block['pod']['textAlign']?>  py3 px3 mb2 js-match-height-alt">
+
+                                <h3 class="mb2 brand-primary" style="font-size: 1.3rem">
+
+                                    <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'">' : "")?>
+
+                                        <?=$item['title']?>
+
+                                    <?=(!empty($item['button']['button_link']['url'])? '</a>' : "")?>
+
+                                </h3>
+
+                                <p class="h5"><?=$item['pod_content']?></p>
+
+                                <?php if(!empty($item['button']['button_link']['url'])): ?>
+                                    <a href="<?=$item['button']['button_link']['url']?>" class="btn <?=$item['button']['button_text_colour']['system_text_colours']?> <?=$item['button']['button_background_colour']['system_background_colours']?> bold "><?=$item['button']['button_link']['title']?></a>
+                                <?php endif; ?>
+
+                            </div>
 
                         </div>
 
@@ -68,8 +72,12 @@
 
                 <?php endforeach; ?>
 
+            <?php include(BLOCKS_DIR . '_parts/__backgroundImageContainer.php'); ?>
+
         </div>
 
     <?=($block['grid'] == 'container')? '</div>' : ""?>
+
+    <?php include(BLOCKS_DIR . '_parts/__backgroundImageFullWidth.php'); ?>
 
 </section>
