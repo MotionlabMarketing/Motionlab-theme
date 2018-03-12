@@ -120,7 +120,7 @@ endif; ?>
 
                         <?php if (!empty($banner['content'])): ?>
 
-                            <div class="wysiwyg || my4 limit-p limit-p-60">
+                            <div class="wysiwyg || my4">
 
                                 <?=$banner['content']?>
 

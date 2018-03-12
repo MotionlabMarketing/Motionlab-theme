@@ -17,6 +17,8 @@ $block['pod']['bgColour']  = get_sub_field($current . '_bgColour_system_backgrou
 $block['pod']['textAlign'] = get_sub_field($current . '_txtAlign_align');
 $block['pod']['textColor'] = get_sub_field($current . '_txtColor_system_text_colours');
 
+$block['pod']['padding']   = get_sub_field($current . '_padding_system_padding');
+
 $blockTitle = $block['title']; // REMOVE WHEN ALL UPDATED
 $block['content']['title'] = $block['title'];
 
