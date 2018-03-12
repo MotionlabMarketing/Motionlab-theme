@@ -1,7 +1,7 @@
 <header class="width-100 top-0 fixed z5 border-bottom border-light border-lighten-3" id="masthead" data-role="header">
 
     <!-- desktop header view -->
-    <div class="header-size display-none <?=(!is_front_page())? "bg-white" : "";?> lg-block">
+    <div class="header-size <?=(!is_front_page())? "bg-white" : "";?> display-none lg-block">
         <div class="holder || bg-repeat flex">
 
             <div class="self-stretch flex items-center || logo-wrapper ml4 bg-brand-primary hover-bg-brand-dark mbn4">

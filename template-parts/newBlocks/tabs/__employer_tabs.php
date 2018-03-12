@@ -50,7 +50,7 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
 
                 if( have_rows('block_tabs_employer')): $i = 1; while ( have_rows('block_tabs_employer')): the_row() ?>
 
-                    <div data-section="tab<?php echo $i ?>" id="tab<?php echo $i ?>" class="tab <?=$tabClass?> || relative text-center bold <?=$block['tabs_settings']['tab_size']?> <?=$block['tabs_settings']['tab_weight']?> <?=($i <= 1)? 'tab-active' : ''?>">
+                    <div data-section="tab<?=$i?>" id="tab<?=$i?>" class="tab || relative text-center bold <?=$block['tabs_settings']['tab_size']?> <?=$block['tabs_settings']['tab_weight']?> <?=($i <= 1)? 'tab-active' : ''?>">
 						<?=get_sub_field('tab_title')?>
 					</div>
 
