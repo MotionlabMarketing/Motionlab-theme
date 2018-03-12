@@ -692,10 +692,6 @@ jQuery(document).ready(function ($) {
     UNSTICK FIXED POSITION ELEMENT (used on case study page)
     ========================================================*/
 
-    $('.product-tile button').click(function () {
-        alert('hi')
-    });
-
     function stickyDiv() {
         if ($('[data-stick]').length) {
             var div = $('[data-stick]');
@@ -717,6 +713,33 @@ jQuery(document).ready(function ($) {
     $(window).on('resize', function () {
         stickyDiv();
     });
+
+
+
+    /**
+     * VIDEO STORIES
+     * This funciton updates the video watching box with the selected video and data. This also marks the current video
+     * with a border.
+     *
+     * @created 12 Mar 2018
+     * @author Joe Curran
+     * @version 1.00
+     */
+    $('.video-embed').on('click', function(e) {
+        e.preventDefault();
+
+        // RESET THE BORDERS FOR ALL ELEMENTS.
+        $($(this).parent()).each(function() {
+            $(this).find('img').removeClass('border-light-1').addClass('border-transparent');
+        });
+
+        // ADD THE NEW VIDEO TO THE VIDEO BOX.
+        $(this).find("img").removeClass('border-transparent').addClass('border-light-1');
+        $('.video-embed-frame').html($(this).find('iframe').clone().attr('width', '100%').attr('height', '280'));
+        $('.video-embed-author').html($(this).find('.video-title').text());
+        $('.video-embed-role').html($(this).find('.video-role').text());
+    });
+
 
 }); // ENDS DOC READY AT TOP
 

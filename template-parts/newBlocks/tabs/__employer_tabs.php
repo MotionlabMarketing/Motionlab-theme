@@ -50,7 +50,7 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
 
                 if( have_rows('block_tabs_employer')): $i = 1; while ( have_rows('block_tabs_employer')): the_row() ?>
 
-                    <div data-section="tab<?php echo $i ?>" class="tab <?=$tabClass?> || relative text-center <?=$block['tabs_settings']['tab_size']?> <?=$block['tabs_settings']['tab_weight']?> <?=($i <= 1)? 'tab-active' : ''?>">
+                    <div data-section="tab<?php echo $i ?>" id="tab<?php echo $i ?>" class="tab <?=$tabClass?> || relative text-center bold <?=$block['tabs_settings']['tab_size']?> <?=$block['tabs_settings']['tab_weight']?> <?=($i <= 1)? 'tab-active' : ''?>">
 						<?=get_sub_field('tab_title')?>
 					</div>
 
@@ -92,7 +92,7 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
                                     <?php if($item['show_filter'] == true):?>
 
                                         <form action="" method="get" class="flex">
-                                            <select name="orderby" id="orderby" style="min-width:13rem;" class="select md-mr3 width-100 md-width-auto" onchange="this.form.submit()" >
+                                            <select name="orderby" id="orderby" style="min-width:11rem;" class="select md-mr3 width-100 md-width-auto box-shadow-2" onchange="this.form.submit()" >
                                                 <option value="title" <?php echo ($orderby == 'title') ? 'selected' : '' ; ?>>By Sector</option>
                                             </select>
                                         </form>
