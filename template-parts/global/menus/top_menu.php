@@ -7,10 +7,10 @@ $menu = motionlab_menu_walker('top-menu');
 
 ?>
 
-<div class="display-none lg-flex justify-between items-center">
+<div class="quicklinks display-none lg-flex justify-between items-center">
 
 
-    <ul class="list-reset ml-auto mr3 mb0">
+    <ul class="social-icons list-reset ml-auto mr3 mb0">
 
         <?php if ( have_rows('social_links','option')) : ?>
             <?php while ( have_rows('social_links','option')) : ?>
