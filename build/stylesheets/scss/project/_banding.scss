@@ -1961,6 +1961,12 @@ hr.border-5 {
   .slick-track {
     height: 100%;
   }
+}
 
-
+.panels {
+  transform: scale(0.8);
+  transition: all 200ms;
+}
+.panels.animate {
+  transform: scale(1);
 }

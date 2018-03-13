@@ -21,7 +21,7 @@ jQuery(document).ready(function ($) {
     /*========================
     Animate On Scroll
     ==========================*/
-    AOS.init();
+    // AOS.init();
 
     /*========================
     Mobile Menu
@@ -347,6 +347,85 @@ jQuery(document).ready(function ($) {
         ]
     });
 
+    $('[data-slick="galleryGridPanels-slider"]').slick({
+        slidesToShow: 1,
+        variableWidth: false,
+        autoplay: false,
+        autoplaySpeed: 3000,
+        arrows: true,
+        draggable: false,
+        pauseOnHover: false,
+        mobileFirst: false
+    });
+
+    $('[data-slick="storeSlidingPanels-slider"]').slick({
+        slidesToShow: 5,
+        variableWidth: false,
+        autoplay: false,
+        autoplaySpeed: 3000,
+        arrows: true,
+        draggable: false,
+        pauseOnHover: false,
+        mobileFirst: false,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 960,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
+        ]
+    });
+
+    if($('[data-slick="storeSlidingPanels-slider"]').length) {
+        productsZoom();
+    }
+    $('[data-slick="storeSlidingPanels-slider"]').on('beforeChange', function() {
+        productsZoom();
+    });
+
+    function productsZoom() {
+            var number;
+
+            if ($(window).width() > 1200) {
+                number = 3;
+            } else if ($(window).width() > 600) {
+                number = 2;
+            }
+
+            $(".panels").each( function () {
+                $(this).removeClass('animate');
+                // $(this).css("transform", "scale(0.8)");
+                // $(this).animate({transform: "scale(0.8)"}, 5000, 'linear');
+            });
+
+            setTimeout(function() {
+                $(".panels.slick-active:eq(2)").each(function () {
+                    // $(this).css("transform", "scale(1)");
+                    $(this).addClass('animate');
+                    // $(this).animate({transform: "scale(1)"}, 500, 'linear');
+                });
+            }, 100);
+    }
+
     $('.js-hero-slider-image').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -402,6 +481,7 @@ jQuery(document).ready(function ($) {
         asNavFor: '.productSliderNav',
         infinite: true,
     });
+
     $('.productSliderNav').slick({
         speed: 800,
         slidesToShow: 3,
