@@ -106,7 +106,7 @@ endif;
 
                     <?php if (!empty($slide['button_text_link']['title']) && !empty($slide['button_text_link']['url'])): ?>
 
-                        <a href="<?=$slide['button_text_link']['url']?>" class="btn btn-medium" <?=($slide['button_text_link']['title'] ? 'title="'.$slide['button_text_link']['title'].'"' : '')?> <?=($slide['button_text_link']['target'] ? 'target="'.$slide['button_text_link']['target'].'"' : '')?> ><?=$slide['button_text_link']['title']?></a>
+                        <a href="<?=$slide['button_text_link']['url']?>" class="btn btn-medium mx3" <?=($slide['button_text_link']['title'] ? 'title="'.$slide['button_text_link']['title'].'"' : '')?> <?=($slide['button_text_link']['target'] ? 'target="'.$slide['button_text_link']['target'].'"' : '')?> ><?=$slide['button_text_link']['title']?></a>
 
                     <?php endif; ?>
 

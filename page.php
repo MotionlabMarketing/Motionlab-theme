@@ -9,7 +9,7 @@ $masterPad = 'px5';
 <main>
 	<?php while ( have_posts() ) : the_post();?>
 
-		<section class="col col-12 mb5 md-mb0">
+		<section class="col col-12">
 			<?php include(get_template_directory() .'/template-parts/building-blocks.php' ); ?>
 		</section>
 
