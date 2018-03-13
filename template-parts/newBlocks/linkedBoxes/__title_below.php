@@ -39,7 +39,7 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
 
                 <?php
                 // STANDARD BOXES WITH IMAGE AND TITLE //
-                if ($item['block_linkBoxes_breakout_true'] !== true):?>
+                if ($item['block_linkBoxes_breakout_true'] !== true): ?>
                     <div class="item || col col-12 md-col-<?=$block['columns']?> p2 || block relative">
                         <a href="<?= $item[$current . '_link']['url'] ?>"
                            class="block relative overflow-hidden || bg-cover bg-center border-light border-top border-left border-right border-bottom <?= $item['background_colour']['system_background_colours'] ?> <?= $item['text_colour']['system_text_colours'] ?> || zoom" <?= ($item['block_linkBoxes_link']['title'] ? 'title="' . $item['block_linkBoxes_link']['title'] . '"' : '') ?> <?= ($item['block_linkBoxes_link']['target'] ? 'target="' . $item['block_linkBoxes_link']['target'] . '"' : '') ?>>
@@ -51,7 +51,7 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
                                 </div>
                             <?php else: ?>
                                 <div class="image-holder || js-match-height || bg-grey <?= $txtColor ?>"
-                                 style="background-image: url('<?= $item['block_linkBoxes_image']; ?>')"></div>
+                                 style="background-image: url('<?=$item['block_linkBoxes_image_basic_image']['url']?>')"></div>
                             <?php endif; ?>
                             <div class="content || h3">
                                 <?= $item[$current . '_title'] ?>
