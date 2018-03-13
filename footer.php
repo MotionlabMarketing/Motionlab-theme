@@ -3,19 +3,25 @@
 <?php // TODO: REBUILD FOOTER LAYOUT // ?>
 
 <?php if (get_field('footer_enable_cta', 'option')): ?>
+
     <section class="cta-basic cta-footer || clearfix || bg-brand-primary white">
 
-        <div class="col-12 || text-center">
+        <div class="container">
 
-            <div class="wysiwyg || md-mx6 md-px6 white">
+            <div class="col-12 || text-center">
 
-                <?= get_field('footer_cta_content', 'option') ?>
+                <div class="wysiwyg || white">
+
+                    <?= get_field('footer_cta_content', 'option') ?>
+
+                </div>
 
             </div>
 
         </div>
 
     </section>
+
 <?php endif; ?>
 
 <footer class="relative clearfix">

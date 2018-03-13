@@ -18,6 +18,6 @@ switch ($block['layout']):
         include('galleries/__sliderThin.php');
         break;
     default:
-        include('galleries/__basic.php');
+        include('galleries/__sliderThin.php');
         break;
 endswitch;

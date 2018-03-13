@@ -25,7 +25,6 @@ $blockTitle           = get_sub_field('column_title_title');
 ?>
 
 <?php //print_r(get_field_objects()); ?>
-<?php if(!empty(get_sub_field('copy'))){?>
 	<div class="column-data relative flex flex-column <?php echo $columnWidth ?> <?php echo $textAlign ?> <?=$columnsCustomClass?>">
 
 		<?php if (!empty($blockTitle[0]['title'])): ?>
@@ -53,4 +52,3 @@ $blockTitle           = get_sub_field('column_title_title');
 		</div>
 
 	</div>
-<?php } ?>

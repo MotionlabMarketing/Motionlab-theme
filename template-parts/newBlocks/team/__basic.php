@@ -23,10 +23,9 @@ $button = get_sub_field('block_team_page');
 
 ?>
 
+<section id="<?=$block['custom_id']?>" class="team-basic || clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
 
-<section class="team-basic || clearfix mt4 p3" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
-
-    <div class="container">
+    <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
         <div class="col-12 || mb5 || text-center">
 
@@ -37,10 +36,6 @@ $button = get_sub_field('block_team_page');
             </div>
 
         </div>
-
-    </div>
-
-    <div class="container clearfix">
 
         <?php $i = 0; while ($i < 5): ?>
 
@@ -63,18 +58,15 @@ $button = get_sub_field('block_team_page');
 
         <?php $i++; endwhile; ?>
 
-    </div>
+        <?php if (!empty($button['button_link']['url'])): ?>
+            <div class="mb5 clearfix || text-center">
 
-    <?php if (!empty($button['button_link']['url'])): ?>
-    <div class="container clearfix mt4">
+                <a href="<?=$button['button_link']['url']?>" class="btn btn-outline btn-medium black <?=$button['system_background_colours']?>"><?=$button['button_link']['title'];?></a>
 
-        <div class="mb5 clearfix || text-center">
+            </div>
 
-            <a href="<?=$button['button_link']['url']?>" class="btn btn-outline btn-medium black <?=$button['system_background_colours']?>"><?=$button['button_link']['title'];?></a>
+        <?php endif; ?>
 
-        </div>
-
-    </div>
-    <?php endif; ?>
+    <?=($block['grid'] == 'container')? '</div>' : ""?>
 
 </section>

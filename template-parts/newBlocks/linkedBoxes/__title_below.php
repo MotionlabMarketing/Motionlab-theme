@@ -67,7 +67,7 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
                         <div class="content-breakout">
 
                             <span class="icon"><?= $item['block_linkBoxes_breakout_icon'] ?></span>
-                            <h3><?php print_r($item['block_linkBoxes_title']) ?></h3>
+                            <h3 class="mt0"><?php print_r($item['block_linkBoxes_title']) ?></h3>
 
                             <div class="wysiwyg"><?=$item['block_linkBoxes_content']?></div>
                         </div>
