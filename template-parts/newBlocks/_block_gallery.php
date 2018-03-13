@@ -11,6 +11,9 @@
  */
 
 switch ($block['layout']):
+    case "gridPanels":
+        include('galleries/__'.$block['layout'].'.php');
+        break;
     case "sliderThin":
         include('galleries/__sliderThin.php');
         break;
