@@ -18,16 +18,9 @@
 
     <div class="col col-12 md-col-<?=$block['content']['cols'][0]?> mxn2 p2 js-height-match">
 
-        <?php if ($block['content']['type'] == "lastest"): ?>
+        <?php if( sizeof($block['posts']->posts) > 0 ) : ?>
 
-            <?php // THIS IS NEED TO OUTPUT THE SAME LAYOUT ?>
-
-        <?php elseif ($block['content']['type'] == "selected"): ?>
-
-            <?php // IDs OF SELECTED ARTICLES - pa($block['content']['articles']);?>
-
-            <?php $i = 0; while($i < 3): ?>
-
+            <?php foreach ($block['posts']->posts as $post) :?>
                 <div class="col col-12 md-col-4 mb4 p2">
 
                     <a href="/">
@@ -51,18 +44,15 @@
                     </div>
 
                 </div>
+            <?php endforeach; ?>
 
-                <?php $i++; endwhile; ?>
-
-        <?php else: ?>
-
+        <?php else : ?>
             <div class="flex items-center justify-center flex-wrap <?=$block['content']['txtColor']?>">
 
                 <p class="h3 mb1">Sorry, no articles could be loaded.</p>
                 <p class="">Please check your selected options and that posts have been added to your site.</p>
 
             </div>
-
         <?php endif; ?>
 
     </div>
