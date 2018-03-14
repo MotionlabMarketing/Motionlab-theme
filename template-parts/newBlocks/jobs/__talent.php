@@ -17,7 +17,7 @@ $blockWidth  = get_sub_field($current . '_width_block_width');
 $blockTitle  = get_sub_field($current . '_title_title');
 
 $sections    = get_sub_field($current . '_sections');
-
+pa($block['posts']);
 ?>
 
 <section id="latestTalent" class="jobs-talent || mt6 pt3 mb6 clearfix || <?=$bgColor?> <?=$txtColor?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
@@ -43,17 +43,40 @@ $sections    = get_sub_field($current . '_sections');
 
             <form action="#" class="width-100 || flex justify-center">
 
-                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
-                    <option value="title">By Sector</option>
+                                <?php $disabled = sizeof($block['sector_select_options']) == 0 ? "disabled" : ""; ?>
+                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" id="sortby_sector" <?=$disabled?>>
+                    <option value="">Filter by Sector</option>
+                    <?php
+                        foreach($block['sector_select_options'] as $option) :?>
+                            <option value="<?=$option->slug?>" data-taxonomy="<?=$option->taxonomy?>"><?=$option->name?></option>
+                    <?php
+                        endforeach;
+                    ?>
                 </select>
 
-                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
-                    <option value="title">By Role</option>
+                <?php $disabled = sizeof($block['role_select_options']) == 0 ? "disabled" : ""; ?>
+                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" id="sortby_role" <?=$disabled?>>
+                    <option value="">Filter by Role</option>
+                    <?php foreach($block['role_select_options'] as $option) : ?>
+                        <option class="option" value="<?=$option->slug?>" data-taxonomy="<?=$option->taxonomy?>"><?=$option->name?></option>
+                        <?php foreach($option->children as $option_children): ?>
+                                <option class="optgroup" value="<?=$option_children->slug?>" data-taxonomy="<?=$option_children->taxonomy?>"><?=$option_children->name?></option>
+                        <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </select>
 
-                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
-                    <option value="title">By Type</option>
+                <?php $disabled = sizeof($block['type_select_options']) == 0 ? "disabled" : ""; ?>
+                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" id="sortby_type" <?=$disabled?>>
+                    <option value="">Filter by Type</option>
+                    <?php
+                        foreach($block['type_select_options'] as $option) :?>
+                            <option value="<?=$option->slug?>" data-taxonomy="<?=$option->taxonomy?>"><?=$option->name?></option>
+                    <?php
+                        endforeach;
+                    ?>
                 </select>
+
+
 
             </form>
 
@@ -61,29 +84,38 @@ $sections    = get_sub_field($current . '_sections');
 
         <div class="col-12 clearfix|| my6">
 
-            <?php $i = 0; while($i < 6): ?>
+            <?php if(sizeof($block['posts']->posts) < 1 ) : ?>
+                <h4 class="h4 mb1 text-center">No talent to show.</h4>
+            <?php endif; ?>
 
-            <div class="col-12 md-col-6 || p4 left">
+            <?php
+                foreach($block['posts']->posts as $post) :
+            ?>
 
-                <h4 class="h4 mb1">Stacy M Unknown</h4>
-                <p class="bold mb2"><small class="inline-block mr4">Accrington</small><small>Permanent</small></p>
+                <div class="col-12 md-col-6 || p4 left">
 
-                <div class="block mb4"><span class="mr3 brand-primary">Roles available for</span>
+                    <h4 class="h4 mb1">Stacy M Unknown</h4>
+                    <p class="bold mb2"><small class="inline-block mr4">Accrington</small><small>Permanent</small></p>
 
-                    <ul class="inline-block tags tags-right right">
-                        <li>Administration</li>
-                        <li>Accounts Clerk</li>
-                        <li>Payroll</li>
-                    </ul>
+                    <div class="block mb4"><span class="mr3 brand-primary">Roles available for</span>
+
+                        <ul class="inline-block tags tags-right right">
+                            <li>Administration</li>
+                            <li>Accounts Clerk</li>
+                            <li>Payroll</li>
+                        </ul>
+                    </div>
+
+                    <p class="h6 pb4 || clearfix || border border-light border-bottom">
+                        Lorem ipsum dolor sit amet, consectetur adipiscingelit. Vivamus id finibus justo. Phasellus aliquet odio mi, ac accumsan justo consectetur ut. Phasellus bibendum dui nisi.
+                    </p>
+
                 </div>
 
-                <p class="h6 pb4 || clearfix || border border-light border-bottom">
-                    Lorem ipsum dolor sit amet, consectetur adipiscingelit. Vivamus id finibus justo. Phasellus aliquet odio mi, ac accumsan justo consectetur ut. Phasellus bibendum dui nisi.
-                </p>
 
-            </div>
-
-            <?php $i++; endwhile; ?>
+            <?php
+                endforeach;
+            ?>
 
         </div>
 

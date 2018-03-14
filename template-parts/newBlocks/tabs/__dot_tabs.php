@@ -8,16 +8,16 @@
  *
  * @version 1.00
  */
-
-$block['tabs']                           = get_sub_field($current . '_tabs');
-$block['tabs_settings']['tab_position']  = get_sub_field($current . '_position');
-$block['tabs_settings']['tab_size']      = get_sub_field($current . '_size');
-$block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
-$block['tabs_settings']['box_borders']   = get_sub_field($current . '_box_borders');
-$block['tabs_settings']['box_radius']    = get_sub_field($current . '_box_radius');
-
-$block['tabs_settings']['box_bg']        = get_sub_field($current . '_box_background');
-$block['tabs_settings']['box_bg']        = $block['tabs_settings']['box_bg']['system_background_colours'];
+//
+//$block['tabs']                           = get_sub_field($current . '_tabs');
+//$block['tabs_settings']['tab_position']  = get_sub_field($current . '_position');
+//$block['tabs_settings']['tab_size']      = get_sub_field($current . '_size');
+//$block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
+//$block['tabs_settings']['box_borders']   = get_sub_field($current . '_box_borders');
+//$block['tabs_settings']['box_radius']    = get_sub_field($current . '_box_radius');
+//
+//$block['tabs_settings']['box_bg']        = get_sub_field($current . '_box_background');
+//$block['tabs_settings']['box_bg']        = $block['tabs_settings']['box_bg']['system_background_colours'];
 
 $blockTitle = get_sub_field($current . '_title_title');
 $content    = get_sub_field($current . '_content');
@@ -146,6 +146,7 @@ $content    = get_sub_field($current . '_content');
 
     <?=($block['grid'] == 'container')? '</div>' : ""?>
 
+</section>
     <?php if($block['bgImage']['enable'] == true): ?>
 
         <div class="bg-image || absolute width-100 height-100 top-0 left-0 zn1 <?=$block['bgImage']['occupancy']?> <?=$block['bgImage']['tint']?> <?=$block['bgImage']['tintStrength']?>" style="background-image: url('<?=$block['bgImage']['image']['url']?>'); background-position: center; background-size: cover"></div>

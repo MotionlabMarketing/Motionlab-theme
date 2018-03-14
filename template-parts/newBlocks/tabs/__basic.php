@@ -10,17 +10,18 @@
  * @version 1.00
  */
 
-$block['tabs']                           = get_sub_field($current . '_tabs');
-$block['tabs_settings']['tab_position']  = get_sub_field($current . '_position');
-$block['tabs_settings']['tab_size']      = get_sub_field($current . '_size');
-$block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
-$block['tabs_settings']['box_borders']   = get_sub_field($current . '_box_borders');
-$block['tabs_settings']['box_radius']    = get_sub_field($current . '_box_radius');
-
-$block['tabs_settings']['box_bg']        = get_sub_field($current . '_box_background');
-$block['tabs_settings']['box_bg']        = $block['tabs_settings']['box_bg']['system_background_colours'];
+//$block['tabs']                           = get_sub_field($current . '_tabs');
+//$block['tabs_settings']['tab_position']  = get_sub_field($current . '_position');
+//$block['tabs_settings']['tab_size']      = get_sub_field($current . '_size');
+//$block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
+//$block['tabs_settings']['box_borders']   = get_sub_field($current . '_box_borders');
+//$block['tabs_settings']['box_radius']    = get_sub_field($current . '_box_radius');
+//
+//$block['tabs_settings']['box_bg']        = get_sub_field($current . '_box_background');
+//$block['tabs_settings']['box_bg']        = $block['tabs_settings']['box_bg']['system_background_colours'];
 
 // TODO: Add support for background images.
+
 ?>
 
 
@@ -63,7 +64,6 @@ $block['tabs_settings']['box_bg']        = $block['tabs_settings']['box_bg']['sy
                                 <?=$tab['column_1']['column_content']?>
 
                             </div>
-
 
                             <?php if (!empty($tab['column_1']['column_buttons'])): ?>
                                 <div class="mt3">
