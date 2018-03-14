@@ -949,9 +949,11 @@ jQuery(document).ready(function ($) {
 
             if ($(window).scrollTop() > ((headerHeight))) {
                 $('#main-logo').attr('src', headerLogoScroll);
+                // $('.logo-holder').css('background', 'transparent');
                 $('header').addClass("smallification");
             } else {
                 $('#main-logo').attr('src', headerLogo);
+                // $('.logo-holder').removeAttr('style');
                 $('header').removeClass("smallification");
             }
         }
@@ -1153,4 +1155,3 @@ jQuery(document).ready(function ($) {
     });
 
 })(jQuery);
-

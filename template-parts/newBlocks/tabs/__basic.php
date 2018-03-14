@@ -46,7 +46,7 @@ $block['tabs_settings']['box_bg']        = $block['tabs_settings']['box_bg']['sy
 
             <?php $i = 1; foreach ($block['tabs'] as $tab): ?>
 
-                <section id="tab<?=$i?>" class="tab-content || <?=($i > 1)? 'hide' : '' ?> p4">
+                <section id="tab<?=$i?>" class="tab-content || <?=($i > 1)? 'hide' : '' ?>">
 
                     <?php if (!empty($tab['column_1']['column_content'])): ?>
 
