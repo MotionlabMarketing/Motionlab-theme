@@ -50,9 +50,46 @@ add_action( 'after_setup_theme', 'motionlabtheme_setup' );
 /*==================================================================
 CUSTOM POST TYPE REGISTRATION CONTROLLER
 ==================================================================*/
+
 add_action('init', 'ml_register_custom_post_types', 0);
 function ml_register_custom_post_types() {
 	include_once(CONTROLLERS_DIR . 'CPTController.php');
+}
+
+/*==================================================================
+ML BLOCKS - AJAX CONTROL
+==================================================================*/
+add_action( 'wp_ajax_update_block', 'ml_update_block' );
+add_action( 'wp_ajax_nopriv_update_block', 'ml_update_block' );
+function ml_update_block() {
+
+	if( have_rows('building_blocks', $_POST['page_id']) ) :
+	    while ( have_rows('building_blocks', $_POST['page_id']) ) :
+	        the_row();
+
+	        // Varibales for the Blocks – TODO: Needs looking over!
+	        include(get_template_directory() .'/inc/block-variables.php');
+
+	        // CHECK FOR NEW BLOCKS //
+	        if ($_POST['block_name'] == get_row_layout()):
+
+	            $current = get_row_layout();
+	            include (BLOCKS_DIR . '_blocks_settings.php');
+
+	            if ($block['enabled'] == true || empty($block['enabled'])): // TODO: ONCE ALL BLOCKS ARE UPDATED THIS NEED TO BE UPDATED.
+
+	                // TODO: Need to move blocks folder structure and update the routing.
+		            if(file_exists(MODELS_DIR . '_' . $current . '.php')) {
+						include_once(CONTROLLERS_DIR . 'BlocksController.php');
+		            } else {
+	                    include(BLOCKS_DIR . '_'. $current .'.php');
+		            }
+
+	            endif;
+	        endif;
+	    endwhile;
+	endif;
+	die();
 }
 
 

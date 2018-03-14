@@ -5,14 +5,15 @@
  * Date: 01/03/18
  * Time: 11:57
  */
-Class _block_tabs {
+Class _block_tabs
+{
 
 	private $current;
 	private $layout;
 	private $block = [];
 	private $category_slug = 'multi_category';
 
-	public function __construct($block, $current, $post_vars) {
+	public function __construct($block, $current) {
 
 		$this->block = $block;
 		$this->current = $current;
