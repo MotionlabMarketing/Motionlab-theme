@@ -17,16 +17,24 @@ $block['pod']['bgColour']  = get_sub_field($current . '_bgColour_system_backgrou
 $block['pod']['textAlign'] = get_sub_field($current . '_txtAlign_align');
 $block['pod']['textColor'] = get_sub_field($current . '_txtColor_system_text_colours');
 
-$blockTitle = $block['title'];
+$block['pod']['padding']   = get_sub_field($current . '_padding_system_padding');
+
+$blockTitle = $block['title']; // REMOVE WHEN ALL UPDATED
+$block['content']['title'] = $block['title'];
 
 $temp['columns']           = get_sub_field($current . '_columns');
 
-if ($temp['columns']  == 4):
-    $block['columns'] = "col-6 sm-col-3";
-elseif ($temp['columns']  == 5):
-    $block['columns'] = "col-grid-5";
-endif;
-
+switch ($temp['columns']):
+    case "3":
+        $block['columns'] = "col-12 sm-col-12 md-col-4";
+        break;
+    case "4":
+        $block['columns'] = "col-12 md-col-3";
+        break;
+    case "5":
+        $block['columns'] = "col-grid-5";
+        break;
+endswitch;
 
 switch ($block['layout']):
     case "icon_usp":
@@ -41,7 +49,24 @@ switch ($block['layout']):
     case "benefits":
         include('pods/__benefits.php');
         break;
+    case "pillars_icons":
+        $block['content']  = get_sub_field($current . '_icons');
+        include('pods/__'.$block['layout'].'.php');
+        break;
+    case "belowTitle":
+        $block['content']  = get_sub_field($current . '_basic');
+        include('pods/__belowTitle.php');
+        break;
+    case "row":
+        $block['content']  = get_sub_field($current . '_basic');
+        include('pods/__row.php');
+        break;
+    case "column":
+        $block['content']  = get_sub_field($current . '_basic');
+        include('pods/__column.php');
+        break;
     default:
-        include('pods/__basic.php');
+        $block['content']  = get_sub_field($current . '_basic');
+        include('pods/__column.php');
         break;
 endswitch;

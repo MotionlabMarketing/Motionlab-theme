@@ -21,7 +21,7 @@ jQuery(document).ready(function ($) {
     /*========================
     Animate On Scroll
     ==========================*/
-    AOS.init();
+    // AOS.init();
 
     /*========================
     Mobile Menu
@@ -347,6 +347,85 @@ jQuery(document).ready(function ($) {
         ]
     });
 
+    $('[data-slick="galleryGridPanels-slider"]').slick({
+        slidesToShow: 1,
+        variableWidth: false,
+        autoplay: false,
+        autoplaySpeed: 3000,
+        arrows: true,
+        draggable: false,
+        pauseOnHover: false,
+        mobileFirst: false
+    });
+
+    $('[data-slick="storeSlidingPanels-slider"]').slick({
+        slidesToShow: 5,
+        variableWidth: false,
+        autoplay: false,
+        autoplaySpeed: 3000,
+        arrows: true,
+        draggable: false,
+        pauseOnHover: false,
+        mobileFirst: false,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 960,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
+        ]
+    });
+
+    if($('[data-slick="storeSlidingPanels-slider"]').length) {
+        productsZoom();
+    }
+    $('[data-slick="storeSlidingPanels-slider"]').on('beforeChange', function() {
+        productsZoom();
+    });
+
+    function productsZoom() {
+            var number;
+
+            if ($(window).width() > 1200) {
+                number = 3;
+            } else if ($(window).width() > 600) {
+                number = 2;
+            }
+
+            $(".panels").each( function () {
+                $(this).removeClass('animate');
+                // $(this).css("transform", "scale(0.8)");
+                // $(this).animate({transform: "scale(0.8)"}, 5000, 'linear');
+            });
+
+            setTimeout(function() {
+                $(".panels.slick-active:eq(2)").each(function () {
+                    // $(this).css("transform", "scale(1)");
+                    $(this).addClass('animate');
+                    // $(this).animate({transform: "scale(1)"}, 500, 'linear');
+                });
+            }, 100);
+    }
+
     $('.js-hero-slider-image').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -402,6 +481,7 @@ jQuery(document).ready(function ($) {
         asNavFor: '.productSliderNav',
         infinite: true,
     });
+
     $('.productSliderNav').slick({
         speed: 800,
         slidesToShow: 3,
@@ -518,10 +598,11 @@ jQuery(document).ready(function ($) {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
             var target = $(this.hash);
             var headerHeight = $('header').outerHeight();
+            var stickyNav = $('.stick-menu').height();
             target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
             if (target.length) {
                 $('html,body').animate({
-                    scrollTop: target.offset().top - headerHeight
+                    scrollTop: target.offset().top - headerHeight - stickyNav - 20
                 }, 750);
                 return false;
             }
@@ -692,10 +773,6 @@ jQuery(document).ready(function ($) {
     UNSTICK FIXED POSITION ELEMENT (used on case study page)
     ========================================================*/
 
-    $('.product-tile button').click(function () {
-        alert('hi')
-    });
-
     function stickyDiv() {
         if ($('[data-stick]').length) {
             var div = $('[data-stick]');
@@ -717,6 +794,33 @@ jQuery(document).ready(function ($) {
     $(window).on('resize', function () {
         stickyDiv();
     });
+
+
+
+    /**
+     * VIDEO STORIES
+     * This funciton updates the video watching box with the selected video and data. This also marks the current video
+     * with a border.
+     *
+     * @created 12 Mar 2018
+     * @author Joe Curran
+     * @version 1.00
+     */
+    $('.video-embed').on('click', function(e) {
+        e.preventDefault();
+
+        // RESET THE BORDERS FOR ALL ELEMENTS.
+        $($(this).parent()).each(function() {
+            $(this).find('img').removeClass('border-light-1').addClass('border-transparent');
+        });
+
+        // ADD THE NEW VIDEO TO THE VIDEO BOX.
+        $(this).find("img").removeClass('border-transparent').addClass('border-light-1');
+        $('.video-embed-frame').html($(this).find('iframe').clone().attr('width', '100%').attr('height', '280'));
+        $('.video-embed-author').html($(this).find('.video-title').text());
+        $('.video-embed-role').html($(this).find('.video-role').text());
+    });
+
 
 }); // ENDS DOC READY AT TOP
 

@@ -25,16 +25,17 @@
 
                         <div class="head p4 bg-primary">
 
-                            <h2 class="mb2"><?=$section['title']?></h2>
+                            <?=wp_get_attachment_image($section['button_icon']['id'], array(42, 42), "", ['class' => 'size-42x42 mr2 mb2'])?>
+
+                            <h3 class="mb2"><?=$section['title']?></h3>
 
                             <p class="mb0 h5"><?=$section['description']?></p>
 
                         </div>
 
-                        <div class="footer || relative text-left white p4 h5 pb6 js-match-height-alt">
+                        <div class="footer || relative text-left white p4 h5 pb6 js-match-height-alt overflow-hidden">
 
                             <?=$section['service_list']?>
-
 
                             <div class="absolute bottom-2 md-width-100">
                                 <?php if (!empty($section['button_link']['url'])): ?>
@@ -55,6 +56,8 @@
                                     </select>
                                 <?php endif; ?>
                             </div>
+
+                            <?=wp_get_attachment_image($section['icon'], array(220, 220), "", ['class' => 'absolute bottom-1 right-0 size-220x220 opacity-2', 'style' => 'margin-right: -4rem'])?>
 
                         </div>
 

@@ -1,16 +1,23 @@
 <header class="width-100 top-0 fixed z5 border-bottom border-light border-lighten-3" id="masthead" data-role="header">
 
     <!-- desktop header view -->
-    <div class="display-none lg-block">
-        <div class="holder || bg-repeat <?=(!is_front_page())? "bg-white" : "";?> flex">
-            <div class="self-stretch flex items-center || logo-wrapper ml4 bg-brand-primary hover-bg-brand-dark mbn4">
-                <a href="/" class="logo block px2 bg-brand-primary hover-bg-brand-dark white fw400 js-match-parent">
-                    <img src="<?php the_field('brand_logo', 'options') ?>" alt="" class="block mx-auto">
+    <div class="header-size <?=(!is_front_page())? "bg-white" : "";?> display-none lg-block">
+        <div class="holder || bg-repeat flex">
+
+            <div class="self-stretch flex items-center flex-wrap flex-column || logo-wrapper ml4 mbn4">
+                <a href="/" class="logo block white">
+                    <img src="<?=get_field('brand_logo', 'options')?>" alt="" id="main-logo" class="block mx-auto" data-logo="<?=get_field('brand_logo', 'options')?>" data-scrolllogo="<?=get_field('brand_logo_white', 'options')?>">
+                    <img src="<?=get_field('brand_logo_white', 'options')?>" style="display: none">
                 </a>
+
+                <?php GLOBAL $post; $parent_id = wp_get_post_parent_id($post); if ($parent_id !== 0): ?>
+
+                    <a href="<?=get_permalink($parent_id)?>" class="mt3 white bold flex-row">Back</a>
+
+                <?php endif; ?>
             </div>
 
-
-            <div class="flex-auto width-100 black text-right border-bottom border-solid border-light">
+            <div class="header-size flex-auto width-100 black text-right border-bottom border-solid border-light">
                 <?php include(get_template_directory() .'/template-parts/global/menus/top_menu.php')?>
                 <div class="flex">
                     <div class="flex-auto" toggle-relative-search>
@@ -18,6 +25,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 

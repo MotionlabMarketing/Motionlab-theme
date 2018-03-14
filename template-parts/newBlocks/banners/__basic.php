@@ -56,7 +56,7 @@ if ($banner['image']['overlay'] == true):
     $banner['image']['overlayStrength'] = get_sub_field($current . '_image_overlay_strength');
 
 endif; ?>
-<section id="<?=$block['custom_id']?>" class="clearfix relative z0 overflow-hidden <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> overlay-<?=$banner['align']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section id="<?=$block['custom_id']?>" class="banner || clearfix relative z0 overflow-hidden <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> overlay-<?=$banner['align']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>" data-block-layout="<?=$block['layout']?>">
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
@@ -72,7 +72,9 @@ endif; ?>
 
                 <div class="flex items-center justify-<?=$banner['align']?> || z-index-50 absolute width-100 height-100 || p3 md-p6">
 
-                    <div class="content || width-100 || mt6 p4 z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
+                    <div class="content || width-100 || mtn6 p4 z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
+
+                        <?=($banner['text-align'] == "text-center")? '<div class="container px7">' : ''; // IF THE TEXT IS CENTERED CONTAIN ITS WIDTH. ?>
 
                         <?php if (!empty($banner['logos']['before']['url'])): ?>
 
@@ -96,7 +98,7 @@ endif; ?>
                         <?php /*MAIN*/ $blockTitle = $banner['title'];
                         if (!empty($blockTitle[0]['title'])): ?>
 
-                            <div class="title || mt4 mb2">
+                            <div class="title">
 
                                 <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
 
@@ -120,7 +122,7 @@ endif; ?>
 
                         <?php if (!empty($banner['content'])): ?>
 
-                            <div class="wysiwyg || my4 limit-p limit-p-60">
+                            <div class="wysiwyg || my4 <?=($banner['align'] == 'center')? 'limit-p limit-p-70':'';?>">
 
                                 <?=$banner['content']?>
 
@@ -131,7 +133,14 @@ endif; ?>
                         <div class="mt4">
                         <?php foreach ($banner['buttons'] as $button): ?>
 
-                                <a href="<?=$button['buttons_button_link']['url']?>" class="btn btn-medium <?=$button['buttons_system_text_colours']?> <?=$button['buttons_system_background_colours']?>" <?=($button['buttons_button_link']['title'] ? 'title="'.$button['button']['title'].'"' : '')?> <?=($button['buttons_button_link']['target'] ? 'target="'.$button['button']['target'].'"' : '')?> ><?=$button['buttons_button_link']['title']?></a>
+                                <a href="<?=$button['buttons_button_link']['url']?>" class="btn btn-medium mx4 min-width-8 <?=$button['buttons_system_text_colours']?> <?=$button['buttons_system_background_colours']?>" <?=($button['buttons_button_link']['title'] ? 'title="'.$button['button']['title'].'"' : '')?> <?=($button['buttons_button_link']['target'] ? 'target="'.$button['button']['target'].'"' : '')?>>
+
+                                    <?php if (!empty($button['buttons_button_icon']['id'])): ?><div class="flex items-center"><?=wp_get_attachment_image($button['buttons_button_icon']['id'], array(32, 32), "", ['class' => 'size-32x32 mr2'])?> <?php endif; ?>
+
+                                        <?=$button['buttons_button_link']['title']?>
+
+                                    <?php if (!empty($button['buttons_button_icon']['id'])): ?></div><?php endif; ?>
+                                </a>
 
                         <?php endforeach; ?>
                         </div>
@@ -141,6 +150,8 @@ endif; ?>
                             <img src="<?=$banner['logos']['after']['url']?>" alt="<?=$banner['logos']['after']['alt']?>" class="logo-bottom || block mt3 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
 
                         <?php endif; ?>
+
+                        <?=($banner['text-align'] == "text-center")? '</div>' : ''; // IF THE TEXT IS CENTERED CONTAIN END ITS CONTAINMENT. ?>
 
                     </div>
 

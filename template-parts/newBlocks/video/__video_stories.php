@@ -39,7 +39,7 @@ foreach ($videosAll as $video):
     $i++;
 endforeach; ?>
 
-<section id="<?=$block['custom_id']?>" class="video-stories  || relative clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=($block['grid'] == 'full_width')? $block['background']['colour'] : ""?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section id="<?=$block['custom_id']?>" class="video-stories || relative clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=($block['grid'] == 'full_width')? $block['background']['colour'] : ""?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
 
     <?=($block['grid'] == 'container' || $block['grid'] == 'full_width')? '<div class="container '.$block['background']['colour'].'">' : ""?>
 
@@ -62,47 +62,67 @@ endforeach; ?>
 
             <div class="">
 
-                <?php $i = 1; foreach ($videos as $video): while ($i < $videosShow): ?>
+                <?php $i = 1; foreach ($videos as $video): ?>
 
-                    <div class="video || inline-block">
+                    <div class="video video-embed || inline-block" data-id="video-<?=$block['id']?>-<?=$i?>">
 
-                        <a href="<?=$videos[$i]['link']?>" class="inline-block mr2">
-                            <?= wp_get_attachment_image($videos[$i]['thumbnail_id'], array(120, 140), "", ["class" => "box-shadow-1"]  )?>
+                        <a href="<?=$videos[$i]['link']?>" class="inline-block">
+                            <?= wp_get_attachment_image($videos[$i]['thumbnail_id'], array(120, 140), "", ["class" => "box-shadow-1 border-transparent border-2 border-top border-bottom border-left border-right"]  )?>
                         </a>
-                        <p class="h7 <?=$txtColor?> white" style="max-width: 120px; font-size: 0.8rem"><?=$videos[$i]['title']?></p>
+                        <p class="video-title h7 <?=$txtColor?> white" style="max-width: 120px; font-size: 0.8rem"><?=$videos[$i]['title']?></p>
+
+                        <div class="embed" style="display: none;">
+
+                            <?php if ($videos[$i]['source'] == "youtube"): ?>
+
+                                <iframe width="100%" height="280" src="https://www.youtube.com/embed/<?=$videos[$i]['id']?>" frameborder="0" allow="encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+                            <?php else: // Vimeo ?>
+
+                                <iframe src="https://player.vimeo.com/video/<?=$videos[$i]['id']?>?portrait=0&badge=0" width="100%" height="280" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+                            <?php endif; ?>
+
+                            <p class="video-role"><?=$videos[$i]['role']?></p>s
+
+                        </div>
 
                     </div>
 
-                    <?php $i++; endwhile; endforeach; ?>
+                    <?php $i++; endforeach; ?>
             </div>
 
         </div>
 
         <div class="col col-12 md-col-6 ||  md-pl5 md-pr0">
 
+            <div class="video-embed-frame">
+
             <?php if (get_sub_field('block_videos_embed') == true): ?>
 
-                <?php if ($videos[$videosShow]['source'] == "youtube"): ?>
+                <?php if ($videos[1]['source'] == "youtube"):  ?>
 
-                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/<?=$videos[$videosShow]['id']?>" frameborder="0" allow="encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/<?=$videos[1]['id']?>" frameborder="0" allow="encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
                 <?php else: // Vimeo ?>
 
-                    <iframe src="https://player.vimeo.com/video/<?=$videos[$videosShow]['id']?>?portrait=0&badge=0" width="100%" height="272" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <iframe src="https://player.vimeo.com/video/<?=$videos[1]['id']?>?portrait=0&badge=0" width="100%" height="280" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
                 <?php endif; ?>
 
             <?php else: ?>
 
-                <a href="<?=$videos[$videosShow]['link']?>" class="block relative">
-                    <img src="<?=$videos[$videosShow]['thumbnail']?>" alt="<?=$videos[$videosShow]['title']?>" class="box-shadow-1">
-                    <div class="absolute px4 py2 bottom-0 right-0 bg-brand-primary white" style="margin-bottom: 0.4rem"><?=$videos[$videosShow]['length']?></div>
+                <a href="<?=$videos[1]['link']?>" class="block relative">
+                    <img src="<?=$videos[1]['thumbnail']?>" alt="<?=$videos[1]['title']?>" class="box-shadow-1">
+                    <div class="absolute px4 py2 bottom-0 right-0 bg-brand-primary white" style="margin-bottom: 0.4rem"><?=$videos[1]['length']?></div>
                 </a>
 
             <?php endif; ?>
 
-            <h3 class="h3 <?=$txtColor?> px2 mt3 md-mt3 mb0"><?=$videos[$videosShow]['author']?></h3>
-            <p class="px2 h4 <?=$txtColor?> muted mb0"><?=$videos[$videosShow]['role']?></p>
+            </div>
+
+            <h3 class="video-embed-author h3 <?=$txtColor?> px2 mt3 md-mt3 mb0"><?=$videos[1]['author']?></h3>
+            <p class="video-embed-role px2 h4 <?=$txtColor?> muted mb0"><?=$videos[1]['role']?></p>
 
         </div>
 

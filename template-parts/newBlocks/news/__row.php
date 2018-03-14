@@ -32,13 +32,17 @@
 
                     <div class="col col-12 md-col-5">
 
-                        <?= wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1"]) // NEEDS IMAGE ID ADDING. ?>
+                        <a href=""></a>
+                            <?= wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1"]) // NEEDS IMAGE ID ADDING. ?>
+                        </a>
 
                     </div>
 
                     <div class="col col-12 md-col-7 py2 md-p4">
 
-                        <p class="h6 mt2 sm-mb0 md-left bold sm-inline <?=$block['content']['txtColor']?>">2 March 2018</p>
+                        <?php if ($block['content']['date'] == true): ?>
+                            <p class="h6 mt2 sm-mb0 md-left bold sm-inline <?=$block['content']['txtColor']?>">2 March 2018</p>
+                        <?php endif; ?>
 
                         <ul class="inline-block tags tags-right sm-right border-radius cursor-pointer">
                             <li>Administration</li>
@@ -48,11 +52,13 @@
 
                         <div class="clearfix <?=$block['content']['txtColor']?>">
 
-                            <h3 class="mb1 brand-primary" style="font-size: 1.3rem">The Blog Title should be added to this post listing here</h3>
+                            <h3 class="mb1 brand-primary" style="font-size: 1.3rem"><a href="">Blog Title should be added to this post listing here</a></h3>
 
                             <p class="h6">Vivamus ipsum lorem, elementum sed volutpat non, dapibus sit amet ante. Sed congue mollis neque non posuere. Nulla nec velit condimentum quam fermentum bibendum. Curabitur condimentum ante vitae tincidunt volutpat.</p>
 
-                            <a href="/" class="block brand-primary bold">Read More</a>
+                            <?php if($block['content']['buttons'] = true): ?>
+                                <a href="/" class="btn <?=$block['content']['button']['button_text_colour']['system_text_colours']?> <?=$block['content']['button']['button_background_colour']['system_background_colours']?> bold "><?=$block['content']['button']['button_link']['title']?></a>
+                            <?php endif; ?>
 
                         </div>
 
