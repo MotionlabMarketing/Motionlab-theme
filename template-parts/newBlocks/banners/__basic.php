@@ -56,7 +56,7 @@ if ($banner['image']['overlay'] == true):
     $banner['image']['overlayStrength'] = get_sub_field($current . '_image_overlay_strength');
 
 endif; ?>
-<section id="<?=$block['custom_id']?>" class="banner || clearfix relative z0 overflow-hidden <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> overlay-<?=$banner['align']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section id="<?=$block['custom_id']?>" class="banner || clearfix relative z0 overflow-hidden <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> overlay-<?=$banner['align']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>" data-block-layout="<?=$block['layout']?>">
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
@@ -73,6 +73,8 @@ endif; ?>
                 <div class="flex items-center justify-<?=$banner['align']?> || z-index-50 absolute width-100 height-100 || p3 md-p6">
 
                     <div class="content || width-100 || mtn6 p4 z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
+
+                        <?=($banner['text-align'] == "text-center")? '<div class="container px7">' : ''; // IF THE TEXT IS CENTERED CONTAIN ITS WIDTH. ?>
 
                         <?php if (!empty($banner['logos']['before']['url'])): ?>
 
@@ -148,6 +150,8 @@ endif; ?>
                             <img src="<?=$banner['logos']['after']['url']?>" alt="<?=$banner['logos']['after']['alt']?>" class="logo-bottom || block mt3 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
 
                         <?php endif; ?>
+
+                        <?=($banner['text-align'] == "text-center")? '</div>' : ''; // IF THE TEXT IS CENTERED CONTAIN END ITS CONTAINMENT. ?>
 
                     </div>
 

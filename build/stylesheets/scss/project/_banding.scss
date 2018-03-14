@@ -1106,18 +1106,6 @@ hr.border-5 {
   }
 }
 
-.stick-menu {
-  left:0;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  z-index: 150;
-  position: fixed;
-  transform: translate3d(0px, 0px, 0px);
-  background-color: $brand-white;
-  border-bottom:  1px solid $brand-grayLightest;
-}
-
 // ------ TEMPLATES AND SINGLE STYLES ------ //
 
 // LISTING TESTIMONIALS //
@@ -1970,6 +1958,29 @@ hr.border-5 {
   }
 }
 
+.stick-menu {
+  left:0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  z-index: 150;
+  position: fixed;
+  transform: translate3d(0px, 0px, 0px);
+  background-color: $brand-white;
+  border-bottom:  1px solid $brand-grayLightest;
+
+  a.active {
+
+    &:after {
+      content: none;
+    }
+
+    &:hover {
+      color: $brand-white !important;
+    }
+  }
+}
+
 .video-basic {
 
   .video {
@@ -2033,6 +2044,12 @@ hr.border-5 {
   .slick-track {
     height: 100%;
   }
+}
 
-
+.panels {
+  transform: scale(0.8);
+  transition: all 200ms;
+}
+.panels.animate {
+  transform: scale(1);
 }
