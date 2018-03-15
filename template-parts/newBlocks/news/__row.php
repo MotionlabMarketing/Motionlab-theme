@@ -25,32 +25,38 @@
 
                     <div class="col col-12 md-col-5">
 
-                        <a href=""></a>
-                            <?= wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1"]) // NEEDS IMAGE ID ADDING. ?>
-                        </a>
+                        <?php if (has_post_thumbnail( $post->ID ) ): ?>
+                            <a href="<?=$post->guid?>">
+                                <?= wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), "large", "", ["class" => "box-shadow-1 js-match-height"] ) ?>
+                            </a>
+                        <?php else: ?>
+                            <a href="<?=$post->guid?>">
+                                <?= wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1 js-match-height"]) // TODO: Default Image ?>
+                            </a>
+                        <?php endif; ?>
 
                     </div>
 
                     <div class="col col-12 md-col-7 py2 md-p4">
 
                         <?php if ($block['content']['date'] == true): ?>
-                            <p class="h6 mt2 sm-mb0 md-left bold sm-inline <?=$block['content']['txtColor']?>">2 March 2018</p>
+                            <p class="h6 mt2 sm-mb0 md-left bold sm-inline <?=$block['content']['txtColor']?>"><?=date('d M Y', strtotime($post->post_date));?></p>
                         <?php endif; ?>
 
                         <ul class="inline-block tags tags-right sm-right border-radius cursor-pointer">
-                            <li>Administration</li>
-                            <li>Accounts Clerk</li>
-                            <li>Payroll</li>
+                            <?php foreach($post->categories as $category) : ?>
+                                <li><?=$category->name?></li>
+                            <?php endforeach; ?>
                         </ul>
 
                         <div class="clearfix <?=$block['content']['txtColor']?>">
 
-                            <h3 class="mb1 brand-primary" style="font-size: 1.3rem"><a href="">Blog Title should be added to this post listing here</a></h3>
+                            <h3 class="mb1 brand-primary" style="font-size: 1.3rem"><a href=""><?=$post->post_title?></a></h3>
 
-                            <p class="h6">Vivamus ipsum lorem, elementum sed volutpat non, dapibus sit amet ante. Sed congue mollis neque non posuere. Nulla nec velit condimentum quam fermentum bibendum. Curabitur condimentum ante vitae tincidunt volutpat.</p>
+                            <p class="h6"><?=sizeof($post->excerpt) > 1 ? $post->excerpt : substr($post->post_content,0, 100);?></p>
 
                             <?php if($block['content']['buttons'] = true): ?>
-                                <a href="/" class="btn <?=$block['content']['button']['button_text_colour']['system_text_colours']?> <?=$block['content']['button']['button_background_colour']['system_background_colours']?> bold "><?=$block['content']['button']['button_link']['title']?></a>
+                                <a href="<?=$post->guid?>" class="btn <?=$block['content']['button']['button_text_colour']['system_text_colours']?> <?=$block['content']['button']['button_background_colour']['system_background_colours']?> bold "><?=$block['content']['button']['button_link']['title']?></a>
                             <?php endif; ?>
 
                         </div>

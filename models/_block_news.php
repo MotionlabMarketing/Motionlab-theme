@@ -21,7 +21,7 @@ Class _block_news
 
 		$this->loadBlockSettings();
 
-		$this->fetchPosts();
+		$this->fetchLatestPosts();
 
 	}
 
@@ -70,7 +70,7 @@ Class _block_news
 
 	}
 
-	private function fetchPosts() {
+	private function fetchLatestPosts() {
 
 		if($this->block['content']['type'] == "latest") {
 
@@ -82,10 +82,22 @@ Class _block_news
 
 			$this->block['posts'] = new WP_Query( $args );
 
+			foreach($this->block['posts']->posts as $key => $post) {
+
+				$this->block['posts']->posts[$key]->categories = get_the_terms($post->ID, 'category');
+
+			}
+
 		} else {
 
 			foreach(get_sub_field('block_news_articles') as $post_id) {
 				$this->block['posts']->posts[] = get_post($post_id);
+			}
+
+			foreach($this->block['posts']->posts as $key => $post) {
+
+				$this->block['posts']->posts[$key]->categories = get_the_terms($post->ID, 'category');
+
 			}
 		}
 
