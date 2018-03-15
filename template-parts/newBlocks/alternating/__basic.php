@@ -68,12 +68,8 @@
         <div class="col col-12 md-col-6 p4 lg-p6 <?=$block['content']['align']?> <?=$block['content']['color']?> js-match-height  items-center">
 
             <div data-imatchto="video">
-                <?php $blockTitle = $block['content']['title'];
-                if (!empty($blockTitle[0]['title'])): ?>
-                    <div class="mb2">
-                        <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
-                    </div>
-                <?php endif; ?>
+
+                <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}", "mb2"); ?>
 
                 <?php if (!empty($block['content']['content'])): ?>
                     <div class="wysiwyg">
