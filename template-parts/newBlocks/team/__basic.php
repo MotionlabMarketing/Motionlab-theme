@@ -9,17 +9,7 @@
  * @version 1.00
  */
 
-$membersShow = get_sub_field('number_of_profiles');
-$bgColor     = get_sub_field('profile_background_system_background_colours');
-$txtColor    = get_sub_field('block_team_text_system_text_colours');
-
-$blockTitle  = get_sub_field('block_team_title_title');
-
-$button = get_sub_field('block_team_page');
-
-// BACKEND NOTES – REMOVE ONCE ADDED
-// Get posts from Custom Post Type.
-// $membersShow – Number of Items to show.
+pa($block);
 
 ?>
 
@@ -36,28 +26,29 @@ $button = get_sub_field('block_team_page');
             </div>
 
         </div>
+        <div class="flex justify-center">
+            <?php foreach($block['posts']->posts as $post) : ?>
+                <div class="member-box || col col-grid-5 p3 || hover-zoom">
 
-        <?php $i = 0; while ($i < 5): ?>
+                    <a href="{{ProfileLink}}" class="<?=$txtColor?>">
 
-        <div class="member-box || col col-grid-5 p3 || hover-zoom">
+                        <div class="member || pb2 || <?= $bgColor ?> box-shadow-3 || zoom">
 
-            <a href="{{ProfileLink}}" class="<?=$txtColor?>">
+                            <?php //TODO: Update default image URL - currently using outside source. ?>
 
-                <div class="member || pb2 || <?= $bgColor ?> box-shadow-3 || zoom">
+                            <?php $image_url = isset(get_field("staff_profileImage", $post->ID)['url']) ? get_field("staff_profileImage", $post->ID)['url'] : 'http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg'; ?>
+                            <div class="profile || mb2" style="background: url('<?=$image_url;?>'); background-position: center; background-size: cover;"></div>
 
-                    <div class="profile || mb2" style="background: url('http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg'); background-position: center; background-size: cover;"></div>
+                            <h4 class="mt3 mb1 <?=$txtColor?>"><?=get_field('staff_name', $post->ID);?></h4>
+                            <p class="postion mb2"><?=get_field('staff_name', $post->ID);?></p>
 
-                    <h4 class="mt3 mb1 <?=$txtColor?>">Oscar</h4>
-                    <p class="postion mb2">Dog</p>
+                        </div>
+
+                    </a>
 
                 </div>
-
-            </a>
-
+            <?php endforeach; ?>
         </div>
-
-        <?php $i++; endwhile; ?>
-
         <?php if (!empty($button['button_link']['url'])): ?>
             <div class="mb5 clearfix || text-center">
 

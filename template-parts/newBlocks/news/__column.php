@@ -9,7 +9,6 @@
  *
  * @version 1.00
  */
-
 ?>
 
 <section id="<?=$block['custom_id']?>" class="clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
@@ -18,51 +17,48 @@
 
     <div class="col col-12 md-col-<?=$block['content']['cols'][0]?> mxn2 p2 js-height-match">
 
-        <?php if ($block['content']['type'] == "lastest"): ?>
+        <?php if( sizeof($block['posts']->posts) > 0 ) : ?>
 
-            <?php // THIS IS NEED TO OUTPUT THE SAME LAYOUT ?>
-
-        <?php elseif ($block['content']['type'] == "selected"): ?>
-
-            <?php // IDs OF SELECTED ARTICLES - pa($block['content']['articles']);?>
-
-            <?php $i = 0; while($i < 3): ?>
-
+            <?php foreach ($block['posts']->posts as $post) :?>
                 <div class="col col-12 md-col-4 mb4 p2">
 
-                    <a href="/">
-                        <?= wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1 js-match-height"]) // NEEDS IMAGE ID ADDING. ?>
-                    </a>
+                    <?php if (has_post_thumbnail( $post->ID ) ): ?>
+                        <a href="<?=$post->guid?>">
+                            <?= wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), "large", "", ["class" => "box-shadow-1 js-match-height"] ) ?>
+                        </a>
+                    <?php else: ?>
+                        <a href="<?=$post->guid?>">
+                            <?= wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1 js-match-height"]) // TODO: Default Image ?>
+                        </a>
+                    <?php endif; ?>
+
 
                     <div class="<?=$block['content']['txtColor']?> py2 px3">
 
                         <?php if ($block['content']['date'] == true): ?>
-                            <p class="h6 mt2 bold <?=$block['content']['txtColor']?>">2 March 2018</p>
+                            <p class="h6 mt2 bold <?=$block['content']['txtColor']?>"><?=date('d M Y', strtotime($post->post_date));?></p>
                         <?php endif; ?>
 
-                        <h3 class="mb2 brand-primary" style="font-size: 1.3rem"><a href="/">The Blog Title should be added to this post listing here</a></h3>
+                        <h3 class="mb2 brand-primary" style="font-size: 1.3rem"><a href="/"><?=$post->post_title?></a></h3>
 
-                        <p class="h5">Vivamus ipsum lorem, elementum sed volutpat non, dapibus sit amet ante. Sed congue mollis neque non posuere. Nulla nec velit condimentum quam fermentum bibendum. Curabitur condimentum ante vitae tincidunt volutpat.</p>
+                        <p class="h5"><?=sizeof($post->excerpt) > 1 ? $post->excerpt : substr($post->post_content,0, 100);?></p>
 
                         <?php if($block['content']['buttons'] = true): ?>
-                            <a href="/" class="btn <?=$block['content']['button']['button_text_colour']['system_text_colours']?> <?=$block['content']['button']['button_background_colour']['system_background_colours']?> bold "><?=$block['content']['button']['button_link']['title']?></a>
+                            <a href="<?=$post->guid?>" class="btn <?=$block['content']['button']['button_text_colour']['system_text_colours']?> <?=$block['content']['button']['button_background_colour']['system_background_colours']?> bold "><?=$block['content']['button']['button_link']['title']?></a>
                         <?php endif; ?>
 
                     </div>
 
                 </div>
+            <?php endforeach; ?>
 
-                <?php $i++; endwhile; ?>
-
-        <?php else: ?>
-
+        <?php else : ?>
             <div class="flex items-center justify-center flex-wrap <?=$block['content']['txtColor']?>">
 
                 <p class="h3 mb1">Sorry, no articles could be loaded.</p>
                 <p class="">Please check your selected options and that posts have been added to your site.</p>
 
             </div>
-
         <?php endif; ?>
 
     </div>
