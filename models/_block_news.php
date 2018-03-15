@@ -75,7 +75,7 @@ Class _block_news
 		if($this->block['content']['type'] == "latest") {
 
 			$args = array(
-				'posts_per_page'    => 4,
+				'posts_per_page'    => 3,
 				'paged'             => 1,
 				'post_type'         => 'post'
 			);
