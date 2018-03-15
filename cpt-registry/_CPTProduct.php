@@ -53,7 +53,7 @@ Class CPTProduct extends CPTCore{
 
 	public function registerTaxonomies() {
 
-		//Register SECTORS taxonomy
+		//Register PRODUCT CATEGORIES taxonomy
 		$labels = [
 			'name'              => _x( 'Product Categories', 'taxonomy general name' ),
 			'singular_name'     => _x( 'Product Category', 'taxonomy singular name' ),
@@ -75,6 +75,30 @@ Class CPTProduct extends CPTCore{
 			'show_admin_column' => true,
 			'query_var'         => true,
 			'rewrite'           => [ 'slug' => 'product_category' ],
+		] );
+
+		//Register COLOURS taxonomy
+		$labels = [
+			'name'              => _x( 'Product Colours', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Product Colour', 'taxonomy singular name' ),
+			'search_items'      => __( 'Search Colours' ),
+			'all_items'         => __( 'All Colours' ),
+			'parent_item'       => __( 'Parent Colour' ),
+			'parent_item_colon' => __( 'Parent Colour:' ),
+			'edit_item'         => __( 'Edit Colour' ),
+			'update_item'       => __( 'Update Colour' ),
+			'add_new_item'      => __( 'Add New Product Colour' ),
+			'new_item_name'     => __( 'New Product Colour Name' ),
+			'menu_name'         => __( 'Product Colours' ),
+		];
+
+		register_taxonomy( 'product_colours', [ 'products' ], [
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => [ 'slug' => 'product_colour' ],
 		] );
 	}
 
