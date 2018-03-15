@@ -1,12 +1,4 @@
 <?php
-/**
-* Mike Booth functions and definitions.
-*
-* @link https://developer.wordpress.org/themes/basics/theme-functions/
-*
-* @package motionlabtheme
-*/
-
 define("TEMPLATE_DIR", get_template_directory() . "/template-parts/");
 define("BLOCKS_DIR"  , get_template_directory() . "/template-parts/newBlocks/");
 define("CONTROLLERS_DIR"  , get_template_directory() . "/controllers/");
@@ -16,6 +8,23 @@ define("CHILD_CPT_DIR", get_stylesheet_directory() . "/cpt-registry/");
 
 define('WP_POST_REVISIONS', 2);
 
+/**
+ * INCLUDE ALL CUSTOM THEME FUNCTIONS.
+ *
+ * @added 15 Mar 2018
+ * @author Joe Curran
+ * @var  $filename
+ */
+foreach (glob(get_template_directory() . "/inc/_functions/*.php") as $filename) {
+    include $filename;
+}
+
+/**
+ * SET THE NUMBER OF POST REVISIONS TO KEEP.
+ *
+ * @added 15 Mar 2018
+ * @author Joe Curran
+ */
 add_filter( 'wp_revisions_to_keep', 'filter_function_name', 10, 2 );
 function filter_function_name( $num, $post ) {
     return $num;
