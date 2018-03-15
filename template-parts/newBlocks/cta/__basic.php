@@ -18,7 +18,7 @@
 
                 <div class="col col-12 || text-center p4">
 
-                    Hello
+
 
                 </div>
 

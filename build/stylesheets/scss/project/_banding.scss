@@ -92,8 +92,20 @@ h3, .h3 {
   color: $brand-base;
 }
 
-.hover-primary {
-  color: darken($brand-white, 20%);
+.hover-brand-primary:hover {
+  color: $brand-primary;
+}
+.hover-brand-secondary:hover {
+  color: $brand-secondary;
+}
+.hover-brand-tertiary:hover {
+  color: $brand-tertiary;
+}
+.hover-brand-quaternary:hover {
+  color: $brand-quaternary;
+}
+.hover-brand-base:hover {
+  color: $brand-base;
 }
 
 // BACKGROUND COLOURS //
@@ -413,28 +425,18 @@ header {
     max-height: 7.8rem;
   }
 
-  nav {
-    li {
-      &:last-child {
-        a {
-          padding-right: 0;
-        }
-      }
-    }
-  }
-
   &.smallification {
     background-color: $brand-primary;
 
     .holder {
       background-color: $brand-primary;
 
-      nav {
-        a {
-          color: white;
-        }
+      .logo-holder {
+        background: transparent !important;
       }
     }
+
+
 
     .logo-wrapper {
       margin-bottom: 0;
@@ -741,7 +743,8 @@ form {
 
     li label {
       width: 100%;
-      margin-left: 0.6rem;
+      display: block;
+      margin-left: 1rem;
     }
 
   }

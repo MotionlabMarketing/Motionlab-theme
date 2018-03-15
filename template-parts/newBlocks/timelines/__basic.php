@@ -30,7 +30,7 @@ foreach ($events as $item):
     $lineItems .= '{
             id: '.$i.',
             name: "'.$item['title'].'",
-            on: new Date('.date("Y", strtotime($item['date'])).', '.date("m", strtotime($item['date'])).', '.date("d", strtotime($item['date'])).')
+            on: new Date('.date("Y", strtotime(str_replace("/", "-", $item['date']))).', '.date("m", strtotime(str_replace("/", "-", $item['date']))).', '.date("d", strtotime(str_replace("/", "-", $item['date']))).')
         },';
     $i++;
 
@@ -64,7 +64,7 @@ endforeach;
             <select name="change" id="changeDropdown" style="min-width:13rem;" class="select md-mr3 width-100 md-width-auto my4">
                 <?php $i = 1; foreach ($events as $item): ?>
 
-                    <option value="<?=$i?>"><?=date("F - Y", strtotime($item['date']))?></option>
+                    <option value="<?=$i?>"><?=date("F Y", strtotime(str_replace("/", "-", $item['date'])))?></option>
 
                 <?php $i++; endforeach; ?>
             </select>
@@ -78,7 +78,7 @@ endforeach;
 
                     <div class="col col-12 md-col-6 p2 md-p4">
 
-                        <h3 class="brand-primary"><?=date("F Y", strtotime($item['date']))?> – <?=$item['title']?></h3>
+                        <h3 class="brand-primary"><?=date("F Y", strtotime(str_replace("/", "-", $item['date'])))?> – <?=$item['title']?></h3>
 
                         <?=$item['content']?>
 
