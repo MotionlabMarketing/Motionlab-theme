@@ -85,7 +85,7 @@ get_header(); ?>
                     <?php else: ?>
                         <div class="p4 || grid-item">
 
-                            <a href="$team_member->guid" class="<?= $txtColor ?>">
+                            <a href="<?=$team_member->guid?>" class="<?= $txtColor ?>">
 
                                 <div class="member || relative pb3 || bg-white box-shadow-3">
 
