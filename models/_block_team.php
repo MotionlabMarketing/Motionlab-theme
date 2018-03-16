@@ -27,7 +27,7 @@ Class _block_team
 
 	private function loadBlockSettings() {
 
-		$this->profile_count = get_sub_field('number_of_profiles');
+		$this->profile_count = get_sub_field('block_team_profiles');
 
 	}
 
