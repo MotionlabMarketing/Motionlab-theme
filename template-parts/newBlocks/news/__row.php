@@ -53,7 +53,7 @@
 
                             <h3 class="mb1 brand-primary" style="font-size: 1.3rem"><a href=""><?=$post->post_title?></a></h3>
 
-                            <p class="h6"><?=sizeof($post->excerpt) > 1 ? $post->excerpt : substr($post->post_content,0, 100);?></p>
+                            <p class="h6"><?= str_len($post->post_excerpt) > 1 ? $post->post_excerpt : substr($post->post_content,0, 100);?></p>
 
                             <?php if($block['content']['buttons'] = true): ?>
                                 <a href="<?=$post->guid?>" class="btn <?=$block['content']['button']['button_text_colour']['system_text_colours']?> <?=$block['content']['button']['button_background_colour']['system_background_colours']?> bold "><?=$block['content']['button']['button_link']['title']?></a>

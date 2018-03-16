@@ -8,6 +8,13 @@
 $blockTitle  = get_field('page_title');
 $blockTitle  = $blockTitle['title'];
 
+/* Load in team block controller to access posts easily. */
+include_once(MODELS_DIR . '_block_news.php');
+$news_controller = new _block_news(null, null);
+$posts = $news_controller->fetchFeedPosts(9);
+
+//pa($posts);
+
 get_header(); ?>
 
 <div class="clearfix ||  mt6" id="news-featuredListing">
@@ -29,32 +36,38 @@ get_header(); ?>
 
         <div class="col col-12 md-col-12 lg-col-12 || mb5 bg-smoke">
 
+	        <?php $latest_post = array_shift($posts->posts); ?>
             <div class="col col-12 md-col-6 || px5 md-p5 left md-right || flex items-center justify-center || js-match-height">
+                <?php if (has_post_thumbnail( $latest_post->ID ) ): ?>
+                    <?php $image_url = wp_get_attachment_image( get_post_thumbnail_id( $latest_post->ID ), "large", "", ["class" => "box-shadow-1 js-match-height"] ) ?>
+                <?php else: ?>
+                    <?php $image_url = wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1 js-match-height"]) // TODO: Default Image ?>
+                <?php endif; ?>
 
-                <img src="http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/pietro-de-grandi-329892-480x320.jpg" alt="{{ TITLE }}">
+                <?=$image_url?>
 
             </div>
 
+
             <div class="col col-12 md-col-6 || relative p5 right md-left || js-match-height">
 
-                <p class="left || pt2 h5">3 days ago</p>
+                <p class="left || pt2 h5"><?=date('d M Y', strtotime($latest_post->post_date));?></p>
 
                     <ul class="mt2 tags tags-right border-radius">
-                        <li><a href="">Item 1</a></li>
-                        <li><a href="">Item 2</a></li>
-                        <li><a href="">Item 3</a></li>
+                        <?php foreach($latest_post->categories as $category) : ?>
+                            <li><a href="<?=$category->taxonomy."/".$category->slug?>"><?=$category->Name?></a></li>
+                        <?php endforeach; ?>
                     </ul>
 
-                <h2 class="clear-both || mt5 || brand-primary">Cunning Mellor Ranked for Prestigious Investors in People Awards 2017</h2>
+                <h2 class="clear-both || mt5 || brand-primary"><?=$latest_post->post_title?></h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac magna leo. Morbi eros mi, aliquam sed ipsum et, accumsan feugiat eros. In porta tellus.</p>
+                <p><?= strlen($latest_post->post_excerpt) > 1 ? $latest_post->post_excerpt : substr($latest_post->post_content,0, 100);?></p>
 
-                <a href="#" class="md-absolute bottom-2 h5">Read full story</a>
+                <a href="<?=$latest_post->guid?>" class="md-absolute bottom-2 h5">Read full story</a>
 
             </div>
 
         </div>
-
         <div class="col col-12 md-col-12 lg-col-12 || mb5 px4 mxn2">
 
             <div class="col col-12 md-col-4">
@@ -90,83 +103,40 @@ get_header(); ?>
 
         <div class="col col-12 md-col-12 lg-col-12 mb4 mxn2">
 
-            <div class="col col-12 sm-col-6 md-col-3 lg-col-3 || p4 || js-match-height">
+            <?php foreach($posts->posts as $post) : ?>
 
-                <p class="h6 mb2">1st Jan, 18</p>
+                <?php if (has_post_thumbnail( $post->ID ) ): ?>
+                    <?php $image_url = wp_get_attachment_image_url( get_post_thumbnail_id( $post->ID ), "large", "", ["class" => "box-shadow-1 js-match-height"] ) ?>
+                <?php else: ?>
+                    <?php $image_url = wp_get_attachment_image_url(7303, "large", "", ["class" => "box-shadow-1 js-match-height"]) // TODO: Default Image ?>
+                <?php endif; ?>
 
-                <h3 class="h4 brand-primary">News Story Title</h3>
+                <div class="col col-12 sm-col-6 md-col-3 lg-col-3 || p4 || js-match-height">
 
-                <a href="#"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/pietro-de-grandi-329892-480x320.jpg');"></div></a>
+                    <p class="h6 mb2"><?=date('d M Y', strtotime($post->post_date));?></p>
 
-                <p class="h5 mb3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac magna leo. Morbi eros mi, aliquam sed ipsum et, accumsan feugiat eros. In porta tellus.</p>
+                    <h3 class="h4 brand-primary"><?=$post->post_title?></h3>
 
-                <a href="#" class="block mb4 || h5 bold">Read full story</a>
+                    <a href="#"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('<?=$image_url?>');"></div></a>
 
-                <ul class="tags border-radius">
-                    <li><a href="">Item 1</a></li>
-                    <li><a href="">Item 2</a></li>
-                </ul>
+                    <p class="h5 mb3"><?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr($post->post_content,0, 100);?></p>
 
-            </div>
+                    <a href="<?=$post->guid?>" class="block mb4 || h5 bold">Read full story</a>
 
-            <div class="col col-12 sm-col-6 md-col-3 lg-col-3 || p4 || js-match-height">
+                    <ul class="tags border-radius">
+                        <?php foreach($post->categories as $category) : ?>
+                            <li><a href="<?=$category->taxonomy."/".$category->slug?>"><?=$category->Name?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
 
-                <p class="h6 mb2">1st Jan, 18</p>
-
-                <h3 class="h4 brand-primary">News Story Title</h3>
-
-                <a href="#"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/pietro-de-grandi-329892-480x320.jpg');"></div></a>
-
-                <p class="h5 mb3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac magna leo. Morbi eros mi, aliquam sed ipsum et, accumsan feugiat eros. In porta tellus.</p>
-
-                <a href="#" class="block mb4 || h5 bold">Read full story</a>
-
-                <ul class="tags border-radius">
-                    <li><a href="">Item 1</a></li>
-                    <li><a href="">Item 2</a></li>
-                </ul>
-
-            </div>
-
-            <div class="col col-12 sm-col-6 md-col-3 lg-col-3 || p4 || js-match-height">
-
-                <p class="h6 mb2">1st Jan, 18</p>
-
-                <h3 class="h4 brand-primary">News Story Title</h3>
-
-                <a href="#"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/pietro-de-grandi-329892-480x320.jpg');"></div></a>
-
-                <p class="h5 mb3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac magna leo. Morbi eros mi, aliquam sed ipsum et, accumsan feugiat eros. In porta tellus.</p>
-
-                <a href="#" class="block mb4 || h5 bold">Read full story</a>
-
-                <ul class="tags border-radius">
-                    <li><a href="">Item 1</a></li>
-                    <li><a href="">Item 2</a></li>
-                </ul>
-
-            </div>
-
-            <div class="col col-12 sm-col-6 md-col-3 lg-col-3 || p4 || js-match-height">
-
-                <p class="h6 mb2">1st Jan, 18</p>
-
-                <h3 class="h4 brand-primary">News Story Title</h3>
-
-                <a href="#"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/pietro-de-grandi-329892-480x320.jpg');"></div></a>
-
-                <p class="h5 mb3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac magna leo. Morbi eros mi, aliquam sed ipsum et, accumsan feugiat eros. In porta tellus.</p>
-
-                <a href="#" class="block mb4 || h5 bold">Read full story</a>
-
-                <ul class="tags border-radius">
-                    <li><a href="">Item 1</a></li>
-                    <li><a href="">Item 2</a></li>
-                </ul>
-
-            </div>
-
+                </div>
+            <?php endforeach; ?>
+        <nav class="pagination || clearfix block text-center border-top border-darken-1 py4 mt5">
+            <span aria-current="page" class="page-numbers current">1</span>
+        </nav>
         </div>
+
+
 
     </div>
 
