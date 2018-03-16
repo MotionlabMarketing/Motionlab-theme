@@ -40,7 +40,7 @@ pa($block);
                             <div class="profile || mb2" style="background: url('<?=$image_url;?>'); background-position: center; background-size: cover;"></div>
 
                             <h4 class="mt3 mb1 <?=$txtColor?>"><?=get_field('staff_name', $post->ID);?></h4>
-                            <p class="postion mb2"><?=get_field('staff_name', $post->ID);?></p>
+                            <p class="postion mb2"><?=get_field('staff_role', $post->ID);?></p>
 
                         </div>
 
