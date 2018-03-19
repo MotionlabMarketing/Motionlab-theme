@@ -105,6 +105,7 @@ if ($block['enabled'] == true || empty($block['enabled'])): // TODO: Needs corre
     $block['content']['content'] = get_sub_field($current . '_content');
 
     $block['heading'] = convert_heading($block['content']['title']);
+    $block['intro']   = $block['content']['content'];
 
 endif;
 

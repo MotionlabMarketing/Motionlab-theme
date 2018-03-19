@@ -422,7 +422,7 @@ h3, .h3 {
 header {
 
   .header-size {
-    max-height: 7.8rem;
+    max-height: 6.8rem;
   }
 
   &.smallification {
@@ -1607,7 +1607,6 @@ hr.border-5 {
         background-color: $brand-primary;
       }
       &:after {
-        top: 0.5rem;
         background-color: transparent;
         border-top: 2px solid $brand-primary;
       }
@@ -1619,7 +1618,7 @@ hr.border-5 {
       display: block;
       height: 1.2rem;
       border-radius: 2rem;
-      margin: 0 auto 0.7rem;
+      margin: 0 auto .7rem;
       background-color: #fafafa;
       border: 2px solid $brand-primary;
 

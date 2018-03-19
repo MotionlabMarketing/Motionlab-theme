@@ -82,7 +82,6 @@
                     <?php endif; ?>
 
 
-
                     <?php if ($tab['columns'] > 1): ?>
 
                         <?php if (!empty($tab['column_2']['column_content'])): ?>

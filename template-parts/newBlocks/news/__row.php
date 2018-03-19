@@ -12,7 +12,7 @@
 
 ?>
 
-<section id="<?=$block['custom_id']?>" class="clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section id="<?=$block['custom_id']?>" class="clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>" data-block-layout="<?=$block['layout']?>">
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
@@ -31,7 +31,7 @@
                             </a>
                         <?php else: ?>
                             <a href="<?=$post->guid?>">
-                                <?= wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1 js-match-height"]) // TODO: Default Image ?>
+                                <img src="<?=get_field('fallback_placeholder_image', 'option')?>" alt="<?=$post->post_title?>" class="box-shadow-1 js-match-height">
                             </a>
                         <?php endif; ?>
 
@@ -51,9 +51,9 @@
 
                         <div class="clearfix <?=$block['content']['txtColor']?>">
 
-                            <h3 class="mb1 brand-primary" style="font-size: 1.3rem"><a href=""><?=$post->post_title?></a></h3>
+                            <h3 class="mb1 brand-primary" style="font-size: 1.3rem"><a href="<?=get_permalink($post->ID)?>"><?=$post->post_title?></a></h3>
 
-                            <p class="h6"><?=sizeof($post->excerpt) > 1 ? $post->excerpt : substr($post->post_content,0, 100);?></p>
+                            <p class="h4"><?=sizeof($post->excerpt) > 1 ? $post->excerpt : substr($post->post_content,0, 100);?></p>
 
                             <?php if($block['content']['buttons'] = true): ?>
                                 <a href="<?=$post->guid?>" class="btn <?=$block['content']['button']['button_text_colour']['system_text_colours']?> <?=$block['content']['button']['button_background_colour']['system_background_colours']?> bold "><?=$block['content']['button']['button_link']['title']?></a>
@@ -82,6 +82,8 @@
             <div class="col col-12 md-col-<?=$block['content']['cols'][1]?> p2 js-height-match">
 
                 <div class="twitter mb4 border-bottom border-light pb4 <?=$block['content']['txtColor']?>">
+                    
+                    <?php pa($block['content']['profiles']); ?>
 
                     <h4 class="h3">Twitter <span class="brand-primary h5 ml1"><a href="https://twitter.com/<?=$block['content']['profiles']['twitter']?>">@<?=$block['content']['profiles']['twitter']?></a></span></h4>
 

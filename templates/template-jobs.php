@@ -40,10 +40,6 @@ get_header(); ?>
                     </select>
 
                     <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto" onchange="this.form.submit()" name="orderby" id="orderby">
-                        <option value="title">By Salary</option>
-                    </select>
-
-                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto" onchange="this.form.submit()" name="orderby" id="orderby">
                         <option value="title">By Location</option>
                     </select>
 

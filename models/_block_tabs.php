@@ -31,6 +31,8 @@ Class _block_tabs
 		$this->block['title']                          = get_sub_field($this->current . '_title_title');
 		$this->block['content']                        = get_sub_field($this->current . '_content');
 
+		$this->block['sections']                       = get_sub_field($this->current . '_sections');
+
 		$this->block['tabs_settings']['tab_position']  = get_sub_field($this->current . '_position');
 		$this->block['tabs_settings']['tab_size']      = get_sub_field($this->current . '_size');
 		$this->block['tabs_settings']['tab_weight']    = get_sub_field($this->current . '_weight');
@@ -50,6 +52,7 @@ Class _block_tabs
 
 	public function renderBlock() {
 		$block = $this->block;
+		$current = $this->current;
 
 		switch ($this->layout):
 		    case "employer":

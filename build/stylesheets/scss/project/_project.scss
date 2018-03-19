@@ -234,8 +234,8 @@ nav {
 
     &:hover {
         > a {
-          border-radius: 1rem;
-          box-shadow: inset 0 0 0 20rem rgba(255, 255, 255, 1);
+          //border-radius: 1rem;
+          //box-shadow: inset 0 0 0 20rem rgba(255, 255, 255, 1);
         }
 
         .dropdown, .mega-dropdown {
@@ -264,7 +264,7 @@ nav {
 }
 
 .dropdown{
-  padding: 25% 0 0 0;
+  padding: 20% 0 0 0;
   position: absolute;
   top: 100%;
   overflow: hidden;

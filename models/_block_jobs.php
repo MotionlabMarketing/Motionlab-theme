@@ -38,10 +38,10 @@ Class _block_jobs
 		//TODO: Move this to the block settings
 		$this->block['block_title']     = get_sub_field($this->current . '_title_title');
 
-		if($this->layout == '_key_areas')
+		if($this->layout == 'key_areas')
 			$this->block['sections']        = get_sub_field($this->current . '_keyarea');
 
-		if($this->layout == '_jobs_aside')
+		if($this->layout == 'jobs_aside')
 			$this->block['sections']        = get_sub_field($this->current . '_sections');
 
 	}
@@ -90,9 +90,6 @@ Class _block_jobs
 				'field'     => 'slug'
 			);
 		}
-
-		//TODO: ADD IN SALARY FILTER
-
 
 		if($this->layout == 'talent' || $this->layout == 'talent_aside') $post_type = 'talent'; else $post_type = 'jobs';
 

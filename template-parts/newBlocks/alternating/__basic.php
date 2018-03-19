@@ -12,7 +12,7 @@
 
 
 ?>
-<section id="<?=$block['custom_id']?>" class="alternating-basic clearfix relative <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section id="<?=$block['custom_id']?>" class="alternating-basic clearfix relative <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>" data-block-layout="<?=$block['layout']?>">
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
@@ -71,14 +71,9 @@
 
                 <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}", "mb2"); ?>
 
-                <?php if (!empty($block['content']['content'])): ?>
-                    <div class="wysiwyg">
-                        <?=$block['content']['content']?>
-                    </div>
-                <?php endif; ?>
+                <?php render_wysiwyg($block['intro'], "", ""); ?>
 
                 <div class="mt4 text-center lg-text-left lg-flex items-center border-smoke border-top pt4 border-darken-3">
-
 
                     <?php foreach ($block['content']['buttons'] as $button): ?>
 

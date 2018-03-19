@@ -1,11 +1,5 @@
-<!-- main menu -->
-<?php
-//$menu = menuWalk(wp_get_nav_menu_items('Main Menu'));
-?>
-
 <?php
 include_once(get_template_directory() . '/inc/MenuController.php');
-
 $menu = motionlab_menu_walker('primary');
 ?>
 
@@ -15,23 +9,22 @@ $menu = motionlab_menu_walker('primary');
 
         <?php foreach($menu as $menuitem) : ?>
 
-            <li class="inline-block <?php if(!empty($menuitem->children)){ ?>has-dropdown <?php } ?>">
+            <li class="inline-block relative <?=(!empty($menuitem->children))? "has-dropdown" : ""; ?>" style="font-size: 1.2rem">
 
-                <a href="<?php echo $menuitem->url ?>" class="border-none text-center block <?=(is_front_page())? "white" : "black";?> hover-bg-none bold p3 xl-p4 nowrap">
-                    <?php echo $menuitem->title; ?>
-                    <?php if(!empty($menuitem->children)) : ?>
-                        <small class="ml2"><?php //<i class="fa fa-chevron-down brand-primary"></i>?></small>
-                    <?php endif; ?>
+                <a href="<?=$menuitem->url?>" class="border-none text-center block bold px4 py2 white hover-brand-primary">
+                    <?=$menuitem->title?>
                 </a>
 
-                <?php if(!empty($menuitem->children)) : ?>
+                <?php if(!empty($menuitem->children)):?>
 
-                    <?php include(get_template_directory() .'/template-parts/menus/mega-dropdown.php' ); ?>
-
+                    <?php include(get_template_directory() .'/inc/header/menu-dropdown.php'); ?>
+                
                 <?php endif ?>
+
             </li>
 
         <?php endforeach ?>
 
     </ul>
+
 </nav>

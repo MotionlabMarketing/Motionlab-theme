@@ -11,7 +11,7 @@
  */
 ?>
 
-<section id="<?= $block['custom_id'] ?>" class="cta-large || clearfix  relative || <?= ($block['grid'] == 'container') ? 'container' : "" ?> <?= $block['spacing'] ?> <?= $block['padding'] ?> <?= ($block['bgImage']['enable'] !== true) ? $block['background']['colour'] : '' ?> <?= $block['border']['sides'] ?> <?= $block['border']['size'] ?> <?= $block['border']['colour'] ?> <?= $block['custom_css'] ?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section id="<?= $block['custom_id'] ?>" class="cta-large || clearfix  relative || <?= ($block['grid'] == 'container') ? 'container' : "" ?> <?= $block['spacing'] ?> <?= $block['padding'] ?> <?= ($block['bgImage']['enable'] !== true) ? $block['background']['colour'] : '' ?> <?= $block['border']['sides'] ?> <?= $block['border']['size'] ?> <?= $block['border']['colour'] ?> <?= $block['custom_css'] ?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>" data-block-layout="<?=$block['layout']?>">
 
     <?= ($block['grid'] == 'container') ? '<div class="container">' : "" ?>
 

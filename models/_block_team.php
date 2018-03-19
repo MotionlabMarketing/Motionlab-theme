@@ -15,9 +15,9 @@ Class _block_team
 
 	public function __construct($block, $current) {
 
-		$this->block = $block;
+		$this->block   = $block;
 		$this->current = $current;
-		$this->layout = get_sub_field($current . '_layout');
+		$this->layout  = get_sub_field($current . '_layout');
 
 		$this->loadBlockSettings();
 
@@ -27,7 +27,8 @@ Class _block_team
 
 	private function loadBlockSettings() {
 
-		$this->profile_count = get_sub_field('block_team_profiles');
+		$this->profile_count          = get_sub_field('block_team_profiles');
+		$this->block['page_button']   = get_sub_field('block_team_button');
 
 	}
 
@@ -39,7 +40,7 @@ Class _block_team
 			'post_type'         => 'team_members'
 		);
 
-		$this->block['posts'] = new WP_Query( $args );
+		$this->block['posts']   = new WP_Query( $args );
 
 	}
 

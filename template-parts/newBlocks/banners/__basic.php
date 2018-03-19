@@ -133,14 +133,15 @@ endif; ?>
                         <div class="mt4">
                         <?php foreach ($banner['buttons'] as $button): ?>
 
-                                <a href="<?=$button['buttons_button_link']['url']?>" class="btn btn-medium mx4 min-width-8 <?=$button['buttons_system_text_colours']?> <?=$button['buttons_system_background_colours']?>" <?=($button['buttons_button_link']['title'] ? 'title="'.$button['button']['title'].'"' : '')?> <?=($button['buttons_button_link']['target'] ? 'target="'.$button['button']['target'].'"' : '')?>>
+                            <a href="<?=$button['buttons_button_link']['url']?>" class="btn btn-medium mx4 min-width-8 <?=$button['buttons_system_text_colours']?> <?=$button['buttons_system_background_colours']?>" <?=($button['buttons_button_link']['title'] ? 'title="'.$button['button']['title'].'"' : '')?> <?=($button['buttons_button_link']['target'] ? 'target="'.$button['button']['target'].'"' : '')?>>
 
-                                    <?php if (!empty($button['buttons_button_icon']['id'])): ?><div class="flex items-center"><?=wp_get_attachment_image($button['buttons_button_icon']['id'], array(32, 32), "", ['class' => 'size-32x32 mr2'])?> <?php endif; ?>
+                                <?php if (!empty($button['buttons_button_icon'])): ?><div class="flex items-center"><?=wp_get_attachment_image($button['buttons_button_icon'], array(32, 32), "", ['class' => 'size-32x32 mr2'])?> <?php endif; ?>
 
-                                        <?=$button['buttons_button_link']['title']?>
+                                    <?=$button['buttons_button_link']['title']?>
 
-                                    <?php if (!empty($button['buttons_button_icon']['id'])): ?></div><?php endif; ?>
-                                </a>
+                                <?php if (!empty($button['buttons_button_icon'])): ?></div><?php endif; ?>
+
+                            </a>
 
                         <?php endforeach; ?>
                         </div>
