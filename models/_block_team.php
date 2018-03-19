@@ -21,7 +21,7 @@ Class _block_team
 
 		$this->loadBlockSettings();
 
-		$this->fetchPosts();
+		$this->fetchPosts($this->profile_count);
 
 	}
 
@@ -32,7 +32,7 @@ Class _block_team
 
 	}
 
-	private function fetchPosts() {
+	public function fetchPosts($profile_count = 5) {
 
 		$args = array(
 			'posts_per_page'    => $this->profile_count,
@@ -40,7 +40,9 @@ Class _block_team
 			'post_type'         => 'team_members'
 		);
 
-		$this->block['posts']   = new WP_Query( $args );
+		$this->block['posts'] = new WP_Query( $args );
+
+		return $this->block['posts'];
 
 	}
 

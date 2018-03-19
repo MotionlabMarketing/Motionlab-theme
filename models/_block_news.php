@@ -38,6 +38,8 @@ Class _block_news
 		$this->block['content']['buttons']   = get_sub_field($this->current . '_enableButtons');
 		$this->block['content']['button']    = get_sub_field($this->current . '_buttons');
 
+
+
 		// GET THE COLUMN SIZES NEEDED IF SOCIAL IS INCLUDED.
 		if ($this->block['content']['feeds'] == true):
 
@@ -50,13 +52,13 @@ Class _block_news
 		        // GET FACEBOOK USERNAME
 		        if (strpos($a['link'] , "facebook") == true):
 		            $b = explode("/", $a['link']);
-		            $block['content']['profiles']['facebook'] = $b[3];
+                    $this->block['content']['profiles']['facebook'] = $b[3];
 		        endif;
 
 		        // GET TWITTER USERNAME
 		        if (strpos($a['link'] , "twitter") == true):
 		            $b = explode("/", $a['link']);
-		            $block['content']['profiles']['twitter'] = $b[3];
+                    $this->block['content']['profiles']['twitter'] = $b[3];
 		        endif;
 		    endforeach;
 

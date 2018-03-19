@@ -78,13 +78,11 @@
         </div>
 
         <?php if ($block['content']['feeds'] == true): ?>
-
+        
             <div class="col col-12 md-col-<?=$block['content']['cols'][1]?> p2 js-height-match">
 
                 <div class="twitter mb4 border-bottom border-light pb4 <?=$block['content']['txtColor']?>">
                     
-                    <?php pa($block['content']['profiles']); ?>
-
                     <h4 class="h3">Twitter <span class="brand-primary h5 ml1"><a href="https://twitter.com/<?=$block['content']['profiles']['twitter']?>">@<?=$block['content']['profiles']['twitter']?></a></span></h4>
 
                     {{ INCLUDE FEED HERE }}

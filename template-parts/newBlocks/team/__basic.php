@@ -37,7 +37,7 @@
 
                             <?=get_render_heading( get_field('staff_name', $post->ID), "h4", "h3", "", "", "mt3 mb1")?>
 
-                            <p class="postion mb2"><?=get_field('staff_name', $post->ID);?></p>
+                            <p class="postion mb2"><?=get_field('staff_role', $post->ID);?></p>
 
                         </div>
 
