@@ -50,17 +50,9 @@ $blockItems = $blockItems['logos'];
         <?php if (!empty($block['title']) || !empty($block['content'])): ?>
             <div class="col-12 md-col-12 lg-col-12 mb5 text-center">
 
-                <?php if (!empty($blockTitle[0]['title'])): ?>
-                    <div class="m4 text-center">
-                        <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
-                    </div>
-                <?php endif; ?>
+                <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}"); ?>
 
-                <?php if (!empty($block['content'])): ?>
-                    <div class="text-center mb2 limit-p limit-p-70">
-                        <?= $block['content'] ?>
-                    </div>
-                <?php endif; ?>
+                <?php render_wysiwyg("{$block['intro']}", "", " || regular")?>
 
             </div>
         <?php endif; ?>

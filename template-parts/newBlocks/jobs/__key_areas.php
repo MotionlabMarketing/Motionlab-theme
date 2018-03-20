@@ -12,7 +12,7 @@
 
 ?>
 
-<section class="jobs-keyareas || relative clearfix || <?=$bgColor?> <?=$txtColor?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section class="jobs-keyareas || relative clearfix" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
 
     <div class="container">
 
@@ -24,8 +24,8 @@
                     <div class="content || box-shadow-3 || bg-charcoal js-match-height">
 
                         <div class="head p4 bg-primary">
-
-                            <?=wp_get_attachment_image($section['button_icon']['id'], array(42, 42), "", ['class' => 'size-42x42 mr2 mb2'])?>
+                            
+                            <?=wp_get_attachment_image($section['button_icon'], array(42, 42), "", ['class' => 'size-42x42 mr2 mb2'])?>
 
                             <h3 class="mb2"><?=$section['title']?></h3>
 

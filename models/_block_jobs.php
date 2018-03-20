@@ -91,9 +91,6 @@ Class _block_jobs
 			);
 		}
 
-		//TODO: ADD IN SALARY FILTER
-
-
 		if($this->layout == 'talent' || $this->layout == 'talent_aside') $post_type = 'talent'; else $post_type = 'jobs';
 
 		$args = array(

@@ -27,7 +27,7 @@ $block['block_title']  = get_sub_field($current . '_title_title');
 
                     <a href=""><h3 class="mb2 black h5"><?=$post->post_title?></h3></a>
 
-                    <p class="h6 mb0 bold">LOCATION <span class="black">•</span> SALARY RANGE <span class="black">•</span> PERMANENT </p>
+                    <p class="h6 mb0 bold">LOCATION <span class="black">•</span> PERMANENT </p>
 
                 </div>
 
@@ -92,11 +92,6 @@ $block['block_title']  = get_sub_field($current . '_title_title');
                     <?php
                         endforeach;
                     ?>
-                </select>
-
-                <?php //TODO: ADD SALARY OPTIONS AND FILTERS ?>
-                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" id="sortby_salary" disabled>
-                    <option value="">Filter by Salary</option>
                 </select>
 
                 <?php $disabled = sizeof($block['location_select_options']) == 0 ? "disabled" : ""; ?>

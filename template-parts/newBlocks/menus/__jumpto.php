@@ -15,4 +15,4 @@ $block['content']['scroll_name'] = get_sub_field($current . '_scrollLocation');
 $block['content']['scroll_id']   = get_sub_field($current . '_scrollName');
 ?>
 
-<div id="<?=strtolower(str_replace(" ", "_", $block['content']['scroll_id']))?>" data-scroll="<?=$block['content']['scroll_name']?>" class="scrollTo" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>"></div>
+<div id="<?=strtolower(str_replace(" ", "_", $block['content']['scroll_id']))?>" data-scroll="<?=$block['content']['scroll_name']?>" class="scrollTo" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>" data-block-layout="<?=$block['layout']?>"></div>
