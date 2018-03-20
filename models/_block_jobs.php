@@ -86,7 +86,7 @@ Class _block_jobs
 		if ( isset($_POST['role_filter']) && $_POST['role_filter'] != '') {
 			$tax_query[] = array(
 				'taxonomy'  => 'types',
-				'terms'     => array($_POST['type_filter'] && $_POST['type_filter'] != ''),
+				'terms'     => array($_POST['role_filter'] && $_POST['role_filter'] != ''),
 				'field'     => 'slug'
 			);
 		}
