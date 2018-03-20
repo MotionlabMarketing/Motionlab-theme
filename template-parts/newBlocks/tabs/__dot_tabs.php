@@ -8,40 +8,17 @@
  *
  * @version 1.00
  */
-
-$block['tabs']                           = get_sub_field($current . '_tabs');
-$block['tabs_settings']['tab_position']  = get_sub_field($current . '_position');
-$block['tabs_settings']['tab_size']      = get_sub_field($current . '_size');
-$block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
-$block['tabs_settings']['box_borders']   = get_sub_field($current . '_box_borders');
-$block['tabs_settings']['box_radius']    = get_sub_field($current . '_box_radius');
-
-$block['tabs_settings']['box_bg']        = get_sub_field($current . '_box_background');
-$block['tabs_settings']['box_bg']        = $block['tabs_settings']['box_bg']['system_background_colours'];
-
-$blockTitle = get_sub_field($current . '_title_title');
-$content    = get_sub_field($current . '_content');
-// TODO: Add support for background images.
 ?>
 
-
-<section id="<?=$block['custom_id']?>" class="tabs-dots <?=($block['bgImage']['enable'] == true)? 'bg-image-active' : '';?> || relative clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section id="<?=$block['custom_id']?>" class="tabs-dots <?=($block['bgImage']['enable'] == true)? 'bg-image-active' : '';?> || relative clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>"  data-block-layout="<?=$block['layout']?>">
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
         <div class="mt4 mb2 || text-center">
 
-            <?php if (!empty($blockTitle[0]['title'])):?>
-                <div class="mb2">
-                    <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php');?>
-                </div>
-            <?php endif; ?>
+            <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}"); ?>
 
-            <?php if (!empty($content)): ?>
-                <div class="clearfix text-center limit-p limit-p-70">
-                    <?=$content?>
-                </div>
-            <?php endif; ?>
+            <?php render_wysiwyg("{$block['intro']}", "", "|| md-mx6 md-px6  {$txtColor} || regular")?>
 
         </div>
 
@@ -69,18 +46,10 @@ $content    = get_sub_field($current . '_content');
 
                         <div class="col col-12 md-col-<?=($tab['columns'] == 2)? "6":"12"?> p4 <?=$tab['column_1']['align']?> <?=$tab['column_1']['system_text_colours']?>">
 
-                            <?php
-                            $blockTitle = $tab['column_1']['title'];
-                            if (!empty($blockTitle[0]['title'])) {
-                                include(BLOCKS_DIR . 'sub-elements/_block_titles.php'); }
-                            ?>
+                            <?php $heading = convert_heading($tab['column_1']['title']); ?>
+                            <?php render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}"); ?>
 
-                            <div class="wysiwyg">
-
-                                <?=$tab['column_1']['column_content']?>
-
-                            </div>
-
+                            <?php render_wysiwyg("{$tab['column_1']['column_content']}", "", "|| regular")?>
 
                             <?php if (!empty($tab['column_1']['column_buttons'])): ?>
                                 <div class="mt3">
@@ -106,17 +75,10 @@ $content    = get_sub_field($current . '_content');
 
                                 <div class="col col-12 md-col-6 p4 <?=$tab['column_1']['align']?> <?=$tab['column_1']['system_text_colours']?>">
 
-                                    <?php
-                                    $blockTitle = $tab['column_2']['title'];
-                                    if (!empty($blockTitle[0]['title'])) {
-                                        include(BLOCKS_DIR . 'sub-elements/_block_titles.php'); }
-                                    ?>
+                                    <?php $heading = convert_heading($tab['column_2']['title']); ?>
+                                    <?php render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}"); ?>
 
-                                    <div class="wysiwyg">
-
-                                        <?=$tab['column_2']['column_content']?>
-
-                                    </div>
+                                    <?php render_wysiwyg("{$tab['column_2']['column_content']}", "", "|| regular")?>
 
                                     <?php if (!empty($tab['column_2']['column_buttons'])): ?>
                                         <div class="mt3">

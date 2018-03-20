@@ -12,7 +12,7 @@
 
 
 ?>
-<section id="<?=$block['custom_id']?>" class="alternating-basic clearfix relative <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section id="<?=$block['custom_id']?>" class="alternating-basic clearfix relative <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>" data-block-layout="<?=$block['layout']?>">
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
@@ -68,21 +68,12 @@
         <div class="col col-12 md-col-6 p4 lg-p6 <?=$block['content']['align']?> <?=$block['content']['color']?> js-match-height  items-center">
 
             <div data-imatchto="video">
-                <?php $blockTitle = $block['content']['title'];
-                if (!empty($blockTitle[0]['title'])): ?>
-                    <div class="mb2">
-                        <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
-                    </div>
-                <?php endif; ?>
 
-                <?php if (!empty($block['content']['content'])): ?>
-                    <div class="wysiwyg">
-                        <?=$block['content']['content']?>
-                    </div>
-                <?php endif; ?>
+                <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}", "mb2"); ?>
+
+                <?php render_wysiwyg($block['intro'], "", ""); ?>
 
                 <div class="mt4 text-center lg-text-left lg-flex items-center border-smoke border-top pt4 border-darken-3">
-
 
                     <?php foreach ($block['content']['buttons'] as $button): ?>
 

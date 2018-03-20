@@ -1,20 +1,30 @@
 <?php
-/**
-* Mike Booth functions and definitions.
-*
-* @link https://developer.wordpress.org/themes/basics/theme-functions/
-*
-* @package motionlabtheme
-*/
-
 define("TEMPLATE_DIR", get_template_directory() . "/template-parts/");
 define("BLOCKS_DIR"  , get_template_directory() . "/template-parts/newBlocks/");
 define("CONTROLLERS_DIR"  , get_template_directory() . "/controllers/");
+define("MODELS_DIR"  , get_template_directory() . "/models/");
 define("MASTER_CPT_DIR", get_template_directory() . "/cpt-registry/");
 define("CHILD_CPT_DIR", get_stylesheet_directory() . "/cpt-registry/");
 
 define('WP_POST_REVISIONS', 2);
 
+/**
+ * INCLUDE ALL CUSTOM THEME FUNCTIONS.
+ *
+ * @added 15 Mar 2018
+ * @author Joe Curran
+ * @var  $filename
+ */
+foreach (glob(get_template_directory() . "/inc/_functions/*.php") as $filename) {
+    include $filename;
+}
+
+/**
+ * SET THE NUMBER OF POST REVISIONS TO KEEP.
+ *
+ * @added 15 Mar 2018
+ * @author Joe Curran
+ */
 add_filter( 'wp_revisions_to_keep', 'filter_function_name', 10, 2 );
 function filter_function_name( $num, $post ) {
     return $num;
@@ -56,9 +66,46 @@ add_action( 'after_setup_theme', 'motionlabtheme_setup' );
 /*==================================================================
 CUSTOM POST TYPE REGISTRATION CONTROLLER
 ==================================================================*/
+
 add_action('init', 'ml_register_custom_post_types', 0);
 function ml_register_custom_post_types() {
 	include_once(CONTROLLERS_DIR . 'CPTController.php');
+}
+
+/*==================================================================
+ML BLOCKS - AJAX CONTROL
+==================================================================*/
+add_action( 'wp_ajax_update_block', 'ml_update_block' );
+add_action( 'wp_ajax_nopriv_update_block', 'ml_update_block' );
+function ml_update_block() {
+
+	if( have_rows('building_blocks', $_POST['page_id']) ) :
+	    while ( have_rows('building_blocks', $_POST['page_id']) ) :
+	        the_row();
+
+	        // Varibales for the Blocks – TODO: Needs looking over!
+	        include(get_template_directory() .'/inc/block-variables.php');
+
+	        // CHECK FOR NEW BLOCKS //
+	        if ($_POST['block_name'] == get_row_layout()):
+
+	            $current = get_row_layout();
+	            include (BLOCKS_DIR . '_blocks_settings.php');
+
+	            if ($block['enabled'] == true || empty($block['enabled'])): // TODO: ONCE ALL BLOCKS ARE UPDATED THIS NEED TO BE UPDATED.
+
+	                // TODO: Need to move blocks folder structure and update the routing.
+		            if(file_exists(MODELS_DIR . '_' . $current . '.php')) {
+						include_once(CONTROLLERS_DIR . 'BlocksController.php');
+		            } else {
+	                    include(BLOCKS_DIR . '_'. $current .'.php');
+		            }
+
+	            endif;
+	        endif;
+	    endwhile;
+	endif;
+	die();
 }
 
 

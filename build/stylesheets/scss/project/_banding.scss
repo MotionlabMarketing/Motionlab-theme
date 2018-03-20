@@ -92,8 +92,20 @@ h3, .h3 {
   color: $brand-base;
 }
 
-.hover-primary {
-  color: darken($brand-white, 20%);
+.hover-brand-primary:hover {
+  color: $brand-primary;
+}
+.hover-brand-secondary:hover {
+  color: $brand-secondary;
+}
+.hover-brand-tertiary:hover {
+  color: $brand-tertiary;
+}
+.hover-brand-quaternary:hover {
+  color: $brand-quaternary;
+}
+.hover-brand-base:hover {
+  color: $brand-base;
 }
 
 // BACKGROUND COLOURS //
@@ -410,17 +422,7 @@ h3, .h3 {
 header {
 
   .header-size {
-    max-height: 7.8rem;
-  }
-
-  nav {
-    li {
-      &:last-child {
-        a {
-          padding-right: 0;
-        }
-      }
-    }
+    max-height: 6.8rem;
   }
 
   &.smallification {
@@ -429,12 +431,12 @@ header {
     .holder {
       background-color: $brand-primary;
 
-      nav {
-        a {
-          color: white;
-        }
+      .logo-holder {
+        background: transparent !important;
       }
     }
+
+
 
     .logo-wrapper {
       margin-bottom: 0;
@@ -741,7 +743,8 @@ form {
 
     li label {
       width: 100%;
-      margin-left: 0.6rem;
+      display: block;
+      margin-left: 1rem;
     }
 
   }
@@ -1604,7 +1607,6 @@ hr.border-5 {
         background-color: $brand-primary;
       }
       &:after {
-        top: 0.5rem;
         background-color: transparent;
         border-top: 2px solid $brand-primary;
       }
@@ -1616,7 +1618,7 @@ hr.border-5 {
       display: block;
       height: 1.2rem;
       border-radius: 2rem;
-      margin: 0 auto 0.7rem;
+      margin: 0 auto .7rem;
       background-color: #fafafa;
       border: 2px solid $brand-primary;
 

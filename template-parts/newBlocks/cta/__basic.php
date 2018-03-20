@@ -10,20 +10,46 @@
  */
 ?>
 
-<section id="<?=$block['custom_id']?>" class="cta-basic || clearfix  relative || <?=($block['grid'] == 'container')? 'container' : ""?> <?=$block['spacing']?> <?=$block['padding']?> <?=($block['bgImage']['enable'] !== true)? $block['background']['colour']:''?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section id="<?=$block['custom_id']?>" class="cta-basic || clearfix  relative || <?=($block['grid'] == 'container')? 'container' : ""?> <?=$block['spacing']?> <?=$block['padding']?> <?=($block['bgImage']['enable'] !== true)? $block['background']['colour']:''?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>" data-block-layout="<?=$block['layout']?>">
 
-            <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
+    <?=($block['link']['enabled'] == true)? '<a href="'.$block['content']['link']['url'].'">':''?>
 
-            <div class="<?=get_sub_field($current . '_alignment_align')?>">
+        <div class="container">
+
+            <div class="content">
 
                 <div class="col col-12 || text-center p4">
 
-                    Hello
+                    <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}"); ?>
+
+                    <?php render_wysiwyg("{$block['content']['content']}", true, "|| md-mx6 md-px6  {$block['content']['txtColor']} || regular")?>
+
+                    <?php if ($block['buttons']['enabled'] == true): ?>
+
+                        <div class="mt4">
+
+                            <?php foreach ($block['content']['buttons'] as $button): ?>
+
+                                <a href="<?=$button['button_button_link']['url']?>" class="btn <?=$button['button_system_text_colours']?> <?=$button['button_system_background_colours']?> mx2"><?=$button['button_button_link']['title']?></a>
+
+                            <?php endforeach; ?>
+
+                        </div>
+
+                    <?php endif; ?>
 
                 </div>
 
             </div>
 
-            <?=($block['grid'] == 'container')? '</div>' : ""?>
+        <?=($block['grid'] == 'container')? '</div>' : ''?>
+
+    <?=($block['link']['enabled'] == true)? '</a>' : ''?>
+
+     <?php if($block['bgImage']['enable'] == true): ?>
+
+        <div class="bg-image || absolute width-100 height-100 top-0 left-0 zn1 <?=$block['bgImage']['occupancy']?> <?=$block['bgImage']['tint']?> <?=$block['bgImage']['tintStrength']?>" style="background-image: url('<?=$block['bgImage']['image']['url']?>'); background-position: center; background-size: cover"></div>
+
+     <?php endif; ?>
 
 </section>

@@ -21,18 +21,10 @@ $blockItems  = get_sub_field($current . '_basic');
 
         <?php if (!empty($block['title']) || !empty($block['content'])): ?>
             <div class="col col-12 md-col-12 lg-col-12 mb5 text-center">
+                
+                <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}"); ?>
 
-                <?php if (!empty($blockTitle[0]['title'])): ?>
-                    <div class="m4 text-center">
-                        <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
-                    </div>
-                <?php endif; ?>
-
-                <?php if (!empty($block['content'])): ?>
-                    <div class="text-center mb2 limit-p limit-p-70">
-                        <?= $block['content'] ?>
-                    </div>
-                <?php endif; ?>
+                <?php render_wysiwyg("{$block['intro']}", "", " || regular")?>
 
             </div>
         <?php endif; ?>
@@ -44,7 +36,7 @@ $blockItems  = get_sub_field($current . '_basic');
 
             <div class="item || col col-3 px2 mb3 || <?=$block['pod']['textAlign']?> || col-grid-5">
 
-                <div class="content p5 || <?=$block['pod']['bgColour']?> js-match-height flex items-center flex-wrap justify-center content-center">
+                <div class="content p5 || <?=$block['pod']['bgColour']?> js-match-height text-center flex items-center flex-wrap justify-center content-center mx-auto">
 
                     <p class="block m0 width-100 || white h2">#<?=$i?>.</p>
 

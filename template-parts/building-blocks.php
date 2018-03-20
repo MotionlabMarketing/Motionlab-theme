@@ -2,7 +2,7 @@
 $index = 0; // NOTE: No idea what this does.
 $previousBgColor = "";
 $blockNumber = 0;
-
+//pa(get_field_objects());
 if( have_rows('building_blocks') ) {
     while ( have_rows('building_blocks') ) {
         the_row();
@@ -20,7 +20,11 @@ if( have_rows('building_blocks') ) {
             if ($block['enabled'] == true || empty($block['enabled'])): // TODO: ONCE ALL BLOCKS ARE UPDATED THIS NEED TO BE UPDATED.
 
                 // TODO: Need to move blocks folder structure and update the routing.
-                include(BLOCKS_DIR . '_'. $current .'.php');
+	            if(file_exists(MODELS_DIR . '_' . $current . '.php')) {
+		            include(CONTROLLERS_DIR . 'BlocksController.php');
+	            } else {
+            	    include(BLOCKS_DIR . '_'. $current .'.php');
+	            }
 
             endif;
 

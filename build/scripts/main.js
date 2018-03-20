@@ -665,6 +665,28 @@ jQuery(document).ready(function ($) {
         $wrapper.find('[data-tabs="content"]').find('section[id=date-id-' + ev + ']').removeClass('hide');
     }
 
+    /**
+     * CHECK IF AN ELEMENT EXISTS
+     *
+     * @param callback
+     * @returns {$.fn}
+     */
+    $.fn.exists = function(callback) {
+        var args = [].slice.call(arguments, 1);
+
+        if (this.length) {
+            callback.call(this, args);
+        }
+
+        return this;
+    };
+
+    $('.tabs-dots').exists(function() {
+        var blockID = this.data('block-id');
+
+    });
+
+
     /*======================================================
     HOTSPOT : HOVER
     ========================================================*/
@@ -949,9 +971,11 @@ jQuery(document).ready(function ($) {
 
             if ($(window).scrollTop() > ((headerHeight))) {
                 $('#main-logo').attr('src', headerLogoScroll);
+                // $('.logo-holder').css('background', 'transparent');
                 $('header').addClass("smallification");
             } else {
                 $('#main-logo').attr('src', headerLogo);
+                // $('.logo-holder').removeAttr('style');
                 $('header').removeClass("smallification");
             }
         }
@@ -1153,4 +1177,3 @@ jQuery(document).ready(function ($) {
     });
 
 })(jQuery);
-

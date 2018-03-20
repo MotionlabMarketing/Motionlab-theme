@@ -12,52 +12,51 @@
 
 ?>
 
-<section id="<?=$block['custom_id']?>" class="clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section id="<?=$block['custom_id']?>" class="clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>" data-block-layout="<?=$block['layout']?>">
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
         <div class="col col-12 md-col-<?=$block['content']['cols'][0]?> p2 js-height-match">
 
-            <?php if ($block['content']['type'] == "lastest"): ?>
+            <?php if( sizeof($block['posts']->posts) > 0 ) : ?>
 
-                <?php // THIS IS NEED TO OUTPUT THE SAME LAYOUT ?>
-
-            <?php elseif ($block['content']['type'] == "selected"): ?>
-
-                <?php // IDs OF SELECTED ARTICLES - pa($block['content']['articles']);?>
-
-                <?php $i = 0; while($i < 2): ?>
-
+            <?php foreach ($block['posts']->posts as $post) :?>
                 <div class="col-12 clearfix mb4 md-flex items-center">
 
                     <div class="col col-12 md-col-5">
 
-                        <a href=""></a>
-                            <?= wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1"]) // NEEDS IMAGE ID ADDING. ?>
-                        </a>
+                        <?php if (has_post_thumbnail( $post->ID ) ): ?>
+                            <a href="<?=$post->guid?>">
+                                <?= wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), "large", "", ["class" => "box-shadow-1 js-match-height"] ) ?>
+                            </a>
+                        <?php else: ?>
+                            <a href="<?=$post->guid?>">
+                                <img src="<?=get_field('fallback_placeholder_image', 'option')?>" alt="<?=$post->post_title?>" class="box-shadow-1 js-match-height">
+                            </a>
+                        <?php endif; ?>
 
                     </div>
 
                     <div class="col col-12 md-col-7 py2 md-p4">
 
                         <?php if ($block['content']['date'] == true): ?>
-                            <p class="h6 mt2 sm-mb0 md-left bold sm-inline <?=$block['content']['txtColor']?>">2 March 2018</p>
+                            <p class="h6 mt2 sm-mb0 md-left bold sm-inline <?=$block['content']['txtColor']?>"><?=date('d M Y', strtotime($post->post_date));?></p>
                         <?php endif; ?>
 
                         <ul class="inline-block tags tags-right sm-right border-radius cursor-pointer">
-                            <li>Administration</li>
-                            <li>Accounts Clerk</li>
-                            <li>Payroll</li>
+                            <?php foreach($post->categories as $category) : ?>
+                                <li><?=$category->name?></li>
+                            <?php endforeach; ?>
                         </ul>
 
                         <div class="clearfix <?=$block['content']['txtColor']?>">
 
-                            <h3 class="mb1 brand-primary" style="font-size: 1.3rem"><a href="">Blog Title should be added to this post listing here</a></h3>
+                            <h3 class="mb1 brand-primary" style="font-size: 1.3rem"><a href="<?=get_permalink($post->ID)?>"><?=$post->post_title?></a></h3>
 
-                            <p class="h6">Vivamus ipsum lorem, elementum sed volutpat non, dapibus sit amet ante. Sed congue mollis neque non posuere. Nulla nec velit condimentum quam fermentum bibendum. Curabitur condimentum ante vitae tincidunt volutpat.</p>
+                            <p class="h4"><?=sizeof($post->excerpt) > 1 ? $post->excerpt : substr($post->post_content,0, 100);?></p>
 
                             <?php if($block['content']['buttons'] = true): ?>
-                                <a href="/" class="btn <?=$block['content']['button']['button_text_colour']['system_text_colours']?> <?=$block['content']['button']['button_background_colour']['system_background_colours']?> bold "><?=$block['content']['button']['button_link']['title']?></a>
+                                <a href="<?=$post->guid?>" class="btn <?=$block['content']['button']['button_text_colour']['system_text_colours']?> <?=$block['content']['button']['button_background_colour']['system_background_colours']?> bold "><?=$block['content']['button']['button_link']['title']?></a>
                             <?php endif; ?>
 
                         </div>
@@ -65,28 +64,25 @@
                     </div>
 
                 </div>
+            <?php endforeach; ?>
 
-                <?php $i++; endwhile; ?>
+        <?php else : ?>
+            <div class="flex items-center justify-center flex-wrap <?=$block['content']['txtColor']?>">
 
-            <?php else: ?>
+                <p class="h3 mb1">Sorry, no articles could be loaded.</p>
+                <p class="">Please check your selected options and that posts have been added to your site.</p>
 
-                <div class="flex items-center justify-center flex-wrap <?=$block['content']['txtColor']?>">
-
-                    <p class="h3 mb1">Sorry, no articles could be loaded.</p>
-                    <p class="">Please check your selected options and that posts have been added to your site.</p>
-
-                </div>
-
-            <?php endif; ?>
+            </div>
+        <?php endif; ?>
 
         </div>
 
         <?php if ($block['content']['feeds'] == true): ?>
-
+        
             <div class="col col-12 md-col-<?=$block['content']['cols'][1]?> p2 js-height-match">
 
                 <div class="twitter mb4 border-bottom border-light pb4 <?=$block['content']['txtColor']?>">
-
+                    
                     <h4 class="h3">Twitter <span class="brand-primary h5 ml1"><a href="https://twitter.com/<?=$block['content']['profiles']['twitter']?>">@<?=$block['content']['profiles']['twitter']?></a></span></h4>
 
                     {{ INCLUDE FEED HERE }}

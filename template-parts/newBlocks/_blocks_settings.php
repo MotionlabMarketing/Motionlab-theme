@@ -14,8 +14,9 @@
 
 $block = [];
 
-$block['id']   = get_the_ID() . "-" . get_row_index();
-$block['name'] = get_row_layout();
+$block['page_id']   = (isset($_POST['page_id']) ? $_POST['page_id'] : get_the_ID());
+$block['id']        =  $block['page_id'] . "-" . get_row_index();
+$block['name']      = get_row_layout();
 
 // HAS THIS BLOCK BEEN ENABLED?
 $block['enabled'] = get_sub_field($current . '_settings_enable_block');
@@ -102,6 +103,9 @@ if ($block['enabled'] == true || empty($block['enabled'])): // TODO: Needs corre
 
     $block['content']['title']   = get_sub_field($current . '_title_title');
     $block['content']['content'] = get_sub_field($current . '_content');
+
+    $block['heading'] = convert_heading($block['content']['title']);
+    $block['intro']   = $block['content']['content'];
 
 endif;
 
