@@ -2,11 +2,17 @@
 /**
  * Template Name: News – Listing
  *
- * TODO: Needs converting to news index when CPT has been added.
  */
 
 $blockTitle  = get_field('page_title');
 $blockTitle  = $blockTitle['title'];
+
+/* Load in team block controller to access posts easily. */
+include_once(MODELS_DIR . '_block_news.php');
+$news_controller = new _block_news(null, null);
+$posts = $news_controller->fetchFeedPosts(9);
+
+//pa($posts);
 
 get_header(); ?>
 
@@ -29,33 +35,39 @@ get_header(); ?>
 
         <div class="col col-12 md-col-12 lg-col-12 || mb5 bg-smoke">
 
+	        <?php $latest_post = array_shift($posts->posts); ?>
             <div class="col col-12 md-col-6 || px5 md-p5 left md-right || flex items-center justify-center || js-match-height">
+                <?php if (has_post_thumbnail( $latest_post->ID ) ): ?>
+                    <?php $image_url = wp_get_attachment_image( get_post_thumbnail_id( $latest_post->ID ), "large", "", ["class" => "box-shadow-1 js-match-height"] ) ?>
+                <?php else: ?>
+                    <?php $image_url = wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1 js-match-height"]) // TODO: Default Image ?>
+                <?php endif; ?>
 
-                <img src="http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/pietro-de-grandi-329892-480x320.jpg" alt="{{ TITLE }}">
+                <?=$image_url?>
 
             </div>
 
+
             <div class="col col-12 md-col-6 || relative p5 right md-left || js-match-height">
 
-                <p class="left || pt2 h5">3 days ago</p>
+                <p class="left || pt2 h5"><?=date('d M Y', strtotime($latest_post->post_date));?></p>
 
                     <ul class="mt2 tags tags-right border-radius">
-                        <li><a href="">Item 1</a></li>
-                        <li><a href="">Item 2</a></li>
-                        <li><a href="">Item 3</a></li>
+                        <?php foreach($latest_post->categories as $category) : ?>
+                            <li><a href="<?=$category->taxonomy."/".$category->slug?>"><?=$category->name?></a></li>
+                        <?php endforeach; ?>
                     </ul>
 
-                <h2 class="clear-both || mt5 || brand-primary">Cunning Mellor Ranked for Prestigious Investors in People Awards 2017</h2>
+                <h2 class="clear-both || mt5 || brand-primary"><?=$latest_post->post_title?></h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac magna leo. Morbi eros mi, aliquam sed ipsum et, accumsan feugiat eros. In porta tellus.</p>
+                <p><?= strlen($latest_post->post_excerpt) > 1 ? $latest_post->post_excerpt : substr($latest_post->post_content,0, 100);?></p>
 
-                <a href="#" class="md-absolute bottom-2 h5">Read full story</a>
+                <a href="<?=$latest_post->guid?>" class="md-absolute bottom-2 h5">Read full story</a>
 
             </div>
 
         </div>
-
-        <div class="col col-12 md-col-12 lg-col-12 || mb5 px4 mxn2">
+        <div id="news-listing-header" class="col col-12 md-col-12 lg-col-12 || mb5 px4 mxn2">
 
             <div class="col col-12 md-col-4">
 
@@ -67,18 +79,18 @@ get_header(); ?>
 
                 <form method="get">
 
-                    <span class="mt3 h5 inline-block mr4 hidden-md hidden-xs sm-mb2">Filter by: </span>
-
-                    <select style="min-width:13rem;" class="select md-ml3 width-100 sm-width-auto md-width-auto box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
-                        <option value="title" <?php echo ($orderby == 'title') ? 'selected' : '' ; ?>>Title</option>
-                        <option value="date" <?php echo ($orderby == 'date') ? 'selected' : '' ; ?>>Date</option>
+                    <select style="min-width:13rem;" class="news_filters select md-ml3 width-100 sm-width-auto md-width-auto box-shadow-3" id="news_orderby">
+                        <option value="">Order By</option>
+                        <option value="title">Title</option>
+                        <option value="date">Date</option>
                     </select>
 
-                    <select style="min-width:13rem;" class="select width-100 sm-width-auto md-width-auto md-ml3 box-shadow-3" onchange="this.form.submit()" name="orderby" id="orderby">
+                    <select style="min-width:13rem;" class="news_filters select width-100 sm-width-auto md-width-auto md-ml3 box-shadow-3" id="news_filtercats">
+                        <option value="">Filter Category</option>
                         <?php
                         $categories = get_categories();
                         foreach($categories as $category) : ?>
-                            <option value="title" data-url="/category/<?php echo $category->slug ?>"><?php echo $category->name ?></option>
+                            <option value="<?=$category->slug?>" data-url="/category/<?php echo $category->slug ?>"><?php echo $category->name ?></option>
                         <?php endforeach; ?>
                     </select>
 
@@ -88,88 +100,92 @@ get_header(); ?>
 
         </div>
 
-        <div class="col col-12 md-col-12 lg-col-12 mb4 mxn2">
+        <div id="news-listing" class="col col-12 md-col-12 lg-col-12 mb4 mxn2">
 
-            <div class="col col-12 sm-col-6 md-col-3 lg-col-3 || p4 || js-match-height">
+            <?php foreach($posts->posts as $post) : ?>
 
-                <p class="h6 mb2">1st Jan, 18</p>
+                <?php if (has_post_thumbnail( $post->ID ) ): ?>
+                    <?php $image_url = wp_get_attachment_image_url( get_post_thumbnail_id( $post->ID ), "large", "", ["class" => "box-shadow-1 js-match-height"] ) ?>
+                <?php else: ?>
+                    <?php $image_url = wp_get_attachment_image_url(7303, "large", "", ["class" => "box-shadow-1 js-match-height"]) // TODO: Default Image ?>
+                <?php endif; ?>
 
-                <h3 class="h4 brand-primary">News Story Title</h3>
+                <div class="col col-12 sm-col-6 md-col-3 lg-col-3 || p4 || js-match-height">
 
-                <a href="#"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/pietro-de-grandi-329892-480x320.jpg');"></div></a>
+                    <p class="h6 mb2"><?=date('d M Y', strtotime($post->post_date));?></p>
 
-                <p class="h5 mb3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac magna leo. Morbi eros mi, aliquam sed ipsum et, accumsan feugiat eros. In porta tellus.</p>
+                    <h3 class="h4 brand-primary"><?=$post->post_title?></h3>
 
-                <a href="#" class="block mb4 || h5 bold">Read full story</a>
+                    <a href="#"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('<?=$image_url?>');"></div></a>
 
-                <ul class="tags border-radius">
-                    <li><a href="">Item 1</a></li>
-                    <li><a href="">Item 2</a></li>
-                </ul>
+                    <p class="h5 mb3"><?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr($post->post_content,0, 100);?></p>
 
-            </div>
+                    <a href="<?=$post->guid?>" class="block mb4 || h5 bold">Read full story</a>
 
-            <div class="col col-12 sm-col-6 md-col-3 lg-col-3 || p4 || js-match-height">
+                    <ul class="tags border-radius">
+                         <?php foreach($post->categories as $category) : ?>
+                            <li><a href="<?=$category->taxonomy."/".$category->slug?>"><?=$category->name?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
 
-                <p class="h6 mb2">1st Jan, 18</p>
+                </div>
+            <?php endforeach; $page = 1;?>
+            <nav class="pagination || clearfix block text-center border-top border-darken-1 py4 mt5">
 
-                <h3 class="h4 brand-primary">News Story Title</h3>
+                <?php if($page - 2 > 0) :?> <span aria-current="page" data-page-number="<?=$page-2?>" class="page-numbers page-number cursor-pointer"><?=$page-2?></span> <?php endif;?>
+                <?php if($page - 1 > 0) :?> <span aria-current="page" data-page-number="<?=$page-1?>" class="page-numbers page-number cursor-pointer"><?=$page-1?></span> <?php endif;?>
+                <span aria-current="page" class="page-numbers current cursor-pointer"><?=$page?></span>
+                <?php if($page + 1 <= $posts->max_num_pages) :?><span aria-current="page" data-page-number="<?=$page+1?>" class="page-numbers page-number cursor-pointer"><?=$page+1?></span><?php endif;?>
+                <?php if($page + 2 <= $posts->max_num_pages) :?><span aria-current="page" data-page-number="<?=$page+2?>" class="page-numbers page-number cursor-pointer"><?=$page+2?></span><?php endif;?>
 
-                <a href="#"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/pietro-de-grandi-329892-480x320.jpg');"></div></a>
-
-                <p class="h5 mb3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac magna leo. Morbi eros mi, aliquam sed ipsum et, accumsan feugiat eros. In porta tellus.</p>
-
-                <a href="#" class="block mb4 || h5 bold">Read full story</a>
-
-                <ul class="tags border-radius">
-                    <li><a href="">Item 1</a></li>
-                    <li><a href="">Item 2</a></li>
-                </ul>
-
-            </div>
-
-            <div class="col col-12 sm-col-6 md-col-3 lg-col-3 || p4 || js-match-height">
-
-                <p class="h6 mb2">1st Jan, 18</p>
-
-                <h3 class="h4 brand-primary">News Story Title</h3>
-
-                <a href="#"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/pietro-de-grandi-329892-480x320.jpg');"></div></a>
-
-                <p class="h5 mb3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac magna leo. Morbi eros mi, aliquam sed ipsum et, accumsan feugiat eros. In porta tellus.</p>
-
-                <a href="#" class="block mb4 || h5 bold">Read full story</a>
-
-                <ul class="tags border-radius">
-                    <li><a href="">Item 1</a></li>
-                    <li><a href="">Item 2</a></li>
-                </ul>
-
-            </div>
-
-            <div class="col col-12 sm-col-6 md-col-3 lg-col-3 || p4 || js-match-height">
-
-                <p class="h6 mb2">1st Jan, 18</p>
-
-                <h3 class="h4 brand-primary">News Story Title</h3>
-
-                <a href="#"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/pietro-de-grandi-329892-480x320.jpg');"></div></a>
-
-                <p class="h5 mb3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac magna leo. Morbi eros mi, aliquam sed ipsum et, accumsan feugiat eros. In porta tellus.</p>
-
-                <a href="#" class="block mb4 || h5 bold">Read full story</a>
-
-                <ul class="tags border-radius">
-                    <li><a href="">Item 1</a></li>
-                    <li><a href="">Item 2</a></li>
-                </ul>
-
-            </div>
-
+            </nav>
         </div>
+
+
 
     </div>
 
 </div>
+
+<script>
+
+    //TODO: Move this into JS file
+
+    function fetchNewsPosts(page_number) {
+
+        //TODO: Add loader while fetching data.
+        var order_filter = $('#news_orderby').val();
+        var category_filter = $('#news_filtercats').val();
+
+        $.ajax({
+            url: '<?php echo admin_url( "admin-ajax.php"); ?>',
+            method: 'POST',
+            data: {
+                action: 'fetch_news',
+                news_page: page_number,
+                order_filter: order_filter,
+                category_filter: category_filter
+            },
+            success: function(response){
+                $('#news-listing').html(response);
+                $('.js-match-height').matchHeight();
+                $('html,body').animate({
+                    scrollTop: $("#news-listing-header").offset().top},
+                    'slow');
+                }
+        });
+    }
+
+    $(document).on('click', '.page-number', function(){
+        var page_number = $(this).data('page-number');
+        fetchNewsPosts(page_number);
+    });
+
+    $('.news_filters').on('change', function() {
+        var page_number = $('.page-numbers.current').text();
+        fetchNewsPosts(page_number);
+    });
+
+</script>
 
 <?php get_footer(); ?>
