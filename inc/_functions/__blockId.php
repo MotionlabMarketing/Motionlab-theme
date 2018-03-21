@@ -7,7 +7,7 @@
  * @return bool|string
  */
 
-function get_blockID($block) {
+function get_blockID(&$block) {
 
     if (!empty($block['customID']))
         return 'id="' . str_replace(" ", "", lcfirst(ucwords($block['customID']))) . '"';
@@ -19,10 +19,9 @@ function get_blockID($block) {
  * THE BLOCK CUSTOM ID
  * This function echos a blocks custom ID, if set, which has been entered into the CMS.
  *
- * @param $block
  * @return bool|string
  */
-function the_blockID($block) {
+function the_blockID(&$block) {
 
     if (!empty($block['customID']))
         echo 'id="' . str_replace(" ", "", lcfirst(ucwords($block['customID']))) . '"';
