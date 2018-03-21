@@ -36,11 +36,11 @@ get_header(); ?>
         <div class="col col-12 md-col-12 lg-col-12 || mb5 bg-smoke">
 
 	        <?php $latest_post = array_shift($posts->posts); ?>
-            <div class="col col-12 md-col-6 || px5 md-p5 left md-right || flex items-center justify-center || js-match-height">
+            <div class="col col-12 md-col-6 || px5 md-p5 left md-right || flex items-center justify-center">
                 <?php if (has_post_thumbnail( $latest_post->ID ) ): ?>
-                    <?php $image_url = wp_get_attachment_image( get_post_thumbnail_id( $latest_post->ID ), "large", "", ["class" => "box-shadow-1 js-match-height"] ) ?>
+                    <?php $image_url = wp_get_attachment_image( get_post_thumbnail_id( $latest_post->ID ), "large", "", ["class" => "box-shadow-1"] ) ?>
                 <?php else: ?>
-                    <?php $image_url = wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1 js-match-height"]) // TODO: Default Image ?>
+                    <?php $image_url = wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1"]) // TODO: Default Image ?>
                 <?php endif; ?>
 
                 <?=$image_url?>
@@ -48,7 +48,7 @@ get_header(); ?>
             </div>
 
 
-            <div class="col col-12 md-col-6 || relative p5 right md-left || js-match-height">
+            <div class="col col-12 md-col-6 || relative p5 right md-left">
 
                 <p class="left || pt2 h5"><?=date('d M Y', strtotime($latest_post->post_date));?></p>
 

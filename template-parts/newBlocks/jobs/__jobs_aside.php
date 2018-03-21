@@ -10,14 +10,6 @@
  * @version 1.00
  */
 
-$bgColor     = get_sub_field($current . '_background_system_background_colours');
-$txtColor    = get_sub_field($current . '_text_system_text_colours');
-$blockWidth  = get_sub_field($current . '_width_block_width');
-
-$blockTitle  = get_sub_field($current . '_title_title');
-
-$sections    = get_sub_field($current . '_sections');
-
 ?>
 
 <section <?=get_blockID($block)?> class="jobs-talent || mt6 mb6 clearfix || <?=$bgColor?> <?=$txtColor?>" <?=get_blockData($block)?>>
@@ -67,25 +59,23 @@ $sections    = get_sub_field($current . '_sections');
                     <?= $content['content'] ?>
                 </div>
 
-                <?php $i = 0; while($i < 2): ?>
-
+                <?php foreach($block['posts']->posts as $post) :?>
                     <div class="listItem || relative clearfix border-bottom border-light px3 py3">
 
                         <div class="col col-12">
 
-                            <a href=""><h3 class="brand-primary mb2 h4">Part Time Marketing Coordinator – East Lancashire, £28,000 (pro rata)</h3></a>
+                            <a href=""><h3 class="brand-primary mb2 h4"><?=$post->post_title?></h3></a>
 
-                            <p class="h5 mb3">Accrington <span class="muted">•</span> Up to £28,000 per annum <span class="muted">•</span> Permanent</p>
+                            <p class="h5 mb3"><?=$post->locations[0]->name?> <span class="muted">•</span> SALARY <span class="muted">•</span> <?=$post->types[0]->name?></p>
 
-                            <a href="/" class="btn btn-primary btn-small white px5">Read More</a>
+                            <a href="<?=$post->guid?>" class="btn btn-primary btn-small white px5">Read More</a>
 
                         </div>
 
                     </div>
+                <?php endforeach; ?>
 
-                <?php $i++; endwhile; ?>
-
-                <a href="/" class="btn btn-outline mt3">View all accountancy jobs</a>
+                <a href="/" class="btn btn-outline mt3">View all jobs</a>
 
             </div>
 
