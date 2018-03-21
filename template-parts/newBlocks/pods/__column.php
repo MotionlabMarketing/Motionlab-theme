@@ -16,11 +16,11 @@
 
         <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-        <div class="col col-12 md-col-<?=$block['content']['cols'][0]?> mxn2 p2">
+        <div class="col col-12 md-col-<?=$block['content']['cols'][0]?> mxn2 p2 js-match-height">
 
                 <?php foreach ($block['content'] as $item): ?>
 
-                    <div class="pod || col <?=$block['columns']?>  mb4 p2 relative js-match-height">
+                    <div class="pod || col <?=$block['columns']?>  mb4 p2 relative">
 
                         <div class="internal-padding <?=$block['pod']['bgColour']?> <?=$block['pod']['padding']?>">
 
