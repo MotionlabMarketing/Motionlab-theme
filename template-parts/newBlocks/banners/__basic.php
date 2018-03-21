@@ -74,7 +74,7 @@ endif; ?>
 
                     <div class="content || width-100 || mtn6 p4 z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
 
-                        <?=($banner['text-align'] == "text-center")? '<div class="container px7">' : ''; // IF THE TEXT IS CENTERED CONTAIN ITS WIDTH. ?>
+                        <?=($banner['text-align'] == "text-center")? '<div class="container xl-px7">' : ''; // IF THE TEXT IS CENTERED CONTAIN ITS WIDTH. ?>
 
                         <?php if (!empty($banner['logos']['before']['url'])): ?>
 
@@ -89,7 +89,7 @@ endif; ?>
 
                                 <div class="subheading || mb2">
 
-                                    <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
+                                    <?php render_heading( "{$blockTitle[0]['title']}", "{$blockTitle[0]['type']['heading']}", "{$blockTitle[0]['size']['heading_size']}", "{$blockTitle[0]['color']['system_text_colours']}", "{$blockTitle[0]['title_case']['system_text_transform']}", "sm-h1 lg-h00"); ?>
 
                                 </div>
 
@@ -98,9 +98,9 @@ endif; ?>
                         <?php /*MAIN*/ $blockTitle = $banner['title'];
                         if (!empty($blockTitle[0]['title'])): ?>
 
-                            <div class="title">
+                            <div class="title"> <?php // pb2 h2 sm-h1 lg-h00 || mb0 || white text-none ?>
 
-                                <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
+                                <?php render_heading( "{$blockTitle[0]['title']}", "{$blockTitle[0]['type']['heading']}", "{$blockTitle[0]['size']['heading_size']}", "{$blockTitle[0]['color']['system_text_colours']}", "{$blockTitle[0]['title_case']['system_text_transform']}", "sm-h1 lg-h00"); ?>
 
                             </div>
 
@@ -113,22 +113,13 @@ endif; ?>
 
                                 <div class="subheading || mb2">
 
-                                    <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
+                                    <?php render_heading( "{$blockTitle[0]['title']}", "{$blockTitle[0]['type']['heading']}", "{$blockTitle[0]['size']['heading_size']}", "{$blockTitle[0]['color']['system_text_colours']}", "{$blockTitle[0]['title_case']['system_text_transform']}", "sm-h1 lg-h00"); ?>
 
                                 </div>
 
                             <?php endif; endif; ?>
 
-
-                        <?php if (!empty($banner['content'])): ?>
-
-                            <div class="wysiwyg || my4 <?=($banner['align'] == 'center')? 'limit-p limit-p-70':'';?>">
-
-                                <?=$banner['content']?>
-
-                            </div>
-
-                        <?php endif; ?>
+                        <?php render_wysiwyg($banner['content'], true, "text-center md-h3") ?>
 
                         <div class="mt4">
                         <?php foreach ($banner['buttons'] as $button): ?>
