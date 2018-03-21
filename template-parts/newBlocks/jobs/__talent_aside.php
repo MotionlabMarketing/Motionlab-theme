@@ -12,7 +12,7 @@
 
 ?>
 
-<section <?=get_blockID($block)?> class="jobs-talent || mt2 mb2 p2 md-p0 clearfix || <?=$bgColor?> <?=$txtColor?>" <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> class="jobs-talent clearfix relative <?=get_blockVisibility($block)?> mt2 mb2 p2 md-p0 <?=$bgColor?> <?=$txtColor?>" <?=get_blockData($block)?>>
 
     <div class="container">
 

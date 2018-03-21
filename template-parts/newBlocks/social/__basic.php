@@ -22,7 +22,7 @@ foreach ($hideBtns as $item) {
 
 ?>
 
-<section <?=get_blockID($block)?> class="social-share social-basic || <?=$bgColor?>" <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> class="social-share social-basic clearfix relative <?=get_blockVisibility($block)?> <?=$bgColor?>" <?=get_blockData($block)?>>
 
     <div class="container">
 

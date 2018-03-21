@@ -10,7 +10,7 @@
  */
 ?>
 
-<section <?=get_blockID($block)?> class="cta-iconPanels || clearfix  relative || <?=($block['grid'] == 'container')? 'container' : ""?> <?=$block['spacing']?> <?=$block['padding']?> <?=($block['bgImage']['enable'] !== true)? $block['background']['colour']:''?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> class="cta-iconPanels clearfix relative <?=get_blockVisibility($block)?> <?=($block['grid'] == 'container')? 'container' : ""?> <?=$block['spacing']?> <?=$block['padding']?> <?=($block['bgImage']['enable'] !== true)? $block['background']['colour']:''?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" <?=get_blockData($block)?>>
 
     <div class="container">
 

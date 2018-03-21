@@ -38,7 +38,7 @@ endif;
 
 ?>
 
-<section <?=get_blockID($block)?> class="pod-benefits || <?=$bgColor?> <?=$txtColor?> <?=$borders?>" <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> class="pod-benefits clearfix relative <?=get_blockVisibility($block)?> <?=$bgColor?> <?=$txtColor?> <?=$borders?>" <?=get_blockData($block)?>>
 
     <div class="container">
 

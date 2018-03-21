@@ -13,7 +13,7 @@
 $blockLogo = get_sub_field($current . '_logo');
 
 ?>
-<section <?=get_blockID($block)?> class="clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> class="clearfix relative <?=get_blockVisibility($block)?> <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 

@@ -10,7 +10,7 @@
  */
 ?>
 
-<section <?=get_blockID($block)?> class="tabs-dots <?=($block['bgImage']['enable'] == true)? 'bg-image-active' : '';?> || relative clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> class="tabs-dots clearfix relative <?=get_blockVisibility($block)?> <?=($block['bgImage']['enable'] == true)? 'bg-image-active' : '';?> <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 

@@ -30,6 +30,11 @@ if ($block['enabled'] == true || empty($block['enabled'])): // TODO: Needs corre
     $block['customID']          = get_sub_field($current . '_settings_block_customID');
     $block['custom_css']        = get_sub_field($current . '_settings_block_customClass');
 
+    // HIDE BLOCK ON VIEW SITE.
+    $block['hide']['mobile']     = get_sub_field($current . '_settings_block_hideMobile');
+    $block['hide']['tablet']     = get_sub_field($current . '_settings_block_hideTablet');
+    $block['hide']['desktop']    = get_sub_field($current . '_settings_block_hideDesktop');
+
     // GET THE SPACING (MARGIN) BEFORE AND AFTER THIS BLOCK.
     $block['spacing']           = "";
     $block['temp']['top']       = get_sub_field($current . '_settings_enable_block_bspacing');
