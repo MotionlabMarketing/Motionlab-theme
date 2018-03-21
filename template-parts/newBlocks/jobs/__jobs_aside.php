@@ -12,7 +12,7 @@
 
 ?>
 
-<section class="jobs-talent || mt6 mb6 clearfix || <?=$bgColor?> <?=$txtColor?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section class="jobs-talent || mt6 mb6 clearfix || <?=$bgColor?> <?=$txtColor?>" <?=get_blockData($block)?>>
 
     <div class="container">
 
