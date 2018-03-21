@@ -20,7 +20,7 @@ $sections    = get_sub_field($current . '_sections');
 pa($block['posts']);
 ?>
 
-<section id="latestTalent" class="jobs-talent || mt6 pt3 mb6 clearfix || <?=$bgColor?> <?=$txtColor?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section id="latestTalent" class="jobs-talent || mt6 pt3 mb6 clearfix || <?=$bgColor?> <?=$txtColor?>" <?=get_blockData($block)?>>
 
     <div class="container">
 
