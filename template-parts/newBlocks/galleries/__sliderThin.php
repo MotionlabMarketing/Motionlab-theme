@@ -11,7 +11,7 @@
  */
 ?>
 
-<section id="<?=$block['custom_id']?>" class="gallery || clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section id="<?=$block['custom_id']?>" class="gallery || clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>"  data-block-layout="<?=$block['layout']?>">
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
@@ -24,13 +24,9 @@
 
                     <div class="col col-12 md-col-12 lg-col-12 || mb5 text-center">
 
-                        <?php
-                        if (!empty($blockTitle[0]['title'])) {
-                            include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
+                        <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}"); ?>
 
-                        <div class="wysiwyg h4 limit-p limit-p-70">
-                            <?=get_field('page_introduction')?>
-                        </div>
+                        <?php render_wysiwyg("{$block['intro']}", "", " || regular")?>
 
                     </div>
 

@@ -18,13 +18,13 @@
 
     <div class="clearfix <?=$block['content']['bg']?> <?=$block['content']['sides']?> <?=$block['content']['borders']['color']?> <?=$block['content']['borders']['size']?>">
 
-        <div class="relative col col-12 md-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> js-match-height min-height-v50">
+        <div class="relative col col-12 md-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> js-match-height min-height-v50 overflow-hidden">
 
             <?php if ($block['content']['type'] == "image"): ?>
 
                 <?=($block['content']['padding'] !== 'p0')? '<div class="relative height-100 '.$block['content']['padding'].'">' : '' ?>
 
-                    <div class="image-holder top-0 left-0 height-100 width-100 absolute bg-cover bg-center min-height-25" style="background-image: url('<?=wp_get_attachment_url($block['content']['image'])?>')"></div>
+                    <div class="image-holder top-0 left-0 height-100 width-100 absolute bg-cover bg-center min-height-v50 mb4 md-mb0" style="background-image: url('<?=wp_get_attachment_url($block['content']['image'])?>')"></div>
 
                 <?=($block['content']['padding'] !== 'p0')? '</div>' : '' ?>
 

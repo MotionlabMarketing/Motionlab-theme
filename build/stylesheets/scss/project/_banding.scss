@@ -554,6 +554,28 @@ form {
     }
   }
 
+  .gfieldset {
+
+    &:nth-child(odd) {
+      //padding-left: 0;
+      padding-right: 1rem;
+
+      @media (max-width: $breakpoint-sm) {
+        padding: 0 1rem;
+      }
+    }
+
+    &:nth-child(even) {
+      padding-left: 1rem;
+      //padding-right: 0;
+
+      @media (max-width: $breakpoint-sm) {
+        padding: 0 1rem;
+      }
+    }
+
+  }
+
   .gform_title {
     display: none;
   }

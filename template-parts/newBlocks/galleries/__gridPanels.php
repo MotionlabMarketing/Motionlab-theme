@@ -15,31 +15,7 @@
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-
-    <?php if (!empty($blockTitle[0]['title'])): ?>
-
-        <div class="container clearfix">
-
-            <div class="col-12 || mb5 || text-center">
-
-                <div class="col col-12 md-col-12 lg-col-12 || mb5 text-center">
-
-                    <?php
-                    if (!empty($blockTitle[0]['title'])) {
-                        include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
-
-                    <div class="wysiwyg h4 limit-p limit-p-70">
-                        <?=get_field('page_introduction')?>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    <?php endif; ?>
-
+    <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
     <div class="container clearfix || gallery item-slider p2">
 

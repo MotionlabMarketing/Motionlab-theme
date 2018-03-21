@@ -10,17 +10,17 @@
  */
 ?>
 
-<section id="<?=$block['custom_id']?>" class="pod-column || clearfix relative <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section id="<?=$block['custom_id']?>" class="pod-column clearfix relative <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>"  data-block-layout="<?=$block['layout']?>">
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
         <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-        <div class="col col-12 md-col-<?=$block['content']['cols'][0]?> mxn2 p2 js-match-height">
+        <div class="col col-12 md-col-<?=$block['content']['cols'][0]?> mxn2 p2">
 
-                <?php foreach ($block['content'] as $item): pa ?>
+                <?php foreach ($block['content'] as $item): ?>
 
-                    <div class="pod || col <?=$block['columns']?>  mb4 p2 relative">
+                    <div class="pod || col <?=$block['columns']?>  mb4 p2 relative js-match-height">
 
                         <div class="internal-padding <?=$block['pod']['bgColour']?> <?=$block['pod']['padding']?>">
 
@@ -28,7 +28,7 @@
 
                                 <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'">' : "")?>
 
-                                    <?= wp_get_attachment_image($item['image'], "large", "", ["class" => "box-shadow-1 js-match-height"]) // NEEDS IMAGE ID ADDING. ?>
+                                    <?=wp_get_attachment_image($item['image'], "large", "", ["class" => "box-shadow-1 js-match-height"]); ?>
 
                                 <?=(!empty($item['button']['button_link']['url'])? '</a>' : "")?>
 
