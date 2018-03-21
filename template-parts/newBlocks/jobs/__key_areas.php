@@ -1,6 +1,6 @@
 <?php
 /**
- * JOBS – TALENT LAYOUT BLOCK ------------------------
+ * JOBS – KEY AREAS LAYOUT BLOCK ------------------------
  * This block add support for a CTA block allowing the
  * user to link to other website areas.
  *
