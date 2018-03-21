@@ -38,7 +38,7 @@ endif;
 
 ?>
 
-<section class="pod-benefits || <?=$bgColor?> <?=$txtColor?> <?=$borders?>" <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> class="pod-benefits || <?=$bgColor?> <?=$txtColor?> <?=$borders?>" <?=get_blockData($block)?>>
 
     <div class="container">
 
