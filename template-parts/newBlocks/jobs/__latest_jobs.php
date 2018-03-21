@@ -48,7 +48,7 @@ $block['block_title']  = get_sub_field($current . '_title_title');
 
 <?php endif; ?>
 
-<section class="jobs-latest || mt6 mb6 clearfix" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>" data-page-id="<?=get_the_ID()?>">
+<section class="jobs-latest || mt6 mb6 clearfix" <?=get_blockData($block)?>>
 
     <div class="container">
 

@@ -12,7 +12,7 @@
 
 ?>
 
-<section class="jobs-keyareas || relative clearfix" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section class="jobs-keyareas || relative clearfix" <?=get_blockData($block)?>>
 
     <div class="container">
 

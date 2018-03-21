@@ -11,7 +11,7 @@
 
 ?>
 
-<section class="utilities-code" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>" data-block-layout="<?=$block['layout']?>">
+<section class="utilities-code" <?=get_blockData($block)?>>
 
     <?= get_sub_field($current . '_code')?>
 
