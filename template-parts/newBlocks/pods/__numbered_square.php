@@ -10,9 +10,11 @@
  */
 // CUSTOM DATA SET FOR THIS BLOCK.
 $blockItems  = get_sub_field($current . '_basic');
+
+$width = ($block['grid'] == 'full_width')? $block['background']['colour'] : "";
 ?>
 
-<section <?=get_blockID($block)?> class="pod-numbered-square clearfix relative <?=get_blockVisibility($block)?> <?=$block['spacing']?> <?=$block['padding']?> <?=($block['grid'] == 'full_width')? $block['background']['colour'] : ""?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "pod-numbered-square {$width}")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container' || $block['grid'] == 'full_width')? '<div class="container '.$block['background']['colour'].'">' : ""?>
 

@@ -56,7 +56,7 @@ if ($banner['image']['overlay'] == true):
     $banner['image']['overlayStrength'] = get_sub_field($current . '_image_overlay_strength');
 
 endif; ?>
-<section <?=get_blockID($block)?> class="banner clearfix relative <?=get_blockVisibility($block)?> z0 overflow-hidden <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> overlay-<?=$banner['align']?> <?=$block['custom_css']?>" <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "banner z0 overflow-hidden overlay-{$banner['align']}")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 

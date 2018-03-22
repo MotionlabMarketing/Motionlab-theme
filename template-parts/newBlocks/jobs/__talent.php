@@ -60,7 +60,7 @@
 
 <?php endif; ?>
 
-<section <?=get_blockID($block)?> id="latestTalent" class="jobs-talent clearfix relative <?=get_blockVisibility($block)?> mt6 pt3 mb6 <?=$bgColor?> <?=$txtColor?>" <?=get_blockData($block)?>>
+<section id="latestTalent" <?=get_blockClasses($block, "jobs-talent mt6 pt3 mb6")?> <?=get_blockData($block)?>>
 
     <div class="container">
 

@@ -18,23 +18,23 @@ var rename          = require('gulp-rename');
 var uglify          = require('gulp-uglify');
 
 
-var themepath       = ''
+var themepath       = '';
 
 
 
 // uses postcss to make the var work below
 var processors = [
     autoprefixer({browsers: ['last 2 versions']}),
-    cssnano(),
+    cssnano()
 ];
 
 
 // optimise scripts
 gulp.task('scripts', function() {
     console.log('running scripts')
-    gulp.src(['build/scripts/plugins/**/*.js','build/scripts/main.js'])
+    gulp.src(['build/scripts/plugins/**/*.js','build/scripts/main.js', 'build/scripts/_blocks/**/*.js'])
         .pipe(concat('main-min.js'))
-        //.pipe(uglify())
+        // .pipe(uglify())
         .pipe(gulp.dest(themepath + 'assets/scripts/'));
 });
 
@@ -54,10 +54,10 @@ gulp.task('sass', function(){
 
 gulp.task('watch', function(){
     gulp.watch('build/images/*.*', ['images']);
-    gulp.watch('build/scripts/*.*', ['scripts']);
+    gulp.watch('build/scripts/**/*.*', ['scripts']);
     gulp.watch('build/stylesheets/scss/**/*.scss', ['sass']);
 })
 
 
 
-gulp.task('default', ['sass','scripts','watch'])
+gulp.task('default', ['sass','scripts','watch']);
