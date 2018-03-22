@@ -9,10 +9,9 @@
  *
  * @version 1.00
  */
-
 ?>
 
-<section <?=get_blockID($block)?> class="jobs-talent clearfix relative <?=get_blockVisibility($block)?> mt6 mb6 <?=$bgColor?> <?=$txtColor?>" <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "jobs-talent mt6 mb6")?> <?=get_blockData($block)?>>
 
     <div class="container">
 

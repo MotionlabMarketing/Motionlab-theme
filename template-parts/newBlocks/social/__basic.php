@@ -11,7 +11,6 @@
  */
 
 $bgColor     = get_sub_field('block_social_background_system_background_colours');
-$txtColor    = get_sub_field('block_social_text_system_text_colours');
 
 $hideBtns    = get_sub_field('block_social_hide_share_buttons');
 $hideClasses = "";
@@ -22,7 +21,7 @@ foreach ($hideBtns as $item) {
 
 ?>
 
-<section <?=get_blockID($block)?> class="social-share social-basic clearfix relative <?=get_blockVisibility($block)?> <?=$bgColor?>" <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "social-share social-basic {$bgColor}")?> <?=get_blockData($block)?>>
 
     <div class="container">
 

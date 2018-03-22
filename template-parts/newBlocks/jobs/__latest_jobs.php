@@ -48,7 +48,7 @@ $block['block_title']  = get_sub_field($current . '_title_title');
 
 <?php endif; ?>
 
-<section <?=get_blockID($block)?>class="jobs-latest clearfix relative <?=get_blockVisibility($block)?> mt6 mb6" <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "jobs-latest mt6 mb6")?> <?=get_blockData($block)?>>
 
     <div class="container">
 
