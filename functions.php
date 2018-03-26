@@ -608,7 +608,7 @@ function ml_get_template() {
 }
 
 function pa($value) {
-    print_r("<pre style='background-color: #f1f1f1; padding: 1rem;'>");
+    print_r("<pre style='background-color: #f1f1f1; color: black; text-align: left; padding: 1rem;'>");
     print_r($value);
     print_r("</pre>");
 }

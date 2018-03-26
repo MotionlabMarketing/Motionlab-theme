@@ -15,28 +15,11 @@
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-        <div class="<?=get_sub_field($current . '_alignment_align')?>">
+        <div class="<?=$block['txt']['alignment']?>">
 
-            <?php
+            <?php render_heading( "{$block['headings'][0]->title}", "{$block['headings'][0]->type}", "{$block['headings'][0]->size}", "{$block['headings'][0]->color}", "{$block['headings'][0]->case}"); ?>
 
-                $order = [];
-                $a = get_sub_field($current . '_subPosition');
-
-                if ($a == "before"):
-                    $order[0] = $current . "_titleSecondly_title";
-                    $order[1] = $current . "_title_title";
-                else:
-                    $order[0] = $current . "_title_title";
-                    $order[1] = $current . "_titleSecondly_title";
-                endif;
-
-            $blockTitle = get_sub_field($order[0]);
-            if (!empty($blockTitle[0]['title'])) {
-                include(BLOCKS_DIR . 'sub-elements/_block_titles.php'); }
-
-            $blockTitle = get_sub_field($order[1]);
-            if (!empty($blockTitle[0]['title'])) {
-                include(BLOCKS_DIR . 'sub-elements/_block_titles.php'); } ?>
+            <?php render_heading( "{$block['headings'][1]->title}", "{$block['headings'][1]->type}", "{$block['headings'][1]->size}", "{$block['headings'][1]->color}", "{$block['headings'][1]->case}"); ?>
 
         </div>
 

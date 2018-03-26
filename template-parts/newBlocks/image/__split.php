@@ -8,32 +8,29 @@
  *
  * @version 1.00
  */
-
-$images    = get_sub_field($current . '_items');
-$minHeight = get_sub_field($current . '_height_min_height');
 ?>
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "jobs-talent")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-        <div class="col col-12 md-col-6 mb2 md-pt2 md-pr2 md-pb2 relative <?=$minHeight?>">
+        <div class="col col-12 md-col-6 mb2 md-pt2 md-pr2 md-pb2 relative <?=$block['images']['minHeight']?>">
 
-            <?=(!empty($images[0]['link']['url']))? '<a href="'.$images[0]['link']['url'].'">' : '' ?>
+            <?=(!empty($block['images'][0]['link']['url']))? '<a href="'.$block['images'][0]['link']['url'].'">' : '' ?>
 
-                <div class="image-holder || absolute height-100 width-100 bg-<?=$images[0]['background_position']?>" style="background-image: url('<?=$images[0]['image']['url']?>');"></div>
+                <div class="image-holder || absolute height-100 width-100 bg-<?=$block['images'][0]['background_position']?>" style="background-image: url('<?=$block['images'][0]['image']['url']?>');"></div>
 
-            <?=(!empty($images[0]['link']['url']))? '</a>' : '' ?>
+            <?=(!empty($block['images'][0]['link']['url']))? '</a>' : '' ?>
 
         </div>
 
-        <div class="col col-12 md-col-6 mb2 md-pt2 md-pl2 md-pb2 relative <?=$minHeight?>">
+        <div class="col col-12 md-col-6 mb2 md-pt2 md-pl2 md-pb2 relative <?=$block['images']['minHeight']?>">
 
-            <?=(!empty($images[1]['link']['url']))? '<a href="'.$images[1]['link']['url'].'">' : '' ?>
+            <?=(!empty($block['images'][1]['link']['url']))? '<a href="'.$block['images'][1]['link']['url'].'">' : '' ?>
 
-                <div class="image-holder || absolute height-100 width-100 bg-<?=$images[1]['background_position']?>" style="background-image: url('<?=$images[1]['image']['url']?>');"></div>
+                <div class="image-holder || absolute height-100 width-100 bg-<?=$block['images'][1]['background_position']?>" style="background-image: url('<?=$block['images'][1]['image']['url']?>');"></div>
 
-            <?=(!empty($images[1]['link']['url']))? '</a>' : '' ?>
+            <?=(!empty($block['images'][1]['link']['url']))? '</a>' : '' ?>
 
         </div>
 
