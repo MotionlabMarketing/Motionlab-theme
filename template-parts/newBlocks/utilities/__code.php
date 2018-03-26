@@ -11,7 +11,7 @@
 
 ?>
 
-<section class="utilities-code" <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> class="utilities-code" <?=get_blockData($block)?>>
 
     <?= get_sub_field($current . '_code')?>
 

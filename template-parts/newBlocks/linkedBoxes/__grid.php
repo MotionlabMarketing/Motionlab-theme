@@ -28,9 +28,10 @@ $blockItems       = get_sub_field($current . '_items');
 
 $hoverContent     = get_sub_field($current . '_hoverContent');
 
+$hoverShow        = ($hoverContent == true)? "show-hover" : "";
 ?>
 
-<section id="<?=$block['custom_id']?>" class="linkedBox-grid || mt6 clearfix <?=($hoverContent == true)? "show-hover" : "";?> <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?>" <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "linkedBox-grid mt6 {$hoverShow}")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 

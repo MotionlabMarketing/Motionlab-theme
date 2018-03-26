@@ -1,4 +1,4 @@
-<?php
+    <?php
 /**
  * TEAM – BASIC LAYOUT BLOCK ------------------------
  * A basic layout for select videos from the custom
@@ -37,9 +37,12 @@ foreach ($videosAll as $video):
     $videos[$i]['thumbnail']    = $videos[$i]['thumbnail']['sizes']['medium_large'];
 
     $i++;
-endforeach; ?>
+endforeach;
 
-<section id="<?=$block['custom_id']?>" class="video-stories || relative clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=($block['grid'] == 'full_width')? $block['background']['colour'] : ""?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" <?=get_blockData($block)?>>
+$width = ($block['grid'] == 'full_width')? $block['background']['colour'] : ""
+?>
+
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "video-stories {$width}")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container' || $block['grid'] == 'full_width')? '<div class="container '.$block['background']['colour'].'">' : ""?>
 
