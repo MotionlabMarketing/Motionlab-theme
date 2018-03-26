@@ -10,7 +10,7 @@
  */
 ?>
 
-<section id="<?=$block['custom_id']?>" class="pod-titleBelow || clearfix relative <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "pod-titleBelow")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 

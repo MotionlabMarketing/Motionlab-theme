@@ -40,7 +40,7 @@ endforeach;
 
 ?>
 
-<section class="timeline-basic || clearfix my4 mb6">
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "timeline-basic my4 mb6")?> <?=get_blockData($block)?>>
 
     <div class="container">
 

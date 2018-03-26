@@ -1,6 +1,6 @@
 <?php
 /**
- * JOBS – TALENT LAYOUT BLOCK ------------------------
+ * JOBS – KEY AREAS LAYOUT BLOCK ------------------------
  * This block add support for a CTA block allowing the
  * user to link to other website areas.
  *
@@ -12,7 +12,7 @@
 
 ?>
 
-<section class="jobs-keyareas || relative clearfix" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "jobs-keyareas")?> <?=get_blockData($block)?>>
 
     <div class="container">
 

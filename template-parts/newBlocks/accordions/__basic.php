@@ -13,28 +13,26 @@
 $rows = get_sub_field($current . '_rows');
 
 ?>
-<section id="<?=$block['custom_id']?>" class="accordion-basic || clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
         <div class="accordion">
 
-            <?php
-            $i = 1;
-            foreach ($rows as $row): ?>
+            <?php foreach ($rows as $row): ?>
 
-                <div class="row bg-white bg-base p3 box-shadow-1 border-light-1 border-radius-2 border-top border-left border-right border-bottom border-solid mb4">
+                <div data-accordion-collection="<?=$block['id']?>" data-accordion-active="false" class="width-100 mb2 px4 bg-white py3 border-top border-left border-right border-bottom border-solid border-1 border-light cursor-pointer">
 
-                    <input type="radio" name="row" id="row-<?=$i?>" class="width-100 display-none" />
-                    <label for="row-<?=$i?>" class="width-100 block"><span class="px2 brand-primary width-100 cursor-pointer bold h3 mb3"><?=$row['title']?></span></label>
+                    <label for="" class="h4 brand-primary bold width-100 cursor-pointer" style="font-size: 1.2rem"><i class="fa fa-angle-down"></i> <?=$row['title']?><span class="right grey opacity-2 h5 mt1"><i class="fa fa-mouse-pointer"></i> Toggle</span></label>
+                    <div class="content border-top border-solid border-1 border-light pt3 display-none">
 
-                    <div class="wysiwyg bg-white bg-base width-100 px2 block overflow-hidden">
-                            <?=$row['content'];?>
+                        <?=$row['content'];?>
+
                     </div>
 
                 </div>
 
-            <?php $i++; endforeach; ?>
+            <?php endforeach; ?>
 
         </div>
 

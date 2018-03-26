@@ -13,7 +13,7 @@
 $block['buttons'] = get_sub_field($current . '_buttons');
 ?>
 
-<section id="<?=$block['custom_id']?>" class="menu-internal relative clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>" data-block-layout="<?=$block['layout']?>">
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "menu-internal")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 

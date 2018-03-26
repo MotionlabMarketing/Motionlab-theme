@@ -10,6 +10,17 @@
  * @version 1.00
  */
 
+$block['txt']['alignment'] = get_sub_field($current . '_alignment_align');
+$block['display_order']    = get_sub_field($current . '_subPosition');
+
+$block['headings'][0]      = convert_heading(get_sub_field($current . "_title_title"));
+$block['headings'][1]      = convert_heading(get_sub_field($current . "_titleSecondly_title"));
+
+$block['logo']             = get_sub_field($current . '_logo');
+
+if ($block['display_order'] == "before")
+    $block['headings'] = array_reverse($block['headings']);
+
 switch ($block['layout']):
     case "logo":
         include('headers/__logo.php');

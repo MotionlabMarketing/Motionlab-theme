@@ -42,7 +42,7 @@ endif;
 
 ?>
 
-<section id="<?=$block['custom_id']?>" class="banner-video clearfix relative z0 overflow-hidden bg-black <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> overlay-<?=$banner['align']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "banner z0 overflow-hidden bg-black overlay-{$banner['align']}")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 

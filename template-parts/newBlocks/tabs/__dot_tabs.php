@@ -8,9 +8,11 @@
  *
  * @version 1.00
  */
+
+$bgImage = ($block['bgImage']['enable'] == true)? 'bg-image-active' : '';
 ?>
 
-<section id="<?=$block['custom_id']?>" class="tabs-dots <?=($block['bgImage']['enable'] == true)? 'bg-image-active' : '';?> || relative clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>"  data-block-layout="<?=$block['layout']?>">
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "tabs-dots {$bgImage}")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 

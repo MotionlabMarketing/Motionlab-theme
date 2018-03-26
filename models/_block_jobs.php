@@ -36,7 +36,7 @@ Class _block_jobs
 	private function loadBlockSettings() {
 
 		//TODO: Move this to the block settings
-		$this->block['block_title']     = get_sub_field($this->current . '_title_title');
+		$this->block['block_title']         = get_sub_field($this->current . '_title_title');
 
 		if($this->layout == 'key_areas')
 			$this->block['sections']        = get_sub_field($this->current . '_keyarea');
@@ -70,7 +70,7 @@ Class _block_jobs
 		if ( isset($_POST['location_filter']) && $_POST['location_filter'] != '' ) {
 			$tax_query[] = array(
 				'taxonomy'  => 'locations',
-				'terms'     => array($_POST['location_filter']),
+				'terms'     => [ $_POST['location_filter'] ],
 				'field'     => 'slug'
 			);
 		}
@@ -78,29 +78,44 @@ Class _block_jobs
 		if ( isset($_POST['type_filter']) && $_POST['type_filter'] != '') {
 			$tax_query[] = array(
 				'taxonomy'  => 'types',
-				'terms'     => array($_POST['type_filter'] && $_POST['type_filter'] != ''),
+				'terms'     => [ $_POST['type_filter'] ],
 				'field'     => 'slug'
 			);
 		}
 
 		if ( isset($_POST['role_filter']) && $_POST['role_filter'] != '') {
 			$tax_query[] = array(
-				'taxonomy'  => 'types',
-				'terms'     => array($_POST['type_filter'] && $_POST['type_filter'] != ''),
+				'taxonomy'  => 'roles',
+				'terms'     => [ $_POST['role_filter'] ],
 				'field'     => 'slug'
 			);
 		}
 
-		if($this->layout == 'talent' || $this->layout == 'talent_aside') $post_type = 'talent'; else $post_type = 'jobs';
+
+		if($this->layout == 'talent' || $this->layout == 'talent_aside') {
+			$post_type = 'talents'; if($this->layout == 'talent_aside') $posts_per_page = 2; else $posts_per_page = 4;
+		}  else {
+			$post_type = 'jobs'; if($this->layout == 'jobs_aside') $posts_per_page = 2; else $posts_per_page = 6;
+		}
 
 		$args = array(
-			'posts_per_page'    => $_POST['block_post_per_page'] ?: 6,
+			'posts_per_page'    => $_POST['block_post_per_page'] ?: $posts_per_page,
 			'paged'             => $_POST['block_page'] ?: 1,
+			'post_status'       => 'publish',
 			'post_type'         => $post_type,
 			'tax_query'         => $tax_query
 		);
 
 		$this->block['posts'] = new WP_Query( $args );
+
+		foreach($this->block['posts']->posts as $key => $post) {
+
+			$this->block['posts']->posts[$key]->sectors     = get_the_terms($post->ID, 'sectors');
+			$this->block['posts']->posts[$key]->types       = get_the_terms($post->ID, 'types');
+			$this->block['posts']->posts[$key]->roles       = get_the_terms($post->ID, 'roles');
+			$this->block['posts']->posts[$key]->locations   = get_the_terms($post->ID, 'locations');
+
+		}
 
 	}
 

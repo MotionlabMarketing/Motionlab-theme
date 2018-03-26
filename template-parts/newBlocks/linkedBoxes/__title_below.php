@@ -26,7 +26,7 @@ $blockItems       = get_sub_field($current . '_items');
 
 $block['content']['button'] = get_sub_field($current . '_button_button_link');
 ?>
-<section id="<?=$block['custom_id']?>" class="linkedBox-titleBelow || clearfix <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "linkedBox-titleBelow")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 

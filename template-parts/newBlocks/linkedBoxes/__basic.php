@@ -28,10 +28,12 @@ $blockItems       = get_sub_field($current . '_items');
 
 $hoverContent     = get_sub_field($current . '_hoverContent');
 
+$hoverShow = ($hoverContent == true)? "show-hover" : "";
+
 //TODO: Update to new block array system and move block specific settings to controller.
 ?>
 
-<section id="<?=$block['custom_id']?>" class="linkedBox-basic || relative clearfix <?=($hoverContent == true)? "show-hover" : "";?> <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>">
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "linkedBox-basic {$hoverShow}")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 

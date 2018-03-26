@@ -19,7 +19,7 @@ $blockTitle = get_sub_field('block_videos_title_title');
 
 ?>
 
-<section class="video-basic || clearfix my4 mb4 pt3 <?=$bgColor?> <?=$txtColor?>">
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "video-basic my4 mb4 pt3 {$bgColor} {$txtColor}")?> <?=get_blockData($block)?>>
 
     <div class="container">
 

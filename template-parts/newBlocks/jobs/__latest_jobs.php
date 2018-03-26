@@ -48,7 +48,7 @@ $block['block_title']  = get_sub_field($current . '_title_title');
 
 <?php endif; ?>
 
-<section class="jobs-latest || mt6 mb6 clearfix" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>" data-page-id="<?=get_the_ID()?>">
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "jobs-latest mt6 mb6")?> <?=get_blockData($block)?>>
 
     <div class="container">
 
@@ -73,7 +73,7 @@ $block['block_title']  = get_sub_field($current . '_title_title');
             <form action="#" class="width-100 || flex justify-center">
 
                 <?php $disabled = sizeof($block['sector_select_options']) == 0 ? "disabled" : ""; ?>
-                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" id="sortby_sector" <?=$disabled?>>
+                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 job-filter-select" id="sortby_sector" <?=$disabled?>>
                     <option value="">Filter by Sector</option>
                     <?php
                         foreach($block['sector_select_options'] as $option) :?>
@@ -84,7 +84,7 @@ $block['block_title']  = get_sub_field($current . '_title_title');
                 </select>
 
                 <?php $disabled = sizeof($block['type_select_options']) == 0 ? "disabled" : ""; ?>
-                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" id="sortby_type" <?=$disabled?>>
+                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 job-filter-select" id="sortby_type" <?=$disabled?>>
                     <option value="">Filter by Type</option>
                     <?php
                         foreach($block['type_select_options'] as $option) :?>
@@ -95,7 +95,7 @@ $block['block_title']  = get_sub_field($current . '_title_title');
                 </select>
 
                 <?php $disabled = sizeof($block['location_select_options']) == 0 ? "disabled" : ""; ?>
-                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3" id="sortby_location" <?=$disabled?>>
+                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 job-filter-select" id="sortby_location" <?=$disabled?>>
                     <option value="">Filter by Location</option>
                     <?php foreach($block['location_select_options'] as $option) : ?>
                         <option class="option" value="<?=$option->slug?>" data-taxonomy="<?=$option->taxonomy?>"><?=$option->name?></option>
@@ -123,7 +123,7 @@ $block['block_title']  = get_sub_field($current . '_title_title');
 
                             <a href=""><h3 class="mb2 black h5"><?=$post->post_title?></h3></a>
 
-                            <p class="h6 mb0 bold">LOCATION <span class="black">•</span> SALARY RANGE <span class="black">•</span> PERMANENT </p>
+                            <p class="h6 mb0 bold"> <?=$post->locations[0]->name?> <span class="black">•</span> SALARY RANGE <span class="black">•</span> <?=$post->types[0]->name?> </p>
 
                         </div>
 
@@ -149,35 +149,14 @@ $block['block_title']  = get_sub_field($current . '_title_title');
 
 <script type="text/javascript">
 
-    $('#sortby_sector').on('change', function(){
-        //TODO: Update the two lines below to pull the page id and block name from the block itself.
-//        var pageID          = $('section.jobs-latest').data('page-id');
-//        var blockName       = $('section.jobs-latest').data('block-name');
-        var sector_filter   = $('#sortby_sector option:selected').val();
-        var type_filter     = $('#sortby_type option:selected').val();
-        var location_filter = $('#sortby_location option:selected').val();
-
-        $.ajax({
-            url: '<?php echo admin_url( "admin-ajax.php"); ?>',
-            method: 'POST',
-            data: {
-                action: 'update_block',
-                page_id: '6367',
-                block_name: 'block_jobs',
-                sector_filter: sector_filter,
-                type_filter: type_filter,
-                location_filter: location_filter
-            },
-            success: function(response){
-                $('#job-listing').html(response);
-            }
-        });
+    $('.job-filter-select').on('change', function(){
+        updateListing();
     });
 
-    $('#sortby_type').on('change', function(){
+    function updateListing() {
         //TODO: Update the two lines below to pull the page id and block name from the block itself.
-//        var pageID          = $('section.jobs-latest').data('page-id');
-//        var blockName       = $('section.jobs-latest').data('block-name');
+        //var pageID          = $('section.jobs-latest').data('page-id');
+        //var blockName       = $('section.jobs-latest').data('block-name');
         var sector_filter   = $('#sortby_sector option:selected').val();
         var type_filter     = $('#sortby_type option:selected').val();
         var location_filter        = $('#sortby_location option:selected').val();
@@ -197,30 +176,5 @@ $block['block_title']  = get_sub_field($current . '_title_title');
                 $('#job-listing').html(response);
             }
         });
-    });
-
-    $('#sortby_location').on('change', function(){
-        //TODO: Update the two lines below to pull the page id and block name from the block itself.
-//        var pageID          = $('section.jobs-latest').data('page-id');
-//        var blockName       = $('section.jobs-latest').data('block-name');
-        var sector_filter   = $('#sortby_sector option:selected').val();
-        var type_filter     = $('#sortby_type option:selected').val();
-        var location_filter        = $('#sortby_location option:selected').val();
-
-        $.ajax({
-            url: '<?php echo admin_url( "admin-ajax.php"); ?>',
-            method: 'POST',
-            data: {
-                action: 'update_block',
-                page_id: '6367',
-                block_name: 'block_jobs',
-                sector_filter: sector_filter,
-                type_filter: type_filter,
-                location_filter: location_filter
-            },
-            success: function(response){
-                $('#job-listing').html(response);
-            }
-        });
-    });
+    }
 </script>

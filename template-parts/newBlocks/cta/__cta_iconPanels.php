@@ -8,9 +8,12 @@
  *
  * @version 1.00
  */
+
+$limit = ($block['grid'] == 'container')? 'container' : "";
+$image = ($block['bgImage']['enable'] !== true)? $block['background']['colour'] : '';
 ?>
 
-<section id="<?=$block['custom_id']?>" class="cta-iconPanels || clearfix  relative || <?=($block['grid'] == 'container')? 'container' : ""?> <?=$block['spacing']?> <?=$block['padding']?> <?=($block['bgImage']['enable'] !== true)? $block['background']['colour']:''?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>" data-block-layout="<?=$block['layout']?>">
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "cta-iconPanels {$limit} {$image}")?> <?=get_blockData($block)?>>
 
     <div class="container">
 

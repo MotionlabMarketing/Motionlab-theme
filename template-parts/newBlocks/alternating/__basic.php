@@ -12,7 +12,8 @@
 
 
 ?>
-<section id="<?=$block['custom_id']?>" class="alternating-basic clearfix relative <?=$block['spacing']?> <?=$block['padding']?> <?=$block['background']['colour']?> <?=$block['border']['sides']?> <?=$block['border']['size']?> <?=$block['border']['colour']?> <?=$block['custom_css']?>" data-block-id="<?=$block['id']?>" data-block-name="<?=$block['name']?>" data-block-layout="<?=$block['layout']?>">
+
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
@@ -22,9 +23,9 @@
 
             <?php if ($block['content']['type'] == "image"): ?>
 
-                <?=($block['content']['padding'] !== 'p0')? '<div class="relative height-100 '.$block['content']['padding'].'">' : '' ?>
+                <?=($block['content']['padding'] !== 'p0')? '<div class="relative height-100 overflow-hidden '.$block['content']['padding'].'">' : '' ?>
 
-                    <div class="image-holder top-0 left-0 height-100 width-100 absolute bg-cover bg-center min-height-25" style="background-image: url('<?=wp_get_attachment_url($block['content']['image'])?>')"></div>
+                    <div class="image-holder top-0 left-0 height-100 width-100 absolute bg-cover bg-center min-height-v50" style="background-image: url('<?=wp_get_attachment_url($block['content']['image'])?>')"></div>
 
                 <?=($block['content']['padding'] !== 'p0')? '</div>' : '' ?>
 

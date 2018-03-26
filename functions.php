@@ -108,6 +108,28 @@ function ml_update_block() {
 	die();
 }
 
+/*==================================================================
+ML BLOCKS - TEMPLATES CONTROL
+==================================================================*/
+add_action( 'wp_ajax_fetch_news', 'ml_update_news' );
+add_action( 'wp_ajax_nopriv_fetch_news', 'ml_update_news' );
+function ml_update_news() {
+
+	/* Load in team block controller to access posts easily. */
+	include_once(MODELS_DIR . '_block_news.php');
+	$news_controller = new _block_news(null, null);
+	$posts = $news_controller->fetchFeedPosts(8, $_POST['news_page']);
+
+	generatePostListing($posts);
+
+	die();
+}
+
+function generatePostListing( $posts ) {
+
+	include_once(TEMPLATE_DIR . 'ajax/template-news-ajax.php');
+
+}
 
 function custom_widgets_init() {
 
@@ -586,7 +608,7 @@ function ml_get_template() {
 }
 
 function pa($value) {
-    print_r("<pre style='background-color: #f1f1f1; padding: 1rem;'>");
+    print_r("<pre style='background-color: #f1f1f1; color: black; text-align: left; padding: 1rem;'>");
     print_r($value);
     print_r("</pre>");
 }

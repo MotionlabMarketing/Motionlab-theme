@@ -27,8 +27,13 @@ if ($block['enabled'] == true || empty($block['enabled'])): // TODO: Needs corre
     $block['layout']            = get_sub_field($current . '_layout');
 
     // GET CUSTOM CLASS & IDS.
-    $block['custom_id']         = get_sub_field($current . '_settings_block_customID');
+    $block['customID']          = get_sub_field($current . '_settings_block_customID');
     $block['custom_css']        = get_sub_field($current . '_settings_block_customClass');
+
+    // HIDE BLOCK ON VIEW SITE.
+    $block['hide']['mobile']     = get_sub_field($current . '_settings_block_hideMobile');
+    $block['hide']['tablet']     = get_sub_field($current . '_settings_block_hideTablet');
+    $block['hide']['desktop']    = get_sub_field($current . '_settings_block_hideDesktop');
 
     // GET THE SPACING (MARGIN) BEFORE AND AFTER THIS BLOCK.
     $block['spacing']           = "";
