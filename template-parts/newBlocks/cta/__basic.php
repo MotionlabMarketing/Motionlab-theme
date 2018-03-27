@@ -22,7 +22,7 @@
 
                     <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}"); ?>
 
-                    <?php render_wysiwyg("{$block['content']['content']}", true, "|| md-mx6 md-px6  {$block['content']['txtColor']} || regular")?>
+                    <?php render_wysiwyg("{$block['content']['content']}", true, ["class" => "md-mx6 md-px6 {$block['content']['txtColor']} regular"])?>
 
                     <?php if ($block['buttons']['enabled'] == true): ?>
 

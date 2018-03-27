@@ -14,10 +14,14 @@
  * @param string $classes
  */
 
-function render_heading($title = "", $type = "h3", $size = "h4", $color = "brand-primary", $case = "",  $classes = "mb2") {
+function render_heading($title = "", $type = "h3", $size = "h4", $color = "brand-primary", $case = "", $attr = ["class" => "mb2"]) {
+
+    if (!empty($attr['class'])) {
+        $attr['class'] = "pb2 {$size} {$color} {$case} " . $attr['class'];
+    }
 
     if (!empty($title))
-        echo '<' . $type . ' class="pb2 ' . $size . ' ' . $color . ' ' . $case . ' ' . $classes . '" data-function="__heading">' . $title . '</' .$type . '>';
+        echo '<' . $type . ' ' . attrConvert($attr) . ' data-function="__heading">' . $title . '</' .$type . '>';
 
 }
 
@@ -37,10 +41,16 @@ function render_heading($title = "", $type = "h3", $size = "h4", $color = "brand
  * @return string
  */
 
-function get_render_heading($title = "", $type = "h3", $size = "h4", $color = "brand-primary", $case = "", $classes = "mb2") {
+function get_render_heading($title = "", $type = "h3", $size = "h4", $color = "brand-primary", $case = "", $attr = ["class" => "mb2"]) {
+
+    $attr = attrConvert($attr);
+
+    if (!empty($attr['class'])) {
+        $attr['class'] = "pb2 {$size} {$color} {$case}" . $attr['class'];
+    }
 
     if (!empty($title))
-        return '<' . $type . ' class="pb2 ' . $size . ' ' . $color . ' ' . $case . ' ' . $classes . '" data-function="__heading">' . $title . '</' .$type . '>';
+        return '<' . $type . ' ' . $attr . ' data-function="__heading">' . $title . '</' .$type . '>';
 
     return false;
 }

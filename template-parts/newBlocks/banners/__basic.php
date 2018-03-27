@@ -115,7 +115,7 @@ endif; ?>
 
                         <?php endif; endif; ?>
 
-                    <?php render_wysiwyg($banner['content'], false, "md-h3 bold") ?>
+                    <?php render_wysiwyg($banner['content'], false, ["class" => "md-h3 bold"]) ?>
 
                     <div class="mt4">
                     <?php foreach ($banner['buttons'] as $button): ?>

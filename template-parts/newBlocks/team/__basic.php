@@ -17,7 +17,7 @@
 
         <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-        <div class="flex flex-wrap justify-center">
+        <div class="flex flex-wrap justify-center mxn2">
 
             <?php foreach($block['posts']->posts as $post): ?>
 
@@ -34,7 +34,7 @@
 
                                 <div class="px3 py2">
 
-                                    <?=get_render_heading( get_field('staff_name', $post->ID), "h4", "h4", "", "", "mb0")?>
+                                    <?php render_heading( get_field('staff_name', $post->ID), "h4", "h4", "", "", ["class" => "mb0"]) ?>
 
                                     <p class="postion mb0"><?=get_field('staff_role', $post->ID);?></p>
 
