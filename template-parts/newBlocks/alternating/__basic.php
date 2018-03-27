@@ -70,9 +70,9 @@
 
             <div data-imatchto="video">
 
-                <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}", "mb2"); ?>
+                <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}", ["class" => "mb2"]); ?>
 
-                <?php render_wysiwyg($block['intro'], "", ""); ?>
+                <?php render_wysiwyg($block['intro']); ?>
 
                 <div class="mt4 text-center lg-text-left lg-flex items-center border-smoke border-top pt4 border-darken-3">
 
