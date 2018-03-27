@@ -70,7 +70,7 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
 
                     <section id="tab<?php echo $i ?>" class="tab-content clearfix || <?php echo ($i > 1) ? 'hide' : '' ?> p1 md-p4">
 
-                        <div class="col col-12 md-col-6 p3 pt5 md-px6 border-bottom border-light md-border-bottom-none">
+                        <div class="col col-12 md-col-6 p2 pt5 md-px3 border-bottom border-light md-border-bottom-none">
                             <div class="wysiwyg">
                                 <?=get_sub_field('col1_content') ?>
                              </div>
@@ -93,7 +93,7 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
                                     <?php if($item['show_filter'] == true):?>
 
                                         <form action="" method="get" class="flex">
-                                            <select name="orderby" id="orderby" style="min-width:11rem;" class="select md-mr3 width-100 md-width-auto box-shadow-2" onchange="this.form.submit()" >
+                                            <select name="orderby" id="orderby" style="min-width:15rem;" class="select md-mr3 width-100 md-width-auto box-shadow-2" onchange="this.form.submit()" >
                                                 <option value="title" <?php echo ($orderby == 'title') ? 'selected' : '' ; ?>>By Sector</option>
                                                  <?php
                                                     foreach($block['select_terms'] as $term): ?>

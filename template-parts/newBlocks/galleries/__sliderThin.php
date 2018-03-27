@@ -11,10 +11,9 @@
  */
 ?>
 
-<section <?=get_blockID($block)?> <?=get_blockClasses($block, "")?> <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "gallery")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
-
 
         <?php if (!empty($blockTitle[0]['title'])): ?>
 
@@ -24,13 +23,9 @@
 
                     <div class="col col-12 md-col-12 lg-col-12 || mb5 text-center">
 
-                        <?php
-                        if (!empty($blockTitle[0]['title'])) {
-                            include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
+                        <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}"); ?>
 
-                        <div class="wysiwyg h4 limit-p limit-p-70">
-                            <?=get_field('page_introduction')?>
-                        </div>
+                        <?php render_wysiwyg("{$block['intro']}", "", " || regular")?>
 
                     </div>
 

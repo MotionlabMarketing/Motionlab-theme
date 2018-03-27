@@ -263,7 +263,7 @@ nav {
 
 }
 
-.dropdown {
+.dropdown{
   padding: 1.5rem 0 0 0;
   position: absolute;
   top: 100%;
@@ -271,10 +271,11 @@ nav {
   opacity: 0;
   transition: $transition;
   right: 0;
-  left: -75%;
-  width: 250%;
+  left: 50%;
+  width: 250px;
   pointer-events: none;
   z-index: 0;
+  transform: translateX(-50%);
 
   ul {
     padding: 1rem;
