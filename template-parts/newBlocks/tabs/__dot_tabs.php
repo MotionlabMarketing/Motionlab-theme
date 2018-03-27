@@ -20,7 +20,7 @@ $bgImage = ($block['bgImage']['enable'] == true)? 'bg-image-active' : '';
 
             <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}"); ?>
 
-            <?php render_wysiwyg("{$block['intro']}", "", "|| md-mx6 md-px6  {$txtColor} || regular")?>
+            <?php render_wysiwyg("{$block['intro']}", "", ["class" => "md-mx6 md-px6  {$txtColor} regular"])?>
 
         </div>
 
@@ -51,7 +51,7 @@ $bgImage = ($block['bgImage']['enable'] == true)? 'bg-image-active' : '';
                             <?php $heading = convert_heading($tab['column_1']['title']); ?>
                             <?php render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}"); ?>
 
-                            <?php render_wysiwyg("{$tab['column_1']['column_content']}", "", "|| regular")?>
+                            <?php render_wysiwyg("{$tab['column_1']['column_content']}", "", ["class" => "regular"])?>
 
                             <?php if (!empty($tab['column_1']['column_buttons'])): ?>
                                 <div class="mt3">
@@ -80,7 +80,7 @@ $bgImage = ($block['bgImage']['enable'] == true)? 'bg-image-active' : '';
                                     <?php $heading = convert_heading($tab['column_2']['title']); ?>
                                     <?php render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}"); ?>
 
-                                    <?php render_wysiwyg("{$tab['column_2']['column_content']}", "", "|| regular")?>
+                                    <?php render_wysiwyg("{$tab['column_2']['column_content']}", "", ["class" => "regular"])?>
 
                                     <?php if (!empty($tab['column_2']['column_buttons'])): ?>
                                         <div class="mt3">

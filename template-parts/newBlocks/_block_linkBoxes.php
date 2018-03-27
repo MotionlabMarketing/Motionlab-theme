@@ -11,11 +11,28 @@
 
 $layout = get_sub_field($current . '_layout');
 
-$block['content']['buttons'] = get_sub_field($current . '_button_button_link');
+$block['content']['columns'] = get_sub_field($current . '_columns');
+
+$block['content']['bgColor']          = get_sub_field($current . '_background_system_background_colours');
+$block['content']['txtColor']         = get_sub_field($current . '_text_system_text_colours');
+
+$block['content']['buttons']          = get_sub_field($current . '_button_button_link');
+$block['content']['overlay']          = get_sub_field($current . '_enableOverlay');
+$block['content']['darken']           = get_sub_field($current . '_darken');
+$block['content']['darkenStrength']   = get_sub_field($current . '_darkenStrength');
+
+$block['columns']                     = 12 / $block['content']['columns'];
+
+$block['content']['items']            = get_sub_field($current . '_items');
+$block['content']['hover']            = get_sub_field($current . '_hoverContent');
+
+$block['enableHover']                 = ($block['content']['hover'] == true)? "show-hover" : "";
+
+$block['enableOverlay']               = get_sub_field($current . '_enableOverlay');
 
 switch ($layout):
-    case "grid":
-        include ('linkedBoxes/__grid.php');
+    case "gridRegressive":
+        include ('linkedBoxes/__gridRegressive.php');
         break;
     case "title_below":
         include ('linkedBoxes/__title_below.php');

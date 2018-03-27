@@ -5,8 +5,7 @@
  * Date: 01/03/18
  * Time: 11:57
  */
-Class _block_store
-{
+Class _block_store {
 
 	private $current;
 	private $layout;
@@ -30,6 +29,15 @@ Class _block_store
 	private function loadBlockSettings() {
 
 		//Any specific block settings should be loaded into $block here.
+        $this->block['enable_tabs']    = get_sub_field('enable_tabs');
+        $this->block['tabs']           = get_sub_field('tab_titles');
+        $this->block['models']         = get_sub_field('block_store_productRanges');  // TODO: Karl - Use if set to model filter.
+        $this->block['products']       = get_sub_field('block_store_products');       // TODO: Karl - Use if set to selected products.
+
+        $this->block['enablePageLink'] = get_sub_field('block_store_enablePageLinkButton');
+        $this->block['pageLink']       = get_sub_field('block_store_pageLinkButton');
+
+        $this->block['filterProduct']  = get_sub_field('block_store_filterSelection'); // TODO: Product Listing Filter (__basic.php).
 
 	}
 
@@ -97,11 +105,20 @@ Class _block_store
 		$block = $this->block;
 
 		switch ($this->block['layout']):
+            case "productLargeGridProducts":
+                include(BLOCKS_DIR . 'store/__productLargeGridProducts.php');
+                break;
+            case "productFeaturedRanges":
+                include(BLOCKS_DIR . 'store/__productFeaturedRanges.php');
+                break;
+            case "productRanges":
+                include(BLOCKS_DIR . 'store/__productRanges.php');
+                break;
 		    case "slidingPanels":
 		        include(BLOCKS_DIR . 'store/__slidingPanels.php');
 		        break;
 		    default:
-		        include(BLOCKS_DIR . 'jobs/__talent.php');
+		        include(BLOCKS_DIR . 'store/__basic.php');
 		        break;
 		endswitch;
 

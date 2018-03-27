@@ -1,4 +1,4 @@
-<header class="width-100 top-0 fixed z5 border-bottom border-light border-lighten-3" id="masthead" data-role="header">
+<header class="width-100 top-0 fixed z5 border-bottom border-light border-lighten-3" id="masthead" data-role="header" data-smallification="true">
 
     <!-- desktop header view -->
     <div class="header-size <?=(!is_front_page())? "bg-white" : "";?> display-none lg-block">

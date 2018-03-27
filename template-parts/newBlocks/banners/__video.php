@@ -91,7 +91,7 @@ endif;
 
             <div class="absolute top-0 left-0 || flex items-center justify-<?=$banner['align']?> || z-index-50 absolute width-100 height-100 || p3 md-p6">
 
-                <div class="content || max-width-50 || p4 z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
+                <div class="content || lg-width-50 || p4 z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
 
                     <?php $blockTitle = $banner['title'];
                     if (!empty($blockTitle[0]['title'])): ?>

@@ -18,7 +18,7 @@
 
         <div class="col col-12 md-col-<?=$block['content']['cols'][0]?> mxn2 p2 js-match-height">
 
-                <?php foreach ($block['content'] as $item): pa ?>
+                <?php foreach ($block['content'] as $item): ?>
 
                     <div class="pod || col <?=$block['columns']?>  mb4 p2 relative">
 
@@ -28,7 +28,7 @@
 
                                 <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'">' : "")?>
 
-                                    <?= wp_get_attachment_image($item['image'], "large", "", ["class" => "box-shadow-1 js-match-height"]) // NEEDS IMAGE ID ADDING. ?>
+                                    <?=wp_get_attachment_image($item['image'], "large", "", ["class" => "box-shadow-1 js-match-height"]); ?>
 
                                 <?=(!empty($item['button']['button_link']['url'])? '</a>' : "")?>
 

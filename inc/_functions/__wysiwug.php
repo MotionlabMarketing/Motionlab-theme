@@ -6,15 +6,17 @@
  *
  * @param $data
  * @param bool $limitWidth
- * @param $classes
+ * @param array $attr
  */
 
-function render_wysiwyg($data, $limitWidth = false, $classes) {
+function render_wysiwyg($data, $limitWidth = false, $attr = ["class" => ""]) {
 
-    if ($limitWidth)
-        $classes .= " limit-p limit-p-70";
+    $attr['class'] = "wysiwyg mb4 " . $attr['class'];
+
+    if ($limitWidth == true)
+        $attr['class'] = $attr['class'] . " limit-p limit-p-70";
 
     if (!empty($data))
-        echo '<div class="wysiwyg mb4 '. $classes. '" data-function="__wysiwug">' . $data . '</div>';
+        echo '<div '.  attrConvert($attr) .' data-function="__wysiwug">' . $data . '</div>';
 
 }
