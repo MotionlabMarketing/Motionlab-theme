@@ -82,7 +82,9 @@ get_header(); ?>
                             </a>
 
                         </div>
+
                     <?php else: ?>
+
                         <div class="p4 || grid-item">
 
                             <a href="<?=$team_member->guid?>" class="<?= $txtColor ?>">
@@ -116,5 +118,7 @@ get_header(); ?>
         </div>
 
     </section>
+
+    <?php include(get_template_directory() .'/template-parts/building-blocks.php' ); ?>
 
 <?php get_footer(); ?>

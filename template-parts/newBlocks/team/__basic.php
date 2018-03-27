@@ -8,6 +8,7 @@
  *
  * @version 1.00
  */
+
 ?>
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "team-basic")?> <?=get_blockData($block)?>>
@@ -16,7 +17,7 @@
 
         <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-        <div class="flex justify-center">
+        <div class="flex flex-wrap justify-center">
 
             <?php foreach($block['posts']->posts as $post): ?>
 
