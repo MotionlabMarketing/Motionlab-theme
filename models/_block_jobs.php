@@ -46,12 +46,13 @@ Class _block_jobs
 
 	}
 
-	private function fetchCategories() {
+	public function fetchCategories() {
 
 		$this->block['sector_select_options']   = $this->get_taxonomy_hierarchy($this->sector_taxonomy_slug, array('hide_empty' => false, 'parent' => 0));
 		$this->block['location_select_options'] = $this->get_taxonomy_hierarchy($this->location_taxonomy_slug, array('hide_empty' => false, 'parent' => 0));
 		$this->block['role_select_options']     = $this->get_taxonomy_hierarchy($this->role_taxonomy_slug, array('hide_empty' => false, 'parent' => 0));
 		$this->block['type_select_options']     = $this->get_taxonomy_hierarchy($this->type_taxonomy_slug, array('hide_empty' => false, 'parent' => 0));
+
 
 	}
 
@@ -91,11 +92,11 @@ Class _block_jobs
 			);
 		}
 
-
+		$post_type = 'jobs';
 		if($this->layout == 'talent' || $this->layout == 'talent_aside') {
 			$post_type = 'talents'; if($this->layout == 'talent_aside') $posts_per_page = 2; else $posts_per_page = 4;
 		}  else {
-			$post_type = 'jobs'; if($this->layout == 'jobs_aside') $posts_per_page = 2; else $posts_per_page = 6;
+			if($this->layout == 'jobs_aside') $posts_per_page = 2; else $posts_per_page = 6;
 		}
 
 		$args = array(
@@ -117,6 +118,65 @@ Class _block_jobs
 
 		}
 
+	}
+
+	public function fetchFeedPosts($posts_per_page = 6, $page = 1) {
+		$tax_query = [];
+
+		if ( isset($_POST['sector_filter']) && $_POST['sector_filter'] != '' ) {
+			$tax_query[] = [
+				'taxonomy'  => 'sectors',
+				'terms'     => [ $_POST['sector_filter'] ],
+				'field'     => 'slug'
+			];
+		}
+
+		if ( isset($_POST['location_filter']) && $_POST['location_filter'] != '' ) {
+			$tax_query[] = array(
+				'taxonomy'  => 'locations',
+				'terms'     => [ $_POST['location_filter'] ],
+				'field'     => 'slug'
+			);
+		}
+
+		if ( isset($_POST['type_filter']) && $_POST['type_filter'] != '') {
+			$tax_query[] = array(
+				'taxonomy'  => 'types',
+				'terms'     => [ $_POST['type_filter'] ],
+				'field'     => 'slug'
+			);
+		}
+
+		if ( isset($_POST['role_filter']) && $_POST['role_filter'] != '') {
+			$tax_query[] = array(
+				'taxonomy'  => 'roles',
+				'terms'     => [ $_POST['role_filter'] ],
+				'field'     => 'slug'
+			);
+		}
+
+		$post_type = 'jobs';
+
+		$args = array(
+			'posts_per_page'    => $posts_per_page,
+			'paged'             => $page,
+			'post_status'       => 'publish',
+			'post_type'         => $post_type,
+			'tax_query'         => $tax_query
+		);
+
+		$this->block['posts'] = new WP_Query( $args );
+
+		foreach($this->block['posts']->posts as $key => $post) {
+
+			$this->block['posts']->posts[$key]->sectors     = get_the_terms($post->ID, 'sectors');
+			$this->block['posts']->posts[$key]->types       = get_the_terms($post->ID, 'types');
+			$this->block['posts']->posts[$key]->roles       = get_the_terms($post->ID, 'roles');
+			$this->block['posts']->posts[$key]->locations   = get_the_terms($post->ID, 'locations');
+
+		}
+
+		return $this->block;
 	}
 
 	/**

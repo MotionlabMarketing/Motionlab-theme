@@ -7,7 +7,14 @@
 
 $blockTitle  = get_field('page_title');
 $blockTitle  = $blockTitle['title'];
-get_header(); ?>
+get_header();
+
+include_once(MODELS_DIR . '_block_jobs.php');
+$jobs_controller = new _block_jobs(null, null);
+$jobs_controller->fetchCategories();
+$block = $jobs_controller->fetchFeedPosts();
+
+?>
 
 <div class="clearfix || mt6" id="listing-job">
 
@@ -29,115 +36,80 @@ get_header(); ?>
 
             <div class="col col-12 mb5">
 
-                <form action="#" class="mx-auto inline-block p3 bg-brand-primary || flex justify-center">
+                <form action="#" class="width-100 || flex justify-center">
 
-                    <select style="min-width:20%; margin-left: 0" class="select md-ml3 width-100 md-width-auto" onchange="this.form.submit()" name="orderby" id="orderby">
-                        <option value="title">By Sector</option>
+                    <?php $disabled = sizeof($block['sector_select_options']) == 0 ? "disabled" : ""; ?>
+                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 jobs-filters" id="sortby_sector" <?=$disabled?>>
+                        <option value="">Filter by Sector</option>
+                        <?php
+                            foreach($block['sector_select_options'] as $option) :?>
+                                <option value="<?=$option->slug?>" data-taxonomy="<?=$option->taxonomy?>"><?=$option->name?></option>
+                        <?php
+                            endforeach;
+                        ?>
                     </select>
 
-                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto" onchange="this.form.submit()" name="orderby" id="orderby">
-                        <option value="title">By Type</option>
+                    <?php $disabled = sizeof($block['type_select_options']) == 0 ? "disabled" : ""; ?>
+                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 jobs-filters" id="sortby_type" <?=$disabled?>>
+                        <option value="">Filter by Type</option>
+                        <?php
+                            foreach($block['type_select_options'] as $option) :?>
+                                <option value="<?=$option->slug?>" data-taxonomy="<?=$option->taxonomy?>"><?=$option->name?></option>
+                        <?php
+                            endforeach;
+                        ?>
                     </select>
 
-                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto" onchange="this.form.submit()" name="orderby" id="orderby">
-                        <option value="title">By Location</option>
+                    <?php $disabled = sizeof($block['location_select_options']) == 0 ? "disabled" : ""; ?>
+                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 jobs-filters" id="sortby_location" <?=$disabled?>>
+                        <option value="">Filter by Location</option>
+                        <?php foreach($block['location_select_options'] as $option) : ?>
+                            <option class="option" value="<?=$option->slug?>" data-taxonomy="<?=$option->taxonomy?>"><?=$option->name?></option>
+                            <?php foreach($option->children as $option_children): ?>
+                                    <option class="optgroup" value="<?=$option_children->slug?>" data-taxonomy="<?=$option_children->taxonomy?>"><?=$option_children->name?></option>
+                            <?php endforeach; ?>
+                        <?php endforeach; ?>
                     </select>
 
                 </form>
 
             </div>
 
-            <div class="col col-12 md-col-8 mb6 clearfix">
+            <div id="jobs-listing" class="col col-12 md-col-8 mb6 clearfix">
 
+                <?php foreach($block['posts']->posts as $post) :?>
                 <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2">
 
                     <div class="col col-9">
 
-                        <a href=""><h3 class="mb2 h4">Part Time Marketing Coordinator – East Lancashire, £28,000 (pro rata)</h3></a>
+                        <a href=""><h3 class="mb2 h4"><?=$post->post_title?></h3></a>
 
-                        <p class="h5 mb0">Accrington <span class="muted">•</span> Up to £28,000 per annum <span class="muted">•</span> Permanent</p>
+                        <?php if(get_field('jobs_role_salary', $post->ID) != 0):
+                            $salary = "£".number_format(get_field('jobs_role_salary', $post->ID));
+                        else :
+                            $salary = "Salary not Specified";
+                        endif; ?>
+                        <p class="h5 mb0"><?=$post->locations[0]->name?><span class="muted"> •</span> <?=$salary?> <span class="muted">•</span> <?=$post->types[0]->name?></p>
 
                     </div>
 
                     <div class="col col-3 mt1">
 
-                        <a href="" class="btn btn-primary btn-medium white right">Apply Now</a>
+                        <a href="<?=$post->guid?>" class="btn btn-primary btn-small white width-100 h6 right">Apply Now</a>
 
                     </div>
 
                 </div>
+                <?php endforeach; $page = 1;?>
+                <nav class="pagination || clearfix block text-center border-top border-darken-1 py4 mt5">
 
-                <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2">
+                    <?php if($page - 2 > 0) :?> <span aria-current="page" data-page-number="<?=$page-2?>" class="page-numbers page-number cursor-pointer"><?=$page-2?></span> <?php endif;?>
+                    <?php if($page - 1 > 0) :?> <span aria-current="page" data-page-number="<?=$page-1?>" class="page-numbers page-number cursor-pointer"><?=$page-1?></span> <?php endif;?>
+                    <span aria-current="page" class="page-numbers current cursor-pointer"><?=$page?></span>
+                    <?php if($page + 1 <= $block['posts']->max_num_pages) :?><span aria-current="page" data-page-number="<?=$page+1?>" class="page-numbers page-number cursor-pointer"><?=$page+1?></span><?php endif;?>
+                    <?php if($page + 2 <= $block['posts']->max_num_pages) :?><span aria-current="page" data-page-number="<?=$page+2?>" class="page-numbers page-number cursor-pointer"><?=$page+2?></span><?php endif;?>
 
-                    <div class="col col-9">
-
-                        <a href=""><h3 class="mb2 h4">Part Time Marketing Coordinator – East Lancashire, £28,000 (pro rata)</h3></a>
-
-                        <p class="h5 mb0">Accrington <span class="muted">•</span> Up to £28,000 per annum <span class="muted">•</span> Permanent</p>
-
-                    </div>
-
-                    <div class="col col-3 mt1">
-
-                        <a href="" class="btn btn-primary btn-medium white right">Apply Now</a>
-
-                    </div>
-
-                </div>
-
-                <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2">
-
-                    <div class="col col-9">
-
-                        <a href=""><h3 class="mb2 h4">Part Time Marketing Coordinator – East Lancashire, £28,000 (pro rata)</h3></a>
-
-                        <p class="h5 mb0">Accrington <span class="muted">•</span> Up to £28,000 per annum <span class="muted">•</span> Permanent</p>
-
-                    </div>
-
-                    <div class="col col-3 mt1">
-
-                        <a href="" class="btn btn-primary btn-medium white right">Apply Now</a>
-
-                    </div>
-
-                </div>
-
-                <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2">
-
-                    <div class="col col-9">
-
-                        <a href=""><h3 class="mb2 h4">Part Time Marketing Coordinator – East Lancashire, £28,000 (pro rata)</h3></a>
-
-                        <p class="h5 mb0">Accrington <span class="muted">•</span> Up to £28,000 per annum <span class="muted">•</span> Permanent</p>
-
-                    </div>
-
-                    <div class="col col-3 mt1">
-
-                        <a href="" class="btn btn-primary btn-medium white right">Apply Now</a>
-
-                    </div>
-
-                </div>
-
-                <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2">
-
-                    <div class="col col-9">
-
-                        <a href=""><h3 class="mb2 h4">Part Time Marketing Coordinator – East Lancashire, £28,000 (pro rata)</h3></a>
-
-                        <p class="h5 mb0">Accrington <span class="muted">•</span> Up to £28,000 per annum <span class="muted">•</span> Permanent</p>
-
-                    </div>
-
-                    <div class="col col-3 mt1">
-
-                        <a href="" class="btn btn-primary btn-medium white right">Apply Now</a>
-
-                    </div>
-
-                </div>
+                </nav>
 
             </div>
 
@@ -185,5 +157,48 @@ get_header(); ?>
     </div>
 
 </div>
+
+<script>
+
+    //TODO: Move this into JS file
+
+    function fetchJobs(page_number) {
+
+        //TODO: Add loader while fetching data.
+        var sector_filter   = $('#sortby_sector option:selected').val();
+        var type_filter     = $('#sortby_type option:selected').val();
+        var location_filter = $('#sortby_location option:selected').val();
+
+        $.ajax({
+            url: '<?php echo admin_url( "admin-ajax.php"); ?>',
+            method: 'POST',
+            data: {
+                action: 'fetch_jobs',
+                jobs_page: page_number,
+                sector_filter: sector_filter,
+                type_filter: type_filter,
+                location_filter: location_filter
+            },
+            success: function(response){
+                $('#jobs-listing').html(response);
+                $('.js-match-height').matchHeight();
+                $('html,body').animate({
+                    scrollTop: 0},
+                    'slow');
+                }
+        });
+    }
+
+    $(document).on('click', '.page-number', function(){
+        var page_number = $(this).data('page-number');
+        fetchJobs(page_number);
+    });
+
+    $('.jobs-filters').on('change', function() {
+        var page_number = $('.page-numbers.current').text();
+        fetchJobs(page_number);
+    });
+
+</script>
 
 <?php get_footer(); ?>

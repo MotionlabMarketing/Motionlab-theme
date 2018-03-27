@@ -120,15 +120,23 @@ function ml_update_news() {
 	$news_controller = new _block_news(null, null);
 	$posts = $news_controller->fetchFeedPosts(8, $_POST['news_page']);
 
-	generatePostListing($posts);
+	include_once(TEMPLATE_DIR . 'ajax/template-news-ajax.php');
 
 	die();
 }
 
-function generatePostListing( $posts ) {
+add_action( 'wp_ajax_fetch_jobs', 'ml_update_jobs' );
+add_action( 'wp_ajax_nopriv_fetch_jobs', 'ml_update_jobs' );
+function ml_update_jobs() {
 
-	include_once(TEMPLATE_DIR . 'ajax/template-news-ajax.php');
+	/* Load in team block controller to access posts easily. */
+	include_once(MODELS_DIR . '_block_jobs.php');
+	$jobs_controller = new _block_jobs(null, null);
+	$posts = $jobs_controller->fetchFeedPosts(6, $_POST['jobs_page']);
 
+	include_once(TEMPLATE_DIR . 'ajax/template-jobs-ajax.php');
+
+	die();
 }
 
 function custom_widgets_init() {
