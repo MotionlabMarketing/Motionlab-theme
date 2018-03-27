@@ -14,13 +14,7 @@
 
     <?=($block['grid'] == 'container')? '<div class="container">' : '' ?>
 
-        <div class="col-12 || mb5 || text-center">
-
-            <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}"); ?>
-
-            <?php render_wysiwyg("{$block['intro']}", "", " || regular")?>
-
-        </div>
+        <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
         <div class="flex justify-center">
 
