@@ -26,7 +26,7 @@
                 <?=($block['content']['padding'] !== 'p0')? '<div class="relative height-100 overflow-hidden '.$block['content']['padding'].'">' : '' ?>
 
                     <div class="image-holder top-0 left-0 height-100 width-100 absolute bg-cover bg-center min-height-v50 mb4 md-mb0" style="background-image: url('<?=wp_get_attachment_url($block['content']['image'])?>')"></div>
-            
+
                 <?=($block['content']['padding'] !== 'p0')? '</div>' : '' ?>
 
             <?php endif; ?>
