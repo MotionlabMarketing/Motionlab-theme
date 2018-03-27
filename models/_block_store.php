@@ -30,6 +30,13 @@ Class _block_store
 	private function loadBlockSettings() {
 
 		//Any specific block settings should be loaded into $block here.
+        $this->block['enable_tabs']    = get_sub_field('enable_tabs');
+        $this->block['tabs']           = get_sub_field('tab_titles');
+        $this->block['models']         = get_sub_field('block_store_productRanges');
+        $this->block['products']       = get_sub_field('block_store_products');
+
+        $this->block['enablePageLink'] = get_sub_field('block_store_enablePageLinkButton');
+        $this->block['pageLink']       = get_sub_field('block_store_pageLinkButton');
 
 	}
 
@@ -97,11 +104,20 @@ Class _block_store
 		$block = $this->block;
 
 		switch ($this->block['layout']):
+            case "productLargeGridProducts":
+                include(BLOCKS_DIR . 'store/__productLargeGridProducts.php');
+                break;
+            case "productFeaturedRanges":
+                include(BLOCKS_DIR . 'store/__productFeaturedRanges.php');
+                break;
+            case "productRanges":
+                include(BLOCKS_DIR . 'store/__productRanges.php');
+                break;
 		    case "slidingPanels":
 		        include(BLOCKS_DIR . 'store/__slidingPanels.php');
 		        break;
 		    default:
-		        include(BLOCKS_DIR . 'jobs/__talent.php');
+		        include(BLOCKS_DIR . 'store/__basic.php');
 		        break;
 		endswitch;
 
