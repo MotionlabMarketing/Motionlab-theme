@@ -998,29 +998,42 @@ hr.border-5 {
   border-right: 0;
 }
 
-.border-last-top-none {
-  &:last-child {
-    border-right: 0;
+.border-last-top-none:last-child {
+
+  div:last-child,
+  li:last-child,
+  a:last-child {
+    border-top: 0;
   }
 }
 
-.border-last-bottom-none {
-  &:last-child {
-    border-right: 0;
+.border-last-bottom-none:last-child {
+
+  div:last-child,
+  li:last-child,
+  a:last-child {
+    border-bottom: 0;
   }
 }
 
 .border-last-right-none {
-  &:last-child {
+
+  div:last-child,
+  li:last-child,
+  a:last-child {
     border-right: 0;
   }
 }
 
-.border-last-left-none {
-  &:last-child {
-    border-right: 0;
+.border-last-left-none:last-child {
+
+  div:last-child,
+  li:last-child,
+  a:last-child {
+    border-left: 0;
   }
 }
+
 
 // BORDER RADIUS.
 .border-radius-0   { border-radius:   0;    }

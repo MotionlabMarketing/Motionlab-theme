@@ -48,12 +48,16 @@
 }
 
 .col-grid-5 {
-  width: 20%;
+  width: calc(100% / 5);
 
   @media (max-width: $breakpoint-md) {
     width: 33.33339%;
   }
   @media (max-width: $breakpoint-sm) {
     width: 100%;
+  }
+
+  &.span-2 {
+    width: calc((100% / 5) * 2 );
   }
 }
