@@ -21,18 +21,26 @@
 
             <?php foreach($block['posts']->posts as $post): ?>
 
-                <div class="member-box || col col-grid-5 p3 || hover-zoom">
+                <div class="member-box || col col-grid-5 p3 || hover-zoom" data-mh="team-member">
 
                     <a href="<?=get_permalink($post->ID)?>">
 
                         <div class="member || pb2 || <?= $bgColor ?> box-shadow-3 || zoom">
 
                             <?php $image_url = isset(get_field("staff_profileImage", $post->ID)['url']) ? get_field("staff_profileImage", $post->ID)['url'] : get_template_directory_uri() . '/assets/img/profile-placeholder.jpg'; ?>
-                            <div class="profile || mb2" style="background: url('<?=$image_url;?>'); background-position: center; background-size: cover;"></div>
+                            <div class="profile || mb2" style="background: url('<?=$image_url;?>'); background-position: center; background-size: cover;" data-mh="team-member-img"></div>
 
-                            <?=get_render_heading( get_field('staff_name', $post->ID), "h4", "h3", "", "", "mt3 mb1")?>
+                            <div class="flex items-center justify-center" data-mh="team-member-content">
 
-                            <p class="postion mb2"><?=get_field('staff_role', $post->ID);?></p>
+                                <div class="px3 py2">
+
+                                    <?=get_render_heading( get_field('staff_name', $post->ID), "h4", "h4", "", "", "mb0")?>
+
+                                    <p class="postion mb0"><?=get_field('staff_role', $post->ID);?></p>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
