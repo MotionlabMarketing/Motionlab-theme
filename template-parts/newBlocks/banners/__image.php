@@ -39,7 +39,7 @@ endif;
 
             <div class="flex items-center justify-<?=$banner['align']?> || z-index-50 absolute width-100 height-100 || p3 md-p6">
 
-                <div class="content || width-50 || p5 <?=$banner['text-align']?> <?=$banner['text-color']?>">
+                <div class="content || lg-width-50 || p5 <?=$banner['text-align']?> <?=$banner['text-color']?>">
 
                     <?php if ($banner['slides'][0]['content_image']['url']): ?>
 
