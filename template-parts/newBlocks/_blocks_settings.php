@@ -30,6 +30,9 @@ if ($block['enabled'] == true || empty($block['enabled'])): // TODO: Needs corre
     $block['customID']          = get_sub_field($current . '_settings_block_customID');
     $block['custom_css']        = get_sub_field($current . '_settings_block_customClass');
 
+    if ($current == "") // SUPPORT FOR OLD CONTENT BLOCK.
+        $block['customID'] = get_sub_field('block_customID');
+
     // HIDE BLOCK ON VIEW SITE.
     $block['hide']['mobile']     = get_sub_field($current . '_settings_block_hideMobile');
     $block['hide']['tablet']     = get_sub_field($current . '_settings_block_hideTablet');

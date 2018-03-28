@@ -44,21 +44,7 @@ endif;
 
         <div class="clearfix py5">
 
-            <div class="m4 mb6 || text-center">
-
-                <?php if (!empty($blockTitle[0]['title'])):?>
-                    <div class="mb2">
-                        <?php include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php');?>
-                    </div>
-                <?php endif; ?>
-
-                <?php if ($contentLocation == "before" && !empty($content)): ?>
-                    <div class="clearfix text-center limit-p limit-p-70">
-                        <?=$content?>
-                    </div>
-                <?php endif; ?>
-
-            </div>
+            <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
             <div class="px2 md-px6">
             <?php foreach ($blockItems as $item): ?>
@@ -67,7 +53,7 @@ endif;
                     <a href="<?=$item['pod_item_link']['url']?>" class="<?=$txtColor?>" <?=($item['pod_item_link']['title'] ? 'title="'.$item['pod_item_link']['title'].'"' : '')?> <?=($item['pod_item_link']['target'] ? 'target="'.$item['pod_item_link']['target'].'"' : '')?>>
                 <?php endif; ?>
 
-                <div class="item || col <?=$col?> px4 mb5 || text-center bg-brand-primary <?=$txtColor?> || <?php //col-grid-5?> || js-match-height">
+                <div class="item col <?=$col?> px4 mb5 text-center js-match-height">
 
                     <?php if ($item['enable_custom_icons'] == true): ?>
                         <img src="<?=wp_get_attachment_image_url($item['pod_item_custom_icon'], array(70, 70))?>" style="max-width: 6rem; max-height: 6rem">

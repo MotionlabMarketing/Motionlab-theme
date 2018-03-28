@@ -436,15 +436,13 @@ header {
       }
     }
 
-
-
     .logo-wrapper {
       margin-bottom: 0;
     }
 
     nav {
       a {
-        padding: 0.8rem 1rem;
+        //padding: 0.8rem 1rem;
       }
     }
 
@@ -467,6 +465,13 @@ footer {
     }
     li {
       margin-bottom: 0.3rem;
+    }
+
+    a {
+      &:hover {
+        background-color: transparent;
+        box-shadow: none;
+      }
     }
   }
 
@@ -1622,12 +1627,13 @@ hr.border-5 {
     }
 
     @media (max-width: $breakpoint-sm){
-      margin: 0;
+      margin: 0 0 0.5rem 0;
       padding: 0.6rem 0;
       color: $brand-base;
+      text-align: center;
       display: block !important;
       background-color: $brand-white;
-      border: 1px solid $brand-grayLightest;
+      border: 1px solid $brand-grayLight;
     }
 
     &.tab-active {
@@ -1637,6 +1643,7 @@ hr.border-5 {
       @media (max-width: $breakpoint-sm){
         color: $brand-white;
         background-color: $brand-primary;
+        border: 1px solid $brand-primary;
       }
 
       &:before {
@@ -1670,11 +1677,11 @@ hr.border-5 {
       content: " ";
       display: block;
       position: absolute;
-      width: calc(100% + 2.7rem);
+      width: calc(100% + 3.5rem);
       background-color: $brand-primary;
 
       @media (max-width: $breakpoint-md){
-        //left: 75%;
+        left: 61%;
       }
 
       @media (max-width: $breakpoint-sm){
@@ -1897,8 +1904,13 @@ hr.border-5 {
 }
 
 .cta-sections {
+  padding: 0 !important;
 
   .section {
+    border-right: 1px solid white;
+  }
+
+  .section-item {
     border-right: 1px solid white;
 
     &:hover {
@@ -2090,4 +2102,17 @@ hr.border-5 {
 }
 .panels.animate {
   transform: scale(1);
+}
+
+[data-page-number] {
+  padding: 10px 20px;
+  color: $brand-black;
+  background-color: $brand-grayLight;
+  &:hover { background-color: darken($brand-grayLight, 10%); }
+}
+
+[data-page-number="current"] {
+  color: $brand-white;
+  background-color: $brand-primary;
+  &:hover { background-color: $brand-primary; }
 }

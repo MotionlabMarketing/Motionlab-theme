@@ -195,8 +195,7 @@ $block = $jobs_controller->fetchFeedPosts();
     });
 
     $('.jobs-filters').on('change', function() {
-        var page_number = $('.page-numbers.current').text();
-        fetchJobs(page_number);
+        fetchJobs(1);
     });
 
 </script>
