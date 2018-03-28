@@ -182,8 +182,7 @@ get_header(); ?>
     });
 
     $('.news_filters').on('change', function() {
-        var page_number = $('.page-numbers.current').text();
-        fetchNewsPosts(page_number);
+        fetchNewsPosts(1);
     });
 
 </script>

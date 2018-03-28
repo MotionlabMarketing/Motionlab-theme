@@ -27,14 +27,14 @@ Class _block_team
 
 	private function loadBlockSettings() {
 
-		$this->profile_count          = get_field('block_team_profiles') != "" ? get_field('block_team_profiles') : 5;
+		$this->profile_count          = get_sub_field('block_team_profiles') != "" ? get_sub_field('block_team_profiles') : 5;
 		$this->block['page_button']   = get_sub_field('block_team_button');
 
 	}
 
 	public function fetchPosts($profile_count = 5) {
 
-		$args = array(
+	    $args = array(
 			'posts_per_page'    => $profile_count,
 			'paged'             => $_POST['block_page'] ?: 1,
 			'post_type'         => 'team_members'

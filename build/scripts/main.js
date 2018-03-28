@@ -249,7 +249,7 @@ jQuery(document).ready(function ($) {
         arrows: false,
         dots: true,
         fade: true,
-        autoplay: true,
+        autoplay: false,
         autoplaySpeed: 4000,
         adaptiveHeigh: true,
     });
@@ -959,24 +959,26 @@ jQuery(document).ready(function ($) {
     });
 
     // NAVIGATION SMALLIFICATION //
-
+    // to use remove class 'smallification' and add 'data-smallification' on the header.
     function navigationSmallification() {
-        var viewportWidth    = $(window).width();
-        // var viewportHeight   = $(window).height();
-        var headerHeight     = $('header').height();
-        var headerLogo       = $('#main-logo').data('logo');
-        var headerLogoScroll = $('#main-logo').data('scrolllogo');
+        if($('[data-smallification]').length > 0){
+            var viewportWidth    = $(window).width();
+            // var viewportHeight   = $(window).height();
+            var headerHeight     = $('header').height();
+            var headerLogo       = $('#main-logo').data('logo');
+            var headerLogoScroll = $('#main-logo').data('scrolllogo');
 
-        if (viewportWidth > 680) {
+            if (viewportWidth > 680) {
 
-            if ($(window).scrollTop() > ((headerHeight))) {
-                $('#main-logo').attr('src', headerLogoScroll);
-                // $('.logo-holder').css('background', 'transparent');
-                $('header').addClass("smallification");
-            } else {
-                $('#main-logo').attr('src', headerLogo);
-                // $('.logo-holder').removeAttr('style');
-                $('header').removeClass("smallification");
+                if ($(window).scrollTop() > ((headerHeight))) {
+                    $('#main-logo').attr('src', headerLogoScroll);
+                    // $('.logo-holder').css('background', 'transparent');
+                    $('header').addClass("smallification");
+                } else {
+                    $('#main-logo').attr('src', headerLogo);
+                    // $('.logo-holder').removeAttr('style');
+                    $('header').removeClass("smallification");
+                }
             }
         }
     }

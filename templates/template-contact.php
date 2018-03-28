@@ -53,7 +53,7 @@ get_header(); ?>
                             <?php $buttons = get_field('main_contact_buttons'); foreach ($buttons as $btn): ?>
 
                                 <a href="<?= $btn['button_button_link']['url'] ?>"
-                                   class="btn btn-medium mb2 block min-width-20 <?= $btn['button_system_background_colours'] ?> <?= $btn['button_system_text_colours'] ?>" <?= ($btn['button_button_link']['title'] ? 'title="' . $btn['button_button_link']['title'] . '"' : '') ?> <?= ($btn['button_button_link']['target'] ? 'target="' . $btn['button_button_link']['target'] . '"' : '') ?>><?= $btn['button_button_text'] ?></a>
+                                   class="btn btn-medium mb2 block min-width-20 <?= $btn['button_system_background_colours'] ?> <?= $btn['button_system_text_colours'] ?>" <?= ($btn['button_button_link']['title'] ? 'title="' . $btn['button_button_link']['title'] . '"' : '') ?> <?= ($btn['button_button_link']['target'] ? 'target="' . $btn['button_button_link']['target'] . '"' : '') ?>><?= $btn['button_button_link']['title'] ?></a>
 
                             <?php endforeach; ?>
 

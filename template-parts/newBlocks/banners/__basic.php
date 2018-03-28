@@ -60,101 +60,84 @@ endif; ?>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-        <div class="col col-12 relative <?=$banner['height']?>">
+        <div class="image-holder flex bg-<?=$banner['align'] ?> bg-<?=$banner['image']['position']?> <?=$banner['height']?>" style="background-image: url('<?=$banner['image']['url']?>');">
 
-            <div class="image-holder || absolute height-100 width-100 bg-<?=$banner['align'] ?> bg-<?=$banner['image']['position']?>" style="background-image: url('<?=$banner['image']['url']?>');">
+            <?php if ($banner['image']['overlay'] == true): ?>
 
-                <?php if ($banner['image']['overlay'] == true): ?>
+                <div class="absolute top-0 left-0 width-100 height-100 z-index-10 bg-<?=$banner['image']['overlayType']?>-<?=$banner['image']['overlayStrength']?>"></div>
 
-                    <div class="absolute top-0 left-0 width-100 height-100 z-index-10 bg-<?=$banner['image']['overlayType']?>-<?=$banner['image']['overlayStrength']?>"></div>
+            <?php endif; ?>
 
-                <?php endif; ?>
+            <div class="flex items-center justify-<?=$banner['align']?> || width-100 z-index-50 p3 md-p6 pt6">
 
-                <div class="flex items-center justify-<?=$banner['align']?> || z-index-50 absolute width-100 height-100 || p3 md-p6">
+                <div class="content || col-12 lg-col-9 xl-col-5 || p4 relative z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
 
-                    <div class="content || width-100 || mtn6 p4 z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
+                    <?php if (!empty($banner['logos']['before']['url'])): ?>
 
-                        <?=($banner['text-align'] == "text-center")? '<div class="container px7">' : ''; // IF THE TEXT IS CENTERED CONTAIN ITS WIDTH. ?>
+                        <img src="<?=$banner['logos']['before']['url']?>" alt="<?=$banner['logos']['before']['alt']?>" class="logo-top || block mb4 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
 
-                        <?php if (!empty($banner['logos']['before']['url'])): ?>
+                    <?php endif; ?>
 
-                            <img src="<?=$banner['logos']['before']['url']?>" alt="<?=$banner['logos']['before']['alt']?>" class="logo-top || block mb4 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
+                    <?php /*SUBTITLE*/ if ($banner['subheading']['position'] == "top" && !empty($banner['subheading']['title']['title'])): ?>
 
-                        <?php endif; ?>
-
-                        <?php /*SUBTITLE*/ if ($banner['subheading']['position'] == "top" && !empty($banner['subheading']['title']['title'])): ?>
-
-                            <?php $blockTitle = $banner['subheading']['title']['title'];
-                            if (!empty($blockTitle[0]['title'])): ?>
-
-                                <div class="subheading || mb2">
-
-                                    <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
-
-                                </div>
-
-                            <?php endif; endif; ?>
-
-                        <?php /*MAIN*/ $blockTitle = $banner['title'];
+                        <?php $blockTitle = $banner['subheading']['title']['title'];
                         if (!empty($blockTitle[0]['title'])): ?>
 
-                            <div class="title">
+                            <div class="subheading || mb2">
 
-                                <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php /*SUBTITLE*/ if ($banner['subheading']['position'] == "bottom" && !empty($banner['subheading']['title']['title'])): ?>
-
-                            <?php $blockTitle = $banner['subheading']['title']['title'];
-                            if (!empty($blockTitle[0]['title'])): ?>
-
-                                <div class="subheading || mb2">
-
-                                    <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
-
-                                </div>
-
-                            <?php endif; endif; ?>
-
-
-                        <?php if (!empty($banner['content'])): ?>
-
-                            <div class="wysiwyg || my4 <?=($banner['align'] == 'center')? 'limit-p limit-p-70':'';?>">
-
-                                <?=$banner['content']?>
+                                <?php render_heading( "{$blockTitle[0]['title']}", "{$blockTitle[0]['type']['heading']}", "{$blockTitle[0]['size']['heading_size']}", "{$blockTitle[0]['color']['system_text_colours']}", "{$blockTitle[0]['title_case']['system_text_transform']}"); ?>
 
                             </div>
 
-                        <?php endif; ?>
+                        <?php endif; endif; ?>
 
-                        <div class="mt4">
-                        <?php foreach ($banner['buttons'] as $button): ?>
+                    <?php /*MAIN*/ $blockTitle = $banner['title'];
+                    if (!empty($blockTitle[0]['title'])): ?>
 
-                            <a href="<?=$button['buttons_button_link']['url']?>" class="btn btn-medium mx4 min-width-8 <?=$button['buttons_system_text_colours']?> <?=$button['buttons_system_background_colours']?>" <?=($button['buttons_button_link']['title'] ? 'title="'.$button['button']['title'].'"' : '')?> <?=($button['buttons_button_link']['target'] ? 'target="'.$button['button']['target'].'"' : '')?>>
+                        <div class="title"> <?php // pb2 h2 sm-h1 lg-h00 || mb0 || white text-none ?>
 
-                                <?php if (!empty($button['buttons_button_icon'])): ?><div class="flex items-center"><?=wp_get_attachment_image($button['buttons_button_icon'], array(32, 32), "", ['class' => 'size-32x32 mr2'])?> <?php endif; ?>
+                            <?php render_heading( "{$blockTitle[0]['title']}", "{$blockTitle[0]['type']['heading']}", "{$blockTitle[0]['size']['heading_size']}", "{$blockTitle[0]['color']['system_text_colours']}", "{$blockTitle[0]['title_case']['system_text_transform']}"); ?>
 
-                                    <?=$button['buttons_button_link']['title']?>
-
-                                <?php if (!empty($button['buttons_button_icon'])): ?></div><?php endif; ?>
-
-                            </a>
-
-                        <?php endforeach; ?>
                         </div>
 
-                        <?php if (!empty($banner['logos']['after']['url'])): ?>
+                    <?php endif; ?>
 
-                            <img src="<?=$banner['logos']['after']['url']?>" alt="<?=$banner['logos']['after']['alt']?>" class="logo-bottom || block mt3 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
+                    <?php /*SUBTITLE*/ if ($banner['subheading']['position'] == "bottom" && !empty($banner['subheading']['title']['title'])): ?>
 
-                        <?php endif; ?>
+                        <?php $blockTitle = $banner['subheading']['title']['title'];
+                        if (!empty($blockTitle[0]['title'])): ?>
 
-                        <?=($banner['text-align'] == "text-center")? '</div>' : ''; // IF THE TEXT IS CENTERED CONTAIN END ITS CONTAINMENT. ?>
+                            <div class="subheading || mb2">
 
+                                <?php render_heading( "{$blockTitle[0]['title']}", "{$blockTitle[0]['type']['heading']}", "{$blockTitle[0]['size']['heading_size']}", "{$blockTitle[0]['color']['system_text_colours']}", "{$blockTitle[0]['title_case']['system_text_transform']}"); ?>
+
+                            </div>
+
+                        <?php endif; endif; ?>
+
+                    <?php render_wysiwyg($banner['content'], false, ["class" => "md-h3 bold"]) ?>
+
+                    <div class="mt4">
+                    <?php foreach ($banner['buttons'] as $button): ?>
+
+                        <a href="<?=$button['buttons_button_link']['url']?>" class="btn btn-medium mx4 min-width-8 <?=$button['buttons_system_text_colours']?> <?=$button['buttons_system_background_colours']?>" <?=($button['buttons_button_link']['title'] ? 'title="'.$button['button']['title'].'"' : '')?> <?=($button['buttons_button_link']['target'] ? 'target="'.$button['button']['target'].'"' : '')?>>
+
+                            <?php if (!empty($button['buttons_button_icon'])): ?><div class="flex items-center"><?=wp_get_attachment_image($button['buttons_button_icon'], array(32, 32), "", ['class' => 'size-32x32 mr2'])?> <?php endif; ?>
+
+                                <?=$button['buttons_button_link']['title']?>
+
+                            <?php if (!empty($button['buttons_button_icon'])): ?></div><?php endif; ?>
+
+                        </a>
+
+                    <?php endforeach; ?>
                     </div>
+
+                    <?php if (!empty($banner['logos']['after']['url'])): ?>
+
+                        <img src="<?=$banner['logos']['after']['url']?>" alt="<?=$banner['logos']['after']['alt']?>" class="logo-bottom || block mt3 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
+
+                    <?php endif; ?>
 
                 </div>
 
