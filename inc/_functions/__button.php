@@ -12,7 +12,7 @@
  * @return bool|string
  */
 
-function render_button($data, $size = "btn-medium",  $classes = "mb2") {
+function render_button($data, $size = "medium",  $classes = "mb2") {
 
     if (!empty($data['button_link']['url']) && !empty($data['button_link']['title'])) {
 

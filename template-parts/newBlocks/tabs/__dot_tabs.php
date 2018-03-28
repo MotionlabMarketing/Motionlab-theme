@@ -42,16 +42,16 @@ $bgImage = ($block['bgImage']['enable'] == true)? 'bg-image-active' : '';
 
                 <?php $i = 1; foreach ($block['tabs'] as $tab): ?>
 
-                    <section id="tab<?=$i?>" class="tab-content || <?=($i > 1)? 'hide' : '' ?> p4">
+                    <section id="tab<?=$i?>" class="tab-content clearfix <?=($i > 1)? 'hide' : '' ?> p4"> <?php // TODO: NEEDS A BETTER SOLUTION. ?>
 
                         <?php if (!empty($tab['column_1']['column_content'])): ?>
 
-                        <div class="col col-12 md-col-<?=($tab['columns'] == 2)? "6":"12"?> p4 <?=$tab['column_1']['align']?> <?=$tab['column_1']['system_text_colours']?>">
+                        <div class="col col-12 md-col-<?=($tab['columns'] == 2)? "6":"12"?> py4 px0 md-px4 <?=$tab['column_1']['align']?> <?=$tab['column_1']['system_text_colours']?>">
 
                             <?php $heading = convert_heading($tab['column_1']['title']); ?>
                             <?php render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}"); ?>
 
-                            <?php render_wysiwyg("{$tab['column_1']['column_content']}", "", ["class" => "regular"])?>
+                            <?php render_wysiwyg("{$tab['column_1']['column_content']}", "", ["class" => "regular dot-target"])?>
 
                             <?php if (!empty($tab['column_1']['column_buttons'])): ?>
                                 <div class="mt3">
@@ -69,18 +69,16 @@ $bgImage = ($block['bgImage']['enable'] == true)? 'bg-image-active' : '';
 
                         <?php endif; ?>
 
-
-
                          <?php if ($tab['columns'] > 1): ?>
 
                             <?php if (!empty($tab['column_2']['column_content'])): ?>
 
-                                <div class="col col-12 md-col-6 p4 <?=$tab['column_1']['align']?> <?=$tab['column_1']['system_text_colours']?>">
+                                <div class="col col-12 md-col-6 py4 px0 md-px4 <?=$tab['column_1']['align']?> <?=$tab['column_1']['system_text_colours']?>">
 
                                     <?php $heading = convert_heading($tab['column_2']['title']); ?>
                                     <?php render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}"); ?>
 
-                                    <?php render_wysiwyg("{$tab['column_2']['column_content']}", "", ["class" => "regular"])?>
+                                    <?php render_wysiwyg("{$tab['column_2']['column_content']}", "", ["class" => "regular dot-target"])?>
 
                                     <?php if (!empty($tab['column_2']['column_buttons'])): ?>
                                         <div class="mt3">
