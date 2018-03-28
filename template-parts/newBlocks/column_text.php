@@ -64,8 +64,7 @@ unset($block['temp']);
 ?>
 
 <!-- column text NEW -->
-
-<section <?=get_blockID($block)?> class="clearfix relative <?=$block['custom_css']?> <?=$block['padding']?> <?=$block['spacing']?> relative <?php echo $bgColor ?> <?php echo $txtColor ?> relative">
+<section id="<?=trim(get_sub_field('block_columns_settings_block_customID'))?>" class="clearfix relative my4 py5 relative <?php echo $bgColor ?> <?php echo $txtColor ?> relative">
     <div class="container mx-auto <?=$blockCustomClass?> <?=$measureWide?>">
         <div class="md-flex clearfix <?php echo $MarginNegative ?>">
 

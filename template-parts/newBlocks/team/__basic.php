@@ -56,7 +56,7 @@
 
             <div class="page-button || mt4 mb4 clearfix || text-center">
 
-                <a href="<?=$block['page_button']['button_link']['url']?>" class="btn btn-outline btn-large <?=$block['page_button']['system_text_colours']?> <?=$block['page_button']['system_background_colours']?>"><?=$block['page_button']['button_link']['title'];?></a>
+                <a href="<?=$block['page_button']['url']?>" class="btn btn-outline btn-large <?=$block['page_button']['system_text_colours']?> <?=$block['page_button']['system_background_colours']?>"><?=$block['page_button']['button_link']['title'];?></a>
 
             </div>
 

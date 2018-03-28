@@ -15,26 +15,15 @@ $limit = ($block['grid'] == 'container')? 'container' : "";
 $image = ($block['bgImage']['enable'] !== true)? $block['background']['colour'] : '';
 ?>
 
-<section <?=get_blockID($block)?> <?=get_blockClasses($block, "cta-sections {$limit} {$image}")?> <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "cta-sections {$limit} {$image} p0")?> <?=get_blockData($block)?>>
 
         <div class="content">
 
             <a class="section || flex items-center || col col-12 lg-col-3 || py4 px4 || js-match-height text-center lg-text-left">
 
-                <div class="introduction">
+                <div class="introduction-">
 
-                    <?php $blockTitle = $block['content']['title'];
-                    if (!empty($blockTitle[0]['title'])): ?>
-                        <div class="mb2">
-                            <?php include(BLOCKS_DIR . 'sub-elements/_block_titles.php'); ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php if (!empty($block['content']['content'])): ?>
-                        <div class="wysiwyg <?=$block['content']['txtColor']?>">
-                            <?=$block['content']['content']?>
-                        </div>
-                    <?php endif; ?>
+                    <?php render_heading( "{$block['heading']->title}", "h4", "", "", "", ["style" => "font-size: 1.4rem; color: white", "class" => "mb0"]); ?>
 
                 </div>
 
@@ -42,7 +31,7 @@ $image = ($block['bgImage']['enable'] !== true)? $block['background']['colour'] 
 
             <?php foreach ($sections as $section): ?>
 
-                <a href="<?=$section['link']['url']?>" class="section relative || col col-12 lg-col-3 p4 || text-center <?=$block['content']['txtColor']?> || js-match-height">
+                <a href="<?=$section['link']['url']?>" class="section-item relative || col col-12 lg-col-3 p4 || text-center <?=$block['content']['txtColor']?> || js-match-height">
                     <p class="h3 mb2"><?=$section['title']?></p>
                     <p class="mb0 || btn btn-small bg-<?=$block['content']['txtColor']?> brand-primary"><?=$section['link']['title']?></p>
                 </a>
