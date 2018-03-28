@@ -223,8 +223,7 @@ header{
 // Dropdowns
 
 nav {
-
-    a:hover {
+    a:hover{
       border-radius: 1rem;
       box-shadow: inset 0 0 0 20rem rgba(255, 255, 255, 1);
     }
@@ -234,12 +233,11 @@ nav {
 
     &:hover {
         > a {
-          //border-radius: 1rem;
-          //box-shadow: inset 0 0 0 20rem rgba(255, 255, 255, 1);
+          border-radius: 1rem;
+          box-shadow: inset 0 0 0 20rem rgba(255, 255, 255, 1);
         }
 
         .dropdown, .mega-dropdown {
-            // display: block;
             visibility: visible;
             opacity: 1;
             top: 100%;
