@@ -11,6 +11,10 @@
     color: $color-hex;
   }
 
+  .hover-bg-#{$color-name}:hover {
+    background: $color-hex;
+  }
+
 }
 
 
