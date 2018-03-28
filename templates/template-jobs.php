@@ -39,7 +39,7 @@ $block = $jobs_controller->fetchFeedPosts();
                 <form action="#" class="width-100 || flex justify-center">
 
                     <?php $disabled = sizeof($block['sector_select_options']) == 0 ? "disabled" : ""; ?>
-                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 jobs-filters" id="sortby_sector" <?=$disabled?>>
+                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 jobs-filters" data-loadvalue="<?=get_query_var('sector')?>" id="sortby_sector" <?=$disabled?>>
                         <option value="">Filter by Sector</option>
                         <?php
                             foreach($block['sector_select_options'] as $option) :?>
@@ -189,14 +189,32 @@ $block = $jobs_controller->fetchFeedPosts();
         });
     }
 
+    function updateFilterState(load_val) {
+        $('#sortby_sector').val(load_val);
+        fetchNewsPosts(1);
+    }
+
     $(document).on('click', '.page-number', function(){
         var page_number = $(this).data('page-number');
         fetchJobs(page_number);
     });
 
     $('.jobs-filters').on('change', function() {
+        if ($(this).attr('id') == 'sortby_sector') {
+            history.pushState("find-a-job", "Cummins Mellor Recruitment", "/find-a-job/"+$(this).val());
+        }
         fetchJobs(1);
     });
+
+    $(document).on("ready", function() {
+        updateFilterState($('#sortby_sector').data('loadvalue'));
+    });
+
+    window.onpopstate = function(event) {
+        var value = document.location.href.substring(document.location.href.lastIndexOf("/") + 1) ;
+        if(value != null)
+            updateFilterState(value);
+    };
 
 </script>
 

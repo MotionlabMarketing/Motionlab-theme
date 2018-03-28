@@ -22,7 +22,7 @@
 
         <h3 class="h4 brand-primary"><?=$post->post_title?></h3>
 
-        <a href="#"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('<?=$image_url?>');"></div></a>
+        <a href="<?=$post->guid?>"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('<?=$image_url?>');"></div></a>
 
         <p class="h5 mb3"><?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr($post->post_content,0, 100);?></p>
 
@@ -30,7 +30,7 @@
 
         <ul class="tags border-radius">
             <?php foreach($post->categories as $category) : ?>
-                <li><a href="<?=$category->taxonomy."/".$category->slug?>"><?=$category->name?></a></li>
+                <li><a href="<?=$category->slug?>"><?=$category->name?></a></li>
             <?php endforeach; ?>
         </ul>
 

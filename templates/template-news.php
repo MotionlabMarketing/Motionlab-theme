@@ -54,7 +54,7 @@ get_header(); ?>
 
                     <ul class="mt2 tags tags-right border-radius">
                         <?php foreach($latest_post->categories as $category) : ?>
-                            <li><a href="<?=$category->taxonomy."/".$category->slug?>"><?=$category->name?></a></li>
+                            <li><a href="<?=$category->slug?>"><?=$category->name?></a></li>
                         <?php endforeach; ?>
                     </ul>
 
@@ -85,7 +85,7 @@ get_header(); ?>
                         <option value="date">Date</option>
                     </select>
 
-                    <select style="min-width:13rem;" class="news_filters select width-100 sm-width-auto md-width-auto md-ml3 box-shadow-3" id="news_filtercats">
+                    <select style="min-width:13rem;" class="news_filters select width-100 sm-width-auto md-width-auto md-ml3 box-shadow-3" data-loadvalue="<?=get_query_var('news_category')?>" id="news_filtercats">
                         <option value="">Filter Category</option>
                         <?php
                         $categories = get_categories();
@@ -116,7 +116,7 @@ get_header(); ?>
 
                     <h3 class="h4 brand-primary"><?=$post->post_title?></h3>
 
-                    <a href="#"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('<?=$image_url?>');"></div></a>
+                    <a href="<?=$post->guid?>"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('<?=$image_url?>');"></div></a>
 
                     <p class="h5 mb3"><?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr($post->post_content,0, 100);?></p>
 
@@ -124,7 +124,7 @@ get_header(); ?>
 
                     <ul class="tags border-radius">
                          <?php foreach($post->categories as $category) : ?>
-                            <li><a href="<?=$category->taxonomy."/".$category->slug?>"><?=$category->name?></a></li>
+                            <li><a href="<?=$category->slug?>"><?=$category->name?></a></li>
                         <?php endforeach; ?>
                     </ul>
 
@@ -176,14 +176,32 @@ get_header(); ?>
         });
     }
 
+    function updateFilterState(load_val) {
+        $('#news_filtercats').val(load_val);
+        fetchNewsPosts(1);
+    }
+
     $(document).on('click', '.page-number', function(){
         var page_number = $(this).data('page-number');
         fetchNewsPosts(page_number);
     });
 
     $('.news_filters').on('change', function() {
+        if($(this).attr('id') == "news_filtercats") {
+            history.pushState({cat:$(this).val()}, "", "/news-2/"+$(this).val());
+        }
         fetchNewsPosts(1);
     });
+
+    $(document).on("ready", function() {
+        updateFilterState($('#news_filtercats').data('loadvalue'));
+    });
+
+    window.onpopstate = function(event) {
+        var value = document.location.href.substring(document.location.href.lastIndexOf("/") + 1) ;
+        if(value != null)
+            updateFilterState(value);
+    };
 
 </script>
 

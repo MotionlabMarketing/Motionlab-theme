@@ -11,7 +11,7 @@ Class _block_tabs
 	private $current;
 	private $layout;
 	private $block = [];
-	private $category_slug = 'multi_category';
+	private $category_slug = 'sectors';
 
 	public function __construct($block, $current) {
 
