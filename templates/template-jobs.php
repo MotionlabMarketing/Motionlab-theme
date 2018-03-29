@@ -14,6 +14,7 @@ $jobs_controller = new _block_jobs(null, null);
 $jobs_controller->fetchCategories();
 $block = $jobs_controller->fetchFeedPosts();
 
+$boxes = get_field('template_jobs_sidebarBoxes');
 ?>
 
 <div class="clearfix || mt6" id="listing-job">
@@ -117,35 +118,19 @@ $block = $jobs_controller->fetchFeedPosts();
 
                 <div class="p4 bg-smoke">
 
-                    <div class="block relative mb4 || min-height-v15 bg-cover bg-center bg-darken-3" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/ludovic-fremondiere-386793.jpg')">
+                    <?php foreach ($boxes as $item): ?>
+                    
+                    <div class="block relative mb4 || min-height-v15 bg-cover bg-center bg-darken-3" style="background-image: url('<?=$item['box_background_image']['sizes']['medium']?>')">
 
-                        <a href="#1" class="flex items-center justify-center || min-height-v15 || darken-background darken-background-4">
+                        <a href="<?=$item['box_link']['url']?>" class="flex items-center justify-center || min-height-v15 || darken-background darken-background-4">
 
-                            <h5 class="h3 white mb0">Box Title to Go Here</h5>
-
-                        </a>
-
-                    </div>
-
-                    <div class="block relative mb4 || min-height-v15 bg-cover bg-center bg-darken-3" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/ludovic-fremondiere-386793.jpg')">
-
-                        <a href="#2" class="flex items-center justify-center || min-height-v15 || darken-background darken-background-4">
-
-                            <h5 class="h3 white mb0">Box Title to Go Here</h5>
+                            <h5 class="h3 white mb0"><?=$item['box_title']?></h5>
 
                         </a>
 
                     </div>
 
-                    <div class="block relative mb4 || min-height-v15 bg-cover bg-center bg-darken-3" style="background-image: url('http://devlocal.motionlabtheme.d3z.uk/app/uploads/2018/01/ludovic-fremondiere-386793.jpg')">
-
-                        <a href="#3" class="flex items-center justify-center || min-height-v15 || darken-background darken-background-4">
-
-                            <h5 class="h3 white mb0">Box Title to Go Here</h5>
-
-                        </a>
-
-                    </div>
+                    <?php endforeach; ?>
 
                 </div>
 

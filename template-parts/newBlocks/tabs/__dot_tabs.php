@@ -30,7 +30,7 @@ $bgImage = ($block['bgImage']['enable'] == true)? 'bg-image-active' : '';
 
                <?php $i = 1; foreach ($block['tabs'] as $tab): ?>
 
-                    <span data-section="tab<?=$i?>" class="tab || block <?=$block['tabs_settings']['tab_weight']?> text-left md-text-center relative || <?=($i <= 1)? 'tab-active' : '' ?>">
+                    <span data-section="tab<?=$i?>" data-tab="<?=$i?>" class="tab || block <?=$block['tabs_settings']['tab_weight']?> text-left md-text-center relative || <?=($i <= 1)? 'tab-active' : '' ?>">
                         <?=$tab['tab_title_short']?>
                     </span>
 

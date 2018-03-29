@@ -14,13 +14,13 @@
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-    <div class="clearfix py5">
+    <div class="clearfix py5 hover-zoom">
 
         <?php foreach ($block['content'] as $item): ?>
 
-                <div class="item || col <?=$block['columns']?> p2 || block relative">
+                <div class="item || col <?=$block['columns']?> p2 || block relative hover-zoom">
 
-                    <div class="box-shadow-1">
+                    <div class="box-shadow-1 zoom">
 
                         <?php if(!empty($item['button']['button_link']['url'])): ?>
                             <a href="<?=$item['button']['button_link']['url']?>">

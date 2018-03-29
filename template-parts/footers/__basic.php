@@ -1,4 +1,4 @@
-<div class="bg-footer pt5 md-pt0">
+<div class="bg-footer px4 pt4 md-pt0">
 <?php if (get_field('footer_enable_overlay', 'option') == true): ?>
     <div class="overlay" style="background-image: url('<?= get_field('footer_overlay_image', 'option') ?>');">
 
@@ -14,7 +14,7 @@
                 <?php include(get_template_directory() . '/template-parts/global/menus/footer_menu_2.php'); ?>
                 <?php include(get_template_directory() . '/template-parts/global/menus/footer_menu_3.php'); ?>
 
-                <div class="col col-12 md-col-2 mb3 md-mb0 text-center md-text-left white">
+                <div class="col col-12 md-col-2 mb3 md-mb0 text-center md-text-left white display-none md-block">
 
                     <?php dynamic_sidebar( 'footer_column_1' ); ?>
 
@@ -29,7 +29,7 @@
             <p class="h6 mb0"><?= strip_tags(get_field('brand_legalNotice', 'options')) ?></p>
         </div>
 
-        <div class="col col-12 md-col-4 pl3 pr0">
+        <div class="col col-12 md-col-4 pl3 pr0 text-center md-flex justify-end">
 
             <?php if (get_field('brand_footerLogo1', 'options')): ?>
                 <img src="<?= get_field('brand_footerLogo1', 'options') ?>">
