@@ -13,12 +13,13 @@ $menu = motionlab_menu_walker('primary');
 
                 <a href="<?=$menuitem->url?>" class="border-none text-center block bold px4 py2 white hover-brand-primary">
                     <?=$menuitem->title?> <?php if(!empty($menuitem->children)):?><i class="fa fa-caret-down" data-fa-transform="up-6"></i><?php endif ?>
+                </a>
 
-                <?php if(!empty($menuitem->children)):?>
+                    <?php if(!empty($menuitem->children)):?>
 
-                    <?php include(get_template_directory() .'/inc/header/menu-dropdown.php'); ?>
+                        <?php include(get_template_directory() .'/inc/header/menu-dropdown.php'); ?>
 
-                <?php endif ?>
+                    <?php endif ?>
 
             </li>
 
