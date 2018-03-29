@@ -17,7 +17,7 @@ $block = $jobs_controller->fetchFeedPosts();
 $boxes = get_field('template_jobs_sidebarBoxes');
 ?>
 
-<div class="clearfix || mt6" id="listing-job">
+<div class="clearfix || p4 mt6" id="listing-job">
 
     <div class="container">
 
@@ -37,10 +37,10 @@ $boxes = get_field('template_jobs_sidebarBoxes');
 
             <div class="col col-12 mb5">
 
-                <form action="#" class="width-100 || flex justify-center">
+                <form action="#" class="width-100 || flex justify-center flex-wrap">
 
                     <?php $disabled = sizeof($block['sector_select_options']) == 0 ? "disabled" : ""; ?>
-                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 jobs-filters" data-loadvalue="<?=get_query_var('sector')?>" id="sortby_sector" <?=$disabled?>>
+                    <select style="min-width:20%;" class="select mb4 md-ml3 width-100 md-width-auto box-shadow-3 jobs-filters" data-loadvalue="<?=get_query_var('sector')?>" id="sortby_sector" <?=$disabled?>>
                         <option value="">Filter by Sector</option>
                         <?php
                             foreach($block['sector_select_options'] as $option) :?>
@@ -51,7 +51,7 @@ $boxes = get_field('template_jobs_sidebarBoxes');
                     </select>
 
                     <?php $disabled = sizeof($block['type_select_options']) == 0 ? "disabled" : ""; ?>
-                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 jobs-filters" id="sortby_type" <?=$disabled?>>
+                    <select style="min-width:20%;" class="select mb4 md-ml3 width-100 md-width-auto box-shadow-3 jobs-filters" id="sortby_type" <?=$disabled?>>
                         <option value="">Filter by Type</option>
                         <?php
                             foreach($block['type_select_options'] as $option) :?>
@@ -62,7 +62,7 @@ $boxes = get_field('template_jobs_sidebarBoxes');
                     </select>
 
                     <?php $disabled = sizeof($block['location_select_options']) == 0 ? "disabled" : ""; ?>
-                    <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 jobs-filters" id="sortby_location" <?=$disabled?>>
+                    <select style="min-width:20%;" class="select mb4 md-ml3 width-100 md-width-auto box-shadow-3 jobs-filters" id="sortby_location" <?=$disabled?>>
                         <option value="">Filter by Location</option>
                         <?php foreach($block['location_select_options'] as $option) : ?>
                             <option class="option" value="<?=$option->slug?>" data-taxonomy="<?=$option->taxonomy?>"><?=$option->name?></option>
@@ -76,12 +76,12 @@ $boxes = get_field('template_jobs_sidebarBoxes');
 
             </div>
 
-            <div id="jobs-listing" class="col col-12 md-col-8 mb6 clearfix">
+            <div id="jobs-listing" class="col col-12 md-col-12 lg-col-8 mb6 clearfix">
 
                 <?php foreach($block['posts']->posts as $post) :?>
-                <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2">
+                <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2 bg-white">
 
-                    <div class="col col-9">
+                    <div class="col col-12 md-col-9">
 
                         <a href=""><h3 class="mb2 h4"><?=$post->post_title?></h3></a>
 
@@ -94,9 +94,9 @@ $boxes = get_field('template_jobs_sidebarBoxes');
 
                     </div>
 
-                    <div class="col col-3 mt1">
+                    <div class="col col-12 md-col-3 mt2">
 
-                        <a href="<?=$post->guid?>" class="btn btn-primary btn-small white width-100 h6 right">Apply Now</a>
+                        <a href="<?=$post->guid?>" class="btn btn-primary btn-small white md-width-100 h6 md-right">Apply Now</a>
 
                     </div>
 
@@ -114,7 +114,7 @@ $boxes = get_field('template_jobs_sidebarBoxes');
 
             </div>
 
-            <div class="col col-12 md-col-4 mb5 px4">
+            <div class="col col-12 md-col-4 lg-col-4  mb5 px4 display-none lg-block">
 
                 <div class="p4 bg-smoke">
 
@@ -122,7 +122,7 @@ $boxes = get_field('template_jobs_sidebarBoxes');
                     
                     <div class="block relative mb4 || min-height-v15 bg-cover bg-center bg-darken-3" style="background-image: url('<?=$item['box_background_image']['sizes']['medium']?>')">
 
-                        <a href="<?=$item['box_link']['url']?>" class="flex items-center justify-center || min-height-v15 || darken-background darken-background-4">
+                        <a href="<?=$item['box_link']['url']?>" class="flex items-center justify-center p4 text-center min-height-v15 darken-background darken-background-4">
 
                             <h5 class="h3 white mb0"><?=$item['box_title']?></h5>
 

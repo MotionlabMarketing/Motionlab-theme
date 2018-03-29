@@ -70,7 +70,11 @@ $width = ($block['grid'] == 'full_width')? $block['background']['colour'] : ""
                     <div class="video video-embed || inline-block" data-id="video-<?=$block['id']?>-<?=$i?>">
 
                         <a href="<?=$videos[$i]['link']?>" class="inline-block">
-                            <?= wp_get_attachment_image($videos[$i]['thumbnail_id'], array(120, 140), "", ["class" => "box-shadow-1 border-transparent border-2 border-top border-bottom border-left border-right"]  )?>
+                            <?php if($i == 1): ?>
+                                <?=wp_get_attachment_image($videos[$i]['thumbnail_id'], array(120, 140), "", ["class" => "box-shadow-1 border-white border-2 border-top border-bottom border-left border-right "] )?>
+                            <?php else: ?>
+                                <?=wp_get_attachment_image($videos[$i]['thumbnail_id'], array(120, 140), "", ["class" => "box-shadow-1 border-transparent border-2 border-top border-bottom border-left border-right "] )?>
+                            <?php endif; ?>
                         </a>
                         <p class="video-title h7 <?=$txtColor?> white" style="max-width: 120px; font-size: 0.8rem"><?=$videos[$i]['title']?></p>
 

@@ -68,10 +68,10 @@
 
         <div class="col-12 mb4">
 
-            <form action="#" class="width-100 || flex justify-center">
+            <form action="#" class="width-100 || flex justify-center flex-wrap">
 
                 <?php $disabled = sizeof($block['sector_select_options']) == 0 ? "disabled" : ""; ?>
-                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select" id="sortby_sector" <?=$disabled?>>
+                <select style="min-width:20%;" class="select mb4 md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select" id="sortby_sector" <?=$disabled?>>
                     <option value="">Filter by Sector</option>
                     <?php
                         foreach($block['sector_select_options'] as $option) :?>
@@ -82,7 +82,7 @@
                 </select>
 
                 <?php $disabled = sizeof($block['role_select_options']) == 0 ? "disabled" : ""; ?>
-                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select" id="sortby_role" <?=$disabled?>>
+                <select style="min-width:20%;" class="select mb4  md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select" id="sortby_role" <?=$disabled?>>
                     <option value="">Filter by Role</option>
                     <?php foreach($block['role_select_options'] as $option) : ?>
                         <option class="option" value="<?=$option->slug?>" data-taxonomy="<?=$option->taxonomy?>"><?=$option->name?></option>
@@ -93,7 +93,7 @@
                 </select>
 
                 <?php $disabled = sizeof($block['type_select_options']) == 0 ? "disabled" : ""; ?>
-                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select" id="sortby_type" <?=$disabled?>>
+                <select style="min-width:20%;" class="select mb4 md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select" id="sortby_type" <?=$disabled?>>
                     <option value="">Filter by Type</option>
                     <?php
                         foreach($block['type_select_options'] as $option) :?>
