@@ -98,7 +98,7 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
                                                  <?php
                                                     foreach($block['select_terms'] as $term): ?>
 
-                                                        <option value="<?= $term->name; ?>" data-redirect="<?= $term->taxonomy;?>/<?= $term->slug; ?>"> <?= $term->name; ?> </option>
+                                                        <option value="<?= $term->name; ?>" data-redirect="/find-a-job/<?= $term->slug; ?>"> <?= $term->name; ?> </option>
 
                                                  <?php endforeach; ?>
                                             </select>

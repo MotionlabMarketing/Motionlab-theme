@@ -98,7 +98,7 @@ endforeach;
 
         </div>
 
-        <div id="timeline" class="mt5 clearfix"></div>
+        <div id="timeline" class="mt5 clearfix overflow-hidden"></div>
 
     </div>
 

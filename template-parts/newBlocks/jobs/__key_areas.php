@@ -66,6 +66,7 @@
                                             </select>
 
                                         </li>
+<!--                                                    <option value="--><?//= $term->name; ?><!--" data-redirect="/find-a-job/--><?//= $term->slug; ?><!--"> --><?//= $term->name; ?><!-- </option>-->
 
                                     <?php endif; ?>
                                 </ul>

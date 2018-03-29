@@ -16,20 +16,7 @@
 
     <div class="container">
 
-        <div class="col-12 || md-mb5 || px4 md-px0 text-center">
-
-            <div class="mb4">
-                <?php
-                if (!empty($blockTitle[0]['title'])) {
-                    include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php');
-                } ?>
-            </div>
-
-            <div class="wysiwyg || md-mx6 md-px6 text-left md-text-center">
-                <?= get_sub_field($current . '_content'); ?>
-            </div>
-
-        </div>
+       <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
             <div class="col-12 md-col-6 || p4 left">
                 <?php

@@ -41,14 +41,14 @@
 
                     <ul class="inline-block tags tags-right right">
                         <?php foreach($post->roles as $role) : ?>
-                            <li><?=$role->name?></li>
+                            <li class="border-radius-3"><?=$role->name?></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
 
-                <p class="h6 pb4 || clearfix || border border-light border-bottom">
+                <div class="h5 clearfix border border-light border-bottom">
                     <?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr(get_field('talent_details', $post->ID),0, 100) . "...";?>
-                </p>
+                </div>
 
             </div>
 
@@ -64,20 +64,7 @@
 
     <div class="container">
 
-        <div class="col-12 || mb5 || text-center">
-
-            <div class="mb2">
-                <?php
-                if (!empty($blockTitle[0]['title'])) {
-                    include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php');
-                } ?>
-            </div>
-
-            <div class="wysiwyg || mx6 px6">
-                <?= get_sub_field($current . '_content'); ?>
-            </div>
-
-        </div>
+        <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
         <div class="col-12 mb4">
 
@@ -149,14 +136,14 @@
 
                         <ul class="inline-block tags tags-right right">
                             <?php foreach($post->roles as $role) : ?>
-                                <li><?=$role->name?></li>
+                                <li class="border-radius-3"><?=$role->name?></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
 
-                    <p class="h6 pb4 || clearfix || border border-light border-bottom">
+                    <div class="h5 clearfix border border-light border-bottom">
                         <?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr(get_field('talent_details', $post->ID),0, 100) . "...";?>
-                    </p>
+                    </div>
 
                 </div>
 

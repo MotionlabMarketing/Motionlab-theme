@@ -10,20 +10,20 @@ $image_url = isset(get_field("staff_profileImage", $team_member->ID)['url']) ? g
 
 get_header(); ?>
 
-<div class="clearfix ||  mt6" id="single-team">
+<div class="clearfix p4 md-mt4" id="single-team">
 
     <div class="container">
 
-        <div class="profile || col col-12 md-col-6 lg-col-4 pt4 pr6">
+        <div class="profile col col-12 md-col-6 lg-col-4 md-pt4 flex items-center justify-center">
             <div class="image-holder img-square img-top img-s20" style="background-image: url('<?=$image_url?>');"></div>
         </div>
 
-        <div class="col col-12 md-col-6 lg-col-8 || pt3">
+        <div class="col col-12 md-col-6 lg-col-8 pt3 text-center md-text-left">
 
             <h1 class="h1 mb2 bold"><?=get_field('staff_name');?></h1>
             <h2 class="h3"><?=get_field('staff_role');?></h2>
 
-            <blockquote class="ml0 my5 italic">
+            <blockquote class="md-ml0 md-my2 m0 italic">
                 <?=get_field('staff_quote');?>
             </blockquote>
 
