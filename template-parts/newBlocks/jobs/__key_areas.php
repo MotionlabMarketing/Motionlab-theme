@@ -37,29 +37,38 @@
 
                             <div class="relative z2">
 
-                                <div class="mb4 h5" data-mh="match-2">
+                                <div class="mb4 h5 service-list" data-mh="match-2">
                                     <?=$section['service_list']?>
                                 </div>
 
-                                <div data-mh="match-3">
+
+                                <ul data-mh="match-3" class="clearfix list-reset">
                                     <?php if (!empty($section['button_link']['url'])): ?>
 
-                                        <a href="<?=$section['button_link']['url']?>" class="btn btn-medium h5 regular border-white border lh1 align-middle mb2" <?=($section['button_link']['title'] ? 'title="'.$section['button_link']['title'].'"' : '')?> <?=($section['button_link']['target'] ? 'target="'.$section['button_link']['target'].'"' : '')?> ><?=$section['button_link']['title']?></a>
+                                        <li class="col col-12 lg-col-4">
+                                            <a href="<?=$section['button_link']['url']?>" class="btn btn-medium h5 regular border-white border lh1 mb2" <?=($section['button_link']['title'] ? 'title="'.$section['button_link']['title'].'"' : '')?> <?=($section['button_link']['target'] ? 'target="'.$section['button_link']['target'].'"' : '')?> ><?=$section['button_link']['title']?></a>
+                                        </li>
 
                                     <?php endif; ?>
 
                                     <?php if ($section['add_filter'] == true):?>
-                                        <select id="orderby" style="min-width:13rem;" class="select md-width-auto btn-medium border-white border lh1 align-middle mb2">
-                                            <option value="">By Sector</option>
-                                             <?php
-                                                foreach($block['sector_select_options'] as $term): ?>
 
-                                                    <option value="<?= $term->name; ?>" data-redirect="<?= $term->taxonomy;?>/<?= $term->slug; ?>"> <?= $term->name; ?> </option>
+                                        <li class="col col-12 lg-col-8">
 
-                                             <?php endforeach; ?>
-                                        </select>
+                                            <select id="orderby" class="select btn-medium border-white border lh1 mb2 width-100">
+                                                <option value="">By Sector</option>
+                                                 <?php
+                                                    foreach($block['sector_select_options'] as $term): ?>
+
+                                                        <option value="<?= $term->name; ?>" data-redirect="<?= $term->taxonomy;?>/<?= $term->slug; ?>"> <?= $term->name; ?> </option>
+
+                                                 <?php endforeach; ?>
+                                            </select>
+
+                                        </li>
+
                                     <?php endif; ?>
-                                </div>
+                                </ul>
 
                             </div>
 
