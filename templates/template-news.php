@@ -48,7 +48,7 @@ get_header(); ?>
             </div>
 
 
-            <div class="col col-12 md-col-6 || relative p4 md-p6 right md-left">
+            <div class="col col-12 md-col-6 || relative p4 md-p5 right md-left">
 
                 <p class="left || pt2 h5"><?=date('d M Y', strtotime($latest_post->post_date));?></p>
 
@@ -73,28 +73,28 @@ get_header(); ?>
 
         </div>
 
-        <div id="news-listing-header" class="col col-12 md-col-12 lg-col-12 || mb5 px2 mxn2 md-flex md-items-center md-justify-center">
+        <div id="news-listing-header" class="mb5 px4 lg-flex lg-items-center lg-justify-center">
 
-            <div class="col col-12 md-col-4">
+            <div class="col col-12 lg-col-4">
 
-                <p class="bold brand-primary h3 mb3 md-mb0 text-center md-text-left">All Categories</p>
+                <p class="bold brand-primary h3 mb3 lg-mb0 text-center lg-text-left">All Categories</p>
 
             </div>
 
-            <div class="col col-12 md-col-8 md-text-right px4 md-px0 flex justify-center md-justify-end md-items-center">
+            <div class="col col-12 lg-col-8 lg-text-right px4 lg-px0 flex justify-center lg-justify-end lg-items-center">
 
-                <span class="mr3 display-none md-block">Filter by: </span>
+                <span class="mr3 display-none lg-block">Filter by: </span>
 
                 <form method="get">
 
-                    <select style="min-width:13rem;" class="news_filters select md-ml3 mb3 md-mb0 width-100 sm-width-auto md-width-auto box-shadow-2" id="news_orderby">
+                    <select style="min-width:15rem;" class="news_filters select md-ml3 mb3 md-mb0 width-100 md-width-auto box-shadow-2" id="news_orderby">
                         <option value="">Order By</option>
                         <option value="title">Title</option>
                         <option value="date">Date</option>
                     </select>
 
 
-                    <select style="min-width:13rem;" class="news_filters select mb3 md-mb0 width-100 sm-width-auto md-width-auto md-ml3 box-shadow-2" data-loadvalue="<?=get_query_var('news_category')?>" id="news_filtercats">
+                    <select style="min-width:15rem;" class="news_filters select mb3 md-mb0 width-100 md-width-auto lg-ml3 box-shadow-2" data-loadvalue="<?=get_query_var('news_category')?>" id="news_filtercats">
 
                         <option value="">Filter Category</option>
                         <?php
@@ -110,7 +110,7 @@ get_header(); ?>
 
         </div>
 
-        <div id="news-listing" class="col col-12 md-col-12 lg-col-12 mb4 sm-mxn2">
+        <div id="news-listing" class="mb4">
 
             <?php foreach($posts->posts as $post) : ?>
 
@@ -119,7 +119,7 @@ get_header(); ?>
                 <?php else: ?>
                     <?php $image_url = "/wp-content/themes/motionlab-theme/assets/img/placeholder.jpg" ?>
                 <?php endif; ?>
-            
+
                 <div class="col col-12 sm-col-6 md-col-3 lg-col-3 p4 js-match-height">
 
                     <p class="h6 mb2" data-mh="post-date"><?=date('d M Y', strtotime($post->post_date));?></p>
@@ -130,7 +130,7 @@ get_header(); ?>
 
                     <p class="h5 mb3" data-mh="post-content"><?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr($post->post_content,0, 100);?></p>
 
-                    <a href="<?=$post->guid?>" class="block mb4 || h5 bold">Read full story</a>
+                    <a href="<?=$post->guid?>" class="block mb3 || h5 bold">Read full story</a>
 
                     <ul class="tags border-radius" data-mh="post-tags">
                          <?php foreach($post->categories as $category) : ?>
@@ -207,7 +207,7 @@ get_header(); ?>
         }
         fetchNewsPosts(1);
     });
-    
+
     $(document).on("ready", function() {
         updateFilterState($('#news_filtercats').data('loadvalue'));
     });
