@@ -607,6 +607,7 @@ function wpse240579_fix_svg_size_attributes( $out, $id ) {
 }
 add_filter( 'image_downsize', 'wpse240579_fix_svg_size_attributes', 10, 2 );
 
+
 // RETURN THE NAME OF THE FUNCTIONS FILES.
 function ml_get_template() {
 
@@ -621,3 +622,24 @@ function pa($value) {
     print_r($value);
     print_r("</pre>");
 }
+
+/*==================================================================
+	Custom rewrite masking for job categories
+	This is what handles sending /jobs/%category% to the /jobs template.
+==================================================================*/
+
+function ml_categories_rewrite() {
+
+	add_rewrite_rule(
+		'news-2/([a-zA-Z0-9-]+)/?$',
+		'index.php?pagename=news-2&news_category=$matches[1]',
+		'top'
+	);
+}
+add_action('init', 'ml_categories_rewrite');
+
+function ml_query_vars($query_vars) {
+	$query_vars[] = 'news_category';
+	return $query_vars;
+}
+add_filter('query_vars', 'ml_query_vars');

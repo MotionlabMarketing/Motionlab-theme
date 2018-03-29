@@ -54,7 +54,7 @@
                                              <?php
                                                 foreach($block['sector_select_options'] as $term): ?>
 
-                                                    <option value="<?= $term->name; ?>" data-redirect="<?= $term->taxonomy;?>/<?= $term->slug; ?>"> <?= $term->name; ?> </option>
+                                                    <option value="<?= $term->name; ?>" data-redirect="/find-a-job/<?= $term->slug; ?>"> <?= $term->name; ?> </option>
 
                                              <?php endforeach; ?>
                                         </select>

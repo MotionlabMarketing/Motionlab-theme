@@ -54,7 +54,7 @@ get_header(); ?>
 
                     <ul class="mt2 tags tags-right border-radius">
                         <?php foreach($latest_post->categories as $category) : ?>
-                            <li><a href="<?=$category->taxonomy."/".$category->slug?>"><?=$category->name?></a></li>
+                            <li><a href="<?=$category->slug?>"><?=$category->name?></a></li>
                         <?php endforeach; ?>
                     </ul>
 
@@ -93,7 +93,9 @@ get_header(); ?>
                         <option value="date">Date</option>
                     </select>
 
-                    <select style="min-width:13rem;" class="news_filters select mb3 md-mb0 width-100 sm-width-auto md-width-auto md-ml3 box-shadow-2" id="news_filtercats">
+
+                    <select style="min-width:13rem;" class="news_filters select mb3 md-mb0 width-100 sm-width-auto md-width-auto md-ml3 box-shadow-2" data-loadvalue="<?=get_query_var('news_category')?>" id="news_filtercats">
+
                         <option value="">Filter Category</option>
                         <?php
                         $categories = get_categories();
@@ -132,7 +134,7 @@ get_header(); ?>
 
                     <ul class="tags border-radius" data-mh="post-tags">
                          <?php foreach($post->categories as $category) : ?>
-                            <li><a href="<?=$category->taxonomy."/".$category->slug?>"><?=$category->name?></a></li>
+                            <li><a href="<?=$category->slug?>"><?=$category->name?></a></li>
                         <?php endforeach; ?>
                     </ul>
 
@@ -189,15 +191,42 @@ get_header(); ?>
         });
     }
 
+    function updateFilterState(load_val) {
+        $('#news_filtercats').val(load_val);
+        fetchNewsPosts(1);
+    }
+
     $(document).on('click', '.page-number', function(){
         var page_number = $(this).data('page-number');
         fetchNewsPosts(page_number);
     });
 
     $('.news_filters').on('change', function() {
+        if($(this).attr('id') == "news_filtercats") {
+            history.pushState({cat:$(this).val()}, "", "/news-2/"+$(this).val());
+        }
         fetchNewsPosts(1);
     });
+    
+    $(document).on("ready", function() {
+        updateFilterState($('#news_filtercats').data('loadvalue'));
+    });
 
+    window.onpopstate = function(event) {
+        var value = document.location.href.substring(document.location.href.lastIndexOf("/") + 1) ;
+        if(value != null)
+            updateFilterState(value);
+    };
+
+<<<<<<< HEAD
+=======
+    function jsMatchHeightTrigger() {
+
+        $.fn.matchHeight._maintainScroll = true;
+    }
+
+
+>>>>>>> ee0b5d4ce6f90fbfe32086972df26f286e805224
 </script>
 
 <?php get_footer(); ?>
