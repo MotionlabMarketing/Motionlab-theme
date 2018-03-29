@@ -70,7 +70,7 @@ endif; ?>
 
             <div class="flex items-center justify-<?=$banner['align']?> width-100 relative z-index-50 p3 md-p6 pt6">
 
-                <div class="content col-12 lg-col-9 xl-col-5 relative z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
+                <div class="content col-12 lg-col-9 xl-col-7 p4 relative z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
 
                     <?php if (!empty($banner['logos']['before']['url'])): ?>
 
@@ -120,9 +120,9 @@ endif; ?>
                     <div class="mt4">
                     <?php foreach ($banner['buttons'] as $button): ?>
 
-                        <a href="<?=$button['buttons_button_link']['url']?>" class="btn btn-medium mx4 min-width-8 <?=$button['buttons_system_text_colours']?> <?=$button['buttons_system_background_colours']?>" <?=($button['buttons_button_link']['title'] ? 'title="'.$button['button']['title'].'"' : '')?> <?=($button['buttons_button_link']['target'] ? 'target="'.$button['button']['target'].'"' : '')?>>
+                        <a href="<?=$button['buttons_button_link']['url']?>" class="btn btn-medium m2 min-width-8 text-center <?=$button['buttons_system_text_colours']?> <?=$button['buttons_system_background_colours']?>" <?=($button['buttons_button_link']['title'] ? 'title="'.$button['button']['title'].'"' : '')?> <?=($button['buttons_button_link']['target'] ? 'target="'.$button['button']['target'].'"' : '')?> style="min-width:12rem;">
 
-                            <?php if (!empty($button['buttons_button_icon'])): ?><div class="flex items-center"><?=wp_get_attachment_image($button['buttons_button_icon'], array(32, 32), "", ['class' => 'size-32x32 mr2'])?> <?php endif; ?>
+                            <?php if (!empty($button['buttons_button_icon'])): ?><div class="flex items-center justify-center"><?=wp_get_attachment_image($button['buttons_button_icon'], array(32, 32), "", ['class' => 'size-32x32 mr2'])?> <?php endif; ?>
 
                                 <?=$button['buttons_button_link']['title']?>
 

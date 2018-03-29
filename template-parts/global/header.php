@@ -4,7 +4,7 @@
     <div class="header-size <?=(!is_front_page())? "bg-white" : "";?> display-none lg-block">
         <div class="holder || bg-repeat flex">
 
-            <div class="self-stretch flex items-center flex-wrap flex-column || logo-wrapper ml4 mbn4">
+            <div class="self-stretch flex items-center justify-center flex-wrap flex-column || logo-wrapper ml3 xl-ml4 mbn4">
                 <a href="/" class="logo block white">
                     <img src="<?=get_field('brand_logo', 'options')?>" alt="" id="main-logo" class="block mx-auto" data-logo="<?=get_field('brand_logo', 'options')?>" data-scrolllogo="<?=get_field('brand_logo_white', 'options')?>">
                     <img src="<?=get_field('brand_logo_white', 'options')?>" style="display: none">
