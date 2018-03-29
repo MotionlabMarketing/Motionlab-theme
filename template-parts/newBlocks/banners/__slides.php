@@ -89,7 +89,7 @@ endif;
 
                             <?php endif; endif; ?>
 
-                            <?php render_wysiwyg($slide['content'], false, "md-h3 bold"); ?>
+                            <?php render_wysiwyg($slide['content'], false, ["class" => "md-h3 bold"]); ?>
 
                             <?php foreach ($slide['button_buttons'] as $button):?>
 

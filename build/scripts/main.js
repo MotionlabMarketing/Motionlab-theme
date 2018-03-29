@@ -4,6 +4,15 @@
 
 jQuery(document).ready(function ($) {
 
+
+    // TODO: Make this work by checking the tallest item.
+    var tabheight = $( '.dot-target' ).actual( 'height' );
+    $('.dot-target').height(tabheight);
+
+    function jsMatchHeightTrigger() {
+        $.fn.matchHeight._update();
+    }
+
     /*========================
     Simple Parallax
     ==========================*/
@@ -594,20 +603,20 @@ jQuery(document).ready(function ($) {
     SMOOTH SCROLL
     ==========================*/
 
-    $('a[href*=\\#]:not([href=\\#]):not([data-toggle])').on('click', function () {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-            var target = $(this.hash);
-            var headerHeight = $('header').outerHeight();
-            var stickyNav = $('.stick-menu').height();
-            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-            if (target.length) {
-                $('html,body').animate({
-                    scrollTop: target.offset().top - headerHeight - stickyNav - 20
-                }, 750);
-                return false;
-            }
-        }
-    });
+    // $('a[href*=\\#]:not([href=\\#]):not([data-toggle])').on('click', function () {
+    //     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+    //         var target = $(this.hash);
+    //         var headerHeight = $('header').outerHeight();
+    //         var stickyNav = $('.stick-menu').height();
+    //         target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+    //         if (target.length) {
+    //             $('html,body').animate({
+    //                 scrollTop: target.offset().top - headerHeight - stickyNav - 20
+    //             }, 750);
+    //             return false;
+    //         }
+    //     }
+    // });
 
 
     /*======================================================

@@ -11,9 +11,8 @@ $menu = motionlab_menu_walker('primary');
 
             <li class=" relative <?=(!empty($menuitem->children))? "has-dropdown" : ""; ?>">
 
-                <a href="<?=$menuitem->url?>" class="border-none text-center block bold px2 xl-px3 lg-h4 xl-h3 py2 white hover-brand-primary">
-                    <?=$menuitem->title?>
-                </a>
+                <a href="<?=$menuitem->url?>" class="border-none text-center block bold px4 py2 white hover-brand-primary">
+                    <?=$menuitem->title?> <?php if(!empty($menuitem->children)):?><i class="fa fa-caret-down" data-fa-transform="up-6"></i><?php endif ?>
 
                 <?php if(!empty($menuitem->children)):?>
 
