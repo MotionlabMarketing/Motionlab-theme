@@ -52,21 +52,7 @@ $block['block_title']  = get_sub_field($current . '_title_title');
 
     <div class="container">
 
-        <div class="col-12 || mb3 || text-center">
-
-            <div class="mb2">
-                <?php
-
-                if (!empty($block['block_title'][0]['title'])) {
-                    include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php');
-                } ?>
-            </div>
-
-            <div class="wysiwyg limit-p limit-p-70">
-                <?= get_sub_field($current . '_content'); ?>
-            </div>
-
-        </div>
+        <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
         <div class="col-12 mb4">
 

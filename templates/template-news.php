@@ -22,13 +22,10 @@ get_header(); ?>
 
         <div class="col col-12 md-col-12 lg-col-12 || mb5 text-center">
 
-            <?php
-            if (!empty($blockTitle[0]['title'])) {
-                include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
+            <?php $heading = convert_heading($blockTitle); ?>
+            <?php render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}"); ?>
 
-            <div class="wysiwyg h4">
-                <?=get_field('page_introduction')?>
-            </div>
+            <?php render_wysiwyg(get_field('page_introduction'), true) ?>
 
         </div>
 
@@ -37,13 +34,16 @@ get_header(); ?>
 
 	        <?php $latest_post = array_shift($posts->posts); ?>
             <div class="col col-12 md-col-6 || px4 md-p5 left md-right || flex items-center justify-center">
+
                 <?php if (has_post_thumbnail( $latest_post->ID ) ): ?>
                     <?php $image_url = wp_get_attachment_image( get_post_thumbnail_id( $latest_post->ID ), "large", "", ["class" => "box-shadow-1"] ) ?>
                 <?php else: ?>
                     <?php $image_url = wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1"]) // TODO: Default Image ?>
                 <?php endif; ?>
 
-                <?=$image_url?>
+                <a href="<?=$latest_post->guid?>">
+                    <?=$image_url?>
+                </a>
 
             </div>
 
@@ -58,7 +58,12 @@ get_header(); ?>
                         <?php endforeach; ?>
                     </ul>
 
-                <h2 class="clear-both || mt3 md-mt5 || brand-primary"><?=$latest_post->post_title?></h2>
+                <a href="<?=$latest_post->guid?>">
+
+                    <?php $heading = convert_heading($blockTitle); ?>
+                    <?php render_heading( "{$latest_post->post_title}", "h2", "", "brand-primary", "{$heading->case}", ["class" => "clear-both mt3 md-mt5 brand-primary"]); ?>
+
+                </a>
 
                 <p><?= strlen($latest_post->post_excerpt) > 1 ? $latest_post->post_excerpt : substr($latest_post->post_content,0, 100);?></p>
 
@@ -103,21 +108,21 @@ get_header(); ?>
 
         </div>
 
-        <div id="news-listing" class="col col-12 md-col-12 lg-col-12 mb4 mxn2">
+        <div id="news-listing" class="col col-12 md-col-12 lg-col-12 mb4 sm-mxn2">
 
             <?php foreach($posts->posts as $post) : ?>
 
                 <?php if (has_post_thumbnail( $post->ID ) ): ?>
-                    <?php $image_url = wp_get_attachment_image_url( get_post_thumbnail_id( $post->ID ), "large", "", ["class" => "box-shadow-1 js-match-height"] ) ?>
+                    <?php $image_url = wp_get_attachment_image_url( get_post_thumbnail_id( $post->ID ), "large", "") ?>
                 <?php else: ?>
-                    <?php $image_url = wp_get_attachment_image_url(7303, "large", "", ["class" => "box-shadow-1 js-match-height"]) // TODO: Default Image ?>
+                    <?php $image_url = "/wp-content/themes/motionlab-theme/assets/img/placeholder.jpg" ?>
                 <?php endif; ?>
-
+            
                 <div class="col col-12 sm-col-6 md-col-3 lg-col-3 p4 js-match-height">
 
                     <p class="h6 mb2" data-mh="post-date"><?=date('d M Y', strtotime($post->post_date));?></p>
 
-                    <h3 class="h4 brand-primary" data-mh="post-title"><?=$post->post_title?></h3>
+                    <a href="<?=$post->guid?>"><h3 class="h4 brand-primary" data-mh="post-title"><?=$post->post_title?></h3></a>
 
                     <a href="<?=get_permalink($post->ID)?>"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('<?=$image_url?>');"></div></a>
 
@@ -165,12 +170,20 @@ get_header(); ?>
             },
             success: function(response){
                 $('#news-listing').html(response);
-                // $('.js-match-height').matchHeight();
+
 
                 $('html,body').animate({
                     scrollTop: $("#news-listing-header").offset().top}, 'slow');
+            },
+            complete: function () {
+                setTimeout(function() {
 
-                jsMatchHeightTrigger()
+                    $.fn.matchHeight._apply('.js-match-height');
+                    $.fn.matchHeight._apply('[data-mh="post-title"]');
+                    $.fn.matchHeight._apply('[data-mh="post-tags"]');
+                    $.fn.matchHeight._apply('[data-mh="post-content"]');
+
+                }, 300);
             }
 
         });
@@ -203,12 +216,15 @@ get_header(); ?>
             updateFilterState(value);
     };
 
+<<<<<<< HEAD
+=======
     function jsMatchHeightTrigger() {
 
         $.fn.matchHeight._maintainScroll = true;
     }
 
 
+>>>>>>> ee0b5d4ce6f90fbfe32086972df26f286e805224
 </script>
 
 <?php get_footer(); ?>

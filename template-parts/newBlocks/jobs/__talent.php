@@ -41,14 +41,14 @@
 
                     <ul class="inline-block tags tags-right right">
                         <?php foreach($post->roles as $role) : ?>
-                            <li><?=$role->name?></li>
+                            <li class="border-radius-3"><?=$role->name?></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
 
-                <p class="h6 || clearfix || border border-light border-bottom">
+                <div class="h5 clearfix border border-light border-bottom">
                     <?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr(get_field('talent_details', $post->ID),0, 100) . "...";?>
-                </p>
+                </div>
 
             </div>
 
@@ -136,14 +136,14 @@
 
                         <ul class="inline-block tags tags-right right">
                             <?php foreach($post->roles as $role) : ?>
-                                <li><?=$role->name?></li>
+                                <li class="border-radius-3"><?=$role->name?></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
 
-                    <p class="h6 || clearfix || border border-light border-bottom">
+                    <div class="h5 clearfix border border-light border-bottom">
                         <?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr(get_field('talent_details', $post->ID),0, 100) . "...";?>
-                    </p>
+                    </div>
 
                 </div>
 

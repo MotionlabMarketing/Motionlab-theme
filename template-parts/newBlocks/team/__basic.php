@@ -52,15 +52,12 @@
 
         </div>
 
-        <?php if (!empty($block['page_button']['button_link']['url'])): ?>
+        <div class="text-center mt4">
 
-            <div class="page-button || mt4 mb4 clearfix || text-center">
+            <?=render_button($block['page_button'], "large", ["class" => "text-center mt4"])?>
 
-                <a href="<?=$block['page_button']['button_link']['url']?>" class="btn btn-outline btn-large <?=$block['page_button']['system_text_colours']?> <?=$block['page_button']['system_background_colours']?>"><?=$block['page_button']['button_link']['title'];?></a>
+        </div>
 
-            </div>
-
-        <?php endif; ?>
 
     <?=($block['grid'] == 'container')? '</div>' : ""?>
 

@@ -350,6 +350,7 @@ h3, .h3 {
 .btn-extra  { padding: 1.2rem   3rem; }
 
 .btn-primary {
+  border-color: $brand-primary;
   background-color: $brand-primary;
 }
 
@@ -563,20 +564,20 @@ form {
 
     &:nth-child(odd) {
       //padding-left: 0;
-      padding-right: 1rem;
+      //padding-right: 1rem;
 
-      @media (max-width: $breakpoint-sm) {
-        padding: 0 1rem;
-      }
+      //@media (max-width: $breakpoint-sm) {
+      //  padding: 0 1rem;
+      //}
     }
 
     &:nth-child(even) {
-      padding-left: 1rem;
+      //padding-left: 1rem;
       //padding-right: 0;
 
-      @media (max-width: $breakpoint-sm) {
-        padding: 0 1rem;
-      }
+      //@media (max-width: $breakpoint-sm) {
+      //  padding: 0 1rem;
+      //}
     }
 
   }

@@ -90,6 +90,9 @@ get_header(); ?>
                             </div>
 
                         </div>
+
+                        <a href="<?=$packageOne['package_page']['url']?>" class="btn btn-primary mt3 h6" style="font-size: 0.8rem"><?=$packageOne['package_page']['title']?></a>
+
                     </div>
 
                     <div class="col col-12 md-col-3 md-pl3">
@@ -106,21 +109,16 @@ get_header(); ?>
                             </div>
 
                         </div>
+
+                        <a href="<?=$packageOne['package_page']['url']?>" class="btn btn-primary mt3 h6" style="font-size: 0.8rem"><?=$packageOne['package_page']['title']?></a>
+
                     </div>
 
-                    <div class="col col-12 md-col-6 md-hidden-down">
-                        <div class="block width-100 min-width-100" style="opacity: 0">1</div>
-                    </div>
+                    <div class="col col-12 md-col-12 h6 text-right mt4 muted">
 
-                    <div class="col col-12 md-col-3 p2 md-pt3 md-pl3 md-hidden-down">
-                        <p class="h6 brand-primary bold"><a href="<?=$packageOne['package_page']['url']?>"><?=$packageOne['package_page']['title']?></a></p>
-                    </div>
+                        <?=get_field('asterisk_details')?>
 
-                    <div class="col col-12 md-col-3 p2 md-pt3 md-pl3 md-hidden-down">
-                        <p class="h6 brand-primary bold"><a href="<?=$packageTwo['package_page']['url']?>"><?=$packageTwo['package_page']['title']?></a></p>
                     </div>
-
-                    <div class="col col-12 md-col-12 h6 text-right mt2 muted"><?=get_field('asterisk_details')?></div>
 
                 </div>
 

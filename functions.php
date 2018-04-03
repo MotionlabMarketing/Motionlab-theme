@@ -5,6 +5,7 @@ define("CONTROLLERS_DIR"  , get_template_directory() . "/controllers/");
 define("MODELS_DIR"  , get_template_directory() . "/models/");
 define("MASTER_CPT_DIR", get_template_directory() . "/cpt-registry/");
 define("CHILD_CPT_DIR", get_stylesheet_directory() . "/cpt-registry/");
+define("AJAX_DIR", get_stylesheet_directory() . "/template-parts/ajax/");
 
 define('WP_POST_REVISIONS', 2);
 

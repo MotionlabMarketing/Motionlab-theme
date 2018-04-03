@@ -15,5 +15,4 @@ $menu = motionlab_menu_walker('footer_2');
             </ul>
         </nav>
     <?php endif; ?>
-    &nbsp;
 </div>
