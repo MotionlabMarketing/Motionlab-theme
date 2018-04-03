@@ -13,13 +13,13 @@
 
 ?>
 
-<section <?=get_blockID($block)?> <?=get_blockClasses($block, "")?> <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "")?> <?=get_blockData($block)?> class="bg-red">
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
     <div class="clearfix <?=$block['content']['bg']?> <?=$block['content']['sides']?> <?=$block['content']['borders']['color']?> <?=$block['content']['borders']['size']?>">
-
-        <div class="relative col col-12 md-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> js-match-height min-height-v50 overflow-hidden">
+        
+        <div class="relative col col-12 md-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> js-match-height min-height-v50 overflow-hidden <?=($block['content']['type'] == "video")? "flex items-center" : "" ?>">
 
             <?php if ($block['content']['type'] == "image"): ?>
 
@@ -51,6 +51,9 @@
 
             <?php if ($block['content']['type'] == "video"): ?>
 
+
+            <div class="width-100">
+
                 <div class="overflow-hidden">
 
                     <div class="relative no-resize">
@@ -61,6 +64,8 @@
                     </div>
 
                 </div>
+
+            </div>
 
             <?php endif; ?>
 
