@@ -108,6 +108,40 @@ Class _block_news
 		return $this->block['posts'];
 	}
 
+	public function fetchCSRPosts( $post_per_page = 12, $page = 1 ) {
+
+		$tax_query = [];
+		if(isset($_POST['order_filter']) && $_POST['order_filter'] != ''): $orderby = $_POST['order_filter']; else : $orderby = 'date'; endif;
+		$tax_query[] = [
+			'taxonomy'  => 'post_specific_types',
+			'terms'     => [ 'csr' ],
+			'field'     => 'slug'
+		];
+
+		$order = "ASC";
+		if($orderby == 'date')
+			$order = "DESC";
+
+		$args = array(
+			'posts_per_page'    => $post_per_page,
+			'paged'             => $page,
+			'post_type'         => 'post',
+			'orderby'           => $orderby,
+			'order'             => $order,
+			'tax_query'         => $tax_query
+		);
+
+		$this->block['posts'] = new WP_Query( $args );
+
+		foreach($this->block['posts']->posts as $key => $post) {
+
+			$this->block['posts']->posts[$key]->categories = get_the_terms($post->ID, 'category');
+
+		}
+
+		return $this->block['posts'];
+	}
+
 	private function fetchLatestPosts($count = 3) {
 
 		if($this->block['content']['type'] == "latest") {
