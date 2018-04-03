@@ -9,8 +9,8 @@
  * @version 1.00
  */
 
+//pa($block);
 ?>
-
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "team-basic")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : '' ?>
@@ -57,6 +57,7 @@
             <?=render_button($block['page_button'], "large", ["class" => "text-center mt4"])?>
 
         </div>
+
 
     <?=($block['grid'] == 'container')? '</div>' : ""?>
 

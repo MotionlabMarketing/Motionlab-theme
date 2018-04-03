@@ -22,11 +22,11 @@
 
         <a href="<?=$post->guid?>"><h3 class="h4 brand-primary" data-mh="post-title"><?=$post->post_title?></h3></a>
 
-        <a href="<?=$post->guid?>"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('<?=$image_url?>');"></div></a>
+        <a href="<?=get_permalink($post->ID)?>"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('<?=$image_url?>');"></div></a>
 
         <p class="h5 mb3" data-mh="post-content"><?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr($post->post_content,0, 100);?></p>
 
-        <a href="<?=$post->guid?>" class="block mb4 || h5 bold">Read full story</a>
+        <a href="<?=get_permalink($post->ID)?>" class="block mb4 || h5 bold">Read full story</a>
 
         <ul class="tags border-radius" data-mh="post-tags">
             <?php foreach($post->categories as $category) : ?>

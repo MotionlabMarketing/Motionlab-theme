@@ -96,7 +96,7 @@ $boxes = get_field('template_jobs_sidebarBoxes');
 
                     <div class="col col-12 md-col-3 mt2">
 
-                        <a href="<?=$post->guid?>" class="btn btn-primary btn-small white md-width-100 h6 md-right">Apply Now</a>
+                        <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white width-100 h6 right">Apply Now</a>
 
                     </div>
 

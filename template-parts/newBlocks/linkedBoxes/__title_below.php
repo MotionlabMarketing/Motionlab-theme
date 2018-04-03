@@ -25,6 +25,7 @@ $block['content']['txtColor'] = get_sub_field($current . '_txtColour_system_text
 $blockItems       = get_sub_field($current . '_items');
 
 $block['content']['button'] = get_sub_field($current . '_button_button_link');
+
 ?>
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "linkedBox-titleBelow")?> <?=get_blockData($block)?>>
 
@@ -40,7 +41,7 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
                 if ($item['block_linkBoxes_breakout_true'] !== true): ?>
                     <div class="item col col-12 md-col-<?=$block['columns']?> p3 block relative hover-zoom">
                         <a href="<?= $item['block_linkBoxes_button_button_link']['url'] ?>"
-                           class="block zoom relative overflow-hidden bg-cover bg-center border-light border-top border-left border-right box-shadow-3 border-bottom <?= $item['background_colour']['system_background_colours'] ?> <?= $item['text_colour']['system_text_colours'] ?> || zoom" <?= ($item['block_linkBoxes_link']['title'] ? 'title="' . $item['block_linkBoxes_link']['title'] . '"' : '') ?> <?= ($item['block_linkBoxes_link']['target'] ? 'target="' . $item['block_linkBoxes_link']['target'] . '"' : '') ?>>
+                           class="block zoom relative overflow-hidden bg-cover bg-center border-light border-top border-left border-right box-shadow-3 border-bottom <?= $item['background_colour']['system_background_colours'] ?> <?= $item['text_colour']['system_text_colours'] ?> || zoom" <?= ($item['block_linkBoxes_button_button_link']['title'] ? 'title="' . $item['block_linkBoxes_button_button_link']['title'] . '"' : '') ?> <?= ($item['block_linkBoxes_button_button_link']['target'] ? 'target="' . $item['block_linkBoxes_button_button_link']['target'] . '"' : '') ?>>
 
                             <?php if ($item['block_linkBoxes_media'] == "video"): ?>
                                 <div class="no-resize" style="margin-bottom: -8px">

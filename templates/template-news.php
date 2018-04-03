@@ -67,7 +67,7 @@ get_header(); ?>
 
                 <p><?= strlen($latest_post->post_excerpt) > 1 ? $latest_post->post_excerpt : substr($latest_post->post_content,0, 100);?></p>
 
-                <a href="<?=$latest_post->guid?>" class="bottom-2 mt4 h5">Read full story</a>
+                <a href="<?=get_permalink($latest_post->ID)?>" class="bottom-2 mt4 h5">Read full story</a>
 
             </div>
 
@@ -93,9 +93,7 @@ get_header(); ?>
                         <option value="date">Date</option>
                     </select>
 
-
-                    <select style="min-width:15rem;" class="news_filters select mb3 md-mb0 width-100 md-width-auto lg-ml3 box-shadow-2" data-loadvalue="<?=get_query_var('news_category')?>" id="news_filtercats">
-
+                    <select style="min-width:15rem;" class="news_filters select mb3 md-mb0 width-100 sm-width-auto md-width-auto md-ml3 box-shadow-2" data-loadvalue="<?=get_query_var('news_category')?>" id="news_filtercats">
                         <option value="">Filter Category</option>
                         <?php
                         $categories = get_categories();
@@ -126,11 +124,11 @@ get_header(); ?>
 
                     <a href="<?=$post->guid?>"><h3 class="h4 brand-primary" data-mh="post-title"><?=$post->post_title?></h3></a>
 
-                    <a href="<?=$post->guid?>"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('<?=$image_url?>');"></div></a>
+                    <a href="<?=get_permalink($post->ID)?>"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('<?=$image_url?>');"></div></a>
 
                     <p class="h5 mb3" data-mh="post-content"><?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr($post->post_content,0, 100);?></p>
 
-                    <a href="<?=$post->guid?>" class="block mb3 || h5 bold">Read full story</a>
+                    <a href="<?=get_permalink($post->ID)?>" class="block mb4 || h5 bold">Read full story</a>
 
                     <ul class="tags border-radius" data-mh="post-tags">
                          <?php foreach($post->categories as $category) : ?>
