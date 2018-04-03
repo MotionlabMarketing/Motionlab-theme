@@ -41,14 +41,14 @@
 
                     <ul class="inline-block tags tags-right right">
                         <?php foreach($post->roles as $role) : ?>
-                            <li><?=$role->name?></li>
+                            <li class="border-radius-3"><?=$role->name?></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
 
-                <p class="h6 || clearfix || border border-light border-bottom">
+                <div class="h5 clearfix border border-light border-bottom">
                     <?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr(get_field('talent_details', $post->ID),0, 100) . "...";?>
-                </p>
+                </div>
 
             </div>
 
@@ -68,10 +68,10 @@
 
         <div class="col-12 mb4">
 
-            <form action="#" class="width-100 || flex justify-center">
+            <form action="#" class="width-100 || flex justify-center flex-wrap">
 
                 <?php $disabled = sizeof($block['sector_select_options']) == 0 ? "disabled" : ""; ?>
-                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select" id="sortby_sector" <?=$disabled?>>
+                <select style="min-width:20%;" class="select mb4 md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select" id="sortby_sector" <?=$disabled?>>
                     <option value="">Filter by Sector</option>
                     <?php
                         foreach($block['sector_select_options'] as $option) :?>
@@ -82,7 +82,7 @@
                 </select>
 
                 <?php $disabled = sizeof($block['role_select_options']) == 0 ? "disabled" : ""; ?>
-                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select" id="sortby_role" <?=$disabled?>>
+                <select style="min-width:20%;" class="select mb4  md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select" id="sortby_role" <?=$disabled?>>
                     <option value="">Filter by Role</option>
                     <?php foreach($block['role_select_options'] as $option) : ?>
                         <option class="option" value="<?=$option->slug?>" data-taxonomy="<?=$option->taxonomy?>"><?=$option->name?></option>
@@ -93,7 +93,7 @@
                 </select>
 
                 <?php $disabled = sizeof($block['type_select_options']) == 0 ? "disabled" : ""; ?>
-                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select" id="sortby_type" <?=$disabled?>>
+                <select style="min-width:20%;" class="select mb4 md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select" id="sortby_type" <?=$disabled?>>
                     <option value="">Filter by Type</option>
                     <?php
                         foreach($block['type_select_options'] as $option) :?>
@@ -120,7 +120,7 @@
 
                 <div class="col-12 md-col-6 || p4 left">
 
-                    <h4 class="h4 mb1"><?=get_field('talent_name', $post->ID);?></h4>
+                    <h4 class="h4 mb1"><a href="<?=get_permalink($post->ID)?>"><?=get_field('talent_name', $post->ID);?></a></h4>
                     <p class="bold mb2">
                         <?php $location = get_field('talent_location', $post->ID); ?>
                         <?php if($location != "") :?>
@@ -136,14 +136,16 @@
 
                         <ul class="inline-block tags tags-right right">
                             <?php foreach($post->roles as $role) : ?>
-                                <li><?=$role->name?></li>
+                                <li class="border-radius-3"><?=$role->name?></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
 
-                    <p class="h6 || clearfix || border border-light border-bottom">
+                    <div class="h5 clearfix border border-light border-bottom">
                         <?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr(get_field('talent_details', $post->ID),0, 100) . "...";?>
-                    </p>
+                    </div>
+
+                    <a href="<?=get_permalink($post->ID)?>" class="btn mt3 btn-primary">Learn More</a>
 
                 </div>
 

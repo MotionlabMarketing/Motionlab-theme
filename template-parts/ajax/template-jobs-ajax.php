@@ -26,7 +26,7 @@
 
     <div class="col col-3 mt1">
 
-        <a href="<?=$post->guid?>" class="btn btn-primary btn-small white width-100 h6 right">Apply Now</a>
+        <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white width-100 h6 right">Apply Now</a>
 
     </div>
 

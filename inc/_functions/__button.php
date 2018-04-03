@@ -12,9 +12,13 @@
  * @return bool|string
  */
 
-function render_button($data, $size = "medium",  $classes = "mb2") {
+function render_button($data, $size = "medium",  $classes = ["class" => "mb2"]) {
 
     if (!empty($data['button_link']['url']) && !empty($data['button_link']['title'])) {
+
+        $classes["class"] = $classes["class"] . "btn btn-{$size} {$data['system_text_colours']} {$data['system_background_colours']}";
+
+        $classes = attrConvert($classes);
 
         // CHECK IF ICON HAS BEEN ADDED.
         if (!empty($data['button_icon']))
@@ -53,9 +57,13 @@ function render_button($data, $size = "medium",  $classes = "mb2") {
  * @return bool|string
  */
 
-function get_render_button($data, $size = "btn-medium",  $classes = "mb2") {
+function get_render_button($data, $size = "btn-medium",  $classes = ["class" => "mb2"]) {
 
     if (!empty($data['button_link']['url']) && !empty($data['button_link']['title'])) {
+
+        $classes["class"] = $classes["class"] . "btn btn-{$size} {$data['system_text_colours']} {$data['system_background_colours']}";
+
+        $classes = attrConvert($classes);
 
         // CHECK IF ICON HAS BEEN ADDED.
         if (!empty($data['button_icon']))

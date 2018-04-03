@@ -46,88 +46,94 @@ $width = ($block['grid'] == 'full_width')? $block['background']['colour'] : ""
 
     <?=($block['grid'] == 'container' || $block['grid'] == 'full_width')? '<div class="container '.$block['background']['colour'].'">' : ""?>
 
-    <div class="clearfix || relative">
+        <div class="lg-flex items-center clearfix">
 
-        <div class="lg-flex items-center p5">
+            <div class="mxn2">
 
-        <div class="col col-12 md-col-6 || md-pr3 md-pl3">
+                <div class="col col-12 md-col-6 px2">
 
-            <div class="mb2">
-                <?php
-                if (!empty($blockTitle[0]['title'])) {
-                    include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php');
-                } ?>
-            </div>
+                    <div class="mb2">
+                        <?php
+                        if (!empty($blockTitle[0]['title'])) {
+                            include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php');
+                        } ?>
+                    </div>
 
-            <div class="wysiwyg mb3 <?=$txtColor?>">
-                <?= get_sub_field('block_video_content'); ?>
-            </div>
+                    <div class="wysiwyg mb3 <?=$txtColor?>">
+                        <?= get_sub_field('block_video_content'); ?>
+                    </div>
 
-            <div class="">
+                    <div class="">
 
-                <?php $i = 1; foreach ($videos as $video): ?>
+                        <?php $i = 1; foreach ($videos as $video): ?>
 
-                    <div class="video video-embed || inline-block" data-id="video-<?=$block['id']?>-<?=$i?>">
+                            <div class="video video-embed || inline-block" data-id="video-<?=$block['id']?>-<?=$i?>">
 
-                        <a href="<?=$videos[$i]['link']?>" class="inline-block">
-                            <?= wp_get_attachment_image($videos[$i]['thumbnail_id'], array(120, 140), "", ["class" => "box-shadow-1 border-transparent border-2 border-top border-bottom border-left border-right"]  )?>
+                                <a href="<?=$videos[$i]['link']?>" class="inline-block">
+                                    <?php if($i == 1): ?>
+                                        <?=wp_get_attachment_image($videos[$i]['thumbnail_id'], array(120, 140), "", ["class" => "box-shadow-1 border-white border-2 border-top border-bottom border-left border-right "] )?>
+                                    <?php else: ?>
+                                        <?=wp_get_attachment_image($videos[$i]['thumbnail_id'], array(120, 140), "", ["class" => "box-shadow-1 border-transparent border-2 border-top border-bottom border-left border-right "] )?>
+                                    <?php endif; ?>
+                                </a>
+                                <p class="video-title h7 <?=$txtColor?> white" style="max-width: 120px; font-size: 0.8rem"><?=$videos[$i]['title']?></p>
+
+                                <div class="embed" style="display: none;">
+
+                                    <?php if ($videos[$i]['source'] == "youtube"): ?>
+
+                                        <iframe width="100%" height="280" src="https://www.youtube.com/embed/<?=$videos[$i]['id']?>" frameborder="0" allow="encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+                                    <?php else: // Vimeo ?>
+
+                                        <iframe src="https://player.vimeo.com/video/<?=$videos[$i]['id']?>?portrait=0&badge=0" width="100%" height="280" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+                                    <?php endif; ?>
+
+                                    <p class="video-role"><?=$videos[$i]['role']?></p>s
+
+                                </div>
+
+                            </div>
+
+                            <?php $i++; endforeach; ?>
+                    </div>
+
+                </div>
+
+                <div class="col col-12 md-col-6 px2">
+
+                    <div class="video-embed-frame">
+
+                    <?php if (get_sub_field('block_videos_embed') == true): ?>
+
+                        <?php if ($videos[1]['source'] == "youtube"):  ?>
+
+                            <iframe width="100%" height="280" src="https://www.youtube.com/embed/<?=$videos[1]['id']?>" frameborder="0" allow="encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+                        <?php else: // Vimeo ?>
+
+                            <iframe src="https://player.vimeo.com/video/<?=$videos[1]['id']?>?portrait=0&badge=0" width="100%" height="280" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+                        <?php endif; ?>
+
+                    <?php else: ?>
+
+                        <a href="<?=$videos[1]['link']?>" class="block relative">
+                            <img src="<?=$videos[1]['thumbnail']?>" alt="<?=$videos[1]['title']?>" class="box-shadow-1">
+                            <div class="absolute px4 py2 bottom-0 right-0 bg-brand-primary white" style="margin-bottom: 0.4rem"><?=$videos[1]['length']?></div>
                         </a>
-                        <p class="video-title h7 <?=$txtColor?> white" style="max-width: 120px; font-size: 0.8rem"><?=$videos[$i]['title']?></p>
 
-                        <div class="embed" style="display: none;">
-
-                            <?php if ($videos[$i]['source'] == "youtube"): ?>
-
-                                <iframe width="100%" height="280" src="https://www.youtube.com/embed/<?=$videos[$i]['id']?>" frameborder="0" allow="encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-                            <?php else: // Vimeo ?>
-
-                                <iframe src="https://player.vimeo.com/video/<?=$videos[$i]['id']?>?portrait=0&badge=0" width="100%" height="280" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-                            <?php endif; ?>
-
-                            <p class="video-role"><?=$videos[$i]['role']?></p>s
-
-                        </div>
+                    <?php endif; ?>
 
                     </div>
 
-                    <?php $i++; endforeach; ?>
-            </div>
+                    <h3 class="video-embed-author h3 <?=$txtColor?> px2 mt3 md-mt3 mb0"><?=$videos[1]['author']?></h3>
+                    <p class="video-embed-role px2 h4 <?=$txtColor?> muted mb0"><?=$videos[1]['role']?></p>
 
-        </div>
-
-        <div class="col col-12 md-col-6 ||  md-pl5 md-pr0">
-
-            <div class="video-embed-frame">
-
-            <?php if (get_sub_field('block_videos_embed') == true): ?>
-
-                <?php if ($videos[1]['source'] == "youtube"):  ?>
-
-                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/<?=$videos[1]['id']?>" frameborder="0" allow="encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-                <?php else: // Vimeo ?>
-
-                    <iframe src="https://player.vimeo.com/video/<?=$videos[1]['id']?>?portrait=0&badge=0" width="100%" height="280" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-                <?php endif; ?>
-
-            <?php else: ?>
-
-                <a href="<?=$videos[1]['link']?>" class="block relative">
-                    <img src="<?=$videos[1]['thumbnail']?>" alt="<?=$videos[1]['title']?>" class="box-shadow-1">
-                    <div class="absolute px4 py2 bottom-0 right-0 bg-brand-primary white" style="margin-bottom: 0.4rem"><?=$videos[1]['length']?></div>
-                </a>
-
-            <?php endif; ?>
+                </div>
 
             </div>
-
-            <h3 class="video-embed-author h3 <?=$txtColor?> px2 mt3 md-mt3 mb0"><?=$videos[1]['author']?></h3>
-            <p class="video-embed-role px2 h4 <?=$txtColor?> muted mb0"><?=$videos[1]['role']?></p>
-
-        </div>
 
         </div>
 
@@ -137,7 +143,6 @@ $width = ($block['grid'] == 'full_width')? $block['background']['colour'] : ""
 
         <?php endif; ?>
 
-    </div>
 
     <?=($block['grid'] == 'container'  || $block['grid'] == 'full_width')? '</div>' : ""?>
 
