@@ -120,7 +120,7 @@
 
                 <div class="col-12 md-col-6 || p4 left">
 
-                    <h4 class="h4 mb1"><?=get_field('talent_name', $post->ID);?></h4>
+                    <h4 class="h4 mb1"><a href="<?=get_permalink($post->ID)?>"><?=get_field('talent_name', $post->ID);?></a></h4>
                     <p class="bold mb2">
                         <?php $location = get_field('talent_location', $post->ID); ?>
                         <?php if($location != "") :?>
@@ -144,6 +144,8 @@
                     <div class="h5 clearfix border border-light border-bottom">
                         <?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr(get_field('talent_details', $post->ID),0, 100) . "...";?>
                     </div>
+
+                    <a href="<?=get_permalink($post->ID)?>" class="btn mt3 btn-primary">Learn More</a>
 
                 </div>
 

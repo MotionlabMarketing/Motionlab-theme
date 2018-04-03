@@ -1,4 +1,4 @@
-<header class="width-100 top-0 fixed z5 border-bottom border-light border-lighten-3" id="masthead" data-role="header" data-smallification="true">
+<header class="width-100 top-0 fixed z5" id="masthead" data-role="header" data-smallification="true">
 
     <!-- desktop header view -->
     <div class="header-size <?=(!is_front_page())? "bg-white" : "";?> display-none lg-block">
@@ -12,12 +12,12 @@
 
                 <?php GLOBAL $post; $parent_id = wp_get_post_parent_id($post); if ($parent_id !== 0): ?>
 
-                    <a href="<?=get_permalink($parent_id)?>" class="back-btn || mt3 white bold flex-row"><i class="fa fa-chevron-left"></i> <?=get_the_title($parent_id)?></a>
+<!--                    <a href="--><?//=get_permalink($parent_id)?><!--" class="back-btn || mt3 white bold flex-row"><i class="fa fa-chevron-left"></i> --><?//=get_the_title($parent_id)?><!--</a>-->
 
                 <?php endif; ?>
             </div>
 
-            <div class="header-size flex-auto width-100 black text-right border-bottom border-solid border-light">
+            <div class="header-size flex-auto width-100 black text-right">
                 <?php include(get_template_directory() .'/template-parts/global/menus/top_menu.php')?>
                 <div class="flex">
                     <div class="flex-auto" toggle-relative-search>
