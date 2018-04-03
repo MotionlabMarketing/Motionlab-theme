@@ -216,15 +216,11 @@ get_header(); ?>
             updateFilterState(value);
     };
 
-<<<<<<< HEAD
-=======
     function jsMatchHeightTrigger() {
 
         $.fn.matchHeight._maintainScroll = true;
     }
 
-
->>>>>>> ee0b5d4ce6f90fbfe32086972df26f286e805224
 </script>
 
 <?php get_footer(); ?>
