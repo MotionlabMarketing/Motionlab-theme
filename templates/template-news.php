@@ -201,7 +201,7 @@ get_header(); ?>
 
     $('.news_filters').on('change', function() {
         if($(this).attr('id') == "news_filtercats") {
-            history.pushState({cat:$(this).val()}, "", "/news-2/"+$(this).val());
+            history.pushState({cat:$(this).val()}, "", "/news/"+$(this).val());
         }
         fetchNewsPosts(1);
     });

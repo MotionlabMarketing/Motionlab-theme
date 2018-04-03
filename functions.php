@@ -631,8 +631,8 @@ function pa($value) {
 function ml_categories_rewrite() {
 
 	add_rewrite_rule(
-		'news-2/([a-zA-Z0-9-]+)/?$',
-		'index.php?pagename=news-2&news_category=$matches[1]',
+		'news/([a-zA-Z0-9-]+)/?$',
+		'index.php?pagename=news&news_category=$matches[1]',
 		'top'
 	);
 }
@@ -643,3 +643,35 @@ function ml_query_vars($query_vars) {
 	return $query_vars;
 }
 add_filter('query_vars', 'ml_query_vars');
+
+/*
+ * Used to convert a given timestamp to a "4 days ago" style message
+ * */
+function ml_time_elapsed_string($datetime, $full = false) {
+    $now = new DateTime;
+    $ago = new DateTime($datetime);
+    $diff = $now->diff($ago);
+
+    $diff->w = floor($diff->d / 7);
+    $diff->d -= $diff->w * 7;
+
+    $string = array(
+        'y' => 'year',
+        'm' => 'month',
+        'w' => 'week',
+        'd' => 'day',
+        'h' => 'hour',
+        'i' => 'minute',
+        's' => 'second',
+    );
+    foreach ($string as $k => &$v) {
+        if ($diff->$k) {
+            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+        } else {
+            unset($string[$k]);
+        }
+    }
+
+    if (!$full) $string = array_slice($string, 0, 1);
+    return $string ? implode(', ', $string) . ' ago' : 'just now';
+}

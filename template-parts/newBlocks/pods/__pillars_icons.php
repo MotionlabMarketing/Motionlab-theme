@@ -22,10 +22,10 @@
 
                     <div class="col <?=$block['columns']?> p2">
 
-                        <div class="<?=$block['pod']['bgColour']?> hover-brand-primary <?=$block['pod']['textAlign']?> <?=$block['pod']['textColor']?> py6 px5 relative js-match-height">
+                        <div class="<?=$block['pod']['bgColour']?> <?=$block['pod']['textAlign']?> <?=$block['pod']['textColor']?> py6 px5 relative js-match-height">
 
                             <div class="js-match-height-alt">
-                                <?= wp_get_attachment_image($item['pod_item_custom_icon'], array(80, 80), "", ["class" => "mb4 bg-white"]  )?>
+                                <?= wp_get_attachment_image($item['pod_item_custom_icon'], array(80, 80), "", ["class" => "mb4"]  )?>
                             </div>
 
                                 <h3 class="mb3 brand-primary" style="font-size: 1.3rem">
