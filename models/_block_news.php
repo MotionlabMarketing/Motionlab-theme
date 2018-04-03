@@ -75,7 +75,7 @@ Class _block_news
 	public function fetchFeedPosts( $post_per_page = 12, $page = 1 ) {
 
 		$tax_query = [];
-		if(isset($_POST['order_filter'])): $orderby = $_POST['order_filter']; else : $orderby = ''; endif;
+		if(isset($_POST['order_filter']) && $_POST['order_filter'] != ''): $orderby = $_POST['order_filter']; else : $orderby = 'date'; endif;
 		if ( isset($_POST['category_filter']) && $_POST['category_filter'] != '' ) {
 			$tax_query[] = [
 				'taxonomy'  => 'category',
@@ -115,7 +115,9 @@ Class _block_news
 			$args = array(
 				'posts_per_page'    => $count,
 				'paged'             => 1,
-				'post_type'         => 'post'
+				'post_type'         => 'post',
+				'orderby'           => 'date',
+				'order'             => 'DESC'
 			);
 
 			$this->block['posts'] = new WP_Query( $args );
