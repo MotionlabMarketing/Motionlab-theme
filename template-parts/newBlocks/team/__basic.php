@@ -9,8 +9,8 @@
  * @version 1.00
  */
 
+//pa($block);
 ?>
-
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "team-basic")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : '' ?>
@@ -56,7 +56,7 @@
 
             <div class="page-button || mt4 mb4 clearfix || text-center">
 
-                <a href="<?=$block['page_button']['url']?>" class="btn btn-outline btn-large <?=$block['page_button']['system_text_colours']?> <?=$block['page_button']['system_background_colours']?>"><?=$block['page_button']['button_link']['title'];?></a>
+                <a href="<?=$block['page_button']['button_link']['url']?>" class="btn btn-outline btn-large <?=$block['page_button']['system_text_colours']?> <?=$block['page_button']['system_background_colours']?>"><?=$block['page_button']['button_link']['title'];?></a>
 
             </div>
 
