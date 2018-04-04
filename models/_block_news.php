@@ -189,15 +189,32 @@ Class _block_news
 
 		} else {
 
-			foreach(get_sub_field('block_news_articles') as $post_id) {
+			foreach(get_sub_field('block_news_articles') as $post_id) :
 				$this->block['posts']->posts[] = get_post($post_id);
-			}
+			endforeach;
 
-			foreach($this->block['posts']->posts as $key => $post) {
+			/*If we don't have 3 posts selected to show then fill the remaining slots with latest news articles*/
+			if(sizeof(get_sub_field('block_news_articles')) < 3) :
+				$args = array(
+					'posts_per_page'    => 3 - sizeof(get_sub_field('block_news_articles')),
+					'paged'             => 1,
+					'post_type'         => 'post',
+					'orderby'           => 'date',
+					'order'             => 'DESC',
+					'post__not_in'      => get_sub_field('block_news_articles')
+				);
+
+				$temp_posts = new WP_Query( $args );
+				
+				$this->block['posts']->posts = array_merge($this->block['posts']->posts, $temp_posts->posts);
+
+			endif;
+
+			foreach($this->block['posts']->posts as $key => $post) :
 
 				$this->block['posts']->posts[$key]->categories = get_the_terms($post->ID, 'category');
 
-			}
+			endforeach;
 		}
 
 
