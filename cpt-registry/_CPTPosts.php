@@ -49,15 +49,15 @@ Class CPTPosts extends CPTCore {
 			'show_admin_column' => true,
 			'query_var'         => true,
 			'rewrite'           => [ 'slug' => 'post_specific_types' ],
-			  'show_admin_column' => true,
-		  'show_in_nav_menus' => false,
-		  'show_tagcloud' => false,
+			'show_admin_column' => true,
+		    'show_in_nav_menus' => false,
+		    'show_tagcloud' => false,
 			'capabilities' => array(
 			    'manage_terms' => '',
 			    'edit_terms' => '',
 			    'delete_terms' => '',
 			    'assign_terms' => 'edit_posts'
-			  ),
+			),
 		] );
 
 	}
