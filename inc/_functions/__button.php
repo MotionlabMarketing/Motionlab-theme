@@ -12,7 +12,7 @@
  * @return bool|string
  */
 
-function render_button($data, $size = "medium",  $classes = ["class" => "mb2"]) {
+function render_button($data, $size = "medium",  $attr = ["class" => "mb2"]) {
 
     if (!empty($data['button_link']['url']) && !empty($data['button_link']['title'])) {
 
@@ -29,7 +29,7 @@ function render_button($data, $size = "medium",  $classes = ["class" => "mb2"]) 
             $btn['target'] = 'target="' . $data['button_link']['target'] . '"';
 
         // BUILD THE BUTTON.
-        $btn = '<a href="' . $data['button_link']['url'] . '" class="btn btn-' . $size . ' ' . $data['system_text_colours'] . ' ' . $data['system_background_colours'] . ' ' . $classes . '" data-function="__button">';
+        $btn = '<a href="' . $data['button_link']['url'] . '" ' . $classes . ' data-function="__button">';
 
             if (!empty($icon))
                 $btn .= $icon;
@@ -61,7 +61,7 @@ function get_render_button($data, $size = "btn-medium",  $classes = ["class" => 
 
     if (!empty($data['button_link']['url']) && !empty($data['button_link']['title'])) {
 
-        $classes["class"] = $classes["class"] . "btn btn-{$size} {$data['system_text_colours']} {$data['system_background_colours']}";
+        $classes["class"] = $classes["class"] . " btn btn-{$size} {$data['system_text_colours']} {$data['system_background_colours']}";
 
         $classes = attrConvert($classes);
 
@@ -74,7 +74,7 @@ function get_render_button($data, $size = "btn-medium",  $classes = ["class" => 
             $btn['target'] = 'target="' . $data['button_link']['target'] . '"';
 
         // BUILD THE BUTTON.
-        $btn = '<a href="' . $data['button_link']['url'] . '" class="btn btn-' . $size . ' ' . $data['system_text_colours'] . ' ' . $data['system_background_colours'] . ' ' . $classes . '" data-function="__button">';
+        $btn = '<a href="' . $data['button_link']['url'] . '" ' . $classes . ' data-function="__button">';
 
         if (!empty($icon))
             $btn .= $icon;
@@ -87,5 +87,19 @@ function get_render_button($data, $size = "btn-medium",  $classes = ["class" => 
     }
 
     return false;
+
+}
+
+function render_buttons($data, $size, $classes = ["class" => "mb2 mr2"]) {
+
+    $btn = "";
+
+    foreach ($data as $button) {
+
+        $btn .= get_render_button($button, $size, $classes);
+
+    }
+
+    echo $btn;
 
 }

@@ -63,20 +63,20 @@ $width = ($block['grid'] == 'full_width')? $block['background']['colour'] : ""
                         <?= get_sub_field('block_video_content'); ?>
                     </div>
 
-                    <div class="js-match-height">
+                    <div class="flex items-start flex-wrap">
 
                         <?php $i = 1; foreach ($videos as $video): ?>
 
-                            <div class="video video-embed || inline-block" data-id="video-<?=$block['id']?>-<?=$i?>">
+                            <div class="video video-embed mr2" data-mh="video-selector" data-id="video-<?=$block['id']?>-<?=$i?>">
 
-                                <a href="<?=$videos[$i]['link']?>" class="inline-block">
+                                <a href="<?=$videos[$i]['link']?>" class="" data-mh="video-thumb">
                                     <?php if($i == 1): ?>
-                                        <?=wp_get_attachment_image($videos[$i]['thumbnail_id'], array(120, 140), "", ["class" => "box-shadow-1 border-white border-2 border-top border-bottom border-left border-right ", "data-mh" => "video-thumb"] )?>
+                                        <?=wp_get_attachment_image($videos[$i]['thumbnail_id'], array(120, 140), "", ["class" => "box-shadow-1 border-white border-2 border-top border-bottom border-left border-right "] )?>
                                     <?php else: ?>
-                                        <?=wp_get_attachment_image($videos[$i]['thumbnail_id'], array(120, 140), "", ["class" => "box-shadow-1 border-transparent border-2 border-top border-bottom border-left border-right ", "data-mh" => "video-thumb"] )?>
+                                        <?=wp_get_attachment_image($videos[$i]['thumbnail_id'], array(120, 140), "", ["class" => "box-shadow-1 border-transparent border-2 border-top border-bottom border-left border-right "] )?>
                                     <?php endif; ?>
                                 </a>
-                                <p class="video-title h7 <?=$txtColor?>" style="max-width: 120px; font-size: 0.8rem"><?=$videos[$i]['title']?></p>
+                                <p class="video-title h7 <?=$txtColor?>" style="max-width: 120px; font-size: 0.8rem" data-mh="video-title"><?=$videos[$i]['title']?></p>
 
                                 <div class="embed" style="display: none;">
 

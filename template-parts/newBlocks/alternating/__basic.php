@@ -71,7 +71,7 @@
 
         </div>
 
-        <div class="col col-12 md-col-6 p4 lg-p6 <?=$block['content']['align']?> <?=$block['content']['color']?> js-match-height  items-center">
+        <div class="col col-12 md-col-6 p4 lg-p6 <?=$block['content']['align']?> <?=$block['content']['color']?> js-match-height flex items-center">
 
             <div data-imatchto="video">
 
@@ -83,7 +83,7 @@
 
                     <?php foreach ($block['content']['buttons'] as $button): ?>
 
-                        <a href="<?=$button['button_link']['link']?>" class="btn btn-medium <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> ><?=$button['button_link']['title']?></a>
+                        <a href="<?=$button['button_link']['url']?>" class="btn btn-medium <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> ><?=$button['button_link']['title']?></a>
 
                     <?php endforeach; ?>
 
@@ -93,7 +93,7 @@
 
                     <?php endif; ?>
 
-                    <?php if(!empty($block['content']['cta']['link'])): ?>
+                    <?php if(!empty($block['content']['cta']['link'])):?>
 
                         <a href="<?=$block['content']['cta']['link']['url']?>" class="h3 bold brand-primary mx2"><?=$block['content']['cta']['link']['title']?></a>
 
