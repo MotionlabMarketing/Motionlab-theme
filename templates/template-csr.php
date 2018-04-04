@@ -85,10 +85,19 @@ get_header(); ?>
 
                 <form method="get">
 
-                    <select style="min-width:15rem;" class="news_filters select md-ml3 mb3 md-mb0 width-100 md-width-auto box-shadow-2" id="csr_orderby">
+                    <select style="min-width:15rem;" class="csr_filters select md-ml3 mb3 md-mb0 width-100 md-width-auto box-shadow-2" id="csr_orderby">
                         <option value="">Order By</option>
                         <option value="title">Title</option>
                         <option value="date">Date</option>
+                    </select>
+
+	                <select style="min-width:15rem;" class="csr_filters select mb3 md-mb0 width-100 sm-width-auto md-width-auto md-ml3 box-shadow-2" data-loadvalue="<?=get_query_var('news_category')?>" id="csr_filtercats">
+                        <option value="">Filter Category</option>
+                        <?php
+                        $categories = get_categories();
+                        foreach($categories as $category) : ?>
+                            <option value="<?=$category->slug?>" data-url="/category/<?php echo $category->slug ?>"><?php echo $category->name ?></option>
+                        <?php endforeach; ?>
                     </select>
 
                 </form>
@@ -146,6 +155,7 @@ get_header(); ?>
 
         //TODO: Add loader while fetching data.
         var order_filter = $('#csr_orderby').val();
+        var category_filter = $('#csr_filtercats').val();
 
         $.ajax({
             url: '<?php echo admin_url( "admin-ajax.php"); ?>',
@@ -153,7 +163,8 @@ get_header(); ?>
             data: {
                 action: 'fetch_csr',
                 news_page: page_number,
-                order_filter: order_filter
+                order_filter: order_filter,
+	            category_filter: category_filter
             },
             success: function(response){
                 $('#news-listing').html(response);
@@ -180,6 +191,23 @@ get_header(); ?>
         var page_number = $(this).data('page-number');
         fetchNewsPosts(page_number);
     });
+
+    $('.csr_filters').on('change', function() {
+        if($(this).attr('id') == "csr_filtercats") {
+            history.pushState({cat:$(this).val()}, "", "/news/"+$(this).val());
+        }
+        fetchNewsPosts(1);
+    });
+
+    $(document).on("ready", function() {
+        updateFilterState($('#csr_filtercats').data('loadvalue'));
+    });
+
+    window.onpopstate = function(event) {
+        var value = document.location.href.substring(document.location.href.lastIndexOf("/") + 1) ;
+        if(value != null)
+            updateFilterState(value);
+    };
 
 </script>
 

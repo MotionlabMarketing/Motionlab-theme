@@ -110,13 +110,28 @@ Class _block_news
 
 	public function fetchCSRPosts( $post_per_page = 12, $page = 1 ) {
 
-		$tax_query = [];
-		if(isset($_POST['order_filter']) && $_POST['order_filter'] != ''): $orderby = $_POST['order_filter']; else : $orderby = 'date'; endif;
 		$tax_query[] = [
 			'taxonomy'  => 'post_specific_types',
 			'terms'     => [ 'csr' ],
 			'field'     => 'slug'
 		];
+
+		if(isset($_POST['order_filter']) && $_POST['order_filter'] != ''): $orderby = $_POST['order_filter']; else : $orderby = 'date'; endif;
+
+		if ( isset($_POST['category_filter']) && $_POST['category_filter'] != '' ) {
+			$tax_query[] = [
+				array(
+					'relation'  => 'AND',
+					[
+						'taxonomy'  => 'category',
+						'terms'     => [ $_POST['category_filter'] ],
+						'field'     => 'slug'
+					],
+					$tax_query[0]
+				)
+
+			];
+		}
 
 		$order = "ASC";
 		if($orderby == 'date')
