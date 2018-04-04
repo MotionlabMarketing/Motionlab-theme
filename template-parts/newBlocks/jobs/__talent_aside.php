@@ -42,7 +42,7 @@
                 render_wysiwyg("{$content['content']}", false, ["class" => "pb3 mb4 border border-light border-bottom"]); ?>
 
                 <?php foreach($block['posts']->posts as $post) :?>
-                    <div class="mb4">
+                    <div class="mb4 box-shadow-2 p4">
 
                         <h4 class="h4 mb1"><a href="<?=get_permalink($post->ID)?>" class="brand-primary"><?=get_field('talent_name', $post->ID);?></a></h4>
                         <p class="bold mb2">
@@ -74,7 +74,7 @@
                     </div>
                 <?php endforeach; ?>
 
-                <a href="/find-talent/" class="btn btn-small btn-outline">View all Talent</a>
+                <a href="/find-talent/" class="btn mt4 btn-small btn-outline">View all Talent</a>
 
             </div>
 
