@@ -9,7 +9,7 @@
  *
  * @version 1.00
  */
-pa($block['posts']->posts);
+
 ?>
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "")?> <?=get_blockData($block)?>>
