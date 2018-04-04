@@ -84,7 +84,7 @@
                     
                     <h4 class="h3">Twitter <span class="brand-primary h5 ml1"><a href="https://twitter.com/<?=$block['content']['profiles']['twitter']?>">@<?=$block['content']['profiles']['twitter']?></a></span></h4>
 
-                    {{ INCLUDE FEED HERE }}
+                    <?= do_shortcode('[custom-twitter-feeds]'); ?>
 
                 </div>
 
@@ -92,7 +92,7 @@
 
                     <h4 class="h3">Facebook <span class="brand-primary h5 ml1"><a href="https://facebook.com/<?=$block['content']['profiles']['facebook']?>">/<?=$block['content']['profiles']['facebook']?></a></span></h4>
 
-                    {{ INCLUDE FEED HERE }}
+                    <?= do_shortcode('[custom-facebook-feed]'); ?>
 
                 </div>
 

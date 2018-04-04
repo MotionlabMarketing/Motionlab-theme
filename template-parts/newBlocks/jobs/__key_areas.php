@@ -56,7 +56,7 @@
                                         <li class="col col-12 lg-col-7">
 
                                             <select id="orderby" class="select btn-medium border-white border lh1 mb2 width-100">
-                                                <option value="">By Sector</option>
+                                                <option value="">By Role</option>
                                                  <?php
                                                     foreach($block['sector_select_options'] as $term): ?>
 

@@ -60,7 +60,7 @@ endif; ?>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-        <div class="image-holder flex bg-<?=$banner['align'] ?> bg-<?=$banner['image']['position']?> <?=$banner['height']?>" style="background-image: url('<?=$banner['image']['url']?>');">
+        <div class="image-holder flex bg-<?=$banner['image']['position']?> <?=$banner['height']?>" style="background-image: url('<?=$banner['image']['url']?>');">
 
             <?php if ($banner['image']['overlay'] == true): ?>
 

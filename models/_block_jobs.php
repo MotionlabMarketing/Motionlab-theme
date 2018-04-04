@@ -36,13 +36,21 @@ Class _block_jobs
 	private function loadBlockSettings() {
 
 		//TODO: Move this to the block settings
-		$this->block['block_title']         = get_sub_field($this->current . '_title_title');
+
+		$this->block['limited_categories']              = get_sub_field($this->current . '_category_filter');
+
+		$this->block['limited_categories_term_string']  = [];
+		foreach(get_sub_field($this->current . '_category_filter') as $filter_cat):
+			$this->block['limited_categories_term_string'][] = $filter_cat->slug;
+		endforeach;
+
+		$this->block['block_title']                     = get_sub_field($this->current . '_title_title');
 
 		if($this->layout == 'key_areas')
-			$this->block['sections']        = get_sub_field($this->current . '_keyarea');
+			$this->block['sections']                    = get_sub_field($this->current . '_keyarea');
 
 		if($this->layout == 'jobs_aside')
-			$this->block['sections']        = get_sub_field($this->current . '_sections');
+			$this->block['sections']                    = get_sub_field($this->current . '_sections');
 
 	}
 
@@ -53,12 +61,18 @@ Class _block_jobs
 		$this->block['role_select_options']     = $this->get_taxonomy_hierarchy($this->role_taxonomy_slug, array('hide_empty' => false, 'parent' => 0));
 		$this->block['type_select_options']     = $this->get_taxonomy_hierarchy($this->type_taxonomy_slug, array('hide_empty' => false, 'parent' => 0));
 
-
 	}
 
 	private function fetchPosts() {
-
 		$tax_query = [];
+
+		if(!empty($this->block['limited_categories_term_string'])) :
+			$tax_query[] = [
+				'taxonomy'  => 'sectors',
+				'terms'     => $this->block['limited_categories_term_string'],
+				'field'     => 'slug'
+			];
+		endif;
 
 		if ( isset($_POST['sector_filter']) && $_POST['sector_filter'] != '' ) {
 			$tax_query[] = [

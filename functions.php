@@ -126,6 +126,20 @@ function ml_update_news() {
 	die();
 }
 
+add_action( 'wp_ajax_fetch_csr', 'ml_update_csr' );
+add_action( 'wp_ajax_nopriv_fetch_csr', 'ml_update_csr' );
+function ml_update_csr() {
+
+	/* Load in team block controller to access posts easily. */
+	include_once(MODELS_DIR . '_block_news.php');
+	$news_controller = new _block_news(null, null);
+	$posts = $news_controller->fetchCSRPosts(8, $_POST['news_page']);
+
+	include_once(TEMPLATE_DIR . 'ajax/template-csr-ajax.php');
+
+	die();
+}
+
 add_action( 'wp_ajax_fetch_jobs', 'ml_update_jobs' );
 add_action( 'wp_ajax_nopriv_fetch_jobs', 'ml_update_jobs' );
 function ml_update_jobs() {
@@ -675,3 +689,10 @@ function ml_time_elapsed_string($datetime, $full = false) {
     if (!$full) $string = array_slice($string, 0, 1);
     return $string ? implode(', ', $string) . ' ago' : 'just now';
 }
+
+
+// Remove tags support from posts
+function ml_unregister_tags() {
+    unregister_taxonomy_for_object_type('post_tag', 'post');
+}
+add_action('init', 'ml_unregister_tags');

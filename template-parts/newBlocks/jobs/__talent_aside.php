@@ -36,20 +36,15 @@
 
                 <?php
                 $content = get_sub_field('block_jobs_listing_content');
-                $blockTitle = $content['title'];
+                $heading = convert_heading($content['title']);
 
-                if (!empty($blockTitle[0]['title'])) {
-                    include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php');
-                } ?>
-
-                <div class="wysiwyg || pb3 mb4 border border-light border-bottom">
-                    <?= $content['content'] ?>
-                </div>
+                render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}");
+                render_wysiwyg("{$content['content']}", false, ["class" => "pb3 mb4 border border-light border-bottom"]); ?>
 
                 <?php foreach($block['posts']->posts as $post) :?>
-                    <div class="mb4">
+                    <div class="mb4 box-shadow-2 p4">
 
-                        <h4 class="h4 mb1"><?=get_field('talent_name', $post->ID);?></h4>
+                        <h4 class="h4 mb1"><a href="<?=get_permalink($post->ID)?>" class="brand-primary"><?=get_field('talent_name', $post->ID);?></a></h4>
                         <p class="bold mb2">
                             <?php $location = get_field('talent_location', $post->ID); ?>
                             <?php if($location != "") :?>
@@ -70,14 +65,16 @@
                             </ul>
                         </div>
 
-                        <p class="h6 pb4 || clearfix || border border-light border-bottom">
+                        <div class="h6 || clearfix || border border-light border-bottom">
                             <?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr(get_field('talent_details', $post->ID),0, 100) . "...";?>
-                        </p>
+                        </div>
+
+                        <a href="<?=get_permalink($post->ID)?>" class="btn mt3 btn-small btn-outline btn-primary">Learn More</a>
 
                     </div>
                 <?php endforeach; ?>
 
-                <a href="#" class="btn btn-small btn-outline">View all Talent</a>
+                <a href="/find-talent/" class="btn mt4 btn-small btn-outline">View all Talent</a>
 
             </div>
 

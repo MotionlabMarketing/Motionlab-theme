@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: News – Listing
+ * Template Name: CSR – Listing
  *
  */
 
@@ -10,9 +10,7 @@ $blockTitle  = $blockTitle['title'];
 /* Load in team block controller to access posts easily. */
 include_once(MODELS_DIR . '_block_news.php');
 $news_controller = new _block_news(null, null);
-$posts = $news_controller->fetchFeedPosts(9);
-
-//pa($posts);
+$posts = $news_controller->fetchCSRPosts(9);
 
 get_header(); ?>
 
@@ -58,7 +56,7 @@ get_header(); ?>
                         <?php endforeach; ?>
                     </ul>
 
-                <a href="<?=$latest_post->guid?>">
+                <a href="<?=get_permalink($latest_post->ID)?>">
 
                     <?php $heading = convert_heading($blockTitle); ?>
                     <?php render_heading( "{$latest_post->post_title}", "h2", "", "brand-primary", "{$heading->case}", ["class" => "clear-both mt3 md-mt5 brand-primary"]); ?>
@@ -87,16 +85,16 @@ get_header(); ?>
 
                 <form method="get">
 
-                    <select style="min-width:15rem;" class="news_filters select md-ml3 mb3 md-mb0 width-100 md-width-auto box-shadow-2" id="news_orderby">
+                    <select style="min-width:15rem;" class="csr_filters select md-ml3 mb3 md-mb0 width-100 md-width-auto box-shadow-2" id="csr_orderby">
                         <option value="">Order By</option>
                         <option value="title">Title</option>
                         <option value="date">Date</option>
                     </select>
 
-                    <select style="min-width:15rem;" class="news_filters select mb3 md-mb0 width-100 sm-width-auto md-width-auto md-ml3 box-shadow-2" data-loadvalue="<?=get_query_var('news_category')?>" id="news_filtercats">
+	                <select style="min-width:15rem;" class="csr_filters select mb3 md-mb0 width-100 sm-width-auto md-width-auto md-ml3 box-shadow-2" data-loadvalue="<?=get_query_var('news_category')?>" id="csr_filtercats">
                         <option value="">Filter Category</option>
                         <?php
-                        $categories = get_categories(array("hide_empty"=>1));
+                        $categories = get_categories();
                         foreach($categories as $category) : ?>
                             <option value="<?=$category->slug?>" data-url="/category/<?php echo $category->slug ?>"><?php echo $category->name ?></option>
                         <?php endforeach; ?>
@@ -156,17 +154,17 @@ get_header(); ?>
     function fetchNewsPosts(page_number) {
 
         //TODO: Add loader while fetching data.
-        var order_filter = $('#news_orderby').val();
-        var category_filter = $('#news_filtercats').val();
+        var order_filter = $('#csr_orderby').val();
+        var category_filter = $('#csr_filtercats').val();
 
         $.ajax({
             url: '<?php echo admin_url( "admin-ajax.php"); ?>',
             method: 'POST',
             data: {
-                action: 'fetch_news',
+                action: 'fetch_csr',
                 news_page: page_number,
                 order_filter: order_filter,
-                category_filter: category_filter
+	            category_filter: category_filter
             },
             success: function(response){
                 $('#news-listing').html(response);
@@ -189,25 +187,20 @@ get_header(); ?>
         });
     }
 
-    function updateFilterState(load_val) {
-        $('#news_filtercats').val(load_val);
-        fetchNewsPosts(1);
-    }
-
     $(document).on('click', '.page-number', function(){
         var page_number = $(this).data('page-number');
         fetchNewsPosts(page_number);
     });
 
-    $('.news_filters').on('change', function() {
-        if($(this).attr('id') == "news_filtercats") {
+    $('.csr_filters').on('change', function() {
+        if($(this).attr('id') == "csr_filtercats") {
             history.pushState({cat:$(this).val()}, "", "/news/"+$(this).val());
         }
         fetchNewsPosts(1);
     });
 
     $(document).on("ready", function() {
-        updateFilterState($('#news_filtercats').data('loadvalue'));
+        updateFilterState($('#csr_filtercats').data('loadvalue'));
     });
 
     window.onpopstate = function(event) {
