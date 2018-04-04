@@ -96,7 +96,7 @@ get_header(); ?>
                     <select style="min-width:15rem;" class="news_filters select mb3 md-mb0 width-100 sm-width-auto md-width-auto md-ml3 box-shadow-2" data-loadvalue="<?=get_query_var('news_category')?>" id="news_filtercats">
                         <option value="">Filter Category</option>
                         <?php
-                        $categories = get_categories();
+                        $categories = get_categories(array("hide_empty"=>1));
                         foreach($categories as $category) : ?>
                             <option value="<?=$category->slug?>" data-url="/category/<?php echo $category->slug ?>"><?php echo $category->name ?></option>
                         <?php endforeach; ?>
