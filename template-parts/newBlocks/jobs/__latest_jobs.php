@@ -11,6 +11,7 @@
  */
 
 $block['block_title']  = get_sub_field($current . '_title_title');
+
 ?>
 
 <?php if(isset($_POST['action'])) :?>
@@ -61,12 +62,24 @@ $block['block_title']  = get_sub_field($current . '_title_title');
                 <?php $disabled = sizeof($block['sector_select_options']) == 0 ? "disabled" : ""; ?>
                 <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 job-filter-select" id="sortby_sector" <?=$disabled?>>
                     <option value="">Filter by Sector</option>
-                    <?php
+
+                    <?php if(isset($block['limited_categories']) && !empty($block['limited_categories'])) :
+                        foreach($block['limited_categories'] as $option) :?>
+                            <option value="<?=$option->slug?>" data-taxonomy="<?=$option->taxonomy?>"><?=$option->name?></option>
+                        <?php
+                            endforeach;
+                        ?>
+                    <?php else:
                         foreach($block['sector_select_options'] as $option) :?>
                             <option value="<?=$option->slug?>" data-taxonomy="<?=$option->taxonomy?>"><?=$option->name?></option>
-                    <?php
-                        endforeach;
-                    ?>
+                        <?php
+                            endforeach;
+                        ?>
+                    <?php endif; ?>
+
+
+
+
                 </select>
 
                 <?php $disabled = sizeof($block['type_select_options']) == 0 ? "disabled" : ""; ?>
