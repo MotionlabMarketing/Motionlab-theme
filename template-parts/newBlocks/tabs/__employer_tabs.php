@@ -94,7 +94,13 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
 
                                         <form action="" method="get" class="flex">
                                             <select name="orderby" id="orderby" style="min-width:15rem;" class="select md-mr3 width-100 md-width-auto box-shadow-2" onchange="this.form.submit()" >
-                                                <option value="title" <?php echo ($orderby == 'title') ? 'selected' : '' ; ?>>By Sector</option>
+                                                <?php
+                                                    if ($i == 1)
+                                                        $term = "Talent";
+                                                    else
+                                                        $term = "Jobs";
+                                                ?>
+                                                <option value="title" <?php echo ($orderby == 'title') ? 'selected' : '' ; ?>>Search <?=$term?></option>
                                                  <?php
                                                     foreach($block['select_terms'] as $term): ?>
 

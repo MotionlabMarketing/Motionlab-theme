@@ -12,55 +12,64 @@
 
 ?>
 
-<?php if(isset($_POST['action'])) :?>
+<?php if (isset($_POST['action'])) : ?>
 
-    <?php if(sizeof($block['posts']->posts) < 1 ) : ?>
-            <h4 class="h4 mb1 text-center">No talent to show.</h4>
-        <?php endif; ?>
+    <?php if (sizeof($block['posts']->posts) < 1) : ?>
+        <h4 class="h4 mb1 text-center">No talent to show.</h4>
+    <?php endif; ?>
 
-        <?php
-            foreach($block['posts']->posts as $post) :
+    <?php
+    foreach ($block['posts']->posts as $post) :
         ?>
 
-            <div class="col-12 md-col-6 || p4 left">
+        <div class="col-12 md-col-6 p3 left">
 
-                <h4 class="h4 mb1"><?=get_field('talent_name', $post->ID);?></h4>
+            <div class="box-shadow-2 p4">
+
+                <h4 class="h4 mb1"><a
+                            href="<?= get_permalink($post->ID) ?>"><?= get_field('talent_name', $post->ID); ?></a>
+                </h4>
+
                 <p class="bold mb2">
 
                     <?php $location = get_field('talent_location', $post->ID); ?>
-                    <?php if($location != "") :?>
-                        <small class="inline-block"><?=$location;?></small>
+                    <?php if ($location != "") : ?>
+                        <small class="inline-block"><?= $location; ?></small>
                     <?php endif; ?>
-                    <?php foreach($post->types as $type) : ?>
+                    <?php foreach ($post->types as $type) : ?>
                         <span class="black">•</span>
-                        <small><?=$type->name;?></small>
+                        <small><?= $type->name; ?></small>
                     <?php endforeach; ?>
                 </p>
 
                 <div class="block mb4"><span class="mr3 brand-primary">Roles available for</span>
 
                     <ul class="inline-block tags tags-right right">
-                        <?php foreach($post->roles as $role) : ?>
-                            <li class="border-radius-3"><?=$role->name?></li>
+                        <?php foreach ($post->roles as $role) : ?>
+                            <li class="border-radius-3"><?= $role->name ?></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
 
                 <div class="h5 clearfix border border-light border-bottom">
-                    <?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr(get_field('talent_details', $post->ID),0, 100) . "...";?>
+                    <?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr(get_field('talent_details', $post->ID), 0, 100) . "..."; ?>
                 </div>
+
+                <a href="<?= get_permalink($post->ID) ?>" class="btn mt3 btn-primary">Learn More</a>
 
             </div>
 
+        </div>
 
-        <?php
-            endforeach;
-            exit();
-        ?>
+
+    <?php
+    endforeach;
+    exit();
+    ?>
 
 <?php endif; ?>
 
-<section id="latestTalent" <?=get_blockClasses($block, "jobs-talent mt6 pt3 mb6")?> <?=get_blockData($block)?>>
+<section id="latestTalent" <?= get_blockClasses($block, "jobs-talent mt6 pt3 mb6") ?> <?= get_blockData($block) ?>>
 
     <div class="container">
 
@@ -71,38 +80,47 @@
             <form action="#" class="width-100 || flex justify-center flex-wrap">
 
                 <?php $disabled = sizeof($block['sector_select_options']) == 0 ? "disabled" : ""; ?>
-                <select style="min-width:20%;" class="select mb4 md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select" id="sortby_sector" <?=$disabled?>>
+                <select style="min-width:20%;"
+                        class="select mb4 md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select"
+                        id="sortby_sector" <?= $disabled ?>>
                     <option value="">Filter by Sector</option>
                     <?php
-                        foreach($block['sector_select_options'] as $option) :?>
-                            <option value="<?=$option->slug?>" data-taxonomy="<?=$option->taxonomy?>"><?=$option->name?></option>
+                    foreach ($block['sector_select_options'] as $option) :?>
+                        <option value="<?= $option->slug ?>"
+                                data-taxonomy="<?= $option->taxonomy ?>"><?= $option->name ?></option>
                     <?php
-                        endforeach;
+                    endforeach;
                     ?>
                 </select>
 
                 <?php $disabled = sizeof($block['role_select_options']) == 0 ? "disabled" : ""; ?>
-                <select style="min-width:20%;" class="select mb4  md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select" id="sortby_role" <?=$disabled?>>
+                <select style="min-width:20%;"
+                        class="select mb4  md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select"
+                        id="sortby_role" <?= $disabled ?>>
                     <option value="">Filter by Role</option>
-                    <?php foreach($block['role_select_options'] as $option) : ?>
-                        <option class="option" value="<?=$option->slug?>" data-taxonomy="<?=$option->taxonomy?>"><?=$option->name?></option>
-                        <?php foreach($option->children as $option_children): ?>
-                                <option class="optgroup" value="<?=$option_children->slug?>" data-taxonomy="<?=$option_children->taxonomy?>"><?=$option_children->name?></option>
+                    <?php foreach ($block['role_select_options'] as $option) : ?>
+                        <option class="option" value="<?= $option->slug ?>"
+                                data-taxonomy="<?= $option->taxonomy ?>"><?= $option->name ?></option>
+                        <?php foreach ($option->children as $option_children): ?>
+                            <option class="optgroup" value="<?= $option_children->slug ?>"
+                                    data-taxonomy="<?= $option_children->taxonomy ?>"><?= $option_children->name ?></option>
                         <?php endforeach; ?>
                     <?php endforeach; ?>
                 </select>
 
                 <?php $disabled = sizeof($block['type_select_options']) == 0 ? "disabled" : ""; ?>
-                <select style="min-width:20%;" class="select mb4 md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select" id="sortby_type" <?=$disabled?>>
+                <select style="min-width:20%;"
+                        class="select mb4 md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select"
+                        id="sortby_type" <?= $disabled ?>>
                     <option value="">Filter by Type</option>
                     <?php
-                        foreach($block['type_select_options'] as $option) :?>
-                            <option value="<?=$option->slug?>" data-taxonomy="<?=$option->taxonomy?>"><?=$option->name?></option>
+                    foreach ($block['type_select_options'] as $option) :?>
+                        <option value="<?= $option->slug ?>"
+                                data-taxonomy="<?= $option->taxonomy ?>"><?= $option->name ?></option>
                     <?php
-                        endforeach;
+                    endforeach;
                     ?>
                 </select>
-
 
 
             </form>
@@ -110,48 +128,54 @@
         </div>
 
         <div id="talent-listing" class="col-12 clearfix|| my6">
-            <?php if(sizeof($block['posts']->posts) < 1 ) : ?>
+            <?php if (sizeof($block['posts']->posts) < 1) : ?>
                 <h4 class="h4 mb1 text-center">No talent to show.</h4>
             <?php endif; ?>
 
             <?php
-                foreach($block['posts']->posts as $post) :
-            ?>
+            foreach ($block['posts']->posts as $post) :
+                ?>
 
-                <div class="col-12 md-col-6 || p4 left">
+                <div class="col-12 md-col-6 p3 || left">
 
-                    <h4 class="h4 mb1"><a href="<?=get_permalink($post->ID)?>"><?=get_field('talent_name', $post->ID);?></a></h4>
-                    <p class="bold mb2">
-                        <?php $location = get_field('talent_location', $post->ID); ?>
-                        <?php if($location != "") :?>
-                            <small class="inline-block"><?=$location;?></small>
-                        <?php endif; ?>
-                        <?php foreach($post->types as $type) : ?>
-                            <span class="black">•</span>
-                            <small><?=$type->name;?></small>
-                        <?php endforeach; ?>
-                    </p>
+                    <div class="box-shadow-2 p4">
 
-                    <div class="block mb4"><span class="mr3 brand-primary">Roles available for</span>
-
-                        <ul class="inline-block tags tags-right right">
-                            <?php foreach($post->roles as $role) : ?>
-                                <li class="border-radius-3"><?=$role->name?></li>
+                        <h4 class="h4 mb1"><a
+                                    href="<?= get_permalink($post->ID) ?>"><?= get_field('talent_name', $post->ID); ?></a>
+                        </h4>
+                        <p class="bold mb2">
+                            <?php $location = get_field('talent_location', $post->ID); ?>
+                            <?php if ($location != "") : ?>
+                                <small class="inline-block"><?= $location; ?></small>
+                            <?php endif; ?>
+                            <?php foreach ($post->types as $type) : ?>
+                                <span class="black">•</span>
+                                <small><?= $type->name; ?></small>
                             <?php endforeach; ?>
-                        </ul>
-                    </div>
+                        </p>
 
-                    <div class="h5 clearfix border border-light border-bottom">
-                        <?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr(get_field('talent_details', $post->ID),0, 100) . "...";?>
-                    </div>
+                        <div class="block mb4"><span class="mr3 brand-primary">Roles available for</span>
 
-                    <a href="<?=get_permalink($post->ID)?>" class="btn mt3 btn-primary">Learn More</a>
+                            <ul class="inline-block tags tags-right right">
+                                <?php foreach ($post->roles as $role) : ?>
+                                    <li class="border-radius-3"><?= $role->name ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+
+                        <div class="h5 clearfix border border-light border-bottom">
+                            <?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr(get_field('talent_details', $post->ID), 0, 100) . "..."; ?>
+                        </div>
+
+                        <a href="<?= get_permalink($post->ID) ?>" class="btn mt3 btn-primary">Learn More</a>
+
+                    </div>
 
                 </div>
 
 
             <?php
-                endforeach;
+            endforeach;
             ?>
 
         </div>
@@ -163,20 +187,20 @@
 <script type="text/javascript">
 
     <?php //TODO: MOVE THIS TO JS FILE ?>
-    $('.talent-filter-select').on('change', function(){
+    $('.talent-filter-select').on('change', function () {
         updateListing();
     });
 
     function updateListing() {
         //TODO: Update the two lines below to pull the page id and block name from the block itself.
-        var pageID          = $('#latestTalent').data('block-id').split('-')[0];
+        var pageID = $('#latestTalent').data('block-id').split('-')[0];
         //var blockName       = $('section.jobs-latest').data('block-name');
-        var sector_filter   = $('#sortby_sector option:selected').val();
-        var type_filter     = $('#sortby_type option:selected').val();
-        var role_filter        = $('#sortby_role option:selected').val();
+        var sector_filter = $('#sortby_sector option:selected').val();
+        var type_filter = $('#sortby_type option:selected').val();
+        var role_filter = $('#sortby_role option:selected').val();
 
         $.ajax({
-            url: '<?php echo admin_url( "admin-ajax.php"); ?>',
+            url: '<?php echo admin_url("admin-ajax.php"); ?>',
             method: 'POST',
             data: {
                 action: 'update_block',
@@ -186,7 +210,7 @@
                 type_filter: type_filter,
                 role_filter: role_filter
             },
-            success: function(response){
+            success: function (response) {
                 $('#talent-listing').html(response);
             }
         });

@@ -54,12 +54,12 @@ endif;
             <div class="item col <?=$col?> px4 mb5 text-center js-match-height">
 
                 <?php if ($item['enable_custom_icons'] == true): ?>
-                    <img src="<?=wp_get_attachment_image_url($item['pod_item_custom_icon'], array(70, 70))?>" style="max-width: 6rem; max-height: 6rem">
+                    <img src="<?=wp_get_attachment_image_url($item['pod_item_custom_icon'], array(70, 70))?>" style="max-width: 6rem; max-height: 6rem; text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);">
                 <?php else: ?>
-                    <p class="block mb2 || text-center"><?=$item['pod_item_icon']?></p>
+                    <p class="block mb2 brand-primary text-center" style="text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);"><?=$item['pod_item_icon']?></p>
                 <?php endif; ?>
 
-                <h4 class="h4 brand-primary"><?=$item['pod_item_title']?></h4>
+                <h4 class="h4"><?=$item['pod_item_title']?></h4>
 
                 <p class="h5"><?=strip_tags($item['pod_item_description'])?></p>
 

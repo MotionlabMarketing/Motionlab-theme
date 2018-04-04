@@ -15,14 +15,14 @@
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-        <?php if (!empty($blockTitle[0]['title'])): ?>
+        <?php if (!empty($block['heading']->title)): ?>
 
             <div class="container clearfix">
 
                 <div class="col-12 || mb5 || text-center">
 
                     <div class="col col-12 md-col-12 lg-col-12 || mb5 text-center">
-
+                        
                         <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}"); ?>
 
                         <?php render_wysiwyg("{$block['intro']}", "", ["class" => "regular"])?>

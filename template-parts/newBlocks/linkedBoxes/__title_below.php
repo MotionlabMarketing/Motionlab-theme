@@ -39,7 +39,7 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
                 <?php
                 // STANDARD BOXES WITH IMAGE AND TITLE //
                 if ($item['block_linkBoxes_breakout_true'] !== true): ?>
-                    <div class="item col col-12 md-col-<?=$block['columns']?> p3 block relative hover-zoom">
+                    <div class="item col col-12 md-col-<?=$block['columns']?> p3 block relative lg-hover-zoom" data-mh="box-height">
                         <a href="<?= $item['block_linkBoxes_button_button_link']['url'] ?>"
                            class="block zoom relative overflow-hidden bg-cover bg-center border-light border-top border-left border-right box-shadow-3 border-bottom <?= $item['background_colour']['system_background_colours'] ?> <?= $item['text_colour']['system_text_colours'] ?> || zoom" <?= ($item['block_linkBoxes_button_button_link']['title'] ? 'title="' . $item['block_linkBoxes_button_button_link']['title'] . '"' : '') ?> <?= ($item['block_linkBoxes_button_button_link']['target'] ? 'target="' . $item['block_linkBoxes_button_button_link']['target'] . '"' : '') ?>>
 
@@ -52,7 +52,7 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
                                 <div class="image-holder || js-match-height || bg-grey <?= $txtColor ?>"
                                  style="background-image: url('<?=$item['block_linkBoxes_image']?>')"></div>
                             <?php endif; ?>
-                            <div class="content || h3">
+                            <div class="content h3 flex items-center justify-center" data-mh="box-title">
                                 <?= $item[$current . '_title'] ?>
                             </div>
                         </a>
@@ -61,12 +61,14 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
                 // BOX WITH JUST CONTENT AND ICON - BREAKOUT BOX //
                 else: ?>
 
-                    <div class="item || col col-12 md-col-<?=$block['columns']?> p4 || block relative">
+                    <div class="item col col-12 md-col-<?=$block['columns']?> md-p0 lg-p4 || block relative" data-mh="box-height">
 
                         <div class="content-breakout">
 
-                            <span class="icon"><?= $item['block_linkBoxes_breakout_icon'] ?></span>
-                            <h3><?=$item['block_linkBoxes_title']?></h3>
+                            <div class="flex items-center">
+                                <span class="icon"><?= $item['block_linkBoxes_breakout_icon'] ?></span>
+                                <h3><?=$item['block_linkBoxes_title']?></h3>
+                            </div>
 
                             <div class="wysiwyg"><?=$item['block_linkBoxes_content']?></div>
                         </div>

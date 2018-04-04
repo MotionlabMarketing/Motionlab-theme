@@ -14,26 +14,24 @@
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-        <div class="text-center mb6">
-            <div class="mb4">
+            <div class="text-center mb6">
+
+                <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}"); ?>
+
+                <?php render_wysiwyg("{$block['intro']}", true); ?>
+
+            </div>
+
+            <div class="clearfix">
+
                 <?php
-                $blockTitle = get_sub_field($current . '_title_title');
-                if (!empty($blockTitle[0]['title'])) {
-                    include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php');
-                } ?>
-            </div>
+                    // LOAD FORM INTO THE PAGE.
+                    $form_object = get_sub_field($current . '_selection');
+                    gravity_form_enqueue_scripts($form_object['id'], true);
+                    gravity_form($form_object['id'], true, true, false, '', true, 1);
+                ?>
 
-            <div class="wysiwyg || md-mx6 md-px6">
-                <?= get_sub_field($current . '_content'); ?>
             </div>
-        </div>
-
-        <?php
-            // LOAD FORM INTO THE PAGE.
-            $form_object = get_sub_field($current . '_selection');
-            gravity_form_enqueue_scripts($form_object['id'], true);
-            gravity_form($form_object['id'], true, true, false, '', true, 1);
-        ?>
 
     <?=($block['grid'] == 'container')? '</div>' : ""?>
 
