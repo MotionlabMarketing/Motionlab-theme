@@ -5,7 +5,7 @@ define("CONTROLLERS_DIR"  , get_template_directory() . "/controllers/");
 define("MODELS_DIR"  , get_template_directory() . "/models/");
 define("MASTER_CPT_DIR", get_template_directory() . "/cpt-registry/");
 define("CHILD_CPT_DIR", get_stylesheet_directory() . "/cpt-registry/");
-define("AJAX_DIR", get_stylesheet_directory() . "/template-parts/ajax/");
+define("AJAX_DIR", get_template_directory() . "/template-parts/ajax/");
 
 define('WP_POST_REVISIONS', 2);
 
@@ -150,6 +150,20 @@ function ml_update_jobs() {
 	$posts = $jobs_controller->fetchFeedPosts(6, $_POST['jobs_page']);
 
 	include_once(TEMPLATE_DIR . 'ajax/template-jobs-ajax.php');
+
+	die();
+}
+
+add_action( 'wp_ajax_fetch_testimonials', 'ml_update_testimonials' );
+add_action( 'wp_ajax_nopriv_fetch_testimonials', 'ml_update_testimonials' );
+function ml_update_testimonials() {
+
+	/* Load in team block controller to access posts easily. */
+	include_once(MODELS_DIR . '_testimonials.php');
+	$testimonials_controller = new _testimonials();
+	$testimonials = $testimonials_controller->getBlock();
+
+	include_once(AJAX_DIR . 'template-testimonials-ajax.php');
 
 	die();
 }
@@ -496,50 +510,38 @@ function create_posttype() {
         )
     );
 
-    register_post_type( 'reviews',
-        array(
-            'labels' => array(
-                'name'          => __( 'Reviews' ),
-                'singular_name' => __( 'Reviews' )
-            ),
-            'public'            => true,
-            'has_archive'       => false,
-            'rewrite'           => array('slug' => 'reviews'),
-            'menu_icon'         => 'dashicons-thumbs-up',
-        )
-    );
 }
 add_action( 'init', 'create_posttype' );
 
-function create_collections_hierarchical_taxonomy() {
+function create_Reviewers_hierarchical_taxonomy() {
 
     $labels = array(
-        'name' => _x( 'Collections', 'Collections' ),
-        'singular_name' => _x( 'Collection', 'Collection' ),
-        'search_items' =>  __( 'Search Collections' ),
-        'all_items' => __( 'All Collections' ),
-        'parent_item' => __( 'Parent Collection' ),
-        'parent_item_colon' => __( 'Parent Collections:' ),
-        'edit_item' => __( 'Edit Collection' ),
-        'update_item' => __( 'Update Collection' ),
-        'add_new_item' => __( 'Add New Collection' ),
-        'new_item_name' => __( 'New Collections Name' ),
-        'menu_name' => __( 'Collections' ),
+        'name' => _x( 'Reviewers', 'Reviewers' ),
+        'singular_name' => _x( 'Reviewer', 'Reviewer' ),
+        'search_items' =>  __( 'Search Reviewers' ),
+        'all_items' => __( 'All Reviewers' ),
+        'parent_item' => __( 'Parent Reviewer' ),
+        'parent_item_colon' => __( 'Parent Reviewers:' ),
+        'edit_item' => __( 'Edit Reviewer' ),
+        'update_item' => __( 'Update Reviewer' ),
+        'add_new_item' => __( 'Add New Reviewer' ),
+        'new_item_name' => __( 'New Reviewers Name' ),
+        'menu_name' => __( 'Reviewers' ),
     );
 
 // Now register the taxonomy
 
-    register_taxonomy('collections', array('gallery'), array(
+    register_taxonomy('Reviewers', array('gallery'), array(
         'hierarchical' => true,
         'labels' => $labels,
         'show_ui' => true,
         'show_admin_column' => true,
         'query_var' => true,
-        'rewrite' => array( 'slug' => 'collections' ),
+        'rewrite' => array( 'slug' => 'Reviewers' ),
     ));
 
 }
-add_action( 'init', 'create_collections_hierarchical_taxonomy', 0 );
+add_action( 'init', 'create_Reviewers_hierarchical_taxonomy', 0 );
 
 
 function ml_get_contact($type, $id = null, $array) {
@@ -638,8 +640,8 @@ function pa($value) {
 }
 
 /*==================================================================
-	Custom rewrite masking for job categories
-	This is what handles sending /jobs/%category% to the /jobs template.
+	Custom rewrite masking for news categories
+	This is what handles sending /news/%category% to the /news template.
 ==================================================================*/
 
 function ml_categories_rewrite() {
@@ -649,14 +651,23 @@ function ml_categories_rewrite() {
 		'index.php?pagename=news&news_category=$matches[1]',
 		'top'
 	);
+
+	/*Rewrite for testimonials*/
+	add_rewrite_rule(
+		'testimonials/([a-zA-Z0-9-]+)/?$',
+		'index.php?pagename=testimonials&testimonials_category=$matches[1]',
+		'top'
+	);
 }
 add_action('init', 'ml_categories_rewrite');
 
 function ml_query_vars($query_vars) {
 	$query_vars[] = 'news_category';
+	$query_vars[] = 'testimonials_category';
 	return $query_vars;
 }
 add_filter('query_vars', 'ml_query_vars');
+
 
 /*
  * Used to convert a given timestamp to a "4 days ago" style message
