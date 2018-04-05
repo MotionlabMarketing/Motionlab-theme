@@ -76,7 +76,7 @@ get_header(); ?>
                         <p class="text-left"><?=get_field('reviewer_locations')?></p>
 
                     </div>
-    
+
                 </div>
 
             <?php endwhile; endif; ?>

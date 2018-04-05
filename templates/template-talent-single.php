@@ -58,7 +58,7 @@ get_header();
             <div class="p3 bg-smoke">
 
                 <h3 class="h3 brand-primary">Share</h3>
-<!--                --><?php //echo sharethis_inline_buttons(); ?>
+                <?php echo sharethis_inline_buttons(); ?>
             </div>
 
         </div>

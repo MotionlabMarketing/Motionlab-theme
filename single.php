@@ -77,7 +77,7 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
 
                                 <a href="#"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('<?php if (!empty(get_the_post_thumbnail_url())) : the_post_thumbnail_url('large'); else: echo get_field('fallback_placeholder_image', 'option'); endif; ?>');"></div></a>
 
-                                <p class="h5 mb3"><?=the_content()?></p>
+                                <p class="h5 mb3"><?=get_the_excerpt($post->ID)?></p>
 
                                 <a href="<?=the_permalink(get_the_id())?>" class="block mb4 || h5 bold">Read full story</a>
 
