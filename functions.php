@@ -389,7 +389,7 @@ NUMERIC PAGINATION
 CHANGE DEFAULT TEMPLATE NAME
 ==================================================================*/
 add_filter('default_page_template_title', function() {
-	return __('- Generic One Column');
+	return __('Basic Page');
 });
 
 
