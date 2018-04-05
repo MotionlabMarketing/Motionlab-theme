@@ -33,7 +33,7 @@ $boxes = get_field('template_jobs_sidebarBoxes');
 
         </div>
 
-        <div class="col col-12 md-col-12 lg-col-12 clearfix">
+        <div id="jobs-listing-header" class="col col-12 md-col-12 lg-col-12 clearfix">
 
             <div class="col col-12 mb5">
 
@@ -147,7 +147,7 @@ $boxes = get_field('template_jobs_sidebarBoxes');
 
     //TODO: Move this into JS file
 
-    function fetchJobs(page_number) {
+    function fetchJobs(page_number, firstLoad = false) {
 
         //TODO: Add loader while fetching data.
         var sector_filter   = $('#sortby_sector option:selected').val();
@@ -164,19 +164,22 @@ $boxes = get_field('template_jobs_sidebarBoxes');
                 type_filter: type_filter,
                 location_filter: location_filter
             },
-            success: function(response){
+            success: function(response) {
                 $('#jobs-listing').html(response);
                 $('.js-match-height').matchHeight();
-                $('html,body').animate({
-                    scrollTop: 0},
-                    'slow');
+
+                if (!firstLoad) {
+                    $('html,body').animate({
+                        scrollTop: $("#jobs-listing-header").offset().top
+                    }, 'slow');
                 }
+            }
         });
     }
 
-    function updateFilterState(load_val) {
+    function updateFilterState(load_val, firstLoad = false) {
         $('#sortby_sector').val(load_val);
-        fetchNewsPosts(1);
+        fetchJobs(1, firstLoad);
     }
 
     $(document).on('click', '.page-number', function(){
@@ -192,7 +195,7 @@ $boxes = get_field('template_jobs_sidebarBoxes');
     });
 
     $(document).on("ready", function() {
-        updateFilterState($('#sortby_sector').data('loadvalue'));
+        updateFilterState($('#sortby_sector').data('loadvalue'), true);
     });
 
     window.onpopstate = function(event) {

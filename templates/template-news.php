@@ -153,7 +153,7 @@ get_header(); ?>
 
     //TODO: Move this into JS file
 
-    function fetchNewsPosts(page_number) {
+    function fetchNewsPosts(page_number, firstLoad = false) {
 
         //TODO: Add loader while fetching data.
         var order_filter = $('#news_orderby').val();
@@ -171,9 +171,11 @@ get_header(); ?>
             success: function(response){
                 $('#news-listing').html(response);
 
-
-                $('html,body').animate({
-                    scrollTop: $("#news-listing-header").offset().top}, 'slow');
+                if(!firstLoad) {
+                    $('html,body').animate({
+                        scrollTop: $("#news-listing-header").offset().top
+                    }, 'slow');
+                }
             },
             complete: function () {
                 setTimeout(function() {
@@ -189,9 +191,9 @@ get_header(); ?>
         });
     }
 
-    function updateFilterState(load_val) {
+    function updateFilterState(load_val, firstLoad = false) {
         $('#news_filtercats').val(load_val);
-        fetchNewsPosts(1);
+        fetchNewsPosts(1, firstLoad);
     }
 
     $(document).on('click', '.page-number', function(){
@@ -207,7 +209,7 @@ get_header(); ?>
     });
 
     $(document).on("ready", function() {
-        updateFilterState($('#news_filtercats').data('loadvalue'));
+        updateFilterState($('#news_filtercats').data('loadvalue'), true);
     });
 
     window.onpopstate = function(event) {
