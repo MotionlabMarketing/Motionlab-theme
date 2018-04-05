@@ -44,19 +44,19 @@
                 <?php foreach($block['posts']->posts as $post) :?>
                     <div class="mb4 box-shadow-2 p4">
 
-                        <h4 class="h4 mb1"><a href="<?=get_permalink($post->ID)?>" class="brand-primary"><?=get_field('talent_name', $post->ID);?></a></h4>
+                        <h4 class="h3 mb1"><a href="<?=get_permalink($post->ID)?>" class="brand-primary"><?=get_field('talent_name', $post->ID);?></a></h4>
                         <p class="bold mb2">
                             <?php $location = get_field('talent_location', $post->ID); ?>
                             <?php if($location != "") :?>
-                                <small class="inline-block"><?=$location;?></small>
+                                <span class="inline-block"><?=$location;?></span>
                             <?php endif; ?>
                             <?php foreach($post->types as $type) : ?>
                                 <span class="black">•</span>
-                                <small><?=$type->name;?></small>
+                                <span><?=$type->name;?></span>
                             <?php endforeach; ?>
                         </p>
 
-                        <div class="block mb2 md-mb4 h6"><span class="mr3 mb2 md-mb0 block md-inline brand-primary">Roles available for</span>
+                        <div class="block mb2 md-mb4 h6"><span class="mr3 mb2 mt2 md-mb0 block md-inline brand-primary">Roles available for</span>
 
                             <ul class="inline-block tags tags-right md-right border-radius">
                                 <?php foreach($post->roles as $role) : ?>
@@ -65,7 +65,7 @@
                             </ul>
                         </div>
 
-                        <div class="h6 || clearfix || border border-light border-bottom">
+                        <div class="h4 || clearfix || border border-light border-bottom">
                             <?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr(get_field('talent_details', $post->ID),0, 100) . "...";?>
                         </div>
 

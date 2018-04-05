@@ -10,6 +10,8 @@
  * @version 1.00
  */
 
+
+
 ?>
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "jobs-keyareas")?> <?=get_blockData($block)?>>
@@ -18,8 +20,8 @@
 
         <div class="sections mb5 text-center clearfix">
 
-            <?php foreach ($block['sections'] as $section):?>
-                <div class="selection || col col-12 md-col-6 || p4">
+            <?php foreach ($block['sections'] as $section): ?>
+                <div class="selection || col col-12 md-col-6 || p3">
 
                     <div class="content box-shadow-3 bg-charcoal">
 

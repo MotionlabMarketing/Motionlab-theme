@@ -83,14 +83,14 @@ $boxes = get_field('template_jobs_sidebarBoxes');
 
                     <div class="col col-12 md-col-9">
 
-                        <a href=""><h3 class="mb2 h4"><?=$post->post_title?></h3></a>
+                        <a href="<?=get_permalink($post->ID)?>"><h3 class="mb2 h2"><?=$post->post_title?></h3></a>
 
                         <?php if(get_field('jobs_role_salary', $post->ID) != 0):
                             $salary = "£".number_format(get_field('jobs_role_salary', $post->ID));
                         else :
                             $salary = "Salary not Specified";
                         endif; ?>
-                        <p class="h5 mb0"><?=$post->locations[0]->name?><span class="muted"> •</span> <?=$salary?> <span class="muted">•</span> <?=$post->types[0]->name?></p>
+                        <p class="h4 bold mb0"><?=$post->locations[0]->name?><span class="muted"> •</span> <?=$salary?> <span class="muted">•</span> <?=$post->types[0]->name?></p>
 
                     </div>
 
@@ -102,6 +102,7 @@ $boxes = get_field('template_jobs_sidebarBoxes');
 
                 </div>
                 <?php endforeach; $page = 1;?>
+
                 <nav class="pagination || clearfix block text-center border-top border-darken-1 py4 mt5">
 
                     <?php if($page - 2 > 0) :?> <span aria-current="page" data-page-number="<?=$page-2?>" class="page-numbers page-number cursor-pointer"><?=$page-2?></span> <?php endif;?>
@@ -145,61 +146,66 @@ $boxes = get_field('template_jobs_sidebarBoxes');
 
 <script>
 
-    //TODO: Move this into JS file
+    jQuery(document).ready(function ($) {
 
-    function fetchJobs(page_number) {
+        //TODO: Move this into JS file
 
-        //TODO: Add loader while fetching data.
-        var sector_filter   = $('#sortby_sector option:selected').val();
-        var type_filter     = $('#sortby_type option:selected').val();
-        var location_filter = $('#sortby_location option:selected').val();
+        function fetchJobs(page_number) {
 
-        $.ajax({
-            url: '<?php echo admin_url( "admin-ajax.php"); ?>',
-            method: 'POST',
-            data: {
-                action: 'fetch_jobs',
-                jobs_page: page_number,
-                sector_filter: sector_filter,
-                type_filter: type_filter,
-                location_filter: location_filter
-            },
-            success: function(response){
-                $('#jobs-listing').html(response);
-                $('.js-match-height').matchHeight();
-                $('html,body').animate({
-                    scrollTop: 0},
-                    'slow');
+            //TODO: Add loader while fetching data.
+            var sector_filter = $('#sortby_sector option:selected').val();
+            var type_filter = $('#sortby_type option:selected').val();
+            var location_filter = $('#sortby_location option:selected').val();
+
+            $.ajax({
+                url: '<?php echo admin_url("admin-ajax.php"); ?>',
+                method: 'POST',
+                data: {
+                    action: 'fetch_jobs',
+                    jobs_page: page_number,
+                    sector_filter: sector_filter,
+                    type_filter: type_filter,
+                    location_filter: location_filter
+                },
+                success: function (response) {
+                    $('#jobs-listing').html(response);
+                    $('.js-match-height').matchHeight();
+                    $('html,body').animate({
+                            scrollTop: 0
+                        },
+                        'slow');
                 }
-        });
-    }
-
-    function updateFilterState(load_val) {
-        $('#sortby_sector').val(load_val);
-        fetchNewsPosts(1);
-    }
-
-    $(document).on('click', '.page-number', function(){
-        var page_number = $(this).data('page-number');
-        fetchJobs(page_number);
-    });
-
-    $('.jobs-filters').on('change', function() {
-        if ($(this).attr('id') == 'sortby_sector') {
-            history.pushState("find-a-job", "Cummins Mellor Recruitment", "/find-a-job/"+$(this).val());
+            });
         }
-        fetchJobs(1);
-    });
 
-    $(document).on("ready", function() {
-        updateFilterState($('#sortby_sector').data('loadvalue'));
-    });
+        function updateFilterState(load_val) {
+            $('#sortby_sector').val(load_val);
+            fetchNewsPosts(1);
+        }
 
-    window.onpopstate = function(event) {
-        var value = document.location.href.substring(document.location.href.lastIndexOf("/") + 1) ;
-        if(value != null)
-            updateFilterState(value);
-    };
+        $(document).on('click', '.page-number', function () {
+            var page_number = $(this).data('page-number');
+            fetchJobs(page_number);
+        });
+
+        $('.jobs-filters').on('change', function () {
+            if ($(this).attr('id') == 'sortby_sector') {
+                history.pushState("find-a-job", "Cummins Mellor Recruitment", "/find-a-job/" + $(this).val());
+            }
+            fetchJobs(1);
+        });
+
+        $(document).on("ready", function () {
+            updateFilterState($('#sortby_sector').data('loadvalue'));
+        });
+
+        window.onpopstate = function (event) {
+            var value = document.location.href.substring(document.location.href.lastIndexOf("/") + 1);
+            if (value != null)
+                updateFilterState(value);
+        };
+
+    });
 
 </script>
 

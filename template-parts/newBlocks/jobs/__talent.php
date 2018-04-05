@@ -26,23 +26,22 @@
 
             <div class="box-shadow-2 p4">
 
-                <h4 class="h4 mb1"><a
+                <h4 class="h3 mb1"><a
                             href="<?= get_permalink($post->ID) ?>"><?= get_field('talent_name', $post->ID); ?></a>
                 </h4>
-
-                <p class="bold mb2">
-
+                <p class="bold mb2" style="font-size: 1rem">
                     <?php $location = get_field('talent_location', $post->ID); ?>
                     <?php if ($location != "") : ?>
-                        <small class="inline-block"><?= $location; ?></small>
+                        <span class="inline-block"><?= $location; ?></span>
                     <?php endif; ?>
                     <?php foreach ($post->types as $type) : ?>
                         <span class="black">•</span>
-                        <small><?= $type->name; ?></small>
+                        <span><?= $type->name; ?></span>
                     <?php endforeach; ?>
                 </p>
 
-                <div class="block mb4"><span class="mr3 brand-primary">Roles available for</span>
+
+                <div class="block mb4" style="font-size: 1rem"><small class="mr3 mt2 block brand-primary">Roles available for</small>
 
                     <ul class="inline-block tags tags-right right">
                         <?php foreach ($post->roles as $role) : ?>
@@ -51,7 +50,7 @@
                     </ul>
                 </div>
 
-                <div class="h5 clearfix border border-light border-bottom">
+                <div class="h4 clearfix border border-light border-bottom">
                     <?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr(get_field('talent_details', $post->ID), 0, 100) . "..."; ?>
                 </div>
 
@@ -140,21 +139,21 @@
 
                     <div class="box-shadow-2 p4">
 
-                        <h4 class="h4 mb1"><a
+                        <h4 class="h3 mb1"><a
                                     href="<?= get_permalink($post->ID) ?>"><?= get_field('talent_name', $post->ID); ?></a>
                         </h4>
-                        <p class="bold mb2">
+                        <p class="bold mb2" style="font-size: 1rem">
                             <?php $location = get_field('talent_location', $post->ID); ?>
                             <?php if ($location != "") : ?>
-                                <small class="inline-block"><?= $location; ?></small>
+                                <span class="inline-block"><?= $location; ?></span>
                             <?php endif; ?>
                             <?php foreach ($post->types as $type) : ?>
                                 <span class="black">•</span>
-                                <small><?= $type->name; ?></small>
+                                <span><?= $type->name; ?></span>
                             <?php endforeach; ?>
                         </p>
 
-                        <div class="block mb4"><span class="mr3 brand-primary">Roles available for</span>
+                        <div class="block mb4" style="font-size: 1rem"><small class="mr3 mt2 block brand-primary">Roles available for</small>
 
                             <ul class="inline-block tags tags-right right">
                                 <?php foreach ($post->roles as $role) : ?>
@@ -163,7 +162,7 @@
                             </ul>
                         </div>
 
-                        <div class="h5 clearfix border border-light border-bottom">
+                        <div class="h4 clearfix border border-light border-bottom">
                             <?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr(get_field('talent_details', $post->ID), 0, 100) . "..."; ?>
                         </div>
 
@@ -186,33 +185,38 @@
 
 <script type="text/javascript">
 
-    <?php //TODO: MOVE THIS TO JS FILE ?>
-    $('.talent-filter-select').on('change', function () {
-        updateListing();
+    jQuery(document).ready(function ($) {
+
+        <?php //TODO: MOVE THIS TO JS FILE ?>
+        $('.talent-filter-select').on('change', function () {
+            updateListing();
+        });
+
+        function updateListing() {
+            //TODO: Update the two lines below to pull the page id and block name from the block itself.
+            var pageID = $('#latestTalent').data('block-id').split('-')[0];
+            //var blockName       = $('section.jobs-latest').data('block-name');
+            var sector_filter = $('#sortby_sector option:selected').val();
+            var type_filter = $('#sortby_type option:selected').val();
+            var role_filter = $('#sortby_role option:selected').val();
+
+            $.ajax({
+                url: '<?php echo admin_url("admin-ajax.php"); ?>',
+                method: 'POST',
+                data: {
+                    action: 'update_block',
+                    page_id: pageID,
+                    block_name: 'block_jobs',
+                    sector_filter: sector_filter,
+                    type_filter: type_filter,
+                    role_filter: role_filter
+                },
+                success: function (response) {
+                    $('#talent-listing').html(response);
+                }
+            });
+        }
+
     });
 
-    function updateListing() {
-        //TODO: Update the two lines below to pull the page id and block name from the block itself.
-        var pageID = $('#latestTalent').data('block-id').split('-')[0];
-        //var blockName       = $('section.jobs-latest').data('block-name');
-        var sector_filter = $('#sortby_sector option:selected').val();
-        var type_filter = $('#sortby_type option:selected').val();
-        var role_filter = $('#sortby_role option:selected').val();
-
-        $.ajax({
-            url: '<?php echo admin_url("admin-ajax.php"); ?>',
-            method: 'POST',
-            data: {
-                action: 'update_block',
-                page_id: pageID,
-                block_name: 'block_jobs',
-                sector_filter: sector_filter,
-                type_filter: type_filter,
-                role_filter: role_filter
-            },
-            success: function (response) {
-                $('#talent-listing').html(response);
-            }
-        });
-    }
 </script>

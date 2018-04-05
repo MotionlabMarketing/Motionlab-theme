@@ -151,70 +151,75 @@ get_header(); ?>
 
 <script>
 
-    //TODO: Move this into JS file
+    jQuery(document).ready(function ($) {
 
-    function fetchNewsPosts(page_number) {
+        //TODO: Move this into JS file
 
-        //TODO: Add loader while fetching data.
-        var order_filter = $('#news_orderby').val();
-        var category_filter = $('#news_filtercats').val();
+        function fetchNewsPosts(page_number) {
 
-        $.ajax({
-            url: '<?php echo admin_url( "admin-ajax.php"); ?>',
-            method: 'POST',
-            data: {
-                action: 'fetch_news',
-                news_page: page_number,
-                order_filter: order_filter,
-                category_filter: category_filter
-            },
-            success: function(response){
-                $('#news-listing').html(response);
+            //TODO: Add loader while fetching data.
+            var order_filter = $('#news_orderby').val();
+            var category_filter = $('#news_filtercats').val();
+
+            $.ajax({
+                url: '<?php echo admin_url("admin-ajax.php"); ?>',
+                method: 'POST',
+                data: {
+                    action: 'fetch_news',
+                    news_page: page_number,
+                    order_filter: order_filter,
+                    category_filter: category_filter
+                },
+                success: function (response) {
+                    $('#news-listing').html(response);
 
 
-                $('html,body').animate({
-                    scrollTop: $("#news-listing-header").offset().top}, 'slow');
-            },
-            complete: function () {
-                setTimeout(function() {
+                    $('html,body').animate({
+                        scrollTop: $("#news-listing-header").offset().top
+                    }, 'slow');
+                },
+                complete: function () {
+                    setTimeout(function () {
 
-                    $.fn.matchHeight._apply('.js-match-height');
-                    $.fn.matchHeight._apply('[data-mh="post-title"]');
-                    $.fn.matchHeight._apply('[data-mh="post-tags"]');
-                    $.fn.matchHeight._apply('[data-mh="post-content"]');
+                        $.fn.matchHeight._apply('.js-match-height');
+                        $.fn.matchHeight._apply('[data-mh="post-title"]');
+                        $.fn.matchHeight._apply('[data-mh="post-tags"]');
+                        $.fn.matchHeight._apply('[data-mh="post-content"]');
 
-                }, 300);
-            }
+                    }, 300);
+                }
 
-        });
-    }
-
-    function updateFilterState(load_val) {
-        $('#news_filtercats').val(load_val);
-        fetchNewsPosts(1);
-    }
-
-    $(document).on('click', '.page-number', function(){
-        var page_number = $(this).data('page-number');
-        fetchNewsPosts(page_number);
-    });
-
-    $('.news_filters').on('change', function() {
-        if($(this).attr('id') == "news_filtercats") {
-            history.pushState({cat:$(this).val()}, "", "/news/"+$(this).val());
+            });
         }
-        fetchNewsPosts(1);
-    });
 
-    $(document).on("ready", function() {
-        updateFilterState($('#news_filtercats').data('loadvalue'));
-    });
+        function updateFilterState(load_val) {
+            $('#news_filtercats').val(load_val);
+            fetchNewsPosts(1);
+        }
 
-    window.onpopstate = function(event) {
-        var value = document.location.href.substring(document.location.href.lastIndexOf("/") + 1) ;
-        if(value != null)
-            updateFilterState(value);
-    };
+        $(document).on('click', '.page-number', function () {
+            var page_number = $(this).data('page-number');
+            fetchNewsPosts(page_number);
+        });
+
+        $('.news_filters').on('change', function () {
+            if ($(this).attr('id') == "news_filtercats") {
+                history.pushState({cat: $(this).val()}, "", "/news/" + $(this).val());
+            }
+            fetchNewsPosts(1);
+        });
+
+        $(document).on("ready", function () {
+            updateFilterState($('#news_filtercats').data('loadvalue'));
+        });
+
+        window.onpopstate = function (event) {
+            var value = document.location.href.substring(document.location.href.lastIndexOf("/") + 1);
+            if (value != null)
+                updateFilterState(value);
+        };
+
+    });
 
 </script>
 

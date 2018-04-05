@@ -27,7 +27,7 @@ get_header(); ?>
                 <?=get_field('staff_quote');?>
             </blockquote>
 
-            <p class="mb2">If you'd like to know more then your best giving me a call</p>
+            <p class="mb2">If you'd like to know more then you can contact me on:</p>
             <p class="h3 mb2"><a href="tel:<?=get_field('staff_phoneNumber');?>"><strong><?=get_field('staff_phoneNumber');?></strong></a></p>
             <p>or email at <a href="mailTo:<?=get_field('staff_emailAddress');?>"><strong><?=get_field('staff_emailAddress');?></strong></a></p>
         </div>

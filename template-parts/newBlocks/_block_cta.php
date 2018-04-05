@@ -27,7 +27,7 @@ $block['content']['link']     = get_sub_field($current . '_link');
 $block['content']['buttons']  = get_sub_field($current . '_buttons');
 
 $block['content']['txtColor'] = get_sub_field($current . '_txtColour_system_text_colours');
-$block['content']['txtAlign'] = get_sub_field($current . '_txtAlign');
+$block['content']['txtAlign'] = get_sub_field($current . '_txtAlign')['align'];
 
 switch ($block['layout']):
     case "large":

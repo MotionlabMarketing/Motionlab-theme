@@ -23,101 +23,81 @@ $blockTitle  = get_sub_field($current . '_title_title');
 $i = 1;
 $events = get_sub_field($current . '_events');
 
-$lineItems = "";
-$selectItems = [];
-foreach ($events as $item):
-
-    $lineItems .= '{
-            id: '.$i.',
-            name: "'.$item['title'].'",
-            on: new Date('.date("Y", strtotime(str_replace("/", "-", $item['date']))).', '.date("m", strtotime(str_replace("/", "-", $item['date']))).', '.date("d", strtotime(str_replace("/", "-", $item['date']))).')
-        },';
-    $i++;
-
-    $selectItems[$i] = '';
-
-endforeach;
-
+//pa($events);
 ?>
 
-<section <?=get_blockID($block)?> <?=get_blockClasses($block, "timeline-basic my4 mb6")?> <?=get_blockData($block)?>>
 
-    <div class="container">
 
-        <div class="col col-12 || p4 text-center">
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "")?> <?=get_blockData($block)?>>
 
-            <div class="mb3">
+    <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
+
+    <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
+
+    <section class="cd-horizontal-timeline">
+
+        <div class="timeline">
+
+            <div class="events-wrapper">
+
+                <div class="events">
+                    <ol class="list-reset">
+
+                        <?php
+                        $a = 1;
+                        foreach ($events as $event): ?>
+
+                            <li><a href="#0" data-date="<?=$event['date']?>" class="bold <?=($a == 1)? 'selected' : ''?>"><?=date('M Y', strtotime($event['date']))?></a></li>
+
+                            <?php $a++; endforeach; ?>
+
+                    </ol>
+
+                    <span class="filling-line" aria-hidden="true"></span>
+                </div>
+
+            </div>
+
+            <ul class="list-reset cd-timeline-navigation">
+
+                <li><a href="#0" class="prev inactive">Prev</a></li>
+                <li><a href="#0" class="next">Next</a></li>
+
+            </ul>
+
+        </div>
+
+        <div class="events-content">
+            <ol class="list-reset">
+
                 <?php
-                if (!empty($blockTitle[0]['title'])) {
-                    include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
-            </div>
+                    $b = 1;
+                    foreach ($events as $event): ?>
 
-            <div class="wysiwyg">
-                <?=get_sub_field($current . '_content')?>
-            </div>
+                    <li <?=($b == 1)? 'class="selected"' : ''?> data-date="<?=$event['date']?>">
 
+                            <div class="col col-12 md-col-6 pt6 pb6 md-pr6">
+
+                                <h3 class="brand-primary"><?=date("F Y", strtotime(str_replace("/", "-", $event['date'])))?> – <?=$event['title']?></h3>
+
+                                <?=$event['content']?>
+
+                            </div>
+
+                            <div class="image || col col-12 md-col-6 p2 md-p4">
+
+                                <img src="<?=$event['image']['sizes']['medium_large']?>" alt="<?=$event['image']['alt']?>" class="block ml-auto mr-auto box-shadow-3">
+
+                            </div>
+
+                    </li>
+
+                <?php $b++; endforeach; ?>
+
+            </ol>
         </div>
+    </section>
 
-
-        <div class="col-12 || mb5" data-tabs="wrapper">
-
-            <select name="change" id="changeDropdown" style="min-width:13rem;" class="select md-mr3 width-100 md-width-auto my4">
-                <?php $i = 1; foreach ($events as $item): ?>
-
-                    <option value="<?=$i?>"><?=date("F Y", strtotime(str_replace("/", "-", $item['date'])))?></option>
-
-                <?php $i++; endforeach; ?>
-            </select>
-
-
-            <div class="content" data-tabs="content">
-
-                <?php $i = 1; foreach ($events as $item):?>
-
-                <section class="col-12 clearfix date-id <?=($i == 1)? "" : "hide"; ?> || " id="date-id-<?=$i?>">
-
-                    <div class="col col-12 md-col-6 p2 md-p4">
-
-                        <h3 class="brand-primary"><?=date("F Y", strtotime(str_replace("/", "-", $item['date'])))?> – <?=$item['title']?></h3>
-
-                        <?=$item['content']?>
-
-                    </div>
-
-                    <div class="image || col col-12 md-col-6 p2 md-p4">
-
-                        <img src="<?=$item['image']['sizes']['medium_large']?>" alt="<?=$item['image']['alt']?>" class="block ml-auto mr-auto box-shadow-3">
-
-                    </div>
-
-                </section>
-
-                <?php $i++; endforeach; ?>
-
-            </div>
-
-        </div>
-
-        <div id="timeline" class="mt5 clearfix overflow-hidden"></div>
-
-    </div>
+    <?=($block['grid'] == 'container')? '</div>' : ""?>
 
 </section>
-
-<script type="text/javascript">
-    jQuery(document).ready(function($) {
-
-        var ev = [<?=$lineItems?>];
-
-        var tl = $('#timeline').jqtimeline({
-            events: ev,
-            numYears: <?=get_sub_field($current . '_years')?>,
-            startYear: <?=get_sub_field($current . '_start')?>,
-            click: function (e, event) {
-                var $wrapper = $('[data-tabs="wrapper"]');
-                $wrapper.find('[data-tabs="content"]').children('section').addClass('hide');
-                $wrapper.find('[data-tabs="content"]').find('section[id=date-id-' + event.id + ']').removeClass('hide');
-            }
-        });
-    });
-</script>
