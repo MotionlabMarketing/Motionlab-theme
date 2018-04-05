@@ -32,13 +32,14 @@ get_header(); ?>
 
         <div class="col col-12 md-col-12 lg-col-12 || mb5 bg-smoke">
 
-	        <?php $latest_post = array_shift($posts->posts); ?>
+	        <?php $latest_post = array_shift($posts->posts); pa(get_field('fallback_placeholder_image', 'option')); ?>
             <div class="col col-12 md-col-6 || px4 md-p5 left md-right || flex items-center justify-center">
 
                 <?php if (has_post_thumbnail( $latest_post->ID ) ): ?>
                     <?php $image_url = wp_get_attachment_image( get_post_thumbnail_id( $latest_post->ID ), "large", "", ["class" => "box-shadow-1"] ) ?>
                 <?php else: ?>
-                    <?php $image_url = wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1"]) // TODO: Default Image ?>
+                    <?php pa($image_url); ?>
+                    <?php $image_url = get_field('fallback_placeholder_image', 'option'); // TODO: Default Image ?>
                 <?php endif; ?>
 
                 <a href="<?=$latest_post->guid?>">

@@ -36,7 +36,7 @@ get_header(); ?>
                 <?php if (has_post_thumbnail( $latest_post->ID ) ): ?>
                     <?php $image_url = wp_get_attachment_image( get_post_thumbnail_id( $latest_post->ID ), "large", "", ["class" => "box-shadow-1"] ) ?>
                 <?php else: ?>
-                    <?php $image_url = wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1"]) // TODO: Default Image ?>
+                    <?php $image_url = get_field('fallback_placeholder_image', 'option'); // TODO: Default Image ?>
                 <?php endif; ?>
 
                 <a href="<?=$latest_post->guid?>">
