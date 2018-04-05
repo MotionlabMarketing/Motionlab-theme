@@ -120,7 +120,7 @@ get_header(); ?>
 
                     <p class="h6 mb2" data-mh="post-date"><?=date('d M Y', strtotime($post->post_date));?></p>
 
-                    <a href="<?=$post->guid?>"><h3 class="h4 brand-primary" data-mh="post-title"><?=$post->post_title?></h3></a>
+                    <a href="<?=get_permalink($post->ID)?>"><h3 class="h4 brand-primary" data-mh="post-title"><?=$post->post_title?></h3></a>
 
                     <a href="<?=get_permalink($post->ID)?>"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('<?=$image_url?>');"></div></a>
 
