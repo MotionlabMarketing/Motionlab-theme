@@ -79,19 +79,29 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
                                     <p class="clearfix"><?=$item['content']?></p>
                                     <?php if($item['show_filter'] == true):?>
 
-                                        <form action="" method="get" class="flex">
-                                            <select name="orderby" id="orderby" style="min-width:15rem;" class="select md-mr3 width-100 md-width-auto box-shadow-2" onchange="this.form.submit()" >
-                                                <?php
-                                                    if ($i == 1)
-                                                        $term = "Talent";
-                                                    else
-                                                        $term = "Jobs";
-                                                ?>
+                                        <?php
+                                        if ($i == 1)
+                                            $term = "Jobs";
+                                        else
+                                            $term = "Talent";
+                                        ?>
+
+                                        <form class="flex">
+                                            <select id="<?=$term?>_tabs_filter" style="min-width:15rem;" class="select md-mr3 width-100 md-width-auto box-shadow-2" >
+
                                                 <option value="title" <?php echo ($orderby == 'title') ? 'selected' : '' ; ?>>Search <?=$term?></option>
                                                  <?php
                                                     foreach($block['select_terms'] as $term): ?>
 
-                                                        <option value="<?= $term->name; ?>" data-redirect="/find-a-job/<?= $term->slug; ?>"> <?= $term->name; ?> </option>
+                                                        <?php
+                                                            $term_page = "find-talent";
+                                                            if($i == 1)
+                                                                $term_page = "find-a-job";
+
+                                                        ?>
+
+
+                                                        <option value="<?= $term->name; ?>" data-redirect="/<?=$term_page?>/<?= $term->slug; ?>"> <?= $term->name; ?> </option>
 
                                                  <?php endforeach; ?>
                                             </select>
@@ -119,3 +129,16 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
     </div>
 
 </section>
+
+
+<script>
+    $(document).ready(function($) {
+        $('#Talent_tabs_filter').on('change', function(){
+            window.location = $('option:selected', this).data('redirect');
+        });
+
+        $('#Jobs_tabs_filter').on('change', function(){
+            window.location = $('option:selected', this).data('redirect');
+        });
+    });
+</script>

@@ -188,6 +188,7 @@ Class _block_news
 			}
 
 		} else {
+			$this->block['posts']->posts = [];
 
 			foreach(get_sub_field('block_news_articles') as $post_id) :
 				$this->block['posts']->posts[] = get_post($post_id);
@@ -201,11 +202,10 @@ Class _block_news
 					'post_type'         => 'post',
 					'orderby'           => 'date',
 					'order'             => 'DESC',
-					'post__not_in'      => get_sub_field('block_news_articles')
+					'post__not_in'      => get_sub_field('block_news_articles')?:[]
 				);
 
 				$temp_posts = new WP_Query( $args );
-				
 				$this->block['posts']->posts = array_merge($this->block['posts']->posts, $temp_posts->posts);
 
 			endif;
@@ -216,7 +216,6 @@ Class _block_news
 
 			endforeach;
 		}
-
 
 	}
 
