@@ -32,7 +32,7 @@ foreach ($hideBtns as $item) {
             </div>
 
             <div class="social-share text-center <?=$hideClasses?>">
-                <?php naked_social_share_buttons(); ?>
+                <?php echo sharethis_inline_buttons(); ?>
             </div>
 
         </div>

@@ -5,7 +5,7 @@
         <div class="arrow-up"></div>
 
         <?php $i=1; ?>
-            <?php foreach($menuitem->children as $child) : ?>
+            <?php foreach($menuitem->children as $child): ?>
 
             <li class="relative">
                 <a href="<?php echo $child->url ?>" class="block black py2 bold text-left">

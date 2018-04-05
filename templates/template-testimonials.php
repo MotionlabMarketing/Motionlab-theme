@@ -7,6 +7,10 @@
 $blockTitle  = get_field('page_title');
 $blockTitle  = $blockTitle['title'];
 
+include_once(MODELS_DIR . '_testimonials.php');
+$testimonials = new _testimonials();
+$testimonials = $testimonials->getBlock();
+
 get_header(); ?>
 
     <section class="clearfix my4 mb4" id="listing-testimonials">
@@ -33,8 +37,12 @@ get_header(); ?>
 
                 <form method="get" class="text-center">
 
-                    <select style="min-width:18rem;" class="select md-ml3 width-100 md-width-auto box-shadow-3" onchange="this.form.submit()" name="" id="">
-                        <option value="all" <?php echo ($orderby == 'all') ? 'selected' : '' ; ?>>All Testimonials</option>
+                    <select style="min-width:18rem;" class="select md-ml3 width-100 md-width-auto box-shadow-3 testimonials_filters" data-loadvalue="<?=get_query_var('testimonials_category')?>" id="testimonials_filtercats">
+                        <option value="">All Testimonials</option>
+                        <?php foreach($testimonials['select_terms'] as $select_term) :?>
+                            <option value="<?=$select_term->slug?>"><?=$select_term->name?></option>
+                        <?php endforeach; ?>
+
                     </select>
 
                 </form>
@@ -45,218 +53,61 @@ get_header(); ?>
 
         <div class="container clearfix">
 
-            <div class="grid">
+            <div class="grid" id="testimonials-listing">
 
-                <div class="grid-sizer"></div>
-
-                <div class="col col-4 || grid-item">
-
-                    <div class="m2 || border border-smoke">
-
-                        <div class="content || p3 pb0 px4">
-
-                            <p>Phasellus egestas tellus finibus eros convallis, ac tristique nulla congue. Ut non
-                                tincidunt erat, in consectetur nunc. Pellentesque aliquet, quam quis commodo gravida,
-                                nibh lacus pharetra quam, rutrum aliquet lectus velit ac massa.</p>
-                            <p>Phasellus egestas tellus finibus eros convallis, ac tristique nulla congue. Ut non
-                                tincidunt erat, in consectetur nunc. Pellentesque aliquet, quam quis commodo
-                                gravida.</p>
-
-                        </div>
-
-
-                        <div class="content || pt2 pb3 px4">
-
-                            <div class="author bold">
-
-                                <p class="block h6 mb0">Customer Service Manager</p>
-                                <p class="block h6 mb0">Promotional Merchandiser</p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col col-4 || grid-item">
-
-                    <div class="m2 || border border-smoke">
-
-                        <div class="video || block relative min-height-v25">
-
-                            <iframe width="100%" height="285" src="https://www.youtube.com/embed/Tby7FnaCqAo"
-                                    frameborder="0"
-                                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-                            <p class="absolute bottom-0 right-0 white p2 pl3 px4 mb0 bg-lighten-4">0:00</p>
-
-                        </div>
-
-                        <div class="content || pt2 pb3 px4">
-
-                            <div class="author bold">
-
-                                <p class="block h6 mb0">Customer Service Manager</p>
-                                <p class="block h6 mb0">Promotional Merchandiser</p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col col-4 || grid-item">
-
-                    <div class="m2 || border border-smoke">
-
-                        <div class="content || p3 pb0 px4">
-
-                            <p>Phasellus egestas tellus finibus eros convallis, ac tristique nulla congue. Ut non
-                                tincidunt erat, in consectetur nunc. Pellentesque aliquet, quam quis commodo gravida,
-                                nibh lacus pharetra quam, rutrum aliquet lectus velit ac massa.</p>
-
-                        </div>
-
-
-                        <div class="content || pt2 pb3 px4">
-
-                            <div class="author bold">
-
-                                <p class="block h6 mb0">Customer Service Manager</p>
-                                <p class="block h6 mb0">Promotional Merchandiser</p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col col-4 || grid-item">
-
-                    <div class="m2 || border border-smoke">
-
-                        <div class="content || p3 pb0 px4">
-
-                            <p>Phasellus egestas tellus finibus eros convallis, ac tristique nulla congue. Ut non
-                                tincidunt erat, in consectetur nunc. Pellentesque aliquet, quam quis commodo gravida,
-                                nibh lacus pharetra quam, rutrum aliquet lectus velit ac massa.</p>
-
-                        </div>
-
-
-                        <div class="content || pt2 pb3 px4">
-
-                            <div class="author bold">
-
-                                <p class="block h6 mb0">Customer Service Manager</p>
-                                <p class="block h6 mb0">Promotional Merchandiser</p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col col-4 || grid-item">
-
-                    <div class="m2 || border border-smoke">
-
-                        <div class="content || p3 pb0 px4">
-
-                            <p>Phasellus egestas tellus finibus eros convallis, ac tristique nulla congue.</p>
-                            <p>Ut non tincidunt erat, in consectetur nunc. Pellentesque aliquet, quam quis commodo
-                                gravida, nibh lacus pharetra quam, rutrum aliquet lectus velit ac massa.</p>
-
-                        </div>
-
-
-                        <div class="content || pt2 pb3 px4">
-
-                            <div class="author bold">
-
-                                <p class="block h6 mb0">Customer Service Manager</p>
-                                <p class="block h6 mb0">Promotional Merchandiser</p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col col-4 || grid-item">
-
-                    <div class="m2 || border border-smoke">
-
-                        <div class="content || p3 pb0 px4">
-
-                            <p>Phasellus egestas tellus finibus eros convallis, ac tristique nulla congue. Ut non
-                                tincidunt erat, in consectetur nunc. Pellentesque aliquet, quam quis commodo gravida,
-                                nibh lacus pharetra quam, rutrum aliquet lectus velit ac massa.</p>
-                            <p>Phasellus egestas tellus finibus eros convallis, ac tristique nulla congue. Ut non
-                                tincidunt erat, in consectetur nunc. Pellentesque aliquet, quam quis commodo gravida,
-                                nibh lacus pharetra quam, rutrum aliquet lectus velit ac massa.</p>
-
-                        </div>
-
-
-                        <div class="content || pt2 pb3 px4">
-
-                            <div class="author bold">
-
-                                <p class="block h6 mb0">Customer Service Manager</p>
-                                <p class="block h6 mb0">Promotional Merchandiser</p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col col-4 || grid-item">
-
-                    <div class="m2 || border border-smoke">
-
-                        <div class="video || block relative min-height-v25">
-
-                            <iframe width="100%" height="285" src="https://www.youtube.com/embed/Tby7FnaCqAo"
-                                    frameborder="0"
-                                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-                            <p class="absolute bottom-0 right-0 white p2 pl3 px4 mb0 bg-lighten-4">0:00</p>
-
-                        </div>
-
-                        <div class="content || pt2 pb3 px4">
-
-                            <div class="author bold">
-
-                                <p class="block h6 mb0">Customer Service Manager</p>
-                                <p class="block h6 mb0">Promotional Merchandiser</p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
+                <?php include_once(AJAX_DIR . 'template-testimonials-ajax.php'); ?>
 
             </div>
 
         </div>
 
     </section>
+
+<script>
+
+    //TODO: Move this into JS file
+
+    function fetchTestimonialPosts() {
+
+        //TODO: Add loader while fetching data.
+        var category_filter = $('#testimonials_filtercats').val();
+
+        $.ajax({
+            url: '<?php echo admin_url( "admin-ajax.php"); ?>',
+            method: 'POST',
+            data: {
+                action: 'fetch_testimonials',
+                category_filter: category_filter
+            },
+            success: function(response){
+                $('#testimonials-listing').html(response);
+            }
+        });
+    }
+
+    function updateFilterState(load_val) {
+        $('#testimonials_filtercats').val(load_val);
+        fetchTestimonialPosts();
+    }
+
+    $('.testimonials_filters').on('change', function() {
+        if($(this).attr('id') == "testimonials_filtercats") {
+            history.pushState({cat:$(this).val()}, "", "/testimonials/"+$(this).val());
+        }
+        fetchTestimonialPosts();
+    });
+
+    $(document).on("ready", function() {
+        updateFilterState($('#testimonials_filtercats').data('loadvalue'));
+    });
+
+    window.onpopstate = function(event) {
+        var value = document.location.href.substring(document.location.href.lastIndexOf("/") + 1) ;
+        if(value != null)
+            updateFilterState(value);
+    };
+
+</script>
+
 
 <?php get_footer(); ?>

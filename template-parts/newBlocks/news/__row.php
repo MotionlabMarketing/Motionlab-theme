@@ -9,6 +9,7 @@
  *
  * @version 1.00
  */
+
 ?>
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "")?> <?=get_blockData($block)?>>
@@ -17,7 +18,7 @@
 
         <div class="col col-12 md-col-<?=$block['content']['cols'][0]?> p2 js-height-match">
 
-            <?php if( sizeof($block['posts']->posts) > 0 ) : ?>
+            <?php if( !empty($block['posts']->posts) ) : ?>
 
             <?php foreach ($block['posts']->posts as $post) :?>
                 <div class="col-12 clearfix mb4 md-flex items-center">

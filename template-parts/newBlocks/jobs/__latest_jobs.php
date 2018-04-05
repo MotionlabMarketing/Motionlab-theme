@@ -148,32 +148,36 @@ $block['block_title']  = get_sub_field($current . '_title_title');
 
 <script type="text/javascript">
 
-    $('.job-filter-select').on('change', function(){
-        updateListing();
-    });
+    jQuery(document).ready(function ($) {
 
-    function updateListing() {
-        //TODO: Update the two lines below to pull the page id and block name from the block itself.
-        //var pageID          = $('section.jobs-latest').data('page-id');
-        //var blockName       = $('section.jobs-latest').data('block-name');
-        var sector_filter   = $('#sortby_sector option:selected').val();
-        var type_filter     = $('#sortby_type option:selected').val();
-        var location_filter        = $('#sortby_location option:selected').val();
-
-        $.ajax({
-            url: '<?php echo admin_url( "admin-ajax.php"); ?>',
-            method: 'POST',
-            data: {
-                action: 'update_block',
-                page_id: '6367',
-                block_name: 'block_jobs',
-                sector_filter: sector_filter,
-                type_filter: type_filter,
-                location_filter: location_filter
-            },
-            success: function(response){
-                $('#job-listing').html(response);
-            }
+        $('.job-filter-select').on('change', function () {
+            updateListing();
         });
-    }
+
+        function updateListing() {
+            //TODO: Update the two lines below to pull the page id and block name from the block itself.
+            //var pageID          = $('section.jobs-latest').data('page-id');
+            //var blockName       = $('section.jobs-latest').data('block-name');
+            var sector_filter = $('#sortby_sector option:selected').val();
+            var type_filter = $('#sortby_type option:selected').val();
+            var location_filter = $('#sortby_location option:selected').val();
+
+            $.ajax({
+                url: '<?php echo admin_url("admin-ajax.php"); ?>',
+                method: 'POST',
+                data: {
+                    action: 'update_block',
+                    page_id: '6367',
+                    block_name: 'block_jobs',
+                    sector_filter: sector_filter,
+                    type_filter: type_filter,
+                    location_filter: location_filter
+                },
+                success: function (response) {
+                    $('#job-listing').html(response);
+                }
+            });
+        }
+
+    });
 </script>

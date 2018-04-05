@@ -18,37 +18,30 @@ $image = ($block['bgImage']['enable'] !== true)? $block['background']['colour'] 
 
     <?= ($block['grid'] == 'container') ? '<div class="container">' : "" ?>
 
-    <div class="content">
+    <div class="content <?=$block['content']['txtAlign']?>">
 
         <div class="col col-12 md-col-6 p4">
+            
+            <?php $heading = convert_heading($block['content']['title']); ?>
 
-            <?php $blockTitle = $block['content']['title'];
-            if (!empty($blockTitle[0]['title'])): ?>
-                <div class="mb3">
-                    <?php include(BLOCKS_DIR . 'sub-elements/_block_titles.php'); ?>
-                </div>
-            <?php endif; ?>
+            <?php render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}"); ?>
 
-            <?php if (!empty($block['content']['content'])): ?>
-                <div class="wysiwyg <?= $block['content']['txtColor'] ?> bold" style="max-width: 80%">
-                    <?= $block['content']['content'] ?>
-                </div>
-            <?php endif; ?>
+            <?php render_wysiwyg($block['content']['content'], true, ["class" => "bold mb0", "style" => "margin-bottom: 0rem"]); ?>
 
         </div>
 
-        <div class="col col-12 md-col-6 p4">
-
-            <?php if (!empty($block['content']['preline'])): ?>
-
-                <p class="mb2 bold"><?= $block['content']['preline'] ?></p>
-
-            <?php endif; ?>
+        <div class="col col-12 md-col-6 p4 limit-p limit-p-70">
 
             <?php if (!empty($block['content']['link']['url'])): ?>
 
                 <a href="<?= $block['content']['link']['url'] ?>"
-                   class="block brand-primary bold h2 mb2"><?= $block['content']['link']['title'] ?></a>
+                   class="block brand-primary bold <?=$heading->size?> mb2"><?= $block['content']['link']['title'] ?></a>
+
+            <?php endif; ?>
+
+            <?php if (!empty($block['content']['preline'])): ?>
+
+                <p class="mb2 bold"><?= $block['content']['preline'] ?></p>
 
             <?php endif; ?>
 

@@ -24,20 +24,7 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
 
     <div class="container">
 
-        <div class="col col-6 || p4">
-
-            <div class="mb3">
-                <?php
-                if (!empty($blockTitle[0]['title'])) {
-                    include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
-            </div>
-
-            <div class="wysiwyg">
-                <?=get_sub_field($current . '_content')?>
-            </div>
-
-        </div>
-
+        <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
         <div class="col col-12 || p2 md-p4" data-tabs="wrapper">
 

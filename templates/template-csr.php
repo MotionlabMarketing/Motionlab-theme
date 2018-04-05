@@ -36,7 +36,7 @@ get_header(); ?>
                 <?php if (has_post_thumbnail( $latest_post->ID ) ): ?>
                     <?php $image_url = wp_get_attachment_image( get_post_thumbnail_id( $latest_post->ID ), "large", "", ["class" => "box-shadow-1"] ) ?>
                 <?php else: ?>
-                    <?php $image_url = wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1"]) // TODO: Default Image ?>
+                    <?php $image_url = get_field('fallback_placeholder_image', 'option'); // TODO: Default Image ?>
                 <?php endif; ?>
 
                 <a href="<?=$latest_post->guid?>">
@@ -120,7 +120,7 @@ get_header(); ?>
 
                     <p class="h6 mb2" data-mh="post-date"><?=date('d M Y', strtotime($post->post_date));?></p>
 
-                    <a href="<?=$post->guid?>"><h3 class="h4 brand-primary" data-mh="post-title"><?=$post->post_title?></h3></a>
+                    <a href="<?=get_permalink($post->ID)?>"><h3 class="h4 brand-primary" data-mh="post-title"><?=$post->post_title?></h3></a>
 
                     <a href="<?=get_permalink($post->ID)?>"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('<?=$image_url?>');"></div></a>
 
@@ -151,7 +151,7 @@ get_header(); ?>
 
     //TODO: Move this into JS file
 
-    function fetchNewsPosts(page_number) {
+    function fetchNewsPosts(page_number, firstLoad = false) {
 
         //TODO: Add loader while fetching data.
         var order_filter = $('#csr_orderby').val();
@@ -169,9 +169,11 @@ get_header(); ?>
             success: function(response){
                 $('#news-listing').html(response);
 
-
-                $('html,body').animate({
-                    scrollTop: $("#news-listing-header").offset().top}, 'slow');
+                if(!firstLoad){
+                    $('html,body').animate({
+                        scrollTop: $("#news-listing-header").offset().top
+                    }, 'slow');
+                }
             },
             complete: function () {
                 setTimeout(function() {
@@ -187,6 +189,11 @@ get_header(); ?>
         });
     }
 
+    function updateFilterState(load_val, firstLoad = false) {
+        $('#csr_filtercats').val(load_val);
+        fetchNewsPosts(1, firstLoad);
+    }
+
     $(document).on('click', '.page-number', function(){
         var page_number = $(this).data('page-number');
         fetchNewsPosts(page_number);
@@ -200,7 +207,7 @@ get_header(); ?>
     });
 
     $(document).on("ready", function() {
-        updateFilterState($('#csr_filtercats').data('loadvalue'));
+        updateFilterState($('#csr_filtercats').data('loadvalue'), true);
     });
 
     window.onpopstate = function(event) {
