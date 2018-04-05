@@ -79,7 +79,15 @@
 
                 <?php render_wysiwyg($block['intro']); ?>
 
-                <div class="mt4 text-center lg-text-left lg-flex items-center border-smoke border-top pt4 border-darken-3">
+                <?php
+                    if (!empty($block['content']['cta']['append']) && !empty($block['content']['cta']['link'])) {
+                        $alignment = "{$block['content']['align']} lg-flex items-center";
+                    } else {
+                        $alignment = "{$block['content']['align']}";
+                    }
+                ?>
+
+                <div class="mt4 <?=$alignment?> border-smoke border-top pt4 border-darken-3">
 
                     <?php foreach ($block['content']['buttons'] as $button): ?>
 
