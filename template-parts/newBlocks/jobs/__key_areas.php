@@ -57,12 +57,12 @@
 
                                         <li class="col col-12 lg-col-7">
 
-                                            <select id="orderby" class="select btn-medium border-white border lh1 mb2 width-100">
+                                            <select id="key_areas_filter" class="select btn-medium border-white border lh1 mb2 width-100">
                                                 <option value="">Search Jobs</option>
                                                  <?php
                                                     foreach($block['sector_select_options'] as $term): ?>
 
-                                                        <option value="<?= $term->name; ?>" data-redirect="<?= $term->taxonomy;?>/<?= $term->slug; ?>"> <?= $term->name; ?> </option>
+                                                        <option value="<?= $term->name; ?>" data-redirect="/find-a-job/<?= $term->slug; ?>"> <?= $term->name; ?> </option>
 
                                                  <?php endforeach; ?>
                                             </select>
@@ -87,3 +87,11 @@
     </div>
 
 </section>
+
+<script>
+    jQuery(document).ready(function ($) {
+        $('#key_areas_filter').on('change', function () {
+            window.location = $('option:selected', this).data('redirect');
+        });
+    });
+</script>

@@ -65,19 +65,19 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
                 <hr>
                 <div class="clearfix py5">
                     <h2 class="text-center brand-primary h3">Related Articles</h2>
-                    <div class="mxn3 clearfix">
+                    <div class="mxn3 clearfix js-match-height">
                         <?php foreach ($related as $post) {
                             //TODO: Needs converting to callable single post listing output.
                             ?>
-                            <div class="col col-12 sm-col-6 md-col-3 lg-col-3 || p4 || js-match-height">
+                            <div class="col col-12 sm-col-6 md-col-3 lg-col-3 p4">
 
-                                <p class="h6 mb2"><?=get_the_date()?></p>
+                                <p class="h6 mb2" data-mh="post-date"><?=get_the_date()?></p>
 
-                                <h3 class="h4 brand-primary"><?=get_the_title()?></h3>
+                                <h3 class="h4 brand-primary" data-mh="post-title"><?=get_the_title()?></h3>
 
-                                <a href="#"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('<?php if (!empty(get_the_post_thumbnail_url())) : the_post_thumbnail_url('large'); else: echo get_field('fallback_placeholder_image', 'option'); endif; ?>');"></div></a>
+                                <a href="#"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('<?php if (!empty(get_the_post_thumbnail_url())) : the_post_thumbnail_url('large'); else: echo get_field('fallback_placeholder_image', 'option'); endif; ?>');" data-mh="post-image"></div></a>
 
-                                <p class="h5 mb3"><?=get_the_excerpt($post->ID)?></p>
+                                <p class="h5 mb3" data-mh="post-content"><?=get_the_excerpt($post->ID)?></p>
 
                                 <a href="<?=the_permalink(get_the_id())?>" class="block mb4 || h5 bold">Read full story</a>
 
