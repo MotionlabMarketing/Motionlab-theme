@@ -104,7 +104,8 @@ Class _block_news
 			'post_type'         => 'post',
 			'orderby'           => $orderby,
 			'order'             => $order,
-			'tax_query'         => $tax_query
+			'tax_query'         => $tax_query,
+			'post_status'       => array( 'publish' )
 		);
 
 		$this->block['posts'] = new WP_Query( $args );
@@ -153,7 +154,8 @@ Class _block_news
 			'post_type'         => 'post',
 			'orderby'           => $orderby,
 			'order'             => $order,
-			'tax_query'         => $tax_query
+			'tax_query'         => $tax_query,
+			'post_status'       => array( 'publish' )
 		);
 
 		$this->block['posts'] = new WP_Query( $args );
@@ -176,7 +178,8 @@ Class _block_news
 				'paged'             => 1,
 				'post_type'         => 'post',
 				'orderby'           => 'date',
-				'order'             => 'DESC'
+				'order'             => 'DESC',
+				'post_status'       => array( 'publish' )
 			);
 
 			$this->block['posts'] = new WP_Query( $args );
@@ -202,7 +205,8 @@ Class _block_news
 					'post_type'         => 'post',
 					'orderby'           => 'date',
 					'order'             => 'DESC',
-					'post__not_in'      => get_sub_field('block_news_articles')?:[]
+					'post__not_in'      => get_sub_field('block_news_articles')?:[],
+					'post_status'       => array( 'publish' )
 				);
 
 				$temp_posts = new WP_Query( $args );

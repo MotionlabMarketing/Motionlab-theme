@@ -25,7 +25,6 @@ $blockLogo = get_sub_field($current . '_logo');
 
             <?php render_heading( "{$block['headings'][1]->title}", "{$block['headings'][1]->type}", "{$block['headings'][1]->size}", "{$block['headings'][1]->color}", "{$block['headings'][1]->case}"); ?>
 
-
         </div>
 
     <?=($block['grid'] == 'container')? '</div>' : ""?>
