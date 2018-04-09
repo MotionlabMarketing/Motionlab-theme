@@ -629,12 +629,6 @@ function ml_categories_rewrite() {
 	);
 
 	add_rewrite_rule(
-		'find-talent/([a-zA-Z0-9-]+)/?$',
-		'index.php?pagename=find-talent&talent_category=$matches[1]',
-		'top'
-	);
-
-	add_rewrite_rule(
 		'gallery/([a-zA-Z0-9-]+)/?$',
 		'index.php?pagename=gallery&gallery_category=$matches[1]',
 		'top'
@@ -645,7 +639,6 @@ add_action('init', 'ml_categories_rewrite');
 function ml_query_vars($query_vars) {
 	$query_vars[] = 'news_category';
 	$query_vars[] = 'testimonials_category';
-	$query_vars[] = 'talent_category';
 	$query_vars[] = 'gallery_category';
 
 	return $query_vars;
