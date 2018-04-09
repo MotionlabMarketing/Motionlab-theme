@@ -194,7 +194,9 @@ $boxes = get_field('template_jobs_sidebarBoxes');
                     $('#jobs-listing').html(response);
                     $('.js-match-height').matchHeight();
 
+                    console.log(firstLoad);
                     if (!firstLoad) {
+                        console.log("Doing this anyway ffs");
                         $('html,body').animate({
                             scrollTop: $("#jobs-listing-header").offset().top
                         }, 'slow');
@@ -214,10 +216,6 @@ $boxes = get_field('template_jobs_sidebarBoxes');
             $('#sortby_sector').val(load_val);
             fetchJobs(1, firstLoad);
         }
-
-        $(document).on("ready", function () {
-            updateFilterState($('#sortby_sector').data('loadvalue'));
-        });
 
         window.onpopstate = function (event) {
             var value = document.location.href.substring(document.location.href.lastIndexOf("/") + 1);
