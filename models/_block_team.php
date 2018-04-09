@@ -46,6 +46,7 @@ Class _block_team
 				'posts_per_page'    => $profile_count - (!empty($this->selected_profiles) ? sizeof($this->selected_profiles) : 0),
 				'paged'             => 1,
 				'post_type'         => 'team_members',
+				'post_status'       => array( 'publish' ),
 				'order'             => 'rand',
 				'post__not_in'      => $this->selected_profiles
 			);
