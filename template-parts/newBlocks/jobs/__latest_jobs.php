@@ -26,15 +26,15 @@ $block['block_title']  = get_sub_field($current . '_title_title');
 
                 <div class="col col-12  md-col-9 || js-match-height">
 
-                    <a href=""><h3 class="mb2 black h5"><?=$post->post_title?></h3></a>
+                    <a href="<?=get_permalink($post->ID)?>"><h3 class="mb2 black h5"><?=$post->post_title?></h3></a>
 
-                    <p class="h6 mb0 bold">LOCATION <span class="black">•</span> PERMANENT </p>
+                    <p class="h6 mb0 bold"> <?=$post->locations[0]->name?> <span class="black">•</span> <?=get_field('jobs_role_salary', $post->ID)?> <span class="black">•</span> <?=$post->types[0]->name?> </p>
 
                 </div>
 
                 <div class="col col-12 md-col-3 || js-match-height || flex sm-items-center sm-justify-center">
 
-                    <a href="" class="btn btn-primary btn-small white width-100 h6 right">Apply Now</a>
+                    <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white width-100 h6 right">Apply Now</a>
 
                 </div>
 
@@ -120,15 +120,15 @@ $block['block_title']  = get_sub_field($current . '_title_title');
 
                         <div class="col col-12  md-col-9 || js-match-height">
 
-                            <a href=""><h3 class="mb2 black h5"><?=$post->post_title?></h3></a>
+                            <a href="<?=get_permalink($post->ID)?>"><h3 class="mb2 black h5"><?=$post->post_title?></h3></a>
 
-                            <p class="h6 mb0 bold"> <?=$post->locations[0]->name?> <span class="black">•</span> SALARY RANGE <span class="black">•</span> <?=$post->types[0]->name?> </p>
+                            <p class="h6 mb0 bold"> <?=$post->locations[0]->name?> <span class="black">•</span> <?=get_field('jobs_role_salary', $post->ID)?> <span class="black">•</span> <?=$post->types[0]->name?> </p>
 
                         </div>
 
                         <div class="col col-12 md-col-3 || js-match-height || flex sm-items-center sm-justify-center">
 
-                            <a href="<?=$post->guid?>" class="btn btn-primary btn-small white width-100 h6 right">Apply Now</a>
+                            <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white width-100 h6 right">Apply Now</a>
 
                         </div>
 
