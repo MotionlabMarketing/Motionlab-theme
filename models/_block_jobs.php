@@ -125,16 +125,16 @@ Class _block_jobs
 
 		foreach($this->block['posts']->posts as $key => $post) {
 
-			$this->block['posts']->posts[$key]->sectors     = get_the_terms($post->ID, 'sectors');
-			$this->block['posts']->posts[$key]->types       = get_the_terms($post->ID, 'types');
-			$this->block['posts']->posts[$key]->roles       = get_the_terms($post->ID, 'roles');
-			$this->block['posts']->posts[$key]->locations   = get_the_terms($post->ID, 'locations');
+			$this->block['posts']->posts[$key]->sectors     = get_the_terms($post->ID, 'sectors', array("hide_empty" => true));
+			$this->block['posts']->posts[$key]->types       = get_the_terms($post->ID, 'types', array("hide_empty" => true));
+			$this->block['posts']->posts[$key]->roles       = get_the_terms($post->ID, 'roles', array("hide_empty" => true));
+			$this->block['posts']->posts[$key]->locations   = get_the_terms($post->ID, 'locations', array("hide_empty" => true));
 
 		}
 
 	}
 
-	public function fetchFeedPosts($posts_per_page = 6, $page = 1) {
+	public function fetchFeedPosts($posts_per_page = 6, $page = 1, $post_type = 'jobs') {
 		$tax_query = [];
 
 		if ( isset($_POST['sector_filter']) && $_POST['sector_filter'] != '' ) {
@@ -168,8 +168,6 @@ Class _block_jobs
 				'field'     => 'slug'
 			);
 		}
-
-		$post_type = 'jobs';
 
 		$args = array(
 			'posts_per_page'    => $posts_per_page,
