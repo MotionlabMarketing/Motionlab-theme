@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Jobs – Listing
+ * Template Name: Talent – Listing
  *
  * TODO: Needs converting to single when CPT has been added.
  */
@@ -12,7 +12,7 @@ get_header();
 include_once(MODELS_DIR . '_block_jobs.php');
 $jobs_controller = new _block_jobs(null, null);
 $jobs_controller->fetchCategories();
-$block = $jobs_controller->fetchFeedPosts();
+$block = $jobs_controller->fetchFeedPosts(4, 1, 'talents');
 
 $boxes = get_field('template_jobs_sidebarBoxes');
 ?>
@@ -42,8 +42,8 @@ $boxes = get_field('template_jobs_sidebarBoxes');
 
                     <?php $disabled = sizeof($block['sector_select_options']) == 0 ? "disabled" : ""; ?>
                     <select style="min-width:20%;"
-                            class="select mb4 md-ml3 width-100 md-width-auto box-shadow-3 jobs-filters"
-                            data-loadvalue="<?= get_query_var('sector') ?>" id="sortby_sector" <?= $disabled ?>>
+                            class="select mb4 md-ml3 width-100 md-width-auto box-shadow-3 talent-filters"
+                            id="sortby_sector" data-loadvalue="<?= get_query_var('sector') ?>" <?= $disabled ?>>
                         <option value="">Filter by Sector</option>
                         <?php
                         foreach ($block['sector_select_options'] as $option) :?>
@@ -54,9 +54,24 @@ $boxes = get_field('template_jobs_sidebarBoxes');
                         ?>
                     </select>
 
+                    <?php $disabled = sizeof($block['role_select_options']) == 0 ? "disabled" : ""; ?>
+                    <select style="min-width:20%;"
+                            class="select mb4  md-ml3 width-100 md-width-auto box-shadow-3 talent-filters"
+                            id="sortby_role" <?= $disabled ?>>
+                        <option value="">Filter by Role</option>
+                        <?php foreach ($block['role_select_options'] as $option) : ?>
+                            <option class="option" value="<?= $option->slug ?>"
+                                    data-taxonomy="<?= $option->taxonomy ?>"><?= $option->name ?></option>
+                            <?php foreach ($option->children as $option_children): ?>
+                                <option class="optgroup" value="<?= $option_children->slug ?>"
+                                        data-taxonomy="<?= $option_children->taxonomy ?>"><?= $option_children->name ?></option>
+                            <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </select>
+
                     <?php $disabled = sizeof($block['type_select_options']) == 0 ? "disabled" : ""; ?>
                     <select style="min-width:20%;"
-                            class="select mb4 md-ml3 width-100 md-width-auto box-shadow-3 jobs-filters"
+                            class="select mb4 md-ml3 width-100 md-width-auto box-shadow-3 talent-filters"
                             id="sortby_type" <?= $disabled ?>>
                         <option value="">Filter by Type</option>
                         <?php
@@ -68,21 +83,6 @@ $boxes = get_field('template_jobs_sidebarBoxes');
                         ?>
                     </select>
 
-                    <?php $disabled = sizeof($block['location_select_options']) == 0 ? "disabled" : ""; ?>
-                    <select style="min-width:20%;"
-                            class="select mb4 md-ml3 width-100 md-width-auto box-shadow-3 jobs-filters"
-                            id="sortby_location" <?= $disabled ?>>
-                        <option value="">Filter by Location</option>
-                        <?php foreach ($block['location_select_options'] as $option) : ?>
-                            <option class="option" value="<?= $option->slug ?>"
-                                    data-taxonomy="<?= $option->taxonomy ?>"><?= $option->name ?></option>
-                            <?php foreach ($option->children as $option_children): ?>
-                                <option class="optgroup" value="<?= $option_children->slug ?>"
-                                        data-taxonomy="<?= $option_children->taxonomy ?>"><?= $option_children->name ?></option>
-                            <?php endforeach; ?>
-                        <?php endforeach; ?>
-                    </select>
-
                 </form>
 
             </div>
@@ -90,50 +90,45 @@ $boxes = get_field('template_jobs_sidebarBoxes');
             <div id="jobs-listing" class="col col-12 md-col-12 lg-col-8 mb6 clearfix">
 
                 <?php foreach ($block['posts']->posts as $post) : ?>
-                    <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2 bg-white">
+                    <div class="col-12 md-col-12 p3 || left">
 
-                        <div class="col col-12 md-col-9">
+                        <div class="box-shadow-2 p4">
 
-                            <a href="<?= get_permalink($post->ID) ?>"><h3 class="mb2 h3"><?= $post->post_title ?></h3>
-                            </a>
+                            <h4 class="h3 mb1"><a
+                                        href="<?= get_permalink($post->ID) ?>"><?= get_field('talent_name', $post->ID); ?></a>
+                            </h4>
+                            <p class="bold mb2" style="font-size: 1rem">
+                                <?php $location = get_field('talent_location', $post->ID); ?>
+                                <?php if ($location != "") : ?>
+                                    <span class="inline-block"><?= $location; ?></span>
+                                <?php endif; ?>
+                                <?php foreach ($post->types as $type) : ?>
+                                    <span class="black">•</span>
+                                    <span><?= $type->name; ?></span>
+                                <?php endforeach; ?>
+                            </p>
 
-                            <?php if (get_field('jobs_role_salary', $post->ID) != 0):
-                                $salary = "£" . number_format(get_field('jobs_role_salary', $post->ID));
-                            else :
-                                $salary = "Salary not Specified";
-                            endif; ?>
-                            <p class="h4 bold mb0"><?= $post->locations[0]->name ?><span
-                                        class="muted"> •</span> <?= $salary ?> <span
-                                        class="muted">•</span> <?= $post->types[0]->name ?></p>
+                            <div class="block mb4" style="font-size: 1rem"><small class="mr3 mt2 block brand-primary">Roles available for</small>
 
-                        </div>
+                                <ul class="inline-block tags tags-right right">
+                                    <?php foreach ($post->roles as $role) : ?>
+                                        <li class="border-radius-3"><?= $role->name ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
 
-                        <div class="col col-12 md-col-3 mt2">
+                            <div class="h4 clearfix border border-light border-bottom">
+                                <?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr(get_field('talent_details', $post->ID), 0, 100) . "..."; ?>
+                            </div>
 
-                            <a href="<?= get_permalink($post->ID) ?>"
-                               class="btn btn-primary btn-small white md-width-100 h6 md-right">Apply Now</a>
+                            <a href="<?= get_permalink($post->ID) ?>" class="btn mt3 btn-primary">Learn More</a>
 
                         </div>
 
                     </div>
-                <?php endforeach;
-                $page = 1; ?>
+                <?php endforeach; ?>
 
-                <nav class="pagination || clearfix block text-center border-top border-darken-1 py4 mt5">
-
-                    <?php if ($page - 2 > 0) : ?> <span aria-current="page" data-page-number="<?= $page - 2 ?>"
-                                                        class="page-numbers page-number cursor-pointer"><?= $page - 2 ?></span> <?php endif; ?>
-                    <?php if ($page - 1 > 0) : ?> <span aria-current="page" data-page-number="<?= $page - 1 ?>"
-                                                        class="page-numbers page-number cursor-pointer"><?= $page - 1 ?></span> <?php endif; ?>
-                    <span aria-current="page" class="page-numbers current cursor-pointer"><?= $page ?></span>
-                    <?php if ($page + 1 <= $block['posts']->max_num_pages) : ?><span aria-current="page"
-                                                                                     data-page-number="<?= $page + 1 ?>"
-                                                                                     class="page-numbers page-number cursor-pointer"><?= $page + 1 ?></span><?php endif; ?>
-                    <?php if ($page + 2 <= $block['posts']->max_num_pages) : ?><span aria-current="page"
-                                                                                     data-page-number="<?= $page + 2 ?>"
-                                                                                     class="page-numbers page-number cursor-pointer"><?= $page + 2 ?></span><?php endif; ?>
-
-                </nav>
+                <?php include(BLOCKS_DIR . '_parts/__basic_pagination.php'); ?>
 
             </div>
 
@@ -173,22 +168,22 @@ $boxes = get_field('template_jobs_sidebarBoxes');
     jQuery(document).ready(function ($) {
         //TODO: Move this into JS file
 
-        function fetchJobs(page_number, firstLoad = false) {
+        function fetchTalent(page_number, firstLoad = false) {
 
             //TODO: Add loader while fetching data.
             var sector_filter = $('#sortby_sector option:selected').val();
             var type_filter = $('#sortby_type option:selected').val();
-            var location_filter = $('#sortby_location option:selected').val();
+            var role_filter = $('#sortby_role option:selected').val();
 
             $.ajax({
                 url: '<?php echo admin_url("admin-ajax.php"); ?>',
                 method: 'POST',
                 data: {
-                    action: 'fetch_jobs',
+                    action: 'fetch_talent',
                     jobs_page: page_number,
                     sector_filter: sector_filter,
                     type_filter: type_filter,
-                    location_filter: location_filter
+                    role_filter: role_filter
                 },
                 success: function (response) {
                     $('#jobs-listing').html(response);
@@ -203,21 +198,21 @@ $boxes = get_field('template_jobs_sidebarBoxes');
             });
         }
 
-        $('.jobs-filters').on('change', function () {
+        $('.talent-filters').on('change', function () {
             if ($(this).attr('id') == 'sortby_sector') {
-                history.pushState("find-a-job", "Cummins Mellor Recruitment", "/find-a-job/" + $(this).val());
+                history.pushState("talents", "Cummins Mellor Recruitment", "/talents/" + $(this).val());
             }
-            fetchJobs(1);
+            fetchTalent(1);
         });
 
         function updateFilterState(load_val, firstLoad = false) {
             $('#sortby_sector').val(load_val);
-            fetchJobs(1, firstLoad);
+            fetchTalent(1, firstLoad);
         }
 
         $(document).on('click', '.page-number', function () {
             var page_number = $(this).data('page-number');
-            fetchJobs(page_number);
+            fetchTalent(page_number);
         });
 
         window.onpopstate = function (event) {

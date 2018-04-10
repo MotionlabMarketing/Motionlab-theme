@@ -154,6 +154,20 @@ function ml_update_jobs() {
 	die();
 }
 
+add_action( 'wp_ajax_fetch_talent', 'ml_update_talent' );
+add_action( 'wp_ajax_nopriv_fetch_talent', 'ml_update_talent' );
+function ml_update_talent() {
+
+	/* Load in team block controller to access posts easily. */
+	include_once(MODELS_DIR . '_block_jobs.php');
+	$jobs_controller = new _block_jobs(null, null);
+	$posts = $jobs_controller->fetchFeedPosts(4, $_POST['jobs_page'], 'talents');
+
+	include_once(TEMPLATE_DIR . 'ajax/template-talent-ajax.php');
+
+	die();
+}
+
 add_action( 'wp_ajax_fetch_testimonials', 'ml_update_testimonials' );
 add_action( 'wp_ajax_nopriv_fetch_testimonials', 'ml_update_testimonials' );
 function ml_update_testimonials() {
