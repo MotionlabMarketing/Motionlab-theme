@@ -74,7 +74,7 @@ Class _block_news
 
 	public function fetchFeedPosts( $post_per_page = 12, $page = 1 ) {
 
-		$tax_query[] = [
+		$tax_query = [
 			'taxonomy'  => 'post_specific_types',
 			'terms'     => array('csr'),
 			'field'     => 'slug',
@@ -89,7 +89,7 @@ Class _block_news
 					'terms'     => [ $_POST['category_filter'] ],
 					'field'     => 'slug'
 				],
-				$tax_query[0]
+				$tax_query
 			);
 
 		}
@@ -121,7 +121,7 @@ Class _block_news
 
 	public function fetchCSRPosts( $post_per_page = 12, $page = 1 ) {
 
-		$tax_query[] = [
+		$tax_query = [
 			'taxonomy'  => 'post_specific_types',
 			'terms'     => [ 'csr' ],
 			'field'     => 'slug'
@@ -138,7 +138,7 @@ Class _block_news
 						'terms'     => [ $_POST['category_filter'] ],
 						'field'     => 'slug'
 					],
-					$tax_query[0]
+					$tax_query
 				)
 
 			];
