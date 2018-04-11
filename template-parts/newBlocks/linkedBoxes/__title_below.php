@@ -31,7 +31,7 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-        <div class="clearfix py5">
+        <div class="clearfix pt5 pb3">
 
             <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
@@ -39,9 +39,9 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
                 <?php
                 // STANDARD BOXES WITH IMAGE AND TITLE //
                 if ($item['block_linkBoxes_breakout_true'] !== true): ?>
-                    <div class="item col col-12 md-col-<?=$block['columns']?> p3 block relative lg-hover-zoom" data-mh="box-height">
+                    <div class="item col col-12 md-col-<?=$block['columns']?> p3 block relative" data-mh="box-height">
                         <a href="<?= $item['block_linkBoxes_button_button_link']['url'] ?>"
-                           class="block zoom relative overflow-hidden bg-cover bg-center border-light border-top border-left border-right box-shadow-3 border-bottom <?= $item['background_colour']['system_background_colours'] ?> <?= $item['text_colour']['system_text_colours'] ?> || zoom" <?= ($item['block_linkBoxes_button_button_link']['title'] ? 'title="' . $item['block_linkBoxes_button_button_link']['title'] . '"' : '') ?> <?= ($item['block_linkBoxes_button_button_link']['target'] ? 'target="' . $item['block_linkBoxes_button_button_link']['target'] . '"' : '') ?>>
+                           class="block relative overflow-hidden bg-cover bg-center border-light border-top border-left border-right box-shadow-3 border-bottom <?=$item['block_linkBoxes_button_system_text_colours']?> <?=$item['block_linkBoxes_button_system_background_colours']?> || zoom" <?= ($item['block_linkBoxes_button_button_link']['title'] ? 'title="' . $item['block_linkBoxes_button_button_link']['title'] . '"' : '') ?> <?= ($item['block_linkBoxes_button_button_link']['target'] ? 'target="' . $item['block_linkBoxes_button_button_link']['target'] . '"' : '') ?>>
 
                             <?php if ($item['block_linkBoxes_media'] == "video"): ?>
                                 <div class="no-resize" style="margin-bottom: -8px">
@@ -49,7 +49,7 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
                                     <iframe width="100%" height="270" src="https://www.youtube.com/embed/<?=$video['id'][1]?>" class="js-match-height" frameborder="0" allow="encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                                 </div>
                             <?php else: ?>
-                                <div class="image-holder || js-match-height || bg-grey <?= $txtColor ?>"
+                                <div class="image-holder js-match-height bg-grey <?= $txtColor ?>"
                                  style="background-image: url('<?=$item['block_linkBoxes_image']?>')"></div>
                             <?php endif; ?>
                             <div class="content h3 flex items-center justify-center" data-mh="box-title">

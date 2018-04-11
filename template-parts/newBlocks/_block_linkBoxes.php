@@ -9,8 +9,6 @@
  * @version 1.00
  */
 
-$layout = get_sub_field($current . '_layout');
-
 $block['content']['columns'] = get_sub_field($current . '_columns');
 
 $block['content']['bgColor']          = get_sub_field($current . '_background_system_background_colours');
@@ -21,7 +19,7 @@ $block['content']['overlay']          = get_sub_field($current . '_enableOverlay
 $block['content']['darken']           = get_sub_field($current . '_darken');
 $block['content']['darkenStrength']   = get_sub_field($current . '_darkenStrength');
 
-$block['columns']                     = 12 / $block['content']['columns'];
+$block['columns']                     = 12 / $block['content']['columns'][0];
 
 $block['content']['items']            = get_sub_field($current . '_items');
 $block['content']['hover']            = get_sub_field($current . '_hoverContent');
@@ -30,7 +28,7 @@ $block['enableHover']                 = ($block['content']['hover'] == true)? "s
 
 $block['enableOverlay']               = get_sub_field($current . '_enableOverlay');
 
-switch ($layout):
+switch ($block['layout']):
     case "gridRegressive":
         include ('linkedBoxes/__gridRegressive.php');
         break;
