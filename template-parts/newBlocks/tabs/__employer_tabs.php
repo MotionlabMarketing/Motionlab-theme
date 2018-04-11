@@ -75,7 +75,7 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
 
                                         <?php
                                         if ($i == 1)
-                                            $term = "Jobs";
+                                            $term = "Talent";
                                         else
                                             $term = "Jobs";
                                         ?>
