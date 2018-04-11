@@ -128,7 +128,7 @@ $block['block_title']  = get_sub_field($current . '_title_title');
 
                         <div class="col col-12 md-col-3 || js-match-height || flex sm-items-center sm-justify-center">
 
-                            <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white width-100 h6 right"Find out more</a>
+                            <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white width-100 h6 right">Find out more</a>
 
                         </div>
 

@@ -22,8 +22,6 @@ $blockTitle  = get_sub_field($current . '_title_title');
 
 $i = 1;
 $events = get_sub_field($current . '_events');
-
-//pa($events);
 ?>
 
 
@@ -47,7 +45,7 @@ $events = get_sub_field($current . '_events');
                         $a = 1;
                         foreach ($events as $event): ?>
 
-                            <li><a href="#0" data-date="<?=$event['date']?>" class="bold <?=($a == 1)? 'selected' : ''?>"><?=date('M Y', strtotime($event['date']))?></a></li>
+                            <li><a href="#0" data-date="<?=$event['date']?>" class="bold <?=($a == 1)? 'selected' : ''?>"><?=date('M Y', strtotime(str_replace("/", "-", $event['date']))) ?></a></li>
 
                             <?php $a++; endforeach; ?>
 
