@@ -12,9 +12,9 @@
 ?>
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "")?> <?=get_blockData($block)?>>
 
-    <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
+    <div class="container">
 
-            <div class="text-center mb6">
+            <div class="text-center mb4">
 
                 <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}"); ?>
 
@@ -33,6 +33,6 @@
 
             </div>
 
-    <?=($block['grid'] == 'container')? '</div>' : ""?>
+    </div>
 
 </section>

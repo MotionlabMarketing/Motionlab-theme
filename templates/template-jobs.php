@@ -90,7 +90,7 @@ $boxes = get_field('template_jobs_sidebarBoxes');
             <div id="jobs-listing" class="col col-12 md-col-12 lg-col-8 mb6 clearfix">
 
                 <?php foreach ($block['posts']->posts as $post) : ?>
-                    <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2 bg-white">
+                    <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2 bg-white flex items-center">
 
                         <div class="col col-12 md-col-9">
 
@@ -111,7 +111,7 @@ $boxes = get_field('template_jobs_sidebarBoxes');
                         <div class="col col-12 md-col-3 mt2">
 
                             <a href="<?= get_permalink($post->ID) ?>"
-                               class="btn btn-primary btn-small white md-width-100 h6 md-right">Apply Now</a>
+                               class="btn btn-primary btn-small white md-width-100 h6 md-right">Find out more</a>
 
                         </div>
 

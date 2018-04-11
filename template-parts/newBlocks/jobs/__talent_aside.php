@@ -56,11 +56,11 @@
                             <?php endforeach; ?>
                         </p>
 
-                        <div class="block mb2 md-mb4 h6"><span class="mr3 mb2 mt2 md-mb0 block md-inline brand-primary">Roles available for</span>
+                        <div class="block mb2 md-mb2 h6"><p class="block mb1 md-inline brand-primary">Roles available for</p>
 
-                            <ul class="inline-block tags tags-right md-right border-radius">
+                            <ul class="block tags border-radius">
                                 <?php foreach($post->roles as $role) : ?>
-                                    <li><?=$role->name?></li>
+                                    <li class="mb1"><?=$role->name?></li>
                                 <?php endforeach; ?>
                             </ul>
                         </div>

@@ -555,6 +555,40 @@ footer {
 }
 
 /**
+ * MENUS
+ */
+.ml_menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0 0.5rem 0 0;
+    display: inline-block;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.ml_menu_list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0 0 0.5rem 0;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.curator { display: inline-block; margin: 0 1.5rem; }
+
+/**
 * FORM STYLING
 */
 
@@ -766,11 +800,11 @@ form {
   .gform_button {
     color: $brand-white;
     display: inline-block;
-    border: 1px solid $brand-primary;
-    background-color: $brand-primary;
+    border: 1px solid $grey;
+    background-color: $grey;
 
     &:hover {
-      background-color: darken($brand-primary, 10%);
+      background-color: darken($grey, 10%);
     }
   }
 
@@ -795,7 +829,7 @@ form {
       padding-left: 2rem;
       padding-right: 2rem;
       color: $brand-white;
-      border: 1px solid $brand-primary;
+      border: 1px solid $grey;
     }
   }
 
@@ -2591,9 +2625,3 @@ hr.border-5 {
     background-color: $brand-primary;
   }
 }
-
-//background: #ed4077; /* Old browsers */
-//background: -moz-linear-gradient(top, #ed4077 0%, #e56e91 100%); /* FF3.6-15 */
-//background: -webkit-linear-gradient(top, #ed4077 0%,#e56e91 100%); /* Chrome10-25,Safari5.1-6 */
-//background: linear-gradient(to bottom, #ed4077 0%,#e56e91 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed4077', endColorstr='#e56e91',GradientType=0 );
