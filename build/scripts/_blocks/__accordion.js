@@ -7,10 +7,14 @@
  * @created 22 Mar 2018
  */
 
+console.log('accordion loaded')
+
 jQuery(document).ready(function ($) {
 
     // OPEN AND CLOSE ACCORDION COLLECTIONS.
-    $('[ data-accordion-collection]').on('click', function() {
+    $('[data-accordion-collection]').on('click', function() {
+
+        console.log('clicked')
 
         // GET THE NUMBER OF THE ROW COLLECTION.
         var collecton = $(this).data('accordion-collection');

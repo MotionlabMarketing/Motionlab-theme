@@ -859,36 +859,38 @@ jQuery(document).ready(function ($) {
 /*======================================================
 GOOGLE MAP
 ========================================================*/
-//https://snazzymaps.com/style/60/blue-gray
-var styles = [{featureType: "water", stylers: [{visibility: "on"}, {color: "#b5cbe4"}]}, {
-    featureType: "landscape",
-    stylers: [{color: "#efefef"}]
-}, {featureType: "road.highway", elementType: "geometry", stylers: [{color: "#83a5b0"}]}, {
-    featureType: "road.arterial",
-    elementType: "geometry",
-    stylers: [{color: "#bdcdd3"}]
-}, {featureType: "road.local", elementType: "geometry", stylers: [{color: "#ffffff"}]}, {
-    featureType: "poi.park",
-    elementType: "geometry",
-    stylers: [{color: "#e3eed3"}]
-}, {
-    featureType: "administrative",
-    stylers: [{visibility: "on"}, {lightness: 33}]
-}, {featureType: "road"}, {
-    featureType: "poi.park",
-    elementType: "labels",
-    stylers: [{visibility: "on"}, {lightness: 20}]
-}, {}, {featureType: "road", stylers: [{lightness: 20}]}];
-var map;
-var markers = [];
-var infowindow = [];
-var mapOptions = {
-    zoom: 6,
-    styles: styles,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-};
+
 
 function initialize() {
+
+    //https://snazzymaps.com/style/60/blue-gray
+    var styles = [{featureType: "water", stylers: [{visibility: "on"}, {color: "#b5cbe4"}]}, {
+        featureType: "landscape",
+        stylers: [{color: "#efefef"}]
+    }, {featureType: "road.highway", elementType: "geometry", stylers: [{color: "#83a5b0"}]}, {
+        featureType: "road.arterial",
+        elementType: "geometry",
+        stylers: [{color: "#bdcdd3"}]
+    }, {featureType: "road.local", elementType: "geometry", stylers: [{color: "#ffffff"}]}, {
+        featureType: "poi.park",
+        elementType: "geometry",
+        stylers: [{color: "#e3eed3"}]
+    }, {
+        featureType: "administrative",
+        stylers: [{visibility: "on"}, {lightness: 33}]
+    }, {featureType: "road"}, {
+        featureType: "poi.park",
+        elementType: "labels",
+        stylers: [{visibility: "on"}, {lightness: 20}]
+    }, {}, {featureType: "road", stylers: [{lightness: 20}]}];
+    var map;
+    var markers = [];
+    var infowindow = [];
+    var mapOptions = {
+        zoom: 6,
+        styles: styles,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
 
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     var bound = new google.maps.LatLngBounds();
