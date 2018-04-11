@@ -34,7 +34,7 @@ Class CPTTeam extends CPTCore{
 			'labels'              => $labels,
 			'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields'),
 			'public'              => true,
-			'hierarchical'        => false,
+			'hierarchical'        => true,
 			'show_ui'             => true,
 			'show_in_menu'        => true,
 			'show_in_nav_menus'   => true,
@@ -42,11 +42,14 @@ Class CPTTeam extends CPTCore{
 			'has_archive'         => true,
 			'can_export'          => true,
 			'exclude_from_search' => false,
-		        'yarpp_support'       => true,
+			'yarpp_support'       => true,
 			'taxonomies' 	      => array('post_tag'),
 			'publicly_queryable'  => true,
 			'capability_type'     => 'page',
-			'menu_icon'           => 'dashicons-groups'
+			'menu_icon'           => 'dashicons-groups',
+			'rewrite'             => array(
+				'with_front'    => false
+			)
 		);
 
 		register_post_type( 'team_members', $args );

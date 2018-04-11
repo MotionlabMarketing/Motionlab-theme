@@ -81,7 +81,7 @@
                 <?php $disabled = sizeof($block['sector_select_options']) == 0 ? "disabled" : ""; ?>
                 <select style="min-width:20%;"
                         class="select mb4 md-ml3 width-100 md-width-auto box-shadow-3 talent-filter-select"
-                        id="sortby_sector" data-loadvalue="<?= get_query_var('talent_category') ?>" <?= $disabled ?>>
+                        id="sortby_sector" <?= $disabled ?>>
                     <option value="">Filter by Sector</option>
                     <?php
                     foreach ($block['sector_select_options'] as $option) :?>

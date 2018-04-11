@@ -50,11 +50,11 @@
 
                         <div class="col col-12">
 
-                            <a href=""><h3 class="brand-primary mb2 h4"><?=$post->post_title?></h3></a>
+                            <a href="<?=get_permalink($post->ID)?>"><h3 class="brand-primary mb2 h4"><?=$post->post_title?></h3></a>
 
-                            <p class="h5 mb3"><?=$post->locations[0]->name?> <span class="muted">•</span> SALARY <span class="muted">•</span> <?=$post->types[0]->name?></p>
+                            <p class="h5 mb3"><?=$post->locations[0]->name?> <span class="muted">•</span> <?=get_field('jobs_role_salary', $post->ID)?> <span class="muted">•</span> <?=$post->types[0]->name?></p>
 
-                            <a href="<?=$post->guid?>" class="btn btn-primary btn-small white px5">Read More</a>
+                            <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white px5">Read More</a>
 
                         </div>
 

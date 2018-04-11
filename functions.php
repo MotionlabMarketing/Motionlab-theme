@@ -141,6 +141,20 @@ function ml_update_jobs() {
 	die();
 }
 
+add_action( 'wp_ajax_fetch_talent', 'ml_update_talent' );
+add_action( 'wp_ajax_nopriv_fetch_talent', 'ml_update_talent' );
+function ml_update_talent() {
+
+	/* Load in team block controller to access posts easily. */
+	include_once(MODELS_DIR . '_block_jobs.php');
+	$jobs_controller = new _block_jobs(null, null);
+	$posts = $jobs_controller->fetchFeedPosts(4, $_POST['jobs_page'], 'talents');
+
+	include_once(TEMPLATE_DIR . 'ajax/template-talent-ajax.php');
+
+	die();
+}
+
 add_action( 'wp_ajax_fetch_testimonials', 'ml_update_testimonials' );
 add_action( 'wp_ajax_nopriv_fetch_testimonials', 'ml_update_testimonials' );
 function ml_update_testimonials() {
@@ -151,6 +165,20 @@ function ml_update_testimonials() {
 	$testimonials = $testimonials_controller->getBlock();
 
 	include_once(AJAX_DIR . 'template-testimonials-ajax.php');
+
+	die();
+}
+
+add_action( 'wp_ajax_fetch_gallery', 'ml_update_gallery' );
+add_action( 'wp_ajax_nopriv_fetch_gallery', 'ml_update_gallery' );
+function ml_update_gallery() {
+
+	/* Load in team block controller to access posts easily. */
+	include_once(MODELS_DIR . '_galleries.php');
+	$galleries_controller = new _galleries();
+	$gallery  = $galleries_controller ->getBlock();
+
+	include_once(AJAX_DIR . 'template-gallery-ajax.php');
 
 	die();
 }
@@ -483,53 +511,8 @@ function create_posttype() {
         )
     );
 
-    register_post_type( 'gallery',
-        array(
-            'labels' => array(
-                'name'          => __( 'Gallery' ),
-                'singular_name' => __( 'Gallery' )
-            ),
-            'taxonomies'        => array('galleries'),
-            'public'            => true,
-            'has_archive'       => false,
-            'rewrite'           => array('slug' => 'gallery-image'),
-            'menu_icon'         => 'dashicons-images-alt2',
-        )
-    );
-
 }
 add_action( 'init', 'create_posttype' );
-
-function create_Reviewers_hierarchical_taxonomy() {
-
-    $labels = array(
-        'name' => _x( 'Reviewers', 'Reviewers' ),
-        'singular_name' => _x( 'Reviewer', 'Reviewer' ),
-        'search_items' =>  __( 'Search Reviewers' ),
-        'all_items' => __( 'All Reviewers' ),
-        'parent_item' => __( 'Parent Reviewer' ),
-        'parent_item_colon' => __( 'Parent Reviewers:' ),
-        'edit_item' => __( 'Edit Reviewer' ),
-        'update_item' => __( 'Update Reviewer' ),
-        'add_new_item' => __( 'Add New Reviewer' ),
-        'new_item_name' => __( 'New Reviewers Name' ),
-        'menu_name' => __( 'Reviewers' ),
-    );
-
-// Now register the taxonomy
-
-    register_taxonomy('Reviewers', array('gallery'), array(
-        'hierarchical' => true,
-        'labels' => $labels,
-        'show_ui' => true,
-        'show_admin_column' => true,
-        'query_var' => true,
-        'rewrite' => array( 'slug' => 'Reviewers' ),
-    ));
-
-}
-add_action( 'init', 'create_Reviewers_hierarchical_taxonomy', 0 );
-
 
 function ml_get_contact($type, $id = null, $array) {
 
@@ -650,8 +633,8 @@ function ml_categories_rewrite() {
 	);
 
 	add_rewrite_rule(
-		'find-talent/([a-zA-Z0-9-]+)/?$',
-		'index.php?pagename=find-talent&talent_category=$matches[1]',
+		'gallery/([a-zA-Z0-9-]+)/?$',
+		'index.php?pagename=gallery&gallery_category=$matches[1]',
 		'top'
 	);
 }
@@ -660,7 +643,8 @@ add_action('init', 'ml_categories_rewrite');
 function ml_query_vars($query_vars) {
 	$query_vars[] = 'news_category';
 	$query_vars[] = 'testimonials_category';
-	$query_vars[] = 'talent_category';
+	$query_vars[] = 'gallery_category';
+
 	return $query_vars;
 }
 add_filter('query_vars', 'ml_query_vars');

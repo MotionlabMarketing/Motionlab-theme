@@ -13,7 +13,7 @@
 
     <div class="col col-9">
 
-        <a href=""><h3 class="mb2 h4"><?=$post->post_title?></h3></a>
+        <a href="<?=get_permalink($post->ID)?>"><h3 class="mb2 h4"><?=$post->post_title?></h3></a>
 
         <?php if(get_field('jobs_role_salary', $post->ID) != 0):
             $salary = "£".number_format(get_field('jobs_role_salary', $post->ID));
