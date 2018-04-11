@@ -32,16 +32,16 @@ $image = ($block['bgImage']['enable'] !== true)? $block['background']['colour'] 
 
         <div class="col col-12 md-col-6 p4 limit-p limit-p-70">
 
+            <?php if (!empty($block['content']['preline'])): ?>
+
+                <p class="mb2 bold"><?= $block['content']['preline'] ?></p>
+
+            <?php endif; ?>
+
             <?php if (!empty($block['content']['link']['url'])): ?>
 
                 <a href="<?= $block['content']['link']['url'] ?>"
                    class="block brand-primary bold <?=$heading->size?> mb2"><?= $block['content']['link']['title'] ?></a>
-
-            <?php endif; ?>
-
-            <?php if (!empty($block['content']['preline'])): ?>
-
-                <p class="mb2 bold"><?= $block['content']['preline'] ?></p>
 
             <?php endif; ?>
 
@@ -57,7 +57,6 @@ $image = ($block['bgImage']['enable'] !== true)? $block['background']['colour'] 
                     <?php endforeach; ?>
 
                 </div>
-
 
             <?php endif; ?>
 
