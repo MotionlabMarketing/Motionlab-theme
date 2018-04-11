@@ -96,9 +96,8 @@ $boxes = get_field('template_jobs_sidebarBoxes');
 
                             <a href="<?= get_permalink($post->ID) ?>"><h3 class="mb2 h3"><?= $post->post_title ?></h3>
                             </a>
-
-                            <?php if (get_field('jobs_role_salary', $post->ID) != 0):
-                                $salary = "£" . number_format(get_field('jobs_role_salary', $post->ID));
+                            <?php if (get_field('jobs_role_salary', $post->ID) != ''):
+                                $salary = "£" . get_field('jobs_role_salary', $post->ID);
                             else :
                                 $salary = "Salary not Specified";
                             endif; ?>
