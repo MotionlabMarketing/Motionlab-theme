@@ -8,6 +8,7 @@ $menu = motionlab_menu_walker('primary');
 <!-- mobile menu -->
 <div class="menu || js-mobile-menu">
     <ul class="list-reset m0 p0" id="accordion-mobile-header">
+        <?php $i=1; ?>
         <?php foreach($menu as $menuitem) : ?>
             <li class="">
                 <div class="flex border-bottom border-smoke">
@@ -30,6 +31,7 @@ $menu = motionlab_menu_walker('primary');
                     </div>
                 <?php endif ?>
             </li>
+            <?php $i++; ?>
         <?php endforeach ?>
     </ul>
 
