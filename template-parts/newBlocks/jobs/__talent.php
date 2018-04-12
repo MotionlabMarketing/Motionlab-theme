@@ -14,7 +14,7 @@
 
 <?php if (isset($_POST['action'])) : ?>
 
-    <?php if (sizeof($block['posts']->posts) < 1) : ?>
+    <?php if (empty($block['posts']->posts)) : ?>
         <h4 class="h4 mb1 text-center">No talent to show.</h4>
     <?php endif; ?>
 
@@ -22,8 +22,7 @@
     foreach ($block['posts']->posts as $post) :
         ?>
 
-        <div class="col-12 md-col-6 p3 left">
-
+        <div class="col-12 md-col-6 p3 left" data-mh="talent">
             <div class="box-shadow-2 p4">
 
                 <h4 class="h3 mb1"><a
@@ -41,11 +40,11 @@
                 </p>
 
 
-                <div class="block mb4" style="font-size: 1rem"><small class="mr3 mt2 block brand-primary">Roles available for</small>
+                <div class="block mb2 md-mb2 h6" data-mh="tags"><p class="block mb1 md-inline brand-primary">Roles available for</p>
 
-                    <ul class="inline-block tags tags-right right">
-                        <?php foreach ($post->roles as $role) : ?>
-                            <li class="border-radius-3"><?= $role->name ?></li>
+                    <ul class="block tags border-radius">
+                        <?php foreach($post->roles as $role) : ?>
+                            <li class="mb1"><?=$role->name?></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
@@ -57,10 +56,7 @@
                 <a href="<?= get_permalink($post->ID) ?>" class="btn mt3 btn-primary">Learn More</a>
 
             </div>
-
         </div>
-
-
     <?php
     endforeach;
     exit();
@@ -153,11 +149,11 @@
                             <?php endforeach; ?>
                         </p>
 
-                        <div class="block mb4" style="font-size: 1rem"><small class="mr3 mt2 block brand-primary">Roles available for</small>
+                        <div class="block mb2 md-mb2 h6" data-mh="tags"><p class="block mb1 md-inline brand-primary">Roles available for</p>
 
-                            <ul class="inline-block tags tags-right right">
-                                <?php foreach ($post->roles as $role) : ?>
-                                    <li class="border-radius-3"><?= $role->name ?></li>
+                            <ul class="block tags border-radius">
+                                <?php foreach($post->roles as $role) : ?>
+                                    <li class="mb1"><?=$role->name?></li>
                                 <?php endforeach; ?>
                             </ul>
                         </div>
@@ -171,7 +167,6 @@
                     </div>
 
                 </div>
-
 
             <?php
             endforeach;
@@ -213,6 +208,15 @@
                 },
                 success: function (response) {
                     $('#talent-listing').html(response);
+                },
+                complete: function () {
+                    setTimeout(function () {
+
+                        $.fn.matchHeight._apply('.js-match-height');
+                        $.fn.matchHeight._apply('[data-mh="talent"]');
+                        $.fn.matchHeight._apply('[data-mh="tags"]');
+
+                    }, 300);
                 }
             });
         }

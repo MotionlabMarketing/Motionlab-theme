@@ -108,11 +108,11 @@ $boxes = get_field('template_jobs_sidebarBoxes');
                                 <?php endforeach; ?>
                             </p>
 
-                            <div class="block mb4" style="font-size: 1rem"><small class="mr3 mt2 block brand-primary">Roles available for</small>
+                            <div class="block mb2 md-mb2 h6" data-mh="tags"><p class="block mb1 md-inline brand-primary">Roles available for</p>
 
-                                <ul class="inline-block tags tags-right right">
-                                    <?php foreach ($post->roles as $role) : ?>
-                                        <li class="border-radius-3"><?= $role->name ?></li>
+                                <ul class="block tags border-radius">
+                                    <?php foreach($post->roles as $role) : ?>
+                                        <li class="mb1"><?=$role->name?></li>
                                     <?php endforeach; ?>
                                 </ul>
                             </div>

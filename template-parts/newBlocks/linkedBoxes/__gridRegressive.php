@@ -11,7 +11,7 @@
  */
 ?>
 
-<section <?=get_blockID($block)?> <?=get_blockClasses($block, "linkedBox-grid mt6 {$block['enableHover']}")?> <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "linkedBox-grid {$block['enableHover']}")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
@@ -21,7 +21,7 @@
 
             <?php $i = 1; foreach ($block['content']['items'] as $item):?>
 
-                <div class="item item-<?=$i?> || p2 || block relative">
+                <div class="item item-<?=$i?> || p3 || block relative">
 
                     <a href="<?=$item['block_linkBoxes_button_button_link']['url']?>" class="block relative width-100 height-100 hover-white white bg-cover bg-center box-shadow-3 <?=$block['content']['bgColor']?>" <?=($item['block_linkBoxes_button_button_link']['title'] ? 'title="'.$item['block_linkBoxes_button_button_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_button_button_link']['target'] ? 'target="'.$item['block_linkBoxes_button_button_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
 
@@ -30,11 +30,11 @@
                             <div class="z-index-40">
 
                                 <?php if (!empty($item['block_linkBoxes_title'])): ?>
-                                    <p class="block mt2 text-center mb0 h3 white"><?=$item['block_linkBoxes_title']?></p>
+                                    <p class="title block mt2 text-center mb0 h3 white"><?=$item['block_linkBoxes_title']?></p>
                                 <?php endif; ?>
 
                                 <?php if (!empty($item['block_linkBoxes_button_button_link']['title'])): ?>
-                                    <p class="block mt2 text-center mb0 h4 white"><?=$item['block_linkBoxes_button_button_link']['title']?></p>
+                                    <p class="link block mt2 text-center mb0 h4 white"><?=$item['block_linkBoxes_button_button_link']['title']?></p>
                                 <?php endif; ?>
 
                             </div>

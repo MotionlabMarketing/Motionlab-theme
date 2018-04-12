@@ -12,11 +12,11 @@
  * @return bool|string
  */
 
-function render_button($data, $size = "medium",  $attr = ["class" => "mb2"]) {
+function render_button($data, $size = "medium",  $classes = ["class" => "mb2"]) {
 
     if (!empty($data['button_link']['url']) && !empty($data['button_link']['title'])) {
 
-        $classes["class"] = $classes["class"] . "btn btn-{$size} {$data['system_text_colours']} {$data['system_background_colours']}";
+        $classes["class"] = "btn btn-{$size} {$data['system_text_colours']} {$data['system_background_colours']} " . $classes["class"];
 
         $classes = attrConvert($classes);
 
@@ -94,10 +94,12 @@ function render_buttons($data, $size, $classes = ["class" => "mb2 mr2"]) {
 
     $btn = "";
 
-    foreach ($data as $button) {
+    if (!empty($data)) {
+        foreach ($data as $button) {
 
-        $btn .= get_render_button($button, $size, $classes);
+            $btn .= get_render_button($button, $size, $classes);
 
+        }
     }
 
     echo $btn;

@@ -35,7 +35,7 @@
 
                         </div>
 
-                        <div class="relative text-left white p4 overflow-hidden || footer">
+                        <div class="relative text-left white overflow-hidden || footer">
 
                             <div class="relative z2">
 
@@ -44,10 +44,10 @@
                                 </div>
 
 
-                                <ul data-mh="match-3" class="clearfix list-reset">
+                                <ul data-mh="match-3" class="clearfix list-reset flex items-center justify-center">
                                     <?php if (!empty($section['button_link']['url'])): ?>
 
-                                        <li class="col mr3">
+                                        <li class="mr3">
                                             <a href="<?=$section['button_link']['url']?>" class="btn btn-medium h5 regular border-white border lh1 mb2" <?=($section['button_link']['title'] ? 'title="'.$section['button_link']['title'].'"' : '')?> <?=($section['button_link']['target'] ? 'target="'.$section['button_link']['target'].'"' : '')?> ><?=$section['button_link']['title']?></a>
                                         </li>
 

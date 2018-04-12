@@ -57,12 +57,6 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
 
                     <section id="tab<?php echo $i ?>" class="tab-content clearfix || <?php echo ($i > 1) ? 'hide' : '' ?> p1 md-p4">
 
-                        <div class="col col-12 md-col-6 p2 pt5 md-px3 border-bottom border-light md-border-bottom-none">
-                            <div class="wysiwyg mt2">
-                                <?=get_sub_field('col1_content') ?>
-                             </div>
-                        </div>
-
                         <div class="col col-12 md-col-6 p1 md-p3">
                             <?php foreach (get_sub_field('block') as $item): ?>
 
@@ -81,29 +75,27 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
 
                                         <?php
                                         if ($i == 1)
-                                            $term = "Jobs";
-                                        else
                                             $term = "Talent";
+                                        else
+                                            $term = "Jobs";
                                         ?>
 
                                         <form class="flex">
                                             <select id="<?=$term?>_tabs_filter" style="min-width:15rem;" class="select md-mr3 width-100 md-width-auto box-shadow-2" >
 
                                                 <option value="title" <?php echo ($orderby == 'title') ? 'selected' : '' ; ?>>Search <?=$term?></option>
-                                                 <?php
-                                                    foreach($block['select_terms'] as $term): ?>
+                                                <?php
+                                                foreach($block['select_terms'] as $term): ?>
 
-                                                        <?php
-                                                            $term_page = "find-talent";
-                                                            if($i == 1)
-                                                                $term_page = "find-a-job";
+                                                    <?php
+                                                    $term_page = "find-talent";
+                                                    if($i == 1)
+                                                        $term_page = "find-a-job";
+                                                    ?>
 
-                                                        ?>
+                                                    <option value="<?= $term->name; ?>" data-redirect="/<?=$term_page?>/<?= $term->slug; ?>"> <?= $term->name; ?> </option>
 
-
-                                                        <option value="<?= $term->name; ?>" data-redirect="/<?=$term_page?>/<?= $term->slug; ?>"> <?= $term->name; ?> </option>
-
-                                                 <?php endforeach; ?>
+                                                <?php endforeach; ?>
                                             </select>
                                         </form>
 
@@ -117,6 +109,14 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
 
                             <?php endforeach; ?>
                         </div>
+
+                        <div class="col col-12 md-col-6 p2 pt5 md-px3 border-bottom border-light md-border-bottom-none">
+                            <div class="wysiwyg mt2">
+                                <?=get_sub_field('col1_content') ?>
+                             </div>
+                        </div>
+
+
 
                     </section>
 

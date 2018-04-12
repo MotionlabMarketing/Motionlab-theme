@@ -43,10 +43,10 @@ $hoverShow = ($hoverContent == true)? "show-hover" : "";
 
             <?php foreach ($blockItems as $item):?>
 
-                <div class="item || col col-12 md-col-<?=$block['columns']?> p2 || block relative">
-                    <a href="<?=$item['block_linkBoxes_button_button_link']['url']?>" class="block relative overflow-hidden || bg-cover bg-center <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?> || zoom" <?=($item['block_linkBoxes_link']['title'] ? 'title="'.$item['block_linkBoxes_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_link']['target'] ? 'target="'.$item['block_linkBoxes_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
+                <div class="item col col-12 md-col-<?=$block['columns']?> p2 block relative">
+                    <a href="<?=$item['block_linkBoxes_button_button_link']['url']?>" class="block relative overflow-hidden bg-cover bg-center <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?>" <?=($item['block_linkBoxes_link']['title'] ? 'title="'.$item['block_linkBoxes_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_link']['target'] ? 'target="'.$item['block_linkBoxes_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
 
-                        <div class="content relative || js-match-height || <?=$txtColor?> py6 || flex items-center justify-center text-center || <?=($darkenImages == true)? "darken-background" : ""?> <?=($darkenImages == true)? $darkenStrength : ""?>">
+                        <div class="content relative js-match-height <?=$txtColor?> py6 flex items-center justify-center text-center <?=($darkenImages == true)? "darken-background" : ""?> <?=($darkenImages == true)? $darkenStrength : ""?>">
 
 
                             <div class="z-index-40 <?=($block['content']['overlay'] == true)? "opacity-10" : ""; ?>">
@@ -60,7 +60,7 @@ $hoverShow = ($hoverContent == true)? "show-hover" : "";
                             </div>
 
                             <?php if ($block['content']['overlay'] == true): ?>
-                                <div class="overlay || absolute width-100 height-100 z-index-20 bg-gray bg-brand-primary-overlay"></div>
+                                <div class="overlay absolute width-100 height-100 z-index-20 bg-gray bg-brand-primary-overlay"></div>
                             <?php endif; ?>
 
 

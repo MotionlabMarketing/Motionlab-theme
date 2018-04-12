@@ -36,7 +36,6 @@ Class _block_jobs
 	private function loadBlockSettings() {
 
 		//TODO: Move this to the block settings
-
 		$this->block['limited_categories']              = get_sub_field($this->current . '_category_filter');
 
 		$this->block['limited_categories_term_string']  = [];
