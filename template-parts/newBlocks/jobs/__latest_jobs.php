@@ -17,39 +17,43 @@ $block['block_title']  = get_sub_field($current . '_title_title');
 <?php if(isset($_POST['action'])) :?>
 
     <?php
-        foreach($block['posts']->posts as $post) :
+        if(!empty($block['posts']->posts)) :
+            foreach($block['posts']->posts as $post) :
     ?>
 
-        <div class="listItem || col-12 md-col-6 relative left px2 pb2 mb2">
+            <div class="listItem || col-12 md-col-6 relative left px2 pb2 mb2">
 
-            <div class="border-bottom border-light clearfix p4 box-shadow-2">
+                <div class="border-bottom border-light clearfix p4 box-shadow-2">
 
-                <div class="col col-12  md-col-9 || js-match-height">
+                    <div class="col col-12  md-col-9 || js-match-height">
 
-                    <a href="<?=get_permalink($post->ID)?>"><h3 class="mb2 black h5"><?=$post->post_title?></h3></a>
+                        <a href="<?=get_permalink($post->ID)?>"><h3 class="mb2 black h5"><?=$post->post_title?></h3></a>
 
-                    <p class="h6 mb0 bold"> <?=$post->locations[0]->name?> <span class="black">•</span> <?=get_field('jobs_role_salary', $post->ID)?> <span class="black">•</span> <?=$post->types[0]->name?> </p>
+                        <p class="h6 mb0 bold"> <?=$post->locations[0]->name?> <span class="black">•</span> <?=get_field('jobs_role_salary', $post->ID)?> <span class="black">•</span> <?=$post->types[0]->name?> </p>
 
-                </div>
+                    </div>
 
-                <div class="col col-12 md-col-3 || js-match-height || flex sm-items-center sm-justify-center">
+                    <div class="col col-12 md-col-3 || js-match-height || flex sm-items-center sm-justify-center">
 
-                    <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white width-100 h6 right">Find out more</a>
+                        <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white width-100 h6 right">Find out more</a>
+
+                    </div>
 
                 </div>
 
             </div>
 
-        </div>
-
     <?php
-        endforeach;
+            endforeach;
+        else:?>
+            <p class="text-center">Sorry, there are no jobs available to show.</p>
+        <?php endif;
         exit();
     ?>
 
 <?php endif; ?>
 
-<section <?=get_blockID($block)?> <?=get_blockClasses($block, "jobs-latest mt6 mb6")?> <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "jobs-latest mt6 mb6")?> <?=get_blockData($block)?> data-page-id="<?=get_the_ID()?>">
 
     <div class="container">
 
@@ -156,7 +160,7 @@ $block['block_title']  = get_sub_field($current . '_title_title');
 
         function updateListing() {
             //TODO: Update the two lines below to pull the page id and block name from the block itself.
-            //var pageID          = $('section.jobs-latest').data('page-id');
+            var pageID          = $('section.jobs-latest').data('page-id');
             //var blockName       = $('section.jobs-latest').data('block-name');
             var sector_filter = $('#sortby_sector option:selected').val();
             var type_filter = $('#sortby_type option:selected').val();
@@ -167,7 +171,7 @@ $block['block_title']  = get_sub_field($current . '_title_title');
                 method: 'POST',
                 data: {
                     action: 'update_block',
-                    page_id: '6367',
+                    page_id: pageID,
                     block_name: 'block_jobs',
                     sector_filter: sector_filter,
                     type_filter: type_filter,

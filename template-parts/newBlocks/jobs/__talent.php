@@ -14,7 +14,7 @@
 
 <?php if (isset($_POST['action'])) : ?>
 
-    <?php if (sizeof($block['posts']->posts) < 1) : ?>
+    <?php if (empty($block['posts']->posts)) : ?>
         <h4 class="h4 mb1 text-center">No talent to show.</h4>
     <?php endif; ?>
 
