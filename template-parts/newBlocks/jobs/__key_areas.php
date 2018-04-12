@@ -44,7 +44,7 @@
                                 </div>
 
 
-                                <ul data-mh="match-3" class="clearfix list-reset flex items-center justify-center">
+                                <ul data-mh="match-3" class="clearfix list-reset flex flex-wrap items-center justify-center">
                                     <?php if (!empty($section['button_link']['url'])): ?>
 
                                         <li class="mr3">
@@ -55,7 +55,7 @@
 
                                     <?php if ($section['add_filter'] == true):?>
 
-                                        <li class="col col-12 lg-col-7">
+                                        <li class="col col-12 lg-col-7 order-1 md-order-2 px4 lg-px0">
 
                                             <select id="key_areas_filter" class="select btn-medium border-white border lh1 mb2 width-100">
                                                 <option value="">Search Jobs</option>

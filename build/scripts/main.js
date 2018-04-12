@@ -163,6 +163,7 @@ jQuery(document).ready(function ($) {
     function headerSpace() {
         var headerHeight = $('header').outerHeight();
         $('.js-header-space').css('padding-top', +headerHeight + "px");
+        $('.js-negative-offset-header-space').css('margin-top', "-" +headerHeight + "px");
     }
 
     headerSpace();

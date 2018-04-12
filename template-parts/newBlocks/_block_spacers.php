@@ -13,6 +13,9 @@ switch ($block['layout']):
     case "ruled":
         include('spacers/__ruled.php');
         break;
+    case "chevron":
+        include('spacers/__chevron.php');
+        break;
     default:
         include('spacers/__basic.php');
         break;

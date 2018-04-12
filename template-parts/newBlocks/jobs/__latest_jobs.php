@@ -61,10 +61,10 @@ $block['block_title']  = get_sub_field($current . '_title_title');
 
         <div class="col-12 mb4">
 
-            <form action="#" class="width-100 || flex justify-center">
+            <form action="#" class="width-100 || md-flex justify-center">
 
                 <?php $disabled = sizeof($block['sector_select_options']) == 0 ? "disabled" : ""; ?>
-                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 job-filter-select" id="sortby_sector" <?=$disabled?>>
+                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 job-filter-select mb2" id="sortby_sector" <?=$disabled?>>
                     <option value="">Filter by Sector</option>
 
                     <?php if(isset($block['limited_categories']) && !empty($block['limited_categories'])) :
@@ -87,7 +87,7 @@ $block['block_title']  = get_sub_field($current . '_title_title');
                 </select>
 
                 <?php $disabled = sizeof($block['type_select_options']) == 0 ? "disabled" : ""; ?>
-                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 job-filter-select" id="sortby_type" <?=$disabled?>>
+                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 job-filter-select mb2" id="sortby_type" <?=$disabled?>>
                     <option value="">Filter by Type</option>
                     <?php
                         foreach($block['type_select_options'] as $option) :?>
@@ -98,7 +98,7 @@ $block['block_title']  = get_sub_field($current . '_title_title');
                 </select>
 
                 <?php $disabled = sizeof($block['location_select_options']) == 0 ? "disabled" : ""; ?>
-                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 job-filter-select" id="sortby_location" <?=$disabled?>>
+                <select style="min-width:20%;" class="select md-ml3 width-100 md-width-auto box-shadow-3 job-filter-select mb2" id="sortby_location" <?=$disabled?>>
                     <option value="">Filter by Location</option>
                     <?php foreach($block['location_select_options'] as $option) : ?>
                         <option class="option" value="<?=$option->slug?>" data-taxonomy="<?=$option->taxonomy?>"><?=$option->name?></option>
@@ -122,7 +122,7 @@ $block['block_title']  = get_sub_field($current . '_title_title');
 
                     <div class="border-bottom border-light clearfix p4 box-shadow-2">
 
-                        <div class="col col-12  md-col-9 || js-match-height">
+                        <div class="col col-12  md-col-9 mb4 || js-match-height">
 
                             <a href="<?=get_permalink($post->ID)?>"><h3 class="mb2 black h5"><?=$post->post_title?></h3></a>
 

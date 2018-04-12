@@ -762,3 +762,21 @@ function ml_get_menu_object_by_location($location) {
     // RETURN THE MENU OBJECT
     return $menu = wp_get_nav_menu_object($menu_id);
 }
+
+
+
+
+/*==================================================================
+GET PARENT OF CURRENT PAGE
+==================================================================*/
+
+function get_highest_most_parent($post) {
+  if ($post->post_parent)	{
+    $ancestors=get_post_ancestors($post->ID);
+    $root=count($ancestors)-1;
+    $parent = $ancestors[$root];
+  } else {
+    $parent = $post->ID;
+  }
+  return $parent = get_post($parent);
+}
