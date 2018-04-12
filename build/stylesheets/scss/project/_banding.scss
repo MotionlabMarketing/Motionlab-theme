@@ -628,9 +628,6 @@ form {
           margin-bottom: 0.9rem;
         }
 
-        > .validation_message {
-          margin-top: -1rem;
-        }
       }
 
       .gfield_label_before_complex {
@@ -810,7 +807,6 @@ form {
 
   .gfield_description {
     padding: 0.8rem;
-    margin-top: -1rem;
     font-size: 0.8rem;
     background-color: darken($brand-white, 3%);
     border: 1px solid lighten($brand-gray, 50%);
@@ -1770,6 +1766,10 @@ hr.border-5 {
       margin-bottom: 0;
       display: block !important;
     }
+  }
+
+  .wysiwyg{
+      height: 100% !important;
   }
 
   .tab {

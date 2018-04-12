@@ -637,18 +637,11 @@ function ml_categories_rewrite() {
 		'index.php?pagename=gallery&gallery_category=$matches[1]',
 		'top'
 	);
-
-	add_rewrite_rule(
-		'corporate-social-responsibility/([a-zA-Z0-9-]+)/?$',
-		'index.php?pagename=corporate-social-responsibility&news_category=$matches[1]',
-		'top'
-	);
 }
 add_action('init', 'ml_categories_rewrite');
 
 function ml_query_vars($query_vars) {
 	$query_vars[] = 'news_category';
-	$query_vars[] = 'csr_category';
 	$query_vars[] = 'testimonials_category';
 	$query_vars[] = 'gallery_category';
 
@@ -768,4 +761,22 @@ function ml_get_menu_object_by_location($location) {
 
     // RETURN THE MENU OBJECT
     return $menu = wp_get_nav_menu_object($menu_id);
+}
+
+
+
+
+/*==================================================================
+GET PARENT OF CURRENT PAGE
+==================================================================*/
+
+function get_highest_most_parent($post) {
+  if ($post->post_parent)	{
+    $ancestors=get_post_ancestors($post->ID);
+    $root=count($ancestors)-1;
+    $parent = $ancestors[$root];
+  } else {
+    $parent = $post->ID;
+  }
+  return $parent = get_post($parent);
 }

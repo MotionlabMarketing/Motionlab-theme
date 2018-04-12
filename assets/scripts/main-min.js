@@ -6,212 +6,6 @@
 */
 
 ;(function(e,t,n,r){e.fn.doubleTapToGo=function(r){if(!("ontouchstart"in t)&&!navigator.msMaxTouchPoints&&!navigator.userAgent.toLowerCase().match(/windows phone os 7/i))return false;this.each(function(){var t=false;e(this).on("click",function(n){var r=e(this);if(r[0]!=t[0]){n.preventDefault();t=r}});e(n).on("click touchstart MSPointerDown",function(n){var r=true,i=e(n.target).parents();for(var s=0;s<i.length;s++)if(i[s]==t[0])r=false;if(r)t=false})});return this}})(jQuery,window,document);
-/*
- * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
- *
- * Uses the built in easing capabilities added In jQuery 1.1
- * to offer multiple easing options
- *
- * TERMS OF USE - jQuery Easing
- *
- * Open source under the BSD License.
- *
- * Copyright Â© 2008 George McGinley Smith
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
- *
- * Redistributions of source code must retain the above copyright notice, this list of
- * conditions and the following disclaimer.
- * Redistributions in binary form must reproduce the above copyright notice, this list
- * of conditions and the following disclaimer in the documentation and/or other materials
- * provided with the distribution.
- *
- * Neither the name of the author nor the names of contributors may be used to endorse
- * or promote products derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
- *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
- * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
- * OF THE POSSIBILITY OF SUCH DAMAGE.
- *
-*/
-
-// t: current time, b: begInnIng value, c: change In value, d: duration
-jQuery.easing['jswing'] = jQuery.easing['swing'];
-
-jQuery.extend( jQuery.easing,
-{
-	def: 'easeOutQuad',
-	swing: function (x, t, b, c, d) {
-		//alert(jQuery.easing.default);
-		return jQuery.easing[jQuery.easing.def](x, t, b, c, d);
-	},
-	easeInQuad: function (x, t, b, c, d) {
-		return c*(t/=d)*t + b;
-	},
-	easeOutQuad: function (x, t, b, c, d) {
-		return -c *(t/=d)*(t-2) + b;
-	},
-	easeInOutQuad: function (x, t, b, c, d) {
-		if ((t/=d/2) < 1) return c/2*t*t + b;
-		return -c/2 * ((--t)*(t-2) - 1) + b;
-	},
-	easeInCubic: function (x, t, b, c, d) {
-		return c*(t/=d)*t*t + b;
-	},
-	easeOutCubic: function (x, t, b, c, d) {
-		return c*((t=t/d-1)*t*t + 1) + b;
-	},
-	easeInOutCubic: function (x, t, b, c, d) {
-		if ((t/=d/2) < 1) return c/2*t*t*t + b;
-		return c/2*((t-=2)*t*t + 2) + b;
-	},
-	easeInQuart: function (x, t, b, c, d) {
-		return c*(t/=d)*t*t*t + b;
-	},
-	easeOutQuart: function (x, t, b, c, d) {
-		return -c * ((t=t/d-1)*t*t*t - 1) + b;
-	},
-	easeInOutQuart: function (x, t, b, c, d) {
-		if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
-		return -c/2 * ((t-=2)*t*t*t - 2) + b;
-	},
-	easeInQuint: function (x, t, b, c, d) {
-		return c*(t/=d)*t*t*t*t + b;
-	},
-	easeOutQuint: function (x, t, b, c, d) {
-		return c*((t=t/d-1)*t*t*t*t + 1) + b;
-	},
-	easeInOutQuint: function (x, t, b, c, d) {
-		if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
-		return c/2*((t-=2)*t*t*t*t + 2) + b;
-	},
-	easeInSine: function (x, t, b, c, d) {
-		return -c * Math.cos(t/d * (Math.PI/2)) + c + b;
-	},
-	easeOutSine: function (x, t, b, c, d) {
-		return c * Math.sin(t/d * (Math.PI/2)) + b;
-	},
-	easeInOutSine: function (x, t, b, c, d) {
-		return -c/2 * (Math.cos(Math.PI*t/d) - 1) + b;
-	},
-	easeInExpo: function (x, t, b, c, d) {
-		return (t==0) ? b : c * Math.pow(2, 10 * (t/d - 1)) + b;
-	},
-	easeOutExpo: function (x, t, b, c, d) {
-		return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
-	},
-	easeInOutExpo: function (x, t, b, c, d) {
-		if (t==0) return b;
-		if (t==d) return b+c;
-		if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
-		return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
-	},
-	easeInCirc: function (x, t, b, c, d) {
-		return -c * (Math.sqrt(1 - (t/=d)*t) - 1) + b;
-	},
-	easeOutCirc: function (x, t, b, c, d) {
-		return c * Math.sqrt(1 - (t=t/d-1)*t) + b;
-	},
-	easeInOutCirc: function (x, t, b, c, d) {
-		if ((t/=d/2) < 1) return -c/2 * (Math.sqrt(1 - t*t) - 1) + b;
-		return c/2 * (Math.sqrt(1 - (t-=2)*t) + 1) + b;
-	},
-	easeInElastic: function (x, t, b, c, d) {
-		var s=1.70158;var p=0;var a=c;
-		if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
-		if (a < Math.abs(c)) { a=c; var s=p/4; }
-		else var s = p/(2*Math.PI) * Math.asin (c/a);
-		return -(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
-	},
-	easeOutElastic: function (x, t, b, c, d) {
-		var s=1.70158;var p=0;var a=c;
-		if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
-		if (a < Math.abs(c)) { a=c; var s=p/4; }
-		else var s = p/(2*Math.PI) * Math.asin (c/a);
-		return a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b;
-	},
-	easeInOutElastic: function (x, t, b, c, d) {
-		var s=1.70158;var p=0;var a=c;
-		if (t==0) return b;  if ((t/=d/2)==2) return b+c;  if (!p) p=d*(.3*1.5);
-		if (a < Math.abs(c)) { a=c; var s=p/4; }
-		else var s = p/(2*Math.PI) * Math.asin (c/a);
-		if (t < 1) return -.5*(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
-		return a*Math.pow(2,-10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )*.5 + c + b;
-	},
-	easeInBack: function (x, t, b, c, d, s) {
-		if (s == undefined) s = 1.70158;
-		return c*(t/=d)*t*((s+1)*t - s) + b;
-	},
-	easeOutBack: function (x, t, b, c, d, s) {
-		if (s == undefined) s = 1.70158;
-		return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
-	},
-	easeInOutBack: function (x, t, b, c, d, s) {
-		if (s == undefined) s = 1.70158;
-		if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
-		return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
-	},
-	easeInBounce: function (x, t, b, c, d) {
-		return c - jQuery.easing.easeOutBounce (x, d-t, 0, c, d) + b;
-	},
-	easeOutBounce: function (x, t, b, c, d) {
-		if ((t/=d) < (1/2.75)) {
-			return c*(7.5625*t*t) + b;
-		} else if (t < (2/2.75)) {
-			return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
-		} else if (t < (2.5/2.75)) {
-			return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
-		} else {
-			return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
-		}
-	},
-	easeInOutBounce: function (x, t, b, c, d) {
-		if (t < d/2) return jQuery.easing.easeInBounce (x, t*2, 0, c, d) * .5 + b;
-		return jQuery.easing.easeOutBounce (x, t*2-d, 0, c, d) * .5 + c*.5 + b;
-	}
-});
-
-/*
- *
- * TERMS OF USE - EASING EQUATIONS
- *
- * Open source under the BSD License.
- *
- * Copyright Â© 2001 Robert Penner
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
- *
- * Redistributions of source code must retain the above copyright notice, this list of
- * conditions and the following disclaimer.
- * Redistributions in binary form must reproduce the above copyright notice, this list
- * of conditions and the following disclaimer in the documentation and/or other materials
- * provided with the distribution.
- *
- * Neither the name of the author nor the names of contributors may be used to endorse
- * or promote products derived from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
- *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
- * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
- * OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- */
-
 /*!
  * headroom.js v0.9.3 - Give your page some headroom. Hide your header until you need it
  * Copyright (c) 2016 Nick Williams - http://wicky.nillia.ms/headroom.js
@@ -728,6 +522,212 @@ jQuery.extend( jQuery.easing,
 * Copyright 2007-2017 Brian Cherne
 */
 !function(factory){"use strict";"function"==typeof define&&define.amd?define(["jquery"],factory):jQuery&&!jQuery.fn.hoverIntent&&factory(jQuery)}(function($){"use strict";var cX,cY,_cfg={interval:100,sensitivity:6,timeout:0},INSTANCE_COUNT=0,track=function(ev){cX=ev.pageX,cY=ev.pageY},compare=function(ev,$el,s,cfg){if(Math.sqrt((s.pX-cX)*(s.pX-cX)+(s.pY-cY)*(s.pY-cY))<cfg.sensitivity)return $el.off(s.event,track),delete s.timeoutId,s.isActive=!0,ev.pageX=cX,ev.pageY=cY,delete s.pX,delete s.pY,cfg.over.apply($el[0],[ev]);s.pX=cX,s.pY=cY,s.timeoutId=setTimeout(function(){compare(ev,$el,s,cfg)},cfg.interval)},delay=function(ev,$el,s,out){return delete $el.data("hoverIntent")[s.id],out.apply($el[0],[ev])};$.fn.hoverIntent=function(handlerIn,handlerOut,selector){var instanceId=INSTANCE_COUNT++,cfg=$.extend({},_cfg);$.isPlainObject(handlerIn)?(cfg=$.extend(cfg,handlerIn),$.isFunction(cfg.out)||(cfg.out=cfg.over)):cfg=$.isFunction(handlerOut)?$.extend(cfg,{over:handlerIn,out:handlerOut,selector:selector}):$.extend(cfg,{over:handlerIn,out:handlerIn,selector:handlerOut});var handleHover=function(e){var ev=$.extend({},e),$el=$(this),hoverIntentData=$el.data("hoverIntent");hoverIntentData||$el.data("hoverIntent",hoverIntentData={});var state=hoverIntentData[instanceId];state||(hoverIntentData[instanceId]=state={id:instanceId}),state.timeoutId&&(state.timeoutId=clearTimeout(state.timeoutId));var mousemove=state.event="mousemove.hoverIntent.hoverIntent"+instanceId;if("mouseenter"===e.type){if(state.isActive)return;state.pX=ev.pageX,state.pY=ev.pageY,$el.off(mousemove,track).on(mousemove,track),state.timeoutId=setTimeout(function(){compare(ev,$el,state,cfg)},cfg.interval)}else{if(!state.isActive)return;$el.off(mousemove,track),state.timeoutId=setTimeout(function(){delay(ev,$el,state,cfg.out)},cfg.timeout)}};return this.on({"mouseenter.hoverIntent":handleHover,"mouseleave.hoverIntent":handleHover},cfg.selector)}});
+
+/*
+ * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
+ *
+ * Uses the built in easing capabilities added In jQuery 1.1
+ * to offer multiple easing options
+ *
+ * TERMS OF USE - jQuery Easing
+ *
+ * Open source under the BSD License.
+ *
+ * Copyright Â© 2008 George McGinley Smith
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ *
+ * Redistributions of source code must retain the above copyright notice, this list of
+ * conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice, this list
+ * of conditions and the following disclaimer in the documentation and/or other materials
+ * provided with the distribution.
+ *
+ * Neither the name of the author nor the names of contributors may be used to endorse
+ * or promote products derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+ * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+*/
+
+// t: current time, b: begInnIng value, c: change In value, d: duration
+jQuery.easing['jswing'] = jQuery.easing['swing'];
+
+jQuery.extend( jQuery.easing,
+{
+	def: 'easeOutQuad',
+	swing: function (x, t, b, c, d) {
+		//alert(jQuery.easing.default);
+		return jQuery.easing[jQuery.easing.def](x, t, b, c, d);
+	},
+	easeInQuad: function (x, t, b, c, d) {
+		return c*(t/=d)*t + b;
+	},
+	easeOutQuad: function (x, t, b, c, d) {
+		return -c *(t/=d)*(t-2) + b;
+	},
+	easeInOutQuad: function (x, t, b, c, d) {
+		if ((t/=d/2) < 1) return c/2*t*t + b;
+		return -c/2 * ((--t)*(t-2) - 1) + b;
+	},
+	easeInCubic: function (x, t, b, c, d) {
+		return c*(t/=d)*t*t + b;
+	},
+	easeOutCubic: function (x, t, b, c, d) {
+		return c*((t=t/d-1)*t*t + 1) + b;
+	},
+	easeInOutCubic: function (x, t, b, c, d) {
+		if ((t/=d/2) < 1) return c/2*t*t*t + b;
+		return c/2*((t-=2)*t*t + 2) + b;
+	},
+	easeInQuart: function (x, t, b, c, d) {
+		return c*(t/=d)*t*t*t + b;
+	},
+	easeOutQuart: function (x, t, b, c, d) {
+		return -c * ((t=t/d-1)*t*t*t - 1) + b;
+	},
+	easeInOutQuart: function (x, t, b, c, d) {
+		if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
+		return -c/2 * ((t-=2)*t*t*t - 2) + b;
+	},
+	easeInQuint: function (x, t, b, c, d) {
+		return c*(t/=d)*t*t*t*t + b;
+	},
+	easeOutQuint: function (x, t, b, c, d) {
+		return c*((t=t/d-1)*t*t*t*t + 1) + b;
+	},
+	easeInOutQuint: function (x, t, b, c, d) {
+		if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
+		return c/2*((t-=2)*t*t*t*t + 2) + b;
+	},
+	easeInSine: function (x, t, b, c, d) {
+		return -c * Math.cos(t/d * (Math.PI/2)) + c + b;
+	},
+	easeOutSine: function (x, t, b, c, d) {
+		return c * Math.sin(t/d * (Math.PI/2)) + b;
+	},
+	easeInOutSine: function (x, t, b, c, d) {
+		return -c/2 * (Math.cos(Math.PI*t/d) - 1) + b;
+	},
+	easeInExpo: function (x, t, b, c, d) {
+		return (t==0) ? b : c * Math.pow(2, 10 * (t/d - 1)) + b;
+	},
+	easeOutExpo: function (x, t, b, c, d) {
+		return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
+	},
+	easeInOutExpo: function (x, t, b, c, d) {
+		if (t==0) return b;
+		if (t==d) return b+c;
+		if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
+		return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
+	},
+	easeInCirc: function (x, t, b, c, d) {
+		return -c * (Math.sqrt(1 - (t/=d)*t) - 1) + b;
+	},
+	easeOutCirc: function (x, t, b, c, d) {
+		return c * Math.sqrt(1 - (t=t/d-1)*t) + b;
+	},
+	easeInOutCirc: function (x, t, b, c, d) {
+		if ((t/=d/2) < 1) return -c/2 * (Math.sqrt(1 - t*t) - 1) + b;
+		return c/2 * (Math.sqrt(1 - (t-=2)*t) + 1) + b;
+	},
+	easeInElastic: function (x, t, b, c, d) {
+		var s=1.70158;var p=0;var a=c;
+		if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
+		if (a < Math.abs(c)) { a=c; var s=p/4; }
+		else var s = p/(2*Math.PI) * Math.asin (c/a);
+		return -(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
+	},
+	easeOutElastic: function (x, t, b, c, d) {
+		var s=1.70158;var p=0;var a=c;
+		if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
+		if (a < Math.abs(c)) { a=c; var s=p/4; }
+		else var s = p/(2*Math.PI) * Math.asin (c/a);
+		return a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b;
+	},
+	easeInOutElastic: function (x, t, b, c, d) {
+		var s=1.70158;var p=0;var a=c;
+		if (t==0) return b;  if ((t/=d/2)==2) return b+c;  if (!p) p=d*(.3*1.5);
+		if (a < Math.abs(c)) { a=c; var s=p/4; }
+		else var s = p/(2*Math.PI) * Math.asin (c/a);
+		if (t < 1) return -.5*(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
+		return a*Math.pow(2,-10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )*.5 + c + b;
+	},
+	easeInBack: function (x, t, b, c, d, s) {
+		if (s == undefined) s = 1.70158;
+		return c*(t/=d)*t*((s+1)*t - s) + b;
+	},
+	easeOutBack: function (x, t, b, c, d, s) {
+		if (s == undefined) s = 1.70158;
+		return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+	},
+	easeInOutBack: function (x, t, b, c, d, s) {
+		if (s == undefined) s = 1.70158;
+		if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
+		return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
+	},
+	easeInBounce: function (x, t, b, c, d) {
+		return c - jQuery.easing.easeOutBounce (x, d-t, 0, c, d) + b;
+	},
+	easeOutBounce: function (x, t, b, c, d) {
+		if ((t/=d) < (1/2.75)) {
+			return c*(7.5625*t*t) + b;
+		} else if (t < (2/2.75)) {
+			return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+		} else if (t < (2.5/2.75)) {
+			return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+		} else {
+			return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+		}
+	},
+	easeInOutBounce: function (x, t, b, c, d) {
+		if (t < d/2) return jQuery.easing.easeInBounce (x, t*2, 0, c, d) * .5 + b;
+		return jQuery.easing.easeOutBounce (x, t*2-d, 0, c, d) * .5 + c*.5 + b;
+	}
+});
+
+/*
+ *
+ * TERMS OF USE - EASING EQUATIONS
+ *
+ * Open source under the BSD License.
+ *
+ * Copyright Â© 2001 Robert Penner
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ *
+ * Redistributions of source code must retain the above copyright notice, this list of
+ * conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice, this list
+ * of conditions and the following disclaimer in the documentation and/or other materials
+ * provided with the distribution.
+ *
+ * Neither the name of the author nor the names of contributors may be used to endorse
+ * or promote products derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+ * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
 
 /*!
  * Isotope PACKAGED v2.2.0
@@ -8362,274 +8362,6 @@ $.magnificPopup.registerModule(RETINA_NS, {
   });
 }));
 
-jQuery(document).ready(function($){
-    var timelines = $('.cd-horizontal-timeline'),
-        eventsMinDistance = 70;
-
-    (timelines.length > 0) && initTimeline(timelines);
-
-    function initTimeline(timelines) {
-        timelines.each(function(){
-            var timeline = $(this),
-                timelineComponents = {};
-            //cache timeline components
-            timelineComponents['timelineWrapper'] = timeline.find('.events-wrapper');
-            timelineComponents['eventsWrapper'] = timelineComponents['timelineWrapper'].children('.events');
-            timelineComponents['fillingLine'] = timelineComponents['eventsWrapper'].children('.filling-line');
-            timelineComponents['timelineEvents'] = timelineComponents['eventsWrapper'].find('a');
-            timelineComponents['timelineDates'] = parseDate(timelineComponents['timelineEvents']);
-            timelineComponents['eventsMinLapse'] = minLapse(timelineComponents['timelineDates']);
-            timelineComponents['timelineNavigation'] = timeline.find('.cd-timeline-navigation');
-            timelineComponents['eventsContent'] = timeline.children('.events-content');
-
-            //assign a left postion to the single events along the timeline
-            setDatePosition(timelineComponents, eventsMinDistance);
-            //assign a width to the timeline
-            var timelineTotWidth = setTimelineWidth(timelineComponents, eventsMinDistance);
-            //the timeline has been initialize - show it
-            timeline.addClass('loaded');
-
-            //detect click on the next arrow
-            timelineComponents['timelineNavigation'].on('click', '.next', function(event){
-                event.preventDefault();
-                updateSlide(timelineComponents, timelineTotWidth, 'next');
-            });
-            //detect click on the prev arrow
-            timelineComponents['timelineNavigation'].on('click', '.prev', function(event){
-                event.preventDefault();
-                updateSlide(timelineComponents, timelineTotWidth, 'prev');
-            });
-            //detect click on the a single event - show new event content
-            timelineComponents['eventsWrapper'].on('click', 'a', function(event){
-                event.preventDefault();
-                timelineComponents['timelineEvents'].removeClass('selected');
-                $(this).addClass('selected');
-                updateOlderEvents($(this));
-                updateFilling($(this), timelineComponents['fillingLine'], timelineTotWidth);
-                updateVisibleContent($(this), timelineComponents['eventsContent']);
-            });
-
-            //on swipe, show next/prev event content
-            timelineComponents['eventsContent'].on('swipeleft', function(){
-                var mq = checkMQ();
-                ( mq == 'mobile' ) && showNewContent(timelineComponents, timelineTotWidth, 'next');
-            });
-            timelineComponents['eventsContent'].on('swiperight', function(){
-                var mq = checkMQ();
-                ( mq == 'mobile' ) && showNewContent(timelineComponents, timelineTotWidth, 'prev');
-            });
-
-            //keyboard navigation
-            $(document).keyup(function(event){
-                if(event.which=='37' && elementInViewport(timeline.get(0)) ) {
-                    showNewContent(timelineComponents, timelineTotWidth, 'prev');
-                } else if( event.which=='39' && elementInViewport(timeline.get(0))) {
-                    showNewContent(timelineComponents, timelineTotWidth, 'next');
-                }
-            });
-        });
-    }
-
-    function updateSlide(timelineComponents, timelineTotWidth, string) {
-        //retrieve translateX value of timelineComponents['eventsWrapper']
-        var translateValue = getTranslateValue(timelineComponents['eventsWrapper']),
-            wrapperWidth = Number(timelineComponents['timelineWrapper'].css('width').replace('px', ''));
-        //translate the timeline to the left('next')/right('prev')
-        (string == 'next')
-            ? translateTimeline(timelineComponents, translateValue - wrapperWidth + eventsMinDistance, wrapperWidth - timelineTotWidth)
-            : translateTimeline(timelineComponents, translateValue + wrapperWidth - eventsMinDistance);
-    }
-
-    function showNewContent(timelineComponents, timelineTotWidth, string) {
-        //go from one event to the next/previous one
-        var visibleContent =  timelineComponents['eventsContent'].find('.selected'),
-            newContent = ( string == 'next' ) ? visibleContent.next() : visibleContent.prev();
-
-        if ( newContent.length > 0 ) { //if there's a next/prev event - show it
-            var selectedDate = timelineComponents['eventsWrapper'].find('.selected'),
-                newEvent = ( string == 'next' ) ? selectedDate.parent('li').next('li').children('a') : selectedDate.parent('li').prev('li').children('a');
-
-            updateFilling(newEvent, timelineComponents['fillingLine'], timelineTotWidth);
-            updateVisibleContent(newEvent, timelineComponents['eventsContent']);
-            newEvent.addClass('selected');
-            selectedDate.removeClass('selected');
-            updateOlderEvents(newEvent);
-            updateTimelinePosition(string, newEvent, timelineComponents);
-        }
-    }
-
-    function updateTimelinePosition(string, event, timelineComponents) {
-        //translate timeline to the left/right according to the position of the selected event
-        var eventStyle = window.getComputedStyle(event.get(0), null),
-            eventLeft = Number(eventStyle.getPropertyValue("left").replace('px', '')),
-            timelineWidth = Number(timelineComponents['timelineWrapper'].css('width').replace('px', '')),
-            timelineTotWidth = Number(timelineComponents['eventsWrapper'].css('width').replace('px', ''));
-        var timelineTranslate = getTranslateValue(timelineComponents['eventsWrapper']);
-
-        if( (string == 'next' && eventLeft > timelineWidth - timelineTranslate) || (string == 'prev' && eventLeft < - timelineTranslate) ) {
-            translateTimeline(timelineComponents, - eventLeft + timelineWidth/2, timelineWidth - timelineTotWidth);
-        }
-    }
-
-    function translateTimeline(timelineComponents, value, totWidth) {
-        var eventsWrapper = timelineComponents['eventsWrapper'].get(0);
-        value = (value > 0) ? 0 : value; //only negative translate value
-        value = ( !(typeof totWidth === 'undefined') &&  value < totWidth ) ? totWidth : value; //do not translate more than timeline width
-        setTransformValue(eventsWrapper, 'translateX', value+'px');
-        //update navigation arrows visibility
-        (value == 0 ) ? timelineComponents['timelineNavigation'].find('.prev').addClass('inactive') : timelineComponents['timelineNavigation'].find('.prev').removeClass('inactive');
-        (value == totWidth ) ? timelineComponents['timelineNavigation'].find('.next').addClass('inactive') : timelineComponents['timelineNavigation'].find('.next').removeClass('inactive');
-    }
-
-    function updateFilling(selectedEvent, filling, totWidth) {
-        //change .filling-line length according to the selected event
-        var eventStyle = window.getComputedStyle(selectedEvent.get(0), null),
-            eventLeft = eventStyle.getPropertyValue("left"),
-            eventWidth = eventStyle.getPropertyValue("width");
-        eventLeft = Number(eventLeft.replace('px', '')) + Number(eventWidth.replace('px', ''))/2;
-        var scaleValue = eventLeft/totWidth;
-        setTransformValue(filling.get(0), 'scaleX', scaleValue);
-    }
-
-    function setDatePosition(timelineComponents, min) {
-        for (i = 0; i < timelineComponents['timelineDates'].length; i++) {
-            var distance = daydiff(timelineComponents['timelineDates'][0], timelineComponents['timelineDates'][i]),
-                distanceNorm = Math.round(distance/timelineComponents['eventsMinLapse']) + 2;
-            timelineComponents['timelineEvents'].eq(i).css('left', distanceNorm*min+'px');
-        }
-    }
-
-    function setTimelineWidth(timelineComponents, width) {
-        var timeSpan = daydiff(timelineComponents['timelineDates'][0], timelineComponents['timelineDates'][timelineComponents['timelineDates'].length-1]),
-            timeSpanNorm = timeSpan/timelineComponents['eventsMinLapse'],
-            timeSpanNorm = Math.round(timeSpanNorm) + 4,
-            totalWidth = timeSpanNorm*width;
-        timelineComponents['eventsWrapper'].css('width', totalWidth+'px');
-        updateFilling(timelineComponents['eventsWrapper'].find('a.selected'), timelineComponents['fillingLine'], totalWidth);
-        updateTimelinePosition('next', timelineComponents['eventsWrapper'].find('a.selected'), timelineComponents);
-
-        return totalWidth;
-    }
-
-    function updateVisibleContent(event, eventsContent) {
-        var eventDate = event.data('date'),
-            visibleContent = eventsContent.find('.selected'),
-            selectedContent = eventsContent.find('[data-date="'+ eventDate +'"]'),
-            selectedContentHeight = selectedContent.height();
-
-        if (selectedContent.index() > visibleContent.index()) {
-            var classEnetering = 'selected enter-right',
-                classLeaving = 'leave-left';
-        } else {
-            var classEnetering = 'selected enter-left',
-                classLeaving = 'leave-right';
-        }
-
-        selectedContent.attr('class', classEnetering);
-        visibleContent.attr('class', classLeaving).one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(){
-            visibleContent.removeClass('leave-right leave-left');
-            selectedContent.removeClass('enter-left enter-right');
-        });
-        eventsContent.css('height', selectedContentHeight+'px');
-    }
-
-    function updateOlderEvents(event) {
-        event.parent('li').prevAll('li').children('a').addClass('older-event').end().end().nextAll('li').children('a').removeClass('older-event');
-    }
-
-    function getTranslateValue(timeline) {
-        var timelineStyle = window.getComputedStyle(timeline.get(0), null),
-            timelineTranslate = timelineStyle.getPropertyValue("-webkit-transform") ||
-                timelineStyle.getPropertyValue("-moz-transform") ||
-                timelineStyle.getPropertyValue("-ms-transform") ||
-                timelineStyle.getPropertyValue("-o-transform") ||
-                timelineStyle.getPropertyValue("transform");
-
-        if( timelineTranslate.indexOf('(') >=0 ) {
-            var timelineTranslate = timelineTranslate.split('(')[1];
-            timelineTranslate = timelineTranslate.split(')')[0];
-            timelineTranslate = timelineTranslate.split(',');
-            var translateValue = timelineTranslate[4];
-        } else {
-            var translateValue = 0;
-        }
-
-        return Number(translateValue);
-    }
-
-    function setTransformValue(element, property, value) {
-        element.style["-webkit-transform"] = property+"("+value+")";
-        element.style["-moz-transform"] = property+"("+value+")";
-        element.style["-ms-transform"] = property+"("+value+")";
-        element.style["-o-transform"] = property+"("+value+")";
-        element.style["transform"] = property+"("+value+")";
-    }
-
-    //based on http://stackoverflow.com/questions/542938/how-do-i-get-the-number-of-days-between-two-dates-in-javascript
-    function parseDate(events) {
-        var dateArrays = [];
-        events.each(function(){
-            var singleDate = $(this),
-                dateComp = singleDate.data('date').split('T');
-            if( dateComp.length > 1 ) { //both DD/MM/YEAR and time are provided
-                var dayComp = dateComp[0].split('/'),
-                    timeComp = dateComp[1].split(':');
-            } else if( dateComp[0].indexOf(':') >=0 ) { //only time is provide
-                var dayComp = ["2000", "0", "0"],
-                    timeComp = dateComp[0].split(':');
-            } else { //only DD/MM/YEAR
-                var dayComp = dateComp[0].split('/'),
-                    timeComp = ["0", "0"];
-            }
-            var	newDate = new Date(dayComp[2], dayComp[1]-1, dayComp[0], timeComp[0], timeComp[1]);
-            dateArrays.push(newDate);
-        });
-        return dateArrays;
-    }
-
-    function daydiff(first, second) {
-        return Math.round((second-first));
-    }
-
-    function minLapse(dates) {
-        //determine the minimum distance among events
-        var dateDistances = [];
-        for (i = 1; i < dates.length; i++) {
-            var distance = daydiff(dates[i-1], dates[i]);
-            dateDistances.push(distance);
-        }
-        return Math.min.apply(null, dateDistances);
-    }
-
-    /*
-        How to tell if a DOM element is visible in the current viewport?
-        http://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
-    */
-    function elementInViewport(el) {
-        var top = el.offsetTop;
-        var left = el.offsetLeft;
-        var width = el.offsetWidth;
-        var height = el.offsetHeight;
-
-        while(el.offsetParent) {
-            el = el.offsetParent;
-            top += el.offsetTop;
-            left += el.offsetLeft;
-        }
-
-        return (
-            top < (window.pageYOffset + window.innerHeight) &&
-            left < (window.pageXOffset + window.innerWidth) &&
-            (top + height) > window.pageYOffset &&
-            (left + width) > window.pageXOffset
-        );
-    }
-
-    function checkMQ() {
-        //check if mobile or desktop device
-        return window.getComputedStyle(document.querySelector('.cd-horizontal-timeline'), '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, "");
-    }
-});
 // Generated by CoffeeScript 1.6.2
 /**
 @license Sticky-kit v1.1.3 | MIT | Leaf Corcoran 2015 | http://leafo.net
@@ -8901,6 +8633,274 @@ jQuery(document).ready(function($){
 
 }).call(this);
 
+jQuery(document).ready(function($){
+    var timelines = $('.cd-horizontal-timeline'),
+        eventsMinDistance = 70;
+
+    (timelines.length > 0) && initTimeline(timelines);
+
+    function initTimeline(timelines) {
+        timelines.each(function(){
+            var timeline = $(this),
+                timelineComponents = {};
+            //cache timeline components
+            timelineComponents['timelineWrapper'] = timeline.find('.events-wrapper');
+            timelineComponents['eventsWrapper'] = timelineComponents['timelineWrapper'].children('.events');
+            timelineComponents['fillingLine'] = timelineComponents['eventsWrapper'].children('.filling-line');
+            timelineComponents['timelineEvents'] = timelineComponents['eventsWrapper'].find('a');
+            timelineComponents['timelineDates'] = parseDate(timelineComponents['timelineEvents']);
+            timelineComponents['eventsMinLapse'] = minLapse(timelineComponents['timelineDates']);
+            timelineComponents['timelineNavigation'] = timeline.find('.cd-timeline-navigation');
+            timelineComponents['eventsContent'] = timeline.children('.events-content');
+
+            //assign a left postion to the single events along the timeline
+            setDatePosition(timelineComponents, eventsMinDistance);
+            //assign a width to the timeline
+            var timelineTotWidth = setTimelineWidth(timelineComponents, eventsMinDistance);
+            //the timeline has been initialize - show it
+            timeline.addClass('loaded');
+
+            //detect click on the next arrow
+            timelineComponents['timelineNavigation'].on('click', '.next', function(event){
+                event.preventDefault();
+                updateSlide(timelineComponents, timelineTotWidth, 'next');
+            });
+            //detect click on the prev arrow
+            timelineComponents['timelineNavigation'].on('click', '.prev', function(event){
+                event.preventDefault();
+                updateSlide(timelineComponents, timelineTotWidth, 'prev');
+            });
+            //detect click on the a single event - show new event content
+            timelineComponents['eventsWrapper'].on('click', 'a', function(event){
+                event.preventDefault();
+                timelineComponents['timelineEvents'].removeClass('selected');
+                $(this).addClass('selected');
+                updateOlderEvents($(this));
+                updateFilling($(this), timelineComponents['fillingLine'], timelineTotWidth);
+                updateVisibleContent($(this), timelineComponents['eventsContent']);
+            });
+
+            //on swipe, show next/prev event content
+            timelineComponents['eventsContent'].on('swipeleft', function(){
+                var mq = checkMQ();
+                ( mq == 'mobile' ) && showNewContent(timelineComponents, timelineTotWidth, 'next');
+            });
+            timelineComponents['eventsContent'].on('swiperight', function(){
+                var mq = checkMQ();
+                ( mq == 'mobile' ) && showNewContent(timelineComponents, timelineTotWidth, 'prev');
+            });
+
+            //keyboard navigation
+            $(document).keyup(function(event){
+                if(event.which=='37' && elementInViewport(timeline.get(0)) ) {
+                    showNewContent(timelineComponents, timelineTotWidth, 'prev');
+                } else if( event.which=='39' && elementInViewport(timeline.get(0))) {
+                    showNewContent(timelineComponents, timelineTotWidth, 'next');
+                }
+            });
+        });
+    }
+
+    function updateSlide(timelineComponents, timelineTotWidth, string) {
+        //retrieve translateX value of timelineComponents['eventsWrapper']
+        var translateValue = getTranslateValue(timelineComponents['eventsWrapper']),
+            wrapperWidth = Number(timelineComponents['timelineWrapper'].css('width').replace('px', ''));
+        //translate the timeline to the left('next')/right('prev')
+        (string == 'next')
+            ? translateTimeline(timelineComponents, translateValue - wrapperWidth + eventsMinDistance, wrapperWidth - timelineTotWidth)
+            : translateTimeline(timelineComponents, translateValue + wrapperWidth - eventsMinDistance);
+    }
+
+    function showNewContent(timelineComponents, timelineTotWidth, string) {
+        //go from one event to the next/previous one
+        var visibleContent =  timelineComponents['eventsContent'].find('.selected'),
+            newContent = ( string == 'next' ) ? visibleContent.next() : visibleContent.prev();
+
+        if ( newContent.length > 0 ) { //if there's a next/prev event - show it
+            var selectedDate = timelineComponents['eventsWrapper'].find('.selected'),
+                newEvent = ( string == 'next' ) ? selectedDate.parent('li').next('li').children('a') : selectedDate.parent('li').prev('li').children('a');
+
+            updateFilling(newEvent, timelineComponents['fillingLine'], timelineTotWidth);
+            updateVisibleContent(newEvent, timelineComponents['eventsContent']);
+            newEvent.addClass('selected');
+            selectedDate.removeClass('selected');
+            updateOlderEvents(newEvent);
+            updateTimelinePosition(string, newEvent, timelineComponents);
+        }
+    }
+
+    function updateTimelinePosition(string, event, timelineComponents) {
+        //translate timeline to the left/right according to the position of the selected event
+        var eventStyle = window.getComputedStyle(event.get(0), null),
+            eventLeft = Number(eventStyle.getPropertyValue("left").replace('px', '')),
+            timelineWidth = Number(timelineComponents['timelineWrapper'].css('width').replace('px', '')),
+            timelineTotWidth = Number(timelineComponents['eventsWrapper'].css('width').replace('px', ''));
+        var timelineTranslate = getTranslateValue(timelineComponents['eventsWrapper']);
+
+        if( (string == 'next' && eventLeft > timelineWidth - timelineTranslate) || (string == 'prev' && eventLeft < - timelineTranslate) ) {
+            translateTimeline(timelineComponents, - eventLeft + timelineWidth/2, timelineWidth - timelineTotWidth);
+        }
+    }
+
+    function translateTimeline(timelineComponents, value, totWidth) {
+        var eventsWrapper = timelineComponents['eventsWrapper'].get(0);
+        value = (value > 0) ? 0 : value; //only negative translate value
+        value = ( !(typeof totWidth === 'undefined') &&  value < totWidth ) ? totWidth : value; //do not translate more than timeline width
+        setTransformValue(eventsWrapper, 'translateX', value+'px');
+        //update navigation arrows visibility
+        (value == 0 ) ? timelineComponents['timelineNavigation'].find('.prev').addClass('inactive') : timelineComponents['timelineNavigation'].find('.prev').removeClass('inactive');
+        (value == totWidth ) ? timelineComponents['timelineNavigation'].find('.next').addClass('inactive') : timelineComponents['timelineNavigation'].find('.next').removeClass('inactive');
+    }
+
+    function updateFilling(selectedEvent, filling, totWidth) {
+        //change .filling-line length according to the selected event
+        var eventStyle = window.getComputedStyle(selectedEvent.get(0), null),
+            eventLeft = eventStyle.getPropertyValue("left"),
+            eventWidth = eventStyle.getPropertyValue("width");
+        eventLeft = Number(eventLeft.replace('px', '')) + Number(eventWidth.replace('px', ''))/2;
+        var scaleValue = eventLeft/totWidth;
+        setTransformValue(filling.get(0), 'scaleX', scaleValue);
+    }
+
+    function setDatePosition(timelineComponents, min) {
+        for (i = 0; i < timelineComponents['timelineDates'].length; i++) {
+            var distance = daydiff(timelineComponents['timelineDates'][0], timelineComponents['timelineDates'][i]),
+                distanceNorm = Math.round(distance/timelineComponents['eventsMinLapse']) + 2;
+            timelineComponents['timelineEvents'].eq(i).css('left', distanceNorm*min+'px');
+        }
+    }
+
+    function setTimelineWidth(timelineComponents, width) {
+        var timeSpan = daydiff(timelineComponents['timelineDates'][0], timelineComponents['timelineDates'][timelineComponents['timelineDates'].length-1]),
+            timeSpanNorm = timeSpan/timelineComponents['eventsMinLapse'],
+            timeSpanNorm = Math.round(timeSpanNorm) + 4,
+            totalWidth = timeSpanNorm*width;
+        timelineComponents['eventsWrapper'].css('width', totalWidth+'px');
+        updateFilling(timelineComponents['eventsWrapper'].find('a.selected'), timelineComponents['fillingLine'], totalWidth);
+        updateTimelinePosition('next', timelineComponents['eventsWrapper'].find('a.selected'), timelineComponents);
+
+        return totalWidth;
+    }
+
+    function updateVisibleContent(event, eventsContent) {
+        var eventDate = event.data('date'),
+            visibleContent = eventsContent.find('.selected'),
+            selectedContent = eventsContent.find('[data-date="'+ eventDate +'"]'),
+            selectedContentHeight = selectedContent.height();
+
+        if (selectedContent.index() > visibleContent.index()) {
+            var classEnetering = 'selected enter-right',
+                classLeaving = 'leave-left';
+        } else {
+            var classEnetering = 'selected enter-left',
+                classLeaving = 'leave-right';
+        }
+
+        selectedContent.attr('class', classEnetering);
+        visibleContent.attr('class', classLeaving).one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(){
+            visibleContent.removeClass('leave-right leave-left');
+            selectedContent.removeClass('enter-left enter-right');
+        });
+        eventsContent.css('height', selectedContentHeight+'px');
+    }
+
+    function updateOlderEvents(event) {
+        event.parent('li').prevAll('li').children('a').addClass('older-event').end().end().nextAll('li').children('a').removeClass('older-event');
+    }
+
+    function getTranslateValue(timeline) {
+        var timelineStyle = window.getComputedStyle(timeline.get(0), null),
+            timelineTranslate = timelineStyle.getPropertyValue("-webkit-transform") ||
+                timelineStyle.getPropertyValue("-moz-transform") ||
+                timelineStyle.getPropertyValue("-ms-transform") ||
+                timelineStyle.getPropertyValue("-o-transform") ||
+                timelineStyle.getPropertyValue("transform");
+
+        if( timelineTranslate.indexOf('(') >=0 ) {
+            var timelineTranslate = timelineTranslate.split('(')[1];
+            timelineTranslate = timelineTranslate.split(')')[0];
+            timelineTranslate = timelineTranslate.split(',');
+            var translateValue = timelineTranslate[4];
+        } else {
+            var translateValue = 0;
+        }
+
+        return Number(translateValue);
+    }
+
+    function setTransformValue(element, property, value) {
+        element.style["-webkit-transform"] = property+"("+value+")";
+        element.style["-moz-transform"] = property+"("+value+")";
+        element.style["-ms-transform"] = property+"("+value+")";
+        element.style["-o-transform"] = property+"("+value+")";
+        element.style["transform"] = property+"("+value+")";
+    }
+
+    //based on http://stackoverflow.com/questions/542938/how-do-i-get-the-number-of-days-between-two-dates-in-javascript
+    function parseDate(events) {
+        var dateArrays = [];
+        events.each(function(){
+            var singleDate = $(this),
+                dateComp = singleDate.data('date').split('T');
+            if( dateComp.length > 1 ) { //both DD/MM/YEAR and time are provided
+                var dayComp = dateComp[0].split('/'),
+                    timeComp = dateComp[1].split(':');
+            } else if( dateComp[0].indexOf(':') >=0 ) { //only time is provide
+                var dayComp = ["2000", "0", "0"],
+                    timeComp = dateComp[0].split(':');
+            } else { //only DD/MM/YEAR
+                var dayComp = dateComp[0].split('/'),
+                    timeComp = ["0", "0"];
+            }
+            var	newDate = new Date(dayComp[2], dayComp[1]-1, dayComp[0], timeComp[0], timeComp[1]);
+            dateArrays.push(newDate);
+        });
+        return dateArrays;
+    }
+
+    function daydiff(first, second) {
+        return Math.round((second-first));
+    }
+
+    function minLapse(dates) {
+        //determine the minimum distance among events
+        var dateDistances = [];
+        for (i = 1; i < dates.length; i++) {
+            var distance = daydiff(dates[i-1], dates[i]);
+            dateDistances.push(distance);
+        }
+        return Math.min.apply(null, dateDistances);
+    }
+
+    /*
+        How to tell if a DOM element is visible in the current viewport?
+        http://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
+    */
+    function elementInViewport(el) {
+        var top = el.offsetTop;
+        var left = el.offsetLeft;
+        var width = el.offsetWidth;
+        var height = el.offsetHeight;
+
+        while(el.offsetParent) {
+            el = el.offsetParent;
+            top += el.offsetTop;
+            left += el.offsetLeft;
+        }
+
+        return (
+            top < (window.pageYOffset + window.innerHeight) &&
+            left < (window.pageXOffset + window.innerWidth) &&
+            (top + height) > window.pageYOffset &&
+            (left + width) > window.pageXOffset
+        );
+    }
+
+    function checkMQ() {
+        //check if mobile or desktop device
+        return window.getComputedStyle(document.querySelector('.cd-horizontal-timeline'), '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, "");
+    }
+});
 /**
  * TODO: Review all of these functions and remove any that are not used. We are loading a large number of plugins which may not be used.
  */
@@ -9066,6 +9066,7 @@ jQuery(document).ready(function ($) {
     function headerSpace() {
         var headerHeight = $('header').outerHeight();
         $('.js-header-space').css('padding-top', +headerHeight + "px");
+        $('.js-negative-offset-header-space').css('margin-top', "-" +headerHeight + "px");
     }
 
     headerSpace();
@@ -9762,36 +9763,38 @@ jQuery(document).ready(function ($) {
 /*======================================================
 GOOGLE MAP
 ========================================================*/
-//https://snazzymaps.com/style/60/blue-gray
-var styles = [{featureType: "water", stylers: [{visibility: "on"}, {color: "#b5cbe4"}]}, {
-    featureType: "landscape",
-    stylers: [{color: "#efefef"}]
-}, {featureType: "road.highway", elementType: "geometry", stylers: [{color: "#83a5b0"}]}, {
-    featureType: "road.arterial",
-    elementType: "geometry",
-    stylers: [{color: "#bdcdd3"}]
-}, {featureType: "road.local", elementType: "geometry", stylers: [{color: "#ffffff"}]}, {
-    featureType: "poi.park",
-    elementType: "geometry",
-    stylers: [{color: "#e3eed3"}]
-}, {
-    featureType: "administrative",
-    stylers: [{visibility: "on"}, {lightness: 33}]
-}, {featureType: "road"}, {
-    featureType: "poi.park",
-    elementType: "labels",
-    stylers: [{visibility: "on"}, {lightness: 20}]
-}, {}, {featureType: "road", stylers: [{lightness: 20}]}];
-var map;
-var markers = [];
-var infowindow = [];
-var mapOptions = {
-    zoom: 6,
-    styles: styles,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-};
+
 
 function initialize() {
+
+    //https://snazzymaps.com/style/60/blue-gray
+    var styles = [{featureType: "water", stylers: [{visibility: "on"}, {color: "#b5cbe4"}]}, {
+        featureType: "landscape",
+        stylers: [{color: "#efefef"}]
+    }, {featureType: "road.highway", elementType: "geometry", stylers: [{color: "#83a5b0"}]}, {
+        featureType: "road.arterial",
+        elementType: "geometry",
+        stylers: [{color: "#bdcdd3"}]
+    }, {featureType: "road.local", elementType: "geometry", stylers: [{color: "#ffffff"}]}, {
+        featureType: "poi.park",
+        elementType: "geometry",
+        stylers: [{color: "#e3eed3"}]
+    }, {
+        featureType: "administrative",
+        stylers: [{visibility: "on"}, {lightness: 33}]
+    }, {featureType: "road"}, {
+        featureType: "poi.park",
+        elementType: "labels",
+        stylers: [{visibility: "on"}, {lightness: 20}]
+    }, {}, {featureType: "road", stylers: [{lightness: 20}]}];
+    var map;
+    var markers = [];
+    var infowindow = [];
+    var mapOptions = {
+        zoom: 6,
+        styles: styles,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
 
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     var bound = new google.maps.LatLngBounds();
@@ -10060,10 +10063,14 @@ jQuery(document).ready(function ($) {
  * @created 22 Mar 2018
  */
 
+console.log('accordion loaded')
+
 jQuery(document).ready(function ($) {
 
     // OPEN AND CLOSE ACCORDION COLLECTIONS.
-    $('[ data-accordion-collection]').on('click', function() {
+    $('[data-accordion-collection]').on('click', function() {
+
+        console.log('clicked')
 
         // GET THE NUMBER OF THE ROW COLLECTION.
         var collecton = $(this).data('accordion-collection');

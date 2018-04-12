@@ -6,7 +6,7 @@
         <div class="flex justify-end">
 <!--            <a href="#" class="block px3 white hover-primary js-hide-show" data-show="mobile-search" data-icon-show="&#xf002;" data-icon-hide="&#xf00d;"><i class="fa">&#xf002;</i></a>-->
 <!--            <a href="/" class="block px3 white hover-primary"><i class="fa">&#xf015;</i></a>-->
-            <a href="<?=str_replace(" ", "", get_field('brand_phone', 'option'))?>" class="white"><i class="fa fa-phone"></i></a>
+            <a href="tel:<?=str_replace(" ", "", get_field('brand_phone', 'option'))?>" class="white"><i class="fa fa-phone"></i></a>
             <a href="#" class="block px3 white text-center js-menu-trigger" style="width:18px"><i class="fa fa-navicon"></i></a>
         </div>
     </div>

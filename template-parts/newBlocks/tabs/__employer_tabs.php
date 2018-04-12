@@ -88,9 +88,9 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
                                                 foreach($block['select_terms'] as $term): ?>
 
                                                     <?php
-                                                    $term_page = "find-talent";
+                                                    $term_page = "find-a-job";
                                                     if($i == 1)
-                                                        $term_page = "find-a-job";
+                                                        $term_page = "find-talent";
                                                     ?>
 
                                                     <option value="<?= $term->name; ?>" data-redirect="/<?=$term_page?>/<?= $term->slug; ?>"> <?= $term->name; ?> </option>
