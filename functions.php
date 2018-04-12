@@ -637,11 +637,18 @@ function ml_categories_rewrite() {
 		'index.php?pagename=gallery&gallery_category=$matches[1]',
 		'top'
 	);
+
+	add_rewrite_rule(
+		'corporate-social-responsibility/([a-zA-Z0-9-]+)/?$',
+		'index.php?pagename=corporate-social-responsibility&news_category=$matches[1]',
+		'top'
+	);
 }
 add_action('init', 'ml_categories_rewrite');
 
 function ml_query_vars($query_vars) {
 	$query_vars[] = 'news_category';
+	$query_vars[] = 'csr_category';
 	$query_vars[] = 'testimonials_category';
 	$query_vars[] = 'gallery_category';
 

@@ -74,12 +74,15 @@ Class _block_news
 
 	public function fetchFeedPosts( $post_per_page = 12, $page = 1 ) {
 
-		$tax_query = [
+		$tax_query = [];
+
+		$tax_query[] = [
 			'taxonomy'  => 'post_specific_types',
 			'terms'     => array('csr'),
 			'field'     => 'slug',
             'operator'  => 'NOT IN'
 		];
+
 		if(isset($_POST['order_filter']) && $_POST['order_filter'] != ''): $orderby = $_POST['order_filter']; else : $orderby = 'date'; endif;
 		if ( isset($_POST['category_filter']) && $_POST['category_filter'] != '' ) {
 			$tax_query[] = array(
@@ -121,9 +124,11 @@ Class _block_news
 
 	public function fetchCSRPosts( $post_per_page = 12, $page = 1 ) {
 
-		$tax_query = [
+		$tax_query = [];
+
+		$tax_query[] = [
 			'taxonomy'  => 'post_specific_types',
-			'terms'     => [ 'csr' ],
+			'terms'     => array('csr'),
 			'field'     => 'slug'
 		];
 
@@ -148,17 +153,17 @@ Class _block_news
 		if($orderby == 'date')
 			$order = "DESC";
 
-		$args = array(
+		$args2 = array(
 			'posts_per_page'    => $post_per_page,
 			'paged'             => $page,
 			'post_type'         => 'post',
 			'orderby'           => $orderby,
 			'order'             => $order,
-			'tax_query'         => $tax_query,
-			'post_status'       => array( 'publish' )
+			'post_status'       => array( 'publish' ),
+			'tax_query'         => $tax_query
 		);
 
-		$this->block['posts'] = new WP_Query( $args );
+		$this->block['posts'] = new WP_Query( $args2 );
 
 		foreach($this->block['posts']->posts as $key => $post) {
 

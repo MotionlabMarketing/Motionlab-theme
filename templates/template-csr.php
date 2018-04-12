@@ -201,7 +201,7 @@ get_header(); ?>
 
     $('.csr_filters').on('change', function() {
         if($(this).attr('id') == "csr_filtercats") {
-            history.pushState({cat:$(this).val()}, "", "/news/"+$(this).val());
+            history.pushState({cat:$(this).val()}, "", "/corporate-social-responsibility/"+$(this).val());
         }
         fetchNewsPosts(1);
     });
