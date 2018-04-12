@@ -7,8 +7,6 @@ define("MASTER_CPT_DIR", get_template_directory() . "/cpt-registry/");
 define("CHILD_CPT_DIR", get_stylesheet_directory() . "/cpt-registry/");
 define("AJAX_DIR", get_template_directory() . "/template-parts/ajax/");
 
-define('WP_POST_REVISIONS', 2);
-
 /**
  * INCLUDE ALL CUSTOM THEME FUNCTIONS.
  *
@@ -18,17 +16,6 @@ define('WP_POST_REVISIONS', 2);
  */
 foreach (glob(get_template_directory() . "/inc/_functions/*.php") as $filename) {
     include $filename;
-}
-
-/**
- * SET THE NUMBER OF POST REVISIONS TO KEEP.
- *
- * @added 15 Mar 2018
- * @author Joe Curran
- */
-add_filter( 'wp_revisions_to_keep', 'filter_function_name', 10, 2 );
-function filter_function_name( $num, $post ) {
-    return $num;
 }
 
 /*==================================================================
@@ -50,7 +37,7 @@ if ( ! function_exists( 'motionlabtheme_setup' ) ) :
 			'footer_1' => esc_html__( 'Footer 1', 'motionlabtheme' ),
 			'footer_2' => esc_html__( 'Footer 2', 'motionlabtheme' ),
 			'footer_3' => esc_html__( 'Footer 3', 'motionlabtheme' ),
-			'tnc' => esc_html__( 'Footer – Legal Links', 'motionlabtheme' ), // TODO: Update the naming on this.
+			'tnc' => esc_html__( 'Footer (To Be Removed)', 'motionlabtheme' ), // TODO: REMOVE SUPPROT FOR THIS.
 		) );
 
 		add_theme_support( 'html5', array(
@@ -613,7 +600,10 @@ function ml_get_template() {
     $template = get_page_template_slug();
     $template = explode('templates/', $template);
 
-    return $template[1];
+    if (!empty($template[1]))
+        return $template[1];
+    else
+        return false;
 }
 
 function pa($value) {
@@ -647,11 +637,18 @@ function ml_categories_rewrite() {
 		'index.php?pagename=gallery&gallery_category=$matches[1]',
 		'top'
 	);
+
+	add_rewrite_rule(
+		'corporate-social-responsibility/([a-zA-Z0-9-]+)/?$',
+		'index.php?pagename=corporate-social-responsibility&news_category=$matches[1]',
+		'top'
+	);
 }
 add_action('init', 'ml_categories_rewrite');
 
 function ml_query_vars($query_vars) {
 	$query_vars[] = 'news_category';
+	$query_vars[] = 'csr_category';
 	$query_vars[] = 'testimonials_category';
 	$query_vars[] = 'gallery_category';
 
@@ -698,3 +695,77 @@ function ml_unregister_tags() {
     unregister_taxonomy_for_object_type('post_tag', 'post');
 }
 add_action('init', 'ml_unregister_tags');
+
+// TEMPLATE CACHING REMOVEAL - NO IDEA IF THIS WORKS.
+function wp_42573_fix_template_caching( WP_Screen $current_screen ) {
+    // Only flush the file cache with each request to post list table, edit post screen, or theme editor.
+    if ( ! in_array( $current_screen->base, array( 'post', 'edit', 'theme-editor' ), true ) ) {
+        return;
+    }
+    $theme = wp_get_theme();
+    if ( ! $theme ) {
+        return;
+    }
+    $cache_hash = md5( $theme->get_theme_root() . '/' . $theme->get_stylesheet() );
+    $label = sanitize_key( 'files_' . $cache_hash . '-' . $theme->get( 'Version' ) );
+    $transient_key = substr( $label, 0, 29 ) . md5( $label );
+    delete_transient( $transient_key );
+}
+add_action( 'current_screen', 'wp_42573_fix_template_caching' );
+
+
+/**
+ * MOTIONLAB THEME
+ * New functions used by the Motion Lab theme.
+ */
+
+define('ML_MENUS', true);
+    define('ML_MENU_FOOTER_COUNT', 4);
+    define('ML_MENU_FOOTER_LEGAL', true);
+
+
+
+if (ML_MENUS) {
+
+    // CREATE NEW NAVIGATION AREAS.
+    function ml_register_nav_menus()
+    {
+
+        $i = 1;
+        while  ($i <= ML_MENU_FOOTER_COUNT) {
+            register_nav_menus(
+                array(
+                    "footer_location_{$i}" => __("Footer - Column {$i}"),
+                )
+            );
+            $i++;
+        }
+
+        if (ML_MENU_FOOTER_LEGAL) {
+            register_nav_menus(
+                array(
+                    'footer_legal' => __('Footer - Legal Links'),
+                )
+            );
+        }
+
+
+    }
+    add_action('init', 'ml_register_nav_menus');
+}
+
+/**
+ * MOTIONLAB THEME FUNCTIONS
+ * New functions used by the Motion Lab theme.
+ */
+
+function ml_get_menu_object_by_location($location) {
+    // GET THE LOCATIONS
+    $locations = get_nav_menu_locations();
+
+    // GET THE MENU ID
+    $menu_id = $locations[$location];
+
+    // RETURN THE MENU OBJECT
+    return $menu = wp_get_nav_menu_object($menu_id);
+}

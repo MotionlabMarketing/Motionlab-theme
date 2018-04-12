@@ -31,10 +31,23 @@ $image = ($block['bgImage']['enable'] !== true)? $block['background']['colour'] 
 
             <?php foreach ($sections as $section): ?>
 
-                <a href="<?=$section['link']['url']?>" class="section-item relative || col col-12 lg-col-3 p4 || text-center <?=$block['content']['txtColor']?> || js-match-height">
-                    <p class="h3 mb2"><?=$section['title']?></p>
-                    <p class="mb0 || btn btn-small bg-<?=$block['content']['txtColor']?> brand-primary"><?=$section['link']['title']?></p>
-                </a>
+                <div class="section-item relative || col col-12 lg-col-3 p4 || text-center <?=$block['content']['txtColor']?> || js-match-height">
+
+                    <?php if(!empty($section['link']['url'])): ?>
+                        <a href="<?=$section['link']['url']?>"></a>
+                    <?php endif; ?>
+
+                        <p class="h3 mb2"><?=$section['title']?></p>
+
+                        <?php if(!empty($section['link'])): ?>
+                            <p class="mb0 || btn btn-small bg-<?=$block['content']['txtColor']?> brand-primary"><?=$section['link']['title']?></p>
+                        <?php endif; ?>
+
+                     <?php if(!empty($section['link']['url'])): ?>
+                        </a>
+                     <?php endif; ?>
+
+                </div>
 
             <?php endforeach; ?>
 
