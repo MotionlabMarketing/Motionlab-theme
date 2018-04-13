@@ -9,9 +9,9 @@
 ?>
 
 <?php foreach($posts['posts']->posts as $post) :?>
-<div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2 flex items-center">
+<div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2 lg-flex items-center">
 
-    <div class="col col-9 mb4">
+    <div class="col col-12 lg-col-9 mb4">
 
         <a href="<?= get_permalink($post->ID) ?>"><h3 class="mb2 h3"><?= $post->post_title ?></h3>
         </a>
@@ -27,14 +27,15 @@
 
     </div>
 
-    <div class="col col-3">
+    <div class="col col-12 lg-col-3">
 
-        <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white width-100 h6 right">Find out more</a>
+        <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white lg-width-100 h6 lg-right">Find out more</a>
 
     </div>
 
 </div>
 <?php endforeach;?>
+
 <nav class="pagination || clearfix block text-center border-top border-darken-1 py4 mt5">
 
     <?php $page = $posts['posts']->query['paged'] ?: 1; ?>
