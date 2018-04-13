@@ -26,11 +26,11 @@
                     <div class="col col-12 md-col-5">
 
                         <?php if (has_post_thumbnail( $post->ID ) ): ?>
-                            <a href="<?=$post->guid?>">
-                                <?= wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), "large", "", ["class" => "box-shadow-1 js-match-height"] ) ?>
+                            <a href="<?=get_permalink($post->ID)?>">
+                                <?= wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), "medium", "", ["class" => "box-shadow-1 js-match-height"] ) ?>
                             </a>
                         <?php else: ?>
-                            <a href="<?=$post->guid?>">
+                            <a href="<?=get_permalink($post->ID)?>">
                                 <img src="<?=get_field('fallback_placeholder_image', 'option')?>" alt="<?=$post->post_title?>" class="box-shadow-1 js-match-height">
                             </a>
                         <?php endif; ?>
@@ -56,7 +56,7 @@
                             <p class="h6"><?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr($post->post_content,0, 100);?></p>
 
                             <?php if($block['content']['buttons'] = true): ?>
-                                <a href="<?=$post->guid?>" class="btn <?=$block['content']['button']['button_text_colour']['system_text_colours']?> <?=$block['content']['button']['button_background_colour']['system_background_colours']?> bold ">Read More</a>
+                                <a href="<?=get_permalink($post->ID)?>" class="btn <?=$block['content']['button']['button_text_colour']['system_text_colours']?> <?=$block['content']['button']['button_background_colour']['system_background_colours']?> bold ">Read More</a>
                             <?php endif; ?>
 
                         </div>

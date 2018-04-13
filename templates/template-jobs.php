@@ -90,14 +90,15 @@ $boxes = get_field('template_jobs_sidebarBoxes');
             <div id="jobs-listing" class="col col-12 md-col-12 lg-col-8 mb6 clearfix">
 
                 <?php foreach ($block['posts']->posts as $post) : ?>
-                    <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2 bg-white flex items-center">
+                    <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2 lg-flex items-center">
 
-                        <div class="col col-12 md-col-9">
+                        <div class="col col-12 lg-col-9 mb4">
 
                             <a href="<?= get_permalink($post->ID) ?>"><h3 class="mb2 h3"><?= $post->post_title ?></h3>
                             </a>
-                            <?php if (get_field('jobs_role_salary', $post->ID) != ''):
-                                $salary = "£" . get_field('jobs_role_salary', $post->ID);
+
+                            <?php if(get_field('jobs_role_salary', $post->ID) != ''):
+                                $salary = get_field('jobs_role_salary', $post->ID);
                             else :
                                 $salary = "Salary not Specified";
                             endif; ?>
@@ -107,10 +108,9 @@ $boxes = get_field('template_jobs_sidebarBoxes');
 
                         </div>
 
-                        <div class="col col-12 md-col-3 mt2">
+                        <div class="col col-12 lg-col-3">
 
-                            <a href="<?= get_permalink($post->ID) ?>"
-                               class="btn btn-primary btn-small white md-width-100 h6 md-right">Find out more</a>
+                            <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white lg-width-100 h6 lg-right">Find out more</a>
 
                         </div>
 
