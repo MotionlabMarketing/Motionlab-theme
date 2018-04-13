@@ -23,11 +23,11 @@
                 <div class="col col-12 md-col-4 mb4 p2">
 
                     <?php if (has_post_thumbnail( $post->ID ) ): ?>
-                        <a href="<?=$post->guid?>">
-                            <?= wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), "large", "", ["class" => "box-shadow-1 js-match-height"] ) ?>
+                        <a href="<?=get_permalink($post->ID)?>">
+                            <?= wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), "medium", "", ["class" => "box-shadow-1 js-match-height"] ) ?>
                         </a>
                     <?php else: ?>
-                        <a href="<?=$post->guid?>">
+                        <a href="<?=get_permalink($post->ID)?>">
                             <?= wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1 js-match-height"]) // TODO: Default Image ?>
                         </a>
                     <?php endif; ?>
@@ -39,12 +39,12 @@
                             <p class="h6 mt2 bold <?=$block['content']['txtColor']?>"><?=date('d M Y', strtotime($post->post_date));?></p>
                         <?php endif; ?>
 
-                        <h3 class="mb2 brand-primary" style="font-size: 1.3rem"><a href="/"><?=$post->post_title?></a></h3>
+                        <h3 class="mb2 brand-primary" style="font-size: 1.3rem"><a href="<?=get_permalink($post->ID)?>"><?=$post->post_title?></a></h3>
 
                         <p class="h5"><?=strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr($post->post_content,0, 100);?></p>
 
                         <?php if($block['content']['buttons'] = true): ?>
-                            <a href="<?=$post->guid?>" class="btn <?=$block['content']['button']['button_text_colour']['system_text_colours']?> <?=$block['content']['button']['button_background_colour']['system_background_colours']?> bold "><?=$block['content']['button']['button_link']['title']?></a>
+                            <a href="<?=get_permalink($post->ID)?>" class="btn <?=$block['content']['button']['button_text_colour']['system_text_colours']?> <?=$block['content']['button']['button_background_colour']['system_background_colours']?> bold "><?=$block['content']['button']['button_link']['title']?></a>
                         <?php endif; ?>
 
                     </div>
