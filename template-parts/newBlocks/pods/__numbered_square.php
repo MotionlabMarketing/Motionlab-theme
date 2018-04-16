@@ -18,27 +18,7 @@ $width = ($block['grid'] == 'full_width')? $block['background']['colour'] : "";
 
     <?=($block['grid'] == 'container' || $block['grid'] == 'full_width')? '<div class="container '.$block['background']['colour'].'">' : ""?>
 
-    <?php if (!empty($blockTitle[0]['title'])): ?>
-
-        <?php if (!empty($block['title']) || !empty($block['content'])): ?>
-            <div class="col col-12 md-col-12 lg-col-12 mb5 text-center">
-
-                <?php if (!empty($blockTitle[0]['title'])): ?>
-                    <div class="m4 text-center">
-                        <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
-                    </div>
-                <?php endif; ?>
-
-                <?php if (!empty($block['content'])): ?>
-                    <div class="text-center mb2 limit-p limit-p-70">
-                        <?= $block['content'] ?>
-                    </div>
-                <?php endif; ?>
-
-            </div>
-        <?php endif; ?>
-
-    <?php endif; ?>
+    <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
     <div class="col-12">
         <?php $i = 1; foreach ($blockItems as $item):?>

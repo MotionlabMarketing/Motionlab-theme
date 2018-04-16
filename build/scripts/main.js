@@ -111,21 +111,15 @@ jQuery(document).ready(function ($) {
 
 
     /*======================================================
-    Mega Menu
+    Mega Menu - Updated 13 Apr 2018
     ========================================================*/
 
-
     $('[data-toggle-section]').hoverIntent({
-        sensitivity: 3, // number = sensitivity threshold (must be 1 or higher)
-        interval: 60,  // number = milliseconds of polling interval
         over: function () {
             var section = $(this).data('toggle-section');
+            $('[data-element="mega-dropdown"] .section-active').removeClass('section-active');
 
-            //console.log(section);
-
-            $(this).closest('ul').find('li').removeClass('section-active');
             $(this).parent().addClass('section-active');
-
             $('[data-section]').hide();
             $('[data-section="' + section + '"]').show();
         },
@@ -134,27 +128,6 @@ jQuery(document).ready(function ($) {
 
         }
     });
-
-    /*======================================================
-    Mobile Trigger
-    ========================================================*/
-    // $('[data-role="mobile-trigger"]').click(function () {
-    //   $('#page').toggleClass("revealed");
-    //   $('[data-nav="mobile-nav"]').toggleClass("revealed");
-    // });
-
-
-    /*======================================================
-    LAZYLOAD
-    ========================================================*/
-    // $('.js-lazy').Lazy();
-    // $('.js-bgFromSrcSetLazy').Lazy();
-    //
-    // //Trigger a fake scroll so above-the-fold contents load. Awaiting answer to hotmail.
-    // // http://jquery.eisbehr.de/lazy/#contact
-    // $("html, body").animate({scrollTop: 1});
-    // $("html, body").animate({scrollTop: 0});
-
 
     /*======================================================
     HEADER SPACE

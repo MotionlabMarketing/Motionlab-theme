@@ -21,27 +21,31 @@ $block['block_title']  = get_sub_field($current . '_title_title');
             foreach($block['posts']->posts as $post) :
     ?>
 
-            <div class="listItem || col-12 md-col-6 relative left px2 pb2 mb2">
+                <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2 lg-flex items-center">
 
-                <div class="border-bottom border-light clearfix p4 box-shadow-2">
+                    <div class="col col-12 lg-col-9 mb4">
 
-                    <div class="col col-12  md-col-9 || js-match-height">
+                        <a href="<?= get_permalink($post->ID) ?>"><h3 class="mb2 h3"><?= $post->post_title ?></h3>
+                        </a>
 
-                        <a href="<?=get_permalink($post->ID)?>"><h3 class="mb2 black h5"><?=$post->post_title?></h3></a>
-
-                        <p class="h6 mb0 bold"> <?=$post->locations[0]->name?> <span class="black">•</span> <?=get_field('jobs_role_salary', $post->ID)?> <span class="black">•</span> <?=$post->types[0]->name?> </p>
+                        <?php if(get_field('jobs_role_salary', $post->ID) != ''):
+                            $salary = get_field('jobs_role_salary', $post->ID);
+                        else :
+                            $salary = "Salary not Specified";
+                        endif; ?>
+                        <p class="h4 bold mb0"><?= $post->locations[0]->name ?><span
+                                    class="muted"> •</span> <?= $salary ?> <span
+                                    class="muted">•</span> <?= $post->types[0]->name ?></p>
 
                     </div>
 
-                    <div class="col col-12 md-col-3 || js-match-height || flex sm-items-center sm-justify-center">
+                    <div class="col col-12 lg-col-3">
 
-                        <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white width-100 h6 right">Find out more</a>
+                        <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white lg-width-100 h6 lg-right">Find out more</a>
 
                     </div>
 
                 </div>
-
-            </div>
 
     <?php
             endforeach;
@@ -81,9 +85,6 @@ $block['block_title']  = get_sub_field($current . '_title_title');
                         ?>
                     <?php endif; ?>
 
-
-
-
                 </select>
 
                 <?php $disabled = sizeof($block['type_select_options']) == 0 ? "disabled" : ""; ?>
@@ -115,30 +116,34 @@ $block['block_title']  = get_sub_field($current . '_title_title');
         <div id="job-listing" class="col-12 clearfix || md-px6 md-my6">
 
             <?php
-                foreach($block['posts']->posts as $post) :
+                foreach($block['posts']->posts as $post):
             ?>
 
-                <div class="listItem || col-12 md-col-6 relative left px2 pb2 mb2">
+                    <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2 lg-flex items-center">
 
-                    <div class="border-bottom border-light clearfix p4 box-shadow-2">
+                        <div class="col col-12 lg-col-9 mb4">
 
-                        <div class="col col-12  md-col-9 mb4 || js-match-height">
+                            <a href="<?= get_permalink($post->ID) ?>"><h3 class="mb2 h3"><?= $post->post_title ?></h3>
+                            </a>
 
-                            <a href="<?=get_permalink($post->ID)?>"><h3 class="mb2 black h5"><?=$post->post_title?></h3></a>
-
-                            <p class="h6 mb0 bold"> <?=$post->locations[0]->name?> <span class="black">•</span> <?=get_field('jobs_role_salary', $post->ID)?> <span class="black">•</span> <?=$post->types[0]->name?> </p>
+                            <?php if(get_field('jobs_role_salary', $post->ID) != ''):
+                                $salary = get_field('jobs_role_salary', $post->ID);
+                            else :
+                                $salary = "Salary not Specified";
+                            endif; ?>
+                            <p class="h4 bold mb0"><?= $post->locations[0]->name ?><span
+                                        class="muted"> •</span> <?= $salary ?> <span
+                                        class="muted">•</span> <?= $post->types[0]->name ?></p>
 
                         </div>
 
-                        <div class="col col-12 md-col-3 || js-match-height || flex sm-items-center sm-justify-center">
+                        <div class="col col-12 lg-col-3">
 
-                            <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white width-100 h6 right">Find out more</a>
+                            <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white lg-width-100 h6 lg-right">Find out more</a>
 
                         </div>
 
                     </div>
-
-                </div>
 
             <?php
                 endforeach;

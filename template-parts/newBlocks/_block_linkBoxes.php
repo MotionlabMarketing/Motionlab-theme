@@ -29,6 +29,9 @@ $block['enableHover']                 = ($block['content']['hover'] == true)? "s
 $block['enableOverlay']               = get_sub_field($current . '_enableOverlay');
 
 switch ($block['layout']):
+    case "button_below":
+        include ('linkedBoxes/__button_below.php');
+        break;
     case "gridRegressive":
         include ('linkedBoxes/__gridRegressive.php');
         break;
