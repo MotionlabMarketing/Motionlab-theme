@@ -49,7 +49,7 @@
 
                                         <div class="product-item p4 mr3 text-center mb4 ml2 box-shadow-2">
 
-                                            <?=render_attachment_image("8200", ['180', '300'], false,  ["class" => "mt5"])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
+                                            <?=render_attachment_image("8200", ['180', '300'], false,  ["class" => "mt5 mx-auto"])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
 
                                             <div class="flex items-center justify-center">
                                                 <?=render_attachment_image("8199", "large", false,  ["class" => "mb4"])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>

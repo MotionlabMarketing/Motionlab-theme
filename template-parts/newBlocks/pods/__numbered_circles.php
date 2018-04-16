@@ -17,19 +17,7 @@ $blockItems  = get_sub_field($current . '_basic');
 
     <?=($block['grid'] == 'container' || $block['grid'] == 'full_width')? '<div class="container '.$block['background']['colour'].'">' : ""?>
 
-    <?php if (!empty($blockTitle[0]['title'])): ?>
-
-        <?php if (!empty($block['title']) || !empty($block['content'])): ?>
-            <div class="col col-12 md-col-12 lg-col-12 mb5 text-center">
-                
-                <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}"); ?>
-
-                <?php render_wysiwyg("{$block['intro']}", "", ["class" => "regular"])?>
-
-            </div>
-        <?php endif; ?>
-
-    <?php endif; ?>
+    <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
     <div class="col-12">
         <?php $i = 1; foreach ($blockItems as $item):?>

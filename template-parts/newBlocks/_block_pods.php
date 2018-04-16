@@ -19,9 +19,6 @@ $block['pod']['textColor'] = get_sub_field($current . '_txtColor_system_text_col
 
 $block['pod']['padding']   = get_sub_field($current . '_padding_system_padding');
 
-$blockTitle = $block['title']; // REMOVE WHEN ALL UPDATED
-$block['content']['title'] = $block['title'];
-
 $temp['columns']           = get_sub_field($current . '_columns');
 
 switch ($temp['columns']):

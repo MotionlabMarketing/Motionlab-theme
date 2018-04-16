@@ -23,7 +23,7 @@
                 <?php foreach($menuitem->children as $child) : ?>
                     <?php $termChild = $child->menu_id; ?>
                     <?php $termFeatureImage = get_field('taxonomy_feature_menu_image','equipment_type_' . $termChild)['sizes']['large']; ?>
-
+                    dropdown
                     <div class="flex height-100" data-section="<?php echo $child->ID; ?>" style="<?php if($i!=1) : ?>display:none;<?php endif; ?>">
                         <div class="py5 pr5 col-7">
                             <div class="bg-white border border-smoke width-100 p5">
