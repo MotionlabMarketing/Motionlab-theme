@@ -8,8 +8,6 @@
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="pingback" href="<?= bloginfo('pingback_url') ?>">
 
-    <title><?= get_field('brand_name', 'option') ?></title>
-
     <script src="https://use.fontawesome.com/22d4621214.js"></script>
 
     <?php
