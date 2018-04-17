@@ -35,7 +35,12 @@ $block['content']['gallery']          = get_sub_field($current . '_gallery');
 $block['content']['cta']['append']    = get_sub_field($current . '_ctaAppend');
 $block['content']['cta']['link']      = get_sub_field($current . '_ctaLink');
 
+$block['content']['iconCTA']          = get_sub_field('block_alternating_facts');
+
 switch ($block['layout']):
+    case 'facts':
+        include('alternating/__facts.php');
+        break;
     default:
         include('alternating/__basic.php');
         break;

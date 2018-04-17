@@ -87,6 +87,16 @@
                     }
                 ?>
 
+                <div class="mxn2">
+
+                    <?php foreach ($block['content']['iconCTA'] as $cta): ?>
+                        <div class="px2 col col-12 sm-col-6 mt3 sm-mt0">
+                            <?php include(get_template_directory() .'/template-parts/newBlocks/_parts/__icon_cta.php'); ?>
+                        </div>
+                    <?php endforeach; ?>
+
+                </div>
+
                 <?php if($block['content']['buttons'] || $block['content']['cta']['append'] || $block['content']['cta']['link'] ):?>
 
                 <div class="mt4 <?=$alignment?> border-top border-smoke pt4">
