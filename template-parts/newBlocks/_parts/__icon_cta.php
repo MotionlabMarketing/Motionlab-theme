@@ -1,5 +1,5 @@
 <?php if($cta['link']): ?>
-    <a href="<?= $cta["link"] ?>" class="flex items-center hover-body">
+    <a href="<?= $cta["link"]["url"] ?>" class="flex items-center hover-body">
         <div class="bg-darken-2 mr2 border-radius-10" style="width:3rem;">
             <div class="square relative h3">
                 <i class="fa <?= $cta['icon'];?> white absolute top-50 left-50 translate"></i>
