@@ -12,9 +12,11 @@
 
 function render_attachment_image($imageID, $size = array('120', '120'), $icon = false, $attr = array("")) {
 
-    $attr['class']         = $attr['class'] . implode(" ", "block img");
+    $attr['class']         = $attr['class'] . implode(" ", [" block", "img"]);
     $attr['data-function'] = "__attachmentImage";
-    $attr['alt']           = $imageID['alt'];
+
+    if (isset($imageID['alt']))
+        $attr['alt']           = $imageID['alt'];
 
     if (!is_string($imageID))
         $imageID = $imageID['id'];

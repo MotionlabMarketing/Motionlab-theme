@@ -1,14 +1,14 @@
 <?php
 /**
- * RENDER HEADER
- * This functions renders a header on the page with the defined or pre-defined settings.
+ * RENDER BUTTON
+ * This functions renders a button on the page with the defined or pre-defined settings.
  *
  * @added 27 Mar 2018
  * @author Joe Curran
  *
  * @param array $data
  * @param string $size
- * @param string $classes
+ * @param array $classes
  * @return bool|string
  */
 
@@ -46,18 +46,21 @@ function render_button($data, $size = "medium",  $classes = ["class" => "mb2"]) 
 }
 
 /**
- * GET HEADER HTML STRING
- * This functions returns a HTML string for a header with the defined or pre-defined settings.
+ * GET BUTTON HTML STRING
+ * This functions returns a HTML string for a button with the defined or pre-defined settings.
  *
  * @added 27 Mar 2018
  * @author Joe Curran
  *
+ * @param $data
  * @param string $size
- * @param string $classes
+ * @param array $classes
  * @return bool|string
  */
 
 function get_render_button($data, $size = "btn-medium",  $classes = ["class" => "mb2"]) {
+
+
 
     if (!empty($data['button_link']['url']) && !empty($data['button_link']['title'])) {
 
@@ -90,6 +93,18 @@ function get_render_button($data, $size = "btn-medium",  $classes = ["class" => 
 
 }
 
+/**
+ * RENDER BUTTONS HTML STRING
+ * This functions returns a collection of buttons with the defined or pre-defined settings.
+ *
+ * @added 27 Mar 2018
+ * @author Joe Curran
+ *
+ * @param string $size
+ * @param array $classes
+ * @return bool|string
+ */
+
 function render_buttons($data, $size, $classes = ["class" => "mb2 mr2"]) {
 
     $btn = "";
@@ -97,11 +112,30 @@ function render_buttons($data, $size, $classes = ["class" => "mb2 mr2"]) {
     if (!empty($data)) {
         foreach ($data as $button) {
 
-            $btn .= get_render_button($button, $size, $classes);
+            $btn .= get_render_button(convert_buttons_key($button), $size, $classes);
 
         }
     }
 
     echo $btn;
+
+}
+
+/**
+ * CONVERT OLD ARRAY KEY SUPPORT
+ * Converts a only array key to a new one for a newer function.
+ *
+ * @param $arr
+ * @return mixed
+ */
+
+function convert_buttons_key($arr) {
+
+    foreach($arr as $key => $value) :
+        $arr[str_replace('buttons_', '', $key)] = $value;
+        unset($arr[$key]);
+    endforeach;
+
+    return $arr;
 
 }

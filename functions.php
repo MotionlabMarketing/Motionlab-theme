@@ -707,45 +707,10 @@ function wp_42573_fix_template_caching( WP_Screen $current_screen ) {
 add_action( 'current_screen', 'wp_42573_fix_template_caching' );
 
 
-/**
- * MOTIONLAB THEME
- * New functions used by the Motion Lab theme.
- */
-
-define('ML_MENUS', true);
-    define('ML_MENU_FOOTER_COUNT', 4);
-    define('ML_MENU_FOOTER_LEGAL', true);
 
 
 
-if (ML_MENUS) {
 
-    // CREATE NEW NAVIGATION AREAS.
-    function ml_register_nav_menus()
-    {
-
-        $i = 1;
-        while  ($i <= ML_MENU_FOOTER_COUNT) {
-            register_nav_menus(
-                array(
-                    "footer_location_{$i}" => __("Footer - Column {$i}"),
-                )
-            );
-            $i++;
-        }
-
-        if (ML_MENU_FOOTER_LEGAL) {
-            register_nav_menus(
-                array(
-                    'footer_legal' => __('Footer - Legal Links'),
-                )
-            );
-        }
-
-
-    }
-    add_action('init', 'ml_register_nav_menus');
-}
 
 /**
  * MOTIONLAB THEME FUNCTIONS
@@ -762,6 +727,10 @@ function ml_get_menu_object_by_location($location) {
     // RETURN THE MENU OBJECT
     return $menu = wp_get_nav_menu_object($menu_id);
 }
+
+
+
+
 
 
 

@@ -56,6 +56,7 @@ if ($banner['image']['overlay'] == true):
     $banner['image']['overlayStrength'] = get_sub_field($current . '_image_overlay_strength');
 
 endif; ?>
+
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "banner z0 overflow-hidden overlay-{$banner['align']}")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
@@ -118,19 +119,9 @@ endif; ?>
                     <?php render_wysiwyg($banner['content'], false, ["class" => "md-h3 "]) ?>
 
                     <div class="mt4">
-                    <?php foreach ($banner['buttons'] as $button): ?>
 
-                        <a href="<?=$button['buttons_button_link']['url']?>" class="btn btn-medium min-width-8 text-center <?=$button['buttons_system_text_colours']?> <?=$button['buttons_system_background_colours']?>" <?=($button['buttons_button_link']['title'] ? 'title="'.$button['button']['title'].'"' : '')?> <?=($button['buttons_button_link']['target'] ? 'target="'.$button['button']['target'].'"' : '')?> style="min-width:12rem; margin: 0 0.7rem;">
+                        <?php render_buttons($banner['buttons'], "medium"); ?>
 
-                            <?php if (!empty($button['buttons_button_icon'])): ?><div class="flex items-center justify-center"><?=wp_get_attachment_image($button['buttons_button_icon'], array(32, 32), "", ['class' => 'size-32x32 mr2'])?> <?php endif; ?>
-
-                                <?=$button['buttons_button_link']['title']?>
-
-                            <?php if (!empty($button['buttons_button_icon'])): ?></div><?php endif; ?>
-
-                        </a>
-
-                    <?php endforeach; ?>
                     </div>
 
                     <?php if (!empty($banner['logos']['after']['url'])): ?>
