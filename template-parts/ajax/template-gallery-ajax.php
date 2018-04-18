@@ -11,7 +11,7 @@ foreach($gallery['posts']->posts as $post):
 
     <div class="col col-3 || p2 || text-center">
 
-        <a href="<?php get_field('image_link', $post->ID) ?: $image['url'] ?>">
+        <a href="<?=$image['url']?>">
             <img src="<?=$image['url']?>" class="box-shadow-3 js-match-height" alt="">
         </a>
 
