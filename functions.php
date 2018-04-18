@@ -6,6 +6,8 @@ define("MODELS_DIR"  , get_template_directory() . "/models/");
 define("MASTER_CPT_DIR", get_template_directory() . "/cpt-registry/");
 define("CHILD_CPT_DIR", get_stylesheet_directory() . "/cpt-registry/");
 define("AJAX_DIR", get_template_directory() . "/template-parts/ajax/");
+define("CHILD_AJAX_DIR", get_stylesheet_directory() . "/ini/ajax/");
+
 
 /**
  * INCLUDE ALL CUSTOM THEME FUNCTIONS.
@@ -108,7 +110,11 @@ function ml_update_news() {
 	$news_controller = new _block_news(null, null);
 	$posts = $news_controller->fetchFeedPosts(8, $_POST['news_page']);
 
-	include_once(TEMPLATE_DIR . 'ajax/template-news-ajax.php');
+	if(file_exists(CHILD_AJAX_DIR . 'template-news-ajax.php')) :
+		include_once(CHILD_AJAX_DIR . 'template-news-ajax.php');
+	else:
+		include_once(AJAX_DIR . 'template-news-ajax.php');
+	endif;
 
 	die();
 }
@@ -122,7 +128,12 @@ function ml_update_csr() {
 	$news_controller = new _block_news(null, null);
 	$posts = $news_controller->fetchCSRPosts(8, $_POST['news_page']);
 
-	include_once(TEMPLATE_DIR . 'ajax/template-csr-ajax.php');
+
+	if(file_exists(CHILD_AJAX_DIR . 'template-csr-ajax.php')) :
+		include_once(CHILD_AJAX_DIR . 'template-csr-ajax.php');
+	else:
+		include_once(AJAX_DIR . 'template-csr-ajax.php');
+	endif;
 
 	die();
 }
@@ -135,6 +146,12 @@ function ml_update_jobs() {
 	include_once(MODELS_DIR . '_block_jobs.php');
 	$jobs_controller = new _block_jobs(null, null);
 	$posts = $jobs_controller->fetchFeedPosts(6, $_POST['jobs_page']);
+
+	if(file_exists(CHILD_AJAX_DIR . 'template-jobs-ajax.php')) :
+		include_once(CHILD_AJAX_DIR . 'template-jobs-ajax.php');
+	else:
+		include_once(AJAX_DIR . 'template-jobs-ajax.php');
+	endif;
 
 	include_once(TEMPLATE_DIR . 'ajax/template-jobs-ajax.php');
 
@@ -150,7 +167,11 @@ function ml_update_talent() {
 	$jobs_controller = new _block_jobs(null, null);
 	$posts = $jobs_controller->fetchFeedPosts(4, $_POST['jobs_page'], 'talents');
 
-	include_once(TEMPLATE_DIR . 'ajax/template-talent-ajax.php');
+	if(file_exists(CHILD_AJAX_DIR . 'template-talent-ajax.php')) :
+		include_once(CHILD_AJAX_DIR . 'template-talent-ajax.php');
+	else:
+		include_once(AJAX_DIR . 'template-talent-ajax.php');
+	endif;
 
 	die();
 }
@@ -164,7 +185,11 @@ function ml_update_testimonials() {
 	$testimonials_controller = new _testimonials();
 	$testimonials = $testimonials_controller->getBlock();
 
-	include_once(AJAX_DIR . 'template-testimonials-ajax.php');
+	if(file_exists(CHILD_AJAX_DIR . 'template-testimonials-ajax.php')) :
+		include_once(CHILD_AJAX_DIR . 'template-testimonials-ajax.php');
+	else:
+		include_once(AJAX_DIR . 'template-testimonials-ajax.php');
+	endif;
 
 	die();
 }
@@ -178,7 +203,11 @@ function ml_update_gallery() {
 	$galleries_controller = new _galleries();
 	$gallery  = $galleries_controller ->getBlock();
 
-	include_once(AJAX_DIR . 'template-gallery-ajax.php');
+	if(file_exists(CHILD_AJAX_DIR . 'template-gallery-ajax.php')) :
+		include_once(CHILD_AJAX_DIR . 'template-gallery-ajax.php');
+	else:
+		include_once(AJAX_DIR . 'template-gallery-ajax.php');
+	endif;
 
 	die();
 }
