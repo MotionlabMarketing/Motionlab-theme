@@ -36,11 +36,10 @@ get_header(); ?>
                 <?php if (has_post_thumbnail($latest_post->ID)): ?>
                     <?php $image_url = wp_get_attachment_image(get_post_thumbnail_id($latest_post->ID), "large", "", ["class" => "box-shadow-1"]) ?>
                 <?php else: ?>
-                    <?php pa($image_url); ?>
                     <?php $image_url = get_field('fallback_placeholder_image', 'option'); // TODO: Default Image ?>
                 <?php endif; ?>
 
-                <a href="<?= $latest_post->guid ?>">
+                <a href="<?= get_permalink($latest_post->ID) ?>">
                     <?= $image_url ?>
                 </a>
 
@@ -57,7 +56,7 @@ get_header(); ?>
                     <?php endforeach; ?>
                 </ul>
 
-                <a href="<?= $latest_post->guid ?>">
+                <a href="<?= get_permalink($latest_post->ID) ?>">
 
                     <?php $heading = convert_heading($blockTitle); ?>
                     <?php render_heading("{$latest_post->post_title}", "h2", "", "brand-primary", "{$heading->case}", ["class" => "clear-both mt3 md-mt5 brand-primary"]); ?>
@@ -126,7 +125,7 @@ get_header(); ?>
 
                     <p class="h6 mb2" data-mh="post-date"><?= date('d M Y', strtotime($post->post_date)); ?></p>
 
-                    <a href="<?= $post->guid ?>"><h3 class="h4 brand-primary"
+                    <a href="<?= get_permalink($post->ID) ?>"><h3 class="h4 brand-primary"
                                                      data-mh="post-title"><?= $post->post_title ?></h3></a>
 
                     <a href="<?= get_permalink($post->ID) ?>">
