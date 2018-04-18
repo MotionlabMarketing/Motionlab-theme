@@ -16,8 +16,13 @@ $block['pod']['columns']   = get_sub_field($current . '_columns');
 $block['pod']['bgColour']  = get_sub_field($current . '_bgColour_system_background_colours');
 $block['pod']['textAlign'] = get_sub_field($current . '_txtAlign_align');
 $block['pod']['textColor'] = get_sub_field($current . '_txtColor_system_text_colours');
-
 $block['pod']['padding']   = get_sub_field($current . '_padding_system_padding');
+$block['pod']['shadow']    = get_sub_field($current . '_shadow');
+$block['pod']['icon']      = get_sub_field($current . '_icon');
+
+
+$blockTitle = $block['title']; // REMOVE WHEN ALL UPDATED
+$block['content']['title'] = $block['title'];
 
 $temp['columns']           = get_sub_field($current . '_columns');
 
@@ -26,7 +31,7 @@ switch ($temp['columns']):
         $block['columns'] = "col-12 sm-col-12 md-col-4";
         break;
     case "4":
-        $block['columns'] = "col-12 md-col-3";
+        $block['columns'] = "col-12 md-col-6 lg-col-3";
         break;
     case "5":
         $block['columns'] = "col-grid-5";
