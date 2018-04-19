@@ -18,7 +18,7 @@ function render_attachment_image($imageID, $size = array('120', '120'), $icon = 
     if (isset($imageID['alt']))
         $attr['alt']           = $imageID['alt'];
 
-    if (!is_string($imageID))
+    if (!is_string($imageID) && isset($imageID['id']))
         $imageID = $imageID['id'];
 
     if (!empty($imageID))
