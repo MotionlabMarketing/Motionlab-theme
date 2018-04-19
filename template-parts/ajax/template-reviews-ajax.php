@@ -23,9 +23,9 @@
 
             <hr class="my4">
 
-            <h3 class="h4 brand-primary text-left mb1"><?=get_field('reviewer_name')?></h3>
+            <h3 class="h4 brand-primary text-center mb1"><?=get_field('reviewer_name')?></h3>
 
-            <p class="text-left"><?=get_field('reviewer_locations')?></p>
+            <p class="text-center"><?=get_field('reviewer_locations')?></p>
 
         </div>
 
