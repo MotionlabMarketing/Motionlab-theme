@@ -7,8 +7,6 @@
  * @created 22 Mar 2018
  */
 
-console.log('accordion loaded')
-
 jQuery(document).ready(function ($) {
 
     // OPEN AND CLOSE ACCORDION COLLECTIONS.
