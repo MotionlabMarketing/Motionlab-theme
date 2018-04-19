@@ -25,7 +25,7 @@
 
                     <a href="<?=$item['block_linkBoxes_button_button_link']['url']?>" class="block relative width-100 height-100 hover-white white bg-cover bg-center box-shadow-3 <?=$block['content']['bgColor']?>" <?=($item['block_linkBoxes_button_button_link']['title'] ? 'title="'.$item['block_linkBoxes_button_button_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_button_button_link']['target'] ? 'target="'.$item['block_linkBoxes_button_button_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
 
-                        <div class="content relative width-100 height-100 py6 flex items-center justify-center <?=($block['content']['darken'] == true)? "darken-background" : ""?> <?=($block['content']['darken'] == true)? $block['content']['darkenStrength'] : ""?>">
+                        <div class="content relative width-100 height-100 py6 flex items-center justify-center <?=($block['content']['darken'] == true)? $block['content']['darkenStrength'] : ""?>">
 
                             <div class="z-index-40">
 
