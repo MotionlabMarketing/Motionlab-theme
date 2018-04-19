@@ -12,8 +12,6 @@ $blockTitle  = $blockTitle['title'];
 include_once(MODELS_DIR . '_testimonials.php');
 $testimonials = new _testimonials();
 $testimonials = $testimonials->getBlock();
-
-pa($blockTitle);
 ?>
 
     <?php
