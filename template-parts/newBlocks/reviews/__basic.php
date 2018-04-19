@@ -47,12 +47,15 @@ $blockTitle  = $block['title'];
                         <?= get_field('reviewer_body', $post->ID); ?>
                     </div>
 
-                    <h4 class="h4 mb0 brand-primary bold"><?= get_field('reviewer_name', $post->ID) ?></h4>
-                    <p class="h4 brand-primary"><?= get_field('reviewer_locations', $post->ID) ?></p>
+                    <hr class="my4">
+
+                    <h3 class="h4 brand-primary text-center mb1"><?= get_field('reviewer_name', $post->ID) ?></h3>
+                    <p class="text-center"><?=get_field('reviewer_locations', $post->ID)?></p>
 
                 </div>
 
             </div>
+
     <?php endforeach; ?>
 
     <?= ($block['grid'] == 'container') ? '</div>' : "" ?>
