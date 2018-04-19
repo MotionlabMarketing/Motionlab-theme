@@ -20,7 +20,11 @@ foreach($gallery['posts']->posts as $post):
 <?php endforeach; ?>
 
 <?php if($gallery['posts']->query['paged'] < $gallery['posts']->max_num_pages): ?>
-	<span data-page-number="<?=$gallery['posts']->query['paged']?>" class="btn btn-outline cursor-pointer block gallery-load-more">Load More...</span>
+    <div class="clearfix text-center py4">
+        <span data-page-number="<?=$gallery['posts']->query['paged']?>" class="btn btn-outline cursor-pointer block gallery-load-more brand-base">Load More...</span>
+    </div>
 <?php else: ?>
-	<span class="btn btn-outline block cursor-pointer">No more posts to show...</span>
+    <div class="clearfix text-center py4">
+        <span class="btn btn-outline block cursor-pointer brand-base">No more posts to show...</span>
+    </div>
 <?php endif; ?>

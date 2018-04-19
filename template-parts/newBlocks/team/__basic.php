@@ -8,8 +8,6 @@
  *
  * @version 1.00
  */
-
-//pa($block);
 ?>
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "team-basic")?> <?=get_blockData($block)?>>
 

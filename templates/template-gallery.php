@@ -45,7 +45,7 @@ get_header(); ?>
         <?php
         foreach ($gallery['select_terms'] as $item): ?>
 
-            <span data-category="<?=$item->slug?>" class="btn btn-medium btn-outline cursor-pointer <?=get_query_var('gallery_category') == $item->slug ? "brand-secondary" : "brand-base"; ?> normal gallery-filter"><?=$item->name?></span>
+            <span data-category="<?=$item->slug?>" class="btn btn-medium btn-outline cursor-pointer <?=get_query_var('gallery_category') == $item->slug ? "brand-primary" : "brand-base"; ?> normal gallery-filter"><?=$item->name?></span>
 
         <?php endforeach; ?>
 
@@ -65,8 +65,8 @@ get_header(); ?>
        $('.gallery-filter').on('click', function() {
             history.pushState({cat:$(this).val()}, "", "/gallery/"+$(this).data('category'));
 
-            $('.gallery-filter').removeClass('brand-secondary').addClass('brand-base');
-            $(this).removeClass('brand-base').addClass('brand-secondary');
+            $('.gallery-filter').removeClass('brand-primary').addClass('brand-base');
+            $(this).removeClass('brand-base').addClass('brand-primary');
        });
 
 
@@ -89,7 +89,7 @@ get_header(); ?>
         });
 
         function fetchGallery(page_number, reset = false){
-            var category_filter = $('.gallery-filter.brand-secondary').data('category');
+            var category_filter = $('.gallery-filter.brand-primary').data('category');
 
             $.ajax({
                 url: '<?php echo admin_url( "admin-ajax.php" ); ?>',
@@ -109,6 +109,15 @@ get_header(); ?>
                 }
             });
         }
+
+        $(document).ajaxSuccess(function(){
+
+        	(function() {
+
+        		$('.js-match-height').matchHeight();
+
+        	})();
+        });
 
     });
 </script>

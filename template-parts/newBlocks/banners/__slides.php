@@ -20,15 +20,6 @@ $banner['slides']                 = get_sub_field($current . '_sliders');
 $banner['image']['position']      = get_sub_field($current . '_image_position_background_position');
 
 $banner['subheading']['position'] = get_sub_field($current . '_subheading_position');
-
-$banner['image']['overlay']       = get_sub_field($current . '_image_overlay_add_overlay');
-
-if ($banner['image']['overlay'] == true):
-
-    $banner['image']['overlayType']     = get_sub_field($current . '_image_overlay_type');
-    $banner['image']['overlayStrength'] = get_sub_field($current . '_image_overlay_strength');
-
-endif;
 ?>
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "banner z0 overflow-hidden overlay-{$banner['align']}")?> <?=get_blockData($block)?>>
@@ -57,7 +48,7 @@ endif;
                                 <?php $blockTitle = $slide['titleSub_title'];
                                     if (!empty($blockTitle[0]['title'])): ?>
 
-                                <div class="subheading || mb2">
+                                <div class="subheading mb2">
 
                                     <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
 
@@ -81,7 +72,7 @@ endif;
                                 <?php $blockTitle = $slide['titleSub_title'];
                                 if (!empty($blockTitle[0]['title'])): ?>
 
-                                <div class="subheading || mb2">
+                                <div class="subheading mb2">
 
                                     <?php include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php'); ?>
 
@@ -91,11 +82,11 @@ endif;
 
                             <?php render_wysiwyg($slide['content'], false, ["class" => "md-h3 bold"]); ?>
 
-                            <?php foreach ($slide['button_buttons'] as $button):?>
+                            <?php if (!empty($slide['button_buttons']) && is_array($slide['button_buttons'])): foreach ($slide['button_buttons'] as $button):?>
 
                                 <a href="<?=$button['button_link']['url']?>" class="btn <?=$button['system_text_colours']?> <?=$button['ystem_background_colours']?>"><?=$button['button_link']['title']?></a>
 
-                            <?php endforeach; ?>
+                            <?php endforeach; endif; ?>
 
                             <?php if (!empty($slide['button_text_link']['title']) && !empty($slide['button_text_link']['url'])): ?>
 
@@ -114,9 +105,9 @@ endif;
 
                 </div>
 
-                <?php if ($banner['image']['overlay'] == true): ?>
+                <?php if ($slide['add_overlay'] == true): ?>
 
-                    <div class="absolute top-0 left-0 width-100 height-100 z-index-10 bg-<?=$banner['image']['overlayType']?>-<?=$banner['image']['overlayStrength']?>"></div>
+                    <div class="absolute top-0 left-0 width-100 height-100 z-index-10 bg-<?=$slide['overlayType']?>-<?=$slide['overlayStrength']?>"></div>
 
                 <?php endif; ?>
 
