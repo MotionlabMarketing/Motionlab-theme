@@ -59,7 +59,7 @@ get_header(); ?>
 
                         <div class="p4 || grid-item grid-item--double">
 
-                            <a href="<?=$team_member->guid?>" class="<?= $txtColor ?>">
+                            <a href="<?= get_permalink($team_member->ID) ?>" class="<?= $txtColor ?>">
 
                                 <div class="member || relative relative pb3 || bg-white box-shadow-3">
 
@@ -87,7 +87,7 @@ get_header(); ?>
 
                         <div class="p4 || grid-item">
 
-                            <a href="<?=$team_member->guid?>" class="<?= $txtColor ?>">
+                            <a href="<?= get_permalink($team_member->ID) ?>" class="<?= $txtColor ?>">
 
                                 <div class="member || relative pb3 || bg-white box-shadow-3">
 

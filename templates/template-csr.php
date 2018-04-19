@@ -39,7 +39,7 @@ get_header(); ?>
                     <?php $image_url = get_field('fallback_placeholder_image', 'option'); // TODO: Default Image ?>
                 <?php endif; ?>
 
-                <a href="<?=$latest_post->guid?>">
+                <a href="<?= get_permalink($latest_post->ID) ?>">
                     <?=$image_url?>
                 </a>
 
