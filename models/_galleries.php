@@ -41,7 +41,7 @@ Class _galleries extends CPTCore
 		endif;
 
 		$args = array(
-			'posts_per_page'    => 4,
+			'posts_per_page'    => 16,
 			'paged'             => $_POST['page_number'] ?: 1,
 			'post_type'         => 'gallery',
 			'orderby'           => 'date',
