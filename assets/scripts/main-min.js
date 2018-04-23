@@ -10096,12 +10096,9 @@ jQuery(document).ready(function ($) {
     // OPEN AND CLOSE ACCORDION COLLECTIONS.
     $('[data-accordion-collection]').on('click', function() {
 
-        console.log('clicked')
-
         // GET THE NUMBER OF THE ROW COLLECTION.
         var collecton = $(this).data('accordion-collection');
         var selector = '[data-accordion-collection="' + collecton + '"]';
-
 
         // IF THE ITEM CLICKED IS NOT ALREADY OPEN.
         if (!$(this).hasClass('toggle-open')) {
