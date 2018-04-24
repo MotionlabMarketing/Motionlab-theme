@@ -588,15 +588,15 @@ $arrow-size: 10px;
 
 
   // isotope
-  .grid-item {
-    width: 100%;
-    @media (min-width: $breakpoint-md) {
-      width:50%;
-    }
-    @media (min-width: $breakpoint-lg) {
-      width: 33.3%;
-    }
-  }
+  // .grid-item {
+  //   width: 100%;
+  //   @media (min-width: $breakpoint-md) {
+  //     width:50%;
+  //   }
+  //   @media (min-width: $breakpoint-lg) {
+  //     width: 33.3%;
+  //   }
+  // }
 
 
 
@@ -1081,9 +1081,9 @@ $arrow-size: 10px;
     Joe Curran
 */
 
-.grid-item {
-  float: left;
-  width: 100%;
-  height: auto;
-}
+// .grid-item {
+//   float: left;
+//   width: 100%;
+//   height: auto;
+// }
 // GRID SIZES SET PER PAGE/TEMPLATE //
