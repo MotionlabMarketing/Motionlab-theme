@@ -27,7 +27,7 @@
 
         <div class="col-12 mxn2">
 
-            <?php foreach ($block['models'] as $model): ?>
+            <?php if (is_array($block['models']) && !empty($block['models'])): foreach ($block['models'] as $model): ?>
                 <div class="model-item col col-12 sm-col-6 md-col-3 p3 text-center">
 
                     <a href="<?=get_category_link($model->term_id)?>">
@@ -37,9 +37,27 @@
                     <a href="<?=get_category_link($model->term_id)?>" class="btn brand-primary">View <?=$model->name?> Range</a>
 
                 </div>
-            <?php endforeach; ?>
+            <?php endforeach; else: ?>
+
+            <div class="block-contentsEmpty text-center mb4">
+
+                <p class="h4 italic lead"><strong>Sorry</strong>, we couldn't find anything for this section. Please select some products.</p>
+
+            </div>
+
+            <?php endif; ?>
 
         </div>
+
+        <?php if (!empty($block['pageLink'])): ?>
+
+            <div class="text-center mt4" data-element="pageButton">
+
+                <?php render_button($block['pageLink'], "medium", ["class" => "bold"]) ?>
+
+            </div>
+
+        <?php endif; ?>
 
     <?=($block['grid'] == 'container')? '</div>' : ""?>
 
