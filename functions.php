@@ -737,15 +737,25 @@ add_action( 'current_screen', 'wp_42573_fix_template_caching' );
 
 
 
+/**
+ * ---------------------------------------------------------------------------------------------------------------------
+ * MOTIONLAB THEME WORDPRESS FUNCTION SETTINGS
+ * WordPress fucntions used by the Theme.
+ * ---------------------------------------------------------------------------------------------------------------------
+ */
 
-
+// DISABLE SRCSET ON FRONTEND
+add_filter('max_srcset_image_width', create_function('', 'return 1;'));
 
 
 /**
+ * ---------------------------------------------------------------------------------------------------------------------
  * MOTIONLAB THEME FUNCTIONS
  * New functions used by the Motion Lab theme.
+ * ---------------------------------------------------------------------------------------------------------------------
  */
 
+// GET A MENU OBJECT BASED ON THE THEME LOCATION
 function ml_get_menu_object_by_location($location) {
     // GET THE LOCATIONS
     $locations = get_nav_menu_locations();
@@ -757,17 +767,7 @@ function ml_get_menu_object_by_location($location) {
     return $menu = wp_get_nav_menu_object($menu_id);
 }
 
-
-
-
-
-
-
-
-/*==================================================================
-GET PARENT OF CURRENT PAGE
-==================================================================*/
-
+//GET PARENT OF CURRENT PAGE
 function get_highest_most_parent($post) {
   if ($post->post_parent)	{
     $ancestors=get_post_ancestors($post->ID);

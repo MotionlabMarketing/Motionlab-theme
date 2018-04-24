@@ -291,6 +291,61 @@ jQuery(document).ready(function ($) {
         ]
     });
 
+
+    $('[data-slick="product-images"]').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: false,
+        fade: true,
+        cssEase: 'linear',
+        centerMode: true,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        asNavFor: '.product-images-preview',
+        focusOnSelect: true,
+    });
+
+    $('[data-slick="product-preview"]').slick({
+        slidesToShow: 2,
+        variableWidth: false,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        centerPadding: '30px',
+        arrows: true,
+        draggable: false,
+        pauseOnHover: false,
+        mobileFirst: true,
+        asNavFor: '.product-images-slider',
+        focusOnSelect: true,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 4
+                }
+            },
+            {
+                breakpoint: 960,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
+                }
+            }
+        ]
+    });
+
     // GALLERY SLIDER SETTINGS.
     $('[data-slick="galleryThin-slider"]').slick({
         slidesToShow: 4,
