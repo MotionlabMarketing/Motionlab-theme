@@ -17,7 +17,7 @@
 
         <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-        <div class="clearfix pb5 mxn2">
+        <div class="clearfix pb5 mxn3">
 
             <?php $i = 1; foreach ($block['content']['items'] as $item):?>
 

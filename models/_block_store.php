@@ -60,11 +60,12 @@ Class _block_store {
 		$terms      = get_terms( $taxonomy, $args );
 		$children   = array();
 
-		foreach ( $terms as $term ){
+		if(!isset($terms->errors)) {
+			foreach ( $terms as $term ){
+				$term->children = $this->get_taxonomy_hierarchy( $taxonomy, array('hide_empty' => false, 'parent' => $term->term_id) );
+				$children[ $term->term_id ] = $term;
 
-			$term->children = $this->get_taxonomy_hierarchy( $taxonomy, array('hide_empty' => false, 'parent' => $term->term_id) );
-			$children[ $term->term_id ] = $term;
-
+			}
 		}
 
 		return $children;
