@@ -9194,6 +9194,61 @@ jQuery(document).ready(function ($) {
         ]
     });
 
+
+    $('[data-slick="product-images"]').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: false,
+        fade: true,
+        cssEase: 'linear',
+        centerMode: true,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        asNavFor: '.product-images-preview',
+        focusOnSelect: true,
+    });
+
+    $('[data-slick="product-preview"]').slick({
+        slidesToShow: 2,
+        variableWidth: false,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        centerPadding: '30px',
+        arrows: true,
+        draggable: false,
+        pauseOnHover: false,
+        mobileFirst: true,
+        asNavFor: '.product-images-slider',
+        focusOnSelect: true,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 4
+                }
+            },
+            {
+                breakpoint: 960,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
+                }
+            }
+        ]
+    });
+
     // GALLERY SLIDER SETTINGS.
     $('[data-slick="galleryThin-slider"]').slick({
         slidesToShow: 4,
@@ -9677,13 +9732,6 @@ jQuery(document).ready(function ($) {
     });
 
 
-    $('.grid').masonry({
-        itemSelector: '.grid-item',
-        columnWidth: '.grid-item',
-        percentPosition: true
-    });
-
-
     /*======================================================
     UNSTICK FIXED POSITION ELEMENT (used on case study page)
     ========================================================*/
@@ -9832,6 +9880,13 @@ jQuery(document).ready(function ($) {
         $('[data-loader]').delay(200).fadeOut(600);
     }, 2000);
     2000;
+
+    $('.grid').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: '.grid-sizer',
+        percentPosition: true
+    });
+
 
     // SUPPORT FOR RESPONSIVE EMBEDDED VIDEOS //
     var $all_oembed_videos = $("iframe[src*='youtube']");
@@ -10041,12 +10096,9 @@ jQuery(document).ready(function ($) {
     // OPEN AND CLOSE ACCORDION COLLECTIONS.
     $('[data-accordion-collection]').on('click', function() {
 
-        console.log('clicked')
-
         // GET THE NUMBER OF THE ROW COLLECTION.
         var collecton = $(this).data('accordion-collection');
         var selector = '[data-accordion-collection="' + collecton + '"]';
-
 
         // IF THE ITEM CLICKED IS NOT ALREADY OPEN.
         if (!$(this).hasClass('toggle-open')) {
