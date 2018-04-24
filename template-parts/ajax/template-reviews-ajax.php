@@ -11,9 +11,9 @@
 
 <?php foreach($testimonials['posts']->posts as $post) : ?>
 
-    <div class="col col-12 sm-col-6 md-col-4 p2 mt5 grid-item || text-center">
+    <div class="col col-12 md-col-6 lg-col-4 mt5 px2 grid-item || text-center">
 
-        <div class="px5 pt5 pb3 bg-smoke">
+        <div class="p5 bg-smoke">
 
             <div class="mb4">
                 <?=get_stars(get_field('star_rating'))?>
@@ -25,7 +25,7 @@
 
             <h3 class="h4 brand-primary text-center mb1"><?=get_field('reviewer_name')?></h3>
 
-            <p class="text-center"><?=get_field('reviewer_locations')?></p>
+            <p class="text-center mb0"><?=get_field('reviewer_locations')?></p>
 
         </div>
 

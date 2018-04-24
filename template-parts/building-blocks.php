@@ -2,13 +2,16 @@
 $index = 0; // NOTE: No idea what this does.
 $previousBgColor = "";
 $blockNumber = 0;
+
+
+
 //pa(get_field_objects());
 if( have_rows('building_blocks') ) {
     while ( have_rows('building_blocks') ) {
         the_row();
 
         // Varibales for the Blocks – TODO: Needs looking over!
-        include(get_template_directory() .'/inc/block-variables.php');
+        //include(get_template_directory() .'/inc/block-variables.php');
 
         // CHECK FOR NEW BLOCKS //
         $blocks = ['block_content', 'block_store', 'block_alternating', 'block_news', 'block_menus', 'block_accordion', 'block_banners', 'block_image', 'block_reviews', 'block_gallery', 'block_form', 'block_spacers', 'block_heading', 'block_buttons', 'block_debug', 'block_team', 'block_cta', 'block_linkBoxes', 'block_videos', 'block_social', 'block_pods', 'block_button', 'block_logos', 'block_tabs', 'block_jobs', 'block_timeline', 'block_utilities'];
