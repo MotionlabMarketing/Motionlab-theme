@@ -1,5 +1,14 @@
 // Project
 
+.block-contentsEmpty {
+  padding: 4rem 0;
+  background-color: #fafafa;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
 .admin-bar {
   margin-bottom: 32px;
 }
