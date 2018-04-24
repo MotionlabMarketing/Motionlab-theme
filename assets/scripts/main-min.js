@@ -9732,6 +9732,13 @@ jQuery(document).ready(function ($) {
     });
 
 
+    $('.grid').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: '.grid-item',
+        percentPosition: true
+    });
+
+
     /*======================================================
     UNSTICK FIXED POSITION ELEMENT (used on case study page)
     ========================================================*/
@@ -9880,13 +9887,6 @@ jQuery(document).ready(function ($) {
         $('[data-loader]').delay(200).fadeOut(600);
     }, 2000);
     2000;
-
-    $('.grid').masonry({
-        itemSelector: '.grid-item',
-        columnWidth: '.grid-sizer',
-        percentPosition: true
-    });
-
 
     // SUPPORT FOR RESPONSIVE EMBEDDED VIDEOS //
     var $all_oembed_videos = $("iframe[src*='youtube']");
