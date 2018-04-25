@@ -1,14 +1,23 @@
-<?php
-$image404 =  get_field('404_image', 'option')['sizes']['large'];
-get_header(); ?>
-<div class="bg-black || no-js-header-space || || bg-center bg-cover" style="background-image:url(<?php echo $image404 ;?>">
-	<div class="container px4 flex flex-column height-100 || items-center- justify-center white">
-		<h1 class="h1 md-h00 lh1">404<?php echo get_field('404_title', 'option'); ?></h1>
-		<!-- <p class="h4 md-h3 col-12 md-col-7 mb4 md-mb6"><?php// echo get_field('404_copy', 'option'); ?></p>
-		<div class="">
-			<a href="<?php// echo get_field('404_link', 'option'); ?>" class="btn btn-primary"><?php echo get_field('404_link_text', 'option'); ?></a>
-		</div> -->
-	</div>
-</div>
-<?php
-get_footer();
+<?php get_header(); ?>
+
+<section class="404 flex items-center justify-center" data-element="error404">
+
+    <p class="error-code absolute grey opacity-1">404</p>
+
+    <div class="container px4 py7 text-center z2">
+
+        <h1 class="brand-primary">Whoops, we couldn't find that!</h1>
+
+        <p class="lead">We're sorry to report that we couldn't find what your looking for.</p>
+
+        <p>This page may have been moved or removed from the site.</p>
+
+        <a href="#" class="btn btn-medium btn-brand-primary hover-bg-brand-primary white hover-white border-smoke mb4" role="button">Take me Home</a>
+
+        <p class="opacity-4 grey">Your request has been logged for review!</p>
+
+    </div>
+
+</section>
+
+<?php get_footer();

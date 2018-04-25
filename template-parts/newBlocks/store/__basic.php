@@ -19,26 +19,33 @@
 
     <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-    <div class="flex flex-wrap justify-center mxn2">
+    <div class="flex flex-wrap justify-center mxn2 mb4">
 
-        <?php $i = 0; while($i < 5): ?>
+        <?php $i = 0; while($i < $block['itemsCount']): ?>
 
-            <div class="product-box col col-grid-5 p3 hover-zoom" data-mh="product-box">
+            <div class="product col col-grid-5 p3" data-mh="product-box">
 
-                <a href="<?=get_permalink($post->ID)?>">
+                <a href="#"> <?php // TODO: LINK TO ITEM PAGE. ?>
 
-                    <div class="member py5 px2 box-shadow-3 zoom">
+                    <div class="member py5 px2 box-shadow-2">
 
-                        <?php render_heading("Product Title", "h4", "h4", "", "", ["class" => "mb0 black"]) ?>
+                        <?=render_heading("Product Title", "h4", "h4", "", "", ["class" => "mb0 grey"])?>
 
-                        <?php $image_url = isset(get_field("staff_profileImage", $post->ID)['url']) ? get_field("staff_profileImage", $post->ID)['url'] : get_template_directory_uri() . '/assets/img/store-placeholder.jpg'; ?>
-                        <div class="profile || mb2" style="background: url('<?=$image_url;?>'); background-position: center; background-size: cover;" data-mh="product-box-img"></div>
+                        <?=render_attachment_image("8199", "large", false, ["class" => "mb2"])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
 
-                        <p class="mb0"><strong><span class="brand-primary" data-element="price">£18, 685</span></strong></p>
+                        <p class="mb0 h3"><span class="brand-primary" data-element="price"><strong>£18,685</strong></span></p>
 
-                        <p class="mb2 bold">2 Berth</p>
+                        <p class="mb2 bold grey">2 Berth</p>
 
-                        <a href="" class="btn btn-primary">VIew Caravan</a>
+                        <?php
+                        // NEEDS TO BE ABLE TO THE CHANGE THE VALUE FROM 'RANGE' OR 'CARAVAN/MOTORHOME' //
+                        $button['button_link']['url']        = "#";
+                        $button['button_link']['title']      = "View Caravan";
+                        $button['system_text_colours']       = "white";
+                        $button['system_background_colours'] = "transparent";
+
+                        render_button($button, "medium", ["class" => "bold bg-brand-secondary hover-white py1 px2"]) ?>
+
 
                     </div>
 
@@ -50,14 +57,10 @@
 
     </div>
 
-    <?php if (!empty($block['page_button']['button_link']['url'])): ?>
-
-        <div class="page-button || mt4 mb4 clearfix || text-center">
-
-            <a href="<?=$block['page_button']['button_link']['url']?>" class="btn btn-outline btn-large <?=$block['page_button']['system_text_colours']?> <?=$block['page_button']['system_background_colours']?>"><?=$block['page_button']['button_link']['title'];?></a>
-
+    <?php if (!empty($block['pageLink'])): ?>
+        <div class="text-center mtn2" data-element="pageButton">
+            <?php render_button($block['pageLink'], "medium", ["class" => "bold"]) ?>
         </div>
-
     <?php endif; ?>
 
     <?=($block['grid'] == 'container')? '</div>' : ""?>
