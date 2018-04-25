@@ -628,50 +628,18 @@ jQuery(document).ready(function ($) {
     }
 
 
-    /*========================
-    SMOOTH SCROLL
-    ==========================*/
+    /**
+     * -----------------------------------------------------------------------------------------------------------------
+     * MAGNIFIC POPUP MODEL WINDOWS.
+     *
+     * @author  Joe Curran
+     * @date    24 Apr 2018
+     * -----------------------------------------------------------------------------------------------------------------
+     */
 
-    // $('a[href*=\\#]:not([href=\\#]):not([data-toggle])').on('click', function () {
-    //     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-    //         var target = $(this.hash);
-    //         var headerHeight = $('header').outerHeight();
-    //         var stickyNav = $('.stick-menu').height();
-    //         target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-    //         if (target.length) {
-    //             $('html,body').animate({
-    //                 scrollTop: target.offset().top - headerHeight - stickyNav - 20
-    //             }, 750);
-    //             return false;
-    //         }
-    //     }
-    // });
-
-
-    /*======================================================
-    LIGHTBOX VIDEO & GALLERY
-    ========================================================*/
-    $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
-        disableOn: 700,
-        type: 'iframe',
-        mainClass: 'mfp-fade',
-        removalDelay: 160,
-        preloader: false,
-        fixedContentPos: false
-    });
-
-    $('.gallery').magnificPopup({
-        delegate: 'a', // child items selector, by clicking on it popup will open
-        type: 'image',
-        gallery: {
-            enabled: true
-        }
-        // other options
-    });
-
-
-    $('.magnificForm').magnificPopup({
-        type: 'inline',
+    // OPEN AN INLINE MODEL WINDOW.
+    $('.model').magnificPopup({
+        type:'inline',
         midClick: true
     });
 
@@ -729,25 +697,25 @@ jQuery(document).ready(function ($) {
     HOTSPOT : HOVER
     ========================================================*/
 
-    $('[data-spot]').each(function () {
-        var $wrapper = $(this).parents('[data-hotspot="wrapper"]');
-        var target = $(this).attr('data-spot');
-        $(this).mouseover(function () {
-            $wrapper.find('[data-hotspot="content"]').find('div[id=' + target + ']').addClass('hotspot-active');
-        }).mouseout(function () {
-            $wrapper.find('[data-hotspot="content"]').children('div').removeClass('hotspot-active');
-        });
-    });
+    // $('[data-spot]').each(function () {
+    //     var $wrapper = $(this).parents('[data-hotspot="wrapper"]');
+    //     var target = $(this).attr('data-spot');
+    //     $(this).mouseover(function () {
+    //         $wrapper.find('[data-hotspot="content"]').find('div[id=' + target + ']').addClass('hotspot-active');
+    //     }).mouseout(function () {
+    //         $wrapper.find('[data-hotspot="content"]').children('div').removeClass('hotspot-active');
+    //     });
+    // });
 
 
     /*======================================================
     PRELOADER
     ========================================================*/
-    var timer = function () {
-        $('[data-content]').fadeTo(600, 1);
-        $('[data-loader]').delay(200).fadeOut(600);
-    };
-    timer();
+    // var timer = function () {
+    //     $('[data-content]').fadeTo(600, 1);
+    //     $('[data-loader]').delay(200).fadeOut(600);
+    // };
+    // timer();
 
 
     /*======================================================
@@ -804,29 +772,29 @@ jQuery(document).ready(function ($) {
     ========================================================*/
 
 
-    $('.js-hide-show').each(function () {
-
-        $(this).click(function () {
-
-            var show = $(this).attr('data-show');
-            data_icon_show = $(this).data('icon-show');
-            data_icon_hide = $(this).data('icon-hide');
-            iconToggle = ($(this).find('i').html() === data_icon_show) ? data_icon_hide : data_icon_show;
-
-            $("#" + show).toggle();
-            $(this).find('i').text(iconToggle);
-
-            $('[toggle-relative-search]').toggleClass('relative');
-
-            if ($(this).data('blur') == true) {
-                $("#" + show).find('input')[0].focus();
-            }
-
-            return false;
-
-        });
-
-    });
+    // $('.js-hide-show').each(function () {
+    //
+    //     $(this).click(function () {
+    //
+    //         var show = $(this).attr('data-show');
+    //         data_icon_show = $(this).data('icon-show');
+    //         data_icon_hide = $(this).data('icon-hide');
+    //         iconToggle = ($(this).find('i').html() === data_icon_show) ? data_icon_hide : data_icon_show;
+    //
+    //         $("#" + show).toggle();
+    //         $(this).find('i').text(iconToggle);
+    //
+    //         $('[toggle-relative-search]').toggleClass('relative');
+    //
+    //         if ($(this).data('blur') == true) {
+    //             $("#" + show).find('input')[0].focus();
+    //         }
+    //
+    //         return false;
+    //
+    //     });
+    //
+    // });
 
 
     $('.grid').masonry({

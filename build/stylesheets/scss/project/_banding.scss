@@ -1222,15 +1222,17 @@ hr.border-5 {
   border-radius: 10rem;
 }
 
-// MASONRY BASIC SETTINGS.
-// .grid-sizer,
-// .grid-item {
-//   width: 33%;
-// }
-//
-// .grid-item--width2 {
-//   width: 66%;
-// }
+
+// MODEL
+
+.model-panel {
+  width: auto;
+  padding: 2rem;
+  background: $brand-white;
+  position: relative;
+  max-width: $breakpoint-md;
+  margin: 20px auto;
+}
 
 .tab-border-radius {
 
