@@ -747,6 +747,8 @@ add_action( 'current_screen', 'wp_42573_fix_template_caching' );
 // DISABLE SRCSET ON FRONTEND
 add_filter('max_srcset_image_width', create_function('', 'return 1;'));
 
+add_action( 'admin_enqueue_scripts', 'ml_custom_admin_styles' );
+
 
 /**
  * ---------------------------------------------------------------------------------------------------------------------
@@ -777,4 +779,12 @@ function get_highest_most_parent($post) {
     $parent = $post->ID;
   }
   return $parent = get_post($parent);
+}
+
+
+// LOAD CUSTOM ADMIN STYLESHEET
+function ml_custom_admin_styles() {
+    wp_register_style( 'ml_custom_admin_style', get_template_directory_uri() . '/assets/css/admin-style.css', false, '1.0.0' );
+
+    wp_enqueue_style( 'ml_custom_admin_style' );
 }
