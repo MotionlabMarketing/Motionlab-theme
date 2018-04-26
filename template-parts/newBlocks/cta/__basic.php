@@ -24,19 +24,7 @@
 
                     <?php render_wysiwyg("{$block['content']['content']}", true, ["class" => "md-mx6 md-px6 {$block['content']['txtColor']} regular"])?>
 
-                    <?php if ($block['buttons']['enabled'] == true): ?>
-
-                        <div class="mt4">
-
-                            <?php foreach ($block['content']['buttons'] as $button): ?>
-
-                                <a href="<?=$button['button_button_link']['url']?>" class="btn <?=$button['button_system_text_colours']?> <?=$button['button_system_background_colours']?> mx2"><?=$button['button_button_link']['title']?></a>
-
-                            <?php endforeach; ?>
-
-                        </div>
-
-                    <?php endif; ?>
+                    <?php render_buttons(convert_buttons_key($block['content']['buttons']), "small", ["class" => "bold bg-brand-primary hover-white hover-bg-brand-primary"]); ?>
 
                 </div>
 
