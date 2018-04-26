@@ -134,9 +134,31 @@ function render_buttons($data, $size, $classes = ["class" => "mb2 mr2"]) {
 
 function convert_buttons_key($arr) {
 
+
     foreach($arr as $key => $value) :
-        $arr[str_replace('buttons_', '', $key)] = $value;
-        unset($arr[$key]);
+
+        if(strpos($key, "buttons_")) :
+            $arr[str_replace('buttons_', '', $key)] = $value;
+            unset($arr[$key]);
+        endif;
+
+    endforeach;
+
+    foreach($arr as $index => $array) :
+
+        foreach($array as $key => $value) :
+            if(strpos($key, "button_button_") !== false) :
+                $array[str_replace('button_button_', 'button_', $key)] = $value;
+                unset($array[$key]);
+            endif;
+            $arr[$index] = $array;
+
+            if ($key == "button_system_text_colours" || $key == "button_system_background_colours"):
+                $array[str_replace('button_', '', $key)] = $value;
+                unset($array[$key]);
+            endif;
+        endforeach;
+
     endforeach;
 
     return $arr;
