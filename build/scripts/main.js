@@ -643,6 +643,20 @@ jQuery(document).ready(function ($) {
         midClick: true
     });
 
+    $('.gallery').magnificPopup({
+        delegate: 'a',
+        type:'image',
+        gallery:{
+            enabled: true,
+            preload: [0,2],
+            navigateByImgClick: true,
+            tPrev: 'Previous',
+            tNext: 'Next',
+            tCounter: '<span class="mfp-counter">%curr% of %total%</span>'
+        }
+    });
+
+
 
     /*======================================================
     TABS
