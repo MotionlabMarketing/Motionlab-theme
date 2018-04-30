@@ -18,21 +18,7 @@ $blockTitle  = $block['title'];
 
     <?= ($block['grid'] == 'container') ? '<div class="container">' : "" ?>
 
-    <?php  if (!empty($blockTitle[0]['title']) || !empty(get_sub_field('block_pods_content'))): ?>
-    <div class="m4 mb5 || text-center">
-
-        <div class="mb3">
-            <?php
-            if (!empty($blockTitle[0]['title'])) {
-                include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
-        </div>
-
-        <div class="text-center limit-p limit-p-80">
-            <?=get_sub_field('block_pods_content')?>
-        </div>
-
-    </div>
-    <?php endif; ?>
+    <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
     <?php foreach($block['posts']->posts as $post) : ?>
             <div class="col col-12 md-col-4 text-center">
@@ -43,16 +29,19 @@ $blockTitle  = $block['title'];
                         <?= get_stars(get_field('star_rating', $post->ID)) ?>
                     </div>
 
-                    <div class="wysiwyg mb3 mx5">
+                    <div class="wysiwyg mb3 mx5" data-mh="quote">
                         <?= get_field('reviewer_body', $post->ID); ?>
                     </div>
 
-                    <h4 class="h4 mb0 brand-primary bold"><?= get_field('reviewer_name', $post->ID) ?></h4>
-                    <p class="h4 brand-primary"><?= get_field('reviewer_locations', $post->ID) ?></p>
+                    <hr class="my4">
+
+                    <h3 class="h4 brand-primary text-center mb1" data-mh="author"><?= get_field('reviewer_name', $post->ID) ?></h3>
+                    <p class="text-center" data-mh="location"><?=get_field('reviewer_locations', $post->ID)?></p>
 
                 </div>
 
             </div>
+
     <?php endforeach; ?>
 
     <?= ($block['grid'] == 'container') ? '</div>' : "" ?>

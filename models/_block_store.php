@@ -35,9 +35,10 @@ Class _block_store {
         $this->block['products']       = get_sub_field('block_store_products');       // TODO: Karl - Use if set to selected products.
 
         $this->block['enablePageLink'] = get_sub_field('block_store_enablePageLinkButton');
-        $this->block['pageLink']       = get_sub_field('block_store_pageLinkButton');
+        $this->block['pageLink']       = get_sub_field('block_store_pageButton');
 
         $this->block['filterProduct']  = get_sub_field('block_store_filterSelection'); // TODO: Product Listing Filter (__basic.php).
+        $this->block['itemsCount']     = get_sub_field('block_store_showItemsCount'); // TODO: Number of items to show if selected items are not active.
 
 	}
 
@@ -60,11 +61,12 @@ Class _block_store {
 		$terms      = get_terms( $taxonomy, $args );
 		$children   = array();
 
-		foreach ( $terms as $term ){
+		if(!isset($terms->errors)) {
+			foreach ( $terms as $term ){
+				$term->children = $this->get_taxonomy_hierarchy( $taxonomy, array('hide_empty' => false, 'parent' => $term->term_id) );
+				$children[ $term->term_id ] = $term;
 
-			$term->children = $this->get_taxonomy_hierarchy( $taxonomy, array('hide_empty' => false, 'parent' => $term->term_id) );
-			$children[ $term->term_id ] = $term;
-
+			}
 		}
 
 		return $children;

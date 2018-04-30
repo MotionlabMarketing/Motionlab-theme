@@ -1,0 +1,15 @@
+.acf-left {
+    float: left !important;
+    clear: none  !important;
+    min-height: auto !important;
+    box-sizing: border-box !important;
+    border-right: #EEEEEE solid 1px !important;
+}
+
+.acf-right {
+    float: right !important;
+    clear: none  !important;
+    min-height: auto !important;
+    box-sizing: border-box !important;
+    border-left: #EEEEEE solid 1px !important;
+}

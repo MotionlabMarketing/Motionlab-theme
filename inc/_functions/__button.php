@@ -29,7 +29,7 @@ function render_button($data, $size = "medium",  $classes = ["class" => "mb2"]) 
             $btn['target'] = 'target="' . $data['button_link']['target'] . '"';
 
         // BUILD THE BUTTON.
-        $btn = '<a href="' . $data['button_link']['url'] . '" ' . $classes . ' data-function="__button">';
+        $btn = '<a href="' . $data['button_link']['url'] . '" ' . $classes . ' role="button" data-function="__button">';
 
             if (!empty($icon))
                 $btn .= $icon;
@@ -112,7 +112,10 @@ function render_buttons($data, $size, $classes = ["class" => "mb2 mr2"]) {
     if (!empty($data)) {
         foreach ($data as $button) {
 
-            $btn .= get_render_button(convert_buttons_key($button), $size, $classes);
+            if (!empty($button['buttons_button_link']))
+                $button = convert_buttons_key($button);
+
+            $btn .= get_render_button($button, $size, $classes);
 
         }
     }
@@ -131,9 +134,31 @@ function render_buttons($data, $size, $classes = ["class" => "mb2 mr2"]) {
 
 function convert_buttons_key($arr) {
 
+
     foreach($arr as $key => $value) :
-        $arr[str_replace('buttons_', '', $key)] = $value;
-        unset($arr[$key]);
+
+        if(strpos($key, "buttons_")) :
+            $arr[str_replace('buttons_', '', $key)] = $value;
+            unset($arr[$key]);
+        endif;
+
+    endforeach;
+
+    foreach($arr as $index => $array) :
+
+        foreach($array as $key => $value) :
+            if(strpos($key, "button_button_") !== false) :
+                $array[str_replace('button_button_', 'button_', $key)] = $value;
+                unset($array[$key]);
+            endif;
+            $arr[$index] = $array;
+
+            if ($key == "button_system_text_colours" || $key == "button_system_background_colours"):
+                $array[str_replace('button_', '', $key)] = $value;
+                unset($array[$key]);
+            endif;
+        endforeach;
+
     endforeach;
 
     return $arr;

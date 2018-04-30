@@ -41,7 +41,6 @@ gulp.task('scripts', function() {
 
 // optimise Sass
 gulp.task('sass', function(){
-    console.log('running scss')
     gulp.src('build/stylesheets/scss/main.scss')
     .pipe(plumber())
     .pipe(sass())

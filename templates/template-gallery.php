@@ -5,19 +5,19 @@
 
 
 if (!empty($bgColor)):
-    $bgColor    = "bg-white";
+    $bgColor = "bg-white";
 endif;
 
-$blockTitle     = get_field('page_title');
-$blockTitle     = $blockTitle['title'];
+$blockTitle = get_field('page_title');
+$blockTitle = $blockTitle['title'];
 
 include_once(MODELS_DIR . '_galleries.php');
-$gallery        = new _galleries();
-$gallery        = $gallery->getBlock();
+$gallery = new _galleries();
+$gallery = $gallery->getBlock();
 
 get_header(); ?>
 
-<section class="clearfix my4 mb4" id="gallery-standard" data-loadval="<?=get_query_var('gallery_category');?>">
+<section class="clearfix my4 mb4" id="gallery-standard" data-loadval="<?= get_query_var('gallery_category'); ?>">
 
     <div class="container clearfix">
 
@@ -27,10 +27,11 @@ get_header(); ?>
 
                 <?php
                 if (!empty($blockTitle[0]['title'])) {
-                    include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
+                    include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php');
+                } ?>
 
                 <div class="wysiwyg h4 limit-p limit-p-70">
-                    <?=get_field('page_introduction')?>
+                    <?= get_field('page_introduction') ?>
                 </div>
 
             </div>
@@ -40,18 +41,17 @@ get_header(); ?>
     </div>
 
 
-    <div class="container text-center mb3">
+    <div class="container text-center mb3" data-element="filters">
 
-        <?php
-        foreach ($gallery['select_terms'] as $item): ?>
+        <?php foreach ($gallery['select_terms'] as $item): ?>
 
-            <span data-category="<?=$item->slug?>" class="btn btn-medium btn-outline cursor-pointer <?=get_query_var('gallery_category') == $item->slug ? "brand-secondary" : "brand-base"; ?> normal gallery-filter"><?=$item->name?></span>
+            <span data-category="<?= $item->slug ?>" class="btn btn-medium bg-white hover-bg-brand-primary brand-primary hover-white cursor-pointer <?=get_query_var('gallery_category') == $item->slug ? "filter-active" : ""?> filter-option"><?=$item->name?></span>
 
         <?php endforeach; ?>
 
     </div>
 
-    <div class="container clearfix gallery" id="gallery-listing">
+    <div class="container clearfix gallery flex flex-wrap justify-center" id="gallery-listing">
 
         <?php include_once(AJAX_DIR . '/template-gallery-ajax.php'); ?>
 
@@ -61,38 +61,29 @@ get_header(); ?>
 
 <script>
 
-    jQuery(document).ready(function($) {
-       $('.gallery-filter').on('click', function() {
-            history.pushState({cat:$(this).val()}, "", "/gallery/"+$(this).data('category'));
+    jQuery(document).ready(function ($) {
+        $('.filter-option').on('click', function () {
+            history.pushState({cat: $(this).val()}, "", "/gallery/" + $(this).data('category'));
 
-            $('.gallery-filter').removeClass('brand-secondary').addClass('brand-base');
-            $(this).removeClass('brand-base').addClass('brand-secondary');
-       });
+            $('.filter-option').removeClass('filter-active');
+            $(this).addClass('filter-active');
+        });
 
-
-
-    });
-
-</script>
-
-<script>
-    $(document).ready(function($){
-
-        $('.gallery-filter').on('click', function(){
+        $('.filter-option').on('click', function () {
             fetchGallery(1, true);
         });
 
-        $(document).on('click', '.gallery-load-more', function() {
+        $(document).on('click', '.filter-more', function () {
             var page_number = $(this).data('page-number');
             $(this).data('page-number', page_number++);
             fetchGallery(page_number);
         });
 
-        function fetchGallery(page_number, reset = false){
-            var category_filter = $('.gallery-filter.brand-secondary').data('category');
+        function fetchGallery(page_number, reset = false) {
+            var category_filter = $('.filter-option.filter-active').data('category');
 
             $.ajax({
-                url: '<?php echo admin_url( "admin-ajax.php" ); ?>',
+                url: '<?php echo admin_url("admin-ajax.php"); ?>',
                 method: 'POST',
                 data: {
                     action: 'fetch_gallery',
@@ -100,16 +91,16 @@ get_header(); ?>
                     category_filter: category_filter
                 },
                 success: function (response) {
-                    $('.gallery-load-more').remove();
-                    if(reset) {
+                    $('.filter-more').remove();
+                    if (reset) {
                         $('#gallery-listing').html(response);
                     } else {
                         $('#gallery-listing').append(response);
                     }
+                    $('.js-match-height').matchHeight();
                 }
             });
         }
-
     });
 </script>
 
