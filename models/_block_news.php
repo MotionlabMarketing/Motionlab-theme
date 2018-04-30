@@ -119,7 +119,7 @@ Class _block_news
 
 		}
 
-		return $this->block['posts'];
+		return $this->block;
 	}
 
 	public function fetchCSRPosts( $post_per_page = 12, $page = 1 ) {
@@ -171,7 +171,7 @@ Class _block_news
 
 		}
 
-		return $this->block['posts'];
+		return $this->block;
 	}
 
 	private function fetchLatestPosts($count = 3) {
