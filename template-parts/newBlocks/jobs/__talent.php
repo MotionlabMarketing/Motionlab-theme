@@ -15,7 +15,7 @@
 <?php if (isset($_POST['action'])) : ?>
 
     <?php if (empty($block['posts']->posts)) : ?>
-        <h4 class="h4 mb1 text-center">No talent to show.</h4>
+        <p class="text-center p2 m1">Sorry there are no candidates currently available that match your criteria. Please try refining your search criteria or please get in touch to discuss your recruitment requirements on <strong><a href="tel:01254 239363">01254 239363</a></strong></p>
     <?php endif; ?>
 
     <?php
