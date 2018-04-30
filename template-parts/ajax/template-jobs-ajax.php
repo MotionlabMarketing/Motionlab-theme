@@ -7,8 +7,8 @@
  */
 ?>
 
-<?php if(!empty($posts['posts']->posts)) :
-        foreach($posts['posts']->posts as $post) :?>
+<?php if(!empty($block['posts']->posts)) :
+        foreach($block['posts']->posts as $post) :?>
             <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2 lg-flex items-center">
 
                 <div class="col col-12 lg-col-9 mb4">
@@ -37,7 +37,7 @@
         <?php endforeach;?>
 <?php else: ?>
 
-    <?php if ($posts['posts']->query['tax_query'][0]['terms'][0] == 'internal-vacancies') : ?>
+    <?php if ($block['posts']->query['tax_query'][0]['terms'][0] == 'internal-vacancies') : ?>
         <p class="text-center p2 m1">Oh dear, it looks like we don’t currently have any active vacancies here at Cummins Mellor. However, we’re always on the lookout for ‘Cummins Mellor People’ and would love to speak to you if you feel you would be a great addition to our team. Please get in touch with us, we’d love to hear from you.</p><p class="text-center p2 m1"><strong>Contact Helen Jackson on <a href="tel:01254 239363">01254 239363</a> or email <a href="mailTo:helen@cumminsmellor.co.uk">helen@cumminsmellor.co.uk</a></strong></p>
     <?php else: ?>
         <p class="text-center p2 m1">Oh dear, it looks like we don’t currently have any active vacancies in this sector. However we’re always on the lookout for great candidates and would love to speak to you to discuss your requirements and career goals. Please get in touch with us, we’d love to hear from you.</p><p class="text-center p2 m1"><strong>Contact Laura Garratt on <a href="tel:01254 239363">01254 239363</a></strong></p>

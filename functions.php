@@ -108,7 +108,7 @@ function ml_update_news() {
 	/* Load in team block controller to access posts easily. */
 	include_once(MODELS_DIR . '_block_news.php');
 	$news_controller = new _block_news(null, null);
-	$posts = $news_controller->fetchFeedPosts(8, $_POST['news_page']);
+	$block = $news_controller->fetchFeedPosts(8, $_POST['news_page']);
 
 	if(file_exists(CHILD_AJAX_DIR . 'template-news-ajax.php')) :
 		include_once(CHILD_AJAX_DIR . 'template-news-ajax.php');
@@ -126,7 +126,7 @@ function ml_update_csr() {
 	/* Load in team block controller to access posts easily. */
 	include_once(MODELS_DIR . '_block_news.php');
 	$news_controller = new _block_news(null, null);
-	$posts = $news_controller->fetchCSRPosts(8, $_POST['news_page']);
+	$block = $news_controller->fetchCSRPosts(8, $_POST['news_page']);
 
 
 	if(file_exists(CHILD_AJAX_DIR . 'template-csr-ajax.php')) :
@@ -145,7 +145,7 @@ function ml_update_jobs() {
 	/* Load in team block controller to access posts easily. */
 	include_once(MODELS_DIR . '_block_jobs.php');
 	$jobs_controller = new _block_jobs(null, null);
-	$posts = $jobs_controller->fetchFeedPosts(6, $_POST['jobs_page']);
+	$block = $jobs_controller->fetchFeedPosts(6, $_POST['jobs_page']);
 
 	if(file_exists(CHILD_AJAX_DIR . 'template-jobs-ajax.php')) :
 		include_once(CHILD_AJAX_DIR . 'template-jobs-ajax.php');
@@ -165,7 +165,7 @@ function ml_update_talent() {
 	/* Load in team block controller to access posts easily. */
 	include_once(MODELS_DIR . '_block_jobs.php');
 	$jobs_controller = new _block_jobs(null, null);
-	$posts = $jobs_controller->fetchFeedPosts(4, $_POST['jobs_page'], 'talents');
+	$block = $jobs_controller->fetchFeedPosts(4, $_POST['jobs_page'], 'talents');
 
 	if(file_exists(CHILD_AJAX_DIR . 'template-talent-ajax.php')) :
 		include_once(CHILD_AJAX_DIR . 'template-talent-ajax.php');
