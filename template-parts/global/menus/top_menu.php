@@ -25,7 +25,7 @@ $menu = motionlab_menu_walker('top-menu');
 
     </ul>
 
-    <ul class="list-reset mb0 bg-grey bg-lighten-3 <?=(is_front_page())? "opacity-8" : "";?>">
+    <ul class="mc-target list-reset mb0 bg-grey bg-lighten-3 <?=(is_front_page())? "opacity-8" : "";?>">
 
         <?php $i=1; ?>
         <?php foreach($menu as $menuitem) : ?>

@@ -119,7 +119,7 @@ Class _block_news
 
 		}
 
-		return $this->block['posts'];
+		return $this->block;
 	}
 
 	public function fetchCSRPosts( $post_per_page = 12, $page = 1 ) {
@@ -171,7 +171,7 @@ Class _block_news
 
 		}
 
-		return $this->block['posts'];
+		return $this->block;
 	}
 
 	private function fetchLatestPosts($count = 3) {
@@ -196,11 +196,14 @@ Class _block_news
 			}
 
 		} else {
+		    $this->block['posts'] = new stdClass();
 			$this->block['posts']->posts = [];
 
-			foreach(get_sub_field('block_news_articles') as $post_id) :
-				$this->block['posts']->posts[] = get_post($post_id);
-			endforeach;
+			if(!empty(get_sub_field('block_news_articles'))):
+                foreach(get_sub_field('block_news_articles') as $post_id) :
+                    $this->block['posts']->posts[] = get_post($post_id);
+                endforeach;
+			endif;
 
 			/*If we don't have 3 posts selected to show then fill the remaining slots with latest news articles*/
 			if(sizeof(get_sub_field('block_news_articles')) < 3) :

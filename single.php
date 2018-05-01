@@ -21,7 +21,7 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
                     endif;
                 ?>
 
-                    <h1 class="mt4 mb3 m0 h2 text-center">
+                    <h1 class="mt4 mb3 m0 h2 text-center brand-primary">
                         <?php the_title(); ?>
                     </h1>
 

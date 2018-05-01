@@ -9,7 +9,7 @@
  * @version 1.00
  */
 
-$block['title']            = get_sub_field($current . '_title_title');
+//$block['title']            = get_sub_field($current . '_title_title');
 $block['content']          = get_sub_field($current . '_content');
 
 $block['pod']['columns']   = get_sub_field($current . '_columns');
@@ -20,9 +20,9 @@ $block['pod']['padding']   = get_sub_field($current . '_padding_system_padding')
 $block['pod']['shadow']    = get_sub_field($current . '_shadow');
 $block['pod']['icon']      = get_sub_field($current . '_icon');
 
-
-$blockTitle = $block['title']; // REMOVE WHEN ALL UPDATED
-$block['content']['title'] = $block['title'];
+// ERROR ON BASIC BLOCK - NO IDEA IF THIS IS USED STILL FOR THE INTRODUCTION.
+//$blockTitle = $block['title']; // REMOVE WHEN ALL UPDATED
+//$block['content']['title'] = $block['heading'];
 
 $temp['columns']           = get_sub_field($current . '_columns');
 

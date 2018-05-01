@@ -14,6 +14,6 @@
 
     <?php render_wysiwyg("{$content}", $block['content']['limitWidth']); ?>
 
-    <?php render_buttons($column['column_buttons'], "medium", ["class" => "mb2 mr2"])?>
+    <?php render_buttons($column['column_buttons'], "medium", ["class" => "mb2 mr2 hover-bg-brand-primary hover-white"])?>
 
 </div>

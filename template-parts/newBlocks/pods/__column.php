@@ -12,15 +12,15 @@
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "pod-column")?> <?=get_blockData($block)?>>
 
-    <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
+    <?=($block['grid'] == 'container')? '<div class="container clearfix">' : ""?>
 
         <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-        <div class="mxn3">
+        <div class="mxn3 flex justify-center flex-wrap">
 
             <?php foreach ($block['content'] as $item): ?>
 
-                <div class="pod || col <?=$block['columns']?> px3 mb4 relative">
+                <div class="pod col <?=$block['columns']?> px3 mb5 relative">
 
                     <div class="internal-padding <?=$block['pod']['bgColour']?> <?=$block['pod']['padding']?> <?php if($block['pod']['shadow']): ?>box-shadow-2<?php endif; ?>">
 
@@ -60,9 +60,9 @@
 
                         <?php endif; ?>
 
-                        <div class="<?=$block['pod']['textColor']?> <?=$block['pod']['textAlign']?>  py3 px3 mb2 js-match-height-alt">
+                        <div class="<?=$block['pod']['textColor']?> <?=$block['pod']['textAlign']?> py3 <?=($block['pod']['shadow'])? "px3" : ""?> mb2 js-match-height-alt">
 
-                            <h3 class="mb2 brand-primary" style="font-size: 1.3rem">
+                            <h3 class="mb2 brand-primary" style="font-size: 1.3rem" data-mh="pod-title">
 
                                 <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'">' : "")?>
 
@@ -72,11 +72,9 @@
 
                             </h3>
 
-                            <p class="h5"><?=$item['pod_content']?></p>
+                            <p class="h5" data-mh="pod-content"><?=$item['pod_content']?></p>
 
-                            <?php if(!empty($item['button']['button_link']['url'])): ?>
-                                <a href="<?=$item['button']['button_link']['url']?>" class="<?php if($item['button']['button_background_colour']['system_background_colours'] !== 'bg-transparent'):?>btn <?php endif;?><?=$item['button']['button_text_colour']['system_text_colours']?> <?=$item['button']['button_background_colour']['system_background_colours']?> bold "><?=$item['button']['button_link']['title']?></a>
-                            <?php endif; ?>
+                            <?php render_button($item['button'], "small", ["class" => "bold hover-white hover-bg-brand-primary"]); ?>
 
                         </div>
 

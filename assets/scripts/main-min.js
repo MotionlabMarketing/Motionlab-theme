@@ -1,3 +1,5 @@
+!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.AOS=t():e.AOS=t()}(this,function(){return function(e){function t(n){if(o[n])return o[n].exports;var i=o[n]={exports:{},id:n,loaded:!1};return e[n].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var o={};return t.m=e,t.c=o,t.p="dist/",t(0)}([function(e,t,o){"use strict";function n(e){return e&&e.__esModule?e:{"default":e}}var i=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e},a=o(1),r=(n(a),o(5)),c=n(r),u=o(6),s=n(u),d=o(7),f=n(d),l=o(8),m=n(l),p=o(9),b=n(p),v=o(10),g=n(v),y=o(13),w=n(y),h=[],k=!1,x=document.all&&!window.atob,j={offset:120,delay:0,easing:"ease",duration:400,disable:!1,once:!1,startEvent:"DOMContentLoaded"},O=function(){var e=arguments.length<=0||void 0===arguments[0]?!1:arguments[0];return e&&(k=!0),k?(h=(0,g["default"])(h,j),(0,b["default"])(h,j.once),h):void 0},_=function(){h=(0,w["default"])(),O()},z=function(){h.forEach(function(e,t){e.node.removeAttribute("data-aos"),e.node.removeAttribute("data-aos-easing"),e.node.removeAttribute("data-aos-duration"),e.node.removeAttribute("data-aos-delay")})},A=function(e){return e===!0||"mobile"===e&&m["default"].mobile()||"phone"===e&&m["default"].phone()||"tablet"===e&&m["default"].tablet()||"function"==typeof e&&e()===!0},E=function(e){return j=i(j,e),h=(0,w["default"])(),A(j.disable)||x?z():(document.querySelector("body").setAttribute("data-aos-easing",j.easing),document.querySelector("body").setAttribute("data-aos-duration",j.duration),document.querySelector("body").setAttribute("data-aos-delay",j.delay),"DOMContentLoaded"===j.startEvent&&["complete","interactive"].indexOf(document.readyState)>-1?O(!0):"load"===j.startEvent?window.addEventListener(j.startEvent,function(){O(!0)}):document.addEventListener(j.startEvent,function(){O(!0)}),window.addEventListener("resize",(0,s["default"])(O,50,!0)),window.addEventListener("orientationchange",(0,s["default"])(O,50,!0)),window.addEventListener("scroll",(0,c["default"])(function(){(0,b["default"])(h,j.once)},99)),document.addEventListener("DOMNodeRemoved",function(e){var t=e.target;t&&1===t.nodeType&&t.hasAttribute&&t.hasAttribute("data-aos")&&(0,s["default"])(_,50,!0)}),(0,f["default"])("[data-aos]",_),h)};e.exports={init:E,refresh:O,refreshHard:_}},function(e,t){},,,,function(e,t,o){"use strict";function n(e,t,o){var n=!0,a=!0;if("function"!=typeof e)throw new TypeError(c);return i(o)&&(n="leading"in o?!!o.leading:n,a="trailing"in o?!!o.trailing:a),r(e,t,{leading:n,maxWait:t,trailing:a})}function i(e){var t="undefined"==typeof e?"undefined":a(e);return!!e&&("object"==t||"function"==t)}var a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol?"symbol":typeof e},r=o(6),c="Expected a function";e.exports=n},function(e,t){"use strict";function o(e,t,o){function n(t){var o=b,n=v;return b=v=void 0,O=t,y=e.apply(n,o)}function a(e){return O=e,w=setTimeout(d,t),_?n(e):y}function r(e){var o=e-h,n=e-O,i=t-o;return z?x(i,g-n):i}function u(e){var o=e-h,n=e-O;return!h||o>=t||0>o||z&&n>=g}function d(){var e=j();return u(e)?f(e):void(w=setTimeout(d,r(e)))}function f(e){return clearTimeout(w),w=void 0,A&&b?n(e):(b=v=void 0,y)}function l(){void 0!==w&&clearTimeout(w),h=O=0,b=v=w=void 0}function m(){return void 0===w?y:f(j())}function p(){var e=j(),o=u(e);if(b=arguments,v=this,h=e,o){if(void 0===w)return a(h);if(z)return clearTimeout(w),w=setTimeout(d,t),n(h)}return void 0===w&&(w=setTimeout(d,t)),y}var b,v,g,y,w,h=0,O=0,_=!1,z=!1,A=!0;if("function"!=typeof e)throw new TypeError(s);return t=c(t)||0,i(o)&&(_=!!o.leading,z="maxWait"in o,g=z?k(c(o.maxWait)||0,t):g,A="trailing"in o?!!o.trailing:A),p.cancel=l,p.flush=m,p}function n(e){var t=i(e)?h.call(e):"";return t==f||t==l}function i(e){var t="undefined"==typeof e?"undefined":u(e);return!!e&&("object"==t||"function"==t)}function a(e){return!!e&&"object"==("undefined"==typeof e?"undefined":u(e))}function r(e){return"symbol"==("undefined"==typeof e?"undefined":u(e))||a(e)&&h.call(e)==m}function c(e){if("number"==typeof e)return e;if(r(e))return d;if(i(e)){var t=n(e.valueOf)?e.valueOf():e;e=i(t)?t+"":t}if("string"!=typeof e)return 0===e?e:+e;e=e.replace(p,"");var o=v.test(e);return o||g.test(e)?y(e.slice(2),o?2:8):b.test(e)?d:+e}var u="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol?"symbol":typeof e},s="Expected a function",d=NaN,f="[object Function]",l="[object GeneratorFunction]",m="[object Symbol]",p=/^\s+|\s+$/g,b=/^[-+]0x[0-9a-f]+$/i,v=/^0b[01]+$/i,g=/^0o[0-7]+$/i,y=parseInt,w=Object.prototype,h=w.toString,k=Math.max,x=Math.min,j=Date.now;e.exports=o},function(e,t){"use strict";function o(e,t){r.push({selector:e,fn:t}),!c&&a&&(c=new a(n),c.observe(i.documentElement,{childList:!0,subtree:!0,removedNodes:!0})),n()}function n(){for(var e,t,o=0,n=r.length;n>o;o++){e=r[o],t=i.querySelectorAll(e.selector);for(var a,c=0,u=t.length;u>c;c++)a=t[c],a.ready||(a.ready=!0,e.fn.call(a,a))}}Object.defineProperty(t,"__esModule",{value:!0});var i=window.document,a=window.MutationObserver||window.WebKitMutationObserver,r=[],c=void 0;t["default"]=o},function(e,t){"use strict";function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var n=function(){function e(e,t){for(var o=0;o<t.length;o++){var n=t[o];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),i=function(){function e(){o(this,e)}return n(e,[{key:"phone",value:function(){var e=!1;return function(t){(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(t)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(t.substr(0,4)))&&(e=!0)}(navigator.userAgent||navigator.vendor||window.opera),e}},{key:"mobile",value:function(){var e=!1;return function(t){(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(t)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(t.substr(0,4)))&&(e=!0)}(navigator.userAgent||navigator.vendor||window.opera),e}},{key:"tablet",value:function(){return this.mobile()&&!this.phone()}}]),e}();t["default"]=new i},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(e,t,o){var n=e.node.getAttribute("data-aos-once");t>e.position?e.node.classList.add("aos-animate"):"undefined"!=typeof n&&("false"===n||!o&&"true"!==n)&&e.node.classList.remove("aos-animate")},n=function(e,t){var n=window.pageYOffset,i=window.innerHeight;e.forEach(function(e,a){o(e,i+n,t)})};t["default"]=n},function(e,t,o){"use strict";function n(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var i=o(11),a=n(i),r=function(e,t){return e.forEach(function(e,o){e.node.classList.add("aos-init"),e.position=(0,a["default"])(e.node,t.offset)}),e};t["default"]=r},function(e,t,o){"use strict";function n(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var i=o(12),a=n(i),r=function(e,t){var o=0,n=0,i=window.innerHeight,r={offset:e.getAttribute("data-aos-offset"),anchor:e.getAttribute("data-aos-anchor"),anchorPlacement:e.getAttribute("data-aos-anchor-placement")};switch(r.offset&&!isNaN(r.offset)&&(n=parseInt(r.offset)),r.anchor&&document.querySelectorAll(r.anchor)&&(e=document.querySelectorAll(r.anchor)[0]),o=(0,a["default"])(e).top,r.anchorPlacement){case"top-bottom":break;case"center-bottom":o+=e.offsetHeight/2;break;case"bottom-bottom":o+=e.offsetHeight;break;case"top-center":o+=i/2;break;case"bottom-center":o+=i/2+e.offsetHeight;break;case"center-center":o+=i/2+e.offsetHeight/2;break;case"top-top":o+=i;break;case"bottom-top":o+=e.offsetHeight+i;break;case"center-top":o+=e.offsetHeight/2+i}return r.anchorPlacement||r.offset||isNaN(t)||(n=t),o+n};t["default"]=r},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(e){for(var t=0,o=0;e&&!isNaN(e.offsetLeft)&&!isNaN(e.offsetTop);)t+=e.offsetLeft-("BODY"!=e.tagName?e.scrollLeft:0),o+=e.offsetTop-("BODY"!=e.tagName?e.scrollTop:0),e=e.offsetParent;return{top:o,left:t}};t["default"]=o},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(e){e=e||document.querySelectorAll("[data-aos]");var t=[];return[].forEach.call(e,function(e,o){t.push({node:e})}),t};t["default"]=o}])});
+//# sourceMappingURL=aos.js.map
 /*
 	By Osvaldas Valutis, www.osvaldas.info
 	Available for use under the MIT License
@@ -210,8 +212,6 @@ jQuery.extend( jQuery.easing,
  *
  */
 
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.AOS=t():e.AOS=t()}(this,function(){return function(e){function t(n){if(o[n])return o[n].exports;var i=o[n]={exports:{},id:n,loaded:!1};return e[n].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var o={};return t.m=e,t.c=o,t.p="dist/",t(0)}([function(e,t,o){"use strict";function n(e){return e&&e.__esModule?e:{"default":e}}var i=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e},a=o(1),r=(n(a),o(5)),c=n(r),u=o(6),s=n(u),d=o(7),f=n(d),l=o(8),m=n(l),p=o(9),b=n(p),v=o(10),g=n(v),y=o(13),w=n(y),h=[],k=!1,x=document.all&&!window.atob,j={offset:120,delay:0,easing:"ease",duration:400,disable:!1,once:!1,startEvent:"DOMContentLoaded"},O=function(){var e=arguments.length<=0||void 0===arguments[0]?!1:arguments[0];return e&&(k=!0),k?(h=(0,g["default"])(h,j),(0,b["default"])(h,j.once),h):void 0},_=function(){h=(0,w["default"])(),O()},z=function(){h.forEach(function(e,t){e.node.removeAttribute("data-aos"),e.node.removeAttribute("data-aos-easing"),e.node.removeAttribute("data-aos-duration"),e.node.removeAttribute("data-aos-delay")})},A=function(e){return e===!0||"mobile"===e&&m["default"].mobile()||"phone"===e&&m["default"].phone()||"tablet"===e&&m["default"].tablet()||"function"==typeof e&&e()===!0},E=function(e){return j=i(j,e),h=(0,w["default"])(),A(j.disable)||x?z():(document.querySelector("body").setAttribute("data-aos-easing",j.easing),document.querySelector("body").setAttribute("data-aos-duration",j.duration),document.querySelector("body").setAttribute("data-aos-delay",j.delay),"DOMContentLoaded"===j.startEvent&&["complete","interactive"].indexOf(document.readyState)>-1?O(!0):"load"===j.startEvent?window.addEventListener(j.startEvent,function(){O(!0)}):document.addEventListener(j.startEvent,function(){O(!0)}),window.addEventListener("resize",(0,s["default"])(O,50,!0)),window.addEventListener("orientationchange",(0,s["default"])(O,50,!0)),window.addEventListener("scroll",(0,c["default"])(function(){(0,b["default"])(h,j.once)},99)),document.addEventListener("DOMNodeRemoved",function(e){var t=e.target;t&&1===t.nodeType&&t.hasAttribute&&t.hasAttribute("data-aos")&&(0,s["default"])(_,50,!0)}),(0,f["default"])("[data-aos]",_),h)};e.exports={init:E,refresh:O,refreshHard:_}},function(e,t){},,,,function(e,t,o){"use strict";function n(e,t,o){var n=!0,a=!0;if("function"!=typeof e)throw new TypeError(c);return i(o)&&(n="leading"in o?!!o.leading:n,a="trailing"in o?!!o.trailing:a),r(e,t,{leading:n,maxWait:t,trailing:a})}function i(e){var t="undefined"==typeof e?"undefined":a(e);return!!e&&("object"==t||"function"==t)}var a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol?"symbol":typeof e},r=o(6),c="Expected a function";e.exports=n},function(e,t){"use strict";function o(e,t,o){function n(t){var o=b,n=v;return b=v=void 0,O=t,y=e.apply(n,o)}function a(e){return O=e,w=setTimeout(d,t),_?n(e):y}function r(e){var o=e-h,n=e-O,i=t-o;return z?x(i,g-n):i}function u(e){var o=e-h,n=e-O;return!h||o>=t||0>o||z&&n>=g}function d(){var e=j();return u(e)?f(e):void(w=setTimeout(d,r(e)))}function f(e){return clearTimeout(w),w=void 0,A&&b?n(e):(b=v=void 0,y)}function l(){void 0!==w&&clearTimeout(w),h=O=0,b=v=w=void 0}function m(){return void 0===w?y:f(j())}function p(){var e=j(),o=u(e);if(b=arguments,v=this,h=e,o){if(void 0===w)return a(h);if(z)return clearTimeout(w),w=setTimeout(d,t),n(h)}return void 0===w&&(w=setTimeout(d,t)),y}var b,v,g,y,w,h=0,O=0,_=!1,z=!1,A=!0;if("function"!=typeof e)throw new TypeError(s);return t=c(t)||0,i(o)&&(_=!!o.leading,z="maxWait"in o,g=z?k(c(o.maxWait)||0,t):g,A="trailing"in o?!!o.trailing:A),p.cancel=l,p.flush=m,p}function n(e){var t=i(e)?h.call(e):"";return t==f||t==l}function i(e){var t="undefined"==typeof e?"undefined":u(e);return!!e&&("object"==t||"function"==t)}function a(e){return!!e&&"object"==("undefined"==typeof e?"undefined":u(e))}function r(e){return"symbol"==("undefined"==typeof e?"undefined":u(e))||a(e)&&h.call(e)==m}function c(e){if("number"==typeof e)return e;if(r(e))return d;if(i(e)){var t=n(e.valueOf)?e.valueOf():e;e=i(t)?t+"":t}if("string"!=typeof e)return 0===e?e:+e;e=e.replace(p,"");var o=v.test(e);return o||g.test(e)?y(e.slice(2),o?2:8):b.test(e)?d:+e}var u="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol?"symbol":typeof e},s="Expected a function",d=NaN,f="[object Function]",l="[object GeneratorFunction]",m="[object Symbol]",p=/^\s+|\s+$/g,b=/^[-+]0x[0-9a-f]+$/i,v=/^0b[01]+$/i,g=/^0o[0-7]+$/i,y=parseInt,w=Object.prototype,h=w.toString,k=Math.max,x=Math.min,j=Date.now;e.exports=o},function(e,t){"use strict";function o(e,t){r.push({selector:e,fn:t}),!c&&a&&(c=new a(n),c.observe(i.documentElement,{childList:!0,subtree:!0,removedNodes:!0})),n()}function n(){for(var e,t,o=0,n=r.length;n>o;o++){e=r[o],t=i.querySelectorAll(e.selector);for(var a,c=0,u=t.length;u>c;c++)a=t[c],a.ready||(a.ready=!0,e.fn.call(a,a))}}Object.defineProperty(t,"__esModule",{value:!0});var i=window.document,a=window.MutationObserver||window.WebKitMutationObserver,r=[],c=void 0;t["default"]=o},function(e,t){"use strict";function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var n=function(){function e(e,t){for(var o=0;o<t.length;o++){var n=t[o];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),i=function(){function e(){o(this,e)}return n(e,[{key:"phone",value:function(){var e=!1;return function(t){(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(t)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(t.substr(0,4)))&&(e=!0)}(navigator.userAgent||navigator.vendor||window.opera),e}},{key:"mobile",value:function(){var e=!1;return function(t){(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(t)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(t.substr(0,4)))&&(e=!0)}(navigator.userAgent||navigator.vendor||window.opera),e}},{key:"tablet",value:function(){return this.mobile()&&!this.phone()}}]),e}();t["default"]=new i},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(e,t,o){var n=e.node.getAttribute("data-aos-once");t>e.position?e.node.classList.add("aos-animate"):"undefined"!=typeof n&&("false"===n||!o&&"true"!==n)&&e.node.classList.remove("aos-animate")},n=function(e,t){var n=window.pageYOffset,i=window.innerHeight;e.forEach(function(e,a){o(e,i+n,t)})};t["default"]=n},function(e,t,o){"use strict";function n(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var i=o(11),a=n(i),r=function(e,t){return e.forEach(function(e,o){e.node.classList.add("aos-init"),e.position=(0,a["default"])(e.node,t.offset)}),e};t["default"]=r},function(e,t,o){"use strict";function n(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(t,"__esModule",{value:!0});var i=o(12),a=n(i),r=function(e,t){var o=0,n=0,i=window.innerHeight,r={offset:e.getAttribute("data-aos-offset"),anchor:e.getAttribute("data-aos-anchor"),anchorPlacement:e.getAttribute("data-aos-anchor-placement")};switch(r.offset&&!isNaN(r.offset)&&(n=parseInt(r.offset)),r.anchor&&document.querySelectorAll(r.anchor)&&(e=document.querySelectorAll(r.anchor)[0]),o=(0,a["default"])(e).top,r.anchorPlacement){case"top-bottom":break;case"center-bottom":o+=e.offsetHeight/2;break;case"bottom-bottom":o+=e.offsetHeight;break;case"top-center":o+=i/2;break;case"bottom-center":o+=i/2+e.offsetHeight;break;case"center-center":o+=i/2+e.offsetHeight/2;break;case"top-top":o+=i;break;case"bottom-top":o+=e.offsetHeight+i;break;case"center-top":o+=e.offsetHeight/2+i}return r.anchorPlacement||r.offset||isNaN(t)||(n=t),o+n};t["default"]=r},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(e){for(var t=0,o=0;e&&!isNaN(e.offsetLeft)&&!isNaN(e.offsetTop);)t+=e.offsetLeft-("BODY"!=e.tagName?e.scrollLeft:0),o+=e.offsetTop-("BODY"!=e.tagName?e.scrollTop:0),e=e.offsetParent;return{top:o,left:t}};t["default"]=o},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(e){e=e||document.querySelectorAll("[data-aos]");var t=[];return[].forEach.call(e,function(e,o){t.push({node:e})}),t};t["default"]=o}])});
-//# sourceMappingURL=aos.js.map
 /*!
  * headroom.js v0.9.3 - Give your page some headroom. Hide your header until you need it
  * Copyright (c) 2016 Nick Williams - http://wicky.nillia.ms/headroom.js
@@ -1603,1863 +1603,7 @@ jQuery.extend( jQuery.easing,
 /*! Magnific Popup - v1.1.0 - 2016-02-20
 * http://dimsemenov.com/plugins/magnific-popup/
 * Copyright (c) 2016 Dmitry Semenov; */
-;(function (factory) { 
-if (typeof define === 'function' && define.amd) { 
- // AMD. Register as an anonymous module. 
- define(['jquery'], factory); 
- } else if (typeof exports === 'object') { 
- // Node/CommonJS 
- factory(require('jquery')); 
- } else { 
- // Browser globals 
- factory(window.jQuery || window.Zepto); 
- } 
- }(function($) { 
-
-/*>>core*/
-/**
- * 
- * Magnific Popup Core JS file
- * 
- */
-
-
-/**
- * Private static constants
- */
-var CLOSE_EVENT = 'Close',
-	BEFORE_CLOSE_EVENT = 'BeforeClose',
-	AFTER_CLOSE_EVENT = 'AfterClose',
-	BEFORE_APPEND_EVENT = 'BeforeAppend',
-	MARKUP_PARSE_EVENT = 'MarkupParse',
-	OPEN_EVENT = 'Open',
-	CHANGE_EVENT = 'Change',
-	NS = 'mfp',
-	EVENT_NS = '.' + NS,
-	READY_CLASS = 'mfp-ready',
-	REMOVING_CLASS = 'mfp-removing',
-	PREVENT_CLOSE_CLASS = 'mfp-prevent-close';
-
-
-/**
- * Private vars 
- */
-/*jshint -W079 */
-var mfp, // As we have only one instance of MagnificPopup object, we define it locally to not to use 'this'
-	MagnificPopup = function(){},
-	_isJQ = !!(window.jQuery),
-	_prevStatus,
-	_window = $(window),
-	_document,
-	_prevContentType,
-	_wrapClasses,
-	_currPopupType;
-
-
-/**
- * Private functions
- */
-var _mfpOn = function(name, f) {
-		mfp.ev.on(NS + name + EVENT_NS, f);
-	},
-	_getEl = function(className, appendTo, html, raw) {
-		var el = document.createElement('div');
-		el.className = 'mfp-'+className;
-		if(html) {
-			el.innerHTML = html;
-		}
-		if(!raw) {
-			el = $(el);
-			if(appendTo) {
-				el.appendTo(appendTo);
-			}
-		} else if(appendTo) {
-			appendTo.appendChild(el);
-		}
-		return el;
-	},
-	_mfpTrigger = function(e, data) {
-		mfp.ev.triggerHandler(NS + e, data);
-
-		if(mfp.st.callbacks) {
-			// converts "mfpEventName" to "eventName" callback and triggers it if it's present
-			e = e.charAt(0).toLowerCase() + e.slice(1);
-			if(mfp.st.callbacks[e]) {
-				mfp.st.callbacks[e].apply(mfp, $.isArray(data) ? data : [data]);
-			}
-		}
-	},
-	_getCloseBtn = function(type) {
-		if(type !== _currPopupType || !mfp.currTemplate.closeBtn) {
-			mfp.currTemplate.closeBtn = $( mfp.st.closeMarkup.replace('%title%', mfp.st.tClose ) );
-			_currPopupType = type;
-		}
-		return mfp.currTemplate.closeBtn;
-	},
-	// Initialize Magnific Popup only when called at least once
-	_checkInstance = function() {
-		if(!$.magnificPopup.instance) {
-			/*jshint -W020 */
-			mfp = new MagnificPopup();
-			mfp.init();
-			$.magnificPopup.instance = mfp;
-		}
-	},
-	// CSS transition detection, http://stackoverflow.com/questions/7264899/detect-css-transitions-using-javascript-and-without-modernizr
-	supportsTransitions = function() {
-		var s = document.createElement('p').style, // 's' for style. better to create an element if body yet to exist
-			v = ['ms','O','Moz','Webkit']; // 'v' for vendor
-
-		if( s['transition'] !== undefined ) {
-			return true; 
-		}
-			
-		while( v.length ) {
-			if( v.pop() + 'Transition' in s ) {
-				return true;
-			}
-		}
-				
-		return false;
-	};
-
-
-
-/**
- * Public functions
- */
-MagnificPopup.prototype = {
-
-	constructor: MagnificPopup,
-
-	/**
-	 * Initializes Magnific Popup plugin. 
-	 * This function is triggered only once when $.fn.magnificPopup or $.magnificPopup is executed
-	 */
-	init: function() {
-		var appVersion = navigator.appVersion;
-		mfp.isLowIE = mfp.isIE8 = document.all && !document.addEventListener;
-		mfp.isAndroid = (/android/gi).test(appVersion);
-		mfp.isIOS = (/iphone|ipad|ipod/gi).test(appVersion);
-		mfp.supportsTransition = supportsTransitions();
-
-		// We disable fixed positioned lightbox on devices that don't handle it nicely.
-		// If you know a better way of detecting this - let me know.
-		mfp.probablyMobile = (mfp.isAndroid || mfp.isIOS || /(Opera Mini)|Kindle|webOS|BlackBerry|(Opera Mobi)|(Windows Phone)|IEMobile/i.test(navigator.userAgent) );
-		_document = $(document);
-
-		mfp.popupsCache = {};
-	},
-
-	/**
-	 * Opens popup
-	 * @param  data [description]
-	 */
-	open: function(data) {
-
-		var i;
-
-		if(data.isObj === false) { 
-			// convert jQuery collection to array to avoid conflicts later
-			mfp.items = data.items.toArray();
-
-			mfp.index = 0;
-			var items = data.items,
-				item;
-			for(i = 0; i < items.length; i++) {
-				item = items[i];
-				if(item.parsed) {
-					item = item.el[0];
-				}
-				if(item === data.el[0]) {
-					mfp.index = i;
-					break;
-				}
-			}
-		} else {
-			mfp.items = $.isArray(data.items) ? data.items : [data.items];
-			mfp.index = data.index || 0;
-		}
-
-		// if popup is already opened - we just update the content
-		if(mfp.isOpen) {
-			mfp.updateItemHTML();
-			return;
-		}
-		
-		mfp.types = []; 
-		_wrapClasses = '';
-		if(data.mainEl && data.mainEl.length) {
-			mfp.ev = data.mainEl.eq(0);
-		} else {
-			mfp.ev = _document;
-		}
-
-		if(data.key) {
-			if(!mfp.popupsCache[data.key]) {
-				mfp.popupsCache[data.key] = {};
-			}
-			mfp.currTemplate = mfp.popupsCache[data.key];
-		} else {
-			mfp.currTemplate = {};
-		}
-
-
-
-		mfp.st = $.extend(true, {}, $.magnificPopup.defaults, data ); 
-		mfp.fixedContentPos = mfp.st.fixedContentPos === 'auto' ? !mfp.probablyMobile : mfp.st.fixedContentPos;
-
-		if(mfp.st.modal) {
-			mfp.st.closeOnContentClick = false;
-			mfp.st.closeOnBgClick = false;
-			mfp.st.showCloseBtn = false;
-			mfp.st.enableEscapeKey = false;
-		}
-		
-
-		// Building markup
-		// main containers are created only once
-		if(!mfp.bgOverlay) {
-
-			// Dark overlay
-			mfp.bgOverlay = _getEl('bg').on('click'+EVENT_NS, function() {
-				mfp.close();
-			});
-
-			mfp.wrap = _getEl('wrap').attr('tabindex', -1).on('click'+EVENT_NS, function(e) {
-				if(mfp._checkIfClose(e.target)) {
-					mfp.close();
-				}
-			});
-
-			mfp.container = _getEl('container', mfp.wrap);
-		}
-
-		mfp.contentContainer = _getEl('content');
-		if(mfp.st.preloader) {
-			mfp.preloader = _getEl('preloader', mfp.container, mfp.st.tLoading);
-		}
-
-
-		// Initializing modules
-		var modules = $.magnificPopup.modules;
-		for(i = 0; i < modules.length; i++) {
-			var n = modules[i];
-			n = n.charAt(0).toUpperCase() + n.slice(1);
-			mfp['init'+n].call(mfp);
-		}
-		_mfpTrigger('BeforeOpen');
-
-
-		if(mfp.st.showCloseBtn) {
-			// Close button
-			if(!mfp.st.closeBtnInside) {
-				mfp.wrap.append( _getCloseBtn() );
-			} else {
-				_mfpOn(MARKUP_PARSE_EVENT, function(e, template, values, item) {
-					values.close_replaceWith = _getCloseBtn(item.type);
-				});
-				_wrapClasses += ' mfp-close-btn-in';
-			}
-		}
-
-		if(mfp.st.alignTop) {
-			_wrapClasses += ' mfp-align-top';
-		}
-
-	
-
-		if(mfp.fixedContentPos) {
-			mfp.wrap.css({
-				overflow: mfp.st.overflowY,
-				overflowX: 'hidden',
-				overflowY: mfp.st.overflowY
-			});
-		} else {
-			mfp.wrap.css({ 
-				top: _window.scrollTop(),
-				position: 'absolute'
-			});
-		}
-		if( mfp.st.fixedBgPos === false || (mfp.st.fixedBgPos === 'auto' && !mfp.fixedContentPos) ) {
-			mfp.bgOverlay.css({
-				height: _document.height(),
-				position: 'absolute'
-			});
-		}
-
-		
-
-		if(mfp.st.enableEscapeKey) {
-			// Close on ESC key
-			_document.on('keyup' + EVENT_NS, function(e) {
-				if(e.keyCode === 27) {
-					mfp.close();
-				}
-			});
-		}
-
-		_window.on('resize' + EVENT_NS, function() {
-			mfp.updateSize();
-		});
-
-
-		if(!mfp.st.closeOnContentClick) {
-			_wrapClasses += ' mfp-auto-cursor';
-		}
-		
-		if(_wrapClasses)
-			mfp.wrap.addClass(_wrapClasses);
-
-
-		// this triggers recalculation of layout, so we get it once to not to trigger twice
-		var windowHeight = mfp.wH = _window.height();
-
-		
-		var windowStyles = {};
-
-		if( mfp.fixedContentPos ) {
-            if(mfp._hasScrollBar(windowHeight)){
-                var s = mfp._getScrollbarSize();
-                if(s) {
-                    windowStyles.marginRight = s;
-                }
-            }
-        }
-
-		if(mfp.fixedContentPos) {
-			if(!mfp.isIE7) {
-				windowStyles.overflow = 'hidden';
-			} else {
-				// ie7 double-scroll bug
-				$('body, html').css('overflow', 'hidden');
-			}
-		}
-
-		
-		
-		var classesToadd = mfp.st.mainClass;
-		if(mfp.isIE7) {
-			classesToadd += ' mfp-ie7';
-		}
-		if(classesToadd) {
-			mfp._addClassToMFP( classesToadd );
-		}
-
-		// add content
-		mfp.updateItemHTML();
-
-		_mfpTrigger('BuildControls');
-
-		// remove scrollbar, add margin e.t.c
-		$('html').css(windowStyles);
-		
-		// add everything to DOM
-		mfp.bgOverlay.add(mfp.wrap).prependTo( mfp.st.prependTo || $(document.body) );
-
-		// Save last focused element
-		mfp._lastFocusedEl = document.activeElement;
-		
-		// Wait for next cycle to allow CSS transition
-		setTimeout(function() {
-			
-			if(mfp.content) {
-				mfp._addClassToMFP(READY_CLASS);
-				mfp._setFocus();
-			} else {
-				// if content is not defined (not loaded e.t.c) we add class only for BG
-				mfp.bgOverlay.addClass(READY_CLASS);
-			}
-			
-			// Trap the focus in popup
-			_document.on('focusin' + EVENT_NS, mfp._onFocusIn);
-
-		}, 16);
-
-		mfp.isOpen = true;
-		mfp.updateSize(windowHeight);
-		_mfpTrigger(OPEN_EVENT);
-
-		return data;
-	},
-
-	/**
-	 * Closes the popup
-	 */
-	close: function() {
-		if(!mfp.isOpen) return;
-		_mfpTrigger(BEFORE_CLOSE_EVENT);
-
-		mfp.isOpen = false;
-		// for CSS3 animation
-		if(mfp.st.removalDelay && !mfp.isLowIE && mfp.supportsTransition )  {
-			mfp._addClassToMFP(REMOVING_CLASS);
-			setTimeout(function() {
-				mfp._close();
-			}, mfp.st.removalDelay);
-		} else {
-			mfp._close();
-		}
-	},
-
-	/**
-	 * Helper for close() function
-	 */
-	_close: function() {
-		_mfpTrigger(CLOSE_EVENT);
-
-		var classesToRemove = REMOVING_CLASS + ' ' + READY_CLASS + ' ';
-
-		mfp.bgOverlay.detach();
-		mfp.wrap.detach();
-		mfp.container.empty();
-
-		if(mfp.st.mainClass) {
-			classesToRemove += mfp.st.mainClass + ' ';
-		}
-
-		mfp._removeClassFromMFP(classesToRemove);
-
-		if(mfp.fixedContentPos) {
-			var windowStyles = {marginRight: ''};
-			if(mfp.isIE7) {
-				$('body, html').css('overflow', '');
-			} else {
-				windowStyles.overflow = '';
-			}
-			$('html').css(windowStyles);
-		}
-		
-		_document.off('keyup' + EVENT_NS + ' focusin' + EVENT_NS);
-		mfp.ev.off(EVENT_NS);
-
-		// clean up DOM elements that aren't removed
-		mfp.wrap.attr('class', 'mfp-wrap').removeAttr('style');
-		mfp.bgOverlay.attr('class', 'mfp-bg');
-		mfp.container.attr('class', 'mfp-container');
-
-		// remove close button from target element
-		if(mfp.st.showCloseBtn &&
-		(!mfp.st.closeBtnInside || mfp.currTemplate[mfp.currItem.type] === true)) {
-			if(mfp.currTemplate.closeBtn)
-				mfp.currTemplate.closeBtn.detach();
-		}
-
-
-		if(mfp.st.autoFocusLast && mfp._lastFocusedEl) {
-			$(mfp._lastFocusedEl).focus(); // put tab focus back
-		}
-		mfp.currItem = null;	
-		mfp.content = null;
-		mfp.currTemplate = null;
-		mfp.prevHeight = 0;
-
-		_mfpTrigger(AFTER_CLOSE_EVENT);
-	},
-	
-	updateSize: function(winHeight) {
-
-		if(mfp.isIOS) {
-			// fixes iOS nav bars https://github.com/dimsemenov/Magnific-Popup/issues/2
-			var zoomLevel = document.documentElement.clientWidth / window.innerWidth;
-			var height = window.innerHeight * zoomLevel;
-			mfp.wrap.css('height', height);
-			mfp.wH = height;
-		} else {
-			mfp.wH = winHeight || _window.height();
-		}
-		// Fixes #84: popup incorrectly positioned with position:relative on body
-		if(!mfp.fixedContentPos) {
-			mfp.wrap.css('height', mfp.wH);
-		}
-
-		_mfpTrigger('Resize');
-
-	},
-
-	/**
-	 * Set content of popup based on current index
-	 */
-	updateItemHTML: function() {
-		var item = mfp.items[mfp.index];
-
-		// Detach and perform modifications
-		mfp.contentContainer.detach();
-
-		if(mfp.content)
-			mfp.content.detach();
-
-		if(!item.parsed) {
-			item = mfp.parseEl( mfp.index );
-		}
-
-		var type = item.type;
-
-		_mfpTrigger('BeforeChange', [mfp.currItem ? mfp.currItem.type : '', type]);
-		// BeforeChange event works like so:
-		// _mfpOn('BeforeChange', function(e, prevType, newType) { });
-
-		mfp.currItem = item;
-
-		if(!mfp.currTemplate[type]) {
-			var markup = mfp.st[type] ? mfp.st[type].markup : false;
-
-			// allows to modify markup
-			_mfpTrigger('FirstMarkupParse', markup);
-
-			if(markup) {
-				mfp.currTemplate[type] = $(markup);
-			} else {
-				// if there is no markup found we just define that template is parsed
-				mfp.currTemplate[type] = true;
-			}
-		}
-
-		if(_prevContentType && _prevContentType !== item.type) {
-			mfp.container.removeClass('mfp-'+_prevContentType+'-holder');
-		}
-
-		var newContent = mfp['get' + type.charAt(0).toUpperCase() + type.slice(1)](item, mfp.currTemplate[type]);
-		mfp.appendContent(newContent, type);
-
-		item.preloaded = true;
-
-		_mfpTrigger(CHANGE_EVENT, item);
-		_prevContentType = item.type;
-
-		// Append container back after its content changed
-		mfp.container.prepend(mfp.contentContainer);
-
-		_mfpTrigger('AfterChange');
-	},
-
-
-	/**
-	 * Set HTML content of popup
-	 */
-	appendContent: function(newContent, type) {
-		mfp.content = newContent;
-
-		if(newContent) {
-			if(mfp.st.showCloseBtn && mfp.st.closeBtnInside &&
-				mfp.currTemplate[type] === true) {
-				// if there is no markup, we just append close button element inside
-				if(!mfp.content.find('.mfp-close').length) {
-					mfp.content.append(_getCloseBtn());
-				}
-			} else {
-				mfp.content = newContent;
-			}
-		} else {
-			mfp.content = '';
-		}
-
-		_mfpTrigger(BEFORE_APPEND_EVENT);
-		mfp.container.addClass('mfp-'+type+'-holder');
-
-		mfp.contentContainer.append(mfp.content);
-	},
-
-
-	/**
-	 * Creates Magnific Popup data object based on given data
-	 * @param  {int} index Index of item to parse
-	 */
-	parseEl: function(index) {
-		var item = mfp.items[index],
-			type;
-
-		if(item.tagName) {
-			item = { el: $(item) };
-		} else {
-			type = item.type;
-			item = { data: item, src: item.src };
-		}
-
-		if(item.el) {
-			var types = mfp.types;
-
-			// check for 'mfp-TYPE' class
-			for(var i = 0; i < types.length; i++) {
-				if( item.el.hasClass('mfp-'+types[i]) ) {
-					type = types[i];
-					break;
-				}
-			}
-
-			item.src = item.el.attr('data-mfp-src');
-			if(!item.src) {
-				item.src = item.el.attr('href');
-			}
-		}
-
-		item.type = type || mfp.st.type || 'inline';
-		item.index = index;
-		item.parsed = true;
-		mfp.items[index] = item;
-		_mfpTrigger('ElementParse', item);
-
-		return mfp.items[index];
-	},
-
-
-	/**
-	 * Initializes single popup or a group of popups
-	 */
-	addGroup: function(el, options) {
-		var eHandler = function(e) {
-			e.mfpEl = this;
-			mfp._openClick(e, el, options);
-		};
-
-		if(!options) {
-			options = {};
-		}
-
-		var eName = 'click.magnificPopup';
-		options.mainEl = el;
-
-		if(options.items) {
-			options.isObj = true;
-			el.off(eName).on(eName, eHandler);
-		} else {
-			options.isObj = false;
-			if(options.delegate) {
-				el.off(eName).on(eName, options.delegate , eHandler);
-			} else {
-				options.items = el;
-				el.off(eName).on(eName, eHandler);
-			}
-		}
-	},
-	_openClick: function(e, el, options) {
-		var midClick = options.midClick !== undefined ? options.midClick : $.magnificPopup.defaults.midClick;
-
-
-		if(!midClick && ( e.which === 2 || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey ) ) {
-			return;
-		}
-
-		var disableOn = options.disableOn !== undefined ? options.disableOn : $.magnificPopup.defaults.disableOn;
-
-		if(disableOn) {
-			if($.isFunction(disableOn)) {
-				if( !disableOn.call(mfp) ) {
-					return true;
-				}
-			} else { // else it's number
-				if( _window.width() < disableOn ) {
-					return true;
-				}
-			}
-		}
-
-		if(e.type) {
-			e.preventDefault();
-
-			// This will prevent popup from closing if element is inside and popup is already opened
-			if(mfp.isOpen) {
-				e.stopPropagation();
-			}
-		}
-
-		options.el = $(e.mfpEl);
-		if(options.delegate) {
-			options.items = el.find(options.delegate);
-		}
-		mfp.open(options);
-	},
-
-
-	/**
-	 * Updates text on preloader
-	 */
-	updateStatus: function(status, text) {
-
-		if(mfp.preloader) {
-			if(_prevStatus !== status) {
-				mfp.container.removeClass('mfp-s-'+_prevStatus);
-			}
-
-			if(!text && status === 'loading') {
-				text = mfp.st.tLoading;
-			}
-
-			var data = {
-				status: status,
-				text: text
-			};
-			// allows to modify status
-			_mfpTrigger('UpdateStatus', data);
-
-			status = data.status;
-			text = data.text;
-
-			mfp.preloader.html(text);
-
-			mfp.preloader.find('a').on('click', function(e) {
-				e.stopImmediatePropagation();
-			});
-
-			mfp.container.addClass('mfp-s-'+status);
-			_prevStatus = status;
-		}
-	},
-
-
-	/*
-		"Private" helpers that aren't private at all
-	 */
-	// Check to close popup or not
-	// "target" is an element that was clicked
-	_checkIfClose: function(target) {
-
-		if($(target).hasClass(PREVENT_CLOSE_CLASS)) {
-			return;
-		}
-
-		var closeOnContent = mfp.st.closeOnContentClick;
-		var closeOnBg = mfp.st.closeOnBgClick;
-
-		if(closeOnContent && closeOnBg) {
-			return true;
-		} else {
-
-			// We close the popup if click is on close button or on preloader. Or if there is no content.
-			if(!mfp.content || $(target).hasClass('mfp-close') || (mfp.preloader && target === mfp.preloader[0]) ) {
-				return true;
-			}
-
-			// if click is outside the content
-			if(  (target !== mfp.content[0] && !$.contains(mfp.content[0], target))  ) {
-				if(closeOnBg) {
-					// last check, if the clicked element is in DOM, (in case it's removed onclick)
-					if( $.contains(document, target) ) {
-						return true;
-					}
-				}
-			} else if(closeOnContent) {
-				return true;
-			}
-
-		}
-		return false;
-	},
-	_addClassToMFP: function(cName) {
-		mfp.bgOverlay.addClass(cName);
-		mfp.wrap.addClass(cName);
-	},
-	_removeClassFromMFP: function(cName) {
-		this.bgOverlay.removeClass(cName);
-		mfp.wrap.removeClass(cName);
-	},
-	_hasScrollBar: function(winHeight) {
-		return (  (mfp.isIE7 ? _document.height() : document.body.scrollHeight) > (winHeight || _window.height()) );
-	},
-	_setFocus: function() {
-		(mfp.st.focus ? mfp.content.find(mfp.st.focus).eq(0) : mfp.wrap).focus();
-	},
-	_onFocusIn: function(e) {
-		if( e.target !== mfp.wrap[0] && !$.contains(mfp.wrap[0], e.target) ) {
-			mfp._setFocus();
-			return false;
-		}
-	},
-	_parseMarkup: function(template, values, item) {
-		var arr;
-		if(item.data) {
-			values = $.extend(item.data, values);
-		}
-		_mfpTrigger(MARKUP_PARSE_EVENT, [template, values, item] );
-
-		$.each(values, function(key, value) {
-			if(value === undefined || value === false) {
-				return true;
-			}
-			arr = key.split('_');
-			if(arr.length > 1) {
-				var el = template.find(EVENT_NS + '-'+arr[0]);
-
-				if(el.length > 0) {
-					var attr = arr[1];
-					if(attr === 'replaceWith') {
-						if(el[0] !== value[0]) {
-							el.replaceWith(value);
-						}
-					} else if(attr === 'img') {
-						if(el.is('img')) {
-							el.attr('src', value);
-						} else {
-							el.replaceWith( $('<img>').attr('src', value).attr('class', el.attr('class')) );
-						}
-					} else {
-						el.attr(arr[1], value);
-					}
-				}
-
-			} else {
-				template.find(EVENT_NS + '-'+key).html(value);
-			}
-		});
-	},
-
-	_getScrollbarSize: function() {
-		// thx David
-		if(mfp.scrollbarSize === undefined) {
-			var scrollDiv = document.createElement("div");
-			scrollDiv.style.cssText = 'width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;';
-			document.body.appendChild(scrollDiv);
-			mfp.scrollbarSize = scrollDiv.offsetWidth - scrollDiv.clientWidth;
-			document.body.removeChild(scrollDiv);
-		}
-		return mfp.scrollbarSize;
-	}
-
-}; /* MagnificPopup core prototype end */
-
-
-
-
-/**
- * Public static functions
- */
-$.magnificPopup = {
-	instance: null,
-	proto: MagnificPopup.prototype,
-	modules: [],
-
-	open: function(options, index) {
-		_checkInstance();
-
-		if(!options) {
-			options = {};
-		} else {
-			options = $.extend(true, {}, options);
-		}
-
-		options.isObj = true;
-		options.index = index || 0;
-		return this.instance.open(options);
-	},
-
-	close: function() {
-		return $.magnificPopup.instance && $.magnificPopup.instance.close();
-	},
-
-	registerModule: function(name, module) {
-		if(module.options) {
-			$.magnificPopup.defaults[name] = module.options;
-		}
-		$.extend(this.proto, module.proto);
-		this.modules.push(name);
-	},
-
-	defaults: {
-
-		// Info about options is in docs:
-		// http://dimsemenov.com/plugins/magnific-popup/documentation.html#options
-
-		disableOn: 0,
-
-		key: null,
-
-		midClick: false,
-
-		mainClass: '',
-
-		preloader: true,
-
-		focus: '', // CSS selector of input to focus after popup is opened
-
-		closeOnContentClick: false,
-
-		closeOnBgClick: true,
-
-		closeBtnInside: true,
-
-		showCloseBtn: true,
-
-		enableEscapeKey: true,
-
-		modal: false,
-
-		alignTop: false,
-
-		removalDelay: 0,
-
-		prependTo: null,
-
-		fixedContentPos: 'auto',
-
-		fixedBgPos: 'auto',
-
-		overflowY: 'auto',
-
-		closeMarkup: '<button title="%title%" type="button" class="mfp-close">&#215;</button>',
-
-		tClose: 'Close (Esc)',
-
-		tLoading: 'Loading...',
-
-		autoFocusLast: true
-
-	}
-};
-
-
-
-$.fn.magnificPopup = function(options) {
-	_checkInstance();
-
-	var jqEl = $(this);
-
-	// We call some API method of first param is a string
-	if (typeof options === "string" ) {
-
-		if(options === 'open') {
-			var items,
-				itemOpts = _isJQ ? jqEl.data('magnificPopup') : jqEl[0].magnificPopup,
-				index = parseInt(arguments[1], 10) || 0;
-
-			if(itemOpts.items) {
-				items = itemOpts.items[index];
-			} else {
-				items = jqEl;
-				if(itemOpts.delegate) {
-					items = items.find(itemOpts.delegate);
-				}
-				items = items.eq( index );
-			}
-			mfp._openClick({mfpEl:items}, jqEl, itemOpts);
-		} else {
-			if(mfp.isOpen)
-				mfp[options].apply(mfp, Array.prototype.slice.call(arguments, 1));
-		}
-
-	} else {
-		// clone options obj
-		options = $.extend(true, {}, options);
-
-		/*
-		 * As Zepto doesn't support .data() method for objects
-		 * and it works only in normal browsers
-		 * we assign "options" object directly to the DOM element. FTW!
-		 */
-		if(_isJQ) {
-			jqEl.data('magnificPopup', options);
-		} else {
-			jqEl[0].magnificPopup = options;
-		}
-
-		mfp.addGroup(jqEl, options);
-
-	}
-	return jqEl;
-};
-
-/*>>core*/
-
-/*>>inline*/
-
-var INLINE_NS = 'inline',
-	_hiddenClass,
-	_inlinePlaceholder,
-	_lastInlineElement,
-	_putInlineElementsBack = function() {
-		if(_lastInlineElement) {
-			_inlinePlaceholder.after( _lastInlineElement.addClass(_hiddenClass) ).detach();
-			_lastInlineElement = null;
-		}
-	};
-
-$.magnificPopup.registerModule(INLINE_NS, {
-	options: {
-		hiddenClass: 'hide', // will be appended with `mfp-` prefix
-		markup: '',
-		tNotFound: 'Content not found'
-	},
-	proto: {
-
-		initInline: function() {
-			mfp.types.push(INLINE_NS);
-
-			_mfpOn(CLOSE_EVENT+'.'+INLINE_NS, function() {
-				_putInlineElementsBack();
-			});
-		},
-
-		getInline: function(item, template) {
-
-			_putInlineElementsBack();
-
-			if(item.src) {
-				var inlineSt = mfp.st.inline,
-					el = $(item.src);
-
-				if(el.length) {
-
-					// If target element has parent - we replace it with placeholder and put it back after popup is closed
-					var parent = el[0].parentNode;
-					if(parent && parent.tagName) {
-						if(!_inlinePlaceholder) {
-							_hiddenClass = inlineSt.hiddenClass;
-							_inlinePlaceholder = _getEl(_hiddenClass);
-							_hiddenClass = 'mfp-'+_hiddenClass;
-						}
-						// replace target inline element with placeholder
-						_lastInlineElement = el.after(_inlinePlaceholder).detach().removeClass(_hiddenClass);
-					}
-
-					mfp.updateStatus('ready');
-				} else {
-					mfp.updateStatus('error', inlineSt.tNotFound);
-					el = $('<div>');
-				}
-
-				item.inlineElement = el;
-				return el;
-			}
-
-			mfp.updateStatus('ready');
-			mfp._parseMarkup(template, {}, item);
-			return template;
-		}
-	}
-});
-
-/*>>inline*/
-
-/*>>ajax*/
-var AJAX_NS = 'ajax',
-	_ajaxCur,
-	_removeAjaxCursor = function() {
-		if(_ajaxCur) {
-			$(document.body).removeClass(_ajaxCur);
-		}
-	},
-	_destroyAjaxRequest = function() {
-		_removeAjaxCursor();
-		if(mfp.req) {
-			mfp.req.abort();
-		}
-	};
-
-$.magnificPopup.registerModule(AJAX_NS, {
-
-	options: {
-		settings: null,
-		cursor: 'mfp-ajax-cur',
-		tError: '<a href="%url%">The content</a> could not be loaded.'
-	},
-
-	proto: {
-		initAjax: function() {
-			mfp.types.push(AJAX_NS);
-			_ajaxCur = mfp.st.ajax.cursor;
-
-			_mfpOn(CLOSE_EVENT+'.'+AJAX_NS, _destroyAjaxRequest);
-			_mfpOn('BeforeChange.' + AJAX_NS, _destroyAjaxRequest);
-		},
-		getAjax: function(item) {
-
-			if(_ajaxCur) {
-				$(document.body).addClass(_ajaxCur);
-			}
-
-			mfp.updateStatus('loading');
-
-			var opts = $.extend({
-				url: item.src,
-				success: function(data, textStatus, jqXHR) {
-					var temp = {
-						data:data,
-						xhr:jqXHR
-					};
-
-					_mfpTrigger('ParseAjax', temp);
-
-					mfp.appendContent( $(temp.data), AJAX_NS );
-
-					item.finished = true;
-
-					_removeAjaxCursor();
-
-					mfp._setFocus();
-
-					setTimeout(function() {
-						mfp.wrap.addClass(READY_CLASS);
-					}, 16);
-
-					mfp.updateStatus('ready');
-
-					_mfpTrigger('AjaxContentAdded');
-				},
-				error: function() {
-					_removeAjaxCursor();
-					item.finished = item.loadError = true;
-					mfp.updateStatus('error', mfp.st.ajax.tError.replace('%url%', item.src));
-				}
-			}, mfp.st.ajax.settings);
-
-			mfp.req = $.ajax(opts);
-
-			return '';
-		}
-	}
-});
-
-/*>>ajax*/
-
-/*>>image*/
-var _imgInterval,
-	_getTitle = function(item) {
-		if(item.data && item.data.title !== undefined)
-			return item.data.title;
-
-		var src = mfp.st.image.titleSrc;
-
-		if(src) {
-			if($.isFunction(src)) {
-				return src.call(mfp, item);
-			} else if(item.el) {
-				return item.el.attr(src) || '';
-			}
-		}
-		return '';
-	};
-
-$.magnificPopup.registerModule('image', {
-
-	options: {
-		markup: '<div class="mfp-figure">'+
-					'<div class="mfp-close"></div>'+
-					'<figure>'+
-						'<div class="mfp-img"></div>'+
-						'<figcaption>'+
-							'<div class="mfp-bottom-bar">'+
-								'<div class="mfp-title"></div>'+
-								'<div class="mfp-counter"></div>'+
-							'</div>'+
-						'</figcaption>'+
-					'</figure>'+
-				'</div>',
-		cursor: 'mfp-zoom-out-cur',
-		titleSrc: 'title',
-		verticalFit: true,
-		tError: '<a href="%url%">The image</a> could not be loaded.'
-	},
-
-	proto: {
-		initImage: function() {
-			var imgSt = mfp.st.image,
-				ns = '.image';
-
-			mfp.types.push('image');
-
-			_mfpOn(OPEN_EVENT+ns, function() {
-				if(mfp.currItem.type === 'image' && imgSt.cursor) {
-					$(document.body).addClass(imgSt.cursor);
-				}
-			});
-
-			_mfpOn(CLOSE_EVENT+ns, function() {
-				if(imgSt.cursor) {
-					$(document.body).removeClass(imgSt.cursor);
-				}
-				_window.off('resize' + EVENT_NS);
-			});
-
-			_mfpOn('Resize'+ns, mfp.resizeImage);
-			if(mfp.isLowIE) {
-				_mfpOn('AfterChange', mfp.resizeImage);
-			}
-		},
-		resizeImage: function() {
-			var item = mfp.currItem;
-			if(!item || !item.img) return;
-
-			if(mfp.st.image.verticalFit) {
-				var decr = 0;
-				// fix box-sizing in ie7/8
-				if(mfp.isLowIE) {
-					decr = parseInt(item.img.css('padding-top'), 10) + parseInt(item.img.css('padding-bottom'),10);
-				}
-				item.img.css('max-height', mfp.wH-decr);
-			}
-		},
-		_onImageHasSize: function(item) {
-			if(item.img) {
-
-				item.hasSize = true;
-
-				if(_imgInterval) {
-					clearInterval(_imgInterval);
-				}
-
-				item.isCheckingImgSize = false;
-
-				_mfpTrigger('ImageHasSize', item);
-
-				if(item.imgHidden) {
-					if(mfp.content)
-						mfp.content.removeClass('mfp-loading');
-
-					item.imgHidden = false;
-				}
-
-			}
-		},
-
-		/**
-		 * Function that loops until the image has size to display elements that rely on it asap
-		 */
-		findImageSize: function(item) {
-
-			var counter = 0,
-				img = item.img[0],
-				mfpSetInterval = function(delay) {
-
-					if(_imgInterval) {
-						clearInterval(_imgInterval);
-					}
-					// decelerating interval that checks for size of an image
-					_imgInterval = setInterval(function() {
-						if(img.naturalWidth > 0) {
-							mfp._onImageHasSize(item);
-							return;
-						}
-
-						if(counter > 200) {
-							clearInterval(_imgInterval);
-						}
-
-						counter++;
-						if(counter === 3) {
-							mfpSetInterval(10);
-						} else if(counter === 40) {
-							mfpSetInterval(50);
-						} else if(counter === 100) {
-							mfpSetInterval(500);
-						}
-					}, delay);
-				};
-
-			mfpSetInterval(1);
-		},
-
-		getImage: function(item, template) {
-
-			var guard = 0,
-
-				// image load complete handler
-				onLoadComplete = function() {
-					if(item) {
-						if (item.img[0].complete) {
-							item.img.off('.mfploader');
-
-							if(item === mfp.currItem){
-								mfp._onImageHasSize(item);
-
-								mfp.updateStatus('ready');
-							}
-
-							item.hasSize = true;
-							item.loaded = true;
-
-							_mfpTrigger('ImageLoadComplete');
-
-						}
-						else {
-							// if image complete check fails 200 times (20 sec), we assume that there was an error.
-							guard++;
-							if(guard < 200) {
-								setTimeout(onLoadComplete,100);
-							} else {
-								onLoadError();
-							}
-						}
-					}
-				},
-
-				// image error handler
-				onLoadError = function() {
-					if(item) {
-						item.img.off('.mfploader');
-						if(item === mfp.currItem){
-							mfp._onImageHasSize(item);
-							mfp.updateStatus('error', imgSt.tError.replace('%url%', item.src) );
-						}
-
-						item.hasSize = true;
-						item.loaded = true;
-						item.loadError = true;
-					}
-				},
-				imgSt = mfp.st.image;
-
-
-			var el = template.find('.mfp-img');
-			if(el.length) {
-				var img = document.createElement('img');
-				img.className = 'mfp-img';
-				if(item.el && item.el.find('img').length) {
-					img.alt = item.el.find('img').attr('alt');
-				}
-				item.img = $(img).on('load.mfploader', onLoadComplete).on('error.mfploader', onLoadError);
-				img.src = item.src;
-
-				// without clone() "error" event is not firing when IMG is replaced by new IMG
-				// TODO: find a way to avoid such cloning
-				if(el.is('img')) {
-					item.img = item.img.clone();
-				}
-
-				img = item.img[0];
-				if(img.naturalWidth > 0) {
-					item.hasSize = true;
-				} else if(!img.width) {
-					item.hasSize = false;
-				}
-			}
-
-			mfp._parseMarkup(template, {
-				title: _getTitle(item),
-				img_replaceWith: item.img
-			}, item);
-
-			mfp.resizeImage();
-
-			if(item.hasSize) {
-				if(_imgInterval) clearInterval(_imgInterval);
-
-				if(item.loadError) {
-					template.addClass('mfp-loading');
-					mfp.updateStatus('error', imgSt.tError.replace('%url%', item.src) );
-				} else {
-					template.removeClass('mfp-loading');
-					mfp.updateStatus('ready');
-				}
-				return template;
-			}
-
-			mfp.updateStatus('loading');
-			item.loading = true;
-
-			if(!item.hasSize) {
-				item.imgHidden = true;
-				template.addClass('mfp-loading');
-				mfp.findImageSize(item);
-			}
-
-			return template;
-		}
-	}
-});
-
-/*>>image*/
-
-/*>>zoom*/
-var hasMozTransform,
-	getHasMozTransform = function() {
-		if(hasMozTransform === undefined) {
-			hasMozTransform = document.createElement('p').style.MozTransform !== undefined;
-		}
-		return hasMozTransform;
-	};
-
-$.magnificPopup.registerModule('zoom', {
-
-	options: {
-		enabled: false,
-		easing: 'ease-in-out',
-		duration: 300,
-		opener: function(element) {
-			return element.is('img') ? element : element.find('img');
-		}
-	},
-
-	proto: {
-
-		initZoom: function() {
-			var zoomSt = mfp.st.zoom,
-				ns = '.zoom',
-				image;
-
-			if(!zoomSt.enabled || !mfp.supportsTransition) {
-				return;
-			}
-
-			var duration = zoomSt.duration,
-				getElToAnimate = function(image) {
-					var newImg = image.clone().removeAttr('style').removeAttr('class').addClass('mfp-animated-image'),
-						transition = 'all '+(zoomSt.duration/1000)+'s ' + zoomSt.easing,
-						cssObj = {
-							position: 'fixed',
-							zIndex: 9999,
-							left: 0,
-							top: 0,
-							'-webkit-backface-visibility': 'hidden'
-						},
-						t = 'transition';
-
-					cssObj['-webkit-'+t] = cssObj['-moz-'+t] = cssObj['-o-'+t] = cssObj[t] = transition;
-
-					newImg.css(cssObj);
-					return newImg;
-				},
-				showMainContent = function() {
-					mfp.content.css('visibility', 'visible');
-				},
-				openTimeout,
-				animatedImg;
-
-			_mfpOn('BuildControls'+ns, function() {
-				if(mfp._allowZoom()) {
-
-					clearTimeout(openTimeout);
-					mfp.content.css('visibility', 'hidden');
-
-					// Basically, all code below does is clones existing image, puts in on top of the current one and animated it
-
-					image = mfp._getItemToZoom();
-
-					if(!image) {
-						showMainContent();
-						return;
-					}
-
-					animatedImg = getElToAnimate(image);
-
-					animatedImg.css( mfp._getOffset() );
-
-					mfp.wrap.append(animatedImg);
-
-					openTimeout = setTimeout(function() {
-						animatedImg.css( mfp._getOffset( true ) );
-						openTimeout = setTimeout(function() {
-
-							showMainContent();
-
-							setTimeout(function() {
-								animatedImg.remove();
-								image = animatedImg = null;
-								_mfpTrigger('ZoomAnimationEnded');
-							}, 16); // avoid blink when switching images
-
-						}, duration); // this timeout equals animation duration
-
-					}, 16); // by adding this timeout we avoid short glitch at the beginning of animation
-
-
-					// Lots of timeouts...
-				}
-			});
-			_mfpOn(BEFORE_CLOSE_EVENT+ns, function() {
-				if(mfp._allowZoom()) {
-
-					clearTimeout(openTimeout);
-
-					mfp.st.removalDelay = duration;
-
-					if(!image) {
-						image = mfp._getItemToZoom();
-						if(!image) {
-							return;
-						}
-						animatedImg = getElToAnimate(image);
-					}
-
-					animatedImg.css( mfp._getOffset(true) );
-					mfp.wrap.append(animatedImg);
-					mfp.content.css('visibility', 'hidden');
-
-					setTimeout(function() {
-						animatedImg.css( mfp._getOffset() );
-					}, 16);
-				}
-
-			});
-
-			_mfpOn(CLOSE_EVENT+ns, function() {
-				if(mfp._allowZoom()) {
-					showMainContent();
-					if(animatedImg) {
-						animatedImg.remove();
-					}
-					image = null;
-				}
-			});
-		},
-
-		_allowZoom: function() {
-			return mfp.currItem.type === 'image';
-		},
-
-		_getItemToZoom: function() {
-			if(mfp.currItem.hasSize) {
-				return mfp.currItem.img;
-			} else {
-				return false;
-			}
-		},
-
-		// Get element postion relative to viewport
-		_getOffset: function(isLarge) {
-			var el;
-			if(isLarge) {
-				el = mfp.currItem.img;
-			} else {
-				el = mfp.st.zoom.opener(mfp.currItem.el || mfp.currItem);
-			}
-
-			var offset = el.offset();
-			var paddingTop = parseInt(el.css('padding-top'),10);
-			var paddingBottom = parseInt(el.css('padding-bottom'),10);
-			offset.top -= ( $(window).scrollTop() - paddingTop );
-
-
-			/*
-
-			Animating left + top + width/height looks glitchy in Firefox, but perfect in Chrome. And vice-versa.
-
-			 */
-			var obj = {
-				width: el.width(),
-				// fix Zepto height+padding issue
-				height: (_isJQ ? el.innerHeight() : el[0].offsetHeight) - paddingBottom - paddingTop
-			};
-
-			// I hate to do this, but there is no another option
-			if( getHasMozTransform() ) {
-				obj['-moz-transform'] = obj['transform'] = 'translate(' + offset.left + 'px,' + offset.top + 'px)';
-			} else {
-				obj.left = offset.left;
-				obj.top = offset.top;
-			}
-			return obj;
-		}
-
-	}
-});
-
-
-
-/*>>zoom*/
-
-/*>>iframe*/
-
-var IFRAME_NS = 'iframe',
-	_emptyPage = '//about:blank',
-
-	_fixIframeBugs = function(isShowing) {
-		if(mfp.currTemplate[IFRAME_NS]) {
-			var el = mfp.currTemplate[IFRAME_NS].find('iframe');
-			if(el.length) {
-				// reset src after the popup is closed to avoid "video keeps playing after popup is closed" bug
-				if(!isShowing) {
-					el[0].src = _emptyPage;
-				}
-
-				// IE8 black screen bug fix
-				if(mfp.isIE8) {
-					el.css('display', isShowing ? 'block' : 'none');
-				}
-			}
-		}
-	};
-
-$.magnificPopup.registerModule(IFRAME_NS, {
-
-	options: {
-		markup: '<div class="mfp-iframe-scaler">'+
-					'<div class="mfp-close"></div>'+
-					'<iframe class="mfp-iframe" src="//about:blank" frameborder="0" allowfullscreen></iframe>'+
-				'</div>',
-
-		srcAction: 'iframe_src',
-
-		// we don't care and support only one default type of URL by default
-		patterns: {
-			youtube: {
-				index: 'youtube.com',
-				id: 'v=',
-				src: '//www.youtube.com/embed/%id%?autoplay=1'
-			},
-			vimeo: {
-				index: 'vimeo.com/',
-				id: '/',
-				src: '//player.vimeo.com/video/%id%?autoplay=1'
-			},
-			gmaps: {
-				index: '//maps.google.',
-				src: '%id%&output=embed'
-			}
-		}
-	},
-
-	proto: {
-		initIframe: function() {
-			mfp.types.push(IFRAME_NS);
-
-			_mfpOn('BeforeChange', function(e, prevType, newType) {
-				if(prevType !== newType) {
-					if(prevType === IFRAME_NS) {
-						_fixIframeBugs(); // iframe if removed
-					} else if(newType === IFRAME_NS) {
-						_fixIframeBugs(true); // iframe is showing
-					}
-				}// else {
-					// iframe source is switched, don't do anything
-				//}
-			});
-
-			_mfpOn(CLOSE_EVENT + '.' + IFRAME_NS, function() {
-				_fixIframeBugs();
-			});
-		},
-
-		getIframe: function(item, template) {
-			var embedSrc = item.src;
-			var iframeSt = mfp.st.iframe;
-
-			$.each(iframeSt.patterns, function() {
-				if(embedSrc.indexOf( this.index ) > -1) {
-					if(this.id) {
-						if(typeof this.id === 'string') {
-							embedSrc = embedSrc.substr(embedSrc.lastIndexOf(this.id)+this.id.length, embedSrc.length);
-						} else {
-							embedSrc = this.id.call( this, embedSrc );
-						}
-					}
-					embedSrc = this.src.replace('%id%', embedSrc );
-					return false; // break;
-				}
-			});
-
-			var dataObj = {};
-			if(iframeSt.srcAction) {
-				dataObj[iframeSt.srcAction] = embedSrc;
-			}
-			mfp._parseMarkup(template, dataObj, item);
-
-			mfp.updateStatus('ready');
-
-			return template;
-		}
-	}
-});
-
-
-
-/*>>iframe*/
-
-/*>>gallery*/
-/**
- * Get looped index depending on number of slides
- */
-var _getLoopedId = function(index) {
-		var numSlides = mfp.items.length;
-		if(index > numSlides - 1) {
-			return index - numSlides;
-		} else  if(index < 0) {
-			return numSlides + index;
-		}
-		return index;
-	},
-	_replaceCurrTotal = function(text, curr, total) {
-		return text.replace(/%curr%/gi, curr + 1).replace(/%total%/gi, total);
-	};
-
-$.magnificPopup.registerModule('gallery', {
-
-	options: {
-		enabled: false,
-		arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>',
-		preload: [0,2],
-		navigateByImgClick: true,
-		arrows: true,
-
-		tPrev: 'Previous (Left arrow key)',
-		tNext: 'Next (Right arrow key)',
-		tCounter: '%curr% of %total%'
-	},
-
-	proto: {
-		initGallery: function() {
-
-			var gSt = mfp.st.gallery,
-				ns = '.mfp-gallery';
-
-			mfp.direction = true; // true - next, false - prev
-
-			if(!gSt || !gSt.enabled ) return false;
-
-			_wrapClasses += ' mfp-gallery';
-
-			_mfpOn(OPEN_EVENT+ns, function() {
-
-				if(gSt.navigateByImgClick) {
-					mfp.wrap.on('click'+ns, '.mfp-img', function() {
-						if(mfp.items.length > 1) {
-							mfp.next();
-							return false;
-						}
-					});
-				}
-
-				_document.on('keydown'+ns, function(e) {
-					if (e.keyCode === 37) {
-						mfp.prev();
-					} else if (e.keyCode === 39) {
-						mfp.next();
-					}
-				});
-			});
-
-			_mfpOn('UpdateStatus'+ns, function(e, data) {
-				if(data.text) {
-					data.text = _replaceCurrTotal(data.text, mfp.currItem.index, mfp.items.length);
-				}
-			});
-
-			_mfpOn(MARKUP_PARSE_EVENT+ns, function(e, element, values, item) {
-				var l = mfp.items.length;
-				values.counter = l > 1 ? _replaceCurrTotal(gSt.tCounter, item.index, l) : '';
-			});
-
-			_mfpOn('BuildControls' + ns, function() {
-				if(mfp.items.length > 1 && gSt.arrows && !mfp.arrowLeft) {
-					var markup = gSt.arrowMarkup,
-						arrowLeft = mfp.arrowLeft = $( markup.replace(/%title%/gi, gSt.tPrev).replace(/%dir%/gi, 'left') ).addClass(PREVENT_CLOSE_CLASS),
-						arrowRight = mfp.arrowRight = $( markup.replace(/%title%/gi, gSt.tNext).replace(/%dir%/gi, 'right') ).addClass(PREVENT_CLOSE_CLASS);
-
-					arrowLeft.click(function() {
-						mfp.prev();
-					});
-					arrowRight.click(function() {
-						mfp.next();
-					});
-
-					mfp.container.append(arrowLeft.add(arrowRight));
-				}
-			});
-
-			_mfpOn(CHANGE_EVENT+ns, function() {
-				if(mfp._preloadTimeout) clearTimeout(mfp._preloadTimeout);
-
-				mfp._preloadTimeout = setTimeout(function() {
-					mfp.preloadNearbyImages();
-					mfp._preloadTimeout = null;
-				}, 16);
-			});
-
-
-			_mfpOn(CLOSE_EVENT+ns, function() {
-				_document.off(ns);
-				mfp.wrap.off('click'+ns);
-				mfp.arrowRight = mfp.arrowLeft = null;
-			});
-
-		},
-		next: function() {
-			mfp.direction = true;
-			mfp.index = _getLoopedId(mfp.index + 1);
-			mfp.updateItemHTML();
-		},
-		prev: function() {
-			mfp.direction = false;
-			mfp.index = _getLoopedId(mfp.index - 1);
-			mfp.updateItemHTML();
-		},
-		goTo: function(newIndex) {
-			mfp.direction = (newIndex >= mfp.index);
-			mfp.index = newIndex;
-			mfp.updateItemHTML();
-		},
-		preloadNearbyImages: function() {
-			var p = mfp.st.gallery.preload,
-				preloadBefore = Math.min(p[0], mfp.items.length),
-				preloadAfter = Math.min(p[1], mfp.items.length),
-				i;
-
-			for(i = 1; i <= (mfp.direction ? preloadAfter : preloadBefore); i++) {
-				mfp._preloadItem(mfp.index+i);
-			}
-			for(i = 1; i <= (mfp.direction ? preloadBefore : preloadAfter); i++) {
-				mfp._preloadItem(mfp.index-i);
-			}
-		},
-		_preloadItem: function(index) {
-			index = _getLoopedId(index);
-
-			if(mfp.items[index].preloaded) {
-				return;
-			}
-
-			var item = mfp.items[index];
-			if(!item.parsed) {
-				item = mfp.parseEl( index );
-			}
-
-			_mfpTrigger('LazyLoad', item);
-
-			if(item.type === 'image') {
-				item.img = $('<img class="mfp-img" />').on('load.mfploader', function() {
-					item.hasSize = true;
-				}).on('error.mfploader', function() {
-					item.hasSize = true;
-					item.loadError = true;
-					_mfpTrigger('LazyLoadError', item);
-				}).attr('src', item.src);
-			}
-
-
-			item.preloaded = true;
-		}
-	}
-});
-
-/*>>gallery*/
-
-/*>>retina*/
-
-var RETINA_NS = 'retina';
-
-$.magnificPopup.registerModule(RETINA_NS, {
-	options: {
-		replaceSrc: function(item) {
-			return item.src.replace(/\.\w+$/, function(m) { return '@2x' + m; });
-		},
-		ratio: 1 // Function or number.  Set to 1 to disable.
-	},
-	proto: {
-		initRetina: function() {
-			if(window.devicePixelRatio > 1) {
-
-				var st = mfp.st.retina,
-					ratio = st.ratio;
-
-				ratio = !isNaN(ratio) ? ratio : ratio();
-
-				if(ratio > 1) {
-					_mfpOn('ImageHasSize' + '.' + RETINA_NS, function(e, item) {
-						item.img.css({
-							'max-width': item.img[0].naturalWidth / ratio,
-							'width': '100%'
-						});
-					});
-					_mfpOn('ElementParse' + '.' + RETINA_NS, function(e, item) {
-						item.src = st.replaceSrc(item, ratio);
-					});
-				}
-			}
-
-		}
-	}
-});
-
-/*>>retina*/
- _checkInstance(); }));
+!function(a){"function"==typeof define&&define.amd?define(["jquery"],a):a("object"==typeof exports?require("jquery"):window.jQuery||window.Zepto)}(function(a){var b,c,d,e,f,g,h="Close",i="BeforeClose",j="AfterClose",k="BeforeAppend",l="MarkupParse",m="Open",n="Change",o="mfp",p="."+o,q="mfp-ready",r="mfp-removing",s="mfp-prevent-close",t=function(){},u=!!window.jQuery,v=a(window),w=function(a,c){b.ev.on(o+a+p,c)},x=function(b,c,d,e){var f=document.createElement("div");return f.className="mfp-"+b,d&&(f.innerHTML=d),e?c&&c.appendChild(f):(f=a(f),c&&f.appendTo(c)),f},y=function(c,d){b.ev.triggerHandler(o+c,d),b.st.callbacks&&(c=c.charAt(0).toLowerCase()+c.slice(1),b.st.callbacks[c]&&b.st.callbacks[c].apply(b,a.isArray(d)?d:[d]))},z=function(c){return c===g&&b.currTemplate.closeBtn||(b.currTemplate.closeBtn=a(b.st.closeMarkup.replace("%title%",b.st.tClose)),g=c),b.currTemplate.closeBtn},A=function(){a.magnificPopup.instance||(b=new t,b.init(),a.magnificPopup.instance=b)},B=function(){var a=document.createElement("p").style,b=["ms","O","Moz","Webkit"];if(void 0!==a.transition)return!0;for(;b.length;)if(b.pop()+"Transition"in a)return!0;return!1};t.prototype={constructor:t,init:function(){var c=navigator.appVersion;b.isLowIE=b.isIE8=document.all&&!document.addEventListener,b.isAndroid=/android/gi.test(c),b.isIOS=/iphone|ipad|ipod/gi.test(c),b.supportsTransition=B(),b.probablyMobile=b.isAndroid||b.isIOS||/(Opera Mini)|Kindle|webOS|BlackBerry|(Opera Mobi)|(Windows Phone)|IEMobile/i.test(navigator.userAgent),d=a(document),b.popupsCache={}},open:function(c){var e;if(c.isObj===!1){b.items=c.items.toArray(),b.index=0;var g,h=c.items;for(e=0;e<h.length;e++)if(g=h[e],g.parsed&&(g=g.el[0]),g===c.el[0]){b.index=e;break}}else b.items=a.isArray(c.items)?c.items:[c.items],b.index=c.index||0;if(b.isOpen)return void b.updateItemHTML();b.types=[],f="",c.mainEl&&c.mainEl.length?b.ev=c.mainEl.eq(0):b.ev=d,c.key?(b.popupsCache[c.key]||(b.popupsCache[c.key]={}),b.currTemplate=b.popupsCache[c.key]):b.currTemplate={},b.st=a.extend(!0,{},a.magnificPopup.defaults,c),b.fixedContentPos="auto"===b.st.fixedContentPos?!b.probablyMobile:b.st.fixedContentPos,b.st.modal&&(b.st.closeOnContentClick=!1,b.st.closeOnBgClick=!1,b.st.showCloseBtn=!1,b.st.enableEscapeKey=!1),b.bgOverlay||(b.bgOverlay=x("bg").on("click"+p,function(){b.close()}),b.wrap=x("wrap").attr("tabindex",-1).on("click"+p,function(a){b._checkIfClose(a.target)&&b.close()}),b.container=x("container",b.wrap)),b.contentContainer=x("content"),b.st.preloader&&(b.preloader=x("preloader",b.container,b.st.tLoading));var i=a.magnificPopup.modules;for(e=0;e<i.length;e++){var j=i[e];j=j.charAt(0).toUpperCase()+j.slice(1),b["init"+j].call(b)}y("BeforeOpen"),b.st.showCloseBtn&&(b.st.closeBtnInside?(w(l,function(a,b,c,d){c.close_replaceWith=z(d.type)}),f+=" mfp-close-btn-in"):b.wrap.append(z())),b.st.alignTop&&(f+=" mfp-align-top"),b.fixedContentPos?b.wrap.css({overflow:b.st.overflowY,overflowX:"hidden",overflowY:b.st.overflowY}):b.wrap.css({top:v.scrollTop(),position:"absolute"}),(b.st.fixedBgPos===!1||"auto"===b.st.fixedBgPos&&!b.fixedContentPos)&&b.bgOverlay.css({height:d.height(),position:"absolute"}),b.st.enableEscapeKey&&d.on("keyup"+p,function(a){27===a.keyCode&&b.close()}),v.on("resize"+p,function(){b.updateSize()}),b.st.closeOnContentClick||(f+=" mfp-auto-cursor"),f&&b.wrap.addClass(f);var k=b.wH=v.height(),n={};if(b.fixedContentPos&&b._hasScrollBar(k)){var o=b._getScrollbarSize();o&&(n.marginRight=o)}b.fixedContentPos&&(b.isIE7?a("body, html").css("overflow","hidden"):n.overflow="hidden");var r=b.st.mainClass;return b.isIE7&&(r+=" mfp-ie7"),r&&b._addClassToMFP(r),b.updateItemHTML(),y("BuildControls"),a("html").css(n),b.bgOverlay.add(b.wrap).prependTo(b.st.prependTo||a(document.body)),b._lastFocusedEl=document.activeElement,setTimeout(function(){b.content?(b._addClassToMFP(q),b._setFocus()):b.bgOverlay.addClass(q),d.on("focusin"+p,b._onFocusIn)},16),b.isOpen=!0,b.updateSize(k),y(m),c},close:function(){b.isOpen&&(y(i),b.isOpen=!1,b.st.removalDelay&&!b.isLowIE&&b.supportsTransition?(b._addClassToMFP(r),setTimeout(function(){b._close()},b.st.removalDelay)):b._close())},_close:function(){y(h);var c=r+" "+q+" ";if(b.bgOverlay.detach(),b.wrap.detach(),b.container.empty(),b.st.mainClass&&(c+=b.st.mainClass+" "),b._removeClassFromMFP(c),b.fixedContentPos){var e={marginRight:""};b.isIE7?a("body, html").css("overflow",""):e.overflow="",a("html").css(e)}d.off("keyup"+p+" focusin"+p),b.ev.off(p),b.wrap.attr("class","mfp-wrap").removeAttr("style"),b.bgOverlay.attr("class","mfp-bg"),b.container.attr("class","mfp-container"),!b.st.showCloseBtn||b.st.closeBtnInside&&b.currTemplate[b.currItem.type]!==!0||b.currTemplate.closeBtn&&b.currTemplate.closeBtn.detach(),b.st.autoFocusLast&&b._lastFocusedEl&&a(b._lastFocusedEl).focus(),b.currItem=null,b.content=null,b.currTemplate=null,b.prevHeight=0,y(j)},updateSize:function(a){if(b.isIOS){var c=document.documentElement.clientWidth/window.innerWidth,d=window.innerHeight*c;b.wrap.css("height",d),b.wH=d}else b.wH=a||v.height();b.fixedContentPos||b.wrap.css("height",b.wH),y("Resize")},updateItemHTML:function(){var c=b.items[b.index];b.contentContainer.detach(),b.content&&b.content.detach(),c.parsed||(c=b.parseEl(b.index));var d=c.type;if(y("BeforeChange",[b.currItem?b.currItem.type:"",d]),b.currItem=c,!b.currTemplate[d]){var f=b.st[d]?b.st[d].markup:!1;y("FirstMarkupParse",f),f?b.currTemplate[d]=a(f):b.currTemplate[d]=!0}e&&e!==c.type&&b.container.removeClass("mfp-"+e+"-holder");var g=b["get"+d.charAt(0).toUpperCase()+d.slice(1)](c,b.currTemplate[d]);b.appendContent(g,d),c.preloaded=!0,y(n,c),e=c.type,b.container.prepend(b.contentContainer),y("AfterChange")},appendContent:function(a,c){b.content=a,a?b.st.showCloseBtn&&b.st.closeBtnInside&&b.currTemplate[c]===!0?b.content.find(".mfp-close").length||b.content.append(z()):b.content=a:b.content="",y(k),b.container.addClass("mfp-"+c+"-holder"),b.contentContainer.append(b.content)},parseEl:function(c){var d,e=b.items[c];if(e.tagName?e={el:a(e)}:(d=e.type,e={data:e,src:e.src}),e.el){for(var f=b.types,g=0;g<f.length;g++)if(e.el.hasClass("mfp-"+f[g])){d=f[g];break}e.src=e.el.attr("data-mfp-src"),e.src||(e.src=e.el.attr("href"))}return e.type=d||b.st.type||"inline",e.index=c,e.parsed=!0,b.items[c]=e,y("ElementParse",e),b.items[c]},addGroup:function(a,c){var d=function(d){d.mfpEl=this,b._openClick(d,a,c)};c||(c={});var e="click.magnificPopup";c.mainEl=a,c.items?(c.isObj=!0,a.off(e).on(e,d)):(c.isObj=!1,c.delegate?a.off(e).on(e,c.delegate,d):(c.items=a,a.off(e).on(e,d)))},_openClick:function(c,d,e){var f=void 0!==e.midClick?e.midClick:a.magnificPopup.defaults.midClick;if(f||!(2===c.which||c.ctrlKey||c.metaKey||c.altKey||c.shiftKey)){var g=void 0!==e.disableOn?e.disableOn:a.magnificPopup.defaults.disableOn;if(g)if(a.isFunction(g)){if(!g.call(b))return!0}else if(v.width()<g)return!0;c.type&&(c.preventDefault(),b.isOpen&&c.stopPropagation()),e.el=a(c.mfpEl),e.delegate&&(e.items=d.find(e.delegate)),b.open(e)}},updateStatus:function(a,d){if(b.preloader){c!==a&&b.container.removeClass("mfp-s-"+c),d||"loading"!==a||(d=b.st.tLoading);var e={status:a,text:d};y("UpdateStatus",e),a=e.status,d=e.text,b.preloader.html(d),b.preloader.find("a").on("click",function(a){a.stopImmediatePropagation()}),b.container.addClass("mfp-s-"+a),c=a}},_checkIfClose:function(c){if(!a(c).hasClass(s)){var d=b.st.closeOnContentClick,e=b.st.closeOnBgClick;if(d&&e)return!0;if(!b.content||a(c).hasClass("mfp-close")||b.preloader&&c===b.preloader[0])return!0;if(c===b.content[0]||a.contains(b.content[0],c)){if(d)return!0}else if(e&&a.contains(document,c))return!0;return!1}},_addClassToMFP:function(a){b.bgOverlay.addClass(a),b.wrap.addClass(a)},_removeClassFromMFP:function(a){this.bgOverlay.removeClass(a),b.wrap.removeClass(a)},_hasScrollBar:function(a){return(b.isIE7?d.height():document.body.scrollHeight)>(a||v.height())},_setFocus:function(){(b.st.focus?b.content.find(b.st.focus).eq(0):b.wrap).focus()},_onFocusIn:function(c){return c.target===b.wrap[0]||a.contains(b.wrap[0],c.target)?void 0:(b._setFocus(),!1)},_parseMarkup:function(b,c,d){var e;d.data&&(c=a.extend(d.data,c)),y(l,[b,c,d]),a.each(c,function(c,d){if(void 0===d||d===!1)return!0;if(e=c.split("_"),e.length>1){var f=b.find(p+"-"+e[0]);if(f.length>0){var g=e[1];"replaceWith"===g?f[0]!==d[0]&&f.replaceWith(d):"img"===g?f.is("img")?f.attr("src",d):f.replaceWith(a("<img>").attr("src",d).attr("class",f.attr("class"))):f.attr(e[1],d)}}else b.find(p+"-"+c).html(d)})},_getScrollbarSize:function(){if(void 0===b.scrollbarSize){var a=document.createElement("div");a.style.cssText="width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;",document.body.appendChild(a),b.scrollbarSize=a.offsetWidth-a.clientWidth,document.body.removeChild(a)}return b.scrollbarSize}},a.magnificPopup={instance:null,proto:t.prototype,modules:[],open:function(b,c){return A(),b=b?a.extend(!0,{},b):{},b.isObj=!0,b.index=c||0,this.instance.open(b)},close:function(){return a.magnificPopup.instance&&a.magnificPopup.instance.close()},registerModule:function(b,c){c.options&&(a.magnificPopup.defaults[b]=c.options),a.extend(this.proto,c.proto),this.modules.push(b)},defaults:{disableOn:0,key:null,midClick:!1,mainClass:"",preloader:!0,focus:"",closeOnContentClick:!1,closeOnBgClick:!0,closeBtnInside:!0,showCloseBtn:!0,enableEscapeKey:!0,modal:!1,alignTop:!1,removalDelay:0,prependTo:null,fixedContentPos:"auto",fixedBgPos:"auto",overflowY:"auto",closeMarkup:'<button title="%title%" type="button" class="mfp-close">&#215;</button>',tClose:"Close (Esc)",tLoading:"Loading...",autoFocusLast:!0}},a.fn.magnificPopup=function(c){A();var d=a(this);if("string"==typeof c)if("open"===c){var e,f=u?d.data("magnificPopup"):d[0].magnificPopup,g=parseInt(arguments[1],10)||0;f.items?e=f.items[g]:(e=d,f.delegate&&(e=e.find(f.delegate)),e=e.eq(g)),b._openClick({mfpEl:e},d,f)}else b.isOpen&&b[c].apply(b,Array.prototype.slice.call(arguments,1));else c=a.extend(!0,{},c),u?d.data("magnificPopup",c):d[0].magnificPopup=c,b.addGroup(d,c);return d};var C,D,E,F="inline",G=function(){E&&(D.after(E.addClass(C)).detach(),E=null)};a.magnificPopup.registerModule(F,{options:{hiddenClass:"hide",markup:"",tNotFound:"Content not found"},proto:{initInline:function(){b.types.push(F),w(h+"."+F,function(){G()})},getInline:function(c,d){if(G(),c.src){var e=b.st.inline,f=a(c.src);if(f.length){var g=f[0].parentNode;g&&g.tagName&&(D||(C=e.hiddenClass,D=x(C),C="mfp-"+C),E=f.after(D).detach().removeClass(C)),b.updateStatus("ready")}else b.updateStatus("error",e.tNotFound),f=a("<div>");return c.inlineElement=f,f}return b.updateStatus("ready"),b._parseMarkup(d,{},c),d}}});var H,I="ajax",J=function(){H&&a(document.body).removeClass(H)},K=function(){J(),b.req&&b.req.abort()};a.magnificPopup.registerModule(I,{options:{settings:null,cursor:"mfp-ajax-cur",tError:'<a href="%url%">The content</a> could not be loaded.'},proto:{initAjax:function(){b.types.push(I),H=b.st.ajax.cursor,w(h+"."+I,K),w("BeforeChange."+I,K)},getAjax:function(c){H&&a(document.body).addClass(H),b.updateStatus("loading");var d=a.extend({url:c.src,success:function(d,e,f){var g={data:d,xhr:f};y("ParseAjax",g),b.appendContent(a(g.data),I),c.finished=!0,J(),b._setFocus(),setTimeout(function(){b.wrap.addClass(q)},16),b.updateStatus("ready"),y("AjaxContentAdded")},error:function(){J(),c.finished=c.loadError=!0,b.updateStatus("error",b.st.ajax.tError.replace("%url%",c.src))}},b.st.ajax.settings);return b.req=a.ajax(d),""}}});var L,M=function(c){if(c.data&&void 0!==c.data.title)return c.data.title;var d=b.st.image.titleSrc;if(d){if(a.isFunction(d))return d.call(b,c);if(c.el)return c.el.attr(d)||""}return""};a.magnificPopup.registerModule("image",{options:{markup:'<div class="mfp-figure"><div class="mfp-close"></div><figure><div class="mfp-img"></div><figcaption><div class="mfp-bottom-bar"><div class="mfp-title"></div><div class="mfp-counter"></div></div></figcaption></figure></div>',cursor:"mfp-zoom-out-cur",titleSrc:"title",verticalFit:!0,tError:'<a href="%url%">The image</a> could not be loaded.'},proto:{initImage:function(){var c=b.st.image,d=".image";b.types.push("image"),w(m+d,function(){"image"===b.currItem.type&&c.cursor&&a(document.body).addClass(c.cursor)}),w(h+d,function(){c.cursor&&a(document.body).removeClass(c.cursor),v.off("resize"+p)}),w("Resize"+d,b.resizeImage),b.isLowIE&&w("AfterChange",b.resizeImage)},resizeImage:function(){var a=b.currItem;if(a&&a.img&&b.st.image.verticalFit){var c=0;b.isLowIE&&(c=parseInt(a.img.css("padding-top"),10)+parseInt(a.img.css("padding-bottom"),10)),a.img.css("max-height",b.wH-c)}},_onImageHasSize:function(a){a.img&&(a.hasSize=!0,L&&clearInterval(L),a.isCheckingImgSize=!1,y("ImageHasSize",a),a.imgHidden&&(b.content&&b.content.removeClass("mfp-loading"),a.imgHidden=!1))},findImageSize:function(a){var c=0,d=a.img[0],e=function(f){L&&clearInterval(L),L=setInterval(function(){return d.naturalWidth>0?void b._onImageHasSize(a):(c>200&&clearInterval(L),c++,void(3===c?e(10):40===c?e(50):100===c&&e(500)))},f)};e(1)},getImage:function(c,d){var e=0,f=function(){c&&(c.img[0].complete?(c.img.off(".mfploader"),c===b.currItem&&(b._onImageHasSize(c),b.updateStatus("ready")),c.hasSize=!0,c.loaded=!0,y("ImageLoadComplete")):(e++,200>e?setTimeout(f,100):g()))},g=function(){c&&(c.img.off(".mfploader"),c===b.currItem&&(b._onImageHasSize(c),b.updateStatus("error",h.tError.replace("%url%",c.src))),c.hasSize=!0,c.loaded=!0,c.loadError=!0)},h=b.st.image,i=d.find(".mfp-img");if(i.length){var j=document.createElement("img");j.className="mfp-img",c.el&&c.el.find("img").length&&(j.alt=c.el.find("img").attr("alt")),c.img=a(j).on("load.mfploader",f).on("error.mfploader",g),j.src=c.src,i.is("img")&&(c.img=c.img.clone()),j=c.img[0],j.naturalWidth>0?c.hasSize=!0:j.width||(c.hasSize=!1)}return b._parseMarkup(d,{title:M(c),img_replaceWith:c.img},c),b.resizeImage(),c.hasSize?(L&&clearInterval(L),c.loadError?(d.addClass("mfp-loading"),b.updateStatus("error",h.tError.replace("%url%",c.src))):(d.removeClass("mfp-loading"),b.updateStatus("ready")),d):(b.updateStatus("loading"),c.loading=!0,c.hasSize||(c.imgHidden=!0,d.addClass("mfp-loading"),b.findImageSize(c)),d)}}});var N,O=function(){return void 0===N&&(N=void 0!==document.createElement("p").style.MozTransform),N};a.magnificPopup.registerModule("zoom",{options:{enabled:!1,easing:"ease-in-out",duration:300,opener:function(a){return a.is("img")?a:a.find("img")}},proto:{initZoom:function(){var a,c=b.st.zoom,d=".zoom";if(c.enabled&&b.supportsTransition){var e,f,g=c.duration,j=function(a){var b=a.clone().removeAttr("style").removeAttr("class").addClass("mfp-animated-image"),d="all "+c.duration/1e3+"s "+c.easing,e={position:"fixed",zIndex:9999,left:0,top:0,"-webkit-backface-visibility":"hidden"},f="transition";return e["-webkit-"+f]=e["-moz-"+f]=e["-o-"+f]=e[f]=d,b.css(e),b},k=function(){b.content.css("visibility","visible")};w("BuildControls"+d,function(){if(b._allowZoom()){if(clearTimeout(e),b.content.css("visibility","hidden"),a=b._getItemToZoom(),!a)return void k();f=j(a),f.css(b._getOffset()),b.wrap.append(f),e=setTimeout(function(){f.css(b._getOffset(!0)),e=setTimeout(function(){k(),setTimeout(function(){f.remove(),a=f=null,y("ZoomAnimationEnded")},16)},g)},16)}}),w(i+d,function(){if(b._allowZoom()){if(clearTimeout(e),b.st.removalDelay=g,!a){if(a=b._getItemToZoom(),!a)return;f=j(a)}f.css(b._getOffset(!0)),b.wrap.append(f),b.content.css("visibility","hidden"),setTimeout(function(){f.css(b._getOffset())},16)}}),w(h+d,function(){b._allowZoom()&&(k(),f&&f.remove(),a=null)})}},_allowZoom:function(){return"image"===b.currItem.type},_getItemToZoom:function(){return b.currItem.hasSize?b.currItem.img:!1},_getOffset:function(c){var d;d=c?b.currItem.img:b.st.zoom.opener(b.currItem.el||b.currItem);var e=d.offset(),f=parseInt(d.css("padding-top"),10),g=parseInt(d.css("padding-bottom"),10);e.top-=a(window).scrollTop()-f;var h={width:d.width(),height:(u?d.innerHeight():d[0].offsetHeight)-g-f};return O()?h["-moz-transform"]=h.transform="translate("+e.left+"px,"+e.top+"px)":(h.left=e.left,h.top=e.top),h}}});var P="iframe",Q="//about:blank",R=function(a){if(b.currTemplate[P]){var c=b.currTemplate[P].find("iframe");c.length&&(a||(c[0].src=Q),b.isIE8&&c.css("display",a?"block":"none"))}};a.magnificPopup.registerModule(P,{options:{markup:'<div class="mfp-iframe-scaler"><div class="mfp-close"></div><iframe class="mfp-iframe" src="//about:blank" frameborder="0" allowfullscreen></iframe></div>',srcAction:"iframe_src",patterns:{youtube:{index:"youtube.com",id:"v=",src:"//www.youtube.com/embed/%id%?autoplay=1"},vimeo:{index:"vimeo.com/",id:"/",src:"//player.vimeo.com/video/%id%?autoplay=1"},gmaps:{index:"//maps.google.",src:"%id%&output=embed"}}},proto:{initIframe:function(){b.types.push(P),w("BeforeChange",function(a,b,c){b!==c&&(b===P?R():c===P&&R(!0))}),w(h+"."+P,function(){R()})},getIframe:function(c,d){var e=c.src,f=b.st.iframe;a.each(f.patterns,function(){return e.indexOf(this.index)>-1?(this.id&&(e="string"==typeof this.id?e.substr(e.lastIndexOf(this.id)+this.id.length,e.length):this.id.call(this,e)),e=this.src.replace("%id%",e),!1):void 0});var g={};return f.srcAction&&(g[f.srcAction]=e),b._parseMarkup(d,g,c),b.updateStatus("ready"),d}}});var S=function(a){var c=b.items.length;return a>c-1?a-c:0>a?c+a:a},T=function(a,b,c){return a.replace(/%curr%/gi,b+1).replace(/%total%/gi,c)};a.magnificPopup.registerModule("gallery",{options:{enabled:!1,arrowMarkup:'<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>',preload:[0,2],navigateByImgClick:!0,arrows:!0,tPrev:"Previous (Left arrow key)",tNext:"Next (Right arrow key)",tCounter:"%curr% of %total%"},proto:{initGallery:function(){var c=b.st.gallery,e=".mfp-gallery";return b.direction=!0,c&&c.enabled?(f+=" mfp-gallery",w(m+e,function(){c.navigateByImgClick&&b.wrap.on("click"+e,".mfp-img",function(){return b.items.length>1?(b.next(),!1):void 0}),d.on("keydown"+e,function(a){37===a.keyCode?b.prev():39===a.keyCode&&b.next()})}),w("UpdateStatus"+e,function(a,c){c.text&&(c.text=T(c.text,b.currItem.index,b.items.length))}),w(l+e,function(a,d,e,f){var g=b.items.length;e.counter=g>1?T(c.tCounter,f.index,g):""}),w("BuildControls"+e,function(){if(b.items.length>1&&c.arrows&&!b.arrowLeft){var d=c.arrowMarkup,e=b.arrowLeft=a(d.replace(/%title%/gi,c.tPrev).replace(/%dir%/gi,"left")).addClass(s),f=b.arrowRight=a(d.replace(/%title%/gi,c.tNext).replace(/%dir%/gi,"right")).addClass(s);e.click(function(){b.prev()}),f.click(function(){b.next()}),b.container.append(e.add(f))}}),w(n+e,function(){b._preloadTimeout&&clearTimeout(b._preloadTimeout),b._preloadTimeout=setTimeout(function(){b.preloadNearbyImages(),b._preloadTimeout=null},16)}),void w(h+e,function(){d.off(e),b.wrap.off("click"+e),b.arrowRight=b.arrowLeft=null})):!1},next:function(){b.direction=!0,b.index=S(b.index+1),b.updateItemHTML()},prev:function(){b.direction=!1,b.index=S(b.index-1),b.updateItemHTML()},goTo:function(a){b.direction=a>=b.index,b.index=a,b.updateItemHTML()},preloadNearbyImages:function(){var a,c=b.st.gallery.preload,d=Math.min(c[0],b.items.length),e=Math.min(c[1],b.items.length);for(a=1;a<=(b.direction?e:d);a++)b._preloadItem(b.index+a);for(a=1;a<=(b.direction?d:e);a++)b._preloadItem(b.index-a)},_preloadItem:function(c){if(c=S(c),!b.items[c].preloaded){var d=b.items[c];d.parsed||(d=b.parseEl(c)),y("LazyLoad",d),"image"===d.type&&(d.img=a('<img class="mfp-img" />').on("load.mfploader",function(){d.hasSize=!0}).on("error.mfploader",function(){d.hasSize=!0,d.loadError=!0,y("LazyLoadError",d)}).attr("src",d.src)),d.preloaded=!0}}}});var U="retina";a.magnificPopup.registerModule(U,{options:{replaceSrc:function(a){return a.src.replace(/\.\w+$/,function(a){return"@2x"+a})},ratio:1},proto:{initRetina:function(){if(window.devicePixelRatio>1){var a=b.st.retina,c=a.ratio;c=isNaN(c)?c():c,c>1&&(w("ImageHasSize."+U,function(a,b){b.img.css({"max-width":b.img[0].naturalWidth/c,width:"100%"})}),w("ElementParse."+U,function(b,d){d.src=a.replaceSrc(d,c)}))}}}}),A()});
 /*!
  * Masonry PACKAGED v4.2.1
  * Cascading grid layout library
@@ -4686,6 +2830,270 @@ $.magnificPopup.registerModule(RETINA_NS, {
     }));
 })(window, document);
 
+
+// ------------------------------------------
+// Rellax.js - v1.0.0
+// Buttery smooth parallax library
+// Copyright (c) 2016 Moe Amaya (@moeamaya)
+// MIT license
+//
+// Thanks to Paraxify.js and Jaime Cabllero
+// for parallax concepts
+// ------------------------------------------
+
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define([], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // Node. Does not work with strict CommonJS, but
+    // only CommonJS-like environments that support module.exports,
+    // like Node.
+    module.exports = factory();
+  } else {
+    // Browser globals (root is window)
+    root.Rellax = factory();
+  }
+}(this, function () {
+  var Rellax = function(el, options){
+    "use strict";
+
+    var self = Object.create(Rellax.prototype);
+
+    var posY = 0; // set it to -1 so the animate function gets called at least once
+    var screenY = 0;
+    var blocks = [];
+    var pause = false;
+
+    // check what requestAnimationFrame to use, and if
+    // it's not supported, use the onscroll event
+    var loop = window.requestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.msRequestAnimationFrame ||
+      window.oRequestAnimationFrame ||
+      function(callback){ setTimeout(callback, 1000 / 60); };
+
+    // check which transform property to use
+    var transformProp = window.transformProp || (function(){
+      var testEl = document.createElement('div');
+      if (testEl.style.transform == null) {
+        var vendors = ['Webkit', 'Moz', 'ms'];
+        for (var vendor in vendors) {
+          if (testEl.style[ vendors[vendor] + 'Transform' ] !== undefined) {
+            return vendors[vendor] + 'Transform';
+          }
+        }
+      }
+      return 'transform';
+    })();
+
+    // limit the given number in the range [min, max]
+    var clamp = function(num, min, max) {
+      return (num <= min) ? min : ((num >= max) ? max : num);
+    };
+
+    // Default Settings
+    self.options = {
+      speed: -2,
+      center: false,
+      round: true,
+      callback: function() {},
+    };
+
+    // User defined options (might have more in the future)
+    if (options){
+      Object.keys(options).forEach(function(key){
+        self.options[key] = options[key];
+      });
+    }
+
+    // If some clown tries to crank speed, limit them to +-10
+    self.options.speed = clamp(self.options.speed, -10, 10);
+
+    // By default, rellax class
+    if (!el) {
+      el = '.rellax';
+    }
+
+    var elements = document.querySelectorAll(el);
+
+    // Now query selector
+    if (elements.length > 0) {
+      self.elems = elements;
+    }
+
+    // The elements don't exist
+    else {
+      throw new Error("The elements you're trying to select don't exist.");
+    }
+
+
+    // Let's kick this script off
+    // Build array for cached element values
+    // Bind scroll and resize to animate method
+    var init = function() {
+      screenY = window.innerHeight;
+      setPosition();
+
+      // Get and cache initial position of all elements
+      for (var i = 0; i < self.elems.length; i++){
+        var block = createBlock(self.elems[i]);
+        blocks.push(block);
+      }
+
+      window.addEventListener('resize', function(){
+        animate();
+      });
+
+      // Start the loop
+      update();
+
+      // The loop does nothing if the scrollPosition did not change
+      // so call animate to make sure every element has their transforms
+      animate();
+    };
+
+
+    // We want to cache the parallax blocks'
+    // values: base, top, height, speed
+    // el: is dom object, return: el cache values
+    var createBlock = function(el) {
+      var dataPercentage = el.getAttribute( 'data-rellax-percentage' );
+      var dataSpeed = el.getAttribute( 'data-rellax-speed' );
+      var dataZindex = el.getAttribute( 'data-rellax-zindex' ) || 0;
+
+      // initializing at scrollY = 0 (top of browser)
+      // ensures elements are positioned based on HTML layout.
+      //
+      // If the element has the percentage attribute, the posY needs to be
+      // the current scroll position's value, so that the elements are still positioned based on HTML layout
+      var posY = dataPercentage || self.options.center ? (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop) : 0;
+
+      var blockTop = posY + el.getBoundingClientRect().top;
+      var blockHeight = el.clientHeight || el.offsetHeight || el.scrollHeight;
+
+      // apparently parallax equation everyone uses
+      var percentage = dataPercentage ? dataPercentage : (posY - blockTop + screenY) / (blockHeight + screenY);
+      if(self.options.center){ percentage = 0.5; }
+
+      // Optional individual block speed as data attr, otherwise global speed
+      // Check if has percentage attr, and limit speed to 5, else limit it to 10
+      var speed = dataSpeed ? clamp(dataSpeed, -10, 10) : self.options.speed;
+      if (dataPercentage || self.options.center) {
+        speed = clamp(dataSpeed || self.options.speed, -5, 5);
+      }
+
+      var base = updatePosition(percentage, speed);
+
+      // ~~Store non-translate3d transforms~~
+      // Store inline styles and extract transforms
+      var style = el.style.cssText;
+      var transform = '';
+
+      // Check if there's an inline styled transform
+      if (style.indexOf('transform') >= 0) {
+        // Get the index of the transform
+        var index = style.indexOf('transform');
+
+        // Trim the style to the transform point and get the following semi-colon index
+        var trimmedStyle = style.slice(index);
+        var delimiter = trimmedStyle.indexOf(';');
+
+        // Remove "transform" string and save the attribute
+        if (delimiter) {
+          transform = " " + trimmedStyle.slice(11, delimiter).replace(/\s/g,'');
+        } else {
+          transform = " " + trimmedStyle.slice(11).replace(/\s/g,'');
+        }
+      }
+
+      return {
+        base: base,
+        top: blockTop,
+        height: blockHeight,
+        speed: speed,
+        style: style,
+        transform: transform,
+        zindex: dataZindex
+      };
+    };
+
+    // set scroll position (posY)
+    // side effect method is not ideal, but okay for now
+    // returns true if the scroll changed, false if nothing happened
+    var setPosition = function() {
+      var oldY = posY;
+
+      if (window.pageYOffset !== undefined) {
+        posY = window.pageYOffset;
+      } else {
+        posY = (document.documentElement || document.body.parentNode || document.body).scrollTop;
+      }
+
+      if (oldY != posY) {
+        // scroll changed, return true
+        return true;
+      }
+
+      // scroll did not change
+      return false;
+    };
+
+
+    // Ahh a pure function, gets new transform value
+    // based on scrollPostion and speed
+    // Allow for decimal pixel values
+    var updatePosition = function(percentage, speed) {
+      var value = (speed * (100 * (1 - percentage)));
+      return self.options.round ? Math.round(value) : Math.round(value * 100) / 100;
+    };
+
+
+    //
+    var update = function() {
+      if (setPosition() && pause === false) {
+        animate();
+      }
+
+      // loop again
+      loop(update);
+    };
+
+    // Transform3d on parallax element
+    var animate = function() {
+      for (var i = 0; i < self.elems.length; i++){
+        var percentage = ((posY - blocks[i].top + screenY) / (blocks[i].height + screenY));
+
+        // Subtracting initialize value, so element stays in same spot as HTML
+        var position = updatePosition(percentage, blocks[i].speed) - blocks[i].base;
+
+        var zindex = blocks[i].zindex;
+
+        // Move that element
+        // (Set the new translation and append initial inline transforms.)
+        var translate = 'translate3d(0,' + position + 'px,' + zindex + 'px) ' + blocks[i].transform;
+        self.elems[i].style[transformProp] = translate;
+      }
+      self.options.callback(position);
+    };
+
+
+    self.destroy = function() {
+      for (var i = 0; i < self.elems.length; i++){
+        self.elems[i].style.cssText = blocks[i].style;
+      }
+      pause = true;
+    };
+
+
+    init();
+    return self;
+  };
+  return Rellax;
+}));
+
+!function(e,t){"function"==typeof define&&define.amd?define([],t):"object"==typeof module&&module.exports?module.exports=t():e.Rellax=t()}(this,function(){var e=function(t,n){"use strict";var o=Object.create(e.prototype),r=0,i=0,s=[],a=!1,l=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.msRequestAnimationFrame||window.oRequestAnimationFrame||function(e){setTimeout(e,1e3/60)},c=window.transformProp||function(){var e=document.createElement("div");if(null==e.style.transform){var t=["Webkit","Moz","ms"];for(var n in t)if(void 0!==e.style[t[n]+"Transform"])return t[n]+"Transform"}return"transform"}(),d=function(e,t,n){return e<=t?t:e>=n?n:e};o.options={speed:-2,center:!1,round:!0,callback:function(){}},n&&Object.keys(n).forEach(function(e){o.options[e]=n[e]}),o.options.speed=d(o.options.speed,-10,10),t||(t=".rellax");var u=document.querySelectorAll(t);if(!(u.length>0))throw new Error("The elements you're trying to select don't exist.");o.elems=u;var f=function(e){var t=e.dataset.rellaxPercentage,n=e.dataset.rellaxSpeed,r=t||o.options.center?window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop:0,s=r+e.getBoundingClientRect().top,a=e.clientHeight||e.offsetHeight||e.scrollHeight,l=t||(r-s+i)/(a+i);o.options.center&&(l=.5);var c=n?d(n,-10,10):o.options.speed;(t||o.options.center)&&(c=d(n||o.options.speed,-5,5));var u=p(l,c),f=e.style.cssText,m="";if(f.indexOf("transform")>=0){var w=f.indexOf("transform"),v=f.slice(w),g=v.indexOf(";");m=g?" "+v.slice(11,g).replace(/\s/g,""):" "+v.slice(11).replace(/\s/g,"")}return{base:u,top:s,height:a,speed:c,style:f,transform:m}},m=function(){var e=r;return r=void 0!==window.pageYOffset?window.pageYOffset:(document.documentElement||document.body.parentNode||document.body).scrollTop,e!=r},p=function(e,t){var n=t*(100*(1-e));return o.options.round?Math.round(10*n)/10:n},w=function(){m()&&!1===a&&v(),l(w)},v=function(){for(var e=0;e<o.elems.length;e++){var t=(r-s[e].top+i)/(s[e].height+i),n=p(t,s[e].speed)-s[e].base,a="translate3d(0,"+n+"px,0) "+s[e].transform;o.elems[e].style[c]=a}o.options.callback(n)};return o.destroy=function(){for(var e=0;e<o.elems.length;e++)o.elems[e].style.cssText=s[e].style;a=!0},function(){i=window.innerHeight,m();for(var e=0;e<o.elems.length;e++){var t=f(o.elems[e]);s.push(t)}window.addEventListener("resize",function(){v()}),w(),v()}(),o};return e});
 /*
  slick-animation.js
 
@@ -7810,270 +6218,6 @@ $.magnificPopup.registerModule(RETINA_NS, {
 
 }));
 
-
-// ------------------------------------------
-// Rellax.js - v1.0.0
-// Buttery smooth parallax library
-// Copyright (c) 2016 Moe Amaya (@moeamaya)
-// MIT license
-//
-// Thanks to Paraxify.js and Jaime Cabllero
-// for parallax concepts
-// ------------------------------------------
-
-(function (root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define([], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // Node. Does not work with strict CommonJS, but
-    // only CommonJS-like environments that support module.exports,
-    // like Node.
-    module.exports = factory();
-  } else {
-    // Browser globals (root is window)
-    root.Rellax = factory();
-  }
-}(this, function () {
-  var Rellax = function(el, options){
-    "use strict";
-
-    var self = Object.create(Rellax.prototype);
-
-    var posY = 0; // set it to -1 so the animate function gets called at least once
-    var screenY = 0;
-    var blocks = [];
-    var pause = false;
-
-    // check what requestAnimationFrame to use, and if
-    // it's not supported, use the onscroll event
-    var loop = window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      window.msRequestAnimationFrame ||
-      window.oRequestAnimationFrame ||
-      function(callback){ setTimeout(callback, 1000 / 60); };
-
-    // check which transform property to use
-    var transformProp = window.transformProp || (function(){
-      var testEl = document.createElement('div');
-      if (testEl.style.transform == null) {
-        var vendors = ['Webkit', 'Moz', 'ms'];
-        for (var vendor in vendors) {
-          if (testEl.style[ vendors[vendor] + 'Transform' ] !== undefined) {
-            return vendors[vendor] + 'Transform';
-          }
-        }
-      }
-      return 'transform';
-    })();
-
-    // limit the given number in the range [min, max]
-    var clamp = function(num, min, max) {
-      return (num <= min) ? min : ((num >= max) ? max : num);
-    };
-
-    // Default Settings
-    self.options = {
-      speed: -2,
-      center: false,
-      round: true,
-      callback: function() {},
-    };
-
-    // User defined options (might have more in the future)
-    if (options){
-      Object.keys(options).forEach(function(key){
-        self.options[key] = options[key];
-      });
-    }
-
-    // If some clown tries to crank speed, limit them to +-10
-    self.options.speed = clamp(self.options.speed, -10, 10);
-
-    // By default, rellax class
-    if (!el) {
-      el = '.rellax';
-    }
-
-    var elements = document.querySelectorAll(el);
-
-    // Now query selector
-    if (elements.length > 0) {
-      self.elems = elements;
-    }
-
-    // The elements don't exist
-    else {
-      throw new Error("The elements you're trying to select don't exist.");
-    }
-
-
-    // Let's kick this script off
-    // Build array for cached element values
-    // Bind scroll and resize to animate method
-    var init = function() {
-      screenY = window.innerHeight;
-      setPosition();
-
-      // Get and cache initial position of all elements
-      for (var i = 0; i < self.elems.length; i++){
-        var block = createBlock(self.elems[i]);
-        blocks.push(block);
-      }
-
-      window.addEventListener('resize', function(){
-        animate();
-      });
-
-      // Start the loop
-      update();
-
-      // The loop does nothing if the scrollPosition did not change
-      // so call animate to make sure every element has their transforms
-      animate();
-    };
-
-
-    // We want to cache the parallax blocks'
-    // values: base, top, height, speed
-    // el: is dom object, return: el cache values
-    var createBlock = function(el) {
-      var dataPercentage = el.getAttribute( 'data-rellax-percentage' );
-      var dataSpeed = el.getAttribute( 'data-rellax-speed' );
-      var dataZindex = el.getAttribute( 'data-rellax-zindex' ) || 0;
-
-      // initializing at scrollY = 0 (top of browser)
-      // ensures elements are positioned based on HTML layout.
-      //
-      // If the element has the percentage attribute, the posY needs to be
-      // the current scroll position's value, so that the elements are still positioned based on HTML layout
-      var posY = dataPercentage || self.options.center ? (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop) : 0;
-
-      var blockTop = posY + el.getBoundingClientRect().top;
-      var blockHeight = el.clientHeight || el.offsetHeight || el.scrollHeight;
-
-      // apparently parallax equation everyone uses
-      var percentage = dataPercentage ? dataPercentage : (posY - blockTop + screenY) / (blockHeight + screenY);
-      if(self.options.center){ percentage = 0.5; }
-
-      // Optional individual block speed as data attr, otherwise global speed
-      // Check if has percentage attr, and limit speed to 5, else limit it to 10
-      var speed = dataSpeed ? clamp(dataSpeed, -10, 10) : self.options.speed;
-      if (dataPercentage || self.options.center) {
-        speed = clamp(dataSpeed || self.options.speed, -5, 5);
-      }
-
-      var base = updatePosition(percentage, speed);
-
-      // ~~Store non-translate3d transforms~~
-      // Store inline styles and extract transforms
-      var style = el.style.cssText;
-      var transform = '';
-
-      // Check if there's an inline styled transform
-      if (style.indexOf('transform') >= 0) {
-        // Get the index of the transform
-        var index = style.indexOf('transform');
-
-        // Trim the style to the transform point and get the following semi-colon index
-        var trimmedStyle = style.slice(index);
-        var delimiter = trimmedStyle.indexOf(';');
-
-        // Remove "transform" string and save the attribute
-        if (delimiter) {
-          transform = " " + trimmedStyle.slice(11, delimiter).replace(/\s/g,'');
-        } else {
-          transform = " " + trimmedStyle.slice(11).replace(/\s/g,'');
-        }
-      }
-
-      return {
-        base: base,
-        top: blockTop,
-        height: blockHeight,
-        speed: speed,
-        style: style,
-        transform: transform,
-        zindex: dataZindex
-      };
-    };
-
-    // set scroll position (posY)
-    // side effect method is not ideal, but okay for now
-    // returns true if the scroll changed, false if nothing happened
-    var setPosition = function() {
-      var oldY = posY;
-
-      if (window.pageYOffset !== undefined) {
-        posY = window.pageYOffset;
-      } else {
-        posY = (document.documentElement || document.body.parentNode || document.body).scrollTop;
-      }
-
-      if (oldY != posY) {
-        // scroll changed, return true
-        return true;
-      }
-
-      // scroll did not change
-      return false;
-    };
-
-
-    // Ahh a pure function, gets new transform value
-    // based on scrollPostion and speed
-    // Allow for decimal pixel values
-    var updatePosition = function(percentage, speed) {
-      var value = (speed * (100 * (1 - percentage)));
-      return self.options.round ? Math.round(value) : Math.round(value * 100) / 100;
-    };
-
-
-    //
-    var update = function() {
-      if (setPosition() && pause === false) {
-        animate();
-      }
-
-      // loop again
-      loop(update);
-    };
-
-    // Transform3d on parallax element
-    var animate = function() {
-      for (var i = 0; i < self.elems.length; i++){
-        var percentage = ((posY - blocks[i].top + screenY) / (blocks[i].height + screenY));
-
-        // Subtracting initialize value, so element stays in same spot as HTML
-        var position = updatePosition(percentage, blocks[i].speed) - blocks[i].base;
-
-        var zindex = blocks[i].zindex;
-
-        // Move that element
-        // (Set the new translation and append initial inline transforms.)
-        var translate = 'translate3d(0,' + position + 'px,' + zindex + 'px) ' + blocks[i].transform;
-        self.elems[i].style[transformProp] = translate;
-      }
-      self.options.callback(position);
-    };
-
-
-    self.destroy = function() {
-      for (var i = 0; i < self.elems.length; i++){
-        self.elems[i].style.cssText = blocks[i].style;
-      }
-      pause = true;
-    };
-
-
-    init();
-    return self;
-  };
-  return Rellax;
-}));
-
-!function(e,t){"function"==typeof define&&define.amd?define([],t):"object"==typeof module&&module.exports?module.exports=t():e.Rellax=t()}(this,function(){var e=function(t,n){"use strict";var o=Object.create(e.prototype),r=0,i=0,s=[],a=!1,l=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.msRequestAnimationFrame||window.oRequestAnimationFrame||function(e){setTimeout(e,1e3/60)},c=window.transformProp||function(){var e=document.createElement("div");if(null==e.style.transform){var t=["Webkit","Moz","ms"];for(var n in t)if(void 0!==e.style[t[n]+"Transform"])return t[n]+"Transform"}return"transform"}(),d=function(e,t,n){return e<=t?t:e>=n?n:e};o.options={speed:-2,center:!1,round:!0,callback:function(){}},n&&Object.keys(n).forEach(function(e){o.options[e]=n[e]}),o.options.speed=d(o.options.speed,-10,10),t||(t=".rellax");var u=document.querySelectorAll(t);if(!(u.length>0))throw new Error("The elements you're trying to select don't exist.");o.elems=u;var f=function(e){var t=e.dataset.rellaxPercentage,n=e.dataset.rellaxSpeed,r=t||o.options.center?window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop:0,s=r+e.getBoundingClientRect().top,a=e.clientHeight||e.offsetHeight||e.scrollHeight,l=t||(r-s+i)/(a+i);o.options.center&&(l=.5);var c=n?d(n,-10,10):o.options.speed;(t||o.options.center)&&(c=d(n||o.options.speed,-5,5));var u=p(l,c),f=e.style.cssText,m="";if(f.indexOf("transform")>=0){var w=f.indexOf("transform"),v=f.slice(w),g=v.indexOf(";");m=g?" "+v.slice(11,g).replace(/\s/g,""):" "+v.slice(11).replace(/\s/g,"")}return{base:u,top:s,height:a,speed:c,style:f,transform:m}},m=function(){var e=r;return r=void 0!==window.pageYOffset?window.pageYOffset:(document.documentElement||document.body.parentNode||document.body).scrollTop,e!=r},p=function(e,t){var n=t*(100*(1-e));return o.options.round?Math.round(10*n)/10:n},w=function(){m()&&!1===a&&v(),l(w)},v=function(){for(var e=0;e<o.elems.length;e++){var t=(r-s[e].top+i)/(s[e].height+i),n=p(t,s[e].speed)-s[e].base,a="translate3d(0,"+n+"px,0) "+s[e].transform;o.elems[e].style[c]=a}o.options.callback(n)};return o.destroy=function(){for(var e=0;e<o.elems.length;e++)o.elems[e].style.cssText=s[e].style;a=!0},function(){i=window.innerHeight,m();for(var e=0;e<o.elems.length;e++){var t=f(o.elems[e]);s.push(t)}window.addEventListener("resize",function(){v()}),w(),v()}(),o};return e});
 // Sticky Plugin v1.0.4 for jQuery
 // =============
 // Author: Anthony Garand
@@ -9531,52 +7675,34 @@ jQuery(document).ready(function ($) {
     }
 
 
-    /*========================
-    SMOOTH SCROLL
-    ==========================*/
+    /**
+     * -----------------------------------------------------------------------------------------------------------------
+     * MAGNIFIC POPUP MODEL WINDOWS.
+     *
+     * @author  Joe Curran
+     * @date    24 Apr 2018
+     * -----------------------------------------------------------------------------------------------------------------
+     */
 
-    // $('a[href*=\\#]:not([href=\\#]):not([data-toggle])').on('click', function () {
-    //     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-    //         var target = $(this.hash);
-    //         var headerHeight = $('header').outerHeight();
-    //         var stickyNav = $('.stick-menu').height();
-    //         target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-    //         if (target.length) {
-    //             $('html,body').animate({
-    //                 scrollTop: target.offset().top - headerHeight - stickyNav - 20
-    //             }, 750);
-    //             return false;
-    //         }
-    //     }
-    // });
-
-
-    /*======================================================
-    LIGHTBOX VIDEO & GALLERY
-    ========================================================*/
-    $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
-        disableOn: 700,
-        type: 'iframe',
-        mainClass: 'mfp-fade',
-        removalDelay: 160,
-        preloader: false,
-        fixedContentPos: false
+    // OPEN AN INLINE MODEL WINDOW.
+    $('.model').magnificPopup({
+        type:'inline',
+        midClick: true
     });
 
     $('.gallery').magnificPopup({
-        delegate: 'a', // child items selector, by clicking on it popup will open
-        type: 'image',
-        gallery: {
-            enabled: true
+        delegate: 'a',
+        type:'image',
+        gallery:{
+            enabled: true,
+            preload: [0,2],
+            navigateByImgClick: true,
+            tPrev: 'Previous',
+            tNext: 'Next',
+            tCounter: '<span class="mfp-counter">%curr% of %total%</span>'
         }
-        // other options
     });
 
-
-    $('.magnificForm').magnificPopup({
-        type: 'inline',
-        midClick: true
-    });
 
 
     /*======================================================
@@ -9632,25 +7758,25 @@ jQuery(document).ready(function ($) {
     HOTSPOT : HOVER
     ========================================================*/
 
-    $('[data-spot]').each(function () {
-        var $wrapper = $(this).parents('[data-hotspot="wrapper"]');
-        var target = $(this).attr('data-spot');
-        $(this).mouseover(function () {
-            $wrapper.find('[data-hotspot="content"]').find('div[id=' + target + ']').addClass('hotspot-active');
-        }).mouseout(function () {
-            $wrapper.find('[data-hotspot="content"]').children('div').removeClass('hotspot-active');
-        });
-    });
+    // $('[data-spot]').each(function () {
+    //     var $wrapper = $(this).parents('[data-hotspot="wrapper"]');
+    //     var target = $(this).attr('data-spot');
+    //     $(this).mouseover(function () {
+    //         $wrapper.find('[data-hotspot="content"]').find('div[id=' + target + ']').addClass('hotspot-active');
+    //     }).mouseout(function () {
+    //         $wrapper.find('[data-hotspot="content"]').children('div').removeClass('hotspot-active');
+    //     });
+    // });
 
 
     /*======================================================
     PRELOADER
     ========================================================*/
-    var timer = function () {
-        $('[data-content]').fadeTo(600, 1);
-        $('[data-loader]').delay(200).fadeOut(600);
-    };
-    timer();
+    // var timer = function () {
+    //     $('[data-content]').fadeTo(600, 1);
+    //     $('[data-loader]').delay(200).fadeOut(600);
+    // };
+    // timer();
 
 
     /*======================================================
@@ -9707,29 +7833,29 @@ jQuery(document).ready(function ($) {
     ========================================================*/
 
 
-    $('.js-hide-show').each(function () {
-
-        $(this).click(function () {
-
-            var show = $(this).attr('data-show');
-            data_icon_show = $(this).data('icon-show');
-            data_icon_hide = $(this).data('icon-hide');
-            iconToggle = ($(this).find('i').html() === data_icon_show) ? data_icon_hide : data_icon_show;
-
-            $("#" + show).toggle();
-            $(this).find('i').text(iconToggle);
-
-            $('[toggle-relative-search]').toggleClass('relative');
-
-            if ($(this).data('blur') == true) {
-                $("#" + show).find('input')[0].focus();
-            }
-
-            return false;
-
-        });
-
-    });
+    // $('.js-hide-show').each(function () {
+    //
+    //     $(this).click(function () {
+    //
+    //         var show = $(this).attr('data-show');
+    //         data_icon_show = $(this).data('icon-show');
+    //         data_icon_hide = $(this).data('icon-hide');
+    //         iconToggle = ($(this).find('i').html() === data_icon_show) ? data_icon_hide : data_icon_show;
+    //
+    //         $("#" + show).toggle();
+    //         $(this).find('i').text(iconToggle);
+    //
+    //         $('[toggle-relative-search]').toggleClass('relative');
+    //
+    //         if ($(this).data('blur') == true) {
+    //             $("#" + show).find('input')[0].focus();
+    //         }
+    //
+    //         return false;
+    //
+    //     });
+    //
+    // });
 
 
     $('.grid').masonry({

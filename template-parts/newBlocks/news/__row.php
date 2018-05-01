@@ -21,13 +21,13 @@
             <?php if( !empty($block['posts']->posts) ) : ?>
 
             <?php foreach ($block['posts']->posts as $post) :?>
-                <div class="col-12 clearfix mb4 md-flex items-center">
+                <div class="col-12 clearfix mb5 md-flex py2">
 
-                    <div class="col col-12 md-col-5">
+                    <div class="col col-12 <?=($block['content']['feeds'])? "md-col-5" : "md-col-3"?>">
 
                         <?php if (has_post_thumbnail( $post->ID ) ): ?>
                             <a href="<?=get_permalink($post->ID)?>">
-                                <?= wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), "medium", "", ["class" => "box-shadow-1 js-match-height"] ) ?>
+                                <?= wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), array("450", "400"), "", ["class" => "box-shadow-1", "data-mh" => "news-image"] ) ?>
                             </a>
                         <?php else: ?>
                             <a href="<?=get_permalink($post->ID)?>">
@@ -37,26 +37,26 @@
 
                     </div>
 
-                    <div class="col col-12 md-col-7 py2 md-p4">
+                    <div class="col col-12 <?=($block['content']['feeds'])? "md-col-7" : "md-col-9"?> px4">
 
                         <?php if ($block['content']['date'] == true): ?>
                             <p class="h6 mt2 sm-mb0 md-left bold sm-inline <?=$block['content']['txtColor']?>"><?=date('d M Y', strtotime($post->post_date));?></p>
                         <?php endif; ?>
 
-                        <ul class="inline-block tags tags-right sm-right border-radius cursor-pointer">
-                            <?php foreach($post->categories as $category) : ?>
-                                <li><?=$category->name?></li>
-                            <?php endforeach; ?>
-                        </ul>
-
                         <div class="clearfix <?=$block['content']['txtColor']?>">
 
-                            <h3 class="mb1 brand-primary" style="font-size: 1.3rem"><a href="<?=get_permalink($post->ID)?>"><?=$post->post_title?></a></h3>
+                            <h3 class="mb2 brand-primary" style="font-size: 1.3rem"><a href="<?=get_permalink($post->ID)?>"><?=$post->post_title?></a></h3>
 
-                            <p class="h6"><?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr($post->post_content,0, 100);?></p>
+                            <p class="h6"><?=shorten_string(strip_tags($post->post_content), 50)?></p>
+
+                            <ul class="block tags tags-left border-radius cursor-pointer">
+                                <?php foreach($post->categories as $category): ?>
+                                    <li><a href="<?=get_term_link($category->term_id)?>"><?=$category->name?></a></li>
+                                <?php endforeach; ?>
+                            </ul>
 
                             <?php if($block['content']['buttons'] = true): ?>
-                                <a href="<?=get_permalink($post->ID)?>" class="btn <?=$block['content']['button']['button_text_colour']['system_text_colours']?> <?=$block['content']['button']['button_background_colour']['system_background_colours']?> bold ">Read More</a>
+                                <a href="<?=get_permalink($post->ID)?>" class="btn btn-medium <?=$block['content']['button']['button_text_colour']['system_text_colours']?> <?=$block['content']['button']['button_background_colour']['system_background_colours']?> bold" role="button">Read More</a>
                             <?php endif; ?>
 
                         </div>

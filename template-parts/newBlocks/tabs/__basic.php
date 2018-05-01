@@ -30,11 +30,11 @@
 
         </div>
 
-        <div class="content clearfix  <?=$block['tabs_settings']['box_bg']?><?=($block['tabs_settings']['box_borders'] == true)? ' border-left border-right border-bottom border-top border-light':''?><?=($block['tabs_settings']['box_radius'] == true)? ' border-radius-4':'' ?>" data-tabs="content">
+        <div class="content clearfix mxn4  <?=$block['tabs_settings']['box_bg']?><?=($block['tabs_settings']['box_borders'] == true)? ' border-left border-right border-bottom border-top border-light':''?><?=($block['tabs_settings']['box_radius'] == true)? ' border-radius-4':'' ?>" data-tabs="content">
 
             <?php $i = 1; foreach ($block['tabs'] as $tab): ?>
 
-                <section id="tab<?=$i?>" class="tab-content || <?=($i > 1)? 'hide' : '' ?>">
+                <section id="tab<?=$i?>" class="tab-content flex items-center <?=($i > 1)? 'hide' : '' ?>">
 
                     <?php if (!empty($tab['column_1']['column_content'])): ?>
 

@@ -17,7 +17,7 @@
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-    <div class="clearfix <?=$block['content']['bg']?> <?=$block['content']['sides']?> <?=$block['content']['borders']['color']?> <?=$block['content']['borders']['size']?>">
+    <div class="clearfix <?=$block['content']['bg']?> <?=$block['content']['sides']?> <?=$block['content']['borders']['color']?> <?=$block['content']['borders']['size']?>"><?php // TODO: Outputing Array. ?>
 
         <div class="relative col col-12 md-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> js-match-height min-height-v50 overflow-hidden <?=($block['content']['type'] == "video")? "flex items-center" : "" ?>">
 
@@ -93,7 +93,7 @@
 
                     <?php foreach ($block['content']['buttons'] as $button): ?>
 
-                        <a href="<?=$button['button_link']['url']?>" class="btn btn-medium <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> ><?=$button['button_link']['title']?></a>
+                        <a href="<?=$button['button_link']['url']?>" class="btn btn-medium <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> role="button"><?=$button['button_link']['title']?></a>
 
                     <?php endforeach; ?>
 

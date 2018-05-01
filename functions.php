@@ -108,7 +108,7 @@ function ml_update_news() {
 	/* Load in team block controller to access posts easily. */
 	include_once(MODELS_DIR . '_block_news.php');
 	$news_controller = new _block_news(null, null);
-	$posts = $news_controller->fetchFeedPosts(8, $_POST['news_page']);
+	$block = $news_controller->fetchFeedPosts(8, $_POST['news_page']);
 
 	if(file_exists(CHILD_AJAX_DIR . 'template-news-ajax.php')) :
 		include_once(CHILD_AJAX_DIR . 'template-news-ajax.php');
@@ -126,7 +126,7 @@ function ml_update_csr() {
 	/* Load in team block controller to access posts easily. */
 	include_once(MODELS_DIR . '_block_news.php');
 	$news_controller = new _block_news(null, null);
-	$posts = $news_controller->fetchCSRPosts(8, $_POST['news_page']);
+	$block = $news_controller->fetchCSRPosts(8, $_POST['news_page']);
 
 
 	if(file_exists(CHILD_AJAX_DIR . 'template-csr-ajax.php')) :
@@ -145,7 +145,7 @@ function ml_update_jobs() {
 	/* Load in team block controller to access posts easily. */
 	include_once(MODELS_DIR . '_block_jobs.php');
 	$jobs_controller = new _block_jobs(null, null);
-	$posts = $jobs_controller->fetchFeedPosts(6, $_POST['jobs_page']);
+	$block = $jobs_controller->fetchFeedPosts(6, $_POST['jobs_page']);
 
 	if(file_exists(CHILD_AJAX_DIR . 'template-jobs-ajax.php')) :
 		include_once(CHILD_AJAX_DIR . 'template-jobs-ajax.php');
@@ -165,7 +165,7 @@ function ml_update_talent() {
 	/* Load in team block controller to access posts easily. */
 	include_once(MODELS_DIR . '_block_jobs.php');
 	$jobs_controller = new _block_jobs(null, null);
-	$posts = $jobs_controller->fetchFeedPosts(4, $_POST['jobs_page'], 'talents');
+	$block = $jobs_controller->fetchFeedPosts(4, $_POST['jobs_page'], 'talents');
 
 	if(file_exists(CHILD_AJAX_DIR . 'template-talent-ajax.php')) :
 		include_once(CHILD_AJAX_DIR . 'template-talent-ajax.php');
@@ -635,11 +635,6 @@ function ml_get_template() {
         return false;
 }
 
-function pa($value) {
-    print_r("<pre style='background-color: #f1f1f1; color: black; text-align: left; padding: 1rem;'>");
-    print_r($value);
-    print_r("</pre>");
-}
 
 /*==================================================================
 	Custom rewrite masking for news categories
@@ -747,6 +742,8 @@ add_action( 'current_screen', 'wp_42573_fix_template_caching' );
 // DISABLE SRCSET ON FRONTEND
 add_filter('max_srcset_image_width', create_function('', 'return 1;'));
 
+add_action( 'admin_enqueue_scripts', 'ml_custom_admin_styles' );
+
 
 /**
  * ---------------------------------------------------------------------------------------------------------------------
@@ -754,6 +751,30 @@ add_filter('max_srcset_image_width', create_function('', 'return 1;'));
  * New functions used by the Motion Lab theme.
  * ---------------------------------------------------------------------------------------------------------------------
  */
+
+// PRINT ALL FUNCTION
+function pa($value) {
+    print_r("<pre style='background-color: #f1f1f1; color: black; text-align: left; padding: 1rem;'>");
+    print_r($value);
+    print_r("</pre>");
+}
+
+// SHORTEN CONTENT TO NUMBER OF WORDS
+function shorten_string($string, $target) {
+    $retval = $string;
+
+    $string = preg_replace('/(?<=\S,)(?=\S)/', ' ', $string);
+    $string = str_replace("\n", " ", $string);
+    $array = explode(" ", $string);
+
+    if (count($array)<=$target) {
+        $retval = $string;
+    } else {
+        array_splice($array, $target);
+        $retval = implode(" ", $array)."...";
+    }
+    echo $retval;
+}
 
 // GET A MENU OBJECT BASED ON THE THEME LOCATION
 function ml_get_menu_object_by_location($location) {
@@ -767,7 +788,7 @@ function ml_get_menu_object_by_location($location) {
     return $menu = wp_get_nav_menu_object($menu_id);
 }
 
-//GET PARENT OF CURRENT PAGE
+// GET PARENT OF CURRENT PAGE
 function get_highest_most_parent($post) {
   if ($post->post_parent)	{
     $ancestors=get_post_ancestors($post->ID);
@@ -777,4 +798,12 @@ function get_highest_most_parent($post) {
     $parent = $post->ID;
   }
   return $parent = get_post($parent);
+}
+
+
+// LOAD CUSTOM ADMIN STYLESHEET
+function ml_custom_admin_styles() {
+    wp_register_style( 'ml_custom_admin_style', get_template_directory_uri() . '/assets/css/admin-style.css', false, '1.0.0' );
+
+    wp_enqueue_style( 'ml_custom_admin_style' );
 }
