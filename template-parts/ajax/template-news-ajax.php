@@ -8,7 +8,7 @@
 
 ?>
 
-<?php foreach($posts->posts as $post) : ?>
+<?php foreach($block['posts']->posts as $post) : ?>
 
     <?php if (has_post_thumbnail( $post->ID ) ): ?>
         <?php $image_url = wp_get_attachment_image_url( get_post_thumbnail_id( $post->ID ), "large", "", ["class" => "box-shadow-1 js-match-height"] ) ?>

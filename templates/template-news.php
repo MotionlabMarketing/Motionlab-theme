@@ -10,7 +10,7 @@ $blockTitle = $blockTitle['title'];
 /* Load in team block controller to access posts easily. */
 include_once(MODELS_DIR . '_block_news.php');
 $news_controller = new _block_news(null, null);
-$posts = $news_controller->fetchFeedPosts(9);
+$block = $news_controller->fetchFeedPosts(9);
 
 get_header(); ?>
 
@@ -30,7 +30,7 @@ get_header(); ?>
 
         <div class="col col-12 md-col-12 lg-col-12 || mb5 bg-smoke">
 
-            <?php $latest_post = array_shift($posts->posts); ?>
+            <?php $latest_post = array_shift($block['posts']->posts); ?>
             <div class="col col-12 md-col-6 || px4 md-p5 left md-right || flex items-center justify-center">
 
                 <?php if (has_post_thumbnail($latest_post->ID)): ?>
@@ -113,7 +113,7 @@ get_header(); ?>
 
         <div id="news-listing" class="mb4">
 
-            <?php foreach ($posts->posts as $post) : ?>
+            <?php foreach ($block['posts']->posts as $post) : ?>
 
                 <?php if (has_post_thumbnail($post->ID)): ?>
                     <?php $image_url = wp_get_attachment_image_url(get_post_thumbnail_id($post->ID), "large", "") ?>
@@ -164,7 +164,7 @@ get_header(); ?>
         //TODO: Move this into JS file
 
         function fetchNewsPosts(page_number, firstLoad = false) {
-
+console.log("HElp");
             //TODO: Add loader while fetching data.
             var order_filter = $('#news_orderby').val();
             var category_filter = $('#news_filtercats').val();

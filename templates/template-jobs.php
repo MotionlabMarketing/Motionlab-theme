@@ -195,7 +195,7 @@ $boxes = get_field('template_jobs_sidebarBoxes');
 
                     if (!firstLoad) {
                         $('html,body').animate({
-                            scrollTop: $("#jobs-listing-header").offset().top
+                            scrollTop: $("#jobs-listing-header").offset().top - 125
                         }, 'slow');
                     }
                 }
