@@ -27,7 +27,7 @@
 
                         <?php if (has_post_thumbnail( $post->ID ) ): ?>
                             <a href="<?=get_permalink($post->ID)?>">
-                                <?= wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), "medium", "", ["class" => "box-shadow-1", "data-mh" => "news-image"] ) ?>
+                                <?= wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), array("450", "400"), "", ["class" => "box-shadow-1", "data-mh" => "news-image"] ) ?>
                             </a>
                         <?php else: ?>
                             <a href="<?=get_permalink($post->ID)?>">
@@ -37,7 +37,7 @@
 
                     </div>
 
-                    <div class="col col-12 <?=($block['content']['feeds'])? "md-col-7" : "md-col-9"?>">
+                    <div class="col col-12 <?=($block['content']['feeds'])? "md-col-7" : "md-col-9"?> px4">
 
                         <?php if ($block['content']['date'] == true): ?>
                             <p class="h6 mt2 sm-mb0 md-left bold sm-inline <?=$block['content']['txtColor']?>"><?=date('d M Y', strtotime($post->post_date));?></p>
