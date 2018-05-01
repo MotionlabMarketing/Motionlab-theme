@@ -74,7 +74,7 @@
                     </div>
                 <?php endforeach; ?>
 
-                <a href="/find-talent/" class="btn mt4 btn-small btn-outline">View all Talent</a>
+                <a href="/talents/" class="btn mt4 btn-small btn-outline">View all Talent</a>
 
             </div>
 
