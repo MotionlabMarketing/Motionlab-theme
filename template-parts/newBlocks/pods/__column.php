@@ -28,7 +28,7 @@
 
                             <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'">' : "")?>
 
-                                <?=wp_get_attachment_image($item['image'], array('700', ''), "", ["class" => ""]); ?>
+                                <figure class="ratio-3-2 m0 bg-center bg-cover" style="background-image:url('<?= wp_get_attachment_image_url($item['image'],'medium') ?>')"></figure>
 
                             <?=(!empty($item['button']['button_link']['url'])? '</a>' : "")?>
 
