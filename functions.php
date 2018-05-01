@@ -635,11 +635,6 @@ function ml_get_template() {
         return false;
 }
 
-function pa($value) {
-    print_r("<pre style='background-color: #f1f1f1; color: black; text-align: left; padding: 1rem;'>");
-    print_r($value);
-    print_r("</pre>");
-}
 
 /*==================================================================
 	Custom rewrite masking for news categories
@@ -757,6 +752,30 @@ add_action( 'admin_enqueue_scripts', 'ml_custom_admin_styles' );
  * ---------------------------------------------------------------------------------------------------------------------
  */
 
+// PRINT ALL FUNCTION
+function pa($value) {
+    print_r("<pre style='background-color: #f1f1f1; color: black; text-align: left; padding: 1rem;'>");
+    print_r($value);
+    print_r("</pre>");
+}
+
+// SHORTEN CONTENT TO NUMBER OF WORDS
+function shorten_string($string, $target) {
+    $retval = $string;
+
+    $string = preg_replace('/(?<=\S,)(?=\S)/', ' ', $string);
+    $string = str_replace("\n", " ", $string);
+    $array = explode(" ", $string);
+
+    if (count($array)<=$target) {
+        $retval = $string;
+    } else {
+        array_splice($array, $target);
+        $retval = implode(" ", $array)."...";
+    }
+    echo $retval;
+}
+
 // GET A MENU OBJECT BASED ON THE THEME LOCATION
 function ml_get_menu_object_by_location($location) {
     // GET THE LOCATIONS
@@ -769,7 +788,7 @@ function ml_get_menu_object_by_location($location) {
     return $menu = wp_get_nav_menu_object($menu_id);
 }
 
-//GET PARENT OF CURRENT PAGE
+// GET PARENT OF CURRENT PAGE
 function get_highest_most_parent($post) {
   if ($post->post_parent)	{
     $ancestors=get_post_ancestors($post->ID);

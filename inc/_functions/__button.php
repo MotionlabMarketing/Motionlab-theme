@@ -77,7 +77,7 @@ function get_render_button($data, $size = "btn-medium",  $classes = ["class" => 
             $btn['target'] = 'target="' . $data['button_link']['target'] . '"';
 
         // BUILD THE BUTTON.
-        $btn = '<a href="' . $data['button_link']['url'] . '" ' . $classes . ' data-function="__button">';
+        $btn = '<a href="' . $data['button_link']['url'] . '" ' . $classes . ' role="button" data-function="__button">';
 
         if (!empty($icon))
             $btn .= $icon;

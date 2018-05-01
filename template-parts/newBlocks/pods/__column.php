@@ -28,7 +28,7 @@
 
                             <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'">' : "")?>
 
-                                <?=wp_get_attachment_image($item['image'], array('700', ''), "", ["class" => ""]); ?>
+                                <?=wp_get_attachment_image($item['image'], array('700', '600'), "", ["class" => "", "data-mh" => "pod-image"]); ?>
 
                             <?=(!empty($item['button']['button_link']['url'])? '</a>' : "")?>
 
@@ -60,7 +60,7 @@
 
                         <?php endif; ?>
 
-                        <div class="<?=$block['pod']['textColor']?> <?=$block['pod']['textAlign']?>  py3 px3 mb2 js-match-height-alt">
+                        <div class="<?=$block['pod']['textColor']?> <?=$block['pod']['textAlign']?> py3 <?=($block['pod']['shadow'])? "px3" : ""?> mb2 js-match-height-alt">
 
                             <h3 class="mb2 brand-primary" style="font-size: 1.3rem" data-mh="pod-title">
 
