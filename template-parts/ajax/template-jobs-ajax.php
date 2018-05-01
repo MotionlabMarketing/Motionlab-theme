@@ -13,7 +13,7 @@
 
                 <div class="col col-12 lg-col-9 mb4">
 
-                    <a href="<?= get_permalink($post->ID) ?>"><h3 class="mb2 h3"><?= $post->post_title ?></h3>
+                    <a href="<?= get_permalink($post->ID) ?>"><h3 class="mb2 h3 brand-primary"><?= $post->post_title ?></h3>
                     </a>
 
                     <?php if(get_field('jobs_role_salary', $post->ID) != ''):

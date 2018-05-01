@@ -63,7 +63,7 @@ get_header();
 
             </div>
 
-            <div class="col col-12 md-col-4">
+            <div class="col col-12 md-col-4 p3 lg-p0 mt4">
 
                 <h4 class="h4"><?=get_field('jobs_role_sidebar_contentHeading')?></h4>
                 <?=get_field('jobs_role_sidebar_content')?>
@@ -72,27 +72,27 @@ get_header();
                 <?php $staff = get_field('jobs_role_sidebar_teamMember'); ?>
                 <?php if (!empty($staff[0]->ID)): ?>
                     <div class="mt4">
-                        <div class="col col-12 md-col-4 || pr4">
+                        <div class="col col-12 xl-col-4 || xl-pr4">
 
-                            <div class="image-holder img-top img-100 img-s10" style="background-image: url('<?=get_field('staff_profileImage', $staff[0]->ID)['sizes']['medium']?>');"></div>
+                            <div class="image-holder img-top square img-100 img-s10 mb3" style="background-image: url('<?=get_field('staff_profileImage', $staff[0]->ID)['sizes']['medium']?>');"></div>
 
                         </div>
 
-                        <div class="col col-12 md-col-8 md-mt4">
+                        <div class="col col-12 xl-col-8">
 
                             <p class="mb1"><strong>Speak to <?=get_field('staff_name', $staff[0]->ID)?></strong></p>
                             <p><?=get_field('staff_role', $staff[0]->ID)?></p>
 
                             <?php if (!empty(get_field('staff_phoneNumber', $staff[0]->ID))): ?>
-                                <p class="mb1">T: <a href="tel:<?=str_replace(" ", "", get_field('staff_phoneNumber', $staff[0]->ID)); ?>" class="bold"><?=get_field('staff_phoneNumber', $staff[0]->ID); ?></a></p>
+                                <p class="mb1">T: <a href="tel:<?=str_replace(" ", "", get_field('staff_phoneNumber', $staff[0]->ID)); ?>" class="bold brand-primary"><?=get_field('staff_phoneNumber', $staff[0]->ID); ?></a></p>
                             <?php endif; ?>
 
                             <?php if (!empty(get_field('staff_phoneMobile', $staff[0]->ID))): ?>
-                                <p class="mb1">M: <a href="tel:<?=str_replace(" ", "", get_field('staff_phoneMobile', $staff[0]->ID)); ?>" class="bold"><?=get_field('staff_phoneMobile', $staff[0]->ID); ?></a></p>
+                                <p class="mb1">M: <a href="tel:<?=str_replace(" ", "", get_field('staff_phoneMobile', $staff[0]->ID)); ?>" class="bold brand-primary"><?=get_field('staff_phoneMobile', $staff[0]->ID); ?></a></p>
                             <?php endif; ?>
 
                             <?php if (!empty(get_field('staff_emailAddress', $staff[0]->ID))): ?>
-                                <p class="mb1">E: <a href="mailto:<?=str_replace(" ", "", get_field('staff_emailAddress', $staff[0]->ID)); ?>" class="bold"><?=get_field('staff_emailAddress', $staff[0]->ID); ?></a></p>
+                                <p class="mb1">E: <a href="mailto:<?=str_replace(" ", "", get_field('staff_emailAddress', $staff[0]->ID)); ?>" class="bold brand-primary"><?=get_field('staff_emailAddress', $staff[0]->ID); ?></a></p>
                             <?php endif; ?>
 
                         </div>
