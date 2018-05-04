@@ -20,6 +20,17 @@ foreach (glob(get_template_directory() . "/inc/_functions/*.php") as $filename) 
     include $filename;
 }
 
+/**
+ * INCLUDE ALL CUSTOM THEME PHP PLUGINS.
+ *
+ * @added 3 May 2018
+ * @author Joe Curran
+ * @var  $filename
+ */
+foreach (glob(get_template_directory() . "/inc/plugins/*.php") as $filename) {
+    include $filename;
+}
+
 /*==================================================================
 UNDERSCORES STUFF
 ==================================================================*/

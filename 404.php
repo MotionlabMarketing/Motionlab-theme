@@ -12,7 +12,7 @@
 
         <p>This page may have been moved or removed from the site.</p>
 
-        <a href="#" class="btn btn-medium btn-brand-primary hover-bg-brand-primary white hover-white border-smoke mb4" role="button">Take me Home</a>
+        <a href="/" class="btn btn-medium btn-brand-primary hover-bg-brand-primary brand-primary hover-white mb4" role="button">Take me Home</a>
 
         <p class="opacity-4 grey">Your request has been logged for review!</p>
 

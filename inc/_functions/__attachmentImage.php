@@ -61,3 +61,40 @@ function get_render_attachment_image($imageID, $size = array('120', '120'), $ico
     return false;
 
 }
+
+
+/**
+ * GET IMAGE URL BY ID
+ * This function returns an image URL based on its ID number.
+ *
+ * @param $imageID
+ * @param array $size
+ * @param bool $icon
+ * @param array $attr
+ * @return bool|string
+ */
+
+function get_attachment_image_url($image_id) {
+
+    return wp_get_attachment_url( $image_id, 'full');
+
+}
+
+
+/**
+ * GET ATTACHMENT IMAGE RESIZE AND CROPPED
+ * This function returns an image URL which has been cropped to the
+ * passed size with/without crop.
+ *
+ * @param $imageID
+ * @param array $size
+ * @param bool $icon
+ * @param array $attr
+ * @return bool|string
+ */
+
+function resize_attachment_image($image_url, $width, $height, $crop) {
+
+    return aq_resize($image_url, $width, $height, $crop);
+
+}
