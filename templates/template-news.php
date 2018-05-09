@@ -164,7 +164,7 @@ get_header(); ?>
         //TODO: Move this into JS file
 
         function fetchNewsPosts(page_number, firstLoad = false) {
-console.log("HElp");
+
             //TODO: Add loader while fetching data.
             var order_filter = $('#news_orderby').val();
             var category_filter = $('#news_filtercats').val();

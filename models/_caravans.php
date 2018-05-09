@@ -12,11 +12,14 @@ Class _caravans extends CPTCore
 	private $block          = [];
 	private $makes_slug     = 'makes';
 	private $specs_slug     = 'specs';
+	private $specific_brand = null;
 
-	public function __construct() {
+	public function __construct($specific_brand = null) {
+
+		$this->specific_brand = $specific_brand;
 
 		$this->getCategories();
-		$this->fetchCaravans();
+		$this->fetchCaravans($this->specific_brand);
 
 	}
 
@@ -25,17 +28,20 @@ Class _caravans extends CPTCore
 		$make_terms                             = get_terms($this->makes_slug);
 		$specs_terms                            = get_terms($this->specs_slug);
 		$berth_options                          = $this->get_distinct_meta_values('caravan_details_berth');
+		$lowest_price                           = $this->get_lowest_prices($this->specific_brand);
 
 		$this->block['make_select_terms']       = $make_terms;
 		$this->block['specs_select_terms']      = $specs_terms;
 		$this->block['berth_select_options']    = $berth_options;
+		$this->block['lowest_price']            = $lowest_price;
 
 	}
 
-	private function fetchCaravans() {
+	private function fetchCaravans($specific_brand) {
 
 		$tax_query      = [];
 		$orderby_query  = [];
+		$brand_clause = [];
 
 		if(isset($_POST['sortby_age']) && $_POST['sortby_age'] != '') :
 			$orderby_query['age_clause']    = $_POST['sortby_age'];
@@ -47,6 +53,14 @@ Class _caravans extends CPTCore
 
 		if(isset($_POST['sortby_berth']) && $_POST['sortby_berth'] != '') :
 			$orderby_query['berth_clause']  = $_POST['sortby_berth'];
+		endif;
+
+		if($specific_brand != null) :
+			$brand_clause = array(
+                'key'           => 'caravan_details_make',
+	            'compare'       => '=',
+	            'value'         => $specific_brand
+            );
 		endif;
 
 		$args = array(
@@ -66,7 +80,8 @@ Class _caravans extends CPTCore
 	            'price_clause'  => array(
 	                'key'           => 'caravan_details_price',
 	                'compare'       => 'EXISTS',
-	            )
+	            ),
+	            "brand_clause"  => $brand_clause
 	        ),
 			'orderby'           => $orderby_query,
 			'post_status'       => array('publish'),
@@ -112,6 +127,27 @@ Class _caravans extends CPTCore
 	    ));
 
 	    return $result;
+	}
+
+	private function get_lowest_prices($meta_value) {
+
+		global $wpdb;
+
+		if($meta_value != null) {
+			$result = $wpdb->get_results($wpdb->prepare("
+	            SELECT DISTINCT meta_value FROM wp_postmeta WHERE meta_key = 'caravan_details_price' AND post_id IN (
+					SELECT post_id FROM wp_postmeta WHERE meta_key = 'caravan_details_make' AND meta_value = '%s'
+				) ORDER BY meta_value ASC LIMIT 1;
+		        ", $meta_value
+		    ));
+		} else {
+			$result = $wpdb->get_results($wpdb->prepare("
+				SELECT DISTINCT meta_value FROM wp_postmeta WHERE meta_key = 'caravan_details_price' LIMIT 1
+			"));
+		}
+
+	    return $result;
+
 	}
 
 	public function getBlock() {
