@@ -113,7 +113,6 @@ function render_buttons($data, $size, $classes = ["class" => "mb2 mr2"]) {
 
             if (!empty($button['buttons_button_link']))
                 $button = convert_buttons_key($button);
-
             $btn .= get_render_button($button, $size, $classes);
 
         }

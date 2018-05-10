@@ -38,11 +38,10 @@
             $query = new WP_Query($args);
             if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();  $image = get_field('image'); ?>
 
-
             <?php if ($i === 0): ?><div class="panel-holder"><?php endif; ?>
 
-                <a href="<?=$image['url']?>" class="col col-6 md-col-3 js-match-height p1" data-image="<?=$i?>">
-                    <img src="<?=$image['url']?>" class="js-match-height-alt" alt="<?=$image['alt']?>">
+                <a href="<?=resize_attachment_image($image['url'], 900, 700, true)?>" class="col col-6 md-col-3 p1" data-image="<?=$i?>">
+                    <img src="<?=resize_attachment_image($image['url'], 300, 250, true)?>" class="" alt="<?=$image['alt']?>">
                 </a>
 
             <?php $i++; if ($i > 7) { echo "</div>"; $i = 0; }?>

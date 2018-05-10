@@ -22,7 +22,7 @@
                 <div class="col-12 || mb5 || text-center">
 
                     <div class="col col-12 md-col-12 lg-col-12 || mb5 text-center">
-                        
+
                         <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}"); ?>
 
                         <?php render_wysiwyg("{$block['intro']}", "", ["class" => "regular"])?>
@@ -36,7 +36,7 @@
         <?php endif; ?>
 
 
-        <div class="container clearfix || gallery item-slider">
+        <div class="container clearfix || gallery item-slider px6">
 
             <div data-slick="galleryThin-slider">
 
@@ -59,8 +59,8 @@
                 $image = get_field('image');
                 ?>
 
-                <a href="<?=$image['url']?>" style="margin: 0 5px">
-                    <img src="<?=$image['url']?>" class="js-match-height" alt="">
+                <a href="<?=resize_attachment_image($image['url'], 900, 700, true)?>" style="margin: 0 5px">
+                    <img src="<?=resize_attachment_image($image['url'], 300, 250, true)?>" class="width-100" alt="<?=$image['alt']?>">
                 </a>
 
             <?php endwhile; endif; wp_reset_postdata(); ?>
