@@ -114,7 +114,6 @@ function render_buttons($data, $size, $classes = ["class" => "mb2 mr2"]) {
 
             if (!empty($button['buttons_button_link']))
                 $button = convert_buttons_key($button);
-
             $btn .= get_render_button($button, $size, $classes);
 
         }
@@ -137,7 +136,7 @@ function convert_buttons_key($arr) {
 
     foreach($arr as $key => $value) :
 
-        if(strpos($key, "buttons_")) :
+        if(strpos($key, "buttons_") !== false) :
             $arr[str_replace('buttons_', '', $key)] = $value;
             unset($arr[$key]);
         endif;

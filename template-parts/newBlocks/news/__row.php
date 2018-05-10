@@ -27,7 +27,7 @@
 
                         <?php if (has_post_thumbnail( $post->ID ) ): ?>
                             <a href="<?=get_permalink($post->ID)?>">
-                                <?= wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), array("450", "400"), "", ["class" => "box-shadow-1", "data-mh" => "news-image"] ) ?>
+                                <img src="<?=resize_attachment_image(wp_get_attachment_image_url(get_post_thumbnail_id( $post->ID )), 450, 350, true)?>" data-mh="news-image">
                             </a>
                         <?php else: ?>
                             <a href="<?=get_permalink($post->ID)?>">
@@ -78,11 +78,11 @@
         </div>
 
         <?php if ($block['content']['feeds'] == true): ?>
-        
+
             <div class="col col-12 md-col-<?=$block['content']['cols'][1]?> p2 js-height-match">
 
                 <div class="twitter mb4 border-bottom border-light pb4 <?=$block['content']['txtColor']?>">
-                    
+
                     <h4 class="h3">Twitter <span class="brand-primary h5 ml1"><a href="https://twitter.com/<?=$block['content']['profiles']['twitter']?>">@<?=$block['content']['profiles']['twitter']?></a></span></h4>
 
                     <?= do_shortcode('[custom-twitter-feeds]'); ?>

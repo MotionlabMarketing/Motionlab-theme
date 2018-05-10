@@ -26,9 +26,9 @@
 
                         <?php if ($item['type'] == "image"): ?>
 
-                            <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'">' : "")?>
+                            <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'" class="block overflow-hidden hover-zoom">' : "")?>
 
-                                <figure class="ratio-3-2 m0 bg-center bg-cover" style="background-image:url('<?= wp_get_attachment_image_url($item['image'],'medium') ?>')"></figure>
+                                <figure class="ratio-3-2 m0 bg-center bg-cover zoom" style="background-image:url('<?= wp_get_attachment_image_url($item['image'],'medium') ?>')"></figure>
 
                             <?=(!empty($item['button']['button_link']['url'])? '</a>' : "")?>
 
