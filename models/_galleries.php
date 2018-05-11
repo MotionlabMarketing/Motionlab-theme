@@ -5,7 +5,7 @@
  * Date: 01/03/18
  * Time: 11:57
  */
-Class _galleries extends CPTCore
+Class _galleries
 {
 
 	public $enabled = true;
