@@ -132,7 +132,7 @@ endif; ?>
 
                     <?php endif; ?>
 
-                </div>[data-element=error404] .btn
+                </div>
 
             </div>
 
