@@ -12,7 +12,7 @@
 <?php foreach($testimonials['posts']->posts as $post) : ?>
     <div class="col col-4 || grid-item">
 
-        <div class="m2 || border border-smoke">
+        <div class="m3 || border border-smoke bg-smoke box-shadow-2">
 
             <div class="content || p3 pb0 px4">
 
@@ -26,7 +26,7 @@
                 <div class="author bold">
 
                     <p class="block h6 mb0"><?=get_field('reviewer_name', $post->ID)?></p>
-                    <p class="block h6 mb0"><?=get_field('reviewer_locations', $post->ID)?></p>
+                    <p class="block h6 mb2"><?=get_field('reviewer_locations', $post->ID)?></p>
 
                 </div>
 
