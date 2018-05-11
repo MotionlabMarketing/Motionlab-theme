@@ -18,7 +18,7 @@ get_header(); ?>
 
     <div class="container">
 
-        <div class="col col-12 md-col-12 lg-col-12 || mb5 text-center">
+        <div class="col col-12 md-col-12 lg-col-12 mb5 text-center">
 
             <?php $heading = convert_heading($blockTitle); ?>
             <?php render_heading("{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}"); ?>
@@ -28,29 +28,30 @@ get_header(); ?>
         </div>
 
 
-        <div class="col col-12 md-col-12 lg-col-12 || mb5 bg-smoke">
+        <div class="col col-12 md-col-12 lg-col-12 || mb6 bg-smoke">
 
             <?php $latest_post = array_shift($block['posts']->posts); ?>
-            <div class="col col-12 md-col-6 || px4 md-p5 left md-right || flex items-center justify-center">
+            <div class="col col-12 md-col-6 px4 md-p5 left md-right flex items-center justify-center">
 
-                <?php if (has_post_thumbnail($latest_post->ID)): ?>
-                    <?php $image_url = wp_get_attachment_image(get_post_thumbnail_id($latest_post->ID), "large", "", ["class" => "box-shadow-1"]) ?>
-                <?php else: ?>
-                    <?php $image_url = get_field('fallback_placeholder_image', 'option'); // TODO: Default Image ?>
-                <?php endif; ?>
+                <?php
+                if (has_post_thumbnail($latest_post->ID)){
+                    $image_url = get_attachment_image_url(get_post_thumbnail_id($latest_post->ID));
+                } else {
+                    $image_url = get_field('fallback_placeholder_image', 'option');
+                }?>
 
                 <a href="<?= get_permalink($latest_post->ID) ?>">
-                    <?= $image_url ?>
+                    <img src="<?=resize_attachment_image($image_url, 600, 400, true)?>" alt="<?=$latest_post->post_title?>">
                 </a>
 
             </div>
 
 
-            <div class="col col-12 md-col-6 || relative p4 md-p5 right md-left">
+            <div class="col col-12 md-col-6 relative p4 md-p5 right md-left">
 
-                <p class="left || pt2 h5"><?= date('d M Y', strtotime($latest_post->post_date)); ?></p>
+                <p class="left pt2 h5"><?= date('d M Y', strtotime($latest_post->post_date)); ?></p>
 
-                <ul class="mt2 tags tags-right border-radius">
+                <ul class="mt1 tags tags-right border-radius">
                     <?php foreach ($latest_post->categories as $category) : ?>
                         <li><a href="<?= $category->slug ?>"><?= $category->name ?></a></li>
                     <?php endforeach; ?>
@@ -63,9 +64,9 @@ get_header(); ?>
 
                 </a>
 
-                <p><?= strlen($latest_post->post_excerpt) > 1 ? $latest_post->post_excerpt : substr($latest_post->post_content, 0, 100); ?></p>
+                <p><?= strlen($latest_post->post_excerpt) > 1 ? $latest_post->post_excerpt : shorten_string($latest_post->post_content, 55); ?></p>
 
-                <a href="<?= get_permalink($latest_post->ID) ?>" class="bottom-2 mt4 h5">Read full story</a>
+                <a href="<?= get_permalink($latest_post->ID) ?>" class="btn btn-primary border-primary btn-medium mt4 h5">Read full story</a>
 
             </div>
 
@@ -113,45 +114,9 @@ get_header(); ?>
 
         <div id="news-listing" class="mb4">
 
-            <?php foreach ($block['posts']->posts as $post) : ?>
-
-                <?php if (has_post_thumbnail($post->ID)): ?>
-                    <?php $image_url = wp_get_attachment_image_url(get_post_thumbnail_id($post->ID), "large", "") ?>
-                <?php else: ?>
-                    <?php $image_url = "/wp-content/themes/motionlab-theme/assets/img/placeholder.jpg" ?>
-                <?php endif; ?>
-
-                <div class="col col-12 sm-col-6 md-col-3 lg-col-3 p4 js-match-height">
-
-                    <p class="h6 mb2" data-mh="post-date"><?= date('d M Y', strtotime($post->post_date)); ?></p>
-
-                    <a href="<?= get_permalink($post->ID) ?>"><h3 class="h4 brand-primary"
-                                                     data-mh="post-title"><?= $post->post_title ?></h3></a>
-
-                    <a href="<?= get_permalink($post->ID) ?>">
-                        <div class="image-holder square img-cover img-center || mb4"
-                             style="background-image: url('<?= $image_url ?>');"></div>
-                    </a>
-
-                    <p class="h5 mb3"
-                       data-mh="post-content"><?= strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr($post->post_content, 0, 100); ?></p>
-
-                    <a href="<?= get_permalink($post->ID) ?>" class="block mb4 || h5 bold">Read full story</a>
-
-                    <ul class="tags border-radius" data-mh="post-tags">
-                        <?php foreach ($post->categories as $category) : ?>
-                            <li><a href="<?= $category->slug ?>"><?= $category->name ?></a></li>
-                        <?php endforeach; ?>
-                    </ul>
-
-                </div>
-            <?php endforeach;
-            $page = 1; ?>
-
-            <?php include(BLOCKS_DIR . '_parts/__basic_pagination.php'); ?>
+            <?php include_once(AJAX_DIR . 'template-news-ajax.php'); ?>
 
         </div>
-
 
     </div>
 
@@ -183,14 +148,14 @@ get_header(); ?>
 
                     if (!firstLoad) {
                         $('html,body').animate({
-                            scrollTop: $("#news-listing-header").offset().top
+                            scrollTop: $("#news-listing-header").offset().top - $('header').height() - $('#news-listing-header').height()
                         }, 'slow');
                     }
                 },
                 complete: function () {
                     setTimeout(function () {
 
-                        $.fn.matchHeight._apply('.js-match-height');
+                        $.fn.matchHeight._apply('[data-mh="post"]');
                         $.fn.matchHeight._apply('[data-mh="post-title"]');
                         $.fn.matchHeight._apply('[data-mh="post-tags"]');
                         $.fn.matchHeight._apply('[data-mh="post-content"]');
