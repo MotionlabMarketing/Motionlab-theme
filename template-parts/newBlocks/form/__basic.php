@@ -10,7 +10,7 @@
  */
 
 ?>
-<section <?=get_blockID($block)?> <?=get_blockClasses($block, "")?> <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "overflow-hidden")?> <?=get_blockData($block)?>>
 
     <div class="container">
 

@@ -45,7 +45,7 @@ Class CPTProduct extends CPTCore{
 			'yarpp_support'       => true,
 			'publicly_queryable'  => true,
 			'capability_type'     => 'page',
-			'menu_icon'           => 'dashicons-store'
+			'menu_icon'           => 'dashicons-cart'
 		);
 
 		register_post_type( 'products', $args );
