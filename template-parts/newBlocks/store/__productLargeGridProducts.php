@@ -15,8 +15,6 @@
 
 $selected_products = get_sub_field('block_store_products');
 
-pa($selected_products);
-
 ?>
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "")?> <?=get_blockData($block)?>>
