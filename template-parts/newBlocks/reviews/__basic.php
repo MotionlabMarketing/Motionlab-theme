@@ -23,11 +23,7 @@ $blockTitle  = $block['title'];
     <?php foreach($block['posts']->posts as $post) : ?>
             <div class="col col-12 md-col-4 text-center">
 
-                <div class="p3">
-
-                    <div class="mb4">
-                        <?= get_stars(get_field('star_rating', $post->ID)) ?>
-                    </div>
+                <div class="p3" data-mh="testimonal">
 
                     <div class="wysiwyg mb3 mx5" data-mh="quote">
                         <?= get_field('reviewer_body', $post->ID); ?>
