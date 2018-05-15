@@ -7404,6 +7404,8 @@ jQuery(document).ready(function ($) {
         draggable: false,
         pauseOnHover: false,
         mobileFirst: false,
+        prevArrow: '<button type="button" class="slick-prev fa fa-chevron-right"></button>',
+        nextArrow: '<button type="button" class="slick-next fa fa-chevron-next"></button>',
         responsive: [
             {
                 breakpoint: 1200,
