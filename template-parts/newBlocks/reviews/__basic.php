@@ -21,22 +21,24 @@ $blockTitle  = $block['title'];
     <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
     <?php foreach($block['posts']->posts as $post) : ?>
-            <div class="col col-12 md-col-4 text-center">
 
-                <div class="p3" data-mh="testimonal">
+        <div class="col col-12 md-col-6 lg-col-4 mt5 px2 text-center">
 
-                    <div class="wysiwyg mb3 mx5" data-mh="quote">
-                        <?= get_field('reviewer_body', $post->ID); ?>
-                    </div>
+            <div class="p5 bg-smoke" data-mh="testimonial">
 
-                    <hr class="my4">
-
-                    <h3 class="h4 brand-primary text-center mb1" data-mh="author"><?= get_field('reviewer_name', $post->ID) ?></h3>
-                    <p class="text-center" data-mh="location"><?=get_field('reviewer_locations', $post->ID)?></p>
-
+                <div class="wysiwyg mb3 mx5" data-mh="quote">
+                    <?= get_field('reviewer_body', $post->ID); ?>
                 </div>
 
+                <hr class="my4">
+
+                <h3 class="h4 brand-primary text-center mb1"><?= get_field('reviewer_name', $post->ID) ?></h3>
+
+                <p class="text-center mb0"><?=get_field('reviewer_locations', $post->ID)?></p>
+
             </div>
+
+        </div>
 
     <?php endforeach; ?>
 
