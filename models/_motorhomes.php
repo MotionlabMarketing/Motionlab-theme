@@ -5,21 +5,21 @@
  * Date: 01/03/18
  * Time: 11:57
  */
-Class _caravans
+Class _motorhomes
 {
 
 	public $enabled         = true;
 	private $block          = [];
 	private $makes_slug     = 'makes';
 	private $specs_slug     = 'specs';
-	private $specific_model = null;
+	private $specific_brand = null;
 
-	public function __construct($specific_model = null) {
+	public function __construct($specific_brand = null) {
 
-		$this->specific_model = $specific_model;
+		$this->specific_brand = $specific_brand;
 
 		$this->getCategories();
-		$this->fetchCaravans($this->specific_model);
+		$this->fetchMotorhomes($this->specific_brand);
 
 	}
 
@@ -27,7 +27,7 @@ Class _caravans
 
 		$make_terms                             = get_terms($this->makes_slug);
 		$specs_terms                            = get_terms($this->specs_slug);
-		$berth_options                          = $this->get_distinct_meta_values('caravan_details_berth');
+		$berth_options                          = $this->get_distinct_meta_values('motorhome_details_berth');
 		$lowest_price                           = $this->get_lowest_prices($this->specific_brand);
 
 		$this->block['make_select_terms']       = $make_terms;
@@ -37,11 +37,11 @@ Class _caravans
 
 	}
 
-	private function fetchCaravans($specific_model) {
+	private function fetchMotorhomes($specific_brand) {
 
 		$tax_query      = [];
 		$orderby_query  = [];
-		$model_clause = [];
+		$brand_clause = [];
 
 		if(isset($_POST['sortby_age']) && $_POST['sortby_age'] != '') :
 			$orderby_query['age_clause']    = $_POST['sortby_age'];
@@ -55,44 +55,44 @@ Class _caravans
 			$orderby_query['berth_clause']  = $_POST['sortby_berth'];
 		endif;
 
-		if($specific_model != null) :
-			$model_clause = array(
-                'key'           => 'caravan_details_model',
+		if($specific_brand != null) :
+			$brand_clause = array(
+                'key'           => 'motorhome_details_make',
 	            'compare'       => '=',
-	            'value'         => $specific_model
+	            'value'         => $specific_brand
             );
 		endif;
 
 		$args = array(
 			'posts_per_page'    => 8,
 			'paged'             => $_POST['page_number'] ?: 1,
-			'post_type'         => 'caravans',
+			'post_type'         => 'motorhomes',
 			'meta_query'        => array(
 	            'relation'      => 'AND',
 	            'berth_clause'  => array(
-	                'key'           => 'caravan_details_berth',
+	                'key'           => 'motorhome_details_berth',
 	                'compare'       => 'EXISTS',
 	            ),
 	            'age_clause'    => array(
-	                'key'           => 'caravan_details_build_year',
+	                'key'           => 'motorhome_details_build_year',
 	                'compare'       => 'EXISTS',
 	            ),
 	            'price_clause'  => array(
-	                'key'           => 'caravan_details_price',
+	                'key'           => 'motorhome_details_price',
 	                'compare'       => 'EXISTS',
 	            ),
-	            "model_clause"  => $model_clause
+	            "brand_clause"  => $brand_clause
 	        ),
 			'orderby'           => $orderby_query,
 			'post_status'       => array('publish'),
 			'tax_query'         => $tax_query
 		);
 
-		$caravans = new WP_Query($args);
+		$motorhomes = new WP_Query($args);
 
-		//Fetch gallery images for this caravan.
-		foreach($caravans->posts as $post) :
-			$collection_id = get_field('caravan_details_showcase', $post->ID);
+		//Fetch gallery images for this motorhome.
+		foreach($motorhomes->posts as $post) :
+			$collection_id = get_field('motorhome_details_showcase', $post->ID);
 
 			$post->showcase_image = [];
 			if(!empty($collection_id)) :
@@ -111,7 +111,7 @@ Class _caravans
 			endif;
 		endforeach;
 
-		$this->block['posts'] = $caravans;
+		$this->block['posts'] = $motorhomes;
 	}
 
 	private function get_distinct_meta_values($meta_key){
@@ -134,15 +134,14 @@ Class _caravans
 		global $wpdb;
 
 		if($meta_value != null) {
-			pa($meta_value);
 			$result = $wpdb->get_results($wpdb->prepare("
-	            SELECT DISTINCT meta_value FROM wp_postmeta WHERE meta_key = 'caravan_details_price' AND post_id IN (
-					SELECT post_id FROM wp_postmeta WHERE meta_key = 'caravan_details_model' AND meta_value = '%s'
+	            SELECT DISTINCT meta_value FROM wp_postmeta WHERE meta_key = 'motorhome_details_price' AND post_id IN (
+					SELECT post_id FROM wp_postmeta WHERE meta_key = 'motorhome_details_make' AND meta_value = '%s'
 				) ORDER BY meta_value ASC LIMIT 1;
 		        ", $meta_value
 		    ));
 		} else {
-			$result = $wpdb->get_results("SELECT DISTINCT meta_value FROM wp_postmeta WHERE meta_key = 'caravan_details_price' LIMIT 1");
+			$result = $wpdb->get_results("SELECT DISTINCT meta_value FROM wp_postmeta WHERE meta_key = 'motorhome_details_price' LIMIT 1");
 		}
 
 	    return $result;

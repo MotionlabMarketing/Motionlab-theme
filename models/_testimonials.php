@@ -5,7 +5,7 @@
  * Date: 01/03/18
  * Time: 11:57
  */
-Class _testimonials extends CPTCore
+Class _testimonials
 {
 
 	public $enabled = true;

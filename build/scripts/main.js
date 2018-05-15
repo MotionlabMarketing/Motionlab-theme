@@ -545,9 +545,10 @@ jQuery(document).ready(function ($) {
 
     $('[data-toggle="popover"]').webuiPopover({
         trigger: 'hover',
-        animation: 'pop'
+        animation: 'pop',
+        placement:'top',
+        width: 360,
     });
-
 
     /*======================================================
     COLLAPSE / ACCORDION

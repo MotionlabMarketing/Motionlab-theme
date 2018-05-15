@@ -118,11 +118,13 @@ endif; ?>
 
                     <?php render_wysiwyg($banner['content'], false, ["class" => "md-h3 "]) ?>
 
-                    <div class="mt4">
+                    <?php if ($banner['buttons']): ?>
+                        <div class="mt4">
 
-                        <?php render_buttons($banner['buttons'], "medium"); ?>
+                            <?php render_buttons($banner['buttons'], "medium"); ?>
 
-                    </div>
+                        </div>
+                    <?php endif; ?>
 
                     <?php if (!empty($banner['logos']['after']['url'])): ?>
 

@@ -17,10 +17,12 @@ $borders          = "";
 $bordersColor     = get_sub_field($current . '_borders_border_colour');
 $bordersSides     = get_sub_field($current . '_borders_border_sides');
 
-foreach ($bordersSides as $item) {
-    $borders = $borders . " " . $item;
+if (!empty($bordersSides)) {
+    foreach ($bordersSides as $item) {
+        $borders = $borders . " " . $item;
+    }
 }
-$borders          = "||" . $borders . " " . $bordersColor;
+$borders    = $borders . " " . $bordersColor;
 
 $blockTitle = get_sub_field($current . '_title_title');
 
@@ -61,10 +63,12 @@ $blockItems = $blockItems['logos'];
 
     <div class="col-12 flex justify-center flex-wrap">
 
-        <?php foreach ($block['logos'] as $logo): ?>
+        <?php foreach ($block['logos'] as $logo):?>
 
             <div class="col px4 mb3 col-6 md-col-3 sm-col-4 lg-col-2 flex items-center justify-center">
-                <?=wp_get_attachment_image($logo['ID'], "large", "", ["class" => "block mx-auto"]);?>
+
+                <img src="<?=resize_attachment_image(get_attachment_image_url($logo['ID']), 320, 320, false)?>" alt="<?=$logo['name']?>">
+
             </div>
 
         <?php endforeach; ?>

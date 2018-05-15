@@ -90,7 +90,6 @@ function get_render_button($data, $size = "btn-medium",  $classes = ["class" => 
     }
 
     return false;
-
 }
 
 /**
@@ -120,7 +119,6 @@ function render_buttons($data, $size, $classes = ["class" => "mb2 mr2"]) {
     }
 
     echo $btn;
-
 }
 
 /**
@@ -143,20 +141,25 @@ function convert_buttons_key($arr) {
 
     endforeach;
 
-    foreach($arr as $index => $array) :
+    foreach($arr as $index => $array):
 
-        foreach($array as $key => $value) :
-            if(strpos($key, "button_button_") !== false) :
-                $array[str_replace('button_button_', 'button_', $key)] = $value;
-                unset($array[$key]);
-            endif;
-            $arr[$index] = $array;
+        if (is_array($array)):
 
-            if ($key == "button_system_text_colours" || $key == "button_system_background_colours"):
-                $array[str_replace('button_', '', $key)] = $value;
-                unset($array[$key]);
-            endif;
-        endforeach;
+            foreach($array as $key => $value):
+                if(strpos($key, "button_button_") !== false) :
+                    $array[str_replace('button_button_', 'button_', $key)] = $value;
+                    unset($array[$key]);
+                endif;
+
+                $arr[$index] = $array;
+
+                if ($key == "button_system_text_colours" || $key == "button_system_background_colours"):
+                    $array[str_replace('button_', '', $key)] = $value;
+                    unset($array[$key]);
+                endif;
+            endforeach;
+
+        endif;
 
     endforeach;
 
