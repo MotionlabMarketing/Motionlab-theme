@@ -23,7 +23,7 @@ $selected_products = get_sub_field('block_store_products');
 
         <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-        <div class="clearfix col-12 mxn2">
+        <div class="clearfix col-12">
 
             <?php if ($block['enable_tabs']): ?>
 
@@ -45,7 +45,7 @@ $selected_products = get_sub_field('block_store_products');
 
                         <?php $i = 0; foreach ($block['tabs'] as $tab): ?>
 
-                            <section id="tab<?=$i?>" class="clearfix <?=($i > 0)? 'hide' : '' ?>" style="max-height: 70vh">
+                            <section id="tab<?=$i?>" class="clearfix <?=($i > 0)? 'hide' : '' ?>">
 
                                 <?php
 
@@ -59,48 +59,52 @@ $selected_products = get_sub_field('block_store_products');
                                         $specs  = array_slice(get_field($prefix.'_details_specifications', $cotm->ID), 0, 4);
                                 ?>
 
-                                <div class="col col-12 md-col-5 relative" data-mh="product-size-tab<?=$i?>">
+                                <div class="col col-12 md-col-5 relative">
 
-                                        <div class="product-item p4 mr3 text-center mb4 ml2 box-shadow-2">
+                                        <div class="product-item p4 mr3 text-center mb4 ml2 box-shadow-2 flex items-center" data-mh="product-size-tab<?=$i?>">
 
-                                            <?=render_attachment_image("8200", ['180', '300'], false,  ["class" => "mt5 mb5 mx-auto"])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
+                                            <div>
 
-                                            <div class="flex items-center justify-center">
-                                                <?=render_attachment_image("8199", "large", false,  ["class" => "mb4"])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
+                                                <?=render_attachment_image("8200", ['180', '300'], false,  ["class" => "mt5 mb5 mx-auto"])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
+
+                                                <div class="flex items-center justify-center">
+                                                    <?=render_attachment_image("8199", "large", false,  ["class" => "mb4"])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
+                                                </div>
+
+                                                <h3><?=$title?></h3>
+
+                                                <?php if (!empty($specs)): ?>
+
+                                                  <ul class="list-reset border-last-right-none">
+                                                      <?php foreach($specs as $spec) : ?>
+                                                          <li class="inline border-right px2"><?=get_term($spec)->name?></li>
+                                                      <?php endforeach; ?>
+                                                  </ul>
+
+                                                <?php endif; ?>
+
+                                                <p><strong><span class="brand-primary h2">£<?=number_format($price)?></span></strong></p>
+
+                                                <?php
+
+                                                $button['button_link']['url']        = get_permalink($cotm->ID);
+                                                $button['button_link']['title']      = "View " . ucwords($prefix);
+                                                $button['system_text_colours']       = "white";
+                                                $button['system_background_colours'] = "transparent";
+
+                                                ?>
+
+                                                <?php render_button($button, "medium", ["class" => "bold bg-brand-secondary hover-white", "style" => "margin-bottom: 1.3rem"]) ?>
+
                                             </div>
-
-                                            <h3><?=$title?></h3>
-
-                                            <?php if (!empty($specs)): ?>
-
-                                              <ul class="list-reset border-last-right-none">
-                                                  <?php foreach($specs as $spec) : ?>
-                                                      <li class="inline border-right px2"><?=get_term($spec)->name?></li>
-                                                  <?php endforeach; ?>
-                                              </ul>
-
-                                            <?php endif; ?>
-
-                                            <p><strong><span class="brand-primary h2">£<?=number_format($price)?></span></strong></p>
-
-                                            <?php
-
-                                            $button['button_link']['url']        = get_permalink($cotm->ID);
-                                            $button['button_link']['title']      = "View " . ucwords($prefix);
-                                            $button['system_text_colours']       = "white";
-                                            $button['system_background_colours'] = "transparent";
-
-                                            ?>
-
-                                            <?php render_button($button, "medium", ["class" => "bold bg-brand-secondary hover-white", "style" => "margin-bottom: 1.3rem"]) ?>
 
                                         </div>
 
                                 </div>
 
-                                <div class="col col-12 md-col-7 mrn2" data-mh="product-size-tab<?=$i?>" style="max-height: 70vh">
+                                <div class="col col-12 md-col-7" data-mh="product-size-tab<?=$i?>">
 
-                                    <?php foreach($selected_products[$i]['items'] as $selected_product): ?>
+                                    <?php $a = 0; foreach($selected_products[$i]['items'] as $selected_product): ?>
 
                                         <?php
                                             $prefix = $selected_product->post_type == 'caravans' ? 'caravan' : 'motorhome';
@@ -110,11 +114,11 @@ $selected_products = get_sub_field('block_store_products');
                                             $berth  = get_field($prefix.'_details_berth', $selected_product->ID);
                                         ?>
 
-                                        <div class="col col-12 sm-col-6 md-col-4 pl3 pr3 mb5">
+                                        <div class="col col-12 sm-col-6 md-col-4 pl3 pr3 <?=($a < 3)? "mb5" : ""?>">
 
                                             <div class="product-item col p4 text-center box-shadow-2" data-mh="product-item">
 
-                                                <h3 class="h4 bold" data-mh="<?=$block['id']?>-title"><?=$title?></h3>
+                                                <h3 class="h4 bold" data-mh="title"><?=$title?></h3>
 
                                                 <div class="flex items-center justify-center" data-mh="product-item-image">
                                                     <?=render_attachment_image("8199", "medium", false,  ["class" => ""])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
@@ -140,7 +144,7 @@ $selected_products = get_sub_field('block_store_products');
 
                                         </div>
 
-                                    <?php endforeach; ?>
+                                    <?php $a++; endforeach; ?>
                                 </div>
 
                             </section>
