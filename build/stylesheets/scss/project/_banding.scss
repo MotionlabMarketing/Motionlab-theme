@@ -2614,7 +2614,9 @@ hr.border-5 {
 
 
 /**
- * GRAVITY FORMS
+ * ---------------------------------------------------------------------------------------------------------------------
+ * GRAVITY FORMS TODO: Needs a little clean up and reorder!
+ * ---------------------------------------------------------------------------------------------------------------------
  */
 
 $formAccent: #e2e2e2;
@@ -2658,10 +2660,6 @@ $formAccent: #e2e2e2;
     margin: 1rem 0 0 0;
   }
 
-  .validation_message {
-
-  }
-
   .gform_fields,
   .gform_body {
 
@@ -2698,7 +2696,7 @@ $formAccent: #e2e2e2;
       width: 100%;
       border: none;
       display: block;
-      margin: 0.8rem 0;
+      margin: 0 0 2.2rem;
       border-radius: 6px;
       color: $brand-black;
       padding: 0.3rem 0.8rem;
@@ -2707,22 +2705,23 @@ $formAccent: #e2e2e2;
 
     .ginput_container {
       width: 100%;
+      clear: both;
       color: $brand-black;
     }
 
     .gsection_title {
       width: 100%;
       font-size: 1.2rem;
-      padding: 0 0 0.5rem 0;
       margin: 1rem 0 0 0;
+      padding: 0 0 0.5rem 0;
       color: $brand-primary;
       border-bottom: 2px solid $formAccent;
     }
 
     .ginput_complex {
-      width: calc(100% + 1rem);
       display: flex;
-      margin: 0 -0.5rem 1rem -0.5rem;
+      width: calc(100% + 1rem);
+      margin: 0 -0.5rem 0 -0.5rem;
 
       span {
         flex-grow: 1;
@@ -2731,10 +2730,7 @@ $formAccent: #e2e2e2;
     }
 
     .ginput_complex {
-      // .ginput_container_date
       padding: 0.5rem 0;
-      border-top: 2px solid $formAccent;
-      border-bottom: 2px solid $formAccent;
 
       .ginput_container_date {
         border: none;
@@ -2769,6 +2765,11 @@ $formAccent: #e2e2e2;
       }
     }
 
+    .ginput_container_phone,
+    .ginput_container_email {
+      width: 100%;
+    }
+
     .gfield_error {
       padding-top: 0.5rem;
       border: 2px solid $brand-primary;
@@ -2784,9 +2785,17 @@ $formAccent: #e2e2e2;
       flex-wrap: initial;
     }
 
-    .ginput_container_phone,
-    .ginput_container_email {
-      width: 100%;
+
+    .gfield_radio,
+    .gfield_checkbox {
+      label {
+        margin-top: 0;
+        color: $brand-base;
+
+        a {
+          color: $brand-base;
+        }
+      }
     }
 
     .gfield_checkbox {
@@ -2806,14 +2815,14 @@ $formAccent: #e2e2e2;
 
     .gfield_radio {
       margin: 0;
+      border: 0;
+      padding: 0;
 
-      li[class^="gchoice_"] {
+      li[class^="gchoice_"],
+      li[id^="label_"] {
         display: flex;
+        margin-bottom: 0;
         flex-wrap: initial;
-
-        label {
-          margin-top: 0;
-        }
       }
     }
   }
@@ -2829,6 +2838,7 @@ $formAccent: #e2e2e2;
       font-size: 1rem;
       cursor: pointer;
       margin-bottom: 0;
+      width: auto;
       border-radius: 6px;
       color: $brand-white;
       padding: .7rem 2rem;
