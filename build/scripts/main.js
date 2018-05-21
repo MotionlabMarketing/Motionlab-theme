@@ -646,6 +646,15 @@ jQuery(document).ready(function ($) {
         midClick: true
     });
 
+    $('.model-youtube, .model-vimeo, .model-gmaps, .model-video').magnificPopup({
+        disableOn: 700,
+        type: 'iframe',
+        mainClass: 'mfp-fade',
+        removalDelay: 160,
+        preloader: true,
+        fixedContentPos: false
+    });
+
     $('.gallery').magnificPopup({
         delegate: 'a',
         type:'image',
