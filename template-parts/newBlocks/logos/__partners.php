@@ -67,7 +67,7 @@ $blockItems = $blockItems['logos'];
 
             <div class="col px4 mb3 col-6 md-col-3 sm-col-4 lg-col-2 flex items-center justify-center">
 
-                <img src="<?=resize_attachment_image(get_attachment_image_url($logo['ID']), 320, 320, false)?>" alt="<?=$logo['name']?>">
+                <img src="<?=get_attachment_image_url($logo['ID'])?>" alt="<?=$logo['name']?>">
 
             </div>
 
@@ -77,4 +77,3 @@ $blockItems = $blockItems['logos'];
     <?= ($block['grid'] == 'container') ? '</div>' : "" ?>
 
 </section>
-
