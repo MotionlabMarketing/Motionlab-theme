@@ -37,11 +37,10 @@ UNDERSCORES STUFF
 
 if ( ! function_exists( 'motionlabtheme_setup' ) ) :
 	function motionlabtheme_setup() {
+
 		load_theme_textdomain( 'motionlabtheme', get_template_directory() . '/languages' );
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'title-tag' );
-
-
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
@@ -61,13 +60,13 @@ if ( ! function_exists( 'motionlabtheme_setup' ) ) :
 			'caption',
 		) );
 	}
+
 endif;
 add_action( 'after_setup_theme', 'motionlabtheme_setup' );
 
 /*==================================================================
 CUSTOM POST TYPE REGISTRATION CONTROLLER
 ==================================================================*/
-
 add_action('init', 'ml_register_custom_post_types', 0);
 function ml_register_custom_post_types() {
 	include_once(CONTROLLERS_DIR . 'CPTController.php');
@@ -228,7 +227,7 @@ function custom_widgets_init() {
     register_sidebar( array(
         'name'          => 'Footer Column 1',
         'id'            => 'footer_column_1',
-        'before_widget' => '<div class="footer-menu relative">',
+        'before_widget' => '<div class="footer-menu relative mb5">',
         'after_widget'  => '</div>',
         'before_title'  => '<h4 class="mb4">',
         'after_title'   => '</h4>',

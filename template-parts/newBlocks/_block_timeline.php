@@ -12,7 +12,7 @@
 
 $layout = get_sub_field($current . '_layout');
 
-switch ($team_layout):
+switch ($layout):
     case "basic":
         include('timelines/__basic.php');
         break;
@@ -20,4 +20,3 @@ switch ($team_layout):
         include('timelines/__basic.php');
         break;
 endswitch;
-

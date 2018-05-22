@@ -357,6 +357,8 @@ jQuery(document).ready(function ($) {
         draggable: false,
         pauseOnHover: false,
         mobileFirst: false,
+        prevArrow: '<button type="button" class="slick-prev fa fa-chevron-right"></button>',
+        nextArrow: '<button type="button" class="slick-next fa fa-chevron-next"></button>',
         responsive: [
             {
                 breakpoint: 1200,
@@ -543,9 +545,10 @@ jQuery(document).ready(function ($) {
 
     $('[data-toggle="popover"]').webuiPopover({
         trigger: 'hover',
-        animation: 'pop'
+        animation: 'pop',
+        placement:'top',
+        width: 360,
     });
-
 
     /*======================================================
     COLLAPSE / ACCORDION
@@ -641,6 +644,15 @@ jQuery(document).ready(function ($) {
     $('.model').magnificPopup({
         type:'inline',
         midClick: true
+    });
+
+    $('.model-youtube, .model-vimeo, .model-gmaps, .model-video').magnificPopup({
+        disableOn: 700,
+        type: 'iframe',
+        mainClass: 'mfp-fade',
+        removalDelay: 160,
+        preloader: true,
+        fixedContentPos: false
     });
 
     $('.gallery').magnificPopup({

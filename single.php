@@ -8,7 +8,7 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
     <section class="post-standard">
 
         <div class="container">
-            <div class="post || clearfix py5">
+            <div class="post clearfix py5">
 
                 <?php while (have_posts()) : the_post();
 
@@ -25,10 +25,10 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
                         <?php the_title(); ?>
                     </h1>
 
-                    <div class="mx-auto || container measure-wide">
+                    <div class="mx-auto container measure-wide">
 
-                        <div class=" measure-wide ">
-                            <p class="left || pt2 h5"><?=ml_time_elapsed_string(get_the_date())?></p>
+                        <div class="measure-wide">
+                            <p class="left mt1 h5"><?=ml_time_elapsed_string(get_the_date())?></p>
 
                             <ul class="mt2 tags tags-right border-radius">
                                 <?php foreach($taxonomies as $category) :?>
@@ -40,11 +40,11 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
 
                     </div>
 
-                    <div class="clearfix <?=$narrow?> image-holder img-center img-cover img-banner" style="background-image: url(<?php if (!empty(get_the_post_thumbnail_url())) : the_post_thumbnail_url('large'); else: echo get_field('fallback_placeholder_image', 'option'); endif; ?>)"></div>
+                    <div class="clearfix <?=$narrow?> image-holder img-center img-cover img-banner" style="background-image: url(<?php if (!empty(get_the_post_thumbnail_url())) : the_post_thumbnail_url('large'); else: echo get_field('fallback_image_news_feature', 'option'); endif; ?>)"></div>
 
                     <?php include(get_template_directory() . '/template-parts/building-blocks.php'); ?>
 
-	                <div class="mt4 container measure-wide">
+	                <div class="mt4 container wysiwyg measure-wide">
 		                <?=the_content();?>
 	                </div>
 
@@ -64,22 +64,24 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
             if ($related): ?>
                 <hr>
                 <div class="clearfix py5">
+
                     <h2 class="text-center brand-primary h3">Related Articles</h2>
-                    <div class="mxn3 clearfix js-match-height">
-                        <?php foreach ($related as $post) {
-                            //TODO: Needs converting to callable single post listing output.
-                            ?>
-                            <div class="col col-12 sm-col-6 md-col-3 lg-col-3 p4">
 
-                                <p class="h6 mb2" data-mh="post-date"><?=get_the_date()?></p>
+                    <div class="mxn3 clearfix">
 
-                                <h3 class="h4 brand-primary" data-mh="post-title"><?=get_the_title()?></h3>
+                        <?php foreach ($related as $post): ?>
 
-                                <a href="<?=the_permalink(get_the_id())?>"><div class="image-holder square img-cover img-center || mb4" style="background-image: url('<?php if (!empty(get_the_post_thumbnail_url())) : the_post_thumbnail_url('large'); else: echo get_field('fallback_placeholder_image', 'option'); endif; ?>');" data-mh="post-image"></div></a>
+                            <div class="relative col col-12 sm-col-6 md-col-3 lg-col-3 pt4 pl4 pr4 mb5" data-mh="post">
 
-                                <p class="h5 mb3" data-mh="post-content"><?=get_the_excerpt($post->ID)?></p>
+                                <p class="h6 mb2"><?=get_the_date()?></p>
 
-                                <a href="<?=the_permalink(get_the_id())?>" class="block mb4 || h5 bold">Read full story</a>
+                                <a href="<?= get_permalink($post->ID) ?>"><h3 class="h4 brand-primary" data-mh="post-title"><?=get_the_title()?></h3></a>
+
+                                <a href="<?=get_permalink($post->ID)?>"><div class="image-holder square img-cover img-center mb4" style="background-image: url('<?=resize_attachment_image($image_url, 500, 500, true)?>');"></div></a>
+
+                                <p class="h5 mb3" data-mh="post-content"><?= strlen($post->post_excerpt) > 1 ? strip_tags($post->post_excerpt) : shorten_string(strip_tags($post->post_content),30);?></p>
+
+                                <a href="<?=get_permalink($post->ID)?>" class="block mb4 h5 bold">Read full story</a>
 
                                 <?php $taxonomies = get_the_terms($post->ID, 'category');?>
                                 <ul class="tags border-radius">
@@ -89,14 +91,19 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
                                 </ul>
 
                             </div>
-                        <?php } ?>
+
+                        <?php endforeach; ?>
+
                     </div>
-                    <div class="text-center">
-                        <a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); //TODO: Convert this to a system value. ?>" class="h5 bold">View all Articles</a>
+
+                    <div class="text-center my4">
+
+                        <a href="<?=get_permalink(get_option('page_for_posts'))?>" class="btn btn-primary border-brand-primary btn-medium h5 bold">View all Articles</a>
+
                     </div>
+
                 </div>
             <?php endif; wp_reset_postdata(); ?>
-
 
         </div>
 
