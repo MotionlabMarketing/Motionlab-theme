@@ -28,7 +28,7 @@
                     // LOAD FORM INTO THE PAGE.
                     $form_object = get_sub_field($current . '_selection');
                     gravity_form_enqueue_scripts($form_object['id'], true);
-                    gravity_form($form_object['id'], true, true, false, '', true, 1);
+                    gravity_form($form_object['id'], true, true, false, isset($form_autocomplete) ? $form_autocomplete : '', true, 1);
                 ?>
 
             </div>

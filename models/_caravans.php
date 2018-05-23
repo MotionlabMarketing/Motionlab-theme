@@ -11,7 +11,7 @@ Class _caravans
 	public $enabled         = true;
 	private $block          = [];
 	private $makes_slug     = 'makes';
-	private $specs_slug     = 'specs';
+	private $specs_slug     = 'spec';
 	private $specific_model = null;
 
 	public function __construct($specific_model = null) {
@@ -28,7 +28,7 @@ Class _caravans
 		$make_terms                             = get_terms($this->makes_slug);
 		$specs_terms                            = get_terms($this->specs_slug);
 		$berth_options                          = $this->get_distinct_meta_values('caravan_details_berth');
-		$lowest_price                           = $this->get_lowest_prices($this->specific_brand);
+		$lowest_price                           = $this->get_lowest_prices($this->specific_model);
 
 		$this->block['make_select_terms']       = $make_terms;
 		$this->block['specs_select_terms']      = $specs_terms;
@@ -134,15 +134,14 @@ Class _caravans
 		global $wpdb;
 
 		if($meta_value != null) {
-			pa($meta_value);
-			$result = $wpdb->get_results($wpdb->prepare("
+			$result =  $wpdb->get_results($wpdb->prepare("
 	            SELECT DISTINCT meta_value FROM wp_postmeta WHERE meta_key = 'caravan_details_price' AND post_id IN (
-					SELECT post_id FROM wp_postmeta WHERE meta_key = 'caravan_details_model' AND meta_value = '%s'
+					SELECT post_id FROM wp_postmeta WHERE (meta_key = 'caravan_details_model' OR meta_key = 'caravan_details_make') AND meta_value = '%s'
 				) ORDER BY meta_value ASC LIMIT 1;
 		        ", $meta_value
 		    ));
 		} else {
-			$result = $wpdb->get_results("SELECT DISTINCT meta_value FROM wp_postmeta WHERE meta_key = 'caravan_details_price' LIMIT 1");
+			$result = $wpdb->get_results("SELECT DISTINCT meta_value FROM wp_postmeta WHERE meta_key = 'caravan_details_price' AND meta_value IS NOT NULL AND meta_value != '' ORDER BY meta_value ASC LIMIT 1");
 		}
 
 	    return $result;
