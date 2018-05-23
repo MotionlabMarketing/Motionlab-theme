@@ -40,7 +40,7 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
 
                     </div>
 
-                    <div class="clearfix <?=$narrow?> image-holder img-center img-cover img-banner" style="background-image: url(<?php if (!empty(get_the_post_thumbnail_url())) : the_post_thumbnail_url('large'); else: echo get_field('fallback_placeholder_image', 'option'); endif; ?>)"></div>
+                    <div class="clearfix <?=$narrow?> image-holder img-center img-cover img-banner" style="background-image: url(<?php if (!empty(get_the_post_thumbnail_url())) : the_post_thumbnail_url('large'); else: echo get_field('fallback_image_news_feature', 'option'); endif; ?>)"></div>
 
                     <?php include(get_template_directory() . '/template-parts/building-blocks.php'); ?>
 

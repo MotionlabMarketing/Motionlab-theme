@@ -3,7 +3,7 @@
     if (has_post_thumbnail($post->ID)) {
         $image_url = get_attachment_image_url(get_post_thumbnail_id( $post->ID ));
     } else {
-        $image_url = "/wp-content/themes/motionlab-theme/assets/img/placeholder.jpg";
+        $image_url = get_field('fallback_image_news_listing', 'option');
     }
     ?>
 
