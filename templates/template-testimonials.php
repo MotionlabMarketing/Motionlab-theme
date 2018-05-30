@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Testimonials – Listing
+ * Template Name: Testimonials – Standard Layout
  */
 
 include_once(MODELS_DIR . '_testimonials.php');
@@ -13,15 +13,7 @@ get_header(); ?>
 
         <div class="container">
 
-            <div class="col-12 mt6 mb5 text-center">
-
-                <?php
-                $block['heading'] = convert_heading(get_field('page_title')['title']);
-                $block['intro']   = get_field('page_introduction');
-
-                include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
-
-            </div>
+            <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
 
             <div class="col-12 mb5">
 

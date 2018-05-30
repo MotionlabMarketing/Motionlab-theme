@@ -601,23 +601,6 @@ $arrow-size: 10px;
     }
   }
 
-
-
-  // isotope
-  // .grid-item {
-  //   width: 100%;
-  //   @media (min-width: $breakpoint-md) {
-  //     width:50%;
-  //   }
-  //   @media (min-width: $breakpoint-lg) {
-  //     width: 33.3%;
-  //   }
-  // }
-
-
-
-  // slick slider-height
-
   .js-hero-slider-image{
     height:100%;
     .slick-list, .slick-track{
@@ -707,54 +690,6 @@ $arrow-size: 10px;
     100% {
       -moz-box-shadow: 0 0 0 0 rgba(204,55,55, 0);
       box-shadow: 0 0 0 0 rgba(204,55,55, 0);
-    }
-  }
-
-
-
-  // site numeric pagination
-  //.pagination{
-  //  .page-numbers{
-  //    display: inline-block;
-  //    //border-radius: $border-radius;
-  //    //border:1px solid $darken-1;
-  //    background: $white;
-  //    color: $body-color;
-  //    opacity: .4;
-  //    padding: 0.25rem 0.5rem;
-  //    &:hover{
-  //      background: $darken-1;
-  //    }
-  //    &.current{
-  //      //background: $darken-4;
-  //      //color: $white;
-  //      opacity: 1;
-  //    }
-  //    &.next,.previous{
-  //      opacity: 1;
-  //    }
-  //  }
-  //  .page-titles div{
-  //    display: inline-block;
-  //    border-radius: $border-radius;
-  //    border:1px solid $darken-1;
-  //    background: $white;
-  //    a{
-  //      color: $body-color;
-  //    }
-  //    padding: 0.25rem 0.5rem;
-  //    &:hover{
-  //      background: $darken-1;
-  //    }
-  //  }
-  //}
-
-
-
-
-  @media (min-width: $breakpoint-md) {
-    .my-gym-addons{
-      width: 300px;
     }
   }
 

@@ -55,21 +55,27 @@ if ($banner['image']['overlay'] == true):
     $banner['image']['overlayType']     = get_sub_field($current . '_image_overlay_type');
     $banner['image']['overlayStrength'] = get_sub_field($current . '_image_overlay_strength');
 
-endif; ?>
+else:
+
+    $banner['image']['overlayOld'] = get_sub_field($current . '_image_overlay_darken_strength');
+
+endif;
+
+?>
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "banner z0 overflow-hidden overlay-{$banner['align']}")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-        <div class="image-holder flex bg-<?=$banner['image']['position']?> <?=$banner['height']?>" style="background-image: url('<?=$banner['image']['url']?>');">
+        <div class="relative image-holder flex bg-<?=$banner['image']['position']?> <?=$banner['height']?>" style="background-image: url('<?=$banner['image']['url']?>');">
 
-            <?php if ($banner['image']['overlay'] == true): ?>
+            <?php if ($banner['image']['overlay'] == true || $banner['image']['overlayOld']): ?>
 
-                <div class="absolute top-0 left-0 width-100 height-100 z-index-10 bg-<?=$banner['image']['overlayType']?>-<?=$banner['image']['overlayStrength']?>"></div>
+                <div class="absolute top-0 left-0 width-100 height-100 z-index-10 bg-<?=$banner['image']['overlayType']?>-<?=$banner['image']['overlayStrength']?> <?=$banner['image']['overlayOld']?>"></div>
 
             <?php endif; ?>
 
-            <div class="flex items-center justify-<?=$banner['align']?> width-100 relative z-index-50 p3 md-p6">
+            <div class="content-container flex items-center justify-<?=$banner['align']?> width-100 relative z-index-50 p3 md-p6">
 
                 <div class="content col-12 lg-col-9 xl-col-7 p4 relative z9 <?=$banner['text-align']?> <?=$banner['text-color']?> <?=(get_field('remove_headerClearance', get_the_ID()))? "pt6":""?>">
 

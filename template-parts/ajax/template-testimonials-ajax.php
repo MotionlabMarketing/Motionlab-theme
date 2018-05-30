@@ -6,15 +6,22 @@
  * Time: 10:52
  */
 
-?>
+$showStars = get_field('template_reviews_show_stars') ?>
+
 <div class="grid-sizer"></div>
 
-<?php foreach($testimonials['posts']->posts as $post) : ?>
+<?php foreach($testimonials['posts']->posts as $post): ?>
     <div class="col col-4 grid-item">
 
         <div class="m3 bg-smoke text-center">
 
             <div class="content px3 pt4 pb0 px4 italic">
+
+                <?php if ($showStars):
+                          echo '<div class="mt2 mb4">';
+                              echo get_stars(get_field('star_rating', $post->ID));
+                          echo '</div>';
+                      endif; ?>
 
                 <?=get_field('reviewer_body', $post->ID)?>
 
