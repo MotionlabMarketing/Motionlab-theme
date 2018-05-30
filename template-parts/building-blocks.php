@@ -9,11 +9,9 @@ if( have_rows('building_blocks') ) { while ( have_rows('building_blocks') ) { th
 	            if(file_exists(MODELS_DIR . '_' . $current . '.php')) {
 		            include(CONTROLLERS_DIR . 'BlocksController.php');
 	            } else {
-                    pa("C:".CHILD_BLOCKS_DIR . '_'. $current .'.php');
                     if(file_exists(CHILD_BLOCKS_DIR . '_'. $current .'.php')) {
                         include(CHILD_BLOCKS_DIR . '_'. $current .'.php');
                     } else {
-                        pa("P:".BLOCKS_DIR . '_'. $current .'.php');
                         include(BLOCKS_DIR . '_'. $current .'.php');
                     }
 	            }
