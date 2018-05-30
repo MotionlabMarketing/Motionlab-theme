@@ -11,15 +11,15 @@ Class _caravans
 	public $enabled         = true;
 	private $block          = [];
 	private $makes_slug     = 'makes';
-	private $specs_slug     = 'specs';
-	private $specific_brand = null;
+	private $specs_slug     = 'spec';
+	private $specific_model = null;
 
-	public function __construct($specific_brand = null) {
+	public function __construct($specific_model = null) {
 
-		$this->specific_brand = $specific_brand;
+		$this->specific_model = $specific_model;
 
 		$this->getCategories();
-		$this->fetchCaravans($this->specific_brand);
+		$this->fetchCaravans($this->specific_model);
 
 	}
 
@@ -28,7 +28,7 @@ Class _caravans
 		$make_terms                             = get_terms($this->makes_slug);
 		$specs_terms                            = get_terms($this->specs_slug);
 		$berth_options                          = $this->get_distinct_meta_values('caravan_details_berth');
-		$lowest_price                           = $this->get_lowest_prices($this->specific_brand);
+		$lowest_price                           = $this->get_lowest_prices($this->specific_model);
 
 		$this->block['make_select_terms']       = $make_terms;
 		$this->block['specs_select_terms']      = $specs_terms;
@@ -37,11 +37,11 @@ Class _caravans
 
 	}
 
-	private function fetchCaravans($specific_brand) {
+	private function fetchCaravans($specific_model) {
 
 		$tax_query      = [];
 		$orderby_query  = [];
-		$brand_clause = [];
+		$model_clause = [];
 
 		if(isset($_POST['sortby_age']) && $_POST['sortby_age'] != '') :
 			$orderby_query['age_clause']    = $_POST['sortby_age'];
@@ -55,11 +55,11 @@ Class _caravans
 			$orderby_query['berth_clause']  = $_POST['sortby_berth'];
 		endif;
 
-		if($specific_brand != null) :
-			$brand_clause = array(
-                'key'           => 'caravan_details_make',
+		if($specific_model != null) :
+			$model_clause = array(
+                'key'           => 'caravan_details_model',
 	            'compare'       => '=',
-	            'value'         => $specific_brand
+	            'value'         => $specific_model
             );
 		endif;
 
@@ -81,7 +81,7 @@ Class _caravans
 	                'key'           => 'caravan_details_price',
 	                'compare'       => 'EXISTS',
 	            ),
-	            "brand_clause"  => $brand_clause
+	            "model_clause"  => $model_clause
 	        ),
 			'orderby'           => $orderby_query,
 			'post_status'       => array('publish'),
@@ -134,14 +134,14 @@ Class _caravans
 		global $wpdb;
 
 		if($meta_value != null) {
-			$result = $wpdb->get_results($wpdb->prepare("
+			$result =  $wpdb->get_results($wpdb->prepare("
 	            SELECT DISTINCT meta_value FROM wp_postmeta WHERE meta_key = 'caravan_details_price' AND post_id IN (
-					SELECT post_id FROM wp_postmeta WHERE meta_key = 'caravan_details_make' AND meta_value = '%s'
+					SELECT post_id FROM wp_postmeta WHERE (meta_key = 'caravan_details_model' OR meta_key = 'caravan_details_make') AND meta_value = '%s'
 				) ORDER BY meta_value ASC LIMIT 1;
 		        ", $meta_value
 		    ));
 		} else {
-			$result = $wpdb->get_results("SELECT DISTINCT meta_value FROM wp_postmeta WHERE meta_key = 'caravan_details_price' LIMIT 1");
+			$result = $wpdb->get_results("SELECT DISTINCT meta_value FROM wp_postmeta WHERE meta_key = 'caravan_details_price' AND meta_value IS NOT NULL AND meta_value != '' ORDER BY meta_value ASC LIMIT 1");
 		}
 
 	    return $result;

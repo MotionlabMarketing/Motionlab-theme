@@ -1,11 +1,7 @@
 <?php
 /**
  * Template Name: Testimonials – Listing
- *
- * TODO: Needs converting to news index when CPT has been added.
  */
-$blockTitle  = get_field('page_title');
-$blockTitle  = $blockTitle['title'];
 
 include_once(MODELS_DIR . '_testimonials.php');
 $testimonials = new _testimonials();
@@ -17,36 +13,31 @@ get_header(); ?>
 
         <div class="container">
 
-            <div class="col-12 || mb5 || text-center">
+            <div class="col-12 mt6 mb5 text-center">
 
-                <div class="col col-12 md-col-12 lg-col-12 || mb5 text-center">
+                <?php
+                $block['heading'] = convert_heading(get_field('page_title')['title']);
+                $block['intro']   = get_field('page_introduction');
 
-                    <?php
-                    if (!empty($blockTitle[0]['title'])) {
-                        include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
-
-                    <div class="wysiwyg h4">
-                        <?=get_field('page_introduction')?>
-                    </div>
-
-                </div>
+                include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
             </div>
 
-            <div class="col-12 || mb5">
+            <div class="col-12 mb5">
 
-                <form method="get" class="text-center">
+                <?php if(!empty($testimonials['select_terms'])) : ?>
+                    <form method="get" class="text-center">
 
-                    <select style="min-width:18rem;" class="select md-ml3 width-100 md-width-auto box-shadow-3 testimonials_filters" data-loadvalue="<?=get_query_var('testimonials_category')?>" id="testimonials_filtercats">
-                        <option value="">All Testimonials</option>
-                        <?php foreach($testimonials['select_terms'] as $select_term) :?>
-                            <option value="<?=$select_term->slug?>"><?=$select_term->name?></option>
-                        <?php endforeach; ?>
+                        <select style="min-width:18rem;" class="select md-ml3 width-100 md-width-auto box-shadow-2 testimonials_filters" data-loadvalue="<?=get_query_var('testimonials_category')?>" id="testimonials_filtercats">
+                            <option value="">All Testimonials</option>
+                            <?php foreach($testimonials['select_terms'] as $select_term) :?>
+                                <option value="<?=$select_term->slug?>"><?=$select_term->name?></option>
+                            <?php endforeach; ?>
 
-                    </select>
+                        </select>
 
-                </form>
-
+                    </form>
+                <?php endif; ?>
             </div>
 
         </div>
@@ -82,6 +73,7 @@ get_header(); ?>
             success: function(response){
                 $('#testimonials-listing').html(response);
             }
+            $grid.masonry();
         });
     }
 

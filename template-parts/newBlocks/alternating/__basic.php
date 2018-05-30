@@ -24,8 +24,8 @@
             <?php if ($block['content']['type'] == "image"): ?>
 
                 <?=($block['content']['padding'] !== 'p0')? '<div class="relative height-100 overflow-hidden '.$block['content']['padding'].'">' : '' ?>
-                                                                                                                    
-                    <div class="image-holder bg-cover bg-center min-height-v50 height-100" style="background-image: url('<?=resize_attachment_image(get_attachment_image_url($block['content']['image']), 900, 900, true)?>')"></div>
+
+                    <div class="image-holder bg-cover bg-center min-height-v50 height-100" style="background-image: url('<?=resize_attachment_image(get_attachment_image_url($block['content']['image']), 700, 700, true)?>')"></div>
 
                 <?=($block['content']['padding'] !== 'p0')? '</div>' : '' ?>
 

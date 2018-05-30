@@ -82,13 +82,15 @@ $banner['subheading']['position'] = get_sub_field($current . '_subheading_positi
 
                             <?php render_wysiwyg($slide['content'], false, ["class" => "md-h3 bold"]); ?>
 
-                            <?php if (!empty($slide['button_buttons']) && is_array($slide['button_buttons'])): foreach ($slide['button_buttons'] as $button):?>
-                                
-                                <a href="<?=$button['button_link']['url']?>" class="btn <?=$button['system_text_colours']?> <?=$button['ystem_background_colours']?>"><?=$button['button_link']['title']?></a>
+                            <?php if ($slide['button_buttons']): ?>
+                                <div class="mt4">
 
-                            <?php endforeach; endif; ?>
+                                    <?php render_buttons($slide['button_buttons'], "medium"); ?>
 
-                            <?php if (!empty($slide['button_text_link']['title']) && !empty($slide['button_text_link']['url'])): ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (!empty($slide['button_text_link']['title']) && !empty($slide['button_text_link']['url'])):  ?>
 
                                 <a href="<?=$slide['button_text_link']['url']?>" class="btn btn-medium mx3" <?=($slide['button_text_link']['title'] ? 'title="'.$slide['button_text_link']['title'].'"' : '')?> <?=($slide['button_text_link']['target'] ? 'target="'.$slide['button_text_link']['target'].'"' : '')?> ><?=$slide['button_text_link']['title']?></a>
 

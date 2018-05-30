@@ -13,11 +13,7 @@
 
     <div class="col col-12 md-col-6 lg-col-4 mt5 px2 grid-item || text-center">
 
-        <div class="p5 bg-smoke">
-
-            <div class="mb4">
-                <?=get_stars(get_field('star_rating'))?>
-            </div>
+        <div class="p5 bg-smoke" data-mh="testimonial">
 
             <?=get_field('reviewer_body')?>
 

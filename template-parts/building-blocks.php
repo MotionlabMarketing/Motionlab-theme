@@ -13,5 +13,4 @@ if( have_rows('building_blocks') ) { while ( have_rows('building_blocks') ) { th
 	            }
             endif;
 
-    }
-}
+}}

@@ -59,14 +59,15 @@
 
     img[style*="float:left"],
     img[style*="float: left"],
-    .alignleft {
-        margin: $space-1 $space-4 $space-4 0;
+    .alignleft,
+    .alignnone {
+        margin: 2rem 2rem 2rem 0;
     }
 
     img[style*="float:right"],
     img[style*="float: right"],
     .alignright {
-        margin: $space-1 0 $space-4 $space-4;
+        margin: 2rem 0 2rem 2rem;
     }
 
     figure {

@@ -47,7 +47,7 @@
 
                             <h3 class="mb2 brand-primary" style="font-size: 1.3rem"><a href="<?=get_permalink($post->ID)?>"><?=$post->post_title?></a></h3>
 
-                            <p class="h6"><?=shorten_string(strip_tags($post->post_content), 50)?></p>
+                            <p class="h5"><?=shorten_string(strip_tags($post->post_content), 25)?></p>
 
                             <ul class="block tags tags-left border-radius cursor-pointer">
                                 <?php foreach($post->categories as $category): ?>
