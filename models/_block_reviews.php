@@ -26,7 +26,8 @@ Class _block_reviews
 
 	private function loadBlockSettings() {
 
-		$this->block['title'] = get_sub_field($this->current . '_title_title');
+		$this->block['title']         = get_sub_field($this->current . '_title_title');
+		$this->block['include_stars'] = get_sub_field('block_reviews_include_stars');
 
 	}
 
