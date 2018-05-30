@@ -19,13 +19,13 @@ $blockItems  = get_sub_field($current . '_icons');
 
     <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-    <div class="col-12 border-last-right-1">
+    <div class="border-last-item-right">
 
         <?php $i = 1; foreach ($blockItems as $item): ?>
 
-            <div class="item || col col-12 sm-col-6 md-col-3 px2 || bg-smoke border-light border-top border-left border-bottom <?=$block['pod']['textAlign']?> <?=$block['pod']['textColor']?> flex js-match-height">
+            <div class="item col col-12 sm-col-6 md-col-3 p3 bg-smoke border-light border-top border-left border-bottom <?=$block['pod']['textAlign']?> <?=$block['pod']['textColor']?> flex items-center" data-mh="item">
 
-                <div class="mr2 flex items-center justify-center" style="min-width: 20%">
+                <div class="ml1 mr2" style="min-width: 20%">
 
                     <?php if ($item['enable_custom_icons'] == true): ?>
 
@@ -39,17 +39,22 @@ $blockItems  = get_sub_field($current . '_icons');
 
                 </div>
 
-                <div class="py3 px1">
+                <div>
 
-                    <h4 class="h4"><?=$item['pod_item_title']?></h4>
+                  <?php if(!empty($item['pod_item_title'])): ?>
+                      <h4 class="h4 mb0"><?=$item['pod_item_title']?></h4>
+                  <?php endif; ?>
 
-                    <p class="m0 h5"><?=$item['pod_item_description']?></p>
+                  <?php if(!empty($item['pod_item_description'])): ?>
+                    <p class="h5 mb0"><?=$item['pod_item_description']?></p>
+                  <?php endif; ?>
 
                 </div>
 
             </div>
 
-            <?php $i++; endforeach; ?>
+        <?php $i++; endforeach; ?>
+
     </div>
 
     <?=($block['grid'] == 'container')? '</div>' : ""?>

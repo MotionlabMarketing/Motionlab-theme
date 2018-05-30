@@ -1118,6 +1118,22 @@ hr.border-5 {
   border-right: 0;
 }
 
+.border-last-right-1 {
+  div.item:last-child {
+    border-right: 1px;
+  }
+}
+.border-last-right-2:last-child {
+  div.item:last-child {
+    border-right: 2px;
+  }
+}
+.border-last-right-3:last-child {
+  div.item:last-child {
+    border-right: 3px;
+  }
+}
+
 .border-last-top-none:last-child {
 
   div:last-child,

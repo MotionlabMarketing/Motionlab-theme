@@ -20,8 +20,7 @@ $testimonials = $testimonials->getBlock();
 
     <section class="clearfix my4 mb4" id="gallery-standard">
 
-        <?php
-        include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
+        <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
 
         <div class="container clearfix">
 
