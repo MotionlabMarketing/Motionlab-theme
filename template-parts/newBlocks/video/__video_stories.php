@@ -39,7 +39,8 @@ foreach ($videosAll as $video):
     $i++;
 endforeach;
 
-$width = ($block['grid'] == 'full_width')? $block['background']['colour'] : ""
+$width = ($block['grid'] == 'full_width')? $block['background']['colour'] : "";
+$embed_video = get_sub_field('block_videos_embed');
 ?>
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "video-stories {$width}")?> <?=get_blockData($block)?>>
@@ -48,7 +49,7 @@ $width = ($block['grid'] == 'full_width')? $block['background']['colour'] : ""
 
         <div class="lg-flex items-center clearfix">
 
-            <div class="mxn2">
+            <div class="width-100 mxn2">
 
                 <div class="col col-12 md-col-6 px2">
 
@@ -69,13 +70,18 @@ $width = ($block['grid'] == 'full_width')? $block['background']['colour'] : ""
 
                             <div class="video video-embed mr2" data-mh="video-selector" data-id="video-<?=$block['id']?>-<?=$i?>">
 
-                                <a href="<?=$videos[$i]['link']?>" class="" data-mh="video-thumb">
+                                <?php if( !$embed_video ) : ?>
+                                <a href="<?=$videos[$i]['link']?>" class="<?=(get_sub_field('block_videos_embed'))? 'video-thumb':''?>" data-mh="video-thumb">
+                                <?php endif; ?>
                                     <?php if($i == 1): ?>
                                         <?=wp_get_attachment_image($videos[$i]['thumbnail_id'], array(120, 140), "", ["class" => "box-shadow-1 border-white border-2 border-top border-bottom border-left border-right "] )?>
                                     <?php else: ?>
                                         <?=wp_get_attachment_image($videos[$i]['thumbnail_id'], array(120, 140), "", ["class" => "box-shadow-1 border-transparent border-2 border-top border-bottom border-left border-right "] )?>
                                     <?php endif; ?>
+                                <?php if( !$embed_video ) : ?>
                                 </a>
+                                <?php endif; ?>
+
                                 <p class="video-title h7 <?=$txtColor?>" style="max-width: 120px; font-size: 0.8rem" data-mh="video-title"><?=$videos[$i]['title']?></p>
 
                                 <div class="embed" style="display: none;">

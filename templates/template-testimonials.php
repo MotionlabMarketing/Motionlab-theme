@@ -25,18 +25,19 @@ get_header(); ?>
 
             <div class="col-12 mb5">
 
-                <form method="get" class="text-center">
+                <?php if(!empty($testimonials['select_terms'])) : ?>
+                    <form method="get" class="text-center">
 
-                    <select style="min-width:18rem;" class="select md-ml3 width-100 md-width-auto box-shadow-2 testimonials_filters" data-loadvalue="<?=get_query_var('testimonials_category')?>" id="testimonials_filtercats">
-                        <option value="">All Testimonials</option>
-                        <?php foreach($testimonials['select_terms'] as $select_term) :?>
-                            <option value="<?=$select_term->slug?>"><?=$select_term->name?></option>
-                        <?php endforeach; ?>
+                        <select style="min-width:18rem;" class="select md-ml3 width-100 md-width-auto box-shadow-2 testimonials_filters" data-loadvalue="<?=get_query_var('testimonials_category')?>" id="testimonials_filtercats">
+                            <option value="">All Testimonials</option>
+                            <?php foreach($testimonials['select_terms'] as $select_term) :?>
+                                <option value="<?=$select_term->slug?>"><?=$select_term->name?></option>
+                            <?php endforeach; ?>
 
-                    </select>
+                        </select>
 
-                </form>
-
+                    </form>
+                <?php endif; ?>
             </div>
 
         </div>

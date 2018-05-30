@@ -1,7 +1,6 @@
 <?php foreach($block['posts']->posts as $post) :
-
     if (has_post_thumbnail($post->ID)) {
-        $image_url = get_attachment_image_url(get_post_thumbnail_id( $post->ID ));
+        $image_url = get_attachment_image_url(get_post_thumbnail_id( $post->ID ), 'medium');
     } else {
         $image_url = get_field('fallback_image_news_listing', 'option');
     }
@@ -13,7 +12,7 @@
 
         <a href="<?= get_permalink($post->ID) ?>"><h3 class="h4 brand-primary" data-mh="post-title"><?=$post->post_title?></h3></a>
 
-        <a href="<?=get_permalink($post->ID)?>"><div class="image-holder square img-cover img-center mb4" style="background-image: url('<?=resize_attachment_image($image_url, 500, 500, true)?>');"></div></a>
+        <a href="<?=get_permalink($post->ID)?>"><div class="image-holder square img-cover img-center mb4" style="background-image: url('<?=$image_url?>');"></div></a>
 
         <p class="h5 mb3" data-mh="post-content"><?= strlen($post->post_excerpt) > 1 ? strip_tags($post->post_excerpt) : shorten_string(strip_tags($post->post_content),30);?></p>
 
