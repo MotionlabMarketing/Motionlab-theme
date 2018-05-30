@@ -71,7 +71,7 @@ endif; ?>
 
             <div class="flex items-center justify-<?=$banner['align']?> width-100 relative z-index-50 p3 md-p6">
 
-                <div class="content col-12 lg-col-9 xl-col-7 p4 relative z9 <?=$banner['text-align']?> <?=$banner['text-color']?> <?=(get_field('remove_headerClearance', get_the_ID()))? "pt7":""?>">
+                <div class="content col-12 lg-col-9 xl-col-7 p4 relative z9 <?=$banner['text-align']?> <?=$banner['text-color']?> <?=(get_field('remove_headerClearance', get_the_ID()))? "pt6":""?>">
 
                     <?php if (!empty($banner['logos']['before']['url'])): ?>
 
