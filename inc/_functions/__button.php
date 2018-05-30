@@ -16,7 +16,7 @@ function render_button($data, $size = "medium",  $classes = ["class" => "mb2"]) 
 
     if (!empty($data['button_link']['url']) && !empty($data['button_link']['title'])) {
 
-        $classes["class"] = "btn btn-{$size} {$data['system_text_colours']} {$data['system_background_colours']} " . $classes["class"];
+        $classes["class"] = "btn btn-{$size} {$data['system_text_colours']} {$data['system_background_colours']} {$data['button_text_colour']['system_text_colours']} {$data['button_background_colour']['system_background_colours']} " . $classes["class"];
 
         $classes = attrConvert($classes);
 
