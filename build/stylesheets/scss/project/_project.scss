@@ -25,6 +25,13 @@
   height: 400px;
   border: #ccc solid 1px;
 }
+[data-block-name="block_alternating"] .acf-map {
+  height: 100%;
+
+  @media (max-width: $breakpoint-sm) {
+      height: 400px;
+  }
+}
 
 /* fixes potential theme css conflict */
 .acf-map img {

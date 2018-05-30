@@ -9,8 +9,6 @@
  *
  * @version 2.00
  */
-
-
 ?>
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "")?> <?=get_blockData($block)?> class="bg-red">
@@ -19,7 +17,7 @@
 
     <div class="clearfix <?=$block['content']['bg']?> <?=$block['content']['sides']?> <?=$block['content']['borders']['color']?> <?=$block['content']['borders']['size']?>"><?php // TODO: Outputing Array. ?>
 
-        <div class="relative col col-12 md-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> js-match-height min-height-v50 overflow-hidden <?=($block['content']['type'] == "video")? "flex items-center" : "" ?>">
+        <div class="relative col col-12 md-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> js-match-height min-height-v50 overflow-hidden <?=($block['content']['type'] == "video")? "flex items-center" : "" ?>" data-mh="panelHeight">
 
             <?php if ($block['content']['type'] == "image"): ?>
 
@@ -51,7 +49,6 @@
 
             <?php if ($block['content']['type'] == "video"): ?>
 
-
             <div class="width-100">
 
                 <div class="overflow-hidden">
@@ -66,6 +63,29 @@
                 </div>
 
             </div>
+
+            <?php endif; ?>
+
+            <?php if ($block['content']['type'] == "map"): ?>
+
+              <div class="height-100 width-100">
+
+                  <div class="overflow-hidden height-100">
+
+                      <div class="relative height-100" data-element="map">
+
+                        <?php $location = get_sub_field($current . '_map'); if( !empty($location) ): ?>
+                          <div class="acf-map">
+                          	<div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>"></div>
+                          </div>
+                        <?php endif; ?>
+
+                      </div>
+
+                  </div>
+
+              </div>
+
 
             <?php endif; ?>
 
