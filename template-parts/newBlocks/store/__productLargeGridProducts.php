@@ -55,7 +55,15 @@ $selected_products = get_sub_field('block_store_products');
 
                                     $title  = get_the_title($cotm->ID);
                                     $price  = get_field($prefix.'_details_price', $cotm->ID);
-                                    if (is_array($prefix.'_details_specifications'))
+                                    $berth  = get_field($prefix.'_details_berth', $cotm->ID);
+
+                                    $feature        = get_field($prefix.'_details_feature_image', $cotm->ID);
+                                    $feature_image = get_field('image', $feature->ID);
+
+                                    $brand = get_the_terms($cotm->ID, 'makes');
+                                    $brand_image = get_field('taxonomy_image', 'term_'.$brand[0]->term_id);
+
+                                    if (is_array(get_field($prefix.'_details_specifications', $cotm->ID)))
                                         $specs  = array_slice(get_field($prefix.'_details_specifications', $cotm->ID), 0, 4);
                                 ?>
 
@@ -65,13 +73,19 @@ $selected_products = get_sub_field('block_store_products');
 
                                             <div>
 
-                                                <?=render_attachment_image("8200", ['180', '300'], false,  ["class" => "mt5 mb5 mx-auto"])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
+                                                <?=render_attachment_image($brand_image, ['180', '300'], false,  ["class" => "mx-auto"])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
 
                                                 <div class="flex items-center justify-center">
-                                                    <?=render_attachment_image("8199", "large", false,  ["class" => "mb4"])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
+                                                    <?php if(!empty($feature_image)) :
+                                                        foreach($feature_image as $image):
+                                                            render_attachment_image($image, "medium", false, ["class" => "mr4 inline-block"]);
+                                                        endforeach;
+                                                    endif;?>
                                                 </div>
 
                                                 <h3><?=$title?></h3>
+
+                                                <p class="mb2 bold"><?=$berth?> Berth</p>
 
                                                 <?php if (!empty($specs)): ?>
 
@@ -112,6 +126,9 @@ $selected_products = get_sub_field('block_store_products');
                                             $title  = get_the_title($selected_product->ID);
                                             $price  = get_field($prefix.'_details_price', $selected_product->ID);
                                             $berth  = get_field($prefix.'_details_berth', $selected_product->ID);
+
+                                            $feature        = get_field($prefix.'_details_feature_image', $selected_product->ID);
+                                            $feature_image = get_field('image', $feature->ID);
                                         ?>
 
                                         <div class="col col-12 sm-col-6 md-col-4 pl3 pr3 <?=($a < 3)? "mb5" : ""?>">
@@ -121,7 +138,11 @@ $selected_products = get_sub_field('block_store_products');
                                                 <h3 class="h4 bold" data-mh="title"><?=$title?></h3>
 
                                                 <div class="flex items-center justify-center" data-mh="product-item-image">
-                                                    <?=render_attachment_image("8199", "medium", false,  ["class" => ""])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
+                                                    <?php if(!empty($feature_image)) :
+                                                        foreach($feature_image as $image):
+                                                            render_attachment_image($image, "medium", false, ["class" => "mr4 inline-block"]);
+                                                        endforeach;
+                                                    endif;?>
                                                 </div>
 
                                                 <p class="mb2 bold"><?=$berth?> Berth</p>
@@ -169,9 +190,17 @@ $selected_products = get_sub_field('block_store_products');
                                 $cotm = array_shift($selected_products[$i]['items']);
                                 $prefix = $cotm->post_type == 'caravans' ? 'caravan' : 'motorhome';
 
-                                $title  = get_the_title($cotm->ID);
-                                $price  = get_field($prefix.'_details_price', $cotm->ID);
-                                if (is_array($prefix.'_details_specifications'))
+                                $title          = get_the_title($cotm->ID);
+                                $price          = get_field($prefix.'_details_price', $cotm->ID);
+                                $berth          = get_field($prefix.'_details_berth', $cotm->ID);
+
+                                $feature        = get_field($prefix.'_details_feature_image', $cotm->ID);
+                                $feature_image = get_field('image', $feature->ID);
+
+                                $brand = get_the_terms($cotm->ID, 'makes');
+                                $brand_image = get_field('taxonomy_image', 'term_'.$brand[0]->term_id);
+
+                                if (is_array(get_field($prefix.'_details_specifications', $cotm->ID)))
                                     $specs  = array_slice(get_field($prefix.'_details_specifications', $cotm->ID), 0, 4);
                             ?>
 
@@ -181,13 +210,20 @@ $selected_products = get_sub_field('block_store_products');
 
                                         <div>
 
-                                            <?=render_attachment_image("8200", ['180', '300'], false,  ["class" => "mt5 mb5 mx-auto"])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
+                                            <?=render_attachment_image($brand_image, ['180', '300'], false,  ["class" => "mx-auto"])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
 
                                             <div class="flex items-center justify-center">
-                                                <?=render_attachment_image("8199", "large", false,  ["class" => "mb4"])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
+                                                <?php if(!empty($feature_image)) :
+                                                    foreach($feature_image as $image):
+                                                        render_attachment_image($image, "medium", false, ["class" => "mr4 inline-block"]);
+                                                    endforeach;
+                                                endif;?>
                                             </div>
 
                                             <h3><?=$title?></h3>
+
+                                            <p class="mb2 bold"><?=$berth?> Berth</p>
+
 
                                             <?php if (!empty($specs)): ?>
 
@@ -228,6 +264,10 @@ $selected_products = get_sub_field('block_store_products');
                                         $title  = get_the_title($selected_product->ID);
                                         $price  = get_field($prefix.'_details_price', $selected_product->ID);
                                         $berth  = get_field($prefix.'_details_berth', $selected_product->ID);
+
+                                        $feature        = get_field($prefix.'_details_feature_image', $selected_product->ID);
+                                        $feature_image  = get_field('image', $feature->ID);
+
                                     ?>
 
                                     <div class="col col-12 sm-col-6 md-col-4 pl3 pr3 <?=($a < 3)? "mb5" : ""?>">
@@ -237,7 +277,11 @@ $selected_products = get_sub_field('block_store_products');
                                             <h3 class="h4 bold" data-mh="title"><?=$title?></h3>
 
                                             <div class="flex items-center justify-center" data-mh="product-item-image">
-                                                <?=render_attachment_image("8199", "medium", false,  ["class" => ""])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
+                                                <?php if(!empty($feature_image)) :
+                                                    foreach($feature_image as $image):
+                                                        render_attachment_image($image, "thumbnail", false, ["class" => "mr4 inline-block"]);
+                                                    endforeach;
+                                                endif;?>
                                             </div>
 
                                             <p class="mb2 bold"><?=$berth?> Berth</p>
