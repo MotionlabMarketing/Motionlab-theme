@@ -74,8 +74,8 @@ get_header(); ?>
         });
 
         $(document).on('click', '.filter-more', function () {
-            var page_number = $(this).data('page-number');
-            $(this).data('page-number', page_number++);
+            var page_number = $(this).data('loadcount');
+            $(this).data('loadcount', page_number++);
             fetchGallery(page_number);
         });
 
@@ -91,13 +91,17 @@ get_header(); ?>
                     category_filter: category_filter
                 },
                 success: function (response) {
-                    $('.filter-more').remove();
+                    $('.loadmore-holder').remove();
                     if (reset) {
                         $('#gallery-listing').html(response);
                     } else {
                         $('#gallery-listing').append(response);
                     }
-                    $('.js-match-height').matchHeight();
+                    setTimeout(function () {
+
+                        $.fn.matchHeight._apply('[data-mh="gallery-image"]');
+
+                    }, 900);
                 }
             });
         }

@@ -41,7 +41,7 @@ Class _galleries
 		endif;
 
 		$args = array(
-			'posts_per_page'    => 16,
+			'posts_per_page'    => 1,
 			'paged'             => $_POST['page_number'] ?: 1,
 			'post_type'         => 'gallery',
 			'orderby'           => 'date',

@@ -6,22 +6,22 @@
  * Time: 10:12
  */
 foreach($gallery['posts']->posts as $post):
-    $image = get_field('image', $post->ID);
+    foreach(get_field('image', $post->ID) as $image):
 ?>
 
     <div class="col col-3 p3">
 
         <a href="<?=$image['url']?>">
-            <img src="<?=$image['url']?>" class="box-shadow-2 js-match-height" alt="">
+            <img src="<?=$image['url']?>" class="box-shadow-2" alt="" data-mh="gallery-image">
         </a>
 
     </div>
-
+    <?php endforeach; ?>
 <?php endforeach; ?>
 
 <?php if($gallery['posts']->query['paged'] < $gallery['posts']->max_num_pages): ?>
-    <div class="clearfix col-12 text-center py4" data-element="load-more">
-        <span data-page-number="<?=$gallery['posts']->query['paged']?>" class="btn cursor-pointer block filter-more">Load More...</span>
+    <div class="loadmore-holder clearfix col-12 text-center py4" data-element="load-more">
+        <span data-loadcount="<?=$gallery['posts']->query['paged']?>" class="btn cursor-pointer block filter-more">Load More...</span>
     </div>
 <?php else: ?>
     <div class="clearfix col-12 text-center py4">
