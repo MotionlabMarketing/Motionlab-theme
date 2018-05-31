@@ -6,7 +6,7 @@
  * Time: 10:12
  */
 foreach($gallery['posts']->posts as $post):
-    $image = get_field('image', $post->ID);
+    foreach(get_field('image', $post->ID) as $image):
 ?>
 
     <div class="col col-3 p3">
@@ -16,7 +16,7 @@ foreach($gallery['posts']->posts as $post):
         </a>
 
     </div>
-
+    <?php endforeach; ?>
 <?php endforeach; ?>
 
 <?php if($gallery['posts']->query['paged'] < $gallery['posts']->max_num_pages): ?>

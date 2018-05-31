@@ -23,30 +23,16 @@
 
             <?php
             $i = 0;
-            $collection = get_sub_field($current . '_collection');
-            $args = array(
-                'post_status' => 'publish',
-                'posts_per_page' => -1,
-                'post_type' => 'gallery',
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'collections',
-                        'terms' => $collection
-                    )
-                )
-            );
-            $query = new WP_Query($args);
-            if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();  $image = get_field('image'); ?>
+            $images = get_field('image', get_sub_field($current . '_gallery'));
+            foreach ($images as $img): ?>
 
             <?php if ($i === 0): ?><div class="panel-holder"><?php endif; ?>
 
-                <a href="<?=resize_attachment_image($image['url'], 900, 700, true)?>" class="col col-6 md-col-3 p1" data-image="<?=$i?>">
-                    <img src="<?=resize_attachment_image($image['url'], 300, 250, true)?>" class="" alt="<?=$image['alt']?>">
+                <a href="<?=$img['url']?>" class="col col-6 md-col-3 p1" data-image="<?=$i?>">
+                    <img src="<?=$img['sizes']['medium']?>" class="" alt="<?=$img['alt']?>">
                 </a>
 
-            <?php $i++; if ($i > 7) { echo "</div>"; $i = 0; }?>
-
-            <?php endwhile; endif; wp_reset_postdata(); ?>
+            <?php $i++; if ($i > 7) { echo "</div>"; $i = 0; } endforeach; ?>
 
         </div>
 
