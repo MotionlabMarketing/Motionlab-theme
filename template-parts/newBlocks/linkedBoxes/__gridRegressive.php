@@ -21,11 +21,11 @@
 
             <?php $i = 1; foreach ($block['content']['items'] as $item):?>
 
-                <div class="item item-<?=$i?> || p3 || block relative">
+                <div class="item item-<?=$i?> p3 block relative">
 
                     <a href="<?=$item['block_linkBoxes_button_button_link']['url']?>" class="block relative width-100 height-100 hover-white white bg-cover bg-center box-shadow-3 <?=$block['content']['bgColor']?>" <?=($item['block_linkBoxes_button_button_link']['title'] ? 'title="'.$item['block_linkBoxes_button_button_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_button_button_link']['target'] ? 'target="'.$item['block_linkBoxes_button_button_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
 
-                        <div class="content relative width-100 height-100 py6 flex items-center justify-center <?=($block['content']['darken'] == true)? $block['content']['darkenStrength'] : ""?>">
+                        <div class="content relative width-100 height-100 py6 flex items-center justify-center  <?=($item['block_linkBoxes_overlay_strength']['add_overlay'] == true)? "bg-".$item['block_linkBoxes_overlay_strength']['overlayType']."-".$item['block_linkBoxes_overlay_strength']['overlayStrength'] : ""?>">
 
                             <div class="z-index-40">
 
@@ -39,8 +39,8 @@
 
                             </div>
 
-                            <?php if ($block['enableOverlay'] == true): ?>
-                                <div class="overlay || absolute width-100 height-100 z-index-20 bg-brand-primary-overlay"></div>
+                            <?php if ($block['enableOverlay'] == true && (!empty($item['block_linkBoxes_title']) || !empty($item['block_linkBoxes_button_button_link']['title']))): ?>
+                                <div class="overlay absolute width-100 height-100 z-index-20 bg-brand-primary-overlay"></div>
                             <?php endif; ?>
 
                         </div>
