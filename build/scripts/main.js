@@ -291,6 +291,48 @@ jQuery(document).ready(function ($) {
         ]
     });
 
+    $('[data-slick="logo-slider-partners"]').slick({
+      slidesToShow: 5,
+      // variableWidth: false,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      // centerPadding: '30px',
+      arrows: false,
+      // draggable: false,
+      // pauseOnHover: false,
+      // mobileFirst: false
+      responsive: [
+          {
+              breakpoint: 1200,
+              settings: {
+                  slidesToShow: 4
+              }
+          },
+          {
+              breakpoint: 960,
+              settings: {
+                  slidesToShow: 3,
+                  arrows: true
+              }
+          },
+          {
+              breakpoint: 600,
+              settings: {
+                  slidesToShow: 2,
+                  arrows: true
+              }
+          },
+          {
+              breakpoint: 480,
+              centerMode: true,
+              settings: {
+                  slidesToShow: 2,
+                  arrows: true
+              }
+          }
+      ]
+    });
+
 
     $('[data-slick="product-images"]').slick({
         slidesToShow: 1,

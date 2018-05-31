@@ -61,17 +61,20 @@ $blockItems = $blockItems['logos'];
 
     <?php endif; ?>
 
-    <div class="col-12 flex justify-center flex-wrap">
+    <div class="col-12">
 
-        <?php foreach ($block['logos'] as $logo):?>
+        <div class="item-slider md-pl5" data-slick="logo-slider-partners">&nbsp;<?php // NEEDED TO KEEP BOX HEIGHT. ?>
 
-            <div class="col px4 mb3 col-6 md-col-3 sm-col-4 lg-col-2 flex items-center justify-center">
+            <?php foreach ($block['logos'] as $logo):?>
 
-                <img src="<?=get_attachment_image_url($logo['ID'])?>" alt="<?=$logo['name']?>">
+                <div class="col col-grid-5 flex items-center justify-center p5" data-mh="partners-slider">
+                  <img src="<?=$logo['url']?>" alt="<?=$logo['title']?>" style="max-height: 6rem; margin: 0 auto;">
+                </div>
 
-            </div>
+            <?php endforeach; ?>
 
-        <?php endforeach; ?>
+        </div>
+
     </div>
 
     <?= ($block['grid'] == 'container') ? '</div>' : "" ?>
