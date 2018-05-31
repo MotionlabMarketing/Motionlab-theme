@@ -4,11 +4,13 @@
 ?>
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "team-basic")?> <?=get_blockData($block)?>>
-    <div class="clearfix col-12">
 
-        <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
+    <?=($block['grid'] == 'container')? '<div class="container">' : '' ?>
+
+      <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
     	<?php foreach($selected_products[0]['items'] as $post) : ?>
+
             <div class="clearfix col-12 relative border-top border-left border-bottom border-right border-light-1 box-shadow-1 border-solid px2 py4 md-p5 mb4 bg-white">
 
     	        <div class="absolute top-0 left-0 bg-brand-secondary white py2 px3"><a href="<?=the_permalink($post->ID)?>" class="white hover-white"><i class="fa fa-camera"></i>&nbsp;<?=count(get_field('image', get_field($prefix.'_details_showcase', $post->ID)->ID));?></a></div>
@@ -19,7 +21,7 @@
 
     	                <a href="<?=the_permalink($post->ID)?>">
 
-    						<?php
+    					<?php
     	                    $feature = get_field($prefix.'_details_feature_image', $post->ID);
 
     	                    $feature_image = get_field('image', $feature->ID);
@@ -106,5 +108,6 @@
 
     	<?php endforeach; ?>
 
-    </div>
+    <?=($block['grid'] == 'container')? '</div>' : ""?>
+
 </section>
