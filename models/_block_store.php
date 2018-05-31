@@ -119,6 +119,9 @@ Class _block_store {
 		    case "slidingPanels":
 		        include(BLOCKS_DIR . 'store/__slidingPanels.php');
 		        break;
+			case "basic_row":
+				include(BLOCKS_DIR . 'store/__basicRow.php');
+				break;	
 		    default:
 		        include(BLOCKS_DIR . 'store/__basic.php');
 		        break;
