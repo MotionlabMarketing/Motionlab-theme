@@ -10,8 +10,8 @@ $menu = motionlab_menu_walker('primary');
     <ul class="list-reset m0 p0" id="accordion-mobile-header">
         <?php $i=1; ?>
         <?php foreach($menu as $menuitem) : ?>
-            <li class="">
-                <div class="flex border-bottom border-smoke">
+            <li class="bg-white">
+                <div class="flex border-bottom border-smoke bg-white">
                     <a href="<?php echo $menuitem->url ?>" class="block bg-white p3 text-left bold h4 flex-auto black hover-bg-smoke uppercase">
                         <?php echo $menuitem->title; ?>
                     </a>
