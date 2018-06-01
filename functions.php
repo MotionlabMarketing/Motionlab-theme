@@ -119,7 +119,13 @@ function ml_update_news() {
 	/* Load in team block controller to access posts easily. */
 	include_once(MODELS_DIR . '_block_news.php');
 	$news_controller = new _block_news(null, null);
-	$block = $news_controller->fetchFeedPosts(8, $_POST['news_page']);
+
+    $count = 8;
+    if($_POST['news_page'] == 1) :
+        $count = 9;
+    endif;
+
+	$block = $news_controller->fetchFeedPosts($count, $_POST['news_page']);
 
 	if(file_exists(CHILD_AJAX_DIR . 'template-news-ajax.php')) :
 		include_once(CHILD_AJAX_DIR . 'template-news-ajax.php');
