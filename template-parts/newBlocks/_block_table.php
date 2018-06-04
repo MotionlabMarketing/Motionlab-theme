@@ -15,17 +15,19 @@ $block['layout']   = get_sub_field($current . '_layout');
 $block['table']    = get_sub_field($current . '_table');
 $block['options']  = get_sub_field($current . '_options');
 
-if (in_array("table_strips", $block['options']))
-    $block['options']['stripped'] = "table-striped";
+if (!empty($block['options']) && is_array($block['options'])):
+    if (in_array("table_strips", $block['options']))
+        $block['options']['stripped'] = "table-striped";
 
-if (in_array("bold_first_column", $block['options']))
-    $block['options']['firstBold'] = "table-bold-first";
+    if (in_array("bold_first_column", $block['options']))
+        $block['options']['firstBold'] = "table-bold-first";
 
-if (in_array("limit_width", $block['options']))
-    $block['options']['limitWidth'] = "table-limited";
+    if (in_array("limit_width", $block['options']))
+        $block['options']['limitWidth'] = "table-limited";
 
-if (in_array("table_borders", $block['options']))
-    $block['options']['tableBorders'] = "table-bordered";
+    if (in_array("table_borders", $block['options']))
+        $block['options']['tableBorders'] = "table-bordered";
+endif;
 
 switch ($block['layout']):
     case "basic":
