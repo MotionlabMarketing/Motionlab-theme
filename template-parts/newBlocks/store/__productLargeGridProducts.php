@@ -54,6 +54,7 @@ $selected_products = get_sub_field('block_store_products');
 
                                     $title  = get_the_title($cotm->ID);
                                     $price  = get_field($prefix.'_details_price', $cotm->ID);
+                                    $old_price  = get_field($prefix.'_details_old_price', $cotm->ID);
                                     $berth  = get_field($prefix.'_details_berth', $cotm->ID);
 
                                     $feature        = get_field($prefix.'_details_feature_image', $cotm->ID);
@@ -97,6 +98,12 @@ $selected_products = get_sub_field('block_store_products');
                                                 <?php endif; ?>
 
                                                 <p><strong><span class="brand-primary h2">£<?=number_format($price)?></span></strong></p>
+                                                <?php if(!empty($old_price)) : ?>
+                                                    <p class="h5 brand-secondary mb2 small">
+                                                        Old price: <strike>£<?=number_format($old_price)?></strike>
+                                                        <span class="bold block">Save £<?=number_format($old_price-$price)?></span>
+                                                    </p>
+                                                <?php endif; ?>
 
                                                 <?php
 
@@ -120,14 +127,15 @@ $selected_products = get_sub_field('block_store_products');
                                         <?php $a = 0; foreach($selected_products[$i]['items'] as $selected_product): ?>
 
                                             <?php
-                                            $prefix = $selected_product->post_type == 'caravans' ? 'caravan' : 'motorhome';
+                                            $prefix     = $selected_product->post_type == 'caravans' ? 'caravan' : 'motorhome';
 
-                                            $title  = get_the_title($selected_product->ID);
-                                            $price  = get_field($prefix.'_details_price', $selected_product->ID);
-                                            $berth  = get_field($prefix.'_details_berth', $selected_product->ID);
+                                            $title      = get_the_title($selected_product->ID);
+                                            $price      = get_field($prefix.'_details_price', $selected_product->ID);
+                                            $old_price  = get_field($prefix.'_details_old_price', $selected_product->ID);
+                                            $berth      = get_field($prefix.'_details_berth', $selected_product->ID);
 
                                             $feature        = get_field($prefix.'_details_feature_image', $selected_product->ID);
-                                            $feature_image = get_field('image', $feature->ID);
+                                            $feature_image  = get_field('image', $feature->ID);
                                             ?>
 
                                             <div class="col col-12 sm-col-6 md-col-4 pl3 pr3 <?=($a < 3)? "mb5" : ""?>">
@@ -147,6 +155,12 @@ $selected_products = get_sub_field('block_store_products');
                                                     <p class="mb2 bold"><?=$berth?> Berth</p>
 
                                                     <p><strong><span class="brand-primary" data-element="price" style="font-size: 1.2rem">£<?=number_format($price)?></span></strong></p>
+                                                    <?php if(!empty($old_price)) : ?>
+                                                        <p class="h5 brand-secondary mb2 small">
+                                                            Old price: <strike>£<?=number_format($old_price)?></strike>
+                                                            <span class="bold block">Save £<?=number_format($old_price-$price)?></span>
+                                                        </p>
+                                                    <?php endif; ?>
 
                                                     <?php
 
