@@ -646,8 +646,8 @@ function ml_get_template() {
     $template = get_page_template_slug();
     $template = explode('templates/', $template);
 
-    if (!empty($template[1]))
-        return $template[1];
+    if (!empty($template[0]))
+        return $template[0];
     else
         return false;
 }
