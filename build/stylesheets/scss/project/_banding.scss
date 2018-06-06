@@ -1794,7 +1794,7 @@ hr.border-5 {
       }
 
       @media (max-width: $breakpoint-sm) {
-        margin: 0;
+        margin: 0 0 0.5rem 0;
         padding: 0.6rem 0;
         color: $brand-base;
         display: block !important;
@@ -1838,6 +1838,10 @@ hr.border-5 {
 
       @media (max-width: $breakpoint-md) {
         left: 61%;
+      }
+
+      @media (max-width: $breakpoint-sm) {
+        display: none;
       }
     }
 
@@ -1910,6 +1914,10 @@ hr.border-5 {
         border-left: $arrow-size solid transparent;
         border-right: $arrow-size solid transparent;
         border-top: $arrow-size solid $brand-primary;
+      }
+
+      @media (max-width: $breakpoint-sm) {
+        margin: 0 0 0.5rem 0;
       }
     }
 
