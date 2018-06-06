@@ -19,11 +19,15 @@
 
         <div class="clearfix pb5 mxn3">
 
-            <?php $i = 1; foreach ($block['content']['items'] as $item):?>
+            <?php $i = 1; if (!empty($block['content']['items'])): foreach($block['content']['items'] as $item):?>
 
                 <div class="item item-<?=$i?> p3 block relative">
 
-                    <a href="<?=$item['block_linkBoxes_button_button_link']['url']?>" class="block relative width-100 height-100 hover-white white bg-cover bg-center box-shadow-3 <?=$block['content']['bgColor']?>" <?=($item['block_linkBoxes_button_button_link']['title'] ? 'title="'.$item['block_linkBoxes_button_button_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_button_button_link']['target'] ? 'target="'.$item['block_linkBoxes_button_button_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
+                    <?php if(!empty($item['block_linkBoxes_button']['button_link'])): ?>
+                        <a href="<?=$item['block_linkBoxes_button']['button_link']['url']?>" class="block relative width-100 height-100 hover-white white bg-cover bg-center box-shadow-3 <?=$block['content']['bgColor']?>" <?=($item['block_linkBoxes_button']['button_link']['title'] ? 'title="'.$item['block_linkBoxes_button']['button_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_button']['button_link']['target'] ? 'target="'.$item['block_linkBoxes_button']['button_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
+                    <?php else: ?>
+                        <div class="block relative width-100 height-100 hover-white white bg-cover bg-center box-shadow-3 <?=$block['content']['bgColor']?>" style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
+                    <?php endif; ?>
 
                         <div class="content relative width-100 height-100 py6 flex items-center justify-center  <?=($item['block_linkBoxes_overlay_strength']['add_overlay'] == true)? "bg-".$item['block_linkBoxes_overlay_strength']['overlayType']."-".$item['block_linkBoxes_overlay_strength']['overlayStrength'] : ""?>">
 
@@ -33,22 +37,31 @@
                                     <p class="title block mt2 text-center mb0 h3 white"><?=$item['block_linkBoxes_title']?></p>
                                 <?php endif; ?>
 
-                                <?php if (!empty($item['block_linkBoxes_button_button_link']['title'])): ?>
-                                    <p class="link block mt2 text-center mb0 h4 white"><?=$item['block_linkBoxes_button_button_link']['title']?></p>
+                                <?php if (!empty($item['block_linkBoxes_content'])): ?>
+                                    <?=$item['block_linkBoxes_content']?>
+                                <?php endif; ?>
+
+                                <?php if (!empty($item['block_linkBoxes_button']['button_link']['title'])): ?>
+                                    <p class="link block mt2 text-center mb0 h4 white"><?=$item['block_linkBoxes_button']['button_link']['title']?></p>
                                 <?php endif; ?>
 
                             </div>
 
-                            <?php if ($block['enableOverlay'] == true && (!empty($item['block_linkBoxes_title']) || !empty($item['block_linkBoxes_button_button_link']['title']))): ?>
-                                <div class="overlay absolute width-100 height-100 z-index-20 bg-brand-primary-overlay"></div>
+                            <?php if (!empty($item['block_linkBoxes_overlay_strength'])): ?>
+                                <div class="overlay absolute width-100 height-100 z-index-20 bg-<?=$item['block_linkBoxes_overlay_strength']['overlayType']?>-<?=$item['block_linkBoxes_overlay_strength']['overlayStrength']?>"></div>
                             <?php endif; ?>
 
                         </div>
-                    </a>
+                    
+                    <?php if(!empty($item['block_linkBoxes_button']['button_link'])): ?>
+                        </a>
+                    <?php else: ?>
+                        </div>
+                    <?php endif; ?>
 
                 </div>
 
-            <?php $i++; endforeach; ?>
+            <?php $i++; endforeach; endif; ?>
 
         </div>
 

@@ -10,6 +10,8 @@
  * @version 1.00
  */
 
+ // TODO: Need updating to new system and all support checking. 
+
 $bgColor          = get_sub_field($current . '_background_system_background_colours');
 $txtColor         = get_sub_field($current . '_text_system_text_colours');
 
