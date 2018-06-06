@@ -24,7 +24,7 @@
 
             <div class="flex items-center justify-center flex-wrap">
 
-                <?php if (!empty($block['content']['items'])): foreach ($block['content']['items'] as $item): ?>
+                <?php if(!empty($block['content']['items'])): foreach($block['content']['items'] as $item): ?>
 
                     <div class="item col-12 md-col-<?=$block['columns']?> p3">
 
