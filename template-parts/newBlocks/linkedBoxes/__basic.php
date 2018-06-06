@@ -10,26 +10,8 @@
  * @version 1.00
  */
 
-$bgColor          = get_sub_field($current . '_background_system_background_colours');
-
-$blockTitle       = get_sub_field($current . '_title_title');
-$blockColumns     = get_sub_field($current . '_columns');
-
-$block['content']['overlay']  = get_sub_field($current . '_enableOverlay');
-$block['content']['txtColor'] = get_sub_field($current . '_txtColour_system_text_colours');
-
-$darkenImages     = get_sub_field($current . '_darken');
-$darkenStrength   = get_sub_field($current . '_darkenStrength');
-
-$block['columns'] = 12 / $blockColumns;
-
-$blockItems       = get_sub_field($current . '_items');
-
-$hoverContent     = get_sub_field($current . '_hoverContent');
-
-$hoverShow = ($hoverContent == true)? "show-hover" : "";
-
-//TODO: Update to new block array system and move block specific settings to controller.
+ // TODO: Needs support for content on hover.
+ // TODO: Needs support for colour hover overlay. 
 ?>
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "linkedBox-basic {$hoverShow}")?> <?=get_blockData($block)?>>
@@ -42,32 +24,47 @@ $hoverShow = ($hoverContent == true)? "show-hover" : "";
 
             <div class="flex items-center justify-center flex-wrap">
 
-              <?php foreach ($blockItems as $item): ?>
+                <?php if (!empty($block['content']['items'])): foreach ($block['content']['items'] as $item): ?>
 
-                  <div class="item col-12 md-col-<?=$block['columns']?> p3">
-                      <a href="<?=$item['block_linkBoxes_button_button_link']['url']?>" class="block relative overflow-hidden bg-cover bg-center box-shadow-3 <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?>" <?=($item['block_linkBoxes_link']['title'] ? 'title="'.$item['block_linkBoxes_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_link']['target'] ? 'target="'.$item['block_linkBoxes_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
+                    <div class="item col-12 md-col-<?=$block['columns']?> p3">
 
-                          <div class="content relative js-match-height py6 flex items-center justify-center text-center <?=($darkenImages == true)? "darken-background" : ""?> <?=($darkenImages == true)? $darkenStrength : ""?>">
+                        <?php if(!empty($item['block_linkBoxes_button']['button_link'])): ?>
+                            <a href="<?=$item['block_linkBoxes_button']['button_link']['url']?>" class="block relative overflow-hidden bg-cover bg-center box-shadow-3 <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?>" <?=($item['block_linkBoxes_link']['title'] ? 'title="'.$item['block_linkBoxes_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_link']['target'] ? 'target="'.$item['block_linkBoxes_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
+                        <?php else: ?>
+                            <div class="block relative overflow-hidden bg-cover bg-center box-shadow-3 <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?>" style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
+                        <?php endif; ?>
+                        
+                                <div class="content relative js-match-height py6 flex items-center justify-center text-center <?=($darkenImages == true)? "darken-background" : ""?> <?=($darkenImages == true)? $darkenStrength : ""?>">
 
-                              <div class="z-index-40 <?=($block['content']['overlay'] == true)? "opacity-10" : ""; ?>">
+                                    <div class="z-index-40 <?=($block['content']['overlay'] == true)? "opacity-10" : ""; ?>">
 
-                                  <h3 class="mb0 z-index-20 <?=$item['block_linkBoxes_button_system_text_colours']?>"><?=strip_tags($item['block_linkBoxes_content'])?></h3>
+                                        <h3 class="mb0 z-index-20 <?=$item['block_linkBoxes_button']['system_text_colours']?>"><?=strip_tags($item['block_linkBoxes_content'])?></h3>
 
-                                  <?php if (!empty($item['block_linkBoxes_button_button_link']['url'])):?>
-                                      <p class="inline-block mx-auto mt1 mb0 h5 bold <?=$item['block_linkBoxes_button_system_text_colours']?> <?=($item['enableButton'] == true)? $item['block_linkBoxes_button_system_text_colours'] . 'btn btn-medium ' . $item['block_linkBoxes_button_system_background_colours'] : ''?> <?=$txtColor?>"><?=$item['block_linkBoxes_button_button_link']['title']?></p>
-                                  <?php endif; ?>
+                                        <?php if (!empty($item['block_linkBoxes_content'])): ?>
+                                            <p class="h4 mt2 mb0 <?=$item['block_linkBoxes_button']['system_text_colours']?>"><?=strip_tags($item['block_linkBoxes_content'])?></p>
+                                        <?php endif; ?>
 
-                              </div>
+                                        <?php if (!empty($item['block_linkBoxes_button']['button_link']['url'])):?>
+                                            <p class="link block mt2 text-center mb0 h4 bold <?=$item['block_linkBoxes_button']['system_text_colours']?> <?=($item['enableButton'] == true)? $item['block_linkBoxes_button']['system_text_colours'] . 'btn btn-medium ' . $item['block_linkBoxes_button']['system_background_colours'] : ''?>"><?=$item['block_linkBoxes_button']['button_link']['title']?></p>
+                                        <?php endif; ?>
 
-                              <?php if ($block['content']['overlay'] == true): ?>
-                                  <div class="overlay absolute width-100 height-100 z-index-20 bg-gray bg-brand-primary-overlay"></div>
-                              <?php endif; ?>
+                                    </div>
 
-                          </div>
-                      </a>
-                  </div>
+                                    <?php if (!empty($item['block_linkBoxes_overlay_strength'])): ?>
+                                        <div class="overlay absolute width-100 height-100 z-index-20 bg-<?=$item['block_linkBoxes_overlay_strength']['overlayType']?>-<?=$item['block_linkBoxes_overlay_strength']['overlayStrength']?>"></div>
+                                    <?php endif; ?>
 
-              <?php endforeach; ?>
+                                </div>
+
+                        <?php if(!empty($item['block_linkBoxes_button']['button_link'])): ?>
+                            </a>
+                        <?php else: ?>
+                            </div>
+                        <?php endif; ?>
+
+                    </div>
+
+                <?php endforeach; endif; ?>
 
             </div>
 
