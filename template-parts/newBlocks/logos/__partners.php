@@ -60,14 +60,14 @@ $blockItems = $blockItems['logos'];
             <?php endif; ?>
             
         <?php endif; ?>
-        
+
         <div class="col-12">
             
-            <div class="item-slider md-pl5" data-slick="logo-slider-partners">&nbsp;<?php // NEEDED TO KEEP BOX HEIGHT. ?>
+            <div class="item-slider px5" data-slick="logo-slider-partners">&nbsp;<?php // NEEDED TO KEEP BOX HEIGHT. ?>
                 
                 <?php foreach ($block['logos'] as $logo): $imageURL = get_field("attachment_image_link", $logo['ID']) ?>
                     
-                    <div class="col col-grid-5 flex items-center justify-center p5" data-mh="partners-slider">
+                    <div class="col col-grid-5 flex items-center justify-center px5" data-mh="partners-slider">
                         
                         <?php if(!empty($imageURL)): ?><a href="<?=$imageURL?>"><?php endif; ?>
                             <img src="<?=$logo['url']?>" alt="<?=$logo['title']?>" style="max-height: 6rem; margin: 0 auto;">
