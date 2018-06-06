@@ -7340,14 +7340,9 @@ jQuery(document).ready(function ($) {
 
     $('[data-slick="logo-slider-partners"]').slick({
       slidesToShow: 5,
-      // variableWidth: false,
       autoplay: true,
       autoplaySpeed: 3000,
-      // centerPadding: '30px',
-      arrows: false,
-      // draggable: false,
-      // pauseOnHover: false,
-      // mobileFirst: false
+      arrows: true,
       responsive: [
           {
               breakpoint: 1200,
