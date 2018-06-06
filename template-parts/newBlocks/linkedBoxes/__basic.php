@@ -43,18 +43,18 @@ $hoverShow = ($hoverContent == true)? "show-hover" : "";
             <div class="flex items-center justify-center flex-wrap">
 
               <?php foreach ($blockItems as $item): ?>
-
+                  <?php pa($item)?>
                   <div class="item col-12 md-col-<?=$block['columns']?> p3">
-                      <a href="<?=$item['block_linkBoxes_button_button_link']['url']?>" class="block relative overflow-hidden bg-cover bg-center box-shadow-3 <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?>" <?=($item['block_linkBoxes_link']['title'] ? 'title="'.$item['block_linkBoxes_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_link']['target'] ? 'target="'.$item['block_linkBoxes_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
+                      <a href="<?=$item['block_linkBoxes_button']['button_link']['url']?>" class="block relative overflow-hidden bg-cover bg-center box-shadow-3 <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?>" <?=($item['block_linkBoxes_link']['title'] ? 'title="'.$item['block_linkBoxes_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_link']['target'] ? 'target="'.$item['block_linkBoxes_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
 
                           <div class="content relative js-match-height py6 flex items-center justify-center text-center <?=($darkenImages == true)? "darken-background" : ""?> <?=($darkenImages == true)? $darkenStrength : ""?>">
 
                               <div class="z-index-40 <?=($block['content']['overlay'] == true)? "opacity-10" : ""; ?>">
 
-                                  <h3 class="mb0 z-index-20 <?=$item['block_linkBoxes_button_system_text_colours']?>"><?=strip_tags($item['block_linkBoxes_content'])?></h3>
+                                  <h3 class="mb0 z-index-20 <?=$item['block_linkBoxes_button']['system_text_colours']?>"><?=strip_tags($item['block_linkBoxes_content'])?></h3>
 
-                                  <?php if (!empty($item['block_linkBoxes_button_button_link']['url'])):?>
-                                      <p class="inline-block mx-auto mt1 mb0 h5 bold <?=$item['block_linkBoxes_button_system_text_colours']?> <?=($item['enableButton'] == true)? $item['block_linkBoxes_button_system_text_colours'] . 'btn btn-medium ' . $item['block_linkBoxes_button_system_background_colours'] : ''?> <?=$txtColor?>"><?=$item['block_linkBoxes_button_button_link']['title']?></p>
+                                  <?php if (!empty($item['block_linkBoxes_button']['button_link']['url'])):?>
+                                      <p class="inline-block mx-auto mt1 mb0 h5 bold <?=$item['block_linkBoxes_button']['system_text_colours']?> <?=($item['enableButton'] == true)? $item['block_linkBoxes_button']['system_text_colours'] . 'btn btn-medium ' . $item['block_linkBoxes_button']['system_background_colours'] : ''?> <?=$txtColor?>"><?=$item['block_linkBoxes_button']['button_link']['title']?></p>
                                   <?php endif; ?>
 
                               </div>
