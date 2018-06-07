@@ -625,23 +625,23 @@ form {
 
   .gfieldset {
 
-    &:nth-child(odd) {
-      //padding-left: 0;
-      padding-right: 1rem;
+    // &:nth-child(odd) {
+    //   //padding-left: 0;
+    //   padding-right: 1rem;
 
-      @media (max-width: $breakpoint-sm) {
-        padding: 0 1rem;
-      }
-    }
+    //   @media (max-width: $breakpoint-sm) {
+    //     padding: 0 1rem;
+    //   }
+    // }
 
-    &:nth-child(even) {
-      padding-left: 1rem;
-      //padding-right: 0;
+    // &:nth-child(even) {
+    //   padding-left: 1rem;
+    //   //padding-right: 0;
 
-      @media (max-width: $breakpoint-sm) {
-        padding: 0 1rem;
-      }
-    }
+    //   @media (max-width: $breakpoint-sm) {
+    //     padding: 0 1rem;
+    //   }
+    // }
 
   }
 
@@ -2701,6 +2701,10 @@ $formAccent: #e2e2e2;
     select,
     textarea {
       margin-bottom: 1rem;
+    }
+
+    textarea {
+      max-height: 8rem;
     }
 
     li {

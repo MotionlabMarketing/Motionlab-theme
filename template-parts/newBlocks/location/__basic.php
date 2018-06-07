@@ -37,7 +37,7 @@
                     <h2 class="brand-primary"><?=$block['content']['location']['location_name']?></h2>
 
                     <div class="clearfix mb2">
-                        <div class="col col-12 md-col-6">
+                        <div class="col col-12 md-col-6 pr4">
 
                             <h3 class="grey mb1 h4">Location Address</h3>
                             <p class="mb0"><?=$block['content']['location']['location_address_line_1']?></p>
