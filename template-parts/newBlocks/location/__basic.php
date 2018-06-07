@@ -8,6 +8,8 @@
  * @created 7 Jun 2018
  *
  * @version 1.00
+ *
+ * TODO: Needs to have micro data added to these addresses.
  */
 ?>
 
@@ -78,16 +80,34 @@
                     </div>
 
                     <?php if (!empty($block['content']['location']['location_note'])): ?>
+                    <div class="clearfix mb2">
 
                         <h4 class="clearfix mt4 mb2 gray mb0"><?=$block['content']['location']['location_note']['title']?></h4>
 
                         <?=$block['content']['location']['location_note']['content']?>
 
+                    </div=>
+                    <?php endif; ?>
+                                        
+                    <?php if (!empty($block['content']['location']['locations_logos'])): ?>
+                        <div class="clearfix">
+
+                            <h4 class="grey mb2 normal"><?=$block['content']['location']['locations_logos_titles']?></h4>
+                        
+                            <?php foreach ($block['content']['location']['locations_logos'] as $icon): $icon['link'] = get_field('attachment_image_link', $icon['id']); ?>
+
+                                <?php if (!empty($icon['link'])): ?><a href="<?=$icon['link']?>"><?php endif; ?>
+                            
+                                    <img src="<?=$icon['sizes']['thumbnail']?>" alt="<?=$icon['title']?>" class="size-90x90 mr3">
+
+                                <?php if (!empty($icon['link'])): ?></a><?php endif; ?>
+
+                            <?php endforeach; ?>
+                        
+                        </div>
                     <?php endif; ?>
 
-
                 </div>
-
 
         </div>
 
