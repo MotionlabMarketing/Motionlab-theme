@@ -14,11 +14,21 @@ Class _caravans
 	private $specs_slug     = 'spec';
 	private $specific_model = null;
 
+	/*
+	* These are variables used for filtering. Made them class variables because they are set
+	* in the processFilters method and used in the fetchCaravans method,
+	*/
+	private $tax_query 			= [];
+	private $berth_filter		= [];
+	private $min_price_filter 	= [];
+	private $max_price_filter 	= [];
+
 	public function __construct($specific_model = null) {
 
 		$this->specific_model = $specific_model;
 
 		$this->getCategories();
+		$this->processFilters(); //THIS DOES NOT HANDLE SORTS. SORTS ARE HANDLED IN fetchCaravans
 		$this->fetchCaravans($this->specific_model);
 
 	}
@@ -37,12 +47,83 @@ Class _caravans
 
 	}
 
+	private function processFilters() {
+		/**
+		*	Here we're going to go over any passed in GET variables which handle the filtering.
+		*/
+		if(isset($_GET['branch'])) {
+			$this->tax_query[] = [
+				'taxonomy'  => 'branches',
+				'terms'     => array($_GET['branch']),
+				'field'     => 'slug'
+			];
+		}
+
+		$berth_filter_options = [];
+		for($i = 0; $i < 5; $i++) {
+			if(isset($_GET['b'.$i])) {
+				$berth_filter_options[] = $_GET['b'.$i];
+			}
+		}
+
+		if(!empty($berth_filter_options)) {
+			$this->berth_filter = [
+				'key'		=> 'caravan_details_berth',
+				'compare'	=> 'IN',
+				'value'		=> $berth_filter_options
+			];
+		}
+
+		$tax_query_options = [];
+		if(isset($_GET['cfEndKitchen'])) {
+			$tax_query_options[] = "end-kitchen";
+		}
+		if(isset($_GET['cfEndWash'])) {
+			$tax_query_options[] = "end-washroom";
+		}
+		if(isset($_GET['cfEndBed'])) {
+			$tax_query_options[] = "end-bedroom";
+		}
+		if(isset($_GET['cfEndbed'])) {
+			$tax_query_options[] = "fixed-bed";
+		}
+		if(isset($_GET['cfTwinaxle'])) {
+			$tax_query_options[] = "twin-axle";
+		}
+		if(!empty($tax_query_options)) {
+			$this->tax_query[] = [
+				'taxonomy'	=> 'layouts',
+				'field'		=> 'slug',
+				'terms'		=> $tax_query_options
+			];
+		}
+
+		if(isset($_GET['minPrice'])) {
+			$this->min_price_filter = [
+				'key'		=> 'caravan_details_price',
+				'compare'	=> '>=',
+				'value'		=> $_GET['minPrice']
+			];
+		}
+		if(isset($_GET['maxPrice'])) {
+			$this->min_price_filter = [
+				'key'		=> 'caravan_details_price',
+				'compare'	=> '<=',
+				'value'		=> $_GET['maxPrice']
+			];
+		}
+
+
+	}
+
 	private function fetchCaravans($specific_model) {
 
-		$tax_query      = [];
 		$orderby_query  = [];
 		$model_clause = [];
 
+		/**
+		*	Here we handle the sort parameters passed into the search listing.
+		*/
 		if(isset($_POST['sortby_age']) && $_POST['sortby_age'] != '') :
 			$orderby_query['age_clause']    = $_POST['sortby_age'];
 		endif;
@@ -81,11 +162,14 @@ Class _caravans
 	                'key'           => 'caravan_details_price',
 	                'compare'       => 'EXISTS',
 	            ),
-	            "model_clause"  => $model_clause
+				'berth_filter'	=> $this->berth_filter,
+	            'model_clause'  => $model_clause,
+				'min_price'		=> $this->min_price_filter,
+				'max_price'		=> $this->max_price_filter
 	        ),
 			'orderby'           => $orderby_query,
 			'post_status'       => array('publish'),
-			'tax_query'         => $tax_query
+			'tax_query'         => $this->tax_query
 		);
 
 		$caravans = new WP_Query($args);
@@ -110,7 +194,7 @@ Class _caravans
 				$post->showcase_image = $image;
 			endif;
 		endforeach;
-
+		
 		$this->block['posts'] = $caravans;
 	}
 
