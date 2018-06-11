@@ -1,3 +1,4 @@
+<?php if($block['posts']->query['paged'] == 1): array_shift($block['posts']->posts); endif; ?>
 <?php foreach($block['posts']->posts as $post) :
     if (has_post_thumbnail($post->ID)) {
         $image_url = get_attachment_image_url(get_post_thumbnail_id( $post->ID ), 'medium');
