@@ -29,7 +29,7 @@
             <?php if ($i === 0): ?><div class="panel-holder"><?php endif; ?>
 
                 <a href="<?=$img['url']?>" class="col col-6 md-col-3 p1" data-image="<?=$i?>">
-                    <img src="<?=$img['sizes']['medium']?>" class="" alt="<?=$img['alt']?>">
+                    <?php render_attachment_image($img['id'], ["300", "300"], false, ["class" => "", "data-mh" => "image", "alt" => $img['alt']]); ?>
                 </a>
 
             <?php $i++; if ($i > 7) {
@@ -44,3 +44,4 @@
     <?=($block['grid'] == 'container')? '</div>' : ""?>
 
 </section>
+<!-- <img src="<?=$img['sizes']['medium']?>" class="" alt="<?=$img['alt']?>" data-mh="image"> -->

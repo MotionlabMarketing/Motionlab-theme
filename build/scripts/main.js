@@ -232,7 +232,7 @@ jQuery(document).ready(function ($) {
         arrows: false,
         dots: true,
         fade: true,
-        autoplay: false,
+        autoplay: true,
         autoplaySpeed: 4000,
         adaptiveHeigh: true,
     });
