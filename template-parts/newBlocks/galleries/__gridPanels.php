@@ -32,7 +32,10 @@
                     <img src="<?=$img['sizes']['medium']?>" class="" alt="<?=$img['alt']?>">
                 </a>
 
-            <?php $i++; if ($i > 7) { echo "</div>"; $i = 0; } endforeach; ?>
+            <?php $i++; if ($i > 7) {
+                echo "</div>";
+                $i = 0;
+            } endforeach; ?>
 
         </div>
 
