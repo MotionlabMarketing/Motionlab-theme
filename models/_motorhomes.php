@@ -14,11 +14,21 @@ Class _motorhomes
 	private $specs_slug     = 'specs';
 	private $specific_brand = null;
 
+	/*
+	* These are variables used for filtering. Made them class variables because they are set
+	* in the processFilters method and used in the fetchMotorhomes method,
+	*/
+	private $tax_query 			= [];
+	private $berth_filter		= [];
+	private $min_price_filter 	= [];
+	private $max_price_filter 	= [];
+
 	public function __construct($specific_brand = null) {
 
 		$this->specific_brand = $specific_brand;
 
 		$this->getCategories();
+		$this->processFilters(); //THIS DOES NOT HANDLE SORTS. SORTS ARE HANDLED IN fetchMotorhomes
 		$this->fetchMotorhomes($this->specific_brand);
 
 	}
@@ -37,9 +47,72 @@ Class _motorhomes
 
 	}
 
+	private function processFilters() {
+		/**
+		*	Here we're going to go over any passed in GET variables which handle the filtering.
+		*/
+		if(isset($_GET['branch'])) {
+			$this->tax_query[] = [
+				'taxonomy'  => 'branches',
+				'terms'     => array($_GET['branch']),
+				'field'     => 'slug'
+			];
+		}
+
+		$berth_filter_options = [];
+		for($i = 0; $i < 5; $i++) {
+			if(isset($_GET['b'.$i])) {
+				$berth_filter_options[] = $_GET['b'.$i];
+			}
+		}
+
+		if(!empty($berth_filter_options)) {
+			$this->berth_filter = [
+				'key'		=> 'motorhome_details_berth',
+				'compare'	=> 'IN',
+				'value'		=> $berth_filter_options
+			];
+		}
+
+		$tax_query_options = [];
+		if(isset($_GET['cfEndKitchen'])) {
+			$tax_query_options[] = "end-kitchen";
+		}
+		if(isset($_GET['cfEndWash'])) {
+			$tax_query_options[] = "end-washroom";
+		}
+		if(isset($_GET['cfEndBed'])) {
+			$tax_query_options[] = "end-bedroom";
+		}
+		if(isset($_GET['cfEndbed'])) {
+			$tax_query_options[] = "fixed-bed";
+		}
+		if(!empty($tax_query_options)) {
+			$this->tax_query[] = [
+				'taxonomy'	=> 'layouts',
+				'field'		=> 'slug',
+				'terms'		=> $tax_query_options
+			];
+		}
+
+		if(isset($_GET['minPrice'])) {
+			$this->min_price_filter = [
+				'key'		=> 'motorhome_details_price',
+				'compare'	=> '>=',
+				'value'		=> $_GET['minPrice']
+			];
+		}
+		if(isset($_GET['maxPrice'])) {
+			$this->min_price_filter = [
+				'key'		=> 'motorhome_details_price',
+				'compare'	=> '<=',
+				'value'		=> $_GET['maxPrice']
+			];
+		}
+	}
+
 	private function fetchMotorhomes($specific_brand) {
 
-		$tax_query      = [];
 		$orderby_query  = [];
 		$brand_clause = [];
 
@@ -81,11 +154,14 @@ Class _motorhomes
 	                'key'           => 'motorhome_details_price',
 	                'compare'       => 'EXISTS',
 	            ),
-	            "brand_clause"  => $brand_clause
+	            "brand_clause"  => $brand_clause,
+				'berth_filter'	=> $this->berth_filter,
+				'min_price'		=> $this->min_price_filter,
+				'max_price'		=> $this->max_price_filter
 	        ),
 			'orderby'           => $orderby_query,
 			'post_status'       => array('publish'),
-			'tax_query'         => $tax_query
+			'tax_query'         => $this->tax_query
 		);
 
 		$motorhomes = new WP_Query($args);
