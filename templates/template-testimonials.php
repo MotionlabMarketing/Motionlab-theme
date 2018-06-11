@@ -9,7 +9,7 @@ $testimonials = $testimonials->getBlock();
 
 get_header(); ?>
 
-    <section class="clearfix my4 mb4" id="listing-testimonials">
+    <section class="clearfix mt6 mb4 mb4" id="listing-testimonials">
 
         <div class="container">
 
@@ -17,12 +17,12 @@ get_header(); ?>
 
             <div class="col-12 mb5">
 
-                <?php if(!empty($testimonials['select_terms'])) : ?>
+                <?php if (!empty($testimonials['select_terms'])) : ?>
                     <form method="get" class="text-center">
 
                         <select style="min-width:18rem;" class="select md-ml3 width-100 md-width-auto box-shadow-2 testimonials_filters" data-loadvalue="<?=get_query_var('testimonials_category')?>" id="testimonials_filtercats">
                             <option value="">All Testimonials</option>
-                            <?php foreach($testimonials['select_terms'] as $select_term) :?>
+                            <?php foreach ($testimonials['select_terms'] as $select_term) :?>
                                 <option value="<?=$select_term->slug?>"><?=$select_term->name?></option>
                             <?php endforeach; ?>
 
@@ -56,7 +56,7 @@ get_header(); ?>
         var category_filter = $('#testimonials_filtercats').val();
 
         $.ajax({
-            url: '<?php echo admin_url( "admin-ajax.php"); ?>',
+            url: '<?php echo admin_url("admin-ajax.php"); ?>',
             method: 'POST',
             data: {
                 action: 'fetch_testimonials',

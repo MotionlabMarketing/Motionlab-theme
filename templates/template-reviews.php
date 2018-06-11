@@ -1,13 +1,11 @@
 <?php
 /**
- * Template Name: Reviews – Standard Layout
+ * Template Name: Reviews (To Be Removed, Use Testimonials)
+ *
+ * TODO: To be removed.
  */
 
 get_header();
-
-
-$blockTitle  = get_field('page_title');
-$blockTitle  = $blockTitle['title'];
 
 include_once(MODELS_DIR . '_testimonials.php');
 $testimonials = new _testimonials();
@@ -15,10 +13,12 @@ $testimonials = $testimonials->getBlock();
 ?>
 
     <?php
-    // $blockTitle NEEDS $template_content.
     include_once(get_template_directory() . '/templates/_parts/__banners.php')?>
 
-    <section class="clearfix my4 mb4" id="gallery-standard">
+
+    asassa
+
+    <section class="clearfix mt5 mb4 mb4" id="gallery-standard">
 
         <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
 
@@ -29,8 +29,8 @@ $testimonials = $testimonials->getBlock();
                 <?php include_once(AJAX_DIR . 'template-reviews-ajax.php'); ?>
 
             </div>
-
-        </div>
+    
+    </div>
 
     </section>
 

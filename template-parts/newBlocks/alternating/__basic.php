@@ -15,7 +15,7 @@
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-    <div class="clearfix <?=$block['content']['bg']?> <?=$block['content']['sides']?> <?=$block['content']['borders']['color']?> <?=$block['content']['borders']['size']?>"><?php // TODO: Outputing Array. ?>
+    <div class="clearfix <?=$block['content']['bg']?> <?=$block['content']['sides']?> <?=$block['content']['borders']['color']?> <?=$block['content']['borders']['size']?>"><?php // TODO: Outputing Array.?>
 
         <div class="relative col col-12 md-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> js-match-height min-height-v50 overflow-hidden <?=($block['content']['type'] == "video")? "flex items-center" : "" ?>" data-mh="panelHeight">
 
@@ -31,7 +31,7 @@
 
             <?php if ($block['content']['type'] == "gallery"): ?>
 
-                <div class="js-match-height overflow-hidden">
+                <div class="js-match-height overflow-hidden <?=$block['content']['padding']?>">
 
                     <div class="slider relative height-100" data-slick="slider-auto-arrows">
 
@@ -74,7 +74,7 @@
 
                       <div class="relative height-100" data-element="map">
 
-                        <?php $location = get_sub_field($current . '_map'); if( !empty($location) ): ?>
+                        <?php $location = get_sub_field($current . '_map'); if (!empty($location)): ?>
                           <div class="acf-map">
                           	<div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>"></div>
                           </div>
@@ -91,11 +91,15 @@
 
         </div>
 
-        <div class="col col-12 md-col-6 p4 lg-p6 <?=$block['content']['align']?> <?=$block['content']['color']?> js-match-height flex items-center">
+        <div class="col col-12 md-col-6 <?=$block['content']['padding']?> <?=$block['content']['align']?> <?=$block['content']['color']?> flex items-center js-match-height <?php if ($block['content']['type'] == "video"): ?>flex items-center<?php endif; ?>">
 
-            <div data-imatchto="video">
+            <?php if ($block['content']['type'] == "video"): ?>
+                <div class="height-100 width-100" data-imatchto="video">
+            <?php else: ?>        
+                <div>
+            <?php endif; ?>
 
-                <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}", ["class" => "mb2"]); ?>
+                <?php render_heading("{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}", ["class" => "mb2"]); ?>
 
                 <?php render_wysiwyg($block['intro']); ?>
 
@@ -107,23 +111,23 @@
                     }
                 ?>
 
-                <?php if($block['content']['buttons'] || $block['content']['cta']['append'] || $block['content']['cta']['link'] ):?>
+                <?php if ($block['content']['buttons'] || $block['content']['cta']['append'] || $block['content']['cta']['link']):?>
 
                 <div class="mt4 <?=$alignment?> border-top border-smoke pt4">
 
-                    <?php foreach ($block['content']['buttons'] as $button): ?>
+                    <?php foreach ($block['content']['buttons'] as $button): if (!empty($button['button_link']['url'])): ?>
 
                         <a href="<?=$button['button_link']['url']?>" class="btn btn-medium <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> role="button"><?=$button['button_link']['title']?></a>
 
-                    <?php endforeach; ?>
+                    <?php endif; endforeach;  ?>
 
-                    <?php if(!empty($block['content']['cta']['append'])): ?>
+                    <?php if (!empty($block['content']['cta']['append'])): ?>
 
                         <p class="lg-inline bold mb2 mt3 lg-mt0 lg-mb0 lg-mb0 lg-ml4 lg-mr2"><?=$block['content']['cta']['append']?></p>
 
                     <?php endif; ?>
 
-                    <?php if(!empty($block['content']['cta']['link'])):?>
+                    <?php if (!empty($block['content']['cta']['link'])):?>
 
                         <a href="<?=$block['content']['cta']['link']['url']?>" class="h3 bold brand-primary mx2"><?=$block['content']['cta']['link']['title']?></a>
 
