@@ -194,7 +194,7 @@ Class _caravans
 				$post->showcase_image = $image;
 			endif;
 		endforeach;
-		
+
 		$this->block['posts'] = $caravans;
 	}
 
