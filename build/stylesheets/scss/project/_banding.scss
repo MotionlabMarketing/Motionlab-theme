@@ -1351,7 +1351,8 @@ hr.border-5 {
 
   $itemHeight: 10rem;
   $itemContentHeight: 5rem;
-  $itemSpacing: 1.5rem;
+  // $itemSpacing: 1.5rem;
+  $itemSpacing: 0rem;
 
   .grid-sizer,
   .grid-item {

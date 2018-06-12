@@ -872,13 +872,13 @@ jQuery(document).ready(function ($) {
     //
     // });
 
-
-    $('.grid').masonry({
+    $('.grid').packery({
         itemSelector: '.grid-item',
-        columnWidth: '.grid-item',
-        percentPosition: true
+        columnWidth: '.grid-sizer',
+        // itemSelector: '.grid-item',
+        layoutMode: 'packery',
+        gutter: 0
     });
-
 
     /*======================================================
     UNSTICK FIXED POSITION ELEMENT (used on case study page)

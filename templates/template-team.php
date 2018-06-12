@@ -30,7 +30,8 @@ get_header(); ?>
 
                     <?php
                     if (!empty($blockTitle[0]['title'])) {
-                        include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php'); } ?>
+                        include(get_template_directory() .'/template-parts/newBlocks/sub-elements/_block_titles.php');
+                    } ?>
 
                     <div class="wysiwyg h4">
                         <?=get_field('page_introduction')?>
@@ -55,9 +56,9 @@ get_header(); ?>
                     <?php $image_url = isset(get_field("staff_profileImage", $team_member->ID)['url']) ? get_field("staff_profileImage", $team_member->ID)['url'] : 'http://www.castlehearing.co.uk/wp-content/uploads/2016/03/profile-placeholder.jpg'; ?>
 
 
-                    <?php if ( $key % 10 == 0 || $key % 14 == 0 ) : ?>
+                    <?php if ($key % 10 == 0 || $key % 14 == 0) : ?>
 
-                        <div class="p4 || grid-item grid-item--double">
+                        <div class="p4 grid-item grid-item--double">
 
                             <a href="<?= get_permalink($team_member->ID) ?>" class="<?= $txtColor ?>">
 
@@ -85,7 +86,7 @@ get_header(); ?>
 
                     <?php else: ?>
 
-                        <div class="p4 || grid-item">
+                        <div class="p4 grid-item">
 
                             <a href="<?= get_permalink($team_member->ID) ?>" class="<?= $txtColor ?>">
 
@@ -119,6 +120,6 @@ get_header(); ?>
 
     </section>
 
-    <?php include(get_template_directory() .'/template-parts/building-blocks.php' ); ?>
+    <?php include(get_template_directory() .'/template-parts/building-blocks.php'); ?>
 
 <?php get_footer(); ?>
