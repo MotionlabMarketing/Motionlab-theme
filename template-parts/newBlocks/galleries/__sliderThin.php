@@ -9,6 +9,8 @@
  *
  * @version 1.00
  */
+
+ //TODO: Make popup...
 ?>
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "gallery")?> <?=get_blockData($block)?>>

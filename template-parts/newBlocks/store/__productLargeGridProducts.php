@@ -8,11 +8,6 @@
 *
 * @version 1.00
 */
-
-// TODO: NEEDS TO WORK KARL! GET IT DONE! DO IT :D
-
-// TODO: BUG: Match Height has a problem with the second tab matching.
-
 $selected_products = get_sub_field('block_store_products');
 ?>
 
@@ -48,7 +43,7 @@ $selected_products = get_sub_field('block_store_products');
 
                                     <?php
 
-                                    //The first product in the list will be the "caravan/motorhome of the month. $i-1 because tabs are indexed at 1 whereas post are at 0"
+                                    // NOTE:The first product in the list will be the "caravan/motorhome of the month. $i-1 because tabs are indexed at 1 whereas post are at 0"
                                     $cotm = array_shift($selected_products[$i]['items']);
                                     $prefix = $cotm->post_type == 'caravans' ? 'caravan' : 'motorhome';
 
@@ -59,50 +54,56 @@ $selected_products = get_sub_field('block_store_products');
 
                                     $feature        = get_field($prefix.'_details_feature_image', $cotm->ID);
                                     $feature_image = get_field('image', $feature->ID);
+                                    
+                                    if (empty($feature_image) && !empty($feature)) {
+                                        $feature_image  = array_slice($feature_image, 0, 1);
+                                    }
 
                                     $brand = get_the_terms($cotm->ID, 'makes');
                                     $brand_image = get_field('taxonomy_image', 'term_'.$brand[0]->term_id);
-
-                                    if (is_array(get_field($prefix.'_details_specifications', $cotm->ID)))
-                                    $specs  = array_slice(get_field($prefix.'_details_specifications', $cotm->ID), 0, 4);
+                                    if (is_array(get_field($prefix.'_details_specifications', $cotm->ID))) {
+                                        $specs  = array_slice(get_field($prefix.'_details_specifications', $cotm->ID), 0, 4);
+                                    }
                                     ?>
 
                                     <div class="col col-12 md-col-5 relative">
 
-                                        <div class="product-item p4 mr3 text-center mb4 ml2 box-shadow-2 flex items-center justify-center" data-mh="product-size-tab<?=$i?>">
+                                        <div class="product-item p4 mr3 text-center b4 ml2 box-shadow-2 flex items-center justify-center" data-mh="product-size-tab<?=$i?>">
 
                                             <div>
 
-                                                <?=render_attachment_image($brand_image, ['180', '300'], false,  ["class" => "mx-auto"])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
-
                                                 <div class="flex items-center justify-center">
-                                                    <?php if(!empty($feature_image)) :
-                                                        foreach($feature_image as $image):
-                                                            render_attachment_image($image, "medium", false, ["class" => "inline-block mb2"]);
+                                                    <?php if (!empty($feature_image)) :
+                                                        foreach ($feature_image as $image):
+                                                            render_attachment_image($image, "large", false, ["class" => "inline-block mb2"]);
                                                         endforeach;
                                                     endif;?>
                                                 </div>
+                                                
+                                                <?=render_attachment_image($brand_image, "small", false, ["class" => "brand-logo mx-auto sixe-90x90"])?>
 
                                                 <h3><?=$title?></h3>
 
-                                                <p class="mb2 bold"><?=$berth?> Berth</p>
+                                                <p class="mt1 mb2 bold"><?=$berth?> Berth</p>
 
                                                 <?php if (!empty($specs)): ?>
 
-                                                    <ul class="list-reset border-last-right-none">
-                                                        <?php foreach($specs as $spec) : ?>
+                                                    <ul class="list-reset border-last-right-none h5">
+                                                        <?php foreach ($specs as $spec) : ?>
                                                             <li class="inline border-right px2"><?=get_term($spec)->name?></li>
                                                         <?php endforeach; ?>
                                                     </ul>
 
                                                 <?php endif; ?>
 
-                                                <p><strong><span class="brand-primary h2">£<?=number_format($price)?></span></strong></p>
-                                                <?php if(!empty($old_price)) : ?>
-                                                    <p class="h5 brand-secondary mb2 small">
+                                                <?php if (!empty($old_price)): ?>
+                                                    <p class="brand-primary h2" data-mh="price">
                                                         Old price: <strike>£<?=number_format($old_price)?></strike>
-                                                        <span class="bold block">Save £<?=number_format($old_price-$price)?></span>
+                                                        <span class="bold block">Save £<?=number_format($old_price - $price)?></span>
+                                                        <strong><span class="brand-primary h3">£<?=ltrim(number_format($price), "-")?></span></strong>
                                                     </p>
+                                                <?php else: ?>
+                                                    <p data-mh="price"><strong><span class="brand-primary h4">£<?=number_format($price)?></span></strong></p>
                                                 <?php endif; ?>
 
                                                 <?php
@@ -124,7 +125,7 @@ $selected_products = get_sub_field('block_store_products');
 
                                     <div class="col col-12 md-col-7" data-mh="product-size-tab<?=$i?>">
 
-                                        <?php $a = 0; foreach($selected_products[$i]['items'] as $selected_product): ?>
+                                        <?php $a = 0; foreach ($selected_products[$i]['items'] as $selected_product): ?>
 
                                             <?php
                                             $prefix     = $selected_product->post_type == 'caravans' ? 'caravan' : 'motorhome';
@@ -136,6 +137,11 @@ $selected_products = get_sub_field('block_store_products');
 
                                             $feature        = get_field($prefix.'_details_feature_image', $selected_product->ID);
                                             $feature_image  = get_field('image', $feature->ID);
+
+                                            if (empty($feature_image) && !empty($feature)) {
+                                                $feature_image  = array_slice($feature_image, 0, 1);
+                                            }
+
                                             ?>
 
                                             <div class="col col-12 sm-col-6 md-col-4 pl3 pr3 <?=($a < 3)? "mb5" : ""?>">
@@ -145,21 +151,23 @@ $selected_products = get_sub_field('block_store_products');
                                                     <h3 class="h4 bold" data-mh="title"><?=$title?></h3>
 
                                                     <div class="flex items-center justify-center" data-mh="product-item-image">
-                                                        <?php if(!empty($feature_image)) :
-                                                            foreach($feature_image as $image):
-                                                                render_attachment_image($image, "medium", false, ["class" => "inline-block mb2"]);
+                                                        <?php if (!empty($feature_image)) :
+                                                            foreach ($feature_image as $image):
+                                                                render_attachment_image($image, ["260", "120"], false, ["class" => "inline-block mb2"]);
                                                             endforeach;
                                                         endif;?>
                                                     </div>
 
                                                     <p class="mb2 bold"><?=$berth?> Berth</p>
 
-                                                    <p><strong><span class="brand-primary" data-element="price" style="font-size: 1.2rem">£<?=number_format($price)?></span></strong></p>
-                                                    <?php if(!empty($old_price)) : ?>
-                                                        <p class="h5 brand-secondary mb2 small">
+                                                    <?php if (!empty($old_price)): ?>
+                                                        <p class="brand-primary h4" data-mh="price">
                                                             Old price: <strike>£<?=number_format($old_price)?></strike>
                                                             <span class="bold block">Save £<?=number_format($old_price-$price)?></span>
+                                                            <strong><span class="brand-primary h3">£<?=ltrim(number_format($price), "-")?></span></strong>
                                                         </p>
+                                                    <?php else: ?>
+                                                        <p data-mh="price"><strong><span class="brand-primary h3">£<?=ltrim(number_format($price), "-")?></span></strong></p>
                                                     <?php endif; ?>
 
                                                     <?php
@@ -213,8 +221,9 @@ $selected_products = get_sub_field('block_store_products');
                                     $brand = get_the_terms($cotm->ID, 'makes');
                                     $brand_image = get_field('taxonomy_image', 'term_'.$brand[0]->term_id);
 
-                                    if (is_array(get_field($prefix.'_details_specifications', $cotm->ID)))
-                                    $specs  = array_slice(get_field($prefix.'_details_specifications', $cotm->ID), 0, 4);
+                                    if (is_array(get_field($prefix.'_details_specifications', $cotm->ID))) {
+                                        $specs  = array_slice(get_field($prefix.'_details_specifications', $cotm->ID), 0, 4);
+                                    }
                                     ?>
 
                                     <div class="col col-12 md-col-5 relative">
@@ -223,32 +232,39 @@ $selected_products = get_sub_field('block_store_products');
 
                                             <div>
 
-                                                <?=render_attachment_image($brand_image, ['180', '300'], false,  ["class" => "mx-auto"])?> <?php // NEED ID REPLACING WITH ID FOR IMAGE.  ?>
-
                                                 <div class="flex items-center justify-center">
-                                                    <?php if(!empty($feature_image)) :
-                                                        foreach($feature_image as $image):
-                                                            render_attachment_image($image, "medium", false, ["class" => "mr4 inline-block"]);
+                                                    <?php if (!empty($feature_image)) :
+                                                        foreach ($feature_image as $image):
+                                                            render_attachment_image($image, "large", false, ["class" => "inline-block"]);
                                                         endforeach;
                                                     endif;?>
                                                 </div>
+
+                                                <?=render_attachment_image($brand_image, "small", false, ["class" => "brand-logo mx-auto sixe-90x90"])?>
 
                                                 <h3><?=$title?></h3>
 
                                                 <p class="mb2 bold"><?=$berth?> Berth</p>
 
-
                                                 <?php if (!empty($specs)): ?>
 
-                                                    <ul class="list-reset border-last-right-none">
-                                                        <?php foreach($specs as $spec) : ?>
+                                                    <ul class="list-reset border-last-right-none h5">
+                                                        <?php foreach ($specs as $spec) : ?>
                                                             <li class="inline border-right px2"><?=get_term($spec)->name?></li>
                                                         <?php endforeach; ?>
                                                     </ul>
 
                                                 <?php endif; ?>
 
-                                                <p><strong><span class="brand-primary h2">£<?=number_format($price)?></span></strong></p>
+                                                <?php if (!empty($old_price)): ?>
+                                                    <p class="brand-primary h4" data-mh="price">
+                                                        Old price: <strike>£<?=number_format($old_price)?></strike>
+                                                        <span class="bold block">Save £<?=number_format($old_price-$price)?></span>
+                                                        <strong><span class="brand-primary h3">£<?=ltrim(number_format($price), "-")?></span></strong>
+                                                    </p>
+                                                    <?php else: ?>
+                                                        <p data-mh="price"><strong><span class="brand-primary h3">£<?=ltrim(number_format($price), "-")?></span></strong></p>
+                                                    <?php endif; ?>
 
                                                 <?php
 
@@ -269,7 +285,7 @@ $selected_products = get_sub_field('block_store_products');
 
                                     <div class="col col-12 md-col-7" data-mh="product-size-tab<?=$i?>">
 
-                                        <?php $a = 0; foreach($selected_products[$i]['items'] as $selected_product): ?>
+                                        <?php $a = 0; foreach ($selected_products[$i]['items'] as $selected_product): ?>
 
                                             <?php
                                             $prefix = $selected_product->post_type == 'caravans' ? 'caravan' : 'motorhome';
@@ -281,6 +297,10 @@ $selected_products = get_sub_field('block_store_products');
                                             $feature        = get_field($prefix.'_details_feature_image', $selected_product->ID);
                                             $feature_image  = get_field('image', $feature->ID);
 
+                                            if (empty($feature_image) && !empty($feature)) {
+                                                $feature_image  = array_slice($feature_image, 0, 1);
+                                            }
+
                                             ?>
 
                                             <div class="col col-12 sm-col-6 md-col-4 pl3 pr3 <?=($a < 3)? "mb5" : ""?>">
@@ -290,17 +310,24 @@ $selected_products = get_sub_field('block_store_products');
                                                     <h3 class="h4 bold" data-mh="title"><?=$title?></h3>
 
                                                     <div class="flex items-center justify-center" data-mh="product-item-image">
-                                                        <?php if(!empty($feature_image)) :
-                                                            foreach($feature_image as $image):
-                                                                render_attachment_image($image, "thumbnail", false, ["class" => "mr4 inline-block"]);
+                                                        <?php if (!empty($feature_image)):
+                                                            foreach ($feature_image as $image):
+                                                                render_attachment_image($image, ["260", "120"], false, ["class" => "inline-block"]);
                                                             endforeach;
                                                         endif;?>
                                                     </div>
 
-                                                    <p class="mb2 bold"><?=$berth?> Berth</p>
+                                                    <p class="mt1 mb2 bold"><?=$berth?> Berth</p>
 
-                                                    <p><strong><span class="brand-primary" data-element="price" style="font-size: 1.2rem">£<?=number_format($price)?></span></strong></p>
-
+                                                    <?php if (!empty($old_price)): ?>
+                                                        <p class="brand-primary h4" data-mh="price">
+                                                            Old price: <strike>£<?=number_format($old_price)?></strike>
+                                                            <span class="bold block">Save £<?=number_format($old_price-$price)?></span>
+                                                            <strong><span class="brand-primary h3">£<?=ltrim(number_format($price), "-")?></span></strong>
+                                                        </p>
+                                                    <?php else: ?>
+                                                        <p data-mh="price"><strong><span class="brand-primary h3">£<?=ltrim(number_format($price), "-")?></span></strong></p>
+                                                    <?php endif; ?>
                                                     <?php
 
                                                     // NEEDS TO BE ABLE TO THE CHANGE THE VALUE FROM 'RANGE' OR 'CARAVAN/MOTORHOME' //

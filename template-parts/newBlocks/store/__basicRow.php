@@ -11,9 +11,9 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
         
         <?php foreach ($selected_products[0]['items'] as $post) : ?>
             
-            <div class="clearfix col-12 relative border-top border-left border-bottom border-right border-light-1 box-shadow-1 border-solid px2 py4 md-p5 mb4 bg-white">
+            <div class="clearfix col-12 relative border-top border-left border-bottom border-right border-light-1 box-shadow-1 border-solid px2 py4 md-p5 mb4 bg-white" data-element-product="productBlock">
                 
-                <div class="absolute top-0 left-0 bg-brand-secondary white py2 px3"><a href="<?=the_permalink($post->ID)?>" class="white hover-white"><i class="fa fa-camera"></i>&nbsp;<?=count(get_field('image', get_field($prefix.'_details_showcase', $post->ID)->ID));?></a></div>
+                <div class="product-images absolute top-0 left-0 bg-brand-secondary white py2 px3" data-element-product="imageTotal"><a href="<?=the_permalink($post->ID)?>" class="white hover-white"><i class="fa fa-camera"></i>&nbsp;&nbsp;<?=count(get_field('image', get_field($prefix.'_details_showcase', $post->ID)->ID));?></a></div>
                 
                 <div class="lg-flex items-center">
                     
@@ -36,7 +36,7 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
                         
                     </div>
                     
-                    <div class="col col-12 md-col-6 lg-col-7 px4 mb4 md-mb0">
+                    <div class="col col-12 md-col-6 lg-col-7 py2 px4 mb4 md-mb0">
                         
                         <h3 class="brand-secondary bold mb2"><a href="<?=the_permalink($post->ID)?>" class="brand-secondary"><?=get_the_title($post->ID);?></a></h3>
                         <p class="uppercase bold opacity-6"></p>
@@ -48,7 +48,7 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
                                 <?php
                                 $specs = get_field($prefix.'_details_specifications', $post->ID);
                                 if (!empty($specs)): ?>
-                                <ul class="tick-list">
+                                <ul class="tick-list" data-element-product="featureList">
                                     <?php foreach (array_slice($specs, 0, 10) as $spec): ?>
                                         <li><?=get_term($spec)->name?></li>
                                     <?php endforeach; ?>
@@ -75,11 +75,11 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
                         
                     </div>
                     
-                    <div class="flex items-center justify-center">
+                    <div class="flex items-center justify-start">
                         
                         <?php render_attachment_image("8632", "small", false, ["class" => "my2 mr2"]); // TODO: THESE ICONS WILL NEED TO BE SINGLES AND INCLUDED USING A LOOP. THESE COME FROM motorhome FINDER APPRENTLY - CINDERS.?>
                         
-                        <p class="bold brand-primary mb0">Special Offer – Free PowerTouch Motor Mover</p> <?php // TODO: This needs to load a dynamic line?>
+                        <p class="bold brand-primary mb0 ml3">Special Offer – Free PowerTouch Motor Mover</p> <?php // TODO: This needs to load a dynamic line?>
                         
                     </div>
                     
@@ -89,13 +89,13 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
                     
                     <p class="h3 brand-primary bold mb1">£<?=number_format(get_field($prefix.'_details_price', $post->ID))?></p>
                     <?php if (!empty(get_field($prefix.'_details_old_price'))) : ?>
-                        <p class="h5 brand-secondary mb2 small">
+                        <p class="h5 brand-secondary mb2 small mb7">
                             Old price: <strike>£<?=number_format(get_field($prefix.'_details_old_price', $post->ID))?></strike>
                             <span class="bold">Save £<?=number_format(get_field($prefix.'_details_old_price', $post->ID)-get_field($prefix.'_details_price', $post->ID))?></span>
                         </p>
                     <?php endif; ?>
                     
-                    <p class="h4 bold grey mb6"><?=get_term(get_field($prefix.'_details_branch', $post->ID))->name?> Branch</p>
+                    <p class="h4 bold grey mb7"><?=get_term(get_field($prefix.'_details_branch', $post->ID))->name?> Branch</p>
                     
                     <a href="<?=get_permalink($post->ID)?>" class="btn bg-brand-secondary white btn-medium border-radius-2" style="min-width: 80%">View <?=rtrim(ucfirst(get_post_type()), "s")?></a>
                     

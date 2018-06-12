@@ -6,7 +6,7 @@ jQuery(document).ready(function ($) {
 
 
     // TODO: Make this work by checking the tallest item.
-    var tabheight = $( '.dot-target' ).actual( 'height' );
+    var tabheight = $('.dot-target').actual('height');
     $('.dot-target').height(tabheight);
 
     function jsMatchHeightTrigger() {
@@ -136,7 +136,7 @@ jQuery(document).ready(function ($) {
     function headerSpace() {
         var headerHeight = $('header').outerHeight();
         $('.js-header-space').css('padding-top', +headerHeight + "px");
-        $('.js-negative-offset-header-space').css('margin-top', "-" +headerHeight + "px");
+        $('.js-negative-offset-header-space').css('margin-top', "-" + headerHeight + "px");
     }
 
     headerSpace();
@@ -232,7 +232,7 @@ jQuery(document).ready(function ($) {
         arrows: false,
         dots: true,
         fade: true,
-        autoplay: false,
+        autoplay: true,
         autoplaySpeed: 4000,
         adaptiveHeigh: true,
     });
@@ -292,40 +292,40 @@ jQuery(document).ready(function ($) {
     });
 
     $('[data-slick="logo-slider-partners"]').slick({
-      slidesToShow: 5,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      arrows: true,
-      responsive: [
-          {
-              breakpoint: 1200,
-              settings: {
-                  slidesToShow: 4
-              }
-          },
-          {
-              breakpoint: 960,
-              settings: {
-                  slidesToShow: 3,
-                  arrows: true
-              }
-          },
-          {
-              breakpoint: 600,
-              settings: {
-                  slidesToShow: 2,
-                  arrows: true
-              }
-          },
-          {
-              breakpoint: 480,
-              centerMode: true,
-              settings: {
-                  slidesToShow: 2,
-                  arrows: true
-              }
-          }
-      ]
+        slidesToShow: 5,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        arrows: true,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 4
+                }
+            },
+            {
+                breakpoint: 960,
+                settings: {
+                    slidesToShow: 3,
+                    arrows: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    arrows: true
+                }
+            },
+            {
+                breakpoint: 480,
+                centerMode: true,
+                settings: {
+                    slidesToShow: 2,
+                    arrows: true
+                }
+            }
+        ]
     });
 
 
@@ -344,7 +344,7 @@ jQuery(document).ready(function ($) {
     });
 
     $('[data-slick="product-preview"]').slick({
-        slidesToShow: 2,
+        slidesToShow: 4,
         variableWidth: false,
         autoplay: true,
         autoplaySpeed: 5000,
@@ -352,7 +352,7 @@ jQuery(document).ready(function ($) {
         arrows: true,
         draggable: false,
         pauseOnHover: false,
-        mobileFirst: true,
+        mobileFirst: false,
         asNavFor: '.product-images-slider',
         focusOnSelect: true,
         responsive: [
@@ -472,35 +472,35 @@ jQuery(document).ready(function ($) {
         ]
     });
 
-    if($('[data-slick="storeSlidingPanels-slider"]').length) {
+    if ($('[data-slick="storeSlidingPanels-slider"]').length) {
         productsZoom();
     }
-    $('[data-slick="storeSlidingPanels-slider"]').on('beforeChange', function() {
+    $('[data-slick="storeSlidingPanels-slider"]').on('beforeChange', function () {
         productsZoom();
     });
 
     function productsZoom() {
-            var number;
+        var number;
 
-            if ($(window).width() > 1200) {
-                number = 3;
-            } else if ($(window).width() > 600) {
-                number = 2;
-            }
+        if ($(window).width() > 1200) {
+            number = 3;
+        } else if ($(window).width() > 600) {
+            number = 2;
+        }
 
-            $(".panels").each( function () {
-                $(this).removeClass('animate');
-                // $(this).css("transform", "scale(0.8)");
-                // $(this).animate({transform: "scale(0.8)"}, 5000, 'linear');
+        $(".panels").each(function () {
+            $(this).removeClass('animate');
+            // $(this).css("transform", "scale(0.8)");
+            // $(this).animate({transform: "scale(0.8)"}, 5000, 'linear');
+        });
+
+        setTimeout(function () {
+            $(".panels.slick-active:eq(2)").each(function () {
+                // $(this).css("transform", "scale(1)");
+                $(this).addClass('animate');
+                // $(this).animate({transform: "scale(1)"}, 500, 'linear');
             });
-
-            setTimeout(function() {
-                $(".panels.slick-active:eq(2)").each(function () {
-                    // $(this).css("transform", "scale(1)");
-                    $(this).addClass('animate');
-                    // $(this).animate({transform: "scale(1)"}, 500, 'linear');
-                });
-            }, 100);
+        }, 100);
     }
 
     $('.js-hero-slider-image').slick({
@@ -583,7 +583,7 @@ jQuery(document).ready(function ($) {
     $('[data-toggle="popover"]').webuiPopover({
         trigger: 'hover',
         animation: 'pop',
-        placement:'top',
+        placement: 'top',
         width: 360,
     });
 
@@ -679,7 +679,7 @@ jQuery(document).ready(function ($) {
 
     // OPEN AN INLINE MODEL WINDOW.
     $('.model').magnificPopup({
-        type:'inline',
+        type: 'inline',
         midClick: true
     });
 
@@ -694,10 +694,23 @@ jQuery(document).ready(function ($) {
 
     $('.gallery').magnificPopup({
         delegate: 'a',
-        type:'image',
-        gallery:{
+        type: 'image',
+        gallery: {
             enabled: true,
-            preload: [0,2],
+            preload: [0, 2],
+            navigateByImgClick: true,
+            tPrev: 'Previous',
+            tNext: 'Next',
+            tCounter: '<span class="mfp-counter">%curr% of %total%</span>'
+        }
+    });
+
+    $('.gallery-img').magnificPopup({
+        delegate: 'img',
+        type: 'image',
+        gallery: {
+            enabled: true,
+            preload: [0],
             navigateByImgClick: true,
             tPrev: 'Previous',
             tNext: 'Next',
@@ -740,7 +753,7 @@ jQuery(document).ready(function ($) {
      * @param callback
      * @returns {$.fn}
      */
-    $.fn.exists = function(callback) {
+    $.fn.exists = function (callback) {
         var args = [].slice.call(arguments, 1);
 
         if (this.length) {
@@ -750,7 +763,7 @@ jQuery(document).ready(function ($) {
         return this;
     };
 
-    $('.tabs-dots').exists(function() {
+    $('.tabs-dots').exists(function () {
         var blockID = this.data('block-id');
 
     });
@@ -859,13 +872,13 @@ jQuery(document).ready(function ($) {
     //
     // });
 
-
-    $('.grid').masonry({
+    $('.grid').packery({
         itemSelector: '.grid-item',
-        columnWidth: '.grid-item',
-        percentPosition: true
+        columnWidth: '.grid-sizer',
+        // itemSelector: '.grid-item',
+        layoutMode: 'packery',
+        gutter: 0
     });
-
 
     /*======================================================
     UNSTICK FIXED POSITION ELEMENT (used on case study page)
@@ -904,11 +917,11 @@ jQuery(document).ready(function ($) {
      * @author Joe Curran
      * @version 1.00
      */
-    $('.video-embed').on('click', function(e) {
+    $('.video-embed').on('click', function (e) {
         e.preventDefault();
 
         // RESET THE BORDERS FOR ALL ELEMENTS.
-        $($(this).parent()).each(function() {
+        $($(this).parent()).each(function () {
             $(this).find('img').removeClass('border-light-1').addClass('border-transparent');
         });
 
@@ -931,25 +944,25 @@ GOOGLE MAP
 function initialize() {
 
     //https://snazzymaps.com/style/60/blue-gray
-    var styles = [{featureType: "water", stylers: [{visibility: "on"}, {color: "#b5cbe4"}]}, {
+    var styles = [{ featureType: "water", stylers: [{ visibility: "on" }, { color: "#b5cbe4" }] }, {
         featureType: "landscape",
-        stylers: [{color: "#efefef"}]
-    }, {featureType: "road.highway", elementType: "geometry", stylers: [{color: "#83a5b0"}]}, {
+        stylers: [{ color: "#efefef" }]
+    }, { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#83a5b0" }] }, {
         featureType: "road.arterial",
         elementType: "geometry",
-        stylers: [{color: "#bdcdd3"}]
-    }, {featureType: "road.local", elementType: "geometry", stylers: [{color: "#ffffff"}]}, {
+        stylers: [{ color: "#bdcdd3" }]
+    }, { featureType: "road.local", elementType: "geometry", stylers: [{ color: "#ffffff" }] }, {
         featureType: "poi.park",
         elementType: "geometry",
-        stylers: [{color: "#e3eed3"}]
+        stylers: [{ color: "#e3eed3" }]
     }, {
         featureType: "administrative",
-        stylers: [{visibility: "on"}, {lightness: 33}]
-    }, {featureType: "road"}, {
+        stylers: [{ visibility: "on" }, { lightness: 33 }]
+    }, { featureType: "road" }, {
         featureType: "poi.park",
         elementType: "labels",
-        stylers: [{visibility: "on"}, {lightness: 20}]
-    }, {}, {featureType: "road", stylers: [{lightness: 20}]}];
+        stylers: [{ visibility: "on" }, { lightness: 20 }]
+    }, {}, { featureType: "road", stylers: [{ lightness: 20 }] }];
     var map;
     var markers = [];
     var infowindow = [];
@@ -1032,11 +1045,11 @@ jQuery(document).ready(function ($) {
     // NAVIGATION SMALLIFICATION //
     // to use remove class 'smallification' and add 'data-smallification' on the header.
     function navigationSmallification() {
-        if($('[data-smallification]').length > 0){
-            var viewportWidth    = $(window).width();
+        if ($('[data-smallification]').length > 0) {
+            var viewportWidth = $(window).width();
             // var viewportHeight   = $(window).height();
-            var headerHeight     = $('header').height();
-            var headerLogo       = $('#main-logo').data('logo');
+            var headerHeight = $('header').height();
+            var headerLogo = $('#main-logo').data('logo');
             var headerLogoScroll = $('#main-logo').data('scrolllogo');
 
             if (viewportWidth > 680) {
@@ -1065,9 +1078,9 @@ jQuery(document).ready(function ($) {
     navigationSmallification();
 
     // VIDEO MATCH HEIGHT FOR ALTERNATING MEDIA.
-    $('[data-imatch]').each( function() {
+    $('[data-imatch]').each(function () {
         var height = $('[data-imatchto="' + $(this).data('imatch') + '"]').height();
-        $('[data-imatch="'+$(this).data('imatch')+'"]').height(height);
+        $('[data-imatch="' + $(this).data('imatch') + '"]').height(height);
     });
 
 });
