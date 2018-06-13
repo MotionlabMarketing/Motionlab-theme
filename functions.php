@@ -347,6 +347,7 @@ add_theme_support( 'post-thumbnails' );
 add_image_size( 'logoCrop', 300, 300, true);
 add_image_size( 'medium', 480, 480, false );
 add_image_size( 'mediumCrop', 400, 280, true );
+add_image_size( 'galleryMedium', 800, 560, true );
 
 
 

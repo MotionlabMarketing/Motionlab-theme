@@ -636,6 +636,16 @@ $arrow-size: 10px;
   }
 
 
+    [data-block-name="block_gallery"][data-block-layout="gallerySlider"]{
+          .slick-prev{
+              left: 0;
+          }
+          .slick-next{
+              right: 0;
+          }
+    }
+
+
   .productSliderNav .slick-current .border{
     border-color: $darken-3;
   }

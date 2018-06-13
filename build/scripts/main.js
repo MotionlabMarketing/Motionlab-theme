@@ -291,6 +291,22 @@ jQuery(document).ready(function ($) {
         ]
     });
 
+    $('[data-slick="gallery-slider-main"]').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '[data-slick="gallery-slider-thumb"]'
+    });
+    $('[data-slick="gallery-slider-thumb"]').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: '[data-slick="gallery-slider-main"]',
+        dots: false,
+        centerMode: true,
+        focusOnSelect: true
+    });
+
     $('[data-slick="logo-slider-partners"]').slick({
         slidesToShow: 5,
         autoplay: true,
