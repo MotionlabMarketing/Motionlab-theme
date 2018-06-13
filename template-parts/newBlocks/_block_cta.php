@@ -29,12 +29,17 @@ $block['content']['buttons']  = get_sub_field($current . '_buttons');
 $block['content']['txtColor'] = get_sub_field($current . '_txtColour_system_text_colours');
 $block['content']['txtAlign'] = get_sub_field($current . '_txtAlign')['align'];
 
+$block['content']['iconCTA']  = get_sub_field('block_alternating_facts');
+
 switch ($block['layout']):
     case "large":
         include('cta/__large.php');
         break;
     case "sections":
         include('cta/__sections.php');
+        break;
+    case "icon":
+        include('cta/__icon.php');
         break;
     case "basic":
         include('cta/__basic.php');

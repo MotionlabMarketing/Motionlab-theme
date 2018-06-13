@@ -10,6 +10,8 @@
  * @version 1.00
  */
 
+$block['content']['images'] = get_field('image', get_sub_field($current . '_gallery'));
+
 switch ($block['layout']):
     case "gridPanels":
         include('galleries/__'.$block['layout'].'.php');
@@ -19,6 +21,9 @@ switch ($block['layout']):
         break;
     case "basic":
         include('galleries/__basic.php');
+        break;
+    case "gallerySlider":
+        include('galleries/__gallerySlider.php');
         break;
     default:
         include('galleries/__sliderThin.php');
