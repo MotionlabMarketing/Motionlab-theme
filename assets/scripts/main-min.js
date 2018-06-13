@@ -7937,7 +7937,7 @@ jQuery(document).ready(function ($) {
     // });
 
     $('.grid').packery({
-        itemSelector: '.grid-item',
+        itemSelector: '.grid-item, .grid-item-inline-size',
         columnWidth: '.grid-sizer',
         // itemSelector: '.grid-item',
         layoutMode: 'packery',
