@@ -60,24 +60,26 @@
                         </div>
                     </div>
 
-                    <div class="col col-12 py2 pr1">
+                    <?php if (!empty($block['content']['location']['opening_times_primary'])): ?>
+                        <div class="col col-12 py2 pr1">
 
-                        <h4 class="clearfix grey mb2 normal" data-mh="tabletitle"><?=$block['content']['location']['opening_times_primary']['section_openingTimes_title'];?></h4>
+                            <h4 class="clearfix grey mb2 normal" data-mh="tabletitle"><?=$block['content']['location']['opening_times_primary']['section_openingTimes_title'];?></h4>
 
-                        <table class="table-striped table-bordered table-bold-first bg-white mb3">
-                            <?php foreach ($block['content']['location']['opening_times_primary']['section_openingTimes_times'] as $key =>  $items): ?>
+                            <table class="table-striped table-bordered table-bold-first bg-white mb3">
+                                <?php foreach ($block['content']['location']['opening_times_primary']['section_openingTimes_times'] as $key =>  $items): ?>
 
-                                <tr>
+                                    <tr>
 
-                                    <td class="h6"><?=ucfirst($key)?></td>
-                                    <td class="h6"><?=$items?></td>
+                                        <td class="h6"><?=ucfirst($key)?></td>
+                                        <td class="h6"><?=$items?></td>
 
-                                </tr>
+                                    </tr>
 
-                            <?php endforeach; ?>
-                        </table>
+                                <?php endforeach; ?>
+                            </table>
 
-                    </div>
+                        </div>
+                    <?php endif; ?>
 
                     <?php if (!empty($block['content']['location']['location_note'])): ?>
                     <div class="clearfix mb2">
