@@ -35,13 +35,13 @@ get_header(); ?>
 
                 <?php
                 if (has_post_thumbnail($latest_post->ID)){
-                    $image_url = get_attachment_image_url(get_post_thumbnail_id($latest_post->ID));
+                    $image_url = get_attachment_image_url(get_post_thumbnail_id( $latest_post->ID ), 'medium');
                 } else {
                     $image_url = get_field('fallback_image_news_feature', 'option');
                 }?>
-                
+
                 <a href="<?= get_permalink($latest_post->ID) ?>">
-                    <img src="<?=resize_attachment_image($image_url, 600, 400, true)?>" alt="<?=$latest_post->post_title?>">
+                    <img src="<?=$image_url?>" alt="<?=$latest_post->post_title?>">
                 </a>
 
             </div>
