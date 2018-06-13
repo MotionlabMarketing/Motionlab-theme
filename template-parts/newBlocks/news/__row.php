@@ -27,7 +27,7 @@
 
                         <?php if (has_post_thumbnail( $post->ID ) ): ?>
                             <a href="<?=get_permalink($post->ID)?>">
-                                <img src="<?=resize_attachment_image(wp_get_attachment_image_url(get_post_thumbnail_id( $post->ID )), 450, 350, true)?>" data-mh="news-image">
+                                <img src="<?=wp_get_attachment_image_url(get_post_thumbnail_id( $post->ID ), 'medium')?>" data-mh="news-image">
                             </a>
                         <?php else: ?>
                             <a href="<?=get_permalink($post->ID)?>">
