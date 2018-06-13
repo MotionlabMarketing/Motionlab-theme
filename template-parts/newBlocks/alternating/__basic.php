@@ -17,7 +17,7 @@
 
     <div class="clearfix <?=$block['content']['bg']?> <?=$block['content']['sides']?> <?=$block['content']['borders']['color']?> <?=$block['content']['borders']['size']?>"><?php // TODO: Outputing Array.?>
 
-        <div class="relative col col-12 md-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> js-match-height min-height-v50 overflow-hidden <?=($block['content']['type'] == "video")? "flex items-center" : "" ?>" data-mh="panelHeight">
+        <div class="relative col col-12 md-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> min-height-v50 overflow-hidden <?=($block['content']['type'] == "video")? "flex items-center" : "" ?>" data-mh="panelHeight">
 
             <?php if ($block['content']['type'] == "image"): ?>
 
@@ -31,7 +31,7 @@
 
             <?php if ($block['content']['type'] == "gallery"): ?>
 
-                <div class="js-match-height overflow-hidden <?=$block['content']['padding']?>">
+                <div class="overflow-hidden <?=$block['content']['padding']?>" data-mh="panelHeight">
 
                     <div class="slider relative height-100" data-slick="slider-auto-arrows">
 
@@ -91,12 +91,12 @@
 
         </div>
 
-        <div class="col col-12 md-col-6 <?=$block['content']['padding']?> <?=$block['content']['align']?> <?=$block['content']['color']?> flex items-center js-match-height <?php if ($block['content']['type'] == "video"): ?>flex items-center<?php endif; ?>">
+        <div class="col col-12 md-col-6 p4 <?=$block['content']['align']?> <?=$block['content']['color']?> flex items-center <?php if ($block['content']['type'] == "video"): ?>flex items-center<?php endif; ?>" data-mh="panelHeight">
 
             <?php if ($block['content']['type'] == "video"): ?>
                 <div class="height-100 width-100" data-imatchto="video">
             <?php else: ?>        
-                <div>
+                <div class="width-100">
             <?php endif; ?>
 
                 <?php render_heading("{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}", ["class" => "mb2"]); ?>
