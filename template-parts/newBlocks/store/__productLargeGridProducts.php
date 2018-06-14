@@ -162,7 +162,7 @@ $selected_products = get_sub_field('block_store_products');
 
                                                     <?php if (!empty($old_price)): ?>
                                                         <p class="brand-primary h4" data-mh="price">
-                                                            <small>Old price: <strike>£<?=number_format($old_price)?></strike>
+                                                            <small>Old price: <strike>£<?=number_format($old_price)?></strike></small>
                                                             <?php /* <span class="bold block">Save £<?=number_format($old_price - $price)?></span> */ ?>
                                                             <strong><span class="brand-primary h3">£<?=ltrim(number_format($price), "-")?></span></strong>
                                                         </p>
@@ -171,13 +171,10 @@ $selected_products = get_sub_field('block_store_products');
                                                     <?php endif; ?>
 
                                                     <?php
-
-                                                    // NEEDS TO BE ABLE TO THE CHANGE THE VALUE FROM 'RANGE' OR 'CARAVAN/MOTORHOME' //
                                                     $button['button_link']['url']        = get_permalink($selected_product->ID);
                                                     $button['button_link']['title']      = "View " . ucwords($prefix);
                                                     $button['system_text_colours']       = "white";
                                                     $button['system_background_colours'] = "transparent";
-
                                                     ?>
 
                                                     <?php render_button($button, "medium", ["class" => "bold bg-brand-secondary hover-white py1 px2"]) ?>
