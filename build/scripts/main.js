@@ -304,7 +304,15 @@ jQuery(document).ready(function ($) {
         asNavFor: '[data-slick="gallery-slider-main"]',
         dots: false,
         centerMode: true,
-        focusOnSelect: true
+        focusOnSelect: true,
+        responsive: [
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2
+                }
+            }
+        ]
     });
 
     $('[data-slick="logo-slider-partners"]').slick({
@@ -630,14 +638,13 @@ jQuery(document).ready(function ($) {
             }
 
         } else {
-
             $(parent).find('[data-toggle="collapse"]').removeClass('active');
             $(parent).find('.collapse').slideUp(300).removeClass('open');
 
             // Add active class to section title
-            $(this).addClass('active');
+            $(this).toggleClass('active');
             // Open up the hidden content panel
-            $(parent).find(current).slideDown(300).addClass('open');
+            $(parent).find(current).slideToggle(300).addClass('open');
 
             if ($(this).attr('data-icon-open')) {
                 // console.log('non-active with icon');

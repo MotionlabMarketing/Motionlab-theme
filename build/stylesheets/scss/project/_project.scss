@@ -155,26 +155,6 @@ header{
     z-index: 200;
     visibility: hidden;
     height: 100%;
-
-    > ul {
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        height: 100%;
-    }
-
-    li {
-
-        ul {
-            display: none;
-        }
-
-        &:hover {
-
-            ul {
-                display: block;
-            }
-        }
-    }
 }
 
 
@@ -265,7 +245,7 @@ nav {
   padding: 1.5rem 0 0 0;
   position: absolute;
   top: 100%;
-  overflow: hidden;
+  //overflow: hidden;
   opacity: 0;
   transition: $transition;
   right: 0;
@@ -276,11 +256,15 @@ nav {
   transform: translateX(-50%);
 
   ul {
-    padding: 1rem;
+    //padding: 1rem;
     border-radius: 15px;
 
     li {
       border-bottom: 1px solid $darken-1;
+
+      a{
+          padding: 0.75rem;
+      }
 
       &:last-child {
         border-bottom: 0;
@@ -318,11 +302,6 @@ nav {
     z-index: 0;
 }
 
-
-
-
-
-
 .has-sidemenu{
     &:hover{
         .sidemenu{
@@ -332,6 +311,15 @@ nav {
             pointer-events: all;
         }
     }
+    &:after{
+        content: '\f0da';
+        font-family: 'fontAwesome';
+        position: absolute;
+        right:1rem;
+        top:50%;
+        transform:translateY(-50%);
+        color: grey;
+    }
 }
 
 .sidemenu{
@@ -339,7 +327,7 @@ nav {
     top: 0;
     left: 100%;
     margin-left: -$space-3;
-    width: 240px;
+    width: 300px;
     transition: $transition;
     pointer-events: none;
     z-index: -1;

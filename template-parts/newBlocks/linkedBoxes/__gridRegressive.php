@@ -54,7 +54,7 @@
                             <?php endif; ?>
 
                         </div>
-                    
+
                     <?php if (!empty($item['block_linkBoxes_button']['button_link'])): ?>
                         </a>
                     <?php else: ?>
