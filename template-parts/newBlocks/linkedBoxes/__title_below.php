@@ -10,7 +10,7 @@
  * @version 1.00
  */
 
- // TODO: Need updating to new system and all support checking. 
+ // TODO: Need updating to new system and all support checking.
 
 $bgColor          = get_sub_field($current . '_background_system_background_colours');
 $txtColor         = get_sub_field($current . '_text_system_text_colours');
@@ -41,7 +41,7 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
                 <?php
                 // STANDARD BOXES WITH IMAGE AND TITLE //
                 if ($item['block_linkBoxes_breakout_true'] !== true): ?>
-                    <div class="item col col-12 md-col-<?=$block['columns']?> p3 block relative" data-mh="box-height">
+                    <div class="item col col-12 md-col-<?=$block['columns']?> p3 block relative hover-zoom" data-mh="box-height">
                         <a href="<?= $item['block_linkBoxes_button_button_link']['url'] ?>"
                            class="block relative overflow-hidden bg-cover bg-center border-light border-top border-left border-right box-shadow-3 border-bottom <?=$item['block_linkBoxes_button_system_text_colours']?> <?=$item['block_linkBoxes_button_system_background_colours']?> || zoom" <?= ($item['block_linkBoxes_button_button_link']['title'] ? 'title="' . $item['block_linkBoxes_button_button_link']['title'] . '"' : '') ?> <?= ($item['block_linkBoxes_button_button_link']['target'] ? 'target="' . $item['block_linkBoxes_button_button_link']['target'] . '"' : '') ?>>
 
