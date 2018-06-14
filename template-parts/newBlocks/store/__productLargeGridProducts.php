@@ -103,7 +103,7 @@ $selected_products = get_sub_field('block_store_products');
                                                         <strong><span class="brand-primary h3">£<?=ltrim(number_format($price), "-")?></span></strong>
                                                     </p>
                                                 <?php else: ?>
-                                                    <p data-mh="price"><strong><span class="brand-primary h4">£<?=number_format($price)?></span></strong></p>
+                                                    <p data-mh="price"><strong><span class="brand-primary h2">£<?=number_format($price)?></span></strong></p>
                                                 <?php endif; ?>
 
                                                 <?php
@@ -162,8 +162,8 @@ $selected_products = get_sub_field('block_store_products');
 
                                                     <?php if (!empty($old_price)): ?>
                                                         <p class="brand-primary h4" data-mh="price">
-                                                            Old price: <strike>£<?=number_format($old_price)?></strike>
-                                                            <span class="bold block">Save £<?=number_format($old_price-$price)?></span>
+                                                            <small>Old price: <strike>£<?=number_format($old_price)?></strike>
+                                                            <?php /* <span class="bold block">Save £<?=number_format($old_price - $price)?></span> */ ?>
                                                             <strong><span class="brand-primary h3">£<?=ltrim(number_format($price), "-")?></span></strong>
                                                         </p>
                                                     <?php else: ?>
