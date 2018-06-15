@@ -34,9 +34,10 @@
 
     <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-    <?php foreach($block['posts']->posts as $post): ?>
+    <?php $i = 1; foreach ($block['posts']->posts as $post):
+        $content = get_shorten_string(get_field('reviewer_body', $post->ID), 35); ?>
 
-        <div class="mxn2">
+        <div class="col col-12 md-col-6 lg-col-4 mt5 px4 text-center <?=($i > 2)? "block sm-display-none lg-block":"" ;?>">
 
             <div class="col col <?=$block['columns']?> mt5 px2 text-center">
 
@@ -51,12 +52,12 @@
                     ?>
 
                     <div class="wysiwyg mb3 mx5" data-mh="quote">
-                        <?= get_field('reviewer_body', $post->ID); ?>
+                        <?= $content->value; ?>
                     </div>
 
                     <hr class="my4">
 
-                    <h3 class="h4 brand-primary text-center mb1"><?= get_field('reviewer_name', $post->ID) ?></h3>
+                    <h3 class="h4 brand-primary text-center mb1"><?=(!empty($name = get_field('reviewer_name', $post->ID)))? $name : "Anonymous" ?></h3>
 
                     <p class="text-center mb0"><?=get_field('reviewer_locations', $post->ID)?></p>
 
@@ -66,7 +67,11 @@
 
         </div>
 
-    <?php endforeach; ?>
+    <?php $i++; endforeach; ?>
+
+    <div class="clearfix col-12 text-center">
+        <a href="<?=the_permalink(get_field('default_page_reviews', 'option'))?>" class="btn btn-medium bg-brand-primary white my5 mx4">Read More</a>
+    </div>
 
     <?= ($block['grid'] == 'container') ? '</div>' : "" ?>
 
