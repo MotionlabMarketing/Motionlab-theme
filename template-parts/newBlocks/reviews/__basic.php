@@ -10,67 +10,67 @@
  * @version 1.00
  */
 
- $block['columns']   = get_sub_field('block_reviews_columns');
+$block['columns']   = get_sub_field('block_reviews_columns');
 
- switch ($block['columns']):
-     case "1":
-         $block['columns'] = "col-12";
-         break;
-     case "2":
-         $block['columns'] = "col-12 md-col-6";
-         break;
-     case "3":
-         $block['columns'] = "col-12 sm-col-12 md-col-4";
-         break;
- endswitch;
-
-?>
-
-
+switch ($block['columns']):
+    case "1":
+        $block['columns'] = "col-12";
+        break;
+    case "2":
+        $block['columns'] = "col-12 md-col-6";
+        break;
+    case "3":
+        $block['columns'] = "col-12 sm-col-12 md-col-4";
+        break;
+endswitch; ?>
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "")?> <?=get_blockData($block)?>>
 
-    <?= ($block['grid'] == 'container') ? '<div class="container">' : "" ?>
+    <?=($block['grid'] == 'container') ? '<div class="container">' : ""?>
 
     <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-    <?php $i = 1; foreach ($block['posts']->posts as $post):
-        $content = get_shorten_string(get_field('reviewer_body', $post->ID), 35); ?>
+    <div class="clearfix">
+        <?php $i = 1; foreach ($block['posts']->posts as $post):
+            $content = get_shorten_string(get_field('reviewer_body', $post->ID), 35); ?>
 
-        <div class="col col-12 md-col-6 lg-col-4 mt5 px4 text-center <?=($i > 2)? "block sm-display-none lg-block":"" ;?>">
+            <div class="col col-12 md-col-6 lg-col-4 px4 text-center <?=($i > 2)? "block sm-display-none lg-block":"" ;?>">
 
-            <div class="col col <?=$block['columns']?> mt5 px2 text-center">
+                <div class="col <?=$block['columns']?> mt5 px2 text-center">
 
-                <div class="p5 bg-smoke" data-mh="testimonial">
+                    <div class="p5 <?=($block['include_background'])? "bg-smoke":"";?> <?=($block['include_border'])? "border-1 border-left border-right border-top border-bottom border-light":"";?>" data-mh="testimonial">
+                        
+                        <?php
+                        if ($block['include_stars'] == true):
+                            echo '<div class="mt2 mb4 h3">';
+                            echo get_stars(get_field('star_rating', $post->ID));
+                            echo '</div>';
+                        endif;
 
-                    <?php
-                      if ($block['include_stars'] == true):
-                        echo '<div class="mt2 mb4">';
-                          echo get_stars(get_field('star_rating', $post->ID));
-                        echo '</div>';
-                      endif;
-                    ?>
+                        render_wysiwyg($content->value, false, ["data-mh" => "quote"]);
+                        ?>
 
-                    <div class="wysiwyg mb3 mx5" data-mh="quote">
-                        <?= $content->value; ?>
+                        <hr class="my4">
+
+                        <h3 class="h4 brand-primary text-center mb1"><?=(!empty($name = get_field('reviewer_name', $post->ID)))? $name : "Anonymous" ?></h3>
+
+                        <?php if(!empty(get_field('reviewer_locations', $post->ID))): ?>
+                            <p class="text-center mb0"><?=get_field('reviewer_locations', $post->ID)?></p>
+                        <?php endif; ?>
+
                     </div>
-
-                    <hr class="my4">
-
-                    <h3 class="h4 brand-primary text-center mb1"><?=(!empty($name = get_field('reviewer_name', $post->ID)))? $name : "Anonymous" ?></h3>
-
-                    <p class="text-center mb0"><?=get_field('reviewer_locations', $post->ID)?></p>
 
                 </div>
 
             </div>
 
-        </div>
+        <?php $i++; endforeach; ?>
+    </div>
 
-    <?php $i++; endforeach; ?>
+    <div class="clearfix flex items-center justify-center mt4">
 
-    <div class="clearfix col-12 text-center">
-        <a href="<?=the_permalink(get_field('default_page_reviews', 'option'))?>" class="btn btn-medium bg-brand-primary white my5 mx4">Read More</a>
+        <?php render_button($block['page_button'], 'medium'); ?>
+
     </div>
 
     <?= ($block['grid'] == 'container') ? '</div>' : "" ?>

@@ -17,7 +17,7 @@
 
     <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-    <div class="container clearfix || gallery item-slider">
+    <div class="container clearfix gallery item-slider">
 
         <div data-slick="gallery-slider-main" class="mb2">
 

@@ -6,6 +6,8 @@
  * Time: 10:52
  */
 
+ //TODO: REmvoe this as its not used. 
+
 ?>
 <div class="grid-sizer col-12 md-col-6 lg-col-4"></div>
 

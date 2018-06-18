@@ -19,13 +19,10 @@ switch ($block['layout']):
     case "sliderThin":
         include('galleries/__sliderThin.php');
         break;
-    case "basic":
-        include('galleries/__basic.php');
-        break;
     case "gallerySlider":
         include('galleries/__gallerySlider.php');
         break;
     default:
-        include('galleries/__sliderThin.php');
+        include('galleries/__gallerySlider.php');
         break;
 endswitch;

@@ -2,7 +2,7 @@
 /**
  * Template Name: Reviews (To Be Removed, Use Testimonials)
  *
- * TODO: To be removed.
+ * TODO: To be removed ----- NOT USED!.
  */
 
 get_header();
@@ -14,9 +14,6 @@ $testimonials = $testimonials->getBlock();
 
     <?php
     include_once(get_template_directory() . '/templates/_parts/__banners.php')?>
-
-
-    asassa
 
     <section class="clearfix mt5 mb4 mb4" id="gallery-standard">
 

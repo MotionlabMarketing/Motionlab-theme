@@ -16,6 +16,8 @@ $brand-grayLightest: #ebebeb;
 $brand-black: #000000;
 $brand-grayDarker: #2e2d2b;
 
+$brand-smoke: $smoke;
+
 $brand-linkColour: $brand-gray;
 
 $brand-whiteFade: rgba(255, 255, 255, 0.4);
@@ -590,6 +592,8 @@ form {
   }
 }
 
+
+// GRAVITY FORMS STYLING.... 
 .gform_wrapper {
 
   .gform_fields,
@@ -643,10 +647,6 @@ form {
     //   }
     // }
 
-  }
-
-  .gform_title {
-    display: none;
   }
 
   input[type="text"],
@@ -1305,29 +1305,6 @@ hr.border-5 {
 
 // ------ TEMPLATES AND SINGLE STYLES ------ //
 
-// LISTING TESTIMONIALS //
-#listing-testimonials {
-
-  .grid-sizer,
-  .grid-item {
-    width: 33%;
-  }
-  .grid-item--width2 {
-    width: 66%;
-  }
-
-  .video {
-
-    p {
-      right: 0px;
-      bottom: 6px;
-      border-radius: 0;
-      font-size: 0.9rem;
-      background-color: $brand-primary;
-    }
-  }
-}
-
 // JOBS LISTING PAGES //
 #listing-job {
 
@@ -1440,17 +1417,6 @@ hr.border-5 {
     }
   }
 
-}
-
-#gallery-standard {
-
-  .gallery a img {
-    border: 4px solid transparent;
-  }
-
-  .gallery a img:hover {
-    border-color: $brand-primary;
-  }
 }
 
 .slick-prev {

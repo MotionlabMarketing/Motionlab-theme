@@ -9,15 +9,14 @@ $testimonials = $testimonials->getBlock();
 
 get_header(); ?>
 
-    <section class="clearfix mt6 mb4 mb4" id="listing-testimonials">
+    <section class="clearfix mt6 mb4 mb4" id="listing-testimonials" data-template="testimonialStandard">
 
         <div class="container">
 
             <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
 
-            <div class="col-12 mb5">
-
-                <?php if (!empty($testimonials['select_terms'])) : ?>
+            <?php if (!empty($testimonials['select_terms'])) : //TODO: Sort this mess out! ?>
+                <div class="col-12 mb5">
                     <form method="get" class="text-center">
 
                         <select style="min-width:18rem;" class="select md-ml3 width-100 md-width-auto box-shadow-2 testimonials_filters" data-loadvalue="<?=get_query_var('testimonials_category')?>" id="testimonials_filtercats">
@@ -29,12 +28,12 @@ get_header(); ?>
                         </select>
 
                     </form>
-                <?php endif; ?>
-            </div>
-
+                </div>
+            <?php endif; ?>
+            
         </div>
 
-        <div class="container clearfix">
+        <div class="container clearfix mb6">
 
             <div class="grid" id="testimonials-listing">
 
@@ -45,6 +44,8 @@ get_header(); ?>
         </div>
 
     </section>
+
+    <?php include(get_template_directory() .'/template-parts/building-blocks.php' ); ?>
 
 <script>
 
@@ -92,6 +93,5 @@ get_header(); ?>
     };
 
 </script>
-
 
 <?php get_footer(); ?>

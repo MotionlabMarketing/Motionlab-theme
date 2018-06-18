@@ -1,0 +1,15 @@
+
+
+[data-template="gallery-standard"] {
+
+    [data-element="gallery-images"] {
+
+        img {
+            border: 4px solid transparent;
+
+            &:hover {
+                border-color: $brand-primary;
+            }
+        }
+    }
+}

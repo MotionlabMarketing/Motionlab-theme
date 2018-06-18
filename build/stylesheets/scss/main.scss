@@ -51,10 +51,12 @@ Version: 1.0
 
 @import 'plugins/plugins';
 
+@import 'project/banding';
+
 @import 'blocks/blocks';
+@import 'elements/elements';
+@import 'templates/templates';
 
 @import 'partials/wysiwyg';
+
 @import 'project/project';
-
-
-@import 'project/banding';

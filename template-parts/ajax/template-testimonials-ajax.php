@@ -6,41 +6,38 @@
  * Time: 10:52
  */
 
-$showStars = get_field('template_reviews_show_stars') ?>
+$block['include_stars'] = get_field('template_testimonials_include_stars');
+$block['include_border'] = get_field('template_testimonials_include_border');
+$block['include_background'] = get_field('template_testimonials_include_background');?>
 
 <div class="grid-sizer"></div>
 
-<?php foreach($testimonials['posts']->posts as $post): ?>
-    <div class="col col-4 grid-item">
+<?php foreach($testimonials['posts']->posts as $post):
+      $content = get_shorten_string(get_field('reviewer_body', $post->ID), 35); ?>
 
-        <div class="m3 bg-smoke text-center">
+    <div class="col col-12 md-col-6 lg-col-4 grid-item mt5 px4 text-center">
 
-            <div class="content px3 pt4 pb0 px4 italic">
+            <div class="p5 <?=($block['include_background'])? "bg-smoke":"";?> <?=($block['include_border'])? "border-1 border-left border-right border-top border-bottom border-light":"";?>">
 
-                <?php if ($showStars):
-                          echo '<div class="mt2 mb4">';
-                              echo get_stars(get_field('star_rating', $post->ID));
-                          echo '</div>';
-                      endif; ?>
+                <?php
+                if ($block['include_stars'] == true):
+                    echo '<div class="mt2 mb4 h3">';
+                    echo get_stars(get_field('star_rating', $post->ID));
+                    echo '</div>';
+                endif;
 
-                <?=get_field('reviewer_body', $post->ID)?>
+                render_wysiwyg($content->value, false, ["data-mh" => "quote"]);
+                ?>
 
-            </div>
+                <hr class="my4">
 
-            <div class="content pb3 px4">
+                <h3 class="h4 brand-primary text-center mb1"><?=(!empty($name = get_field('reviewer_name', $post->ID)))? $name : "Anonymous" ?></h3>
 
-                <hr>
-
-                <div class="author bold">
-
-                    <p class="block h5 mb0 brand-primary"><?=get_field('reviewer_name', $post->ID)?></p>
-                    <p class="block h6 mb2 normal"><?=get_field('reviewer_locations', $post->ID)?></p>
-
-                </div>
+                <?php if(!empty(get_field('reviewer_locations', $post->ID))): ?>
+                    <p class="text-center mb0"><?=get_field('reviewer_locations', $post->ID)?></p>
+                <?php endif; ?>
 
             </div>
-
-        </div>
 
     </div>
 <?php endforeach; ?>

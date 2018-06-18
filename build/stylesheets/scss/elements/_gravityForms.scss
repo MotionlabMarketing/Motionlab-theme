@@ -1,0 +1,53 @@
+
+
+// TODO: ADD OTHER STYLING FOR OTHER FORM LAYOUT AND FIELDS.
+
+$gform-radius: 0;
+
+$gform-titleSize: $h2; 
+
+$gfrom-fieldColor: #fcfcfc;
+$gfrom-requiredColor: $brand-primary;
+
+.gform_wrapper {
+
+    .gform_heading {
+        padding: 0 1rem;
+
+        .gform_title {
+            margin: 0;
+            color: $brand-primary;
+            font-size: $gform-titleSize;
+        }
+    }
+
+    .gform_body .gfield_radio select, 
+    .gform_body .gform_fields select, 
+    .gform_body .gfield_checkbox select, 
+    .gform_body .gform_fields textarea,
+    .gform_body .gfield_radio textarea, 
+    .gform_body .gfield_checkbox textarea, 
+    .gform_body .gfield_radio input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=submit]), 
+    .gform_body .gform_fields input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=submit]), 
+    .gform_body .gfield_checkbox input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=submit]) {
+        border-radius: $gform-radius;
+        background-color: $gfrom-fieldColor;
+    }
+
+    .gfield_required {
+        color: $gfrom-requiredColor;
+    }
+
+    .gform_footer {
+        text-align: center;
+
+        input[type="submit"] {
+            color: $brand-white;
+            background-color: $brand-primary;
+
+            &:hover {
+                background-color: darken($brand-primary, 20%);
+            }
+        }
+    }
+}
