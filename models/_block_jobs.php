@@ -202,12 +202,14 @@ Class _block_jobs
 		$terms      = get_terms( $taxonomy, $args );
 		$children   = array();
 
-		foreach ( $terms as $term ){
+		if(!empty($terms)) :
+			foreach ( $terms as $term ){
 
-			$term->children = $this->get_taxonomy_hierarchy( $taxonomy, array('hide_empty' => false, 'parent' => $term->term_id) );
-			$children[ $term->term_id ] = $term;
+				$term->children = $this->get_taxonomy_hierarchy( $taxonomy, array('hide_empty' => false, 'parent' => $term->term_id) );
+				$children[ $term->term_id ] = $term;
 
-		}
+			}
+		endif;
 
 		return $children;
 	}
