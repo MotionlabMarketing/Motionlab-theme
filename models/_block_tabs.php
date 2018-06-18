@@ -27,7 +27,12 @@ Class _block_tabs
 
 	private function loadBlockSettings() {
 
-		$this->block['tabs']                           = get_sub_field($this->current . '_tabs');
+		if($this->layout == 'employer'): 
+			$this->block['tabs']                       = get_sub_field($this->current . '_employer');
+		else: 	
+			$this->block['tabs']                       = get_sub_field($this->current . '_tabs');
+		endif;	
+		
 		$this->block['title']                          = get_sub_field($this->current . '_title_title');
 		$this->block['content']                        = get_sub_field($this->current . '_content');
 

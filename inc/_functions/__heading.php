@@ -15,11 +15,11 @@
  */
 
 function render_heading($title = "", $type = "h3", $size = "h4", $color = "brand-primary", $case = "", $attr = ["class" => "mb2"]) {
-
-    if (!empty($attr['class'])) {
+    
+    // if (!empty($attr['class'])) { BLOCKING CLASS RENDERING...
         $attr['class'] = "pb2 {$size} {$color} {$case} " . $attr['class'];
-    }
-
+    // }
+    
     if (!empty($title))
         echo '<' . $type . ' ' . attrConvert($attr) . ' data-function="__heading">' . $title . '</' .$type . '>';
 

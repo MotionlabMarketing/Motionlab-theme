@@ -15,7 +15,7 @@
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-    <div class="clearfix <?=$block['content']['bg']?> <?=$block['content']['sides']?> <?=$block['content']['borders']['color']?> <?=$block['content']['borders']['size']?>"><?php // TODO: Outputing Array.?>
+    <div class="clearfix <?=$block['content']['bg']?>">
 
         <div class="relative col col-12 md-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> min-height-v50 overflow-hidden <?=($block['content']['type'] == "video")? "flex items-center" : "" ?>" data-mh="panelHeight">
 
@@ -31,7 +31,7 @@
 
             <?php if ($block['content']['type'] == "gallery"): ?>
 
-                <div class="overflow-hidden <?=$block['content']['padding']?>" data-mh="panelHeight">
+                <div class="overflow-hidden <?=$block['content']['padding']?>">
 
                     <div class="slider relative height-100" data-slick="slider-auto-arrows">
 
@@ -91,7 +91,7 @@
 
         </div>
 
-        <div class="col col-12 md-col-6 p4 <?=$block['content']['align']?> <?=$block['content']['color']?> flex items-center <?php if ($block['content']['type'] == "video"): ?>flex items-center<?php endif; ?>" data-mh="panelHeight">
+        <div class="col col-12 md-col-6 p0 md-p6 <?=$block['content']['align']?> <?=$block['content']['color']?> flex items-center <?php if ($block['content']['type'] == "video"): ?>flex items-center<?php endif; ?>" data-mh="panelHeight">
 
             <?php if ($block['content']['type'] == "video"): ?>
                 <div class="height-100 width-100" data-imatchto="video">
@@ -113,11 +113,11 @@
 
                 <?php if ($block['content']['buttons'] || $block['content']['cta']['append'] || $block['content']['cta']['link']):?>
 
-                <div class="mt4 <?=$alignment?> border-top border-smoke pt4">
+                <div class="mt4 <?=$alignment?> border-top border-smoke">
 
                     <?php foreach ($block['content']['buttons'] as $button): if (!empty($button['button_link']['url'])): ?>
 
-                        <a href="<?=$button['button_link']['url']?>" class="btn btn-medium <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> role="button"><?=$button['button_link']['title']?></a>
+                        <a href="<?=$button['button_link']['url']?>" class="btn btn-<?=$button['system_background_colours']?> btn-medium <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> role="button"><?=$button['button_link']['title']?></a>
 
                     <?php endif; endforeach;  ?>
 

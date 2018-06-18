@@ -16,7 +16,7 @@ function render_button($data, $size = "medium",  $classes = ["class" => "mb2"]) 
 
     if (!empty($data['button_link']['url']) && !empty($data['button_link']['title'])) {
 
-        $classes["class"] = "btn btn-{$size} {$data['system_text_colours']} {$data['system_background_colours']} {$data['button_text_colour']['system_text_colours']} {$data['button_background_colour']['system_background_colours']} " . $classes["class"];
+        $classes["class"] = "btn btn-{$data['system_background_colours']} btn-{$size} {$data['system_text_colours']} {$data['system_background_colours']} {$data['button_text_colour']['system_text_colours']} {$data['button_background_colour']['system_background_colours']} " . $classes["class"];
 
         $classes = attrConvert($classes);
 
@@ -60,11 +60,9 @@ function render_button($data, $size = "medium",  $classes = ["class" => "mb2"]) 
 
 function get_render_button($data, $size = "btn-medium",  $classes = ["class" => "mb2"]) {
 
-
-
     if (!empty($data['button_link']['url']) && !empty($data['button_link']['title'])) {
 
-        $classes["class"] = $classes["class"] . " btn btn-{$size} {$data['system_text_colours']} {$data['system_background_colours']}";
+        $classes["class"] = $classes["class"] . " btn btn-{$data['system_background_colours']} btn-{$size} {$data['system_text_colours']} {$data['system_background_colours']}";
 
         $classes = attrConvert($classes);
 
@@ -107,7 +105,7 @@ function get_render_button($data, $size = "btn-medium",  $classes = ["class" => 
 function render_buttons($data, $size, $classes = ["class" => "mb2"]) {
 
     $btn = "";
-    $classes['class'] = $classes['class'] . " ml2 mr2"; // Adds button spacing.
+    $classes['class'] = $classes['class'] . " ml2 mr2";
 
     if (!empty($data)) {
         foreach ($data as $button) {

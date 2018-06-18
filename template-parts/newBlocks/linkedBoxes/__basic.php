@@ -14,7 +14,7 @@
  // TODO: Needs support for colour hover overlay.
 ?>
 
-<section <?=get_blockID($block)?> <?=get_blockClasses($block, "linkedBox-basic {$hoverShow}")?> <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "linkedBox-basic {$block['enableHover']}")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
@@ -34,7 +34,7 @@
                             <div class="block relative overflow-hidden bg-cover bg-center box-shadow-3 py4 <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?>" style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
                         <?php endif; ?>
 
-                                <div class="content absolute top-0 width-100 height-100 js-match-height py6 flex items-center justify-center text-center <?=($item['block_linkBoxes_overlay_strength']['add_overlay'] == true)? "bg-".$item['block_linkBoxes_overlay_strength']['overlayType']."-".$item['block_linkBoxes_overlay_strength']['overlayStrength'] : ""?>">
+                                <div class="content absolute top-0 width-100 height-100 js-match-height py6 flex items-center justify-center text-center">
 
                                     <div class="z-index-40 <?=($block['content']['overlay'] == true)? "opacity-10" : ""; ?>">
 

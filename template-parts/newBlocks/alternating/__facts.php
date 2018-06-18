@@ -23,9 +23,7 @@
 
             <?php if ($block['content']['type'] == "image"): ?>
 
-                <?=($block['content']['padding'] !== 'p0')? '<div class="relative height-100 overflow-hidden '.$block['content']['padding'].'">' : '' ?>
-                    <div class="image-holder bg-cover bg-center min-height-v50 height-100" style="background-image: url('<?=get_attachment_image_url($block['content']['image'], 'medium')?>')"></div>
-                <?=($block['content']['padding'] !== 'p0')? '</div>' : '' ?>
+                <div class="image-holder bg-cover bg-center min-height-v50 height-100" style="background-image: url('<?=wp_get_attachment_url($block['content']['image'])?>');"></div>
 
             <?php endif; ?>
 
@@ -97,11 +95,11 @@
 
                 <?php if($block['content']['buttons'] || $block['content']['cta']['append'] || $block['content']['cta']['link'] ):?>
 
-                <div class="mt4 <?=$alignment?> border-top border-smoke pt4">
+                <div class="clearfix mt4 <?=$alignment?> border-top border-smoke pt4">
 
                     <?php foreach ($block['content']['buttons'] as $button): ?>
 
-                        <a href="<?=$button['button_link']['url']?>" class="btn btn-medium <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> role="button"><?=$button['button_link']['title']?></a>
+                        <a href="<?=$button['button_link']['url']?>" class="btn btn-<?=$button['system_background_colours']?> btn-medium <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> role="button"><?=$button['button_link']['title']?></a>
 
                     <?php endforeach; ?>
 

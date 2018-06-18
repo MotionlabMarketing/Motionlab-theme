@@ -16,21 +16,15 @@ $bgImage = ($block['bgImage']['enable'] == true)? 'bg-image-active' : '';
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-        <div class="mt4 mb2 || text-center">
+        <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-            <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}"); ?>
+        <div class="tabs" data-tabs="wrapper">
 
-            <?php render_wysiwyg("{$block['intro']}", "", ["class" => "md-mx6 md-px6  {$txtColor} regular"])?>
-
-        </div>
-
-       <div class="tabs" data-tabs="wrapper">
-
-            <div class="tabs-bar clearfix || col col-12 || mt4 sm-flex items-start justify-<?=$block['tabs_settings']['tab_position']?>">
+            <div class="tabs-bar clearfix col col-12 mt4 sm-flex items-start justify-<?=$block['tabs_settings']['tab_position']?>">
 
                <?php $i = 1; foreach ($block['tabs'] as $tab): ?>
 
-                    <span data-section="tab<?=$i?>" data-tab="<?=$i?>" class="tab || block <?=$block['tabs_settings']['tab_weight']?> text-left md-text-center relative || <?=($i <= 1)? 'tab-active' : '' ?>">
+                    <span data-section="tab<?=$i?>" data-tab="<?=$i?>" class="tab block <?=$block['tabs_settings']['tab_weight']?> text-left md-text-center relative <?=($i <= 1)? 'tab-active' : '' ?>">
                         <?=$tab['tab_title_short']?>
                     </span>
 
@@ -38,7 +32,7 @@ $bgImage = ($block['bgImage']['enable'] == true)? 'bg-image-active' : '';
 
             </div>
 
-            <div class="content clearfix || col-12" data-tabs="content">
+            <div class="content clearfix col-12" data-tabs="content">
 
                 <?php $i = 1; foreach ($block['tabs'] as $tab): ?>
 
@@ -48,22 +42,12 @@ $bgImage = ($block['bgImage']['enable'] == true)? 'bg-image-active' : '';
 
                         <div class="col col-12 md-col-<?=($tab['columns'] == 2)? "6":"12"?> py4 px0 md-px4 <?=$tab['column_1']['align']?> <?=$tab['column_1']['system_text_colours']?>">
 
-                            <?php $heading = convert_heading($tab['column_1']['title']); ?>
-                            <?php render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}"); ?>
-
-                            <?php render_wysiwyg("{$tab['column_1']['column_content']}", "", ["class" => "regular dot-target"])?>
-
-                            <?php if (!empty($tab['column_1']['column_buttons'])): ?>
-                                <div class="mt3">
-
-                                    <?php foreach ($tab['column_1']['column_buttons'] as $button): ?>
-
-                                        <a href="<?=$button['button_link']['url']?>" class="btn <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>"><?=$button['button_link']['title']?></a>
-
-                                    <?php endforeach; ?>
-
-                                </div>
-                            <?php endif; ?>
+                            <?php 
+                                $heading = convert_heading($tab['column_1']['title']); 
+                                render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}", ["data-mh" => "{$block['id']}-heading"]);
+                                render_wysiwyg($tab['column_1']['column_content'], false);
+                                render_buttons($tab['column_1']['column_buttons'], "medium", ["class" => "mt3"])
+                            ?>
 
                         </div>
 
@@ -75,22 +59,12 @@ $bgImage = ($block['bgImage']['enable'] == true)? 'bg-image-active' : '';
 
                                 <div class="col col-12 md-col-6 py4 px0 md-px4 <?=$tab['column_1']['align']?> <?=$tab['column_1']['system_text_colours']?>">
 
-                                    <?php $heading = convert_heading($tab['column_2']['title']); ?>
-                                    <?php render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}"); ?>
-
-                                    <?php render_wysiwyg("{$tab['column_2']['column_content']}", "", ["class" => "regular dot-target"])?>
-
-                                    <?php if (!empty($tab['column_2']['column_buttons'])): ?>
-                                        <div class="mt3">
-
-                                            <?php foreach ($tab['column_2']['column_buttons'] as $button): ?>
-
-                                                <a href="<?=$button['button_link']['url']?>" class="btn <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>"><?=$button['button_link']['title']?></a>
-
-                                            <?php endforeach; ?>
-
-                                        </div>
-                                    <?php endif; ?>
+                                    <?php 
+                                    $heading = convert_heading($tab['column_2']['title']); 
+                                    render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}", ["data-mh" => "{$block['id']}-heading"]);
+                                    render_wysiwyg($tab['column_2']['column_content'], false);
+                                    render_buttons($tab['column_2']['column_buttons'], "medium", ["class" => "mt3"])
+                                    ?>
 
                                 </div>
 
@@ -110,7 +84,7 @@ $bgImage = ($block['bgImage']['enable'] == true)? 'bg-image-active' : '';
 
     <?php if($block['bgImage']['enable'] == true): ?>
 
-        <div class="bg-image || absolute width-100 height-100 top-0 left-0 zn1 <?=$block['bgImage']['occupancy']?> <?=$block['bgImage']['tint']?> <?=$block['bgImage']['tintStrength']?>" style="background-image: url('<?=$block['bgImage']['image']['url']?>'); background-position: center; background-size: cover"></div>
+        <div class="bg-image absolute width-100 height-100 top-0 left-0 zn1 <?=$block['bgImage']['occupancy']?> <?=$block['bgImage']['tint']?> <?=$block['bgImage']['tintStrength']?>" style="background-image: url('<?=$block['bgImage']['image']['url']?>'); background-position: center; background-size: cover"></div>
 
     <?php endif; ?>
 

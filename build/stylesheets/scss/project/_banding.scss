@@ -1934,18 +1934,8 @@ hr.border-5 {
 }
 
 .tabs-employer {
-
   .tab {
-    padding: 1rem 3rem;
-    min-width: 30%;
-
-    background-color: $brand-white;
-    border: 1px solid $brand-grayLightest;
-
     &.tab-active {
-      background-color: $brand-primary;
-      border: 1px solid $brand-primary;
-
       &:after {
         content: " ";
         display: block;
