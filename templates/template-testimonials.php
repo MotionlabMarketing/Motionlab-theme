@@ -13,7 +13,9 @@ get_header(); ?>
 
         <div class="container">
 
-            <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
+            <div class="px4">
+                <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
+            </div>
 
             <div class="col-12 mb5">
 
@@ -45,6 +47,7 @@ get_header(); ?>
         </div>
 
     </section>
+
 
 <script>
 
@@ -93,5 +96,8 @@ get_header(); ?>
 
 </script>
 
+<?php wp_reset_postdata(); //TODO: This needs to be moved to the correct location where the query is made! ?>
+
+<?php include(get_template_directory() .'/template-parts/building-blocks.php' ); ?>
 
 <?php get_footer(); ?>

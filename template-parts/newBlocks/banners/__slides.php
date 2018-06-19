@@ -20,6 +20,9 @@ $banner['slides']                 = get_sub_field($current . '_sliders');
 $banner['image']['position']      = get_sub_field($current . '_image_position_background_position');
 
 $banner['subheading']['position'] = get_sub_field($current . '_subheading_position');
+
+$banner['image']['overlayType']     = get_sub_field('block_banners_image_overlay_overlayType');
+$banner['image']['overlayStrength'] = get_sub_field('block_banners_image_overlay_overlayStrength');
 ?>
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "banner z0 overflow-hidden overlay-{$banner['align']}")?> <?=get_blockData($block)?>>
@@ -30,9 +33,9 @@ $banner['subheading']['position'] = get_sub_field($current . '_subheading_positi
 
         <?php foreach ($banner['slides'] as $slide): ?>
 
-            <div id="<?=$block['custom_id']?>" class="bg-cover bg-<?=$banner['image']['position']?> <?=$banner['height']?>  <?=$block['custom_css']?>" style="background-image: url('<?=$slide['image']['url']?>');" data-animation-in="fadeIn" data-delay-in=".5" data-duration-in="1">
+            <div id="<?=$block['custom_id']?>" class="bg-cover bg-<?=$banner['image']['position']?> <?=$banner['height']?> <?=$block['custom_css']?>" style="background-image: url('<?=$slide['image']['url']?>');" data-animation-in="fadeIn" data-delay-in=".5" data-duration-in="1">
 
-                <div class="image-holder flex items-center <?=$banner['height']?> justify-<?=$banner['align']?> || width z-index-50 || p3 md-p6 py6">
+                <div class="image-holder flex items-center <?=$banner['height']?> justify-<?=$banner['align']?>  bg-<?=$banner['image']['overlayType']?>-<?=$banner['image']['overlayStrength']?> width z-index-50 || p3 md-p6 py6">
 
                     <div class="content js-match-height || col-12 lg-col-9 xl-col-5 || p4 pb6 relative z5 <?=$banner['text-align']?> <?=$banner['text-color']?>">
 

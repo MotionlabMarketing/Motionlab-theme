@@ -1439,7 +1439,25 @@ hr.border-5 {
       }
     }
   }
+}
 
+#testimonials-listing {
+  
+  .grid-sizer,
+  .grid-item {
+    width: 100%;
+
+    
+    @media (min-width: $breakpoint-lg) {
+      width: 33%;
+      height: auto;
+    }
+    @media (min-width: $breakpoint-md) {
+      width: 50%;
+      height: auto;
+    }
+    
+  }
 }
 
 #gallery-standard {
