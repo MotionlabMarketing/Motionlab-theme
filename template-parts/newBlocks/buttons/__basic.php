@@ -18,13 +18,7 @@
 
         <div class="<?=$block['button']['alignment']?>">
 
-            <?php foreach ($block['buttons'] as $button): ?>
-
-                <a href="<?=$button['button_link']['url']?>" class="btn <?=$block['button']['size']?> border-radius-<?=$block['button']['radius']?> inline-block <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?>>
-                    <?=$button['button_link']['title']?>
-                </a>
-
-            <?php endforeach; ?>
+            <?php render_buttons($block['buttons'] , "medium"); ?>
 
         </div>
 

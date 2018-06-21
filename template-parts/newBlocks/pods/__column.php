@@ -16,7 +16,7 @@
 
         <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-        <div class="mxn3 flex justify-center flex-wrap">
+        <div class="clearfix col col-12 mxn3 mt3 flex justify-center flex-wrap">
 
             <?php foreach ($block['content'] as $item): ?>
 
@@ -26,11 +26,15 @@
 
                         <?php if ($item['type'] == "image"): ?>
 
-                            <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'" class="block overflow-hidden hover-zoom">' : "")?>
+                            <div class="flex items-center justify-center">
 
-                                <figure class="ratio-3-2 m0 bg-center bg-cover zoom" style="background-image:url('<?= wp_get_attachment_image_url($item['image'],'medium') ?>')"></figure>
+                                <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'" class="block overflow-hidden hover-zoom">' : "")?>
 
-                            <?=(!empty($item['button']['button_link']['url'])? '</a>' : "")?>
+                                    <?=wp_get_attachment_image($item['image'],'medium')?>
+
+                                <?=(!empty($item['button']['button_link']['url'])? '</a>' : "")?>
+
+                            </div>
 
                         <?php elseif ($item['type'] == "slider"): ?>
 
@@ -74,7 +78,7 @@
 
                             <div class="h4 mb0" data-mh="pod-content"><?=$item['pod_content']?></div>
 
-                            <?php render_button($item['button'], "medium", ["class" => "bold hover-white hover-bg-brand-primary"]); ?>
+                            <?php render_button($item['button'], "medium"); ?>
 
                         </div>
 

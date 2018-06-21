@@ -101,13 +101,13 @@
 
         <?php endif; ?>
 
-        <?php if ($block['content']['link'] == true): ?>
+        <?php if ($block['content']['enableLink'] == true): ?>
 
-            <div class="clearfix col-12 mt4 text-center">
+            <div class="flex items-center justify-center">
 
-                <a href="<?=$block['content']['link']['url']?>" class="btn btn-medium brand-primary hover-black bg-smoke"><?=$block['content']['link']['title']?></a>
+                <?php render_button($block['pageLink'], "medium", ["class" => "mt3"]); ?>
 
-            </div>
+            </div>    
 
         <?php endif; ?>
 

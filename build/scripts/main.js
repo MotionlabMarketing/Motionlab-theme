@@ -238,7 +238,7 @@ jQuery(document).ready(function ($) {
     });
     // additional code to make the content animate
     // https://github.com/marvinhuebner/slick-animation
-    $('[data-slick="slider-auto-arrows"]').slickAnimation();
+    // $('[data-slick="slider-auto-arrows"]').slickAnimation();
 
     $('[data-slick="slider-auto"]').slick({
         slidesToShow: 1,

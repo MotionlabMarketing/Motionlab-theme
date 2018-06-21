@@ -13,7 +13,7 @@ $block['include_background'] = get_field('template_testimonials_include_backgrou
 <div class="grid-sizer"></div>
 
 <?php foreach($testimonials['posts']->posts as $post):
-      $content = get_shorten_string(get_field('reviewer_body', $post->ID), 35); ?>
+      $content = get_field('reviewer_body', $post->ID); ?>
 
     <div class="col col-12 md-col-6 lg-col-4 grid-item mt5 px4 text-center">
 
@@ -26,7 +26,7 @@ $block['include_background'] = get_field('template_testimonials_include_backgrou
                     echo '</div>';
                 endif;
 
-                render_wysiwyg($content->value, false, ["data-mh" => "quote"]);
+                render_wysiwyg($content, false);
                 ?>
 
                 <hr class="my4">

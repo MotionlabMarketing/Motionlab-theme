@@ -17,7 +17,7 @@
 
     <div class="clearfix <?=$block['content']['bg']?>">
 
-        <div class="relative col col-12 md-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> min-height-v50 overflow-hidden <?=($block['content']['type'] == "video")? "flex items-center" : "" ?>" data-mh="panelHeight">
+        <div class="relative col col-12 lg-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> md-min-height-v50 overflow-hidden <?=($block['content']['type'] == "video")? "flex items-center" : "" ?>" data-mh="panelHeight">
 
             <?php if ($block['content']['type'] == "image"): ?>
 
@@ -91,7 +91,7 @@
 
         </div>
 
-        <div class="col col-12 md-col-6 p0 md-p6 <?=$block['content']['align']?> <?=$block['content']['color']?> flex items-center <?php if ($block['content']['type'] == "video"): ?>flex items-center<?php endif; ?>" data-mh="panelHeight">
+        <div class="col col-12 lg-col-6 p4 md-p6 <?=$block['content']['align']?> <?=$block['content']['color']?> flex items-center <?php if ($block['content']['type'] == "video"): ?>flex items-center<?php endif; ?>" data-mh="panelHeight">
 
             <?php if ($block['content']['type'] == "video"): ?>
                 <div class="height-100 width-100" data-imatchto="video">

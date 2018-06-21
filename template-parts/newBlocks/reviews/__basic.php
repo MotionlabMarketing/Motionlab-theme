@@ -30,11 +30,11 @@ endswitch; ?>
 
     <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-    <div class="clearfix">
+    <div class="clearfix mxn4">
         <?php $i = 1; foreach ($block['posts']->posts as $post):
-            $content = get_shorten_string(get_field('reviewer_body', $post->ID), 35); ?>
+            $content = get_shorten_string(strip_tags(get_field('reviewer_body', $post->ID)), 35); ?>
 
-            <div class="col col-12 md-col-6 lg-col-4 px4 text-center <?=($i > 2)? "block sm-display-none lg-block":"" ;?>">
+            <div class="col col-12 md-col-6 lg-col-4 px3 text-center <?=($i > 2)? "block sm-display-none lg-block":"" ;?>">
 
                 <div class="col <?=$block['columns']?> mt5 px2 text-center">
 

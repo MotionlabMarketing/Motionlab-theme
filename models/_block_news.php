@@ -27,17 +27,17 @@ Class _block_news
 
 	private function loadBlockSettings() {
 
-		$this->block['content']['type']      = get_sub_field($this->current . '_selection');
-		$this->block['content']['feeds']     = get_sub_field($this->current . '_enabledSocial');
-		$this->block['content']['link']      = get_sub_field($this->current . '_enabledmore');
-		$this->block['content']['articles']  = get_sub_field($this->current . '_articles');
-		$this->block['content']['link']      = get_sub_field($this->current . '_news_link');
-		$this->block['content']['txtColor']  = get_sub_field($this->current . '_txtColor_system_text_colours');
+		$this->block['content']['type']            = get_sub_field($this->current . '_selection');
+		$this->block['content']['feeds']           = get_sub_field($this->current . '_enabledSocial');
+		$this->block['content']['enableLink']      = get_sub_field($this->current . '_enabledmore');
+		$this->block['content']['articles']        = get_sub_field($this->current . '_articles');
+		$this->block['content']['txtColor']        = get_sub_field($this->current . '_txtColor_system_text_colours');
 
 		$this->block['content']['date']      = get_sub_field($this->current . '_enablePostDate');
 		$this->block['content']['buttons']   = get_sub_field($this->current . '_enableButtons');
 		$this->block['content']['button']    = get_sub_field($this->current . '_buttons');
 
+		$this->block['pageLink']             = get_sub_field($this->current . '_page_link');
 
 
 		// GET THE COLUMN SIZES NEEDED IF SOCIAL IS INCLUDED.
@@ -176,8 +176,10 @@ Class _block_news
 
 	private function fetchLatestPosts($count = 3) {
 
-		if($this->block['content']['type'] == "latest") {
+		// TODO: This block needs to be able to use the filter options.
 
+		if($this->block['content']['type'] == "latest") {
+			
 			$args = array(
 				'posts_per_page'    => $count,
 				'paged'             => 1,
@@ -196,6 +198,7 @@ Class _block_news
 			}
 
 		} else {
+
 		    $this->block['posts'] = new stdClass();
 			$this->block['posts']->posts = [];
 

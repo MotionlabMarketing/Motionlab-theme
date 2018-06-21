@@ -9,14 +9,15 @@
  * @version 1.00
  */
 
-
-
 $block['content']['columns']          = get_sub_field($current . '_columns');
 
 $block['content']['bgColor']          = get_sub_field($current . '_background_system_background_colours');
-$block['content']['txtColor']         = get_sub_field($current . '_text_system_text_colours');
+$block['content']['txtColor']         = get_sub_field($current . '_txtColour_system_text_colours');
 
 $block['content']['buttons']          = get_sub_field($current . '_button_button_link');
+
+
+// REPLACED WITH FUNCTION  ----   ender_image_alteration() 
 // $block['content']['overlay']          = get_sub_field($current . '_enableOverlay');  // DEPRCATED: To be removed in new builds. 31 May 2018
 // $block['content']['darken']           = get_sub_field($current . '_darken');         // DEPRCATED: To be removed in new builds. 31 May 2018
 // $block['content']['darkenStrength']   = get_sub_field($current . '_darkenStrength'); // DEPRCATED: To be removed in new builds. 31 May 2018
