@@ -26,7 +26,7 @@
 
                 <?php if (!empty($block['content']['items'])): foreach ($block['content']['items'] as $item): ?>
 
-                    <div class="px3 col-12 md-col-<?=$block['columns']?> <?=$block['content']['txtColor']?>">
+                    <div class="px3 mb4 col-12 md-col-<?=$block['columns']?> <?=$block['content']['txtColor']?>">
 
                         <?php if (!empty($item['block_linkBoxes_button']['button_link'])): ?>
                             <a href="<?=$item['block_linkBoxes_button']['button_link']['url']?>" class="block relative bg-cover bg-center box-shadow-2" <?=($item['block_linkBoxes_link']['title'] ? 'title="'.$item['block_linkBoxes_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_link']['target'] ? 'target="'.$item['block_linkBoxes_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
