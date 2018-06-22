@@ -30,7 +30,7 @@
 
                                 <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'" class="block overflow-hidden hover-zoom">' : "")?>
 
-                                    <?=wp_get_attachment_image($item['image'],'medium')?>
+                                    <?=wp_get_attachment_image($item['image'],'galleryMedium')?>
 
                                 <?=(!empty($item['button']['button_link']['url'])? '</a>' : "")?>
 

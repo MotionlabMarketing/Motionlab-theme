@@ -23,7 +23,7 @@
 
             <?php if ($block['content']['type'] == "image"): ?>
 
-                <div class="image-holder bg-cover bg-center min-height-v50 height-100" style="background-image: url('<?=wp_get_attachment_url($block['content']['image'])?>');"></div>
+                <div class="image-holder bg-cover bg-center min-height-v50 height-100" style="background-image: url(' <?=$block['content']['image']['sizes']['galleryMedium']?>');"></div>
 
             <?php endif; ?>
 
