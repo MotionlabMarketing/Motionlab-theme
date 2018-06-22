@@ -36,7 +36,7 @@
         $content = get_shorten_string(get_field('reviewer_body', $post->ID), 35); ?>
 
 
-        <div class="col col <?=$block['columns']?> mt5 px2 text-center <?=($i > 2)? "block sm-display-none lg-block":"" ;?>">
+        <div class="col col <?=$block['review_columns']?> mt5 px2 text-center <?=($i > 2)? "block sm-display-none lg-block":"" ;?>">
 
             <div class="p5 bg-smoke" data-mh="testimonial">
 
