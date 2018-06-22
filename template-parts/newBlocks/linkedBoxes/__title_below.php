@@ -56,7 +56,7 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
                                  style="background-image: url('<?=$item['block_linkBoxes_image']?>')"></div>
                             <?php endif; ?>
                             <div class="content flex items-center justify-center p3 bold bg-white" data-mh="box-title">
-                                <?=$item[$current . '_title']?>
+                                <?=$item['content']?>
                             </div>
                         </a>
                     </div>
@@ -73,7 +73,7 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
                                 <h3><?=$item['block_linkBoxes_title']?></h3>
                             </div>
 
-                            <div class="wysiwyg"><?=$item['block_linkBoxes_content']?></div>
+                            <div class="wysiwyg"><?=$item['content']?></div>
                         </div>
 
                     </div>
