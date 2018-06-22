@@ -10,17 +10,15 @@
  * @version 1.00
  */
 
- $block['columns']   = get_sub_field('block_reviews_columns');
-
- switch ($block['columns']):
+ switch ($block['review_columns']):
      case "1":
-         $block['columns'] = "col-12";
+         $block['review_columns'] = "col-12";
          break;
      case "2":
-         $block['columns'] = "col-12 md-col-6";
+         $block['review_columns'] = "col-12 md-col-6";
          break;
      case "3":
-         $block['columns'] = "col-12 sm-col-12 md-col-4";
+         $block['review_columns'] = "col-12 sm-col-12 md-col-4";
          break;
  endswitch;
 
