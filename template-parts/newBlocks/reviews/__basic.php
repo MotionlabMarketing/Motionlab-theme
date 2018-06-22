@@ -37,31 +37,28 @@
     <?php $i = 1; foreach ($block['posts']->posts as $post):
         $content = get_shorten_string(get_field('reviewer_body', $post->ID), 35); ?>
 
-        <div class="col col-12 md-col-6 lg-col-4 mt5 px4 text-center <?=($i > 2)? "block sm-display-none lg-block":"" ;?>">
 
-            <div class="col col <?=$block['columns']?> mt5 px2 text-center">
+        <div class="col col <?=$block['columns']?> mt5 px2 text-center <?=($i > 2)? "block sm-display-none lg-block":"" ;?>">
 
-                <div class="p5 bg-smoke" data-mh="testimonial">
+            <div class="p5 bg-smoke" data-mh="testimonial">
 
-                    <?php
-                      if ($block['include_stars'] == true):
-                        echo '<div class="mt2 mb4">';
-                          echo get_stars(get_field('star_rating', $post->ID));
-                        echo '</div>';
-                      endif;
-                    ?>
+                <?php
+                  if ($block['include_stars'] == true):
+                    echo '<div class="mt2 mb4">';
+                      echo get_stars(get_field('star_rating', $post->ID));
+                    echo '</div>';
+                  endif;
+                ?>
 
-                    <div class="wysiwyg mb3 mx5" data-mh="quote">
-                        <?= $content->value; ?>
-                    </div>
-
-                    <hr class="my4">
-
-                    <h3 class="h4 brand-primary text-center mb1"><?=(!empty($name = get_field('reviewer_name', $post->ID)))? $name : "Anonymous" ?></h3>
-
-                    <p class="text-center mb0"><?=get_field('reviewer_locations', $post->ID)?></p>
-
+                <div class="wysiwyg mb3 mx5" data-mh="quote">
+                    <?= $content->value; ?>
                 </div>
+
+                <hr class="my4">
+
+                <h3 class="h4 brand-primary text-center mb1"><?=(!empty($name = get_field('reviewer_name', $post->ID)))? $name : "Anonymous" ?></h3>
+
+                <p class="text-center mb0"><?=get_field('reviewer_locations', $post->ID)?></p>
 
             </div>
 
