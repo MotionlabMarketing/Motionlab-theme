@@ -856,3 +856,6 @@ function ml_custom_admin_styles()
 
     wp_enqueue_style('ml_custom_admin_style');
 }
+
+//Move that pesky Yoast box to the bottom of pages and posts
+add_filter( 'wpseo_metabox_prio', function() { return 'low'; } );
