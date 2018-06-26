@@ -14,9 +14,9 @@ Class CPTCta extends CPTCore{
 
 	public function registerPostType() {
 		$labels = array(
-			'name'                => __( 'CTAs' ),
+			'name'                => __( 'Global CTAs' ),
 			'singular_name'       => __( 'CTA'),
-			'menu_name'           => __( 'CTAs'),
+			'menu_name'           => __( 'Global CTAs'),
 			'parent_item_colon'   => __( 'Parent CTA'),
 			'all_items'           => __( 'All CTAs'),
 			'view_item'           => __( 'View CTA'),
