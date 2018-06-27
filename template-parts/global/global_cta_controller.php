@@ -1,6 +1,6 @@
 <?php
 /**
- * CTA BLOCK --------------------------------------
+ * CTA GLOBAL BLOCK CONTROLLER --------------------------------------
  * Add support for CTAs Blocks.
  *
  * @author Joe Curran
@@ -10,13 +10,13 @@
  */
 
 // OPTIONS SETTINGS (ENABLED/DISABLED).
-$global_cta_post            = get_sub_field($current . '_cta');
+$global_cta_post            = get_field('global_cta_post_id');
 $block['layout']            = get_field('cta_layout', $global_cta_post);
 $block['columns']           = get_field('block_content_columns_cta', $global_cta_post);
 $block['content']['ctas']   = get_field('block_content_cta', $global_cta_post);
 
 switch ($block['layout']):
     default:
-        include('globalCta/__basic.php');
+        include('global_ctas/__basic.php');
         break;
 endswitch;
