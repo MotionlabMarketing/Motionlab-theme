@@ -16,7 +16,7 @@
 
         <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-        <div class="clearfix col col-12 mxn3 mt3 flex justify-center flex-wrap">
+        <div class="clearfix mxn3 mt3 flex justify-center flex-wrap">
 
             <?php foreach ($block['content'] as $item): ?>
 
@@ -76,7 +76,7 @@
 
                             </h3>
 
-                            <div class="h4 mb0" data-mh="pod-content"><?=$item['pod_content']?></div>
+                            <div class="h4 <?php if(!empty($item['button']['button_link']['url'])):?>mb3<?php endif;?>" data-mh="pod-content"><?=$item['pod_content']?></div>
 
                             <?php render_button($item['button'], "medium"); ?>
 

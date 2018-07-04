@@ -24,9 +24,11 @@ foreach($gallery['posts']->posts as $post):
         <span data-loadcount="<?=$gallery['posts']->query['paged']?>" class="btn cursor-pointer block filter-more">Load More...</span>
     </div>
 <?php else: ?>
+    <?php /* Removed on Essex - may affect other sites
     <div class="clearfix col-12 text-center py4">
         <hr>
         <p class="block py2 mb0 lead">End of Gallery</p>
         <hr>
     </div>
+    */ ?>
 <?php endif; ?>

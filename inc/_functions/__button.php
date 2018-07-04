@@ -21,6 +21,7 @@ function render_button($data, $size = "medium",  $classes = ["class" => "mb2"]) 
         $classes = attrConvert($classes);
 
         // CHECK IF ICON HAS BEEN ADDED.
+
         if (!empty($data['button_icon']))
             $icon = '<div class="flex items-center">' .  wp_get_attachment_image($data['button_icon'], array(32, 32), true, ["class" => "size-32x32 mr2"]) . $data['button_link']['title'] . '</div>';
 
@@ -67,8 +68,11 @@ function get_render_button($data, $size = "btn-medium",  $classes = ["class" => 
         $classes = attrConvert($classes);
 
         // CHECK IF ICON HAS BEEN ADDED.
-        if (!empty($data['button_icon']))
+        if (!empty($data['button_icon'])){
             $icon = '<div class="flex items-center">' .  wp_get_attachment_image($data['button_icon'], array(32, 32), true, ["class" => "size-32x32 mr2"]) . $data['button_link']['title'] . '</div>';
+        }elseif (!empty($data['button_icon_font'])) {
+            $icon = '<div class="flex items-center"><i class="fa '.$data['button_icon_font']->class.'"></i></div>';
+        }
 
         // CHECK IF TARGET HAS BEEN SET.
         if (!empty($data['button_link']['target']))
