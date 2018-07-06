@@ -71,7 +71,7 @@ function get_render_button($data, $size = "btn-medium",  $classes = ["class" => 
         if (!empty($data['button_icon'])){
             $icon = '<div class="flex items-center">' .  wp_get_attachment_image($data['button_icon'], array(32, 32), true, ["class" => "size-32x32 mr2"]) . $data['button_link']['title'] . '</div>';
         }elseif (!empty($data['button_icon_font'])) {
-            $icon = '<div class="flex items-center"><i class="fa '.$data['button_icon_font']->class.'"></i></div>';
+            $icon = '<div class="flex items-center"><i class="mr2 fa '.$data['button_icon_font']->class.'"></i>' . $data['button_link']['title'] . '</div>';
         }
 
         // CHECK IF TARGET HAS BEEN SET.
