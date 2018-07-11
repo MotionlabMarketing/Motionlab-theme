@@ -39,9 +39,12 @@ Class _block_jobs
 		$this->block['limited_categories']              = get_sub_field($this->current . '_category_filter');
 
 		$this->block['limited_categories_term_string']  = [];
-		foreach(get_sub_field($this->current . '_category_filter') as $filter_cat):
-			$this->block['limited_categories_term_string'][] = $filter_cat->slug;
-		endforeach;
+		$category_filters = get_sub_field($this->current . '_category_filter');
+		if(!empty($category_filters)):
+			foreach($category_filters as $filter_cat):
+				$this->block['limited_categories_term_string'][] = $filter_cat->slug;
+			endforeach;
+		endif;
 
 		$this->block['block_title']                     = get_sub_field($this->current . '_title_title');
 

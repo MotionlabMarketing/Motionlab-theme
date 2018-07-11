@@ -4,6 +4,7 @@ define("BLOCKS_DIR", get_template_directory() . "/template-parts/newBlocks/");
 define("GLOBAL_DIR", get_template_directory() . "/template-parts/global");
 define("CHILD_BLOCKS_DIR", get_stylesheet_directory() . "/blocks/");
 define("CONTROLLERS_DIR", get_template_directory() . "/controllers/");
+define("CHILD_CONTROLLERS_DIR", get_stylesheet_directory() . "/controllers/");
 define("MODELS_DIR", get_template_directory() . "/models/");
 define("CHILD_MODELS_DIR", get_stylesheet_directory() . "/models/");
 define("MASTER_CPT_DIR", get_template_directory() . "/cpt-registry/");

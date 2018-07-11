@@ -17,9 +17,12 @@ $borders          = "";
 $bordersColor     = get_sub_field($current . '_borders_border_colour');
 $bordersSides     = get_sub_field($current . '_borders_border_sides');
 
-foreach ($bordersSides as $item) {
-    $borders = $borders . " " . $item;
-}
+if(!empty($borderSides)) :
+    foreach ($bordersSides as $item) {
+        $borders = $borders . " " . $item;
+    }
+endif;
+
 $borders          = "||" . $borders . " " . $bordersColor;
 
 $blockTitle  = get_sub_field($current . '_title_title');
