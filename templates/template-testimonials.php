@@ -67,8 +67,8 @@ get_header(); ?>
             },
             success: function(response){
                 $('#testimonials-listing').html(response);
+                $('.grid').masonry();
             }
-            $grid.masonry();
         });
     }
 
@@ -77,10 +77,8 @@ get_header(); ?>
         fetchTestimonialPosts();
     }
 
-    $('.testimonials_filters').on('change', function() {
-        if($(this).attr('id') == "testimonials_filtercats") {
-            history.pushState({cat:$(this).val()}, "", "/testimonials/"+$(this).val());
-        }
+    $('#testimonials_filtercats').on('change', function() {
+        history.pushState({cat:$(this).val()}, "", "/testimonials/"+$(this).val());
         fetchTestimonialPosts();
     });
 
