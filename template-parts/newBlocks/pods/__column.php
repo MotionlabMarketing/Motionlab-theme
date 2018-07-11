@@ -26,11 +26,15 @@
 
                         <?php if ($item['type'] == "image"): ?>
 
-                            <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'" class="block overflow-hidden hover-zoom">' : "")?>
+                            <div class="flex items-center justify-center">
 
-                                <figure class="ratio-3-2 m0 bg-center bg-cover zoom" style="background-image:url('<?= wp_get_attachment_image_url($item['image'],'medium') ?>')"></figure>
+                                <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'" class="block overflow-hidden hover-zoom">' : "")?>
 
-                            <?=(!empty($item['button']['button_link']['url'])? '</a>' : "")?>
+                                    <?=wp_get_attachment_image($item['image'],'galleryMedium')?>
+
+                                <?=(!empty($item['button']['button_link']['url'])? '</a>' : "")?>
+
+                            </div>
 
                         <?php elseif ($item['type'] == "slider"): ?>
 

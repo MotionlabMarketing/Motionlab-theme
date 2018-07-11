@@ -23,7 +23,7 @@
 
                 <?=($block['content']['padding'] !== 'p0')? '<div class="relative height-100 overflow-hidden '.$block['content']['padding'].'">' : '' ?>
 
-                    <div class="image-holder bg-cover bg-center min-height-v50 height-100" style="background-image: url('<?=get_attachment_image_url($block['content']['image'], 'small')?>')"></div>
+                    <div class="image-holder bg-cover bg-center min-height-v50 height-100" style="background-image: url(' <?=$block['content']['image']['sizes']['galleryMedium']?>');"></div>
 
                 <?=($block['content']['padding'] !== 'p0')? '</div>' : '' ?>
 
@@ -95,7 +95,7 @@
 
             <?php if ($block['content']['type'] == "video"): ?>
                 <div class="height-100 width-100" data-imatchto="video">
-            <?php else: ?>        
+            <?php else: ?>
                 <div class="width-100">
             <?php endif; ?>
 
