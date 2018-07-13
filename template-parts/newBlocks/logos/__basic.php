@@ -36,4 +36,3 @@
     <?= ($block['grid'] == 'container') ? '</div>' : "" ?>
 
 </section>
-

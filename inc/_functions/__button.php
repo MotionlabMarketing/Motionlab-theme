@@ -30,7 +30,7 @@ function render_button($data, $size = "medium",  $classes = ["class" => "mb2"]) 
             $btn['target'] = 'target="' . $data['button_link']['target'] . '"';
 
         // BUILD THE BUTTON.
-        $btn = '<a href="' . $data['button_link']['url'] . '" ' . $classes . ' role="button" data-function="__button">';
+        $btn = '<a href="' . $data['button_link']['url'] . '" ' . $classes . ' role="button" data-function="__button" ' . $btn['target'] . '>';
 
             if (!empty($icon))
                 $btn .= $icon;
@@ -79,7 +79,7 @@ function get_render_button($data, $size = "btn-medium",  $classes = ["class" => 
             $btn['target'] = 'target="' . $data['button_link']['target'] . '"';
 
         // BUILD THE BUTTON.
-        $btn = '<a href="' . $data['button_link']['url'] . '" ' . $classes . ' role="button" data-function="__button">';
+        $btn = '<a href="' . $data['button_link']['url'] . '" ' . $classes . ' role="button" data-function="__button" ' . $btn['target'] . '>';
 
         if (!empty($icon))
             $btn .= $icon;

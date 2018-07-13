@@ -16,7 +16,7 @@
 
         <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-        <div class="clearfix mxn3 mt3 flex justify-center flex-wrap">
+        <div class="mxn3 mt3 flex justify-center flex-wrap">
 
             <?php foreach ($block['content'] as $item): ?>
 
