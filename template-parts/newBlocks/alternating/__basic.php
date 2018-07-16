@@ -17,13 +17,13 @@
 
     <div class="clearfix <?=$block['content']['bg']?>">
 
-        <div class="relative col col-12 lg-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> md-min-height-v50 overflow-hidden <?=($block['content']['type'] == "video")? "flex items-center" : "" ?>" data-mh="panelHeight">
+        <div class="relative col col-12 lg-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> md-min-height-v50 overflow-hidden <?=($block['content']['type'] == "video")? "flex items-center" : "" ?>">
 
             <?php if ($block['content']['type'] == "image"): ?>
 
                 <?=($block['content']['padding'] !== 'p0')? '<div class="relative height-100 overflow-hidden '.$block['content']['padding'].'">' : '' ?>
 
-                    <div class="image-holder bg-cover bg-center min-height-v50 height-100" style="background-image: url('<?=get_attachment_image_url($block['content']['image'], 'small')?>')"></div>
+                    <div class="image-holder bg-cover bg-center min-height-v50 height-100" data-mh="panelHeight" style="background-image: url('<?=get_attachment_image_url($block['content']['image'], 'small')?>')"></div>
 
                 <?=($block['content']['padding'] !== 'p0')? '</div>' : '' ?>
 
@@ -37,7 +37,7 @@
 
                         <?php foreach ($block['content']['gallery'] as $slide): ?>
 
-                            <img src="<?=$slide['url']?>">
+                            <div class="image-holder bg-cover bg-center min-height-v50 height-100" data-mh="panelHeight" style="background-image: url('<?=$slide['url']?>')"></div>
 
                         <?php endforeach; ?>
 
@@ -118,7 +118,7 @@
 
                     <?php foreach ($block['content']['buttons'] as $button): if (!empty($button['button_link']['url'])): ?>
 
-                        <a href="<?=$button['button_link']['url']?>" class="btn btn-<?=$button['system_background_colours']?> btn-medium <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> role="button"><div class="flex items-center"><?= wp_get_attachment_image($button['button_icon'], array(32, 32), '', ["class" => "size-32x32 mr2"]); ?><?php if($button['button_icon_font']->class):?><i class="fa mr2 <?= $button['button_icon_font']->class ?>"></i><?php endif; ?><?= $button['button_link']['title']?></div></a>
+                        <a href="<?=$button['button_link']['url']?>" class="btn btn-<?=$button['system_background_colours']?> btn-medium <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> role="button"><div class="flex items-center justify-center"><?= wp_get_attachment_image($button['button_icon'], array(32, 32), '', ["class" => "size-32x32 mr2"]); ?><?php if($button['button_icon_font']->class):?><i class="fa mr2 <?= $button['button_icon_font']->class ?>"></i><?php endif; ?><?= $button['button_link']['title']?></div></a>
 
                     <?php endif; endforeach;  ?>
 

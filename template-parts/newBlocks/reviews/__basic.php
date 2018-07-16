@@ -39,7 +39,7 @@ endswitch; ?>
                 <div class="col <?=$block['columns']?> mt5 px2 text-center">
 
                     <div class="p5 <?=($block['include_background'])? "bg-smoke":"";?> <?=($block['include_border'])? "border-1 border-left border-right border-top border-bottom border-light":"";?>" data-mh="testimonial">
-                        
+
                         <?php
                         if ($block['include_stars'] == true):
                             echo '<div class="mt2 mb4 h3">';
@@ -67,7 +67,7 @@ endswitch; ?>
         <?php $i++; endforeach; ?>
     </div>
 
-    <div class="clearfix flex items-center justify-center mt4">
+    <div class="clearfix md-flex items-center justify-center mt4">
 
         <?php render_button($block['page_button'], 'medium'); ?>
 
