@@ -92,7 +92,7 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
                         
                     </div>
                     
-                <?php endforeach; ?>
+                <?php endforeach; wp_reset_postdata(); ?>
                 
             </div>
             
@@ -103,7 +103,7 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
             </div>
             
         </div>
-    <?php endif; wp_reset_postdata(); ?>
+    <?php endif; ?>
     
 </div>
 
