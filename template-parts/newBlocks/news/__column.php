@@ -26,11 +26,11 @@
 
                             <?php if (has_post_thumbnail( $post->ID ) ): ?>
                                 <a href="<?=get_permalink($post->ID)?>">
-                                    <?= wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), "galleryMedium", "", ["class" => "box-shadow-1", "data-mh" => "{$block['id']}-image"] ) ?>
+                                    <?= wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), "linkedBoxes", "", ["data-mh" => "{$block['id']}-image"] ) ?>
                                 </a>
                             <?php else: ?>
                                 <a href="<?=get_permalink($post->ID)?>">
-                                    <?= wp_get_attachment_image(7303, "galleryMedium", "", ["class" => "box-shadow-1", "data-mh" => "{$block['id']}-heading"]) // TODO: Default Image ?>
+                                    <?= wp_get_attachment_image(7303, "linkedBoxes", "", ["data-mh" => "{$block['id']}-heading"]) // TODO: Default Image ?>
                                 </a>
                             <?php endif; ?>
 
@@ -40,7 +40,7 @@
                                     <p class="h6 mt2 bold"><?=date('d M Y', strtotime($post->post_date));?></p>
                                 <?php endif; ?>
 
-                                <h3 class="h3-responsive <?=($block['content']['date'])? "mt0":"mt2" ?> mb2" data-mh="<?=$block['id']?>-heading"><a href="<?=get_permalink($post->ID)?>"><?=$post->post_title?></a></h3>
+                                <h3 class="h4 <?=($block['content']['date'])? "mt0":"mt2" ?> mb2" data-mh="<?=$block['id']?>-heading"><a href="<?=get_permalink($post->ID)?>"><?=$post->post_title?></a></h3>
 
                                 <p class="h4 lh4" data-mh="<?=$block['id']?>-content"><?=strlen($post->post_excerpt) > 1 ? $post->post_excerpt : shorten_string(strip_tags($post->post_content), 45);?></p>
 
