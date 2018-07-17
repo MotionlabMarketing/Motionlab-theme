@@ -7532,7 +7532,17 @@ jQuery(document).ready(function ($) {
         arrows: true,
         draggable: false,
         pauseOnHover: false,
-        mobileFirst: false
+        mobileFirst: false,
+        responsive: [
+            {
+                breakpoint: 760,
+                settings: {
+                    arrows: false,
+                    slidesToShow: 2,
+                }
+            },
+            
+        ]
     });
 
     $('[data-slick="storeSlidingPanels-slider"]').slick({

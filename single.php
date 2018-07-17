@@ -76,8 +76,8 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
                         <p class="h6 mb2"><?=get_the_date()?></p>
                         
                         <a href="<?= get_permalink($post->ID) ?>"><h3 class="h4 brand-primary" data-mh="post-title"><?=get_the_title()?></h3></a>
-                        
-                        <a href="<?=get_permalink($post->ID)?>"><div class="image-holder square img-cover img-center mb4" style="background-image: url('<?=resize_attachment_image($image_url, 500, 500, true)?>');"></div></a>
+
+                        <a href="<?=get_permalink($post->ID)?>"><div class="image-holder square img-cover img-center mb4" style="background-image: url('<?=the_post_thumbnail_url("thumbnail")?>');"></div></a>
                         
                         <p class="h5 mb3" data-mh="post-content"><?= strlen($post->post_excerpt) > 1 ? strip_tags($post->post_excerpt) : shorten_string(strip_tags($post->post_content),30);?></p>
                         

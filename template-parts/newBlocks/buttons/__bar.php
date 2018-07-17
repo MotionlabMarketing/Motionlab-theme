@@ -20,7 +20,7 @@
 
         <?php foreach ($block['buttons'] as $button): ?>
 
-            <a href="<?=$button['button_link']['url']?>" class="<?=$block['button']['size']?> inline-block border-top border-bottom border-left border-right-none min-width-5 <?=$block['border']['colour']?> <?=$button['system_background_colours']?> <?=$button['system_text_colours']?> <?=($block['button']['current'] == $button['button_link']['url'])? 'active' : '';?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> style="border-radius: 0;">
+            <a href="<?=$button['button_link']['url']?>" class="<?=$block['button']['size']?> bold inline-block border-top border-bottom border-left border-right-none min-width-5 <?=$block['border']['colour']?> <?=$button['system_background_colours']?> <?=$button['system_text_colours']?> <?=($block['button']['current'] == $button['button_link']['url'])? 'active' : '';?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> style="border-radius: 0;">
                 <?=$button['button_link']['title']?>
             </a>
 

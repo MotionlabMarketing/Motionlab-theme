@@ -32,12 +32,12 @@
 
                 </div>
 
-                <div class="col col-12 md-col-6 p4 bg-smoke <?=($i % 2 !== 0)? 'right' : ''?>" data-mh="panel">
+                <div class="col col-12 md-col-6 flex flex-column items-start justify-center pt2 pb4 px4 md-p4 bg-smoke <?=($i % 2 !== 0)? 'right' : ''?>" data-mh="panel">
 
                     <h2 class="brand-primary"><?=$block['content']['location']['location_name']?></h2>
 
-                    <div class="clearfix mb2">
-                        <div class="col col-12 md-col-6 pr4">
+                    <div class="clearfix width-100 mb2">
+                        <div class="col col-12 md-col-6 pr4 mb3">
 
                             <h3 class="grey mb1 h4">Location Address</h3>
                             <p class="mb0"><?=$block['content']['location']['location_address_line_1']?></p>
@@ -60,7 +60,7 @@
                         </div>
                     </div>
 
-                    <?php if (!empty($block['content']['location']['opening_times_primary'])): ?>
+                    <?php if ($block['content']['location']['location_include_times']): ?>
                         <div class="col col-12 py2 pr1">
 
                             <h4 class="clearfix grey mb2 normal" data-mh="tabletitle"><?=$block['content']['location']['opening_times_primary']['section_openingTimes_title'];?></h4>
@@ -81,18 +81,17 @@
                         </div>
                     <?php endif; ?>
 
-                    <?php if (!empty($block['content']['location']['location_note'])): ?>
+                    <?php if (!empty($block['content']['location']['location_note']['content'])): ?>
                     <div class="clearfix mb2">
 
-                        <h4 class="clearfix mt4 mb2 gray mb0"><?=$block['content']['location']['location_note']['title']?></h4>
-
+                        <h4 class="clearfix mt2 mb2 gray mb0"><?=$block['content']['location']['location_note']['title']?></h4>
                         <?=$block['content']['location']['location_note']['content']?>
 
-                    </div=>
+                    </div>
                     <?php endif; ?>
-                                        
-                    <?php if (!empty($block['content']['location']['locations_logos'])): ?>
-                        <div class="clearfix">
+                                 
+                    <?php if ($block['content']['location']['enable_iconslogos'] && !empty($block['content']['location']['locations_logos'])): ?>
+                        <div class="clearfix width-100">
 
                             <h4 class="grey mb2 normal"><?=$block['content']['location']['locations_logos_titles']?></h4>
                         
