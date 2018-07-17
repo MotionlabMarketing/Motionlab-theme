@@ -24,7 +24,7 @@ var themepath       = '';
 
 // uses postcss to make the var work below
 var processors = [
-    autoprefixer({browsers: ['last 2 versions']}),
+    autoprefixer({browsers: ['iOS 7','last 2 versions']}),
     cssnano()
 ];
 
