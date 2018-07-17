@@ -25,9 +25,9 @@ $selected_products = get_sub_field('block_store_products');
 
                     <div data-element="tabs" class="col col-12 sm-flex items-center justify-center mb5">
 
-                        <?php $i = 0; foreach ($block['tabs'] as $tab): ?>
+                        <?php $i = 0; foreach ($block['tabs'] as $tab): $e = $i + 1; ?>
 
-                            <span data-section="tab<?=$i?>" class="block text-center bold bg-smoke border-top border-left border-bottom <?=(count($block['tabs']) == $i)? ' border-right':''?> border-light cursor-pointer py2 px5 relative <?=($i <= 0)? 'tab-active' : '' ?>">
+                            <span data-section="tab<?=$i?>" class="block text-center bold bg-smoke border-top border-left border-bottom <?=(count($block['tabs']) == $e)? ' border-right':''?> border-light cursor-pointer py2 px5 relative <?=($i <= 0)? 'tab-active' : '' ?>">
                                 <?=$tab['category_title']?>
                             </span>
 
