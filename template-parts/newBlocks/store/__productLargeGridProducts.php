@@ -25,9 +25,9 @@ $selected_products = get_sub_field('block_store_products');
 
                     <div data-element="tabs" class="col col-12 sm-flex items-center justify-center mb5">
 
-                        <?php $i = 0; foreach ($block['tabs'] as $tab): ?>
+                        <?php $i = 0; foreach ($block['tabs'] as $tab): $e = $i + 1; ?>
 
-                            <span data-section="tab<?=$i?>" class="block text-center bold bg-smoke border-top border-left border-bottom <?=(count($block['tabs']) == $i)? ' border-right':''?> border-light cursor-pointer py2 px5 relative <?=($i <= 0)? 'tab-active' : '' ?>">
+                            <span data-section="tab<?=$i?>" class="block text-center bold bg-smoke border-top border-left border-bottom <?=(count($block['tabs']) == $e)? ' border-right':''?> border-light cursor-pointer py2 px5 relative <?=($i <= 0)? 'tab-active' : '' ?>">
                                 <?=$tab['category_title']?>
                             </span>
 
@@ -103,7 +103,7 @@ $selected_products = get_sub_field('block_store_products');
                                                         <strong><span class="brand-primary h3">£<?=ltrim(number_format($price), "-")?></span></strong>
                                                     </p>
                                                 <?php else: ?>
-                                                    <p data-mh="price"><strong><span class="brand-primary h4">£<?=number_format($price)?></span></strong></p>
+                                                    <p data-mh="price"><strong><span class="brand-primary h2">£<?=number_format($price)?></span></strong></p>
                                                 <?php endif; ?>
 
                                                 <?php
@@ -162,8 +162,8 @@ $selected_products = get_sub_field('block_store_products');
 
                                                     <?php if (!empty($old_price)): ?>
                                                         <p class="brand-primary h4" data-mh="price">
-                                                            Old price: <strike>£<?=number_format($old_price)?></strike>
-                                                            <span class="bold block">Save £<?=number_format($old_price-$price)?></span>
+                                                            <small>Old price: <strike>£<?=number_format($old_price)?></strike></small>
+                                                            <?php /* <span class="bold block">Save £<?=number_format($old_price - $price)?></span> */ ?>
                                                             <strong><span class="brand-primary h3">£<?=ltrim(number_format($price), "-")?></span></strong>
                                                         </p>
                                                     <?php else: ?>
@@ -171,13 +171,10 @@ $selected_products = get_sub_field('block_store_products');
                                                     <?php endif; ?>
 
                                                     <?php
-
-                                                    // NEEDS TO BE ABLE TO THE CHANGE THE VALUE FROM 'RANGE' OR 'CARAVAN/MOTORHOME' //
                                                     $button['button_link']['url']        = get_permalink($selected_product->ID);
                                                     $button['button_link']['title']      = "View " . ucwords($prefix);
                                                     $button['system_text_colours']       = "white";
                                                     $button['system_background_colours'] = "transparent";
-
                                                     ?>
 
                                                     <?php render_button($button, "medium", ["class" => "bold bg-brand-secondary hover-white py1 px2"]) ?>

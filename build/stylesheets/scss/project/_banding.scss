@@ -1809,7 +1809,7 @@ hr.border-5 {
 
     &.tab-active {
       color: $brand-base;
-      background-color: transparent;
+      background-color: transparent !important;
 
       @media (max-width: $breakpoint-sm) {
         color: $brand-white;

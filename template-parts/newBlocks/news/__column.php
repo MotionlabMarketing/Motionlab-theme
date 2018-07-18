@@ -24,14 +24,13 @@
 
                     <?php if (has_post_thumbnail( $post->ID ) ): ?>
                         <a href="<?=get_permalink($post->ID)?>">
-                            <?= wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), "medium", "", ["class" => "box-shadow-1 js-match-height"] ) ?>
+                            <?= wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), "medium", "", ["class" => "js-match-height"] ) ?>
                         </a>
                     <?php else: ?>
                         <a href="<?=get_permalink($post->ID)?>">
-                            <?= wp_get_attachment_image(7303, "large", "", ["class" => "box-shadow-1 js-match-height"]) // TODO: Default Image ?>
+                            <?= wp_get_attachment_image(7303, "large", "", ["class" => "js-match-height"]) // TODO: Default Image ?>
                         </a>
                     <?php endif; ?>
-
 
                     <div class="<?=$block['content']['txtColor']?> py2 px3">
 
@@ -39,7 +38,7 @@
                             <p class="h6 mt2 bold <?=$block['content']['txtColor']?>"><?=date('d M Y', strtotime($post->post_date));?></p>
                         <?php endif; ?>
 
-                        <h3 class="mb2 brand-primary" style="font-size: 1.3rem"><a href="<?=get_permalink($post->ID)?>"><?=$post->post_title?></a></h3>
+                        <h3 class="mb2 h4 brand-primary" style="font-size: 1.3rem"><a href="<?=get_permalink($post->ID)?>"><?=$post->post_title?></a></h3>
 
                         <p class="h5"><?=strlen($post->post_excerpt) > 1 ? $post->post_excerpt : substr($post->post_content,0, 100);?></p>
 

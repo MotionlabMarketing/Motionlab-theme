@@ -17,7 +17,7 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
                 
                 <div class="lg-flex items-center">
                     
-                    <div class="col col-12 md-col-12 lg-col-3 mb4 lg-mb0">
+                    <div class="col col-12 md-col-12 lg-col-3 mb4 lg-mb0 mt3 self-start">
                         
                         <a href="<?=the_permalink($post->ID)?>">
                             
@@ -38,9 +38,7 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
                     
                     <div class="col col-12 md-col-6 lg-col-7 py2 px4 mb4 md-mb0">
                         
-                        <h3 class="brand-secondary bold mb2"><a href="<?=the_permalink($post->ID)?>" class="brand-secondary"><?=get_the_title($post->ID);?></a></h3>
-                        <p class="uppercase bold opacity-6"></p>
-                        
+                        <h3 class="brand-secondary bold mb0"><a href="<?=the_permalink($post->ID)?>" class="brand-secondary"><?=get_the_title($post->ID);?> <p class="h4 bold grey mb0"><?=get_field($prefix.'_details_berth', $post->ID)?> Berth</p></a></h3>
                         <div class="md-flex items-center border-solid border-light-1 border-bottom">
                             
                             <div class="col col-8">
@@ -66,7 +64,7 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
                                 
                                 if (!empty($floorplan_image)) :
                                     foreach ($floorplan_image as $image):
-                                        render_attachment_image($image, "small", false, ["class" => "mx-auto my3"]);
+                                        render_attachment_image($image, "small", false, ["class" => "mx-auto mtn2"]);
                                     endforeach;
                                 endif;
                                 ?>
@@ -75,11 +73,10 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
                         
                     </div>
                     
-                    <div class="flex items-center justify-start">
+                    <div class="flex items-center justify-start mtn2">
                         
                         <?php render_attachment_image("8632", "small", false, ["class" => "my2 mr2"]); // TODO: THESE ICONS WILL NEED TO BE SINGLES AND INCLUDED USING A LOOP. THESE COME FROM motorhome FINDER APPRENTLY - CINDERS.?>
-                        
-                        <p class="bold brand-primary mb0 ml3">Special Offer – Free PowerTouch Motor Mover</p> <?php // TODO: This needs to load a dynamic line?>
+                        <p class="bold brand-primary mb0">Special Offer – Free PowerTouch Motor Mover</p> <?php // TODO: This needs to load a dynamic line?>
                         
                     </div>
                     
