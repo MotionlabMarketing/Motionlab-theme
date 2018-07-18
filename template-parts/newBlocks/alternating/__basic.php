@@ -118,7 +118,7 @@
 
                     <?php foreach ($block['content']['buttons'] as $button): if (!empty($button['button_link']['url'])): ?>
 
-                        <a href="<?=$button['button_link']['url']?>" class="btn btn-<?=$button['system_background_colours']?> btn-medium <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> role="button"><div class="flex items-center justify-center"><?= wp_get_attachment_image($button['button_icon'], array(32, 32), '', ["class" => "size-32x32 mr2"]); ?><?php if($button['button_icon_font']->class):?><i class="fa mr2 <?= $button['button_icon_font']->class ?>"></i><?php endif; ?><?= $button['button_link']['title']?></div></a>
+                        <a id="<?=$button['button_custom_id']?>" href="<?=$button['button_link']['url']?>" class="btn btn-<?=$button['system_background_colours']?> btn-medium <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> role="button"><div class="flex items-center justify-center"><?= wp_get_attachment_image($button['button_icon'], array(32, 32), '', ["class" => "size-32x32 mr2"]); ?><?php if($button['button_icon_font']->class):?><i class="fa mr2 <?= $button['button_icon_font']->class ?>"></i><?php endif; ?><?= $button['button_link']['title']?></div></a>
 
                     <?php endif; endforeach;  ?>
 
