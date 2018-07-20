@@ -44,7 +44,8 @@
 
                                 <p class="h4 lh4" data-mh="<?=$block['id']?>-content"><?=strlen($post->post_excerpt) > 1 ? $post->post_excerpt : shorten_string(strip_tags($post->post_content), 45);?></p>
 
-                                <?php if($block['content']['buttons'] = true): ?>
+                                <?php if($block['content']['buttons'] = true): 
+                                    $block['content']['button']['button_link']['url'] = get_permalink($post->ID); ?>
                                     <?php render_button($block['content']['button'], "medium", ["class" => "mt3"]); ?>
                                 <?php endif; ?>
 
