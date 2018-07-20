@@ -17,7 +17,7 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
                 
                 <div class="lg-flex items-center">
                     
-                    <div class="col col-12 md-col-12 lg-col-3 mb4 lg-mb0 mt3 self-start">
+                    <div class="col col-12 md-col-12 lg-col-3 mb4 lg-mb0 mt3 self-start" data-mh="<?=$post->ID?>-column">
                         
                         <a href="<?=the_permalink($post->ID)?>">
                             
@@ -29,6 +29,8 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
                                 foreach ($feature_image as $image):
                                     render_attachment_image($image, "medium", false, ["class" => "", "data-mh" => "product-images"]);
                                 endforeach;
+                            else: 
+                                render_attachment_image(get_field('default_caravan_image', 'option'), "medium", false, ["class" => "inline-block mb2"]);        
                             endif;
                             ?>
                             
@@ -36,9 +38,9 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
                         
                     </div>
                     
-                    <div class="col col-12 md-col-6 lg-col-7 py2 px4 mb4 md-mb0">
+                    <div class="col col-12 md-col-6 lg-col-7 py2 px4 mb4 md-mb0" data-mh="<?=$post->ID?>-column">
                         
-                        <h3 class="brand-secondary bold mb0"><a href="<?=the_permalink($post->ID)?>" class="brand-secondary"><?=get_the_title($post->ID);?> <p class="h4 bold grey mb0"><?=get_field($prefix.'_details_berth', $post->ID)?> Berth</p></a></h3>
+                        <h3 class="brand-secondary bold mb2"><a href="<?=the_permalink($post->ID)?>" class="brand-secondary"><?=get_the_title($post->ID);?> <p class="h4 bold grey mb0"><?=get_field($prefix.'_details_berth', $post->ID)?> Berth</p></a></h3>
                         <div class="md-flex items-center border-solid border-light-1 border-bottom">
                             
                             <div class="col col-8">
@@ -73,26 +75,35 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
                         
                     </div>
                     
-                    <div class="flex items-center justify-start mtn2">
+                    <div class="flex items-center justify-start" data-mh="<?=$post->ID?>-column">
                         
-                        <?php render_attachment_image("8632", "small", false, ["class" => "my2 mr2"]); // TODO: THESE ICONS WILL NEED TO BE SINGLES AND INCLUDED USING A LOOP. THESE COME FROM motorhome FINDER APPRENTLY - CINDERS.?>
-                        <p class="bold brand-primary mb0">Special Offer – Free PowerTouch Motor Mover</p> <?php // TODO: This needs to load a dynamic line?>
+                        <?php
+                          $logos = get_field($prefix.'_details_logos', $post->ID);
+                          if (!empty($logos)): ?>
+							<ul class="list-reset flex">
+								<?php foreach (array_slice($logos, 0, 8) as $logo): ?>
+									<li><?= render_attachment_image(get_field('taxonomy_image', "term_".$logo), "small", false, ["class" => "my2 mr2"]);?></li>
+								<?php endforeach; ?>
+							</ul>
+							<p class="bold brand-primary mb0"><?=get_field('default_offer_text', 'option')?></p>
+					    <?php endif; ?>
+                        <p class="bold brand-primary mt2 mb0"><?=get_field('default_offer_text', 'option')?></p>
                         
                     </div>
                     
                 </div>
                 
-                <div class="col col-12 md-col-6 lg-col-3 text-center px5">
+                <div class="col col-12 md-col-6 lg-col-3 text-center px5" data-mh="<?=$post->ID?>-column">
                     
                     <p class="h3 brand-primary bold mb1">£<?=number_format(get_field($prefix.'_details_price', $post->ID))?></p>
                     <?php if (!empty(get_field($prefix.'_details_old_price'))) : ?>
-                        <p class="h5 brand-secondary mb2 small mb7">
+                        <p class="h5 brand-secondary mb2 small mb6">
                             Old price: <strike>£<?=number_format(get_field($prefix.'_details_old_price', $post->ID))?></strike>
                             <span class="bold">Save £<?=number_format(get_field($prefix.'_details_old_price', $post->ID)-get_field($prefix.'_details_price', $post->ID))?></span>
                         </p>
                     <?php endif; ?>
                     
-                    <p class="h4 bold grey mb7"><?=get_term(get_field($prefix.'_details_branch', $post->ID))->name?> Branch</p>
+                    <p class="h4 bold grey mb6"><?=get_term(get_field($prefix.'_details_branch', $post->ID))->name?> Branch</p>
                     
                     <a href="<?=get_permalink($post->ID)?>" class="btn bg-brand-secondary white btn-medium border-radius-2" style="min-width: 80%">View <?=rtrim(ucfirst(get_post_type()), "s")?></a>
                     

@@ -26,6 +26,25 @@ jQuery(document).ready(function ($) {
         });
     }
 
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                var spacing = 40; if ($('.js-sticky-nav').outerHeight().length > 0) { spacing = 20; }
+                console.log(spacing);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                var scrollTo = target.position().top - $("#masthead").outerHeight() - $('.js-sticky-nav').outerHeight() - spacing;
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: scrollTo
+                    }, 1000);
+                    return false;
+                }
+            }
+        
+        });
+    });
 
     /*========================
     Animate On Scroll
@@ -155,7 +174,6 @@ jQuery(document).ready(function ($) {
     $(window).resize(function () {
         heightHeaderSpace();
     });
-
 
     // function negativeHeaderSpace(){
     //     var headerHeight = $('#masthead').outerHeight();

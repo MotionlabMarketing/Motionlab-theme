@@ -10,3 +10,4 @@ function ml_personalize_thankyou($content) {
 
 	return $content;
 }
+

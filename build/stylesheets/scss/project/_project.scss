@@ -192,9 +192,8 @@ header{
 
 .section-active{
    background: $white;
-   border: 1px solid $smoke;
-   border-right:none;
-   a{
+
+   a {
       color: $primary !important;
    }
 }
@@ -237,11 +236,9 @@ nav {
           pointer-events: none;
         }
     }
-
-
 }
 
-.dropdown{
+.dropdown {
   padding: 1.5rem 0 0 0;
   position: absolute;
   top: 100%;
@@ -256,19 +253,19 @@ nav {
   transform: translateX(-50%);
 
   ul {
-    //padding: 1rem;
     border-radius: 15px;
 
     li {
       border-bottom: 1px solid $darken-1;
 
-      a{
-          padding: 0.75rem;
+      a {
+        padding: 0.75rem;
       }
 
       &:last-child {
         border-bottom: 0;
       }
+
     }
 
     .arrow-up {

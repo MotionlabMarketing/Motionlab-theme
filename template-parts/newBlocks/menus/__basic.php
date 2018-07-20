@@ -13,9 +13,13 @@
  // TODO: Needs Waypoints adding and related classes. 
 
 $block['logo'] = get_sub_field($current . '_logo');
-$block['buttons'] = get_sub_field($current . '_buttons'); ?>
+$block['buttons'] = get_sub_field($current . '_buttons'); 
+$block['enable_sticky'] = get_sub_field($current . '_enable_sticky_navigation'); 
 
-<section <?=get_blockID($block)?> <?=get_blockClasses($block, "menu-internal")?> <?=get_blockData($block)?>>
+$block['sticky_nav'] = "";
+if ($block['enable_sticky'] == true) { $block['sticky_nav'] = "js-sticky-nav"; } ?>
+
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "menu-internal {$block['sticky_nav']}")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
