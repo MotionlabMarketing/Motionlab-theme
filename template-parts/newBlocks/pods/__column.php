@@ -78,7 +78,7 @@
 
                             <div class="h4 mb3" data-mh="pod-content"><?=$item['pod_content']?></div>
                             
-                            <?php render_button($item['button'], "medium", ["class" => "bold hover-white hover-bg-brand-primary"]); ?>
+                            <?php render_button($item['button'], "medium", ["class" => "bold hover-white hover-black"]); ?>
 
                         </div>
                         

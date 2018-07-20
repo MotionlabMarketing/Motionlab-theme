@@ -12,6 +12,9 @@
 $layout = get_sub_field($current . '_layout');
 
 switch ($layout):
+    case "single":
+        include('video/__video_single.php');
+        break;
     case "video_stories":
         include('video/__video_stories.php');
         break;

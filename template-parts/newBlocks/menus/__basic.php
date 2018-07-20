@@ -25,15 +25,11 @@ if ($block['enable_sticky'] == true) { $block['sticky_nav'] = "js-sticky-nav"; }
 
         <div class="container bg-white px4 py2 border-radius-2 box-shadow-2 flex items-center justify-between <?=$block['button_alignment']?>">
 
-          <?php render_attachment_image($block['logo'], ["200", "80"], false, ["class" => ""]); // NEEDS LOGO/ICON FOR MODEL. ?>
+          <?php render_attachment_image($block['logo'], ["200", "80"], false, ["class" => ""]); ?><div class="border-right border-light-1 border-solid pr3">&nbsp;</div>
 
-          <ul class="list-reset mb0">
+          <ul class="list-reset mb0 ml-auto">
 
-              <?php foreach ($block['buttons'] as $button):?>
-
-                  <li class="inline-block mx3"><a href="<?=$button['button_button_link']['url']?>" class="brand-base hover-brand-base" <?=($button['button_button_link']['target'] ? 'target="'.$button['button_button_link']['target'].'"' : '')?>><?=$button['button_button_link']['title']?></a></li>
-
-              <?php endforeach; ?>
+            <?php render_buttons($block['buttons'], "none", ["class" => "p0"]); ?>
 
           </ul>
 
