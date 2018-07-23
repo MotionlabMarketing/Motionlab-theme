@@ -135,12 +135,13 @@ jQuery(document).ready(function ($) {
 
     $('[data-toggle-section]').hoverIntent({
         over: function () {
+            var parent = $(this).closest('[data-tabs="wrapper"]');
             var section = $(this).data('toggle-section');
             $('[data-element="mega-dropdown"] .section-active').removeClass('section-active');
 
             $(this).parent().addClass('section-active');
-            $('[data-section]').hide();
-            $('[data-section="' + section + '"]').show();
+            $(parent).find('[data-section]').hide();
+            $(parent).find('[data-section="' + section + '"]').show();
         },
         timeout: 0,
         out: function () {
@@ -807,7 +808,6 @@ jQuery(document).ready(function ($) {
 
     $('.tabs-dots').exists(function () {
         var blockID = this.data('block-id');
-
     });
 
 
