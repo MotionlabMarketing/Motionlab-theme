@@ -78,7 +78,7 @@ Class _block_news
 
 		$tax_query[] = [
 			'taxonomy'  => 'post_specific_types',
-			'terms'     => array('csr'),
+			'terms'     => array('csr', 'case_studies'),
 			'field'     => 'slug',
             'operator'  => 'NOT IN'
 		];
@@ -129,6 +129,57 @@ Class _block_news
 		$tax_query[] = [
 			'taxonomy'  => 'post_specific_types',
 			'terms'     => array('csr'),
+			'field'     => 'slug'
+		];
+
+		if(isset($_POST['order_filter']) && $_POST['order_filter'] != ''): $orderby = $_POST['order_filter']; else : $orderby = 'date'; endif;
+
+		if ( isset($_POST['category_filter']) && $_POST['category_filter'] != '' ) {
+			$tax_query[] = [
+				array(
+					'relation'  => 'AND',
+					[
+						'taxonomy'  => 'category',
+						'terms'     => [ $_POST['category_filter'] ],
+						'field'     => 'slug'
+					],
+					$tax_query
+				)
+
+			];
+		}
+
+		$order = "ASC";
+		if($orderby == 'date')
+			$order = "DESC";
+
+		$args2 = array(
+			'posts_per_page'    => $post_per_page,
+			'paged'             => $page,
+			'post_type'         => 'post',
+			'orderby'           => $orderby,
+			'order'             => $order,
+			'post_status'       => array( 'publish' ),
+			'tax_query'         => $tax_query
+		);
+
+		$this->block['posts'] = new WP_Query( $args2 );
+
+		foreach($this->block['posts']->posts as $key => $post) {
+
+			$this->block['posts']->posts[$key]->categories = get_the_terms($post->ID, 'category');
+
+		}
+
+		return $this->block;
+	}
+
+	public function fetchCaseStudyPosts( $post_per_page = 12, $page = 1) {
+		$tax_query = [];
+
+		$tax_query[] = [
+			'taxonomy'  => 'post_specific_types',
+			'terms'     => array('case_studies'),
 			'field'     => 'slug'
 		];
 
