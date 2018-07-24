@@ -26,6 +26,25 @@ jQuery(document).ready(function ($) {
         });
     }
 
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                var spacing = 40; if ($('.js-sticky-nav').outerHeight().length > 0) { spacing = 20; }
+                console.log(spacing);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                var scrollTo = target.position().top - $("#masthead").outerHeight() - $('.js-sticky-nav').outerHeight() - spacing;
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: scrollTo
+                    }, 1000);
+                    return false;
+                }
+            }
+        
+        });
+    });
 
     /*========================
     Animate On Scroll
@@ -116,12 +135,13 @@ jQuery(document).ready(function ($) {
 
     $('[data-toggle-section]').hoverIntent({
         over: function () {
+            var parent = $(this).closest('[data-tabs="wrapper"]');
             var section = $(this).data('toggle-section');
             $('[data-element="mega-dropdown"] .section-active').removeClass('section-active');
 
             $(this).parent().addClass('section-active');
-            $('[data-section]').hide();
-            $('[data-section="' + section + '"]').show();
+            $(parent).find('[data-section]').hide();
+            $(parent).find('[data-section="' + section + '"]').show();
         },
         timeout: 0,
         out: function () {
@@ -155,7 +175,6 @@ jQuery(document).ready(function ($) {
     $(window).resize(function () {
         heightHeaderSpace();
     });
-
 
     // function negativeHeaderSpace(){
     //     var headerHeight = $('#masthead').outerHeight();
@@ -789,7 +808,6 @@ jQuery(document).ready(function ($) {
 
     $('.tabs-dots').exists(function () {
         var blockID = this.data('block-id');
-
     });
 
 

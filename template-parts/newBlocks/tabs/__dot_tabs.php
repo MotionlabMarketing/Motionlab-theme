@@ -44,7 +44,7 @@ $bgImage = ($block['bgImage']['enable'] == true)? 'bg-image-active' : '';
 
                             <?php 
                                 $heading = convert_heading($tab['column_1']['title']); 
-                                render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}", ["data-mh" => "{$block['id']}-heading"]);
+                                render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}");
                                 render_wysiwyg($tab['column_1']['column_content'], false);
                                 render_buttons($tab['column_1']['column_buttons'], "medium", ["class" => "mt3"])
                             ?>
@@ -61,7 +61,7 @@ $bgImage = ($block['bgImage']['enable'] == true)? 'bg-image-active' : '';
 
                                     <?php 
                                     $heading = convert_heading($tab['column_2']['title']); 
-                                    render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}", ["data-mh" => "{$block['id']}-heading"]);
+                                    render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}");
                                     render_wysiwyg($tab['column_2']['column_content'], false);
                                     render_buttons($tab['column_2']['column_buttons'], "medium", ["class" => "mt3"])
                                     ?>

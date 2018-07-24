@@ -4,7 +4,7 @@
     <?php if (has_post_thumbnail( $post->ID ) ): ?>
         <?php $image_url = wp_get_attachment_image_url( get_post_thumbnail_id( $post->ID ), "large", "", ["class" => "box-shadow-1 js-match-height"] ) ?>
     <?php else: ?>
-        <?php $image_url = "/wp-content/themes/motionlab-theme/assets/img/placeholder.jpg"?>
+        <?php $image_url = get_field('fallback_placeholder_image', 'option'); ?>
     <?php endif; ?>
 
     <div class="col col-12 sm-col-6 md-col-3 lg-col-3 || p4 || js-match-height">

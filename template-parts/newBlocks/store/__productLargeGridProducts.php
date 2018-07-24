@@ -73,11 +73,17 @@ $selected_products = get_sub_field('block_store_products');
                                             <div>
 
                                                 <div class="flex items-center justify-center">
-                                                    <?php if (!empty($feature_image)) :
+                                                    <?php if (!empty($feature_image)):
+
                                                         foreach ($feature_image as $image):
+
                                                             render_attachment_image($image, "large", false, ["class" => "inline-block mb2"]);
+
                                                         endforeach;
+                                                    else: 
+                                                        render_attachment_image(get_field('default_caravan_image', 'option'), "large", false, ["class" => "inline-block mb2"]);    
                                                     endif;?>
+                                                    
                                                 </div>
                                                 
                                                 <?=render_attachment_image($brand_image, "small", false, ["class" => "brand-logo mx-auto sixe-90x90"])?>

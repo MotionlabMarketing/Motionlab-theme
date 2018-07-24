@@ -66,7 +66,7 @@ get_header(); ?>
 
                 <p><?= strlen($latest_post->post_excerpt) > 1 ? $latest_post->post_excerpt : shorten_string($latest_post->post_content, 55); ?></p>
 
-                <a href="<?= get_permalink($latest_post->ID) ?>" class="btn btn-primary border-primary btn-medium mt4 h5">Read full story</a>
+                <a href="<?= get_permalink($latest_post->ID) ?>" class="btn btn-primary border-primary btn-medium mt4 h5" role="button">Read full story</a>
 
             </div>
 

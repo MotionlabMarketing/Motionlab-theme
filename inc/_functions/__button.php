@@ -16,6 +16,9 @@ function render_button($data, $size = "medium",  $classes = ["class" => "mb2"]) 
 
     if (!empty($data['button_link']['url']) && !empty($data['button_link']['title'])) {
 
+        if(empty($data['system_background_colours']))
+            $data['system_background_colours'] = "transparent";
+
         $classes["class"] = "btn btn-{$data['system_background_colours']} btn-{$size} {$data['system_text_colours']} {$data['system_background_colours']} {$data['button_text_colour']['system_text_colours']} {$data['button_background_colour']['system_background_colours']} " . $classes["class"];
 
         $classes = attrConvert($classes);
@@ -62,7 +65,10 @@ function get_render_button($data, $size = "btn-medium",  $classes = ["class" => 
 
     if (!empty($data['button_link']['url']) && !empty($data['button_link']['title'])) {
 
-        $classes["class"] = $classes["class"] . " btn btn-{$data['system_background_colours']} btn-{$size} {$data['system_text_colours']} {$data['system_background_colours']}";
+        if(empty($data['system_background_colours']))
+            $data['system_background_colours'] = "transparent"; 
+
+        $classes["class"] = "btn btn-{$data['system_background_colours']} btn-{$size} {$data['system_text_colours']} {$data['system_background_colours']} {$data['button_text_colour']['system_text_colours']} {$data['button_background_colour']['system_background_colours']} " . $classes["class"];
 
         $classes = attrConvert($classes);
 
@@ -110,7 +116,8 @@ function render_buttons($data, $size, $classes = ["class" => "mb2"]) {
     if (!empty($data)) {
         foreach ($data as $button) {
 
-            if (!empty($button['buttons_button_link']))
+            
+            if (!empty($button['buttons_button_link']) || !empty($button['button_button_link']))
                 $button = convert_buttons_key($button);
             $btn .= get_render_button($button, $size, $classes);
 
@@ -130,12 +137,17 @@ function render_buttons($data, $size, $classes = ["class" => "mb2"]) {
 
 function convert_buttons_key($arr) {
 
-
     foreach($arr as $key => $value) :
 
-        if(strpos($key, "buttons_") !== false) :
+        if(strpos($key, "buttons_") !== false || strpos($key, "button_button_") !== false) :
             $arr[str_replace('buttons_', '', $key)] = $value;
+            $arr[str_replace('button_button_', 'button_', $key)] = $value;
             unset($arr[$key]);
+        endif;
+
+        if ($key == "button_system_text_colours" || $key == "button_system_background_colours"):
+            $array[str_replace('button_', '', $key)] = $value;
+            unset($array[$key]);
         endif;
 
     endforeach;
@@ -161,6 +173,9 @@ function convert_buttons_key($arr) {
         endif;
 
     endforeach;
+
+    $arr['system_text_colours']       = $arr['button_system_text_colours'];
+    $arr['system_background_colours'] = $arr['button_system_background_colours'];
 
     return $arr;
 
