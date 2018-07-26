@@ -19,7 +19,11 @@ $blockTitle       = get_sub_field($current . '_title_title');
 $blockColumns     = get_sub_field($current . '_columns');
 $content          = get_sub_field($current . '_content');
 
-$block['columns'] = 12 / $blockColumns;
+if ($blockColumns == 5):
+    $block['columns'] = "col-grid-5";
+else:    
+    $block['columns'] = "md-col-" . (12 / $blockColumns);
+endif;
 
 $block['content']['txtColor'] = get_sub_field($current . '_txtColour_system_text_colours');
 
@@ -41,7 +45,7 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
                 <?php
                 // STANDARD BOXES WITH IMAGE AND TITLE //
                 if ($item['block_linkBoxes_breakout_true'] !== true): ?>
-                    <div class="item col col-12 md-col-<?=$block['columns']?> <?=$block['textColor']?><?= $block['content']['txtAlign'] ?> p3 block relative hover-zoom" data-mh="box-height">
+                    <div class="item col col-12 <?=$block['columns']?> <?=$block['textColor']?><?= $block['content']['txtAlign'] ?> p3 block relative hover-zoom" data-mh="box-height">
                         <a href="<?= $item['block_linkBoxes_button']['button_link']['url'] ?>"
                            class="block relative overflow-hidden bg-cover bg-center border-light border-top border-left border-right box-shadow-3 border-bottom <?=$item['block_linkBoxes_button_system_text_colours']?> <?=$item['block_linkBoxes_button_system_background_colours']?> || zoom" <?= ($item['block_linkBoxes_button_button_link']['title'] ? 'title="' . $item['block_linkBoxes_button_button_link']['title'] . '"' : '') ?> <?= ($item['block_linkBoxes_button_button_link']['target'] ? 'target="' . $item['block_linkBoxes_button_button_link']['target'] . '"' : '') ?>>
                             <?php if ($item['block_linkBoxes_media'] == "video"): ?>

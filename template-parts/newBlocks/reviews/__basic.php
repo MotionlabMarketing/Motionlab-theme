@@ -65,7 +65,7 @@
     <?php $i++; endforeach; ?>
 
     <div class="clearfix col-12 text-center">
-        <a href="<?=the_permalink(get_field('default_page_reviews', 'option'))?>" class="btn btn-medium bg-brand-primary white my5 mx4">Read More</a>
+        <a href="<?=the_permalink(get_field('page_for_reviews', 'option')->ID)?>" class="btn btn-medium bg-brand-primary white my5 mx4">View All</a>
     </div>
 
     <?= ($block['grid'] == 'container') ? '</div>' : "" ?>

@@ -51,9 +51,9 @@ $block['block_title']  = get_sub_field($current . '_title_title');
             endforeach;
         else:?>
             <?php if ($block['posts']->query['tax_query'][0]['terms'][0] == 'internal-vacancies') : ?>
-                <p class="text-center p2 m1">Oh dear, it looks like we don’t currently have any active vacancies here at Cummins Mellor. However, we’re always on the lookout for ‘Cummins Mellor People’ and would love to speak to you if you feel you would be a great addition to our team. Please get in touch with us, we’d love to hear from you.</p><p class="text-center p2 m1"><strong>Contact Helen Jackson on <a href="tel:01254 239363">01254 239363</a> or email <a href="mailTo:helen@cumminsmellor.co.uk">helen@cumminsmellor.co.uk</a></strong></p>
+                <p class="text-center p2 m1">Oh dear, it looks like we don’t currently have any active vacancies here at <?=get_bloginfo('name')?>. However, we’re always on the lookout for great candidates and would love to speak to you if you feel you would be a great addition to our team. Please get in touch with us, we’d love to hear from you.</p><p class="text-center p2 m1"><strong>Contact us on <a href="tel:<?=get_field('brand_phone', 'option')?>"><?=get_field('brand_phone', 'option')?></a></p>
             <?php else: ?>
-                <p class="text-center p2 m1">Oh dear, it looks like we don’t currently have any active vacancies in this sector. However we’re always on the lookout for great candidates and would love to speak to you to discuss your requirements and career goals. Please get in touch with us, we’d love to hear from you.</p><p class="text-center p2 m1"><strong>Contact Laura Garratt on <a href="tel:01254 239363">01254 239363</a></strong></p>
+                <p class="text-center p2 m1">Oh dear, it looks like we don’t currently have any active vacancies in this sector. However we’re always on the lookout for great candidates and would love to speak to you to discuss your requirements and career goals. Please get in touch with us, we’d love to hear from you.</p><p class="text-center p2 m1"><strong>Contact us on <a href="tel:<?=get_field('brand_phone', 'option')?>"><?=get_field('brand_phone', 'option')?></a></strong></p>
             <?php endif; ?>
         <?php endif;
         exit();
