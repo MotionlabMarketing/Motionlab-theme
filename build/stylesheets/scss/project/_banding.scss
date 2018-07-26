@@ -1566,7 +1566,15 @@ hr.border-5 {
         clear: both;
       }
     }
+
+    &.col-grid-5 {
+      .image-holder {
+        min-height: 10rem;
+      }
+    }
   }
+
+  
 }
 
 .linkedBox-grid {

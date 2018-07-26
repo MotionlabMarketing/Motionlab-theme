@@ -85,8 +85,13 @@
 
                 <div class="mxn2">
 
-                    <?php foreach ($block['content']['iconCTA'] as $cta): ?>
-                        <div class="px2 col col-12 sm-col-6 mt3 sm-mt0">
+                    <?php foreach ($block['content']['iconCTA'] as $cta):
+                        
+                        $width = "6";
+                        if (strlen($cta['title']) > 30)
+                            $width = "12";
+                        ?>
+                        <div class="px2 col col-12 sm-col-<?=$width?> mt3 sm-mt0 mb3" data-mh="<?=$block['id']?>-factCTA">
                             <?php include(get_template_directory() .'/template-parts/newBlocks/_parts/__icon_cta.php'); ?>
                         </div>
                     <?php endforeach; ?>
