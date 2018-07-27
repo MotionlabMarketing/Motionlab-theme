@@ -6,7 +6,7 @@
  * Time: 10:52
  */
 
-$showStars = get_field('template_reviews_show_stars') ?>
+$showStars = get_field('template_reviews_show_stars', $_POST['post_id']);?>
 
 <div class="grid-sizer"></div>
 
@@ -44,3 +44,4 @@ $showStars = get_field('template_reviews_show_stars') ?>
 
     </div>
 <?php endforeach; ?>
+
