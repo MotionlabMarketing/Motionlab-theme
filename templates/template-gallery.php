@@ -49,7 +49,7 @@ get_header(); ?>
     jQuery(document).ready(function ($) {
         
         $('#gallery-listing a').on('click', function(e) {
-            e.perventDefault();
+            e.preventDefault();
         });
 
         $('.filter-option').on('click', function () {
