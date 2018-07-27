@@ -885,3 +885,20 @@ function ml_custom_admin_styles()
 
 //Move that pesky Yoast box to the bottom of pages and posts
 add_filter( 'wpseo_metabox_prio', function() { return 'low'; } );
+
+
+// READ ONLY FUNCTIONALITY FOR GRAVITY FORMS. ADD CUSTOM CLASS gf_readonly IN CMS
+add_filter( 'gform_pre_render', 'add_readonly_script' );
+function add_readonly_script( $form ) {
+    ?>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            /* apply only to a textarea with a class of gf_readonly */
+            jQuery("li.gf_readonly input").attr("readonly","readonly");
+        });
+    </script>
+
+    <?php
+    return $form;
+}
