@@ -28,7 +28,7 @@
                 foreach ($images as $img):?>
 
                       <a href="<?=$img['url']?>" style="margin: 0 5px">
-                          <img src="<?=$img['sizes']['medium']?>" class="width-100" alt="<?=$img['alt']?>">
+                          <img src="<?=$img['sizes']['galleryMedium']?>" class="width-100" alt="<?=$img['alt']?>">
                       </a>
 
               <?php endforeach; ?>
