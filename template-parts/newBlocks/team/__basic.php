@@ -23,10 +23,10 @@
 
                     <a href="<?=get_permalink($post->ID)?>">
 
-                        <div class="member || pb2 || <?= $bgColor ?> box-shadow-3 || zoom">
+                        <div class="member pb2 <?= $bgColor ?> box-shadow-3 zoom">
 
                             <?php $image_url = isset(get_field("staff_profileImage", $post->ID)['url']) ? get_field("staff_profileImage", $post->ID)['url'] : get_template_directory_uri() . '/assets/img/profile-placeholder.jpg'; ?>
-                            <div class="profile || mb2" style="background: url('<?=$image_url;?>'); background-position: center; background-size: cover;" data-mh="team-member-img"></div>
+                            <div class="profile bg-cover bg-top mb2" style="background: url('<?=$image_url;?>'); " data-mh="team-member-img"></div>
 
                             <div class="flex items-center justify-center" data-mh="team-member-content">
 

@@ -11,7 +11,7 @@
 
 <?php foreach($testimonials['posts']->posts as $post) : ?>
 
-    <div class="col col-12 md-col-6 lg-col-4 mt5 px2 grid-item-inline-size || text-center">
+    <div class="col col-12 md-col-6 lg-col-6 mt5 px2 grid-item-inline-size || text-center">
 
         <div class="p5 bg-smoke" data-mh="testimonial">
 
@@ -26,4 +26,5 @@
         </div>
 
     </div>
+    
 <?php endforeach; ?>
