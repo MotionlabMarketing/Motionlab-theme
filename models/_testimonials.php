@@ -41,7 +41,8 @@ Class _testimonials
 		endif;
 
 		$args = array(
-			'posts_per_page'    => -1,
+			'posts_per_page'    => 8,
+			'paged'             => $_POST['page_number'] ?: 1,
 			'post_type'         => 'reviews',
 			'orderby'           => 'date',
 			'order'             => 'DESC',

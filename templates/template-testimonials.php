@@ -40,8 +40,10 @@ get_header(); ?>
 
             <div class="grid" id="testimonials-listing">
 
-                <?php include_once(AJAX_DIR . 'template-testimonials-ajax.php'); ?>
+            </div>
 
+            <div class="loadmore-holder clearfix col-12 text-center py4" data-element="load-more">
+                <span data-loadcount="<?=$testimonials['posts']->query['paged']?>" class="btn cursor-pointer block filter-more">Load More...</span>
             </div>
 
         </div>
@@ -53,7 +55,7 @@ get_header(); ?>
 
     //TODO: Move this into JS file
 
-    function fetchTestimonialPosts() {
+    function fetchTestimonialPosts(pageNumber = 1, reset = false) {
 
         //TODO: Add loader while fetching data.
         var category_filter = $('#testimonials_filtercats').val();
@@ -62,12 +64,23 @@ get_header(); ?>
             url: '<?php echo admin_url("admin-ajax.php"); ?>',
             method: 'POST',
             data: {
+                page_number: pageNumber,
                 action: 'fetch_testimonials',
+                post_id: <?= get_the_ID(); ?>,
                 category_filter: category_filter
             },
             success: function(response){
-                $('#testimonials-listing').html(response);
-                $('.grid').masonry();
+                if(response.indexOf('grid-item') < 0 ) {
+                    $('.filter-more').text('No more to load.');
+                } else {
+                    var page_number = pageNumber + 1;
+                    $('.filter-more').data('loadcount', page_number);
+                    if (reset) {
+                        $('#testimonials-listing').html(response);
+                    } else {
+                        $('#testimonials-listing').append(response);
+                    }
+                }
             }
         });
     }
@@ -91,6 +104,12 @@ get_header(); ?>
         if(value != null)
             updateFilterState(value);
     };
+
+    $(document).on('click', '.filter-more', function () {
+        var page_number = $(this).data('loadcount');
+
+        fetchTestimonialPosts(page_number);
+    });
 
 </script>
 
