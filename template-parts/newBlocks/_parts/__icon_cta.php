@@ -1,9 +1,9 @@
 <?php if($cta['link']): ?>
     <a href="<?= $cta["link"]["url"] ?>" class="flex items-center hover-body">
         <div class="<?=$cta['icon__image'] === 'icon' ? 'bg-darken-2' : '';?> mr2 col col-4" style="min-width:3rem; border-radius:50%;">
-            <div class="square relative" style="font-size:1.6em;">
+            <div class="<?=$cta['icon__image'] === 'image'? '' : 'square';?> relative" style="font-size:1.6em;">
                 <?php if($cta['icon__image'] === 'image') : ?>
-                    <img src="<?=$cta['image']?>" class="absolute top-50 left-50 translate icon-16x16"/>
+                    <img src="<?=$cta['image']?>" class="absolute top-50 left-50 translate" style="max-height: 42px;" />
                 <?php else: ?>
                     <i class="fa <?= $cta['icon'];?> white absolute top-50 left-50 translate"></i>
                 <?php endif; ?>
@@ -17,9 +17,9 @@
 <?php else: ?>
     <div class="flex items-center">
         <div class="border border-brand-primary mr2 col col-4" style="width:3rem; border-radius:50%;">
-            <div class="square relative" style="font-size:1.6em;">
+            <div class="<?=$cta['icon__image'] === 'image'? '' : 'square';?> relative" style="font-size:1.6em;">
                 <?php if($cta['icon__image'] === 'image') : ?>
-                    <img src="<?=$cta['image']?>" class="absolute top-50 left-50 translate icon-16x16"/>
+                    <img src="<?=$cta['image']?>" class="absolute top-50 left-50 translate" style="max-height: 42px;" />
                 <?php else: ?>
                     <i class="fa <?= $cta['icon'];?> white absolute top-50 left-50 translate"></i>
                 <?php endif; ?>
