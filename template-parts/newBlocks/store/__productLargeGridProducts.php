@@ -68,7 +68,7 @@ $selected_products = get_sub_field('block_store_products');
 
                                     <div class="col col-12 md-col-5 relative">
 
-                                        <div class="product-item p4 mr3 text-center b4 ml2 box-shadow-2 flex items-center justify-center" data-mh="product-size-tab<?=$i?>">
+                                        <div class="product-item p4 mr3 mb5 md-mb0 text-center b4 ml2 box-shadow-2 flex items-center justify-center" data-mh="product-size-tab<?=$i?>">
 
                                             <div>
 
@@ -150,9 +150,9 @@ $selected_products = get_sub_field('block_store_products');
 
                                             ?>
 
-                                            <div class="col col-12 sm-col-6 md-col-4 pl3 pr3 <?=($a < 3)? "mb5" : ""?>">
+                                            <div class="col col-12 sm-col-6 md-col-6 lg-col-4 pl2 pr3 mb4 md-mb0 md-pl3 md-pr3 <?=($a < 2)? "md-mb5" : ""?> <?=($a < 3)? "lg-mb5" : ""?> <?=($a > 3)? "block md-display-none lg-block" : ""?>">
 
-                                                <div class="product-item col p4 text-center box-shadow-2" data-mh="product-item">
+                                                <div class="product-item col col-12 p4 text-center box-shadow-2" data-mh="product-item">
 
                                                     <h3 class="h4 bold" data-mh="title"><?=$title?></h3>
 
@@ -231,7 +231,7 @@ $selected_products = get_sub_field('block_store_products');
 
                                     <div class="col col-12 md-col-5 relative">
 
-                                        <div class="product-item p4 mr3 text-center mb4 ml2 box-shadow-2 flex items-center" data-mh="product-size-tab<?=$i?>">
+                                        <div class="product-item p4 mr3 mb5 md-mb0 text-center mb4 ml2 box-shadow-2 flex items-center" data-mh="product-size-tab<?=$i?>">
 
                                             <div>
 
@@ -306,9 +306,9 @@ $selected_products = get_sub_field('block_store_products');
 
                                             ?>
 
-                                            <div class="col col-12 sm-col-6 md-col-4 pl3 pr3 <?=($a < 3)? "mb5" : ""?>">
+                                            <div class="col col-12 sm-col-6 md-col-6 lg-col-4 pl2 pr3 mb4 md-pl3 md-pr3 <?=($a < 2)? "md-mb5" : ""?> <?=($a < 3)? "lg-mb5" : ""?> <?=($a > 3)? "block md-display-none lg-block" : ""?>">
 
-                                                <div class="product-item col p4 text-center box-shadow-2" data-mh="product-item">
+                                                <div class="product-item col col-12 p4 text-center box-shadow-2" data-mh="product-item">
 
                                                     <h3 class="h4 bold" data-mh="title"><?=$title?></h3>
 
