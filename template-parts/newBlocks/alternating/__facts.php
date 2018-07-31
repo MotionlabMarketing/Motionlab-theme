@@ -104,7 +104,7 @@
 
                     <?php foreach ($block['content']['buttons'] as $button): ?>
 
-                        <a href="<?=$button['button_link']['url']?>" class="btn btn-<?=$button['system_background_colours']?> btn-medium <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> role="button"><?=$button['button_link']['title']?></a>
+                        <a id="<?=$button['button_custom_id']?>" href="<?=$button['button_link']['url']?>" class="btn btn-<?=$button['system_background_colours']?> btn-medium <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> role="button"><?=$button['button_link']['title']?></a>
 
                     <?php endforeach; ?>
 

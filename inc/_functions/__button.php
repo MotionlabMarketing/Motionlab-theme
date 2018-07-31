@@ -31,8 +31,14 @@ function render_button($data, $size = "medium",  $classes = ["class" => "mb2"]) 
         if (!empty($data['button_link']['target']))
             $btn['target'] = 'target="' . $data['button_link']['target'] . '"';
 
+        //CHECK IF BUTTON CUSTOM ID HAS BEEN SET
+	    $btn['custom_id'] = '';
+	    if(!empty($data['button_custom_id'])):
+			$btn['custom_id'] = str_replace(" ", "_", preg_replace("#[[:punct:]]#", " ", $data['button_custom_id']));
+	    endif;
+
         // BUILD THE BUTTON.
-        $btn = '<a href="' . $data['button_link']['url'] . '" ' . $classes . ' role="button" data-function="__button">';
+        $btn = '<a id="'.$btn['custom_id'].'" href="' . $data['button_link']['url'] . '" ' . $classes . ' role="button" data-function="__button">';
 
             if (!empty($icon))
                 $btn .= $icon;
@@ -80,8 +86,14 @@ function get_render_button($data, $size = "btn-medium",  $classes = ["class" => 
         if (!empty($data['button_link']['target']))
             $btn['target'] = 'target="' . $data['button_link']['target'] . '"';
 
+        //CHECK IF BUTTON CUSTOM ID HAS BEEN SET
+	    $btn['custom_id'] = '';
+	    if(!empty($data['button_custom_id'])):
+			$btn['custom_id'] = str_replace(" ", "_", preg_replace("#[[:punct:]]#", " ", $data['button_custom_id']));
+	    endif;
+
         // BUILD THE BUTTON.
-        $btn = '<a href="' . $data['button_link']['url'] . '" ' . $classes . ' role="button" data-function="__button">';
+        $btn = '<a id="'.$btn['custom_id'].'" href="' . $data['button_link']['url'] . '" ' . $classes . ' role="button" data-function="__button">';
 
         if (!empty($icon))
             $btn .= $icon;
