@@ -28,6 +28,8 @@ get_header(); ?>
 
     <div class="container text-center mb3 border-bottom border-smoke border-1" data-element="filters">
 
+        <span data-category="" class="btn btn-large inline-block border-top border-left border-right border-light brand-primary bg-white cursor-pointer <?= !empty(get_query_var('gallery_category')) ? "filter-active" : ""?> filter-option">All</span>
+
         <?php foreach ($gallery['select_terms'] as $item): ?>
 
             <span data-category="<?=$item->slug?>" class="btn btn-large inline-block border-top border-left border-right border-light brand-primary bg-white cursor-pointer <?=get_query_var('gallery_category') == $item->slug ? "filter-active" : ""?> filter-option"><?=$item->name?></span>
@@ -60,7 +62,7 @@ get_header(); ?>
 
         $(document).on('click', '.filter-more', function () {
             var page_number = $(this).data('loadcount');
-            $(this).data('loadcount', page_number++);
+            $(this).data('loadcount', page_number+=12);
             fetchGallery(page_number);
         });
 
@@ -72,10 +74,11 @@ get_header(); ?>
                 method: 'POST',
                 data: {
                     action: 'fetch_gallery',
-                    page_number: page_number,
+                    from: page_number,
                     category_filter: category_filter
                 },
                 success: function (response) {
+                    console.log(response);
                     $('.loadmore-holder').remove();
                     if (reset) {
                         $('#gallery-listing').html(response);

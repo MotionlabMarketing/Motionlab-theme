@@ -220,7 +220,7 @@ function ml_update_gallery()
 
     /* Load in team block controller to access posts easily. */
     include_once(MODELS_DIR . '_galleries.php');
-    $galleries_controller = new _galleries();
+    $galleries_controller = new _galleries($_POST['from']);
     $gallery  = $galleries_controller ->getBlock();
 
     if (file_exists(CHILD_AJAX_DIR . 'template-gallery-ajax.php')) :
