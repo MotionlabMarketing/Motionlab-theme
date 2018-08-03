@@ -51,25 +51,33 @@ $blockItems = $blockItems['logos'];
 
         <div class="col-12">
             
-            <div class="item-slider px5" data-slick="logo-slider-partners">&nbsp;<?php // NEEDED TO KEEP BOX HEIGHT. ?>
-                
-                <?php foreach ($block['logos'] as $logo): $imageURL = get_field("attachment_image_link", $logo['ID']) ?>
+            <?php if (!empty($block['logos'])): ?>
+
+                <div class="item-slider px5" data-slick="logo-slider-partners">&nbsp;
                     
-                    <div class="col col-grid-5 flex items-center justify-center px5" data-mh="partners-slider">
+                    <?php foreach ((array)$block['logos'] as $logo): $imageURL = get_field("attachment_image_link", $logo['ID']) ?>
                         
-                        <?php if(!empty($imageURL)): ?><a href="<?=$imageURL?>"><?php endif; ?>
-                            <img src="<?=$logo['url']?>" alt="<?=$logo['title']?>" style="max-height: 6rem; margin: 0 auto;">
-                            <?php if(!empty($imageURL)): ?></a><?php endif; ?>
+                        <div class="col col-grid-5 flex items-center justify-center px5" data-mh="partners-slider">
                             
+                            <?php if(!empty($imageURL)): ?><a href="<?=$imageURL?>"><?php endif; ?>
+                                <img src="<?=$logo['url']?>" alt="<?=$logo['title']?>" style="max-height: 6rem; margin: 0 auto;">
+                            <?php if(!empty($imageURL)): ?></a><?php endif; ?>
+                                
                         </div>
-                        
+                            
                     <?php endforeach; ?>
-                    
+                        
                 </div>
-                
-            </div>
+
+            <?php else: ?>
+
+                <p class="lead text-center"><strong>LOGO BLOCK</strong><br/>Please select or upload some logos into this block!</p>
             
-            <?= ($block['grid'] == 'container') ? '</div>' : "" ?>
+            <?php endif; ?>
+                    
+        </div>
             
-        </section>
+    <?= ($block['grid'] == 'container') ? '</div>' : "" ?>
+            
+</section>
         

@@ -17,7 +17,7 @@
 
     <div class="clearfix <?=$block['content']['bg']?>">
 
-        <div class="relative col col-12 lg-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> md-min-height-v50 overflow-hidden <?=($block['content']['type'] == "video")? "flex items-center" : "" ?>">
+        <div class="relative col col-12 lg-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> overflow-hidden <?=($block['content']['type'] == "video")? "flex items-center" : "" ?>">
 
             <?php if ($block['content']['type'] == "image"): ?>
 
@@ -33,15 +33,24 @@
 
                 <div class="overflow-hidden <?=$block['content']['padding']?>">
 
-                    <div class="slider relative height-100" data-slick="slider-auto-arrows">
+                    <?php if (!empty($block['content']['gallery'])): ?>
+                        <div class="slider relative height-100" data-slick="slider-auto-arrows">
+                            
+                                <?php foreach ((array)$block['content']['gallery'] as $slide): ?>
 
-                        <?php foreach ($block['content']['gallery'] as $slide): ?>
+                                    <div class="image-holder bg-cover bg-center min-height-v50 height-100" data-mh="panelHeight" style="background-image: url('<?=$slide['url']?>')"></div>
 
-                            <div class="image-holder bg-cover bg-center min-height-v50 height-100" data-mh="panelHeight" style="background-image: url('<?=$slide['url']?>')"></div>
+                                <?php endforeach; ?>
+                        
+                        </div>
+                    <?php else: ?>
 
-                        <?php endforeach; ?>
+                        <div class="flex items-center justify-center" data-mh="panelHeight">
+                            <p class="lead text-center"><strong>ALTERNATING MEDIA BLOCK</strong><br/>Please select or upload some images into this block!</p>
+                        </div>
 
-                    </div>
+                    <?php endif; ?>
+
 
                 </div>
 
@@ -114,7 +123,7 @@
                 <?php if ($block['content']['buttons'] || $block['content']['cta']['append'] || $block['content']['cta']['link']):?>
 
 
-                <div class="mt4 <?=$alignment?> border-top border-smoke">
+                <div class="mt4 <?=$alignment?> border-top border-smoke pt3">
 
                     <?php foreach ($block['content']['buttons'] as $button): if (!empty($button['button_link']['url'])): ?>
 

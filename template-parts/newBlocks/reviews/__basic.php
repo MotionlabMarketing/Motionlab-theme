@@ -28,15 +28,13 @@ endswitch; ?>
 
     <?=($block['grid'] == 'container') ? '<div class="container">' : ""?>
 
-    <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
+        <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-    <div class="clearfix mxn4">
-        <?php $i = 1; foreach ($block['posts']->posts as $post):
-            $content = get_shorten_string(strip_tags(get_field('reviewer_body', $post->ID)), 35); ?>
+        <div class="clearfix mxn3">
+            <?php $i = 1; foreach ($block['posts']->posts as $post):
+                $content = get_shorten_string(strip_tags(get_field('reviewer_body', $post->ID)), 35); ?>
 
-            <div class="col col-12 md-col-6 lg-col-4 px3 text-center <?=($i > 2)? "block sm-display-none lg-block":"" ;?>">
-
-                <div class="col <?=$block['columns']?> mt5 px2 text-center">
+                <div class="col <?=$block['columns']?> px3 text-center <?=($i > 2)? "block sm-display-none lg-block":"" ;?>">
 
                     <div class="p5 <?=($block['include_background'])? "bg-smoke":"";?> <?=($block['include_border'])? "border-1 border-left border-right border-top border-bottom border-light":"";?>" data-mh="testimonial">
 
@@ -62,10 +60,8 @@ endswitch; ?>
 
                 </div>
 
-            </div>
-
-        <?php $i++; endforeach; ?>
-    </div>
+            <?php $i++; endforeach; ?>
+        </div>
 
     <div class="clearfix md-flex items-center justify-center mt4">
 
