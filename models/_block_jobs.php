@@ -170,13 +170,21 @@ Class _block_jobs
 				'field'     => 'slug'
 			);
 		}
+        
+        $meta_query[] = array(
+            'key' => 'jobs_role_expiry_date',
+            'value' => date('Y-m-d H:i:s'),
+            'compare' => '>',
+            'type' => 'DATETIME'
+        );
 
 		$args = array(
 			'posts_per_page'    => $posts_per_page,
 			'paged'             => $page,
 			'post_status'       => 'publish',
 			'post_type'         => $post_type,
-			'tax_query'         => $tax_query
+			'tax_query'         => $tax_query,
+            'meta_query'        => $meta_query
 		);
 
 		$this->block['posts'] = new WP_Query( $args );
