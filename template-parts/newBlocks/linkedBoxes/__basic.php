@@ -46,11 +46,11 @@
 
                                     </div>
 
-                                    <?php if (!empty($item['block_linkBoxes_overlay_strength']) && !empty($item['block_linkBoxes_content'])): ?>
-                                        <div class="overlay absolute width-100 height-100 z-index-20 bg-<?=$item['block_linkBoxes_overlay_strength']['overlayType']?>-<?=$item['block_linkBoxes_overlay_strength']['overlayStrength']?>"></div>
-                                    <?php endif; ?>
-
                                 </div>
+
+                                <?php if (!empty($item['block_linkBoxes_overlay_strength']) && !empty($item['block_linkBoxes_content'])): ?>
+                                    <div class="overlay top-0 left-0 absolute width-100 height-100 z-index-20 bg-<?=$item['block_linkBoxes_overlay_strength']['overlayType']?>-<?=$item['block_linkBoxes_overlay_strength']['overlayStrength']?>"></div>
+                                <?php endif; ?>
 
                         <?php if (!empty($item['block_linkBoxes_button']['button_link'])): ?>
                             </a>

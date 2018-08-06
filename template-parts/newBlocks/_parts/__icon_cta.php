@@ -15,19 +15,17 @@
         </div>
     </a>
 <?php else: ?>
-    <div class="flex items-center">
-        <div class="border border-brand-primary mr2 col col-4" style="width:3rem; border-radius:50%;">
-            <div class="<?=$cta['icon__image'] === 'image'? '' : 'square';?> relative" style="font-size:1.6em;">
-                <?php if($cta['icon__image'] === 'image') : ?>
-                    <img src="<?=$cta['image']?>" class="absolute top-50 left-50 translate" style="max-height: 42px;" />
-                <?php else: ?>
-                    <i class="fa <?= $cta['icon'];?> white absolute top-50 left-50 translate"></i>
-                <?php endif; ?>
-            </div>
+    <div class="border border-brand-primary mr2 col col-4" style="width:3rem; border-radius:50%;">
+        <div class="<?=$cta['icon__image'] === 'image'? '' : 'square';?> relative" style="font-size:1.6em;">
+            <?php if($cta['icon__image'] === 'image') : ?>
+                <img src="<?=$cta['image']?>" class="absolute top-50 left-50 translate" style="max-height: 42px;" />
+            <?php else: ?>
+                <i class="fa <?= $cta['icon'];?> brand-primary absolute top-50 left-50 translate h3"></i>
+            <?php endif; ?>
         </div>
-        <div class="col col-8">
-            <p class="mb0 lh1 brand-primary" style="font-size:1em;"><?= $cta['title'];?></p>
-            <span class="mb0 uppercase" style="font-size:0.75em;"><?= $cta['subtitle'];?></span>
-        </div>
+    </div>
+    <div class="col col-8">
+        <p class="mb1 lh1 brand-primary bold" style="font-size:0.85em;"><?= $cta['title'];?></p>
+        <p class="mb0" style="font-size:0.7em;"><?= $cta['subtitle'];?></p>
     </div>
 <?php endif; ?>
