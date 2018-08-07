@@ -1,8 +1,6 @@
 <?php
 /**
- * Template Name: Jobs ? Single
- *
- * TODO: Needs converting to single when CPT has been added.
+ * TODO: Add correct documentation here! 
  */
 $locations = get_the_terms(get_the_ID(), 'locations');
 $job_id     = get_field('jobs_role_id') ?: 'Unspecified';
