@@ -1697,31 +1697,6 @@ hr.border-5 {
   }
 }
 
-.tabs-basic {
-
-  .tab {
-    background-color: $brand-white;
-    border-top: 1px solid $brand-grayLightest;
-    border-left: 1px solid $brand-grayLightest;
-    border-right: 1px solid $brand-grayLightest;
-
-    &.tab-active {
-      background-color: $brand-primary;
-      border-top: 1px solid $brand-primary;
-      border-left: 1px solid $brand-primary;
-      border-right: 1px solid $brand-primary;
-
-      &:after {
-        border-top-color: $brand-primary;
-      }
-    }
-  }
-
-  .tab-content {
-    border: 1px solid $brand-grayLightest;
-  }
-}
-
 .tabs-dots {
 
   .tabs {
