@@ -23,7 +23,7 @@
 
             <?php $i = 1; foreach ($block['tabs'] as $tab): ?>
 
-                <span data-section="tab<?=$i?>" class="tab block bg-white border-top border-left <?=(count($block['tabs']) == $i)? ' border-right':''?> border-light cursor-pointer <?=$block['tabs_settings']['tab_size']?> <?=$block['tabs_settings']['tab_weight']?> relative || <?=($i <= 1)? 'tab-active' : '' ?>">
+                <span data-section="tab<?=$i?>" class="tab block bg-white border-top border-left hover-bg-smoke <?=(count($block['tabs']) == $i)? ' border-right':''?> border-light cursor-pointer <?=$block['tabs_settings']['tab_size']?> <?=$block['tabs_settings']['tab_weight']?> relative <?=($i <= 1)? 'tab-active' : '' ?>">
                     <?=$tab['tab_title_short']?>
                 </span>
 
