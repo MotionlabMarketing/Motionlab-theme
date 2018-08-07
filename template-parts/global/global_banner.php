@@ -35,13 +35,6 @@ if ( !empty(get_sub_field('button_color_color'))){
 	$btnBgcolor = get_field('default_button_color', 'option');
 }
 
-// default button text color
-if ( get_sub_field('button_text_color') ){
-	$btnTxtcolor = get_sub_field('button_text_color');
-} else {
-	$btnTxtcolor = get_field('default_button_text_color', 'option');
-}
-
 $image = get_field('global_banner_background_image', 'option')['sizes']['large'];
 
 ?>
