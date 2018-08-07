@@ -1,9 +1,5 @@
 <?php
-/*
-used for 'default template'
-*/
 get_header();
-$masterPad = 'px5';
 ?>
 
 <main>
