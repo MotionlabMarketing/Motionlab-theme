@@ -567,6 +567,10 @@ function create_posttype()
 }
 add_action('init', 'create_posttype');
 
+// Note: The field for this has been removed, this was a repeater field with:
+// get_field(brand_contactNumbers);
+// Slug, Name, Number
+// Review: Check this in 6 months time for uses case. (6 Aug 2018)
 function ml_get_contact($type, $id = null, $array)
 {
     $value = "";
