@@ -1,6 +1,6 @@
 <?php
+// TODO: Review all code in this file.
 get_header();
-
 include(get_template_directory() .'/inc/filters-order-paging.php');
 
 $totalPosts = $loop->found_posts;
