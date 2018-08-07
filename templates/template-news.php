@@ -1,13 +1,8 @@
 <?php
 /**
  * Template Name: News – Listing
- *
  */
 
-$blockTitle = get_field('page_title');
-$blockTitle = $blockTitle['title'];
-
-/* Load in team block controller to access posts easily. */
 include_once(MODELS_DIR . '_block_news.php');
 $news_controller = new _block_news(null, null);
 $block = $news_controller->fetchFeedPosts(9);
@@ -18,17 +13,13 @@ get_header(); ?>
 
     <div class="container">
 
-        <div class="col col-12 md-col-12 lg-col-12 mb5 text-center">
+        <div class="container clearfix mt6">
 
-            <?php $heading = convert_heading($blockTitle); ?>
-            <?php render_heading("{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}"); ?>
-
-            <?php render_wysiwyg(get_field('page_introduction'), true) ?>
+            <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
 
         </div>
 
-
-        <div class="col col-12 md-col-12 lg-col-12 || mb6 bg-smoke">
+        <div class="col col-12 md-col-12 lg-col-12 mb6 bg-smoke">
 
             <?php $latest_post = array_shift($block['posts']->posts); ?>
             <div class="col col-12 md-col-6 px4 md-p5 left md-right flex items-center justify-center">

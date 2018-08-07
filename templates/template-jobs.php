@@ -1,36 +1,24 @@
 <?php
 /**
  * Template Name: Jobs – Listing
- *
- * TODO: Needs converting to single when CPT has been added.
+ * TODO: Check the support for this and add correct support uisng the child theme global variable.
  */
 
-$blockTitle = get_field('page_title');
-$blockTitle = $blockTitle['title'];
 get_header();
 
 include_once(MODELS_DIR . '_block_jobs.php');
 $jobs_controller = new _block_jobs(null, null);
 $jobs_controller->fetchCategories();
 $block = $jobs_controller->fetchFeedPosts();
-
-$boxes = get_field('template_jobs_sidebarBoxes');
 ?>
 
 <div class="clearfix || p4 mt6" id="listing-job">
 
     <div class="container">
 
-        <div class="col col-12 md-col-12 lg-col-12 || mb5 text-center || limit-p limit-p-80">
+        <div class="container clearfix mt6">
 
-            <?php
-            if (!empty($blockTitle[0]['title'])) {
-                include(get_template_directory() . '/template-parts/newBlocks/sub-elements/_block_titles.php');
-            } ?>
-
-            <div class="wysiwyg h4">
-                <?= get_field('page_introduction') ?>
-            </div>
+            <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
 
         </div>
 
@@ -87,7 +75,7 @@ $boxes = get_field('template_jobs_sidebarBoxes');
 
             </div>
 
-            <div id="jobs-listing" class="col col-12 md-col-12 lg-col-8 mb6 clearfix">
+            <div id="jobs-listing" class="col col-12 md-col-12 lg-col-12 mb6 clearfix">
 
                 <?php foreach ($block['posts']->posts as $post) : ?>
                     <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2 lg-flex items-center">
@@ -135,31 +123,6 @@ $boxes = get_field('template_jobs_sidebarBoxes');
                 </nav>
 
             </div>
-
-            <div class="col col-12 md-col-4 lg-col-4  mb5 px4 display-none lg-block">
-
-                <div class="p4 bg-smoke">
-
-                    <?php foreach ($boxes as $item): ?>
-
-                        <div class="block relative mb4 || min-height-v15 bg-cover bg-center bg-darken-3"
-                             style="background-image: url('<?= $item['box_background_image']['sizes']['medium'] ?>')">
-
-                            <a href="<?= $item['box_link']['url'] ?>"
-                               class="flex items-center justify-center p4 text-center min-height-v15 darken-background darken-background-4">
-
-                                <h5 class="h3 white mb0"><?= $item['box_title'] ?></h5>
-
-                            </a>
-
-                        </div>
-
-                    <?php endforeach; ?>
-
-                </div>
-
-            </div>
-
 
         </div>
 

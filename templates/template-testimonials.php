@@ -15,7 +15,7 @@ get_header(); ?>
 
             <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
 
-            <?php if (!empty($testimonials['select_terms'])) : //TODO: Sort this mess out! ?>
+            <?php if (!empty($testimonials['select_terms'])): ?>
                 <div class="col-12 mb5">
                     <form method="get" class="text-center">
 

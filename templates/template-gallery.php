@@ -2,15 +2,6 @@
 /**
  * Template Name: Gallery – Standard Layout
  */
-
-
-if (!empty($bgColor)):
-    $bgColor = "bg-white";
-endif;
-
-$blockTitle = get_field('page_title');
-$blockTitle = $blockTitle['title'];
-
 include_once(MODELS_DIR . '_galleries.php');
 $gallery = new _galleries();
 $gallery = $gallery->getBlock();
@@ -24,7 +15,6 @@ get_header(); ?>
         <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
 
     </div>
-
 
     <div class="container text-center mb3 border-bottom border-smoke border-1" data-element="filters">
 
