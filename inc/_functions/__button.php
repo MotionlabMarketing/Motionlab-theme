@@ -186,9 +186,6 @@ function convert_buttons_key($arr) {
 
     endforeach;
 
-    $arr['system_text_colours']       = $arr['button_system_text_colours'];
-    $arr['system_background_colours'] = $arr['button_system_background_colours'];
-
     return $arr;
 
 }
