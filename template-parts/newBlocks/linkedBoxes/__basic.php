@@ -26,15 +26,15 @@
 
                 <?php if (!empty($block['content']['items'])): foreach ($block['content']['items'] as $item): ?>
 
-                    <div class="item col-12 md-col-<?=$block['columns']?> p3">
+                    <div class="item col-12 md-col-<?=$block['columns']?> p3 overflow-hidden" data-mh="<?=$block['id']?>-box">
 
                         <?php if (!empty($item['block_linkBoxes_button']['button_link'])): ?>
-                            <a href="<?=$item['block_linkBoxes_button']['button_link']['url']?>" class="block relative overflow-hidden bg-cover bg-center box-shadow-3 py4 <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?>" <?=($item['block_linkBoxes_link']['title'] ? 'title="'.$item['block_linkBoxes_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_link']['target'] ? 'target="'.$item['block_linkBoxes_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
+                            <a href="<?=$item['block_linkBoxes_button']['button_link']['url']?>" class="block relative overflow-hidden bg-cover bg-center <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?>" <?=($item['block_linkBoxes_link']['title'] ? 'title="'.$item['block_linkBoxes_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_link']['target'] ? 'target="'.$item['block_linkBoxes_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
                         <?php else: ?>
-                            <div class="block relative overflow-hidden bg-cover bg-center box-shadow-3 py4 <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?>" style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
+                            <div class="block relative overflow-hidden bg-cover bg-center <?=$item['background_colour']['system_background_colours']?> <?=$item['text_colour']['system_text_colours']?>" style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
                         <?php endif; ?>
 
-                                <div class="content absolute top-0 width-100 height-100 js-match-height py6 flex items-center justify-center text-center">
+                                <div class="content absolute p4 top-0 width-100 height-100 js-match-height py6 flex items-center justify-center text-center">
 
                                     <div class="z-index-40 <?=($block['content']['overlay'] == true)? "opacity-10" : ""; ?>">
 
