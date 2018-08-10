@@ -1,0 +1,11 @@
+[data-block-name="block_gallery"][data-block-layout="sliderThin"] {
+
+    .slick-prev {
+        left: 0;
+        transform: rotate(180deg);
+
+    }
+    .slick-next {
+        right: 0;
+    }
+}
