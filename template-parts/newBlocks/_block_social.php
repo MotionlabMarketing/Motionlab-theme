@@ -11,6 +11,13 @@
 
 $layout = get_sub_field($current . '_layout');
 
+$hideClasses = "";
+$hideBtns    = get_sub_field('block_social_hide_share_buttons');
+
+foreach ((array)$hideBtns as $item) {
+    $hideClasses .= " " . $item;
+}
+
 switch ($layout):
     case "basic":
         include('social/__basic.php');

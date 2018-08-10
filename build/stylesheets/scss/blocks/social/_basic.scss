@@ -1,0 +1,27 @@
+[data-block-name="block_social"][data-block-layout="basic"] {
+  
+  .social-share {
+    
+    &.hide-twitter {
+      #st-1 .st-btn[data-network="twitter"] {
+        display: none !important;
+      }
+    }
+    &.hide-facebook {
+      #st-1 .st-btn[data-network="facebook"] {
+        display: none !important;
+      }
+    }
+    &.hide-linkedin {
+      #st-1 .st-btn[data-network="googleplus"] {
+        display: none !important;
+      }
+    }
+    &.hide-linkedin {
+      #st-1 .st-btn[data-network="linkedin"] {
+        display: none !important;
+      }
+    }
+  }
+
+}
