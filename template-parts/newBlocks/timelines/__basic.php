@@ -10,16 +10,6 @@
  */
 
 //TODO: Add support for more than one per page.
-
-$bgColor     = get_sub_field($current . '_background_system_background_colours');
-$txtColor    = get_sub_field($current . '_text_system_text_colours');
-
-$blockTitle  = get_sub_field($current . '_title_title');
-
-// BACKEND NOTES – REMOVE ONCE ADDED
-// Get posts from Custom Post Type.
-// $membersShow – Number of Items to show.
-
 $i = 1;
 $events = get_sub_field($current . '_events');
 ?>
