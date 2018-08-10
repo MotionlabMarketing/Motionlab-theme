@@ -10,18 +10,6 @@
  */
 
 //TODO: Need to move this to a general settings page.
-$bgColor          = get_sub_field($current . '_background_system_background_colours');
-$txtColor         = get_sub_field($current . '_text_system_text_colours');
-
-$borders          = "";
-$bordersColor     = get_sub_field($current . '_borders_border_colour');
-$bordersSides     = get_sub_field($current . '_borders_border_sides');
-
-foreach ($bordersSides as $item) {
-    $borders = $borders . " " . $item;
-}
-$borders          = "||" . $borders . " " . $bordersColor;
-
 $blockTitle  = get_sub_field($current . '_title_title');
 
 $blockItems  = get_sub_field($current . '_icons');
@@ -38,8 +26,7 @@ endif;
 
 ?>
 
-<section <?=get_blockID($block)?> <?=get_blockClasses($block, "pod-benefits {$bgColor} {$txtColor} {$borders}")?> <?=get_blockData($block)?>>
-
+<section <?=get_blockID($block)?> <?=get_blockClasses($block)?> <?=get_blockData($block)?>>
     <div class="container">
 
         <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
@@ -54,9 +41,9 @@ endif;
             <div class="item col <?=$col?> px4 mb5 text-center js-match-height">
 
                 <?php if ($item['enable_custom_icons'] == true): ?>
-                    <img src="<?=wp_get_attachment_image_url($item['pod_item_custom_icon'], array(70, 70))?>" style="max-width: 6rem; max-height: 6rem;">
+                    <img src="<?=wp_get_attachment_image_url($item['pod_item_custom_icon'], array(64, 64))?>" style="max-width: 6rem; max-height: 6rem;">
                 <?php else: ?>
-                    <p class="block mb2 brand-primary text-center"><?=$item['pod_item_icon']?></p>
+                    <p class="block mb2 brand-primary text-center h0"><?=$item['pod_item_icon']?></p>
                 <?php endif; ?>
 
                 <h4 class="h4"><?=$item['pod_item_title']?></h4>
