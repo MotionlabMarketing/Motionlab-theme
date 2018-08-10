@@ -14,12 +14,7 @@
 $block['button_alignment'] = get_sub_field($current . '_alignment_align');
 
 switch ($block['layout']):
-    case "internal":
-        include('menus/__internal.php');
-    case "jumpto":
-        include('menus/__jumpto.php');
-        break;
     default:
-        include('menus/__basic.php');
+        include('menus/__internal.php');
         break;
 endswitch;
