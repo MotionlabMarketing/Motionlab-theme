@@ -238,9 +238,6 @@ Class _block_news
 		$block = $this->block;
 
 		switch ($block['layout']):
-		    case "list":
-		        include(BLOCKS_DIR . 'news/__list.php');
-		        break;
 		    case "row":
 		        include(BLOCKS_DIR . 'news/__row.php');
 		        break;
