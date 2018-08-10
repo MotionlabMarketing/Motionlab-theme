@@ -14,13 +14,10 @@ $block['content']['images'] = get_field('image', get_sub_field($current . '_gall
 
 switch ($block['layout']):
     case "gridPanels":
-        include('galleries/__'.$block['layout'].'.php');
+        include('galleries/__gallerySlider.php');
         break;
     case "sliderThin":
         include('galleries/__sliderThin.php');
-        break;
-    case "gallerySlider":
-        include('galleries/__gallerySlider.php');
         break;
     default:
         include('galleries/__gallerySlider.php');
