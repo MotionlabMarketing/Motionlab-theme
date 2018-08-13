@@ -163,22 +163,24 @@ function ml_update_csr()
 
 add_action('wp_ajax_fetch_case_studies', 'ml_update_case_studies');
 add_action('wp_ajax_nopriv_case_studies', 'ml_update_case_studies');
-function ml_update_case_studies()
-{
+if(!function_exists('ml_update_case_studies')) :
+    function ml_update_case_studies()
+    {
 
-    /* Load in team block controller to access posts easily. */
-    include_once(MODELS_DIR . '_block_news.php');
-    $news_controller = new _block_news(null, null);
-    $block = $news_controller->fetchCaseStudyPosts(8, $_POST['news_page']);
+        /* Load in team block controller to access posts easily. */
+        include_once(MODELS_DIR . '_block_news.php');
+        $news_controller = new _block_news(null, null);
+        $block = $news_controller->fetchCaseStudyPosts(8, $_POST['news_page']);
 
 
-    if (file_exists(CHILD_AJAX_DIR . 'template-case_studies-ajax.php')) :
-        include_once(CHILD_AJAX_DIR . 'template-case_studies-ajax.php'); else:
-        include_once(AJAX_DIR . 'template-case_studies-ajax.php');
-    endif;
+        if (file_exists(CHILD_AJAX_DIR . 'template-case_studies-ajax.php')) :
+            include_once(CHILD_AJAX_DIR . 'template-case_studies-ajax.php'); else:
+            include_once(AJAX_DIR . 'template-case_studies-ajax.php');
+        endif;
 
-    die();
-}
+        die();
+    }
+endif;
 
 add_action('wp_ajax_fetch_jobs', 'ml_update_jobs');
 add_action('wp_ajax_nopriv_fetch_jobs', 'ml_update_jobs');
