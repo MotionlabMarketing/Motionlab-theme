@@ -10,8 +10,7 @@
  * @version 2.00
  */
 // CUSTOM DATA SET FOR THIS BLOCK.
-$blockItems  = get_sub_field($current . '_icons');
-?>
+$blockItems  = get_sub_field($current . '_icons'); ?>
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "")?> <?=get_blockData($block)?>>
 
@@ -25,31 +24,39 @@ $blockItems  = get_sub_field($current . '_icons');
 
             <div class="item col col-12 sm-col-6 md-col-3 p3 bg-smoke border-light border-top border-left border-bottom <?=$block['pod']['textAlign']?> <?=$block['pod']['textColor']?> flex items-center" data-mh="item">
 
-                <div class="ml1 mr2" style="min-width: 20%">
+                <?php if (!empty($item['pod_item_link']['url'])): ?>
+                    <a href="<?=$item['pod_item_link']['url']?>" <?=($item['pod_item_link']['title'])? 'title="'.$item['pod_item_link']['url'].'"':''?> class="<?=$block['pod']['textColor']?> hover-brand-primary">
+                <?php endif; ?>    
 
-                    <?php if ($item['enable_custom_icons'] == true): ?>
+                    <div class="ml1 mr2 left" style="min-width: 20%">
 
-                        <?= wp_get_attachment_image($item['pod_item_custom_icon'], array(50, 80), "", ["class" => ""]  )?>
+                        <?php if ($item['enable_custom_icons'] == true): ?>
 
-                    <?php else: ?>
+                            <?= wp_get_attachment_image($item['pod_item_custom_icon'], array(50, 80), "", ["class" => ""]  )?>
 
-                        <p class="h1 mb0"><?=$item['pod_item_icon'];?></p>
+                        <?php else: ?>
 
+                            <p class="h1 mb0"><?=$item['pod_item_icon'];?></p>
+
+                        <?php endif; ?>
+
+                    </div>
+
+                    <div>
+
+                    <?php if(!empty($item['pod_item_title'])): ?>
+                        <h4 class="h4 mb0"><?=$item['pod_item_title']?></h4>
                     <?php endif; ?>
 
-                </div>
+                    <?php if(!empty($item['pod_item_description'])): ?>
+                        <p class="h5 mb0"><?=$item['pod_item_description']?></p>
+                    <?php endif; ?>
 
-                <div>
+                    </div>
 
-                  <?php if(!empty($item['pod_item_title'])): ?>
-                      <h4 class="h4 mb0"><?=$item['pod_item_title']?></h4>
-                  <?php endif; ?>
-
-                  <?php if(!empty($item['pod_item_description'])): ?>
-                    <p class="h5 mb0"><?=$item['pod_item_description']?></p>
-                  <?php endif; ?>
-
-                </div>
+                <?php if (!empty($item['pod_item_link']['url'])): ?>
+                    </a>
+                <?php endif; ?>
 
             </div>
 

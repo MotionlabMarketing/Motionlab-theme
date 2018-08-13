@@ -21,13 +21,14 @@ $width = ($block['grid'] == 'full_width')? $block['background']['colour'] : "";
     <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
     <div class="col-12">
-        <?php $i = 1; foreach ($blockItems as $item):?>
 
-            <div class="item || col col-3 px2 mb3 || <?=$block['pod']['textAlign']?> || col-grid-5">
+        <?php $i = 1; foreach ($blockItems as $item): ?>
 
-                <div class="content p3 || <?=$block['pod']['bgColour']?> min-height-v15 js-match-height">
+            <div class="item col col-3 p3 mb2 text-center col-grid-5">
 
-                    <h5 class="block brand-primary h2 bold"><?=$i?>.</h5>
+                <div class="content p3 mb2 <?=$block['pod']['bgColour']?>" data-mh="<?=$block['id']?>-pods">
+
+                    <h5 class="block brand-primary mb2 h2 bold"><?=$i?>.</h5>
 
                     <p class="h5"><?=$item['pod_content']?></p>
 
@@ -37,7 +38,8 @@ $width = ($block['grid'] == 'full_width')? $block['background']['colour'] : "";
 
             </div>
 
-            <?php $i++; endforeach; ?>
+        <?php $i++; endforeach; ?>
+
     </div>
 
         <?php if ($block['bgImage']['enable']  && $block['grid'] == 'container'): ?>

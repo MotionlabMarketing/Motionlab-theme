@@ -16,11 +16,13 @@
 
     <?= ($block['grid'] == 'container') ? '<div class="container">' : "" ?>
 
+    <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
+
     <?php foreach ($block['content'] as $item):?>
 
         <div class="col col-12 p2">
 
-            <div class="relative col <?=$item['mediaAlignment']?> col-12 md-col-4">
+            <div class="relative col <?=$item['mediaAlignment']?> col-12 md-col-3">
 
                 <?php if ($item['type'] == "image"): ?>
 
@@ -46,7 +48,7 @@
 
             </div>
 
-            <div class="col col-12 md-col-8 px4 flex items-center js-match-height <?=$block['pod']['textColor']?> <?=$item['align']?>">
+            <div class="col col-12 md-col-9 px4 flex items-center js-match-height <?=$block['pod']['textColor']?> <?=$item['align']?>">
 
                 <div class="clearfix relative <?= $block['content']['txtColor'] ?>">
 
@@ -63,7 +65,7 @@
                     <p class="h4 mb0"><?=$item['pod_content']?></p>
 
                     <?php if(!empty($item['button']['button_link']['url'])): ?>
-                        <a href="<?=$item['button']['button_link']['url']?>" class="btn mt3 <?=$item['button']['button_text_colour']['system_text_colours']?> <?=$item['button']['button_background_colour']['system_background_colours']?> bold "><?=$item['button']['button_link']['title']?></a>
+                        <a href="<?=$item['button']['button_link']['url']?>" class="btn btn-medium mt3 <?=$item['button']['button_text_colour']['system_text_colours']?> <?=$item['button']['button_background_colour']['system_background_colours']?> bold "><?=$item['button']['button_link']['title']?></a>
                     <?php endif; ?>
 
                 </div>

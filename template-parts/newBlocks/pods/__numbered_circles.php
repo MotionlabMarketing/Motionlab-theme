@@ -20,13 +20,14 @@ $blockItems  = get_sub_field($current . '_basic');
     <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
     <div class="col-12">
+
         <?php $i = 1; foreach ($blockItems as $item):?>
 
-            <div class="item || col col-3 px2 mb3 || <?=$block['pod']['textAlign']?> || col-grid-5">
+            <div class="item col col-3 px2 mb3 <?=$block['pod']['textAlign']?> col-grid-5">
 
-                <div class="content p5 || <?=$block['pod']['bgColour']?> js-match-height text-center flex items-center flex-wrap justify-center content-center mx-auto">
+                <div class="content p5 bg-brand-primary text-center flex items-center flex-wrap justify-center content-center mx-auto" data-mh="<?=$block['id']?>-pods">
 
-                    <p class="block m0 width-100 || white h2">#<?=$i?>.</p>
+                    <p class="block m0 width-100 white h2">#<?=$i?>.</p>
 
                     <p class="m0 white h4"><?=$item['pod_content']?></p>
 
@@ -34,7 +35,8 @@ $blockItems  = get_sub_field($current . '_basic');
 
             </div>
 
-            <?php $i++; endforeach; ?>
+        <?php $i++; endforeach; ?>
+
     </div>
 
     <?php if ($block['bgImage']['enable']  && $block['grid'] == 'container'): ?>

@@ -1688,7 +1688,6 @@ hr.border-5 {
     width: $itemHeight;
     height: $itemHeight;
     border-radius: $itemHeight;
-    background-color: $brand-primary;
 
     p {
       display: block;
@@ -2046,6 +2045,18 @@ hr.border-5 {
   }
 }
 
+
+.icon-64x64 {
+  width: 64px;
+  height: 64px;
+  line-height: 0;
+  font-size: 60px;
+  max-width: 64px;
+  max-height: 64px;
+  margin-left: auto;
+  text-align: center;
+  margin-right: auto;
+}
 //.buttons-tabs {
 //
 //  .btn {

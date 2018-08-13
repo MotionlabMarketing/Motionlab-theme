@@ -18,15 +18,17 @@
 
         <div class="col col-12 md-col-<?=$block['content']['cols'][0]?> mxn2">
 
-                <?php foreach ($block['content'] as $item): ?>
+                <?php foreach ($block['content'] as $item):?>
 
                     <div class="col <?=$block['columns']?> p2">
 
                         <div class="<?=$block['pod']['bgColour']?> <?=$block['pod']['textAlign']?> <?=$block['pod']['textColor']?> py6 px5 relative js-match-height">
 
-                            <div class="js-match-height-alt">
-                                <?= wp_get_attachment_image($item['pod_item_custom_icon'], array(80, 80), "", ["class" => "mb4"]  )?>
-                            </div>
+                            <?php if (!empty($item['enable_custom_icons'])):?>
+                                <?=render_attachment_image($item['pod_item_custom_icon'], array(80, 80), true, ["class" => "mb4 icon-64x64", "data-mh" => "{$block['id']}-icon"]  )?>
+                            <?php else: ?>    
+                                <div class="brand-primary mb4 icon-64x64"><?=$item['pod_item_icon']?></div>
+                            <?php endif; ?>
 
                                 <h3 class="mb3 brand-primary" style="font-size: 1.3rem">
 
