@@ -55,10 +55,6 @@ switch ($block['layout']):
         $block['content']  = get_sub_field($current . '_icons');
         include('pods/__'.$block['layout'].'.php');
         break;
-    case "belowTitle":
-        $block['content']  = get_sub_field($current . '_basic');
-        include('pods/__belowTitle.php');
-        break;
     case "row":
         $block['content']  = get_sub_field($current . '_basic');
         include('pods/__row.php');

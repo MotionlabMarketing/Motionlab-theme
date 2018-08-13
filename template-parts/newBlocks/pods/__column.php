@@ -39,28 +39,38 @@
                         <?php elseif ($item['type'] == "slider"): ?>
 
                             <div class="mb2" data-slick="slider-auto-arrows">
-                            <?php foreach ($item['slider'] as $slide): ?>
 
-                                <img src="<?=$slide['url']?>" alt="" class="js-match-height">
+                                <?php foreach ($item['slider'] as $slide): ?>
 
-                            <?php endforeach; ?>
+                                    <img src="<?=$slide['url']?>" alt="" class="js-match-height">
+
+                                <?php endforeach; ?>
+
                             </div>
 
                         <?php else: ?>
                             <?php // DO NOTHING. ?>
                         <?php endif; ?>
 
-                        <?php if($block['pod']['icon']): ?>
+                        <?php 
+                        // ADD THE ICON.
+                        if($block['pod']['icon']): ?>
 
-                        <div class="bg-brand-primary mx-auto relative z2" style="width:4em; margin-top:-2rem; border-radius:50%;">
-                            <div class="square relative" style="font-size:1.8em;">
-                                <?php if($item['icon__image'] == 'icon'):?>
-                                <i class="fa <?= $item['icon'];?> white absolute top-50 left-50 translate"></i>
-                                <?php else:?>
-                                    <img src="<?= $item['icon_image'];?>" alt="" class="absolute top-50 left-50 translate">
-                                <?php endif;?>
+                            <div class="bg-brand-primary mx-auto relative z2" style="width:4em; margin-top:-2rem; border-radius:50%;">
+                                <div class="square relative" style="font-size:1.8em;">
+
+                                    <?php if($item['icon__image'] == 'icon'):?>
+
+                                        <i class="fa <?= $item['icon'];?> white absolute top-50 left-50 translate"></i>
+
+                                    <?php else:?>
+
+                                        <img src="<?= $item['icon_image'];?>" alt="" class="absolute top-50 left-50 translate">
+                                        
+                                    <?php endif;?>
+
+                                </div>
                             </div>
-                        </div>
 
                         <?php endif; ?>
 
