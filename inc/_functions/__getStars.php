@@ -25,6 +25,7 @@ function get_stars($stars) {
         $full = $stars / 2;
         $half = 1;
     endif;
+    $remaining = 10 - (($full * 2) + $half);
 
     $i = 0;
     while ($i < $full):
@@ -33,8 +34,40 @@ function get_stars($stars) {
     endwhile;
 
     if ($half == 1):
-        $output .= '<i class="fa fa-star-half h3 mx1 brand-primary"></i>';
+        $output .= '<i class="fa fa-star-half h3 ml1 brand-primary"></i>';
     endif;
 
+    if ($remaining > 0):
+        $i = 0;
+        if ($remaining % 2 == 0):
+
+            while($i < $remaining):            
+                $output .= '<i class="fa fa-star h3 mx1 black opacity-2"></i>';
+                $i++; $i++;
+            endwhile;
+            
+        else:
+            
+            $evened = false;
+            while($i < $remaining):
+
+                if ($i % 2 == 0 && $evened == false):
+                    $output .= '<i class="fa fa-star-half fa-flip-horizontal h3 black opacity-2"></i>';
+                    $evened = true;
+                    $i++;
+                else:
+
+                    while($i < $remaining):            
+                        $output .= '<i class="fa fa-star h3 mx1 black opacity-2"></i>';
+                        $i++; $i++;
+                    endwhile;
+
+                endif;
+                
+            endwhile;
+
+        endif;
+    endif;
+        
     return $output;
 }
