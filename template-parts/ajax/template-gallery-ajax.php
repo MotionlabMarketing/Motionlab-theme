@@ -8,12 +8,12 @@
 <?php endforeach; ?>
 <?php if($gallery['total'] - ($gallery['from'] + 12) > 0 ): ?>
     <div class="loadmore-holder clearfix col-12 text-center py4 white " data-element="load-more">
-        <span data-loadcount="<?=$gallery['from']?>" class="btn cursor-pointer block filter-more bg-brand-primary hover-white">
+        <span data-loadcount="<?=$gallery['from']?>" class="btn-medium bold cursor-pointer filter-more bg-brand-primary hover-white">
             Load More...
         </span>
     </div>
 <?php else: ?>
     <div class="loadmore-holder clearfix col-12 text-center py4 white " data-element="load-more">
-        <span class="btn cursor-pointer block bg-brand-primary hover-white">End of Gallery</span>
+        <span class="bold btn-medium cursor-pointer bg-brand-primary hover-white">End of Gallery</span>
     </div>
 <?php endif; ?>

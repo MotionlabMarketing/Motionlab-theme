@@ -58,7 +58,7 @@ Class _galleries
 			foreach(get_field('image', $post->ID) as $image):
 				$gallery_images[] = [
 					"fullsize"  => $image['url'],
-					"preview"   => $image['sizes']['galleryMedium']
+					"preview"   => $image['sizes']['doorsGallery']
 				];
 			endforeach;
 		endforeach;
