@@ -18,11 +18,11 @@
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-        <div class="clearfix pb5">
+        <div class="clearfix">
 
             <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-            <div class="clearfix mt4 flex items-center justify-center flex-wrap mxn3">
+            <div class="mt4 flex items-center justify-center flex-wrap mxn3">
 
                 <?php if (!empty($block['content']['items'])): foreach ($block['content']['items'] as $item): ?>
 
