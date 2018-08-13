@@ -11,8 +11,11 @@ Class _testimonials
 	public $enabled = true;
 	private $block = [];
 	private $category_slug = 'reviewer';
+	private $category_filter;
 
 	public function __construct() {
+
+		$this->category_filter = get_sub_field('block_reviews_category_filter');
 
 		$this->getCategories();
 		$this->fetchReviews();
@@ -21,7 +24,9 @@ Class _testimonials
 
 	private function getCategories() {
 
-		$terms                          = get_terms($this->category_slug);
+		$terms                          = get_terms($this->category_slug, array(
+										    'hide_empty' => false,
+										));
 		$this->block['select_terms']    = $terms;
 
 		return $terms;
@@ -32,10 +37,13 @@ Class _testimonials
 
 		$tax_query = [];
 
-		if(isset($_POST['category_filter']) && $_POST['category_filter'] != ""):
+		if(!empty($this->category_filter)):
+			foreach($this->category_filter as $cat_filter) :
+				$category_filters[] = $cat_filter->slug;
+			endforeach;
 			$tax_query[] = [
 				'taxonomy'  => 'reviewer',
-				'terms'     => [ $_POST['category_filter'] ],
+				'terms'     => $category_filters,
 				'field'     => 'slug'
 			];
 		endif;

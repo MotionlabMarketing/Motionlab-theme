@@ -11,12 +11,14 @@ Class _block_reviews
 	private $current;
 	private $layout;
 	private $block = [];
+	private $category_filter;
 
 	public function __construct($block, $current) {
 
 		$this->block   = $block;
 		$this->current = $current;
 		$this->layout  = get_sub_field($current . '_layout');
+		$this->category_filter = get_sub_field('block_reviews_category_filter');
 
 		$this->loadBlockSettings();
 
@@ -34,12 +36,26 @@ Class _block_reviews
 
 	public function fetchPosts($review_count = 3) {
 
+		$tax_query = [];
+
+		if(!empty($this->category_filter)):
+			foreach($this->category_filter as $cat_filter) :
+				$category_filters[] = $cat_filter->slug;
+			endforeach;
+			$tax_query[] = [
+				'taxonomy'  => 'reviewer',
+				'terms'     => $category_filters,
+				'field'     => 'slug'
+			];
+		endif;
+
 		$args = array(
 			'posts_per_page'    => $this->block['review_columns'],
 			'paged'             => 1,
 			'post_type'         => 'reviews',
 			'post_status'       => array( 'publish' ),
 			'order'             => 'rand',
+			'tax_query'         => $tax_query
 		);
 
 		$this->block['posts'] = new WP_Query( $args );
