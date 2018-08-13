@@ -26,16 +26,13 @@ $block['content']['txtColor'] = get_sub_field($current . '_txtColour_system_text
 
 $blockItems       = get_sub_field($current . '_items');
 
-$block['content']['button'] = get_sub_field($current . '_button_button_link');
+$block['content']['button'] = get_sub_field($current . '_button_button_link'); ?>
 
-?>
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "linkedBox-titleBelow")?> <?=get_blockData($block)?>>
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
         <div class="clearfix pt5 pb3">
-
-            button below
 
             <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
@@ -43,8 +40,9 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
                 <?php
                 // STANDARD BOXES WITH IMAGE AND TITLE //
                 if ($item['block_linkBoxes_breakout_true'] !== true): ?>
-                    <div class="item col col-12 md-col-<?=$block['columns']?> p3 block relative" data-mh="box-height">
-                        <a href="<?= $item['block_linkBoxes_button_button_link']['url'] ?>"
+                    <div class="item col col-12 md-col-<?=$block['columns']?> p3 block relative hover-zoom" data-mh="box-height">
+
+                        <a href="<?=$item['pageLink']['button_link']['url']?>"
                            class="block relative overflow-hidden bg-cover bg-center border-light border-top border-left border-right box-shadow-3 border-bottom <?=$item['block_linkBoxes_button_system_text_colours']?> <?=$item['block_linkBoxes_button_system_background_colours']?> || zoom" <?= ($item['block_linkBoxes_button_button_link']['title'] ? 'title="' . $item['block_linkBoxes_button_button_link']['title'] . '"' : '') ?> <?= ($item['block_linkBoxes_button_button_link']['target'] ? 'target="' . $item['block_linkBoxes_button_button_link']['target'] . '"' : '') ?>>
 
                             <?php if ($item['block_linkBoxes_media'] == "video"): ?>
@@ -56,10 +54,15 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
                                 <div class="image-holder js-match-height bg-grey <?= $txtColor ?>"
                                  style="background-image: url('<?=$item['block_linkBoxes_image']?>')"></div>
                             <?php endif; ?>
-                            <div class="content h3 flex items-center justify-center" data-mh="box-title">
-                                <?= $item[$current . '_title'] ?>
-                            </div>
                         </a>
+
+                        <div class="clearfix mt3 h4 p4 border-1 border-gray bg-white flex items-center justify-center text-center flex-column">
+                            <div class="wysiwyg brand-base">
+                                <?=$item['content']?>
+                                <?php render_button($item['pageLink'], "medium"); ?>
+                            </div>
+                        </div>
+
                     </div>
                 <?php
                 // BOX WITH JUST CONTENT AND ICON - BREAKOUT BOX //

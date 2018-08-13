@@ -23,8 +23,8 @@
 
                 <div class="item item-<?=$i?> p3 block relative">
 
-                    <?php if (!empty($item['block_linkBoxes_button']['button_link'])): ?>
-                        <a href="<?=$item['block_linkBoxes_button']['button_link']['url']?>" class="block relative width-100 height-100 hover-white white bg-cover bg-center box-shadow-3 <?=$block['content']['bgColor']?>" <?=($item['block_linkBoxes_button']['button_link']['title'] ? 'title="'.$item['block_linkBoxes_button']['button_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_button']['button_link']['target'] ? 'target="'.$item['block_linkBoxes_button']['button_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
+                    <?php if (!empty($item['pageLink']['button_link']['url'])): ?>
+                        <a href="<?=$item['pageLink']['button_link']['url']?>" class="block relative width-100 height-100 hover-white white bg-cover bg-center box-shadow-3 <?=$block['content']['bgColor']?>" <?=($item['block_linkBoxes_button']['button_link']['title'] ? 'title="'.$item['block_linkBoxes_button']['button_link']['title'].'"' : '')?> <?=($item['block_linkBoxes_button']['button_link']['target'] ? 'target="'.$item['block_linkBoxes_button']['button_link']['target'].'"' : '')?> style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
                     <?php else: ?>
                         <div class="block relative width-100 height-100 hover-white white bg-cover bg-center box-shadow-3 <?=$block['content']['bgColor']?>" style="background-image: url('<?=$item['block_linkBoxes_image'];?>')">
                     <?php endif; ?>
@@ -55,7 +55,7 @@
 
                         </div>
 
-                    <?php if (!empty($item['block_linkBoxes_button']['button_link'])): ?>
+                    <?php if (!empty($item['pageLink']['button_link']['url'])): ?>
                         </a>
                     <?php else: ?>
                         </div>

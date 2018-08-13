@@ -8,7 +8,7 @@
  *
  * @version 1.00
  */
-
+$block['grid']                        = 'container';
 $block['content']['columns']          = get_sub_field($current . '_columns');
 
 $block['content']['bgColor']          = get_sub_field($current . '_background_system_background_colours');
