@@ -99,7 +99,9 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
                         </p>
                     <?php endif; ?>
                     
-                    <p class="h4 bold grey mb6"><?=get_term(get_field($prefix.'_details_branch', $post->ID))->name?> Branch</p>
+                    <?php if (!empty(get_field($prefix.'_details_branch', $post->ID))): ?>
+                        <p class="h4 bold grey mb6"><?=get_term(get_field($prefix.'_details_branch', $post->ID))->name?> Branch</p>
+                    <?php endif; ?>
                     
                     <a href="<?=get_permalink($post->ID)?>" class="btn bg-brand-secondary white btn-medium border-radius-2" style="min-width: 80%">View <?=rtrim(ucfirst(get_post_type()), "s")?></a>
                     
