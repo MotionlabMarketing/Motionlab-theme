@@ -26,7 +26,6 @@ jQuery(document).ready(function ($) {
         });
     }
 
-
     /*========================
     Animate On Scroll
     ==========================*/
