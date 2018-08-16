@@ -41,7 +41,7 @@
                                         <h3 class="mb0 z-index-20 <?=$item['block_linkBoxes_button']['system_text_colours']?>"><?=strip_tags($item['block_linkBoxes_content'])?></h3>
 
                                         <?php if (!empty($item['block_linkBoxes_button']['button_link']['url'])):?>
-                                            <p class="link block mt2 text-center mb0 h4 bold <?=$item['block_linkBoxes_button']['system_text_colours']?> <?=($item['enableButton'] == true)? $item['block_linkBoxes_button']['system_text_colours'] . 'btn btn-medium ' . $item['block_linkBoxes_button']['system_background_colours'] : ''?>"><?=$item['block_linkBoxes_button']['button_link']['title']?></p>
+                                            <p class="link block mt2 text-center mb0 h4 bold <?=$item['block_linkBoxes_button']['system_text_colours']?> <?=($item['enableButton'] == true)? $item['block_linkBoxes_button']['system_text_colours'] . ' btn btn-medium ' . $item['block_linkBoxes_button']['system_background_colours'] : ''?>" role="button"><?=$item['block_linkBoxes_button']['button_link']['title']?></p>
                                         <?php endif; ?>
 
                                     </div>
