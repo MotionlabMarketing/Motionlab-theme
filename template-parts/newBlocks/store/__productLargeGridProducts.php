@@ -80,7 +80,7 @@ $selected_products = get_sub_field('block_store_products');
 
                                                         endforeach;
                                                     else: 
-                                                        render_attachment_image(get_field('default_caravan_image', 'option'), "large", false, ["class" => "inline-block mb2"]);    
+                                                        render_attachment_image(get_field('default_caravan_feature', 'option'), "large", false, ["class" => "inline-block mb2"]);
                                                     endif;?>
                                                     
                                                 </div>

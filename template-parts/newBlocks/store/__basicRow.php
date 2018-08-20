@@ -27,7 +27,7 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
                             if (!empty($feature['url'])) :
                                     render_attachment_image($feature['id'], "medium", false, ["class" => "", "data-mh" => "product-images"]);
                             else: 
-                                render_attachment_image(get_field('default_caravan_image', 'option'), "medium", false, ["class" => "inline-block mb2"]);        
+                                render_attachment_image(get_field('default_caravan_feature', 'option'), "medium", false, ["class" => "inline-block mb2"]);
                             endif;
                             ?>
                             
