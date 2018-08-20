@@ -689,11 +689,7 @@ function ml_get_template()
 
 function ml_categories_rewrite()
 {
-    add_rewrite_rule(
-        'news/([a-zA-Z0-9-]+)/?$',
-        'index.php?pagename=news&news_category=$matches[1]',
-        'top'
-    );
+    addNewsRewriteRule();
 
     /*Rewrite for testimonials*/
     add_rewrite_rule(
@@ -709,6 +705,16 @@ function ml_categories_rewrite()
     );
 }
 add_action('init', 'ml_categories_rewrite');
+
+if(!function_exists('addNewsRewriteRule')) {
+	function addNewsRewriteRule() {
+        add_rewrite_rule(
+            'news/([a-zA-Z0-9-]+)/?$',
+            'index.php?pagename=news&news_category=$matches[1]',
+            'top'
+        );
+	}
+}
 
 function ml_query_vars($query_vars)
 {
