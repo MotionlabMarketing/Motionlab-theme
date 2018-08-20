@@ -1,17 +1,72 @@
 <?php
 /**
- * Template Name: Jobs ? Single
- *
- * TODO: Needs converting to single when CPT has been added.
- */
-$locations = get_the_terms(get_the_ID(), 'locations');
-$job_id     = get_field('jobs_role_id') ?: 'Unspecified';
-$job_salary = get_field('jobs_role_salary') ? get_field('jobs_role_salary') : 'Salary Unspecified';
-$job_title  = get_field('jobs_role_title') ?: get_the_title();
-$job_expiry = get_field('jobs_role_expiryDate') ? date("jS M Y", strtotime(get_field('jobs_role_expiryDate'))) : 'Unspecified';
+* Template Name: Jobs ? Single
+*
+*/
+$brand_name          = get_field('brand_name','option');
+$locations           = get_the_terms(get_the_ID(), 'locations');
+$job_type            = get_the_terms(get_the_ID(), 'types');
+$job_date            = get_the_date( 'Y-m-d' );
+$job_salary_google   = get_field('jobs_role_salary_google');
+$job_salary_pa       = get_field('jobs_role_per_anum_google');
+$job_id              = get_field('jobs_role_id') ?: 'Unspecified';
+$job_salary          = get_field('jobs_role_salary') ? get_field('jobs_role_salary') : 'Salary Unspecified';
+$job_title           = get_field('jobs_role_title') ?: get_the_title();
+$job_expiry          = get_field('jobs_role_expiryDate') ? date("jS M Y", strtotime(get_field('jobs_role_expiryDate'))) : 'Unspecified';
+
+// pull job sector details
+$job_sectors = get_the_terms( $post->ID , 'sectors' );
+$job_sectors_string = '';
+foreach ( $job_sectors as $sector ) {
+    $job_sectors_string .= $sector->name . ", ";
+};
+if($job_sectors_string != ''):
+    $job_sectors_string = html_entity_decode(substr($job_sectors_string, 0, -2));
+endif;
 
 get_header();
 ?>
+
+<script type="application/ld+json"> {
+  "@context" : "http://schema.org/",
+  "@type" : "JobPosting",
+  "title" : "<?=$job_title?>",
+  "industry": "<?=$job_sectors_string?>",
+  "description" : "<?=get_field('jobs_role_excerpt');?>",
+  "identifier": {
+    "@type": "PropertyValue",
+    "name": "",
+    "value": ""
+  },
+  "datePosted" : "<?=$job_date?>",
+  "validThrough" : "",
+  "employmentType" : "<?=$job_type[0]->name?>",
+  "hiringOrganization" : {
+    "@type" : "Organization",
+    "name" : "<?=$brand_name?>"
+  },
+  "jobLocation" : {
+    "@type" : "Place",
+    "address" : {
+      "@type" : "PostalAddress",
+      "streetAddress" : "",
+      "addressLocality" : "<?=$locations[0]->name?>",
+      "addressRegion" : "",
+      "postalCode" : "",
+      "addressCountry": "UK"
+    }
+  },
+  "baseSalary": {
+    "@type": "MonetaryAmount",
+    "currency": "GBP",
+    "value": {
+      "@type": "QuantitativeValue",
+      "value": "<?= $job_salary_google?>",
+      "unitText": "<?=$job_salary_pa?>"
+    }
+  }
+}
+</script>
 
 <div class="clearfix || p4 md-mt4" id="single-job">
 
