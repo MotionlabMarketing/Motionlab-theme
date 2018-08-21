@@ -38,7 +38,6 @@ get_header(); ?>
 
             <div class="grid" id="testimonials-listing">
 
-                <?php include_once(AJAX_DIR . 'template-testimonials-ajax.php'); ?>
 
             </div>
 
@@ -64,9 +63,14 @@ get_header(); ?>
             },
             success: function(response){
                 $('#testimonials-listing').html(response);
+
+                $('.grid').masonry('destroy')
+                setTimeout(function(){
+                    $('.grid').masonry();
+                }, 100);
             }
-            $grid.masonry();
         });
+
     }
 
     function updateFilterState(load_val) {
@@ -74,7 +78,7 @@ get_header(); ?>
         fetchTestimonialPosts();
     }
 
-    $('.testimonials_filters').on('change', function() {
+    $(document).on('change', '.testimonials_filters', function() {
         if($(this).attr('id') == "testimonials_filtercats") {
             history.pushState({cat:$(this).val()}, "", "/testimonials/"+$(this).val());
         }

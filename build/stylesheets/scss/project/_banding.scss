@@ -1311,10 +1311,18 @@ hr.border-5 {
   .grid-sizer,
   .grid-item {
     width: 33%;
+    @media (max-width: $breakpoint-lg) {
+        width: 50%;
+    }
+    @media (max-width: $breakpoint-md) {
+        width: 100%;
+    }
   }
   .grid-item--width2 {
     width: 66%;
   }
+
+
 
   .video {
 
