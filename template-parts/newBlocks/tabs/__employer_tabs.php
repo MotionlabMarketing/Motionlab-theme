@@ -38,7 +38,7 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
 
                 if( have_rows('block_tabs_employer')): $i = 1; while ( have_rows('block_tabs_employer')): the_row() ?>
 
-                    <div data-section="tab<?=$i?>" id="tab<?=$i?>" class="tab || relative text-center bold <?=$block['tabs_settings']['tab_size']?> <?=$block['tabs_settings']['tab_weight']?> <?=($i <= 1)? 'tab-active' : ''?>">
+                    <div data-section="tab<?=$i?>" id="tab<?=$i?>" style="border-width: 2px; border-bottom: none;" class="tab block text-center bg-white border-top border-left <?=(count($block['tabs']) == $i)? ' border-right':''?> border-2 border-smoke cursor-pointer <?=$block['tabs_settings']['tab_size']?> <?=$block['tabs_settings']['tab_weight']?> relative <?=($i <= 1)? 'tab-active' : '' ?>">
 						<?=get_sub_field('tab_title')?>
 					</div>
 
@@ -46,7 +46,7 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
 
             </div>
 
-            <div data-tabs="content" class="col-12 || clearfix">
+            <div data-tabs="content" class="clearfix border-top border-left border-right border-bottom border-2 border-smoke <?=$block['tabs_settings']['box_bg']?>">
 
             <?php
 
@@ -56,6 +56,12 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
                 if( have_rows('block_tabs_employer')): $i = 1; while ( have_rows('block_tabs_employer')): the_row() ?>
 
                     <section id="tab<?php echo $i ?>" class="tab-content clearfix || <?php echo ($i > 1) ? 'hide' : '' ?> p1 md-p4">
+
+                        <div class="col col-12 md-col-6 p2 pt5 md-px3 border-bottom border-light md-border-bottom-none">
+                            <div class="wysiwyg mt2">
+                                <?=get_sub_field('col1_content') ?>
+                             </div>
+                        </div>
 
                         <div class="col col-12 md-col-6 p1 md-p3">
                             <?php foreach (get_sub_field('block') as $item): ?>
@@ -109,14 +115,6 @@ $block['tabs_settings']['tab_weight']    = get_sub_field($current . '_weight');
 
                             <?php endforeach; ?>
                         </div>
-
-                        <div class="col col-12 md-col-6 p2 pt5 md-px3 border-bottom border-light md-border-bottom-none">
-                            <div class="wysiwyg mt2">
-                                <?=get_sub_field('col1_content') ?>
-                             </div>
-                        </div>
-
-
 
                     </section>
 
