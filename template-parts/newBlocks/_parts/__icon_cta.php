@@ -1,6 +1,6 @@
 <?php if($cta['link']): ?>
     <a href="<?= $cta["link"]["url"] ?>" class="flex items-center hover-body">
-        <div class="<?=$cta['icon__image'] === 'icon' ? 'bg-darken-2' : '';?> mr2 col col-4" style="min-width:3rem; border-radius:50%;">
+        <div class="<?=$cta['icon__image'] === 'icon' ? 'bg-darken-2' : '';?> mr2 col col-4" style="min-width:3rem; max-width: 3.5rem; border-radius:50%;">
             <div class="<?=$cta['icon__image'] === 'image'? '' : 'square';?> relative" style="font-size:1.6em;">
                 <?php if($cta['icon__image'] === 'image') : ?>
                     <img src="<?=$cta['image']?>" class="absolute top-50 left-50 translate" style="max-height: 42px;" />
