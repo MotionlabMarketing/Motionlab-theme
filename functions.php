@@ -412,8 +412,7 @@ add_filter('get_the_archive_title', function ($title) {
 /*==================================================================
 WORK OUT MENU NAMES
 ==================================================================*/
-function get_menu_by_location($location)
-{
+function get_menu_by_location($location) {
     if (empty($location)) {
         return false;
     }
