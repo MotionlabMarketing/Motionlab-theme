@@ -12,10 +12,12 @@ Class _testimonials
 	private $block = [];
 	private $category_slug = 'reviewer';
 	private $category_filter;
+	private $default_category;
 
-	public function __construct() {
+	public function __construct($default_category = null) {
 
 		$this->category_filter = get_sub_field('block_reviews_category_filter');
+		$this->default_category = $default_category;
 
 		$this->getCategories();
 		$this->fetchReviews();
@@ -47,6 +49,14 @@ Class _testimonials
 				'field'     => 'slug'
 			];
 		endif;
+
+		if(!empty($this->default_category)) {
+			$tax_query[] = [
+				'taxonomy'  => 'reviewer',
+				'terms'     => $this->default_category,
+				'field'     => 'slug'
+			];
+		}
 
 		$args = array(
 			'posts_per_page'    => 8,
