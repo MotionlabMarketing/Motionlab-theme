@@ -1,11 +1,11 @@
 <?php if($cta['link']): ?>
     <a href="<?= $cta["link"]["url"] ?>" class="flex items-center hover-body">
-        <div class="<?=$cta['icon__image'] === 'icon' ? 'bg-darken-2' : '';?> mr2 col col-4" style="min-width:3rem; border-radius:50%;">
-            <div class="<?=$cta['icon__image'] === 'image'? '' : 'square';?> relative" style="font-size:1.6em;">
+        <div class="border-1 border-top border-bottom border-left border-right border-brand-primary mr2 col col-4" style="height: 56px; width: 56px; border-radius:50%;">
+            <div class="<?=$cta['icon__image'] === 'image'? '' : 'square';?> relative" style="font-size:1.6em; height: 56px; width: 56px;">
                 <?php if($cta['icon__image'] === 'image') : ?>
-                    <img src="<?=$cta['image']?>" class="absolute top-50 left-50 translate" style="max-height: 42px;" />
+                    <img src="<?=$cta['image']?>" class="absolute top-50 left-50 translate icon-brand-primary" style="max-height: 26px;" />
                 <?php else: ?>
-                    <i class="fa <?= $cta['icon'];?> white absolute top-50 left-50 translate"></i>
+                    <i class="fa <?= $cta['icon'];?> white absolute top-50 left-50 translate brand-primary icon-brand-primary"></i>
                 <?php endif; ?>
             </div>
         </div>
@@ -15,7 +15,7 @@
         </div>
     </a>
 <?php else: ?>
-    <div class="border border-brand-primary mr2 col col-4" style="width:3rem; border-radius:50%;">
+    <div class="border-1 border-top border-bottom border-left border-right border-brand-primary mr2 col col-4" style="width:3rem; border-radius:50%;">
         <div class="<?=$cta['icon__image'] === 'image'? '' : 'square';?> relative" style="font-size:1.6em;">
             <?php if($cta['icon__image'] === 'image') : ?>
                 <img src="<?=$cta['image']?>" class="absolute top-50 left-50 translate" style="max-height: 42px;" />

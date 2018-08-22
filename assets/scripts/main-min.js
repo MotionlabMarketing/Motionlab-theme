@@ -7107,8 +7107,8 @@ jQuery(document).ready(function ($) {
 
             if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
                 var target = $(this.hash);
-                var spacing = 40; if ($('.js-sticky-nav').outerHeight().length > 0) { spacing = 20; }
-                console.log(spacing);
+                var spacing = 40; 
+                if ($('.js-sticky-nav').outerHeight() > 0) { spacing = 20; }
                 target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
                 var scrollTo = target.position().top - $("#masthead").outerHeight() - $('.js-sticky-nav').outerHeight() - spacing;
                 if (target.length) {

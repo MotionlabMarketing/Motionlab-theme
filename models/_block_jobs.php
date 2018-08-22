@@ -114,13 +114,21 @@ Class _block_jobs
 		}  else {
 			if($this->layout == 'jobs_aside') $posts_per_page = 2; else $posts_per_page = 6;
 		}
+        
+        $meta_query[] = array(
+            'key' => 'jobs_role_expiry_date',
+            'value' => date('Y-m-d H:i:s'),
+            'compare' => '>',
+            'type' => 'DATETIME'
+        );
 
 		$args = array(
 			'posts_per_page'    => $_POST['block_post_per_page'] ?: $posts_per_page,
 			'paged'             => $_POST['block_page'] ?: 1,
 			'post_status'       => 'publish',
 			'post_type'         => $post_type,
-			'tax_query'         => $tax_query
+			'tax_query'         => $tax_query,
+            'meta_query'        => $meta_query
 		);
 
 		$this->block['posts'] = new WP_Query( $args );
