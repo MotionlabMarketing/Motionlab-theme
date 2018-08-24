@@ -43,16 +43,17 @@ get_header();
   "employmentType" : "<?=$job_type[0]->name?>",
   "hiringOrganization" : {
     "@type" : "Organization",
-    "name" : "<?=$brand_name?>"
+    "name" : "<?=$brand_name?>",
+    "logo" : "<?=get_field('brand_logo', 'options')?>"
   },
   "jobLocation" : {
     "@type" : "Place",
     "address" : {
       "@type" : "PostalAddress",
-      "streetAddress" : "",
+      "streetAddress" : "One Cathedral Square, Cathedral Quarter, Blackburn",
       "addressLocality" : "<?=$locations[0]->name?>",
-      "addressRegion" : "",
-      "postalCode" : "",
+      "addressRegion" : "Lancashire",
+      "postalCode" : "BB1 1FB",
       "addressCountry": "UK"
     }
   },
