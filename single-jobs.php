@@ -51,7 +51,7 @@ get_header();
     "address" : {
       "@type" : "PostalAddress",
       "streetAddress" : "One Cathedral Square, Cathedral Quarter, Blackburn",
-      "addressLocality" : "<?=$locations[0]->name?>",
+      "addressLocality" : "Blackburn",
       "addressRegion" : "Lancashire",
       "postalCode" : "BB1 1FB",
       "addressCountry": "UK"
