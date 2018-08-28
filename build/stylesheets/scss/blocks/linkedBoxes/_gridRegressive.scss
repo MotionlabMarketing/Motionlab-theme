@@ -1,0 +1,156 @@
+div.backpacker {
+    padding-top:2px;
+    padding-bottom:2px;
+    background-color:white;
+  }
+  
+  div.backpacker:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  div.backpacker div.bp-col {
+    display:inline-block;
+    float:left;
+    width: 100%;
+  }
+
+  div.backpacker div.bp-press {
+    float:left;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%; /* desired width */
+  }
+
+  div.backpacker div.bp-press:before {
+    content: "";
+      display: block;
+      padding-top: 100%; 	/* initial ratio of 1:1 */
+  }
+  
+  div.backpacker div.bp-press.bp-2-1:before {
+    padding-top: 59%;
+    
+    @media (max-width: 1200px) {
+      padding-top: 57%;
+    }
+
+    @media (max-width: 600px) {
+      padding-top: 55%;
+    }
+  }
+  
+  div.backpacker div.bp-press.bp-3-2:before {
+    padding-top: 120%;
+  }
+  
+  div.backpacker div.bp-press.bp-2-3:before {
+    padding-top: 117%;
+
+    @media (max-width: 1200px) {
+      padding-top: 117.5%;
+    }
+
+    @media (max-width: 600px) {
+      padding-top: 122.5%;
+    }
+  }
+  
+  div.backpacker div.bp-press.bp-5-4:before {
+    padding-top: 80%;
+  }
+  
+  div.backpacker div.bp-press.bp-4-5:before {
+    padding-top: 125%;
+  }
+  
+  div.backpacker div.bp-press.bp-10-9:before {
+    padding-top: 85%;
+  }
+  
+  div.backpacker div.bp-press.bp-9-10:before {
+    padding-top: 111.1%;
+  }
+  
+  div.backpacker div.bp-press.bp-3-1:before {
+    padding-top: 33.32%;
+  }
+  
+  div.backpacker div.bp-press.bp-11-15:before {
+    padding-top: 136.36%;
+  }
+  
+  div.backpacker .bp-width-50 {
+    width: 50% !important;
+
+    @media (max-width: 600px) {
+      width: 100% !important;
+    }
+  }
+
+  div.backpacker div.bp-smallist {
+    width: 24%;
+
+    &:last-child {
+      margin-left: 2%;
+    }
+
+    @media (max-width: 1200px) {
+      width: 25%;
+
+      &:last-child {
+        margin-left: 0;
+      }
+    }
+    @media (max-width: 600px) {
+      width: 50%;
+    }
+  }
+
+  div.backpacker div.bp-press div.bp-insert {
+    position:  absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  
+  div.backpacker div.bp-insert {
+    float:left;
+    position:relative;
+    overflow:hidden;
+    border:2px solid white;
+  }
+  
+  div.backpacker div.bp-insert a, div.backpacker div.bp-insert a:link, div.backpacker div.bp-insert a:visited {
+    position: relative;
+    display:inline-block;
+    text-decoration:none;
+    box-shadow: initial;
+    -webkit-box-shadow: initial;
+    border:0;
+    margin:0;
+    padding:0;
+    height:100%;
+    width:100%;
+    max-height:100%;
+    max-width:100%;
+  }
+  
+  div.backpacker div.bp-insert a:hover, div.backpacker div.bp-insert a:focus {
+    box-shadow: initial;
+    -webkit-box-shadow: initial;
+    text-decoration:none;
+  }
+  
+  div.backpacker div.bp-insert img {
+    position: relative;
+    width:100%;
+  }
+  
+  div.backpacker div.bp-insert img.vert {
+    height:100%;
+    width:auto;
+    max-width:none;
+  }

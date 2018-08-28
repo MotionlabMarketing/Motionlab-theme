@@ -74,14 +74,13 @@ $selected_products = get_sub_field('block_store_products');
 
                                                 <div class="flex items-center justify-center">
                                                     <?php if (!empty($feature_image)):
-
                                                         foreach ($feature_image as $image):
 
                                                             render_attachment_image($image, "large", false, ["class" => "inline-block mb2"]);
 
                                                         endforeach;
                                                     else: 
-                                                        render_attachment_image(get_field('default_caravan_image', 'option'), "large", false, ["class" => "inline-block mb2"]);    
+                                                        render_attachment_image(get_field('default_caravan_feature', 'option'), "large", false, ["class" => "inline-block mb2"]);
                                                     endif;?>
                                                     
                                                 </div>
@@ -219,7 +218,6 @@ $selected_products = get_sub_field('block_store_products');
                                     $berth          = get_field($prefix.'_details_berth', $cotm->ID);
 
                                     $feature        = get_field($prefix.'_details_feature_image', $cotm->ID);
-                                    $feature_image = get_field('image', $feature->ID);
 
                                     $brand = get_the_terms($cotm->ID, 'makes');
                                     $brand_image = get_field('taxonomy_image', 'term_'.$brand[0]->term_id);
@@ -236,10 +234,8 @@ $selected_products = get_sub_field('block_store_products');
                                             <div>
 
                                                 <div class="flex items-center justify-center">
-                                                    <?php if (!empty($feature_image)) :
-                                                        foreach ($feature_image as $image):
-                                                            render_attachment_image($image, "large", false, ["class" => "inline-block"]);
-                                                        endforeach;
+                                                    <?php if (!empty($feature)) :
+                                                            render_attachment_image($feature['id'], "large", false, ["class" => "inline-block"]);
                                                     endif;?>
                                                 </div>
 
@@ -298,12 +294,6 @@ $selected_products = get_sub_field('block_store_products');
                                             $berth  = get_field($prefix.'_details_berth', $selected_product->ID);
 
                                             $feature        = get_field($prefix.'_details_feature_image', $selected_product->ID);
-                                            $feature_image  = get_field('image', $feature->ID);
-
-                                            if (empty($feature_image) && !empty($feature)) {
-                                                $feature_image  = array_slice($feature_image, 0, 1);
-                                            }
-
                                             ?>
 
                                             <div class="col col-12 sm-col-6 md-col-6 lg-col-4 pl2 pr3 mb4 md-pl3 md-pr3 <?=($a < 2)? "md-mb5" : ""?> <?=($a < 3)? "lg-mb5" : ""?> <?=($a > 3)? "block md-display-none lg-block" : ""?>">
@@ -313,10 +303,8 @@ $selected_products = get_sub_field('block_store_products');
                                                     <h3 class="h4 bold" data-mh="title"><?=$title?></h3>
 
                                                     <div class="flex items-center justify-center" data-mh="product-item-image">
-                                                        <?php if (!empty($feature_image)):
-                                                            foreach ($feature_image as $image):
-                                                                render_attachment_image($image, ["260", "120"], false, ["class" => "inline-block"]);
-                                                            endforeach;
+                                                        <?php if (!empty($feature)):
+                                                                render_attachment_image($feature['id'], ["260", "120"], false, ["class" => "inline-block"]);
                                                         endif;?>
                                                     </div>
 

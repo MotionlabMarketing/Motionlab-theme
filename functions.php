@@ -163,22 +163,24 @@ function ml_update_csr()
 
 add_action('wp_ajax_fetch_case_studies', 'ml_update_case_studies');
 add_action('wp_ajax_nopriv_case_studies', 'ml_update_case_studies');
-function ml_update_case_studies()
-{
+if(!function_exists('ml_update_case_studies')) :
+    function ml_update_case_studies()
+    {
 
-    /* Load in team block controller to access posts easily. */
-    include_once(MODELS_DIR . '_block_news.php');
-    $news_controller = new _block_news(null, null);
-    $block = $news_controller->fetchCaseStudyPosts(8, $_POST['news_page']);
+        /* Load in team block controller to access posts easily. */
+        include_once(MODELS_DIR . '_block_news.php');
+        $news_controller = new _block_news(null, null);
+        $block = $news_controller->fetchCaseStudyPosts(8, $_POST['news_page']);
 
 
-    if (file_exists(CHILD_AJAX_DIR . 'template-case_studies-ajax.php')) :
-        include_once(CHILD_AJAX_DIR . 'template-case_studies-ajax.php'); else:
-        include_once(AJAX_DIR . 'template-case_studies-ajax.php');
-    endif;
+        if (file_exists(CHILD_AJAX_DIR . 'template-case_studies-ajax.php')) :
+            include_once(CHILD_AJAX_DIR . 'template-case_studies-ajax.php'); else:
+            include_once(AJAX_DIR . 'template-case_studies-ajax.php');
+        endif;
 
-    die();
-}
+        die();
+    }
+endif;
 
 add_action('wp_ajax_fetch_jobs', 'ml_update_jobs');
 add_action('wp_ajax_nopriv_fetch_jobs', 'ml_update_jobs');
@@ -375,6 +377,7 @@ add_theme_support('post-thumbnails');
 add_image_size('logoCrop', 300, 300, true);
 add_image_size('medium', 480, 480, false);
 add_image_size('mediumCrop', 400, 280, true);
+add_image_size('gallerySlim', 290, 220, true);
 add_image_size('galleryMedium', 800, 560, true);
 add_image_size('mediumSquare', 600, 600, true);
 add_image_size('linkedBoxes', 380, 260, true);
@@ -409,8 +412,7 @@ add_filter('get_the_archive_title', function ($title) {
 /*==================================================================
 WORK OUT MENU NAMES
 ==================================================================*/
-function get_menu_by_location($location)
-{
+function get_menu_by_location($location) {
     if (empty($location)) {
         return false;
     }
@@ -686,11 +688,7 @@ function ml_get_template()
 
 function ml_categories_rewrite()
 {
-    add_rewrite_rule(
-        'news/([a-zA-Z0-9-]+)/?$',
-        'index.php?pagename=news&news_category=$matches[1]',
-        'top'
-    );
+    addNewsRewriteRule();
 
     /*Rewrite for testimonials*/
     add_rewrite_rule(
@@ -706,6 +704,16 @@ function ml_categories_rewrite()
     );
 }
 add_action('init', 'ml_categories_rewrite');
+
+if(!function_exists('addNewsRewriteRule')) {
+	function addNewsRewriteRule() {
+        add_rewrite_rule(
+            'news/([a-zA-Z0-9-]+)/?$',
+            'index.php?pagename=news&news_category=$matches[1]',
+            'top'
+        );
+	}
+}
 
 function ml_query_vars($query_vars)
 {

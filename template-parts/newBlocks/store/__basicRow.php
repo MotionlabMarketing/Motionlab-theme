@@ -23,14 +23,11 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
                             
                             <?php
                             $feature = get_field($prefix.'_details_feature_image', $post->ID);
-                            $feature_image = get_field('image', $feature->ID);
                             
-                            if (!empty($feature_image)) :
-                                foreach ($feature_image as $image):
-                                    render_attachment_image($image, "medium", false, ["class" => "", "data-mh" => "product-images"]);
-                                endforeach;
+                            if (!empty($feature['url'])) :
+                                    render_attachment_image($feature['id'], "medium", false, ["class" => "", "data-mh" => "product-images"]);
                             else: 
-                                render_attachment_image(get_field('default_caravan_image', 'option'), "medium", false, ["class" => "inline-block mb2"]);        
+                                render_attachment_image(get_field('default_caravan_feature', 'option'), "medium", false, ["class" => "inline-block mb2"]);
                             endif;
                             ?>
                             
@@ -80,14 +77,13 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
                         <?php
                           $logos = get_field($prefix.'_details_logos', $post->ID);
                           if (!empty($logos)): ?>
-							<ul class="list-reset flex">
+							<ul class="list-reset flex pt3">
 								<?php foreach (array_slice($logos, 0, 8) as $logo): ?>
 									<li><?= render_attachment_image(get_field('taxonomy_image', "term_".$logo), "small", false, ["class" => "my2 mr2"]);?></li>
 								<?php endforeach; ?>
 							</ul>
 							<p class="bold brand-primary mb0"><?=get_field('default_offer_text', 'option')?></p>
 					    <?php endif; ?>
-                        <p class="bold brand-primary mt2 mb0"><?=get_field('default_offer_text', 'option')?></p>
                         
                     </div>
                     
@@ -103,7 +99,9 @@ $prefix = (isset($selected_products[0]['items'][0]) && $selected_products[0]['it
                         </p>
                     <?php endif; ?>
                     
-                    <p class="h4 bold grey mb6"><?=get_term(get_field($prefix.'_details_branch', $post->ID))->name?> Branch</p>
+                    <?php if (!empty(get_field($prefix.'_details_branch', $post->ID))): ?>
+                        <p class="h4 bold grey mb6"><?=get_term(get_field($prefix.'_details_branch', $post->ID))->name?> Branch</p>
+                    <?php endif; ?>
                     
                     <a href="<?=get_permalink($post->ID)?>" class="btn bg-brand-secondary white btn-medium border-radius-2" style="min-width: 80%">View <?=rtrim(ucfirst(get_post_type()), "s")?></a>
                     

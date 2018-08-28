@@ -9,27 +9,31 @@
 
 <?php if(!empty($block['posts']->posts)) :
         foreach($block['posts']->posts as $post) :?>
-            <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2 lg-flex items-center">
+            <div class="listItem || relative clearfix border-bottom border-light px5 py5 mb4 box-shadow-2">
 
-                <div class="col col-12 lg-col-9 mb4">
+                <div class="mxn2 lg-flex items-center">
 
-                    <a href="<?= get_permalink($post->ID) ?>"><h3 class="mb2 h3 brand-primary"><?= $post->post_title ?></h3>
-                    </a>
+                    <div class="col col-12 lg-col-9 px2 mb4">
 
-                    <?php if(get_field('jobs_role_salary', $post->ID) != ''):
-                        $salary = get_field('jobs_role_salary', $post->ID);
-                    else :
-                        $salary = "Salary not Specified";
-                    endif; ?>
-                    <p class="h4 bold mb0"><?= $post->locations[0]->name ?><span
-                                class="muted"> •</span> <?= $salary ?> <span
-                                class="muted">•</span> <?= $post->types[0]->name ?></p>
+                        <a href="<?= get_permalink($post->ID) ?>"><h3 class="mb2 h3 brand-primary"><?= $post->post_title ?></h3>
+                        </a>
 
-                </div>
+                        <?php if(get_field('jobs_role_salary', $post->ID) != ''):
+                            $salary = get_field('jobs_role_salary', $post->ID);
+                        else :
+                            $salary = "Salary not Specified";
+                        endif; ?>
+                        <p class="h4 bold mb0"><?= $post->locations[0]->name ?><span
+                                    class="muted"> •</span> <?= $salary ?> <span
+                                    class="muted">•</span> <?= $post->types[0]->name ?></p>
 
-                <div class="col col-12 lg-col-3">
+                    </div>
 
-                    <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white lg-width-100 h6 lg-right">Find out more</a>
+                    <div class="col col-12 lg-col-3 px2">
+
+                        <a href="<?=get_permalink($post->ID)?>" class="btn btn-primary btn-small white border-box lg-width-100 h6 lg-right">Find out more</a>
+
+                    </div>
 
                 </div>
 
