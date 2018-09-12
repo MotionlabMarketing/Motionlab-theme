@@ -9,8 +9,6 @@
  *
  * @version 1.00
  */
-
- //TODO: Make popup...
 ?>
 
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "gallery")?> <?=get_blockData($block)?>>
@@ -28,7 +26,7 @@
                 foreach ($images as $img):?>
 
                       <a href="<?=$img['url']?>" style="margin: 0 5px">
-                          <img src="<?=$img['sizes']['galleryMedium']?>" class="width-100" alt="<?=$img['alt']?>">
+                          <img src="<?=$img['sizes']['gallerySlim']?>" class="width-100" alt="<?=$img['alt']?>">
                       </a>
 
               <?php endforeach; ?>
