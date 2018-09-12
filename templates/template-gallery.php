@@ -10,7 +10,7 @@ get_header(); ?>
 
 <section class="clearfix my4 mb4" id="gallery-standard" data-loadval="<?= get_query_var('gallery_category'); ?>" data-template="gallery-standard">
 
-    <div class="container clearfix px3 mt6">
+    <div class="container clearfix px3 mt5 md-mt7">
 
         <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
 
