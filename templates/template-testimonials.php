@@ -50,7 +50,6 @@ get_header(); ?>
 <script>
 
     //TODO: Move this into JS file
-
     function fetchTestimonialPosts() {
 
         //TODO: Add loader while fetching data.
@@ -66,7 +65,8 @@ get_header(); ?>
             success: function(response){
                 $('#testimonials-listing').html(response);
             }
-            $grid.masonry();
+            $('.grid').masonry('destroy');
+            $('.grid').masonry();
         });
     }
 

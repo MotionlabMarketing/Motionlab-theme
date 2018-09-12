@@ -10,13 +10,13 @@ get_header(); ?>
 
 <section class="clearfix my4 mb4" id="gallery-standard" data-loadval="<?= get_query_var('gallery_category'); ?>" data-template="gallery-standard">
 
-    <div class="container clearfix mt6">
+    <div class="container clearfix px3 mt6">
 
         <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
 
     </div>
 
-    <div class="container text-center mb3 border-bottom border-smoke border-1" data-element="filters">
+    <div class="display-none md-block container text-center mb3 border-bottom border-smoke border-1" data-element="filters">
 
         <span data-category="" class="btn btn-large inline-block border-top border-left border-right border-light brand-primary bg-white cursor-pointer <?= !empty(get_query_var('gallery_category')) ? "filter-active" : ""?> filter-option">All</span>
 
@@ -25,6 +25,17 @@ get_header(); ?>
             <span data-category="<?=$item->slug?>" class="btn btn-large inline-block border-top border-left border-right border-light brand-primary bg-white cursor-pointer <?=get_query_var('gallery_category') == $item->slug ? "filter-active" : ""?> filter-option"><?=$item->name?></span>
 
         <?php endforeach; ?>
+
+    </div>
+
+    <div class="md-display-none container text-center mb3">
+
+        <select id="filter-select" class="select width-70">
+            <option value="<?=get_permalink()?>">All Images</option>
+            <?php foreach($gallery['select_terms'] as $item): ?>
+                <option value="<?=get_permalink() . $item->slug?>"><?=$item->name?></option>
+            <?php endforeach; ?>
+        </select>
 
     </div>
 
@@ -50,10 +61,16 @@ get_header(); ?>
             fetchGallery(1, true);
         });
 
-        $(document).on('click', '.filter-more', function () {
+        $(document).on('click', '.filter-more', function (e) {
+            e.preventDefault();
             var page_number = $(this).data('loadcount');
             $(this).data('loadcount', page_number+=12);
             fetchGallery(page_number);
+        });
+
+        $(document).on('change', '#filter-select', function() {
+            var url = $(this).val();
+            window.location = url;
         });
 
         function fetchGallery(page_number, reset = false) {

@@ -19,7 +19,7 @@
 
         <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-        <div class="container clearfix || gallery item-slider px6">
+        <div class="container clearfix gallery item-slider px6">
 
             <div data-slick="galleryThin-slider">
 
