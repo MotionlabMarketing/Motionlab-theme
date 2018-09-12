@@ -67,7 +67,7 @@ endif;
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-        <div class="relative image-holder flex bg-<?=$banner['image']['position']?> <?=$banner['height']?>" style="background-image: url('<?=$banner['image']['url']?>');">
+        <div class="relative image-holder flex bg-<?=$banner['image']['position']?> min-height-20  md-<?=$banner['height']?>" style="background-image: url('<?=$banner['image']['url']?>');">
 
             <?php if ($banner['image']['overlay'] == true || $banner['image']['overlayOld']): ?>
 
