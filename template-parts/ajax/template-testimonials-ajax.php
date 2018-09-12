@@ -11,7 +11,7 @@ $showStars = get_field('template_reviews_show_stars', $_POST['post_id']);?>
 <div class="grid-sizer"></div>
 
 <?php foreach($testimonials['posts']->posts as $post): ?>
-    <div class="col col-4 grid-item">
+    <div class="col col-4 grid-item" id="">
 
         <div class="m3 bg-smoke text-center">
 
