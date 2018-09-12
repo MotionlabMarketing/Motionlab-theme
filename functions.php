@@ -712,12 +712,25 @@ if(!function_exists('addNewsRewriteRule')) {
             'index.php?pagename=news&news_category=$matches[1]',
             'top'
         );
+
+        add_rewrite_rule(
+            'news/([0-9]+)/?$',
+            'index.php?pagename=news&news_page=$matches[1]',
+            'top'
+        );
+
+        add_rewrite_rule(
+            'news/([0-9]+)/([a-zA-Z0-9-]+)/?$',
+            'index.php?pagename=news&news_category=$matches[2]&news_page=$matches[1]',
+            'top'
+        );
 	}
 }
 
 function ml_query_vars($query_vars)
 {
     $query_vars[] = 'news_category';
+    $query_vars[] = 'news_page';
     $query_vars[] = 'testimonials_category';
     $query_vars[] = 'gallery_category';
 
