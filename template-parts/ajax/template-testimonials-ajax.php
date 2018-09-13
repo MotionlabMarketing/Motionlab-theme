@@ -5,8 +5,7 @@
  * Date: 05/04/18
  * Time: 10:52
  */
-
-$showStars = get_field('template_reviews_show_stars', $_POST['post_id']);?>
+$showStars = get_field('template_reviews_show_stars', $_POST['post_id']); ?>
 
 <div class="grid-sizer"></div>
 
