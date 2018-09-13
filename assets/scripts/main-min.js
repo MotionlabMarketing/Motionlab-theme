@@ -1629,270 +1629,6 @@ jQuery.extend( jQuery.easing,
         function n() { s.shift(o, e, i), o.positionDropPlaceholder(), s.layout() } var o = this.isEnabled && this.getItem(t); if (o) { e -= this.size.paddingLeft, i -= this.size.paddingTop; var s = this, r = new Date; this._itemDragTime && r - this._itemDragTime < c ? (clearTimeout(this.dragTimeout), this.dragTimeout = setTimeout(n, c)) : (n(), this._itemDragTime = r) }
     }, u.itemDragEnd = function (t) { function e() { n++ , 2 == n && (i.element.classList.remove("is-positioning-post-drag"), i.hideDropPlaceholder(), o.dispatchEvent("dragItemPositioned", null, [i])) } var i = this.isEnabled && this.getItem(t); if (i) { clearTimeout(this.dragTimeout), i.element.classList.add("is-positioning-post-drag"); var n = 0, o = this; i.once("layout", e), this.once("layoutComplete", e), i.moveTo(i.rect.x, i.rect.y), this.layout(), this.dragItemCount = Math.max(0, this.dragItemCount - 1), this.sortItemsByPosition(), i.disablePlacing(), this.unstamp(i.element) } }, u.bindDraggabillyEvents = function (t) { this._bindDraggabillyEvents(t, "on") }, u.unbindDraggabillyEvents = function (t) { this._bindDraggabillyEvents(t, "off") }, u._bindDraggabillyEvents = function (t, e) { var i = this.handleDraggabilly; t[e]("dragStart", i.dragStart), t[e]("dragMove", i.dragMove), t[e]("dragEnd", i.dragEnd) }, u.bindUIDraggableEvents = function (t) { this._bindUIDraggableEvents(t, "on") }, u.unbindUIDraggableEvents = function (t) { this._bindUIDraggableEvents(t, "off") }, u._bindUIDraggableEvents = function (t, e) { var i = this.handleUIDraggable; t[e]("dragstart", i.start)[e]("drag", i.drag)[e]("dragstop", i.stop) }; var d = u.destroy; return u.destroy = function () { d.apply(this, arguments), this.isEnabled = !1 }, h.Rect = i, h.Packer = n, h
 });
-
-// ------------------------------------------
-// Rellax.js - v1.0.0
-// Buttery smooth parallax library
-// Copyright (c) 2016 Moe Amaya (@moeamaya)
-// MIT license
-//
-// Thanks to Paraxify.js and Jaime Cabllero
-// for parallax concepts
-// ------------------------------------------
-
-(function (root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define([], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // Node. Does not work with strict CommonJS, but
-    // only CommonJS-like environments that support module.exports,
-    // like Node.
-    module.exports = factory();
-  } else {
-    // Browser globals (root is window)
-    root.Rellax = factory();
-  }
-}(this, function () {
-  var Rellax = function(el, options){
-    "use strict";
-
-    var self = Object.create(Rellax.prototype);
-
-    var posY = 0; // set it to -1 so the animate function gets called at least once
-    var screenY = 0;
-    var blocks = [];
-    var pause = false;
-
-    // check what requestAnimationFrame to use, and if
-    // it's not supported, use the onscroll event
-    var loop = window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      window.msRequestAnimationFrame ||
-      window.oRequestAnimationFrame ||
-      function(callback){ setTimeout(callback, 1000 / 60); };
-
-    // check which transform property to use
-    var transformProp = window.transformProp || (function(){
-      var testEl = document.createElement('div');
-      if (testEl.style.transform == null) {
-        var vendors = ['Webkit', 'Moz', 'ms'];
-        for (var vendor in vendors) {
-          if (testEl.style[ vendors[vendor] + 'Transform' ] !== undefined) {
-            return vendors[vendor] + 'Transform';
-          }
-        }
-      }
-      return 'transform';
-    })();
-
-    // limit the given number in the range [min, max]
-    var clamp = function(num, min, max) {
-      return (num <= min) ? min : ((num >= max) ? max : num);
-    };
-
-    // Default Settings
-    self.options = {
-      speed: -2,
-      center: false,
-      round: true,
-      callback: function() {},
-    };
-
-    // User defined options (might have more in the future)
-    if (options){
-      Object.keys(options).forEach(function(key){
-        self.options[key] = options[key];
-      });
-    }
-
-    // If some clown tries to crank speed, limit them to +-10
-    self.options.speed = clamp(self.options.speed, -10, 10);
-
-    // By default, rellax class
-    if (!el) {
-      el = '.rellax';
-    }
-
-    var elements = document.querySelectorAll(el);
-
-    // Now query selector
-    if (elements.length > 0) {
-      self.elems = elements;
-    }
-
-    // The elements don't exist
-    else {
-      throw new Error("The elements you're trying to select don't exist.");
-    }
-
-
-    // Let's kick this script off
-    // Build array for cached element values
-    // Bind scroll and resize to animate method
-    var init = function() {
-      screenY = window.innerHeight;
-      setPosition();
-
-      // Get and cache initial position of all elements
-      for (var i = 0; i < self.elems.length; i++){
-        var block = createBlock(self.elems[i]);
-        blocks.push(block);
-      }
-
-      window.addEventListener('resize', function(){
-        animate();
-      });
-
-      // Start the loop
-      update();
-
-      // The loop does nothing if the scrollPosition did not change
-      // so call animate to make sure every element has their transforms
-      animate();
-    };
-
-
-    // We want to cache the parallax blocks'
-    // values: base, top, height, speed
-    // el: is dom object, return: el cache values
-    var createBlock = function(el) {
-      var dataPercentage = el.getAttribute( 'data-rellax-percentage' );
-      var dataSpeed = el.getAttribute( 'data-rellax-speed' );
-      var dataZindex = el.getAttribute( 'data-rellax-zindex' ) || 0;
-
-      // initializing at scrollY = 0 (top of browser)
-      // ensures elements are positioned based on HTML layout.
-      //
-      // If the element has the percentage attribute, the posY needs to be
-      // the current scroll position's value, so that the elements are still positioned based on HTML layout
-      var posY = dataPercentage || self.options.center ? (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop) : 0;
-
-      var blockTop = posY + el.getBoundingClientRect().top;
-      var blockHeight = el.clientHeight || el.offsetHeight || el.scrollHeight;
-
-      // apparently parallax equation everyone uses
-      var percentage = dataPercentage ? dataPercentage : (posY - blockTop + screenY) / (blockHeight + screenY);
-      if(self.options.center){ percentage = 0.5; }
-
-      // Optional individual block speed as data attr, otherwise global speed
-      // Check if has percentage attr, and limit speed to 5, else limit it to 10
-      var speed = dataSpeed ? clamp(dataSpeed, -10, 10) : self.options.speed;
-      if (dataPercentage || self.options.center) {
-        speed = clamp(dataSpeed || self.options.speed, -5, 5);
-      }
-
-      var base = updatePosition(percentage, speed);
-
-      // ~~Store non-translate3d transforms~~
-      // Store inline styles and extract transforms
-      var style = el.style.cssText;
-      var transform = '';
-
-      // Check if there's an inline styled transform
-      if (style.indexOf('transform') >= 0) {
-        // Get the index of the transform
-        var index = style.indexOf('transform');
-
-        // Trim the style to the transform point and get the following semi-colon index
-        var trimmedStyle = style.slice(index);
-        var delimiter = trimmedStyle.indexOf(';');
-
-        // Remove "transform" string and save the attribute
-        if (delimiter) {
-          transform = " " + trimmedStyle.slice(11, delimiter).replace(/\s/g,'');
-        } else {
-          transform = " " + trimmedStyle.slice(11).replace(/\s/g,'');
-        }
-      }
-
-      return {
-        base: base,
-        top: blockTop,
-        height: blockHeight,
-        speed: speed,
-        style: style,
-        transform: transform,
-        zindex: dataZindex
-      };
-    };
-
-    // set scroll position (posY)
-    // side effect method is not ideal, but okay for now
-    // returns true if the scroll changed, false if nothing happened
-    var setPosition = function() {
-      var oldY = posY;
-
-      if (window.pageYOffset !== undefined) {
-        posY = window.pageYOffset;
-      } else {
-        posY = (document.documentElement || document.body.parentNode || document.body).scrollTop;
-      }
-
-      if (oldY != posY) {
-        // scroll changed, return true
-        return true;
-      }
-
-      // scroll did not change
-      return false;
-    };
-
-
-    // Ahh a pure function, gets new transform value
-    // based on scrollPostion and speed
-    // Allow for decimal pixel values
-    var updatePosition = function(percentage, speed) {
-      var value = (speed * (100 * (1 - percentage)));
-      return self.options.round ? Math.round(value) : Math.round(value * 100) / 100;
-    };
-
-
-    //
-    var update = function() {
-      if (setPosition() && pause === false) {
-        animate();
-      }
-
-      // loop again
-      loop(update);
-    };
-
-    // Transform3d on parallax element
-    var animate = function() {
-      for (var i = 0; i < self.elems.length; i++){
-        var percentage = ((posY - blocks[i].top + screenY) / (blocks[i].height + screenY));
-
-        // Subtracting initialize value, so element stays in same spot as HTML
-        var position = updatePosition(percentage, blocks[i].speed) - blocks[i].base;
-
-        var zindex = blocks[i].zindex;
-
-        // Move that element
-        // (Set the new translation and append initial inline transforms.)
-        var translate = 'translate3d(0,' + position + 'px,' + zindex + 'px) ' + blocks[i].transform;
-        self.elems[i].style[transformProp] = translate;
-      }
-      self.options.callback(position);
-    };
-
-
-    self.destroy = function() {
-      for (var i = 0; i < self.elems.length; i++){
-        self.elems[i].style.cssText = blocks[i].style;
-      }
-      pause = true;
-    };
-
-
-    init();
-    return self;
-  };
-  return Rellax;
-}));
-
-!function(e,t){"function"==typeof define&&define.amd?define([],t):"object"==typeof module&&module.exports?module.exports=t():e.Rellax=t()}(this,function(){var e=function(t,n){"use strict";var o=Object.create(e.prototype),r=0,i=0,s=[],a=!1,l=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.msRequestAnimationFrame||window.oRequestAnimationFrame||function(e){setTimeout(e,1e3/60)},c=window.transformProp||function(){var e=document.createElement("div");if(null==e.style.transform){var t=["Webkit","Moz","ms"];for(var n in t)if(void 0!==e.style[t[n]+"Transform"])return t[n]+"Transform"}return"transform"}(),d=function(e,t,n){return e<=t?t:e>=n?n:e};o.options={speed:-2,center:!1,round:!0,callback:function(){}},n&&Object.keys(n).forEach(function(e){o.options[e]=n[e]}),o.options.speed=d(o.options.speed,-10,10),t||(t=".rellax");var u=document.querySelectorAll(t);if(!(u.length>0))throw new Error("The elements you're trying to select don't exist.");o.elems=u;var f=function(e){var t=e.dataset.rellaxPercentage,n=e.dataset.rellaxSpeed,r=t||o.options.center?window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop:0,s=r+e.getBoundingClientRect().top,a=e.clientHeight||e.offsetHeight||e.scrollHeight,l=t||(r-s+i)/(a+i);o.options.center&&(l=.5);var c=n?d(n,-10,10):o.options.speed;(t||o.options.center)&&(c=d(n||o.options.speed,-5,5));var u=p(l,c),f=e.style.cssText,m="";if(f.indexOf("transform")>=0){var w=f.indexOf("transform"),v=f.slice(w),g=v.indexOf(";");m=g?" "+v.slice(11,g).replace(/\s/g,""):" "+v.slice(11).replace(/\s/g,"")}return{base:u,top:s,height:a,speed:c,style:f,transform:m}},m=function(){var e=r;return r=void 0!==window.pageYOffset?window.pageYOffset:(document.documentElement||document.body.parentNode||document.body).scrollTop,e!=r},p=function(e,t){var n=t*(100*(1-e));return o.options.round?Math.round(10*n)/10:n},w=function(){m()&&!1===a&&v(),l(w)},v=function(){for(var e=0;e<o.elems.length;e++){var t=(r-s[e].top+i)/(s[e].height+i),n=p(t,s[e].speed)-s[e].base,a="translate3d(0,"+n+"px,0) "+s[e].transform;o.elems[e].style[c]=a}o.options.callback(n)};return o.destroy=function(){for(var e=0;e<o.elems.length;e++)o.elems[e].style.cssText=s[e].style;a=!0},function(){i=window.innerHeight,m();for(var e=0;e<o.elems.length;e++){var t=f(o.elems[e]);s.push(t)}window.addEventListener("resize",function(){v()}),w(),v()}(),o};return e});
 (function(window, document, undefined) {
     'use strict';
     (function(factory) {
@@ -3111,6 +2847,270 @@ jQuery.extend( jQuery.easing,
     }));
 })(window, document);
 
+
+// ------------------------------------------
+// Rellax.js - v1.0.0
+// Buttery smooth parallax library
+// Copyright (c) 2016 Moe Amaya (@moeamaya)
+// MIT license
+//
+// Thanks to Paraxify.js and Jaime Cabllero
+// for parallax concepts
+// ------------------------------------------
+
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define([], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // Node. Does not work with strict CommonJS, but
+    // only CommonJS-like environments that support module.exports,
+    // like Node.
+    module.exports = factory();
+  } else {
+    // Browser globals (root is window)
+    root.Rellax = factory();
+  }
+}(this, function () {
+  var Rellax = function(el, options){
+    "use strict";
+
+    var self = Object.create(Rellax.prototype);
+
+    var posY = 0; // set it to -1 so the animate function gets called at least once
+    var screenY = 0;
+    var blocks = [];
+    var pause = false;
+
+    // check what requestAnimationFrame to use, and if
+    // it's not supported, use the onscroll event
+    var loop = window.requestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.msRequestAnimationFrame ||
+      window.oRequestAnimationFrame ||
+      function(callback){ setTimeout(callback, 1000 / 60); };
+
+    // check which transform property to use
+    var transformProp = window.transformProp || (function(){
+      var testEl = document.createElement('div');
+      if (testEl.style.transform == null) {
+        var vendors = ['Webkit', 'Moz', 'ms'];
+        for (var vendor in vendors) {
+          if (testEl.style[ vendors[vendor] + 'Transform' ] !== undefined) {
+            return vendors[vendor] + 'Transform';
+          }
+        }
+      }
+      return 'transform';
+    })();
+
+    // limit the given number in the range [min, max]
+    var clamp = function(num, min, max) {
+      return (num <= min) ? min : ((num >= max) ? max : num);
+    };
+
+    // Default Settings
+    self.options = {
+      speed: -2,
+      center: false,
+      round: true,
+      callback: function() {},
+    };
+
+    // User defined options (might have more in the future)
+    if (options){
+      Object.keys(options).forEach(function(key){
+        self.options[key] = options[key];
+      });
+    }
+
+    // If some clown tries to crank speed, limit them to +-10
+    self.options.speed = clamp(self.options.speed, -10, 10);
+
+    // By default, rellax class
+    if (!el) {
+      el = '.rellax';
+    }
+
+    var elements = document.querySelectorAll(el);
+
+    // Now query selector
+    if (elements.length > 0) {
+      self.elems = elements;
+    }
+
+    // The elements don't exist
+    else {
+      throw new Error("The elements you're trying to select don't exist.");
+    }
+
+
+    // Let's kick this script off
+    // Build array for cached element values
+    // Bind scroll and resize to animate method
+    var init = function() {
+      screenY = window.innerHeight;
+      setPosition();
+
+      // Get and cache initial position of all elements
+      for (var i = 0; i < self.elems.length; i++){
+        var block = createBlock(self.elems[i]);
+        blocks.push(block);
+      }
+
+      window.addEventListener('resize', function(){
+        animate();
+      });
+
+      // Start the loop
+      update();
+
+      // The loop does nothing if the scrollPosition did not change
+      // so call animate to make sure every element has their transforms
+      animate();
+    };
+
+
+    // We want to cache the parallax blocks'
+    // values: base, top, height, speed
+    // el: is dom object, return: el cache values
+    var createBlock = function(el) {
+      var dataPercentage = el.getAttribute( 'data-rellax-percentage' );
+      var dataSpeed = el.getAttribute( 'data-rellax-speed' );
+      var dataZindex = el.getAttribute( 'data-rellax-zindex' ) || 0;
+
+      // initializing at scrollY = 0 (top of browser)
+      // ensures elements are positioned based on HTML layout.
+      //
+      // If the element has the percentage attribute, the posY needs to be
+      // the current scroll position's value, so that the elements are still positioned based on HTML layout
+      var posY = dataPercentage || self.options.center ? (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop) : 0;
+
+      var blockTop = posY + el.getBoundingClientRect().top;
+      var blockHeight = el.clientHeight || el.offsetHeight || el.scrollHeight;
+
+      // apparently parallax equation everyone uses
+      var percentage = dataPercentage ? dataPercentage : (posY - blockTop + screenY) / (blockHeight + screenY);
+      if(self.options.center){ percentage = 0.5; }
+
+      // Optional individual block speed as data attr, otherwise global speed
+      // Check if has percentage attr, and limit speed to 5, else limit it to 10
+      var speed = dataSpeed ? clamp(dataSpeed, -10, 10) : self.options.speed;
+      if (dataPercentage || self.options.center) {
+        speed = clamp(dataSpeed || self.options.speed, -5, 5);
+      }
+
+      var base = updatePosition(percentage, speed);
+
+      // ~~Store non-translate3d transforms~~
+      // Store inline styles and extract transforms
+      var style = el.style.cssText;
+      var transform = '';
+
+      // Check if there's an inline styled transform
+      if (style.indexOf('transform') >= 0) {
+        // Get the index of the transform
+        var index = style.indexOf('transform');
+
+        // Trim the style to the transform point and get the following semi-colon index
+        var trimmedStyle = style.slice(index);
+        var delimiter = trimmedStyle.indexOf(';');
+
+        // Remove "transform" string and save the attribute
+        if (delimiter) {
+          transform = " " + trimmedStyle.slice(11, delimiter).replace(/\s/g,'');
+        } else {
+          transform = " " + trimmedStyle.slice(11).replace(/\s/g,'');
+        }
+      }
+
+      return {
+        base: base,
+        top: blockTop,
+        height: blockHeight,
+        speed: speed,
+        style: style,
+        transform: transform,
+        zindex: dataZindex
+      };
+    };
+
+    // set scroll position (posY)
+    // side effect method is not ideal, but okay for now
+    // returns true if the scroll changed, false if nothing happened
+    var setPosition = function() {
+      var oldY = posY;
+
+      if (window.pageYOffset !== undefined) {
+        posY = window.pageYOffset;
+      } else {
+        posY = (document.documentElement || document.body.parentNode || document.body).scrollTop;
+      }
+
+      if (oldY != posY) {
+        // scroll changed, return true
+        return true;
+      }
+
+      // scroll did not change
+      return false;
+    };
+
+
+    // Ahh a pure function, gets new transform value
+    // based on scrollPostion and speed
+    // Allow for decimal pixel values
+    var updatePosition = function(percentage, speed) {
+      var value = (speed * (100 * (1 - percentage)));
+      return self.options.round ? Math.round(value) : Math.round(value * 100) / 100;
+    };
+
+
+    //
+    var update = function() {
+      if (setPosition() && pause === false) {
+        animate();
+      }
+
+      // loop again
+      loop(update);
+    };
+
+    // Transform3d on parallax element
+    var animate = function() {
+      for (var i = 0; i < self.elems.length; i++){
+        var percentage = ((posY - blocks[i].top + screenY) / (blocks[i].height + screenY));
+
+        // Subtracting initialize value, so element stays in same spot as HTML
+        var position = updatePosition(percentage, blocks[i].speed) - blocks[i].base;
+
+        var zindex = blocks[i].zindex;
+
+        // Move that element
+        // (Set the new translation and append initial inline transforms.)
+        var translate = 'translate3d(0,' + position + 'px,' + zindex + 'px) ' + blocks[i].transform;
+        self.elems[i].style[transformProp] = translate;
+      }
+      self.options.callback(position);
+    };
+
+
+    self.destroy = function() {
+      for (var i = 0; i < self.elems.length; i++){
+        self.elems[i].style.cssText = blocks[i].style;
+      }
+      pause = true;
+    };
+
+
+    init();
+    return self;
+  };
+  return Rellax;
+}));
+
+!function(e,t){"function"==typeof define&&define.amd?define([],t):"object"==typeof module&&module.exports?module.exports=t():e.Rellax=t()}(this,function(){var e=function(t,n){"use strict";var o=Object.create(e.prototype),r=0,i=0,s=[],a=!1,l=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.msRequestAnimationFrame||window.oRequestAnimationFrame||function(e){setTimeout(e,1e3/60)},c=window.transformProp||function(){var e=document.createElement("div");if(null==e.style.transform){var t=["Webkit","Moz","ms"];for(var n in t)if(void 0!==e.style[t[n]+"Transform"])return t[n]+"Transform"}return"transform"}(),d=function(e,t,n){return e<=t?t:e>=n?n:e};o.options={speed:-2,center:!1,round:!0,callback:function(){}},n&&Object.keys(n).forEach(function(e){o.options[e]=n[e]}),o.options.speed=d(o.options.speed,-10,10),t||(t=".rellax");var u=document.querySelectorAll(t);if(!(u.length>0))throw new Error("The elements you're trying to select don't exist.");o.elems=u;var f=function(e){var t=e.dataset.rellaxPercentage,n=e.dataset.rellaxSpeed,r=t||o.options.center?window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop:0,s=r+e.getBoundingClientRect().top,a=e.clientHeight||e.offsetHeight||e.scrollHeight,l=t||(r-s+i)/(a+i);o.options.center&&(l=.5);var c=n?d(n,-10,10):o.options.speed;(t||o.options.center)&&(c=d(n||o.options.speed,-5,5));var u=p(l,c),f=e.style.cssText,m="";if(f.indexOf("transform")>=0){var w=f.indexOf("transform"),v=f.slice(w),g=v.indexOf(";");m=g?" "+v.slice(11,g).replace(/\s/g,""):" "+v.slice(11).replace(/\s/g,"")}return{base:u,top:s,height:a,speed:c,style:f,transform:m}},m=function(){var e=r;return r=void 0!==window.pageYOffset?window.pageYOffset:(document.documentElement||document.body.parentNode||document.body).scrollTop,e!=r},p=function(e,t){var n=t*(100*(1-e));return o.options.round?Math.round(10*n)/10:n},w=function(){m()&&!1===a&&v(),l(w)},v=function(){for(var e=0;e<o.elems.length;e++){var t=(r-s[e].top+i)/(s[e].height+i),n=p(t,s[e].speed)-s[e].base,a="translate3d(0,"+n+"px,0) "+s[e].transform;o.elems[e].style[c]=a}o.options.callback(n)};return o.destroy=function(){for(var e=0;e<o.elems.length;e++)o.elems[e].style.cssText=s[e].style;a=!0},function(){i=window.innerHeight,m();for(var e=0;e<o.elems.length;e++){var t=f(o.elems[e]);s.push(t)}window.addEventListener("resize",function(){v()}),w(),v()}(),o};return e});
 /*
  slick-animation.js
 
@@ -6235,277 +6235,6 @@ jQuery.extend( jQuery.easing,
 
 }));
 
-// Generated by CoffeeScript 1.6.2
-/**
-@license Sticky-kit v1.1.3 | MIT | Leaf Corcoran 2015 | http://leafo.net
-*/
-
-
-(function() {
-  var $, win;
-
-  $ = this.jQuery || window.jQuery;
-
-  win = $(window);
-
-  $.fn.stick_in_parent = function(opts) {
-    var doc, elm, enable_bottoming, inner_scrolling, manual_spacer, offset_top, outer_width, parent_selector, recalc_every, sticky_class, _fn, _i, _len;
-
-    if (opts == null) {
-      opts = {};
-    }
-    sticky_class = opts.sticky_class, inner_scrolling = opts.inner_scrolling, recalc_every = opts.recalc_every, parent_selector = opts.parent, offset_top = opts.offset_top, manual_spacer = opts.spacer, enable_bottoming = opts.bottoming;
-    if (offset_top == null) {
-      offset_top = 0;
-    }
-    if (parent_selector == null) {
-      parent_selector = void 0;
-    }
-    if (inner_scrolling == null) {
-      inner_scrolling = true;
-    }
-    if (sticky_class == null) {
-      sticky_class = "is_stuck";
-    }
-    doc = $(document);
-    if (enable_bottoming == null) {
-      enable_bottoming = true;
-    }
-    outer_width = function(el) {
-      var computed, w, _el;
-
-      if (window.getComputedStyle) {
-        _el = el[0];
-        computed = window.getComputedStyle(el[0]);
-        w = parseFloat(computed.getPropertyValue("width")) + parseFloat(computed.getPropertyValue("margin-left")) + parseFloat(computed.getPropertyValue("margin-right"));
-        if (computed.getPropertyValue("box-sizing") !== "border-box") {
-          w += parseFloat(computed.getPropertyValue("border-left-width")) + parseFloat(computed.getPropertyValue("border-right-width")) + parseFloat(computed.getPropertyValue("padding-left")) + parseFloat(computed.getPropertyValue("padding-right"));
-        }
-        return w;
-      } else {
-        return el.outerWidth(true);
-      }
-    };
-    _fn = function(elm, padding_bottom, parent_top, parent_height, top, height, el_float, detached) {
-      var bottomed, detach, fixed, last_pos, last_scroll_height, offset, parent, recalc, recalc_and_tick, recalc_counter, spacer, tick;
-
-      if (elm.data("sticky_kit")) {
-        return;
-      }
-      elm.data("sticky_kit", true);
-      last_scroll_height = doc.height();
-      parent = elm.parent();
-      if (parent_selector != null) {
-        parent = parent.closest(parent_selector);
-      }
-      if (!parent.length) {
-        throw "failed to find stick parent";
-      }
-      fixed = false;
-      bottomed = false;
-      spacer = manual_spacer != null ? manual_spacer && elm.closest(manual_spacer) : $("<div />");
-      if (spacer) {
-        spacer.css('position', elm.css('position'));
-      }
-      recalc = function() {
-        var border_top, padding_top, restore;
-
-        if (detached) {
-          return;
-        }
-        last_scroll_height = doc.height();
-        border_top = parseInt(parent.css("border-top-width"), 10);
-        padding_top = parseInt(parent.css("padding-top"), 10);
-        padding_bottom = parseInt(parent.css("padding-bottom"), 10);
-        parent_top = parent.offset().top + border_top + padding_top;
-        parent_height = parent.height();
-        if (fixed) {
-          fixed = false;
-          bottomed = false;
-          if (manual_spacer == null) {
-            elm.insertAfter(spacer);
-            spacer.detach();
-          }
-          elm.css({
-            position: "",
-            top: "",
-            width: "",
-            bottom: ""
-          }).removeClass(sticky_class);
-          restore = true;
-        }
-        top = elm.offset().top - (parseInt(elm.css("margin-top"), 10) || 0) - offset_top;
-        height = elm.outerHeight(true);
-        el_float = elm.css("float");
-        if (spacer) {
-          spacer.css({
-            width: outer_width(elm),
-            height: height,
-            display: elm.css("display"),
-            "vertical-align": elm.css("vertical-align"),
-            "float": el_float
-          });
-        }
-        if (restore) {
-          return tick();
-        }
-      };
-      recalc();
-      if (height === parent_height) {
-        return;
-      }
-      last_pos = void 0;
-      offset = offset_top;
-      recalc_counter = recalc_every;
-      tick = function() {
-        var css, delta, recalced, scroll, will_bottom, win_height;
-
-        if (detached) {
-          return;
-        }
-        recalced = false;
-        if (recalc_counter != null) {
-          recalc_counter -= 1;
-          if (recalc_counter <= 0) {
-            recalc_counter = recalc_every;
-            recalc();
-            recalced = true;
-          }
-        }
-        if (!recalced && doc.height() !== last_scroll_height) {
-          recalc();
-          recalced = true;
-        }
-        scroll = win.scrollTop();
-        if (last_pos != null) {
-          delta = scroll - last_pos;
-        }
-        last_pos = scroll;
-        if (fixed) {
-          if (enable_bottoming) {
-            will_bottom = scroll + height + offset > parent_height + parent_top;
-            if (bottomed && !will_bottom) {
-              bottomed = false;
-              elm.css({
-                position: "fixed",
-                bottom: "",
-                top: offset
-              }).trigger("sticky_kit:unbottom");
-            }
-          }
-          if (scroll < top) {
-            fixed = false;
-            offset = offset_top;
-            if (manual_spacer == null) {
-              if (el_float === "left" || el_float === "right") {
-                elm.insertAfter(spacer);
-              }
-              spacer.detach();
-            }
-            css = {
-              position: "",
-              width: "",
-              top: ""
-            };
-            elm.css(css).removeClass(sticky_class).trigger("sticky_kit:unstick");
-          }
-          if (inner_scrolling) {
-            win_height = win.height();
-            if (height + offset_top > win_height) {
-              if (!bottomed) {
-                offset -= delta;
-                offset = Math.max(win_height - height, offset);
-                offset = Math.min(offset_top, offset);
-                if (fixed) {
-                  elm.css({
-                    top: offset + "px"
-                  });
-                }
-              }
-            }
-          }
-        } else {
-          if (scroll > top) {
-            fixed = true;
-            css = {
-              position: "fixed",
-              top: offset
-            };
-            css.width = elm.css("box-sizing") === "border-box" ? elm.outerWidth() + "px" : elm.width() + "px";
-            elm.css(css).addClass(sticky_class);
-            if (manual_spacer == null) {
-              elm.after(spacer);
-              if (el_float === "left" || el_float === "right") {
-                spacer.append(elm);
-              }
-            }
-            elm.trigger("sticky_kit:stick");
-          }
-        }
-        if (fixed && enable_bottoming) {
-          if (will_bottom == null) {
-            will_bottom = scroll + height + offset > parent_height + parent_top;
-          }
-          if (!bottomed && will_bottom) {
-            bottomed = true;
-            if (parent.css("position") === "static") {
-              parent.css({
-                position: "relative"
-              });
-            }
-            return elm.css({
-              position: "absolute",
-              bottom: padding_bottom,
-              top: "auto"
-            }).trigger("sticky_kit:bottom");
-          }
-        }
-      };
-      recalc_and_tick = function() {
-        recalc();
-        return tick();
-      };
-      detach = function() {
-        detached = true;
-        win.off("touchmove", tick);
-        win.off("scroll", tick);
-        win.off("resize", recalc_and_tick);
-        $(document.body).off("sticky_kit:recalc", recalc_and_tick);
-        elm.off("sticky_kit:detach", detach);
-        elm.removeData("sticky_kit");
-        elm.css({
-          position: "",
-          bottom: "",
-          top: "",
-          width: ""
-        });
-        parent.position("position", "");
-        if (fixed) {
-          if (manual_spacer == null) {
-            if (el_float === "left" || el_float === "right") {
-              elm.insertAfter(spacer);
-            }
-            spacer.remove();
-          }
-          return elm.removeClass(sticky_class);
-        }
-      };
-      win.on("touchmove", tick);
-      win.on("scroll", tick);
-      win.on("resize", recalc_and_tick);
-      $(document.body).on("sticky_kit:recalc", recalc_and_tick);
-      elm.on("sticky_kit:detach", detach);
-      return setTimeout(tick, 0);
-    };
-    for (_i = 0, _len = this.length; _i < _len; _i++) {
-      elm = this[_i];
-      _fn($(elm));
-    }
-    return this;
-  };
-
-}).call(this);
-
 // Sticky Plugin v1.0.4 for jQuery
 // =============
 // Author: Anthony Garand
@@ -6793,6 +6522,277 @@ jQuery.extend( jQuery.easing,
     setTimeout(scroller, 0);
   });
 }));
+
+// Generated by CoffeeScript 1.6.2
+/**
+@license Sticky-kit v1.1.3 | MIT | Leaf Corcoran 2015 | http://leafo.net
+*/
+
+
+(function() {
+  var $, win;
+
+  $ = this.jQuery || window.jQuery;
+
+  win = $(window);
+
+  $.fn.stick_in_parent = function(opts) {
+    var doc, elm, enable_bottoming, inner_scrolling, manual_spacer, offset_top, outer_width, parent_selector, recalc_every, sticky_class, _fn, _i, _len;
+
+    if (opts == null) {
+      opts = {};
+    }
+    sticky_class = opts.sticky_class, inner_scrolling = opts.inner_scrolling, recalc_every = opts.recalc_every, parent_selector = opts.parent, offset_top = opts.offset_top, manual_spacer = opts.spacer, enable_bottoming = opts.bottoming;
+    if (offset_top == null) {
+      offset_top = 0;
+    }
+    if (parent_selector == null) {
+      parent_selector = void 0;
+    }
+    if (inner_scrolling == null) {
+      inner_scrolling = true;
+    }
+    if (sticky_class == null) {
+      sticky_class = "is_stuck";
+    }
+    doc = $(document);
+    if (enable_bottoming == null) {
+      enable_bottoming = true;
+    }
+    outer_width = function(el) {
+      var computed, w, _el;
+
+      if (window.getComputedStyle) {
+        _el = el[0];
+        computed = window.getComputedStyle(el[0]);
+        w = parseFloat(computed.getPropertyValue("width")) + parseFloat(computed.getPropertyValue("margin-left")) + parseFloat(computed.getPropertyValue("margin-right"));
+        if (computed.getPropertyValue("box-sizing") !== "border-box") {
+          w += parseFloat(computed.getPropertyValue("border-left-width")) + parseFloat(computed.getPropertyValue("border-right-width")) + parseFloat(computed.getPropertyValue("padding-left")) + parseFloat(computed.getPropertyValue("padding-right"));
+        }
+        return w;
+      } else {
+        return el.outerWidth(true);
+      }
+    };
+    _fn = function(elm, padding_bottom, parent_top, parent_height, top, height, el_float, detached) {
+      var bottomed, detach, fixed, last_pos, last_scroll_height, offset, parent, recalc, recalc_and_tick, recalc_counter, spacer, tick;
+
+      if (elm.data("sticky_kit")) {
+        return;
+      }
+      elm.data("sticky_kit", true);
+      last_scroll_height = doc.height();
+      parent = elm.parent();
+      if (parent_selector != null) {
+        parent = parent.closest(parent_selector);
+      }
+      if (!parent.length) {
+        throw "failed to find stick parent";
+      }
+      fixed = false;
+      bottomed = false;
+      spacer = manual_spacer != null ? manual_spacer && elm.closest(manual_spacer) : $("<div />");
+      if (spacer) {
+        spacer.css('position', elm.css('position'));
+      }
+      recalc = function() {
+        var border_top, padding_top, restore;
+
+        if (detached) {
+          return;
+        }
+        last_scroll_height = doc.height();
+        border_top = parseInt(parent.css("border-top-width"), 10);
+        padding_top = parseInt(parent.css("padding-top"), 10);
+        padding_bottom = parseInt(parent.css("padding-bottom"), 10);
+        parent_top = parent.offset().top + border_top + padding_top;
+        parent_height = parent.height();
+        if (fixed) {
+          fixed = false;
+          bottomed = false;
+          if (manual_spacer == null) {
+            elm.insertAfter(spacer);
+            spacer.detach();
+          }
+          elm.css({
+            position: "",
+            top: "",
+            width: "",
+            bottom: ""
+          }).removeClass(sticky_class);
+          restore = true;
+        }
+        top = elm.offset().top - (parseInt(elm.css("margin-top"), 10) || 0) - offset_top;
+        height = elm.outerHeight(true);
+        el_float = elm.css("float");
+        if (spacer) {
+          spacer.css({
+            width: outer_width(elm),
+            height: height,
+            display: elm.css("display"),
+            "vertical-align": elm.css("vertical-align"),
+            "float": el_float
+          });
+        }
+        if (restore) {
+          return tick();
+        }
+      };
+      recalc();
+      if (height === parent_height) {
+        return;
+      }
+      last_pos = void 0;
+      offset = offset_top;
+      recalc_counter = recalc_every;
+      tick = function() {
+        var css, delta, recalced, scroll, will_bottom, win_height;
+
+        if (detached) {
+          return;
+        }
+        recalced = false;
+        if (recalc_counter != null) {
+          recalc_counter -= 1;
+          if (recalc_counter <= 0) {
+            recalc_counter = recalc_every;
+            recalc();
+            recalced = true;
+          }
+        }
+        if (!recalced && doc.height() !== last_scroll_height) {
+          recalc();
+          recalced = true;
+        }
+        scroll = win.scrollTop();
+        if (last_pos != null) {
+          delta = scroll - last_pos;
+        }
+        last_pos = scroll;
+        if (fixed) {
+          if (enable_bottoming) {
+            will_bottom = scroll + height + offset > parent_height + parent_top;
+            if (bottomed && !will_bottom) {
+              bottomed = false;
+              elm.css({
+                position: "fixed",
+                bottom: "",
+                top: offset
+              }).trigger("sticky_kit:unbottom");
+            }
+          }
+          if (scroll < top) {
+            fixed = false;
+            offset = offset_top;
+            if (manual_spacer == null) {
+              if (el_float === "left" || el_float === "right") {
+                elm.insertAfter(spacer);
+              }
+              spacer.detach();
+            }
+            css = {
+              position: "",
+              width: "",
+              top: ""
+            };
+            elm.css(css).removeClass(sticky_class).trigger("sticky_kit:unstick");
+          }
+          if (inner_scrolling) {
+            win_height = win.height();
+            if (height + offset_top > win_height) {
+              if (!bottomed) {
+                offset -= delta;
+                offset = Math.max(win_height - height, offset);
+                offset = Math.min(offset_top, offset);
+                if (fixed) {
+                  elm.css({
+                    top: offset + "px"
+                  });
+                }
+              }
+            }
+          }
+        } else {
+          if (scroll > top) {
+            fixed = true;
+            css = {
+              position: "fixed",
+              top: offset
+            };
+            css.width = elm.css("box-sizing") === "border-box" ? elm.outerWidth() + "px" : elm.width() + "px";
+            elm.css(css).addClass(sticky_class);
+            if (manual_spacer == null) {
+              elm.after(spacer);
+              if (el_float === "left" || el_float === "right") {
+                spacer.append(elm);
+              }
+            }
+            elm.trigger("sticky_kit:stick");
+          }
+        }
+        if (fixed && enable_bottoming) {
+          if (will_bottom == null) {
+            will_bottom = scroll + height + offset > parent_height + parent_top;
+          }
+          if (!bottomed && will_bottom) {
+            bottomed = true;
+            if (parent.css("position") === "static") {
+              parent.css({
+                position: "relative"
+              });
+            }
+            return elm.css({
+              position: "absolute",
+              bottom: padding_bottom,
+              top: "auto"
+            }).trigger("sticky_kit:bottom");
+          }
+        }
+      };
+      recalc_and_tick = function() {
+        recalc();
+        return tick();
+      };
+      detach = function() {
+        detached = true;
+        win.off("touchmove", tick);
+        win.off("scroll", tick);
+        win.off("resize", recalc_and_tick);
+        $(document.body).off("sticky_kit:recalc", recalc_and_tick);
+        elm.off("sticky_kit:detach", detach);
+        elm.removeData("sticky_kit");
+        elm.css({
+          position: "",
+          bottom: "",
+          top: "",
+          width: ""
+        });
+        parent.position("position", "");
+        if (fixed) {
+          if (manual_spacer == null) {
+            if (el_float === "left" || el_float === "right") {
+              elm.insertAfter(spacer);
+            }
+            spacer.remove();
+          }
+          return elm.removeClass(sticky_class);
+        }
+      };
+      win.on("touchmove", tick);
+      win.on("scroll", tick);
+      win.on("resize", recalc_and_tick);
+      $(document.body).on("sticky_kit:recalc", recalc_and_tick);
+      elm.on("sticky_kit:detach", detach);
+      return setTimeout(tick, 0);
+    };
+    for (_i = 0, _len = this.length; _i < _len; _i++) {
+      elm = this[_i];
+      _fn($(elm));
+    }
+    return this;
+  };
+
+}).call(this);
 
 jQuery(document).ready(function ($) {
     var timelines = $('.cd-horizontal-timeline'),
@@ -8148,7 +8148,7 @@ jQuery(document).ready(function ($) {
     2000;
 
     // SUPPORT FOR RESPONSIVE EMBEDDED VIDEOS //
-    var $all_oembed_videos = $("iframe[src*='youtube']");
+    var $all_oembed_videos = $("iframe[src*='youtube'],iframe[src*='vimeo.com']");
 
     $all_oembed_videos.each(function () {
 

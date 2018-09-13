@@ -1072,7 +1072,7 @@ jQuery(document).ready(function ($) {
     2000;
 
     // SUPPORT FOR RESPONSIVE EMBEDDED VIDEOS //
-    var $all_oembed_videos = $("iframe[src*='youtube']");
+    var $all_oembed_videos = $("iframe[src*='youtube'],iframe[src*='vimeo.com']");
 
     $all_oembed_videos.each(function () {
 
