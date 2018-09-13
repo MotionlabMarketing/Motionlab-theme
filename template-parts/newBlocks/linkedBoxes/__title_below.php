@@ -43,7 +43,8 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link');
                 // STANDARD BOXES WITH IMAGE AND TITLE //
                 if ($item['block_linkBoxes_breakout_true'] !== true): ?>
                     <div class="item col col-12 md-col-<?=$block['columns']?> <?=$block['textColor']?><?= $block['content']['txtAlign'] ?> p3 block relative " data-mh="box-height">
-                        <a href="<?= $item['block_linkBoxes_button_button_link']['url'] ?>"
+                        <?php pa($item['block_linkBoxes_button_button_link']['target']); ?>
+                        <a href="#" onclick='window.open("<?= $item['block_linkBoxes_button_button_link']['url'] ?>", "<?=$item['block_linkBoxes_button_button_link']['target'] == '_blank' ? '_blank' : '_self'?>")'
                            class="block relative overflow-hidden bg-cover bg-center border-light border-top border-left border-right box-shadow-3 border-bottom <?=$item['block_linkBoxes_button_system_text_colours']?> <?=$item['block_linkBoxes_button_system_background_colours']?> || zoom" <?= ($item['block_linkBoxes_button_button_link']['title'] ? 'title="' . $item['block_linkBoxes_button_button_link']['title'] . '"' : '') ?> <?= ($item['block_linkBoxes_button_button_link']['target'] ? 'target="' . $item['block_linkBoxes_button_button_link']['target'] . '"' : '') ?>>
 
                             <?php if ($item['block_linkBoxes_media'] == "video"): ?>
