@@ -7826,6 +7826,11 @@ jQuery(document).ready(function ($) {
     $('.gallery-img').magnificPopup({
         delegate: 'img',
         type: 'image',
+        removalDelay: 500, //delay removal by X to allow out-animation
+        closeOnContentClick: false,
+        midClick: true,
+        removalDelay: 300,
+        mainClass: 'mfp-with-fade',
         gallery: {
             enabled: true,
             preload: [0],
@@ -7835,9 +7840,6 @@ jQuery(document).ready(function ($) {
             tCounter: '<span class="mfp-counter">%curr% of %total%</span>'
         }
     });
-
-    
-
 
     /*======================================================
     TABS
