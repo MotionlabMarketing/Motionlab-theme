@@ -7210,8 +7210,19 @@ jQuery(document).ready(function ($) {
 
     function headerSpace() {
         var headerHeight = $('header').outerHeight();
-        $('.js-header-space').css('padding-top', +headerHeight + "px");
-        $('.js-negative-offset-header-space').css('margin-top', "-" + headerHeight + "px");
+        var windowWidth  = $(window).width();
+        
+        if (windowWidth > 600) {
+
+            $('.js-header-space').css('padding-top', + (headerHeight + (headerHeight / 2)) + "px");
+            $('.js-negative-offset-header-space').css('margin-top', "-" + (headerHeight + (headerHeight / 2)) + "px");
+
+        } else {
+
+            $('.js-header-space').css("padding-top", "30px");
+
+        }
+
     }
 
     headerSpace();
@@ -7224,6 +7235,7 @@ jQuery(document).ready(function ($) {
 
         var headerHeight = $('header').outerHeight();
         $('.minus-js-header-height').css('min-height', 'calc(100vh - ' + headerHeight + "px)");
+
     }
 
     heightHeaderSpace();

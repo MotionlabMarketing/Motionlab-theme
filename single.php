@@ -5,14 +5,13 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
 
 ?>
 
-<section class="post-standard">
+<section class="post-standard px4">
     
     <div class="container">
-        <div class="post clearfix py5">
+        <div class="post clearfix lg-py5">
             
             <?php while (have_posts()) : the_post();
             
-            // TODO:  THIS NEEDS TO BE UPDATED WITH SOME NEW SETTING
             $block = get_field_objects();
             $narrow = $block['building_blocks']['value'][0]['narrow_columns'];
             
@@ -28,7 +27,7 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
             <div class="mx-auto container measure-wide">
                 
                 <div class="measure-wide">
-                    <p class="left mt1 h5"><?=ml_time_elapsed_string(get_the_date())?></p>
+                    <p class="left mt1 h5 width-100 md-width-auto text-center md-text-left"><?=ml_time_elapsed_string(get_the_date())?></p>
                     
                     <ul class="mt2 tags tags-right border-radius">
                         <?php if (is_array($taxonomies)): foreach($taxonomies as $category) :?>

@@ -9,11 +9,11 @@ $block = $news_controller->fetchFeedPosts(9);
 
 get_header(); ?>
 
-<div class="clearfix ||  mt6" id="news-featuredListing">
+<div class="clearfix" id="news-featuredListing">
 
     <div class="container">
 
-        <div class="container clearfix mt6">
+        <div class="container clearfix">
 
             <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
 

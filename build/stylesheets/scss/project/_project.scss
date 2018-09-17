@@ -116,23 +116,6 @@
    }
 }
 
-
-// Menu
-
-header{
-   font-size: 0.875rem;
-   .logo-wrapper{
-         width: 8rem;
-   }
-   @media (min-width: $breakpoint-xl) {
-      font-size: inherit;
-      .logo-wrapper{
-            width: auto;
-      }
-   }
-}
-
-
 .menu {
     transform: translate3d(100%,0,0);
     transition: all $transition;
@@ -331,6 +314,8 @@ header{
         position: relative;
     }
 }
+
+
 
 
 
