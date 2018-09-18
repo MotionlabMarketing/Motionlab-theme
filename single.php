@@ -31,7 +31,7 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
 
                     <ul class="mt2 tags tags-center border-radius">
                         <?php if (is_array($taxonomies)): foreach($taxonomies as $category) :?>
-                            <li><a href="/news/<?=$category->slug?>"><?=$category->name?></a></li>
+                            <li><a href="/latest-news/<?=$category->slug?>"><?=$category->name?></a></li>
                         <?php endforeach; endif; ?>
                     </ul>
                     
