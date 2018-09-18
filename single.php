@@ -28,9 +28,8 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
             <div class="mx-auto container measure-wide">
                 
                 <div class="measure-wide">
-                    <p class="left mt1 h5"><?=ml_time_elapsed_string(get_the_date())?></p>
-                    
-                    <ul class="mt2 tags tags-right border-radius">
+
+                    <ul class="mt2 tags tags-center border-radius">
                         <?php if (is_array($taxonomies)): foreach($taxonomies as $category) :?>
                             <li><a href="/news/<?=$category->slug?>"><?=$category->name?></a></li>
                         <?php endforeach; endif; ?>
