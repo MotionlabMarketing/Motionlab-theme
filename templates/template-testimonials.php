@@ -38,7 +38,7 @@ get_header(); ?>
 
         <div class="container clearfix">
 
-            <div class="grid" id="testimonials-listing">
+            <div class="grid clearfix overflow-hidden" id="testimonials-listing">
 
             </div>
 

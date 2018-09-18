@@ -607,6 +607,11 @@ $arrow-size: 10px;
     }
   }
 
+  .js-header-space {
+    @media (max-width: $breakpoint-sm) {
+      display: none;
+    }
+  }
 
 
   // slick slider-height
@@ -618,15 +623,24 @@ $arrow-size: 10px;
     }
   }
 
+  [data-block-name="block_gallery"][data-block-layout="basic"] {
+    margin: 0 1rem;
 
-    [data-block-name="block_gallery"][data-block-layout="gallerySlider"]{
-          .slick-prev{
-              left: 0;
-          }
-          .slick-next{
-              right: 0;
-          }
+    @media (min-width: $breakpoint-sm) {
+      margin: auto;
     }
+  }
+
+
+  [data-block-name="block_gallery"][data-block-layout="gallerySlider"]{
+
+        .slick-prev{
+            left: 0;
+        }
+        .slick-next{
+            right: 0;
+        }
+  }
 
 
   .productSliderNav .slick-current .border{
