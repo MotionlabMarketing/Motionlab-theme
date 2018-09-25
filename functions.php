@@ -46,8 +46,8 @@ if (! function_exists('motionlabtheme_setup')) :
 
         // This theme uses wp_nav_menu() in one location.
         register_nav_menus(array(
-            'primary' => esc_html__('Main Menu', 'motionlabtheme'),
-            'top-menu' => esc_html__('Top Menu', 'motionlabtheme'),
+            //'primary' => esc_html__('Main Menu', 'motionlabtheme'),
+            //'top-menu' => esc_html__('Top Menu', 'motionlabtheme'),
         ));
 
         add_theme_support('html5', array(
@@ -321,8 +321,7 @@ ACF OPTIONS PAGES
 
 if (function_exists('acf_add_options_page')) {
     acf_add_options_page();
-    acf_add_options_sub_page('Theme');
-    acf_add_options_sub_page('Global Banner');
+    acf_add_options_sub_page('Customise Your Theme');
 }
 
 
@@ -331,16 +330,15 @@ DEFAULT IMAGES
 ==================================================================*/
 function remove_default_image_sizes($sizes)
 {
-    unset($sizes['thumbnail']);
+    //unset($sizes['thumbnail']);
     //unset( $sizes['medium']);
     //unset( $sizes['medium_large']);
-    unset($sizes['large']);
+    //unset($sizes['large']);
     //unset( $sizes['full']);
 
     return $sizes;
 }
-add_filter('intermediate_image_sizes_advanced', 'remove_default_image_sizes');
-
+// add_filter('intermediate_image_sizes_advanced', 'remove_default_image_sizes');
 
 add_theme_support('post-thumbnails');
 add_image_size('logoCrop', 300, 300, true);

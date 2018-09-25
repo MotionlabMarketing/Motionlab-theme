@@ -15,7 +15,7 @@
 
     <?=($block['grid'] == 'container')? '<div class="container '.$block['padding'].'">' : ""?>
 
-        <div class="block py3">
+        <div class="block">
 
             <div class="bg-angled-lines" style="height:0.4rem;"></div>
 

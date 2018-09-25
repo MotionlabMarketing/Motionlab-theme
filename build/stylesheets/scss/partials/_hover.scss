@@ -113,3 +113,21 @@
 .hover-btn-affect:hover{ 
     box-shadow: inset 0 0 0 20rem $darken-1;
 }
+
+@include generate-breakpoint-prefixes {
+
+  &hover-zoom {
+    transform: scale(1, 1);
+    transition: $transition;
+    
+    &:hover,
+    &:focus {
+
+      .zoom {
+        z-index: 100;
+        transform: scale($zoom-val, $zoom-val);
+      }
+    }
+  }
+
+}
