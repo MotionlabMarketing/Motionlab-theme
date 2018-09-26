@@ -76,11 +76,13 @@ if ($block['enabled'] == true || empty($block['enabled'])): // TODO: Needs corre
         // GET THE SIDES TO INCLUDE THE BORDER.
         $block['temp']             = get_sub_field($current . '_settings_block_border_sides');
 
-        foreach ($block['temp'] as $a):
+        if (!empty($block['temp'])):
+            foreach ($block['temp'] as $a):
 
-            $block['border']['sides'] = $block['border']['sides'] . " border-" . $a;
+                $block['border']['sides'] = $block['border']['sides'] . " border-" . $a;
 
-        endforeach;
+            endforeach;
+        endif;
 
         // GET THE BORDER SIZE.
         $block['border']['size']   = get_sub_field($current . '_settings_block_border_sides_size');

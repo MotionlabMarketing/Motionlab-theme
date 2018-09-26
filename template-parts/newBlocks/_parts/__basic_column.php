@@ -10,7 +10,7 @@
 
 <div class="col col-12 md-col-<?=$column['size']?> <?=$column['align']?> <?=$column['system_text_colours']?> px4">
 
-    <?php render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}", ["data-mh" => "{$block['id']}-content-header"]); ?>
+    <?php render_heading( "{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}", ["data-mh" => "{$block['id']}-content-header", "class" => "mb2"]); ?>
 
     <?php render_wysiwyg("{$content}", $block['content']['limitWidth'], ["data-mh" => "{$block['id']}-content-wysiwyg"]); ?>
 

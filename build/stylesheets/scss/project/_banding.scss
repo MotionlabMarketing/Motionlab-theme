@@ -472,29 +472,14 @@ h3, .h3 {
 */
 
 header {
+  max-height: 65px;
 
-  .header-size {
-    max-height: 6.8rem;
+  @media (min-width: $breakpoint-sm) {
+    max-height: auto;
   }
 
-  &.smallification {
-    background-color: $brand-primary;
-
-    .holder {
-      background-color: $brand-primary;
-
-      .logo-holder {
-        background: transparent !important;
-      }
-    }
-
-    .logo-wrapper {
-      margin-bottom: 0;
-    }
-
-    .fa {
-      color: $brand-white;
-    }
+  .logo {
+    max-width: 130px;
   }
 }
 
@@ -2832,4 +2817,15 @@ $formAccent: #e2e2e2;
     }
   }
 
+}
+
+.menu-spacing {
+    @media (min-width: 1100px) {
+        margin-left: 0.4rem;
+        margin-right: 0.4rem;
+    }
+    @media (min-width: 1360px) {
+        margin-left: 0.8rem;
+        margin-right: 0.8rem;
+    }
 }

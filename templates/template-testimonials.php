@@ -9,7 +9,7 @@ $testimonials = $testimonials->getBlock();
 
 get_header(); ?>
 
-    <section class="clearfix mt6 mb4 mb4" id="listing-testimonials" data-template="testimonialStandard">
+    <section class="clearfix" id="listing-testimonials" data-template="testimonialStandard">
 
         <div class="container">
 

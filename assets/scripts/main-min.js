@@ -7210,18 +7210,9 @@ jQuery(document).ready(function ($) {
 
     function headerSpace() {
         var headerHeight = $('header').outerHeight();
-        var windowWidth  = $(window).width();
         
-        if (windowWidth > 600) {
-
-            $('.js-header-space').css('padding-top', + (headerHeight + (headerHeight / 2)) + "px");
-            $('.js-negative-offset-header-space').css('margin-top', "-" + (headerHeight + (headerHeight / 2)) + "px");
-
-        } else {
-
-            $('.js-header-space').css("padding-top", "30px");
-
-        }
+        $('.js-header-space').css('padding-top', + (headerHeight + (headerHeight / 2)) + "px");
+        $('.js-negative-offset-header-space').css('margin-top', "-" + (headerHeight + (headerHeight / 2)) + "px");
 
     }
 

@@ -14,10 +14,10 @@
  * @param string $classes
  */
 
-function render_heading($title = "", $type = "h3", $size = "h4", $color = "brand-primary", $case = "", $attr = ["class" => "mb2"]) {
+function render_heading($title = "", $type = "h3", $size = "h4", $color = "brand-primary", $case = "", $attr = ["class" => "mb2 p0"]) {
     
     // if (!empty($attr['class'])) { BLOCKING CLASS RENDERING...
-        $attr['class'] = "pb2 {$size} {$color} {$case} " . $attr['class'];
+        $attr['class'] = "{$size} {$color} {$case} " . $attr['class'];
     // }
     
     if (!empty($title))

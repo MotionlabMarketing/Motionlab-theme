@@ -7,15 +7,13 @@
 
     <div class="container clearfix">
 
-        <div class="col-12 mb5 text-center">
+        <div class="col-12 text-center">
 
-            <div class="col col-12 md-col-12 lg-col-12 mb5 text-center">
+            <div class="col col-12 md-col-12 lg-col-12 text-center">
 
                 <?php if (!empty($heading)): ?>
 
-                    <div class="mb3">
-                        <?php render_heading("{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}"); ?>
-                    </div>
+                    <?php render_heading("{$heading->title}", "{$heading->type}", "{$heading->size}", "{$heading->color}", "{$heading->case}"); ?>
 
                 <?php endif; ?>
 

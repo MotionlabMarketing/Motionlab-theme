@@ -19,13 +19,13 @@ get_header(); ?>
 
         </div>
 
-        <div class="col col-12 md-col-12 lg-col-12 mb6 bg-smoke">
+        <div class="col col-12 md-col-12 lg-col-12 mb3 lg-mb5 bg-smoke">
 
             <?php $latest_post = array_shift($block['posts']->posts); ?>
-            <div class="col col-12 md-col-6 px4 md-p5 left md-right flex items-center justify-center">
+            <div class="col col-12 md-col-6 pt4 px4 md-p5 left md-right flex items-center justify-center">
 
                 <?php
-                if (has_post_thumbnail($latest_post->ID)){
+                if (has_post_thumbnail($latest_post->ID)) {
                     $image_url = get_attachment_image_url(get_post_thumbnail_id( $latest_post->ID ), 'medium');
                 } else {
                     $image_url = get_field('fallback_image_news_feature', 'option');
@@ -37,27 +37,29 @@ get_header(); ?>
 
             </div>
 
+            <div class="col col-12 md-col-6 relative pb4 px4 md-p5 right md-left">
 
-            <div class="col col-12 md-col-6 relative p4 md-p5 right md-left">
+                <p class="pt2 h5 mb2">Posted: <?= date('d M Y', strtotime($latest_post->post_date)); ?></p>
 
-                <p class="left pt2 h5"><?= date('d M Y', strtotime($latest_post->post_date)); ?></p>
-
-                <ul class="mt1 tags tags-right border-radius">
-                    <?php foreach ($latest_post->categories as $category) : ?>
-                        <li><a href="<?= $category->slug ?>"><?= $category->name ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
+                <?php if (ML_POST_TAGS): ?>
+                    <ul class="mt2 tags tags-right border-radius">
+                        <?php foreach ($latest_post->categories as $category) : ?>
+                            <li><a href="<?= $category->slug ?>"><?= $category->name ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
 
                 <a href="<?= get_permalink($latest_post->ID) ?>">
 
                     <?php $heading = convert_heading($blockTitle); ?>
-                    <?php render_heading("{$latest_post->post_title}", "h2", "", "brand-primary", "{$heading->case}", ["class" => "clear-both mt3 md-mt5 brand-primary"]); ?>
+                    <?php render_heading("{$latest_post->post_title}", "h2", "", "brand-primary", "{$heading->case}", ["class" => "brand-primary"]); ?>
 
                 </a>
 
-                <p><?= strlen($latest_post->post_excerpt) > 1 ? $latest_post->post_excerpt : shorten_string($latest_post->post_content, 55); ?></p>
+                <p><?=strlen($latest_post->post_excerpt) > 1 ? strip_tags($latest_post->post_excerpt, '<br><p>') : shorten_string(strip_tags($latest_post->post_content, '<br><p>'), 55); ?></p>
 
-                <a href="<?= get_permalink($latest_post->ID) ?>" class="btn btn-primary border-primary btn-medium mt4 h5">Read full story</a>
+                <?php // TODO: Make this use the button function or have its only button render function. // ?> 
+                <a href="<?= get_permalink($latest_post->ID) ?>" class="btn btn-primary border-primary btn-medium mt4 h5"><?=get_field('news_read_more_button_label', 'option');?></a>
 
             </div>
 
