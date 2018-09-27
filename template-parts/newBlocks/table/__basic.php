@@ -16,35 +16,17 @@
 
         <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-        <table class="<?=$block['options']['stripped']?> <?=$block['options']['firstBold']?> <?=$block['options']['limitWidth']?> <?=$block['options']['tableBorders']?>">
+        <div class="overflow-x-scroll">
 
-            <?php if ($block['table']['header']): ?>
+            <table class="<?=$block['options']['stripped']?> <?=$block['options']['firstBold']?> <?=$block['options']['limitWidth']?> <?=$block['options']['tableBorders']?>">
 
-                <thead>
+                <?php if ($block['table']['header']): ?>
 
-                    <tr>
-
-                        <?php foreach ($block['table']['header'] as $column): ?>
-
-                            <td><?=$column['c']?></td>
-
-                        <?php endforeach; ?>
-
-                    </tr>
-
-                </thead>
-
-            <?php endif; ?>
-
-            <?php if ($block['table']['body']): ?>
-
-                <tbody>
-
-                    <?php foreach ($block['table']['body'] as $row): ?>
+                    <thead>
 
                         <tr>
 
-                            <?php foreach ($row as $column): ?>
+                            <?php foreach ($block['table']['header'] as $column): ?>
 
                                 <td><?=$column['c']?></td>
 
@@ -52,13 +34,35 @@
 
                         </tr>
 
-                    <?php endforeach; ?>
+                    </thead>
 
-                </tbody>
+                <?php endif; ?>
 
-            <?php endif; ?>
+                <?php if ($block['table']['body']): ?>
 
-        </table>
+                    <tbody>
+
+                        <?php foreach ($block['table']['body'] as $row): ?>
+
+                            <tr>
+
+                                <?php foreach ($row as $column): ?>
+
+                                    <td><?=$column['c']?></td>
+
+                                <?php endforeach; ?>
+
+                            </tr>
+
+                        <?php endforeach; ?>
+
+                    </tbody>
+
+                <?php endif; ?>
+
+            </table>
+
+        </div>
 
     <?=($block['grid'] == 'container')? '</div>' : ""?>
 
