@@ -43,13 +43,13 @@ get_header(); ?>
             </div>
 
             <div id="load-more" class="loadmore-holder clearfix col-12 text-center py4" data-element="load-more">
-                <?php 
+                <?php
 
                 $button['button_link']['url']        = "#";
                 $button['button_link']['title']      = "View More...";
                 $button['system_text_colours']       = "white";
                 $button['system_background_colours'] = "bg-brand-primary";
-                
+
                 render_button($button, "medium", ["class" => "btn cursor-pointer block filter-more", "data-loadcount" => $testimonials['posts']->query['paged']]) ?>
             </div>
 
@@ -88,9 +88,12 @@ get_header(); ?>
                         $('#testimonials-listing').append(response);
                     }
                 }
-                $('.grid').masonry('destroy');
-                $('.grid').masonry();
 
+                $('.grid').masonry().masonry('destroy');
+                $('.grid').masonry().masonry();
+                $('.grid').imagesLoaded( function() {
+                    $('.grid').masonry('layout');
+                });
             }
         });
     }
@@ -115,10 +118,9 @@ get_header(); ?>
             updateFilterState(value);
     };
 
-    $(document).on('click', '.filter-more', function (e) {
+    $('.filter-more').on('click', function (e) {
         e.preventDefault();
         var page_number = $(this).data('loadcount');
-
         fetchTestimonialPosts(page_number);
     });
 
