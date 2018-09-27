@@ -9,9 +9,9 @@ $testimonials = $testimonials->getBlock();
 
 get_header(); ?>
 
-    <section class="clearfix mt6 mb4 mb4" id="listing-testimonials">
+    <section class="clearfix mt6 mb4" id="listing-testimonials">
 
-        <div class="container">
+        <div class="container mt4 pt4 md-mt0 md-pt0">
 
             <div class="px4">
                 <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
