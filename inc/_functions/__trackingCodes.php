@@ -65,7 +65,7 @@ function get_tracking_codes($location) {
         endif;
         
         if (!empty($rt = get_field('responce_tap_code', 'option'))):
-            $content .= "<script type='text/javascript'>
+            $content .= "<!-- VWO Start --><script type='text/javascript'>
                 var adiInit = '{$rt}', adiRVO = true;
                 var adiFunc = null;
                 (function() {
@@ -76,7 +76,7 @@ function get_tracking_codes($location) {
                     var s = document.getElementsByTagName('script')[0];
                     s.parentNode.insertBefore(adiSrc, s);
                 })();
-                </script>";
+                </script><!-- End VWO Start -->/n".PHP_EOL;
         endif;
 
         if (!empty($vwo = get_field('vwo_tracking', 'option'))):
@@ -100,7 +100,7 @@ function get_tracking_codes($location) {
         
         if (!empty($gtm = get_field('google_tag_manager', 'option'))):
             $content .= "<!-- Google Tag Manager (noscript) -->
-            <noscript><iframe src='https://www.googletagmanager.com/ns.html?id=GTM-<?=$gtm?>'
+            <noscript><iframe src='https://www.googletagmanager.com/ns.html?id=GTM-{$gtm}'
             height='0' width='0' style='display:none;visibility:hidden'></iframe></noscript>
             <!-- End Google Tag Manager (noscript) -->";
         endif;

@@ -475,7 +475,7 @@ header {
   max-height: 65px;
 
   @media (min-width: $breakpoint-sm) {
-    max-height: auto;
+    max-height: none;
   }
 
   .logo {

@@ -9,7 +9,7 @@ $block = $news_controller->fetchFeedPosts(9);
 
 get_header(); ?>
 
-<div class="clearfix" id="news-featuredListing">
+<div class="clearfix mt4" id="news-featuredListing">
 
     <div class="container">
 
@@ -19,7 +19,7 @@ get_header(); ?>
 
         </div>
 
-        <div class="col col-12 md-col-12 lg-col-12 mb3 lg-mb5 bg-smoke">
+        <div class="col col-12 md-col-12 lg-col-12 mt3 mb3 lg-mb5 bg-smoke">
 
             <?php $latest_post = array_shift($block['posts']->posts); ?>
             <div class="col col-12 md-col-6 pt4 px4 md-p5 left md-right flex items-center justify-center">

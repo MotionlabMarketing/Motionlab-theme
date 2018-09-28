@@ -10,24 +10,16 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
     <div class="container">
         <div class="post clearfix lg-py5">
             
-            <?php while (have_posts()) : the_post();
-            
-            $block = get_field_objects();
-            $narrow = $block['building_blocks']['value'][0]['narrow_columns'];
-            
-            if ($narrow == true):
-                $narrow = "measure-wide";
-            endif;
-            ?>
-            
-            <h1 class="mt4 mb3 m0 h2 text-center brand-primary">
-                <?php the_title(); ?>
-            </h1>
-            
+            <?php while (have_posts()) : the_post(); ?>
+
             <div class="mx-auto container measure-wide">
+            
+                <h1 class="mb3 m0 h3 md-h2 text-center brand-primary">
+                    <?php the_title(); ?>
+                </h1>
                 
                 <div class="measure-wide">
-                    <p class="left mt1 h5 width-100 md-width-auto text-center md-text-left"><?=ml_time_elapsed_string(get_the_date())?></p>
+                    <p class="left mt1 h5 width-100 md-width-auto text-center md-text-left display-none md-display-block"><?=ml_time_elapsed_string(get_the_date())?></p>
                     
                     <ul class="mt2 tags tags-right border-radius">
                         <?php if (is_array($taxonomies)): foreach($taxonomies as $category) :?>
@@ -39,7 +31,7 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
                 
             </div>
             
-            <div class="clearfix <?=$narrow?> image-holder img-center img-cover img-banner" style="background-image: url(<?php if (!empty(get_the_post_thumbnail_url())) : the_post_thumbnail_url('large'); else: echo get_field('fallback_image_news_feature', 'option'); endif; ?>)"></div>
+            <div class="clearfix measure-wide image-holder img-center img-cover img-banner" style="background-image: url(<?php if (!empty(get_the_post_thumbnail_url())) : the_post_thumbnail_url('large'); else: echo get_field('fallback_image_news_feature', 'option'); endif; ?>)"></div>
                 
                 <?php include(get_template_directory() . '/template-parts/building-blocks.php'); ?>
                 

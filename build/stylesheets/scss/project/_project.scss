@@ -50,7 +50,6 @@
 */
 
 .btn {
-   display: block;
    text-align: center;
 
    @media (min-width: $breakpoint-sm) {
@@ -845,7 +844,11 @@ $arrow-size: 10px;
   }
 
   &.img-banner {
-    height: 30rem;
+    min-height: 16rem;
+
+    @media (min-height: $breakpoint-md) {
+      min-height: 30rem;
+    }
   }
 
   &.img-cover {

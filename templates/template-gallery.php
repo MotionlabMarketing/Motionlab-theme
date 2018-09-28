@@ -8,15 +8,15 @@ $gallery = $gallery->getBlock();
 
 get_header(); ?>
 
-<section class="clearfix my4 mb4" id="gallery-standard" data-loadval="<?= get_query_var('gallery_category'); ?>" data-template="gallery-standard">
+<section class="clearfix mb4" id="gallery-standard" data-loadval="<?= get_query_var('gallery_category'); ?>" data-template="gallery-standard">
 
-    <div class="container clearfix px3 mt5 md-mt7">
+    <div class="container clearfix px3">
 
         <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
 
     </div>
 
-    <div class="display-none md-block container text-center mb3 border-bottom border-smoke border-1" data-element="filters">
+    <div class="display-none md-block container text-center mt4 mb3 border-bottom border-smoke border-1" data-element="filters">
 
         <span data-category="" class="btn btn-large inline-block border-top border-left border-right border-light brand-primary bg-white cursor-pointer <?= !empty(get_query_var('gallery_category')) ? "filter-active" : ""?> filter-option">All</span>
 
@@ -28,12 +28,11 @@ get_header(); ?>
 
     </div>
 
-    <div class="md-display-none container text-center mb3">
-
+    <div class="md-display-none container text-center mt4 mb3">
         <select id="filter-select" class="select width-70">
             <option value="<?=get_permalink()?>">All Images</option>
             <?php foreach($gallery['select_terms'] as $item): ?>
-                <option value="<?=get_permalink() . $item->slug?>"><?=$item->name?></option>
+                <option data-category="<?=$item->slug?>" value="<?=get_permalink() . $item->slug?>" <?=$_SERVER['WP_HOME'].$_SERVER['REQUEST_URI'] == get_permalink().$item->slug.'/' ? 'selected' : ''?> ><?=$item->name?></option>
             <?php endforeach; ?>
         </select>
 
@@ -69,12 +68,18 @@ get_header(); ?>
         });
 
         $(document).on('change', '#filter-select', function() {
-            var url = $(this).val();
-            window.location = url;
+            fetchGallery(1, true);
+            history.pushState({cat: $('#filter-select').find(":selected").data('category')}, "", "/gallery/" + $(this).find(":selected").data('category'));
         });
 
         function fetchGallery(page_number, reset = false) {
+            var windowWidth = $( window ).width();
+
+            if (windowWidth > 767) {
             var category_filter = $('.filter-option.filter-active').data('category');
+            } else {
+                var category_filter = $('#filter-select').find(":selected").data('category');
+            }  
 
             $.ajax({
                 url: '<?php echo admin_url("admin-ajax.php"); ?>',
@@ -99,6 +104,12 @@ get_header(); ?>
                     }, 900);
                 }
             });
+        }
+
+        fetchGallery(1, true);
+
+        window.onpopstate = function (event) {
+            var value = document.location.href.substring(document.location.href.lastIndexOf("/") + 1);
         }
     });
 </script>

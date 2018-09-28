@@ -50,11 +50,23 @@ gulp.task('sass', function(){
     .pipe(gulp.dest(themepath + 'assets/css/'));
 });
 
+// optimise Sass
+gulp.task('sass-presets', function () {
+    gulp.src('build/stylesheets/presets/presets.scss')
+    .pipe(plumber())
+    .pipe(sass())
+    .pipe(rename('presets.css'))
+    .pipe(postcss(processors)) // preprocess and nano css
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(themepath + 'assets/css/'));
+});
+
 
 gulp.task('watch', function(){
     gulp.watch('build/images/*.*', ['images']);
     gulp.watch('build/scripts/**/*.*', ['scripts']);
     gulp.watch('build/stylesheets/scss/**/*.scss', ['sass']);
+    gulp.watch('build/stylesheets/presets/**/*.scss', ['sass-presets']);
 })
 
 

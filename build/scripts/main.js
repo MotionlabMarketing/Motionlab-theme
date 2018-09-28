@@ -154,6 +154,7 @@ jQuery(document).ready(function ($) {
     }
 
     heightHeaderSpace();
+    
     $(window).resize(function () {
         heightHeaderSpace();
     });
