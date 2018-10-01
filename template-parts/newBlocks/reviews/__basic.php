@@ -36,7 +36,7 @@ endswitch; ?>
 
                 <div class="col <?=$block['columns']?> px3 text-center <?=($i > 2)? "block sm-display-none lg-block":"" ;?>">
 
-                    <div class="p5 <?=($block['include_background'])? "bg-smoke":"";?> <?=($block['include_border'])? "border-1 border-left border-right border-top border-bottom border-light":"";?>" data-mh="testimonial">
+                    <div class="p5 mb4 <?=($block['include_background'])? "bg-smoke":"bg-white";?> <?=($block['include_border'])? "border-1 border-left border-right border-top border-bottom border-light":"";?>" data-mh="testimonial">
 
                         <?php
                         if ($block['include_stars'] == true):
@@ -63,7 +63,7 @@ endswitch; ?>
             <?php $i++; endforeach; ?>
         </div>
 
-    <div class="clearfix md-flex items-center justify-center mt4">
+    <div class="clearfix flex items-center justify-center">
 
         <?php render_button($block['page_button'], 'medium'); ?>
 

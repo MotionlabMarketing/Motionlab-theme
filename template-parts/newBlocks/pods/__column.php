@@ -16,13 +16,16 @@
 
         <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-        <div class="mxn3 mt3 flex justify-center flex-wrap">
+        <div class="mxn3 flex justify-center flex-wrap">
 
-            <?php foreach ($block['content'] as $item): ?>
+            <?php 
+            $count = count($block['content']);
 
-                <div class="pod col <?=$block['columns']?> px3 mb5 relative">
+            foreach ($block['content'] as $item): ?>
 
-                    <div class="internal-padding <?=$block['pod']['bgColour']?> <?=$block['pod']['padding']?> <?php if($block['pod']['shadow']): ?>box-shadow-2<?php endif; ?>">
+                <div class="pod relative col <?=$block['columns']?> px3 <?=($count > $block['pod']['columns'])?'mb4':'mb4 md-mb0'?>">
+
+                    <div class="<?=$block['pod']['bgColour']?> <?=$block['pod']['padding']?> <?php if($block['pod']['shadow']): ?>box-shadow-2<?php endif; ?>">
 
                         <?php if ($item['type'] == "image"): ?>
 
@@ -74,23 +77,29 @@
 
                         <?php endif; ?>
 
-                        <div class="<?=$block['pod']['textColor']?> <?=$block['pod']['textAlign']?> py3 <?=($block['pod']['shadow'])? "px3" : ""?> mb2 js-match-height-alt">
+                        <?php if (!empty($item['title']) || !empty($item['pod_content']) || !empty($item['button']['button_link'])): ?>
+                            <div class="<?=$block['pod']['textColor']?> <?=$block['pod']['textAlign']?> mt4 <?=($block['pod']['shadow'])? "px3" : ""?> mb2" data-mh="pod-content-container">
 
-                            <h3 class="mb2 brand-primary" style="font-size: 1.3rem" data-mh="pod-title">
+                                <?php if (!empty($item['title'])):?>
+                                    <h3 class="mb2 brand-primary" style="font-size: 1.3rem" data-mh="pod-content-title">
 
-                                <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'">' : "")?>
+                                        <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'">' : "")?>
 
-                                    <?=$item['title']?>
+                                            <?=$item['title']?>
 
-                                <?=(!empty($item['button']['button_link']['url'])? '</a>' : "")?>
+                                        <?=(!empty($item['button']['button_link']['url'])? '</a>' : "")?>
 
-                            </h3>
+                                    </h3>
+                                <?php endif;?>
 
-                            <div class="h4 <?php if(!empty($item['button']['button_link']['url'])):?>mb3<?php endif;?>" data-mh="pod-content"><?=$item['pod_content']?></div>
+                                <?php if (!empty($item['pod_content'])):?>
+                                    <div class="h4 <?php if(!empty($item['button']['button_link']['url'])):?>mb3<?php endif;?>" data-mh="pod-content-description"><?=$item['pod_content']?></div>
+                                <?php endif;?>
 
-                            <?php render_button($item['button'], "medium"); ?>
+                                <?php render_button($item['button'], "medium"); ?>
 
-                        </div>
+                            </div>
+                        <?php endif;?>
 
                     </div>
 

@@ -17,6 +17,7 @@ $block = [];
 $block['page_id']   = (isset($_POST['page_id']) ? $_POST['page_id'] : get_the_ID());
 $block['id']        =  $block['page_id'] . "-" . get_row_index();
 $block['name']      = get_row_layout();
+$block['position']  = get_row_index();
 
 // HAS THIS BLOCK BEEN ENABLED?
 $block['enabled'] = get_sub_field($current . '_settings_enable_block');

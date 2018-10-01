@@ -14,8 +14,8 @@
  * @param string $classes
  */
 
-function render_heading($title = "", $type = "h3", $size = "h4", $color = "brand-primary", $case = "", $attr = ["class" => "mb2 p0"]) {
-    
+function render_heading($title = "", $type = "h3", $size = "h4", $color = "brand-primary", $case = "", $attr = ["class" => "mb4 p0"]) {
+
     // if (!empty($attr['class'])) { BLOCKING CLASS RENDERING...
         $attr['class'] = "{$size} {$color} {$case} " . $attr['class'];
     // }
@@ -41,7 +41,7 @@ function render_heading($title = "", $type = "h3", $size = "h4", $color = "brand
  * @return string
  */
 
-function get_render_heading($title = "", $type = "h3", $size = "h4", $color = "brand-primary", $case = "", $attr = ["class" => "mb2"]) {
+function get_render_heading($title = "", $type = "h3", $size = "h4", $color = "brand-primary", $case = "", $attr = ["class" => "mb4 p0"]) {
 
     $attr = attrConvert($attr);
 

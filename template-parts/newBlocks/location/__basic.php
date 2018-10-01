@@ -20,7 +20,7 @@
 
         <div class="clearfix col col-12 <?=$block['content']['color']?>">
 
-                <div class="col col-12 md-col-6 p4 <?=$block['content']['position']?> bg-smoke" data-element="map" data-mh="panel">
+                <div class="col col-12 md-col-6 pt4 pl4 pr4 lg-p4 <?=$block['content']['position']?> bg-smoke" data-element="map" data-mh="panel">
 
                     <?php if (!empty($block['content']['location']['location_map'])): ?>
                         <div class="acf-map" data-map-address="<?=$block['content']['location']['location_map']['address']?>" style="height: 100%;">
@@ -34,12 +34,12 @@
 
                 <div class="col col-12 md-col-6 p4 bg-smoke <?=($i % 2 !== 0)? 'right' : ''?>" data-mh="panel">
 
-                    <h2 class="brand-primary"><?=$block['content']['location']['location_name']?></h2>
+                    <h2 class="brand-primary mb3"><?=$block['content']['location']['location_name']?></h2>
 
                     <div class="clearfix mb2">
-                        <div class="col col-12 md-col-6 pr4">
+                        <div class="col col-12 md-col-6 mb3 lg-mb0 lg-pr4">
 
-                            <h3 class="grey mb1 h4">Location Address</h3>
+                            <h3 class="grey mb1 h4">Address</h3>
                             <p class="mb0"><?=$block['content']['location']['location_address_line_1']?></p>
                             <p class="mb0"><?=$block['content']['location']['location_address_line_2']?></p>
                             <p class="mb0"><?=$block['content']['location']['location_address_postcode']?></p>
@@ -53,19 +53,19 @@
                                 <p class="mb0 brand-primary" style="font-size: 1.2rem"><i class="fa fa-phone" style="margin-right: 0.7rem"></i> <a href="tel:<?=str_replace(" ", "", $block['content']['location']['location_phone_number'])?>" class="bold"><?=$block['content']['location']['location_phone_number']?></a></p>
                             <?php endif; ?>
 
-                            <?php if (!empty($block['content']['location']['location_phone_number'])): ?>
-                                <p class="mb0 brand-primary" style="font-size: 1.2rem"><i class="fa fa-fax mr2"></i> <strong><?=$block['content']['location']['location_phone_number']?></strong></p>
+                            <?php if (!empty($block['content']['location']['location_fax_number'])): ?>
+                                <p class="mb0 brand-primary" style="font-size: 1.2rem"><i class="fa fa-fax mr2"></i> <strong><?=$block['content']['location']['location_fax_number']?></strong></p>
                             <?php endif; ?>
 
                         </div>
                     </div>
-
-                    <?php if (!empty($block['content']['location']['opening_times_primary'])): ?>
-                        <div class="col col-12 py2 pr1">
+                    
+                    <?php if ($block['content']['location']['location_include_times'] == true): ?>
+                        <div class="col col-12 py2 lg-pr1">
 
                             <h4 class="clearfix grey mb2 normal" data-mh="tabletitle"><?=$block['content']['location']['opening_times_primary']['section_openingTimes_title'];?></h4>
 
-                            <table class="table-striped table-bordered table-bold-first bg-white mb3">
+                            <table class="table-striped table-bordered table-bold-first bg-white">
                                 <?php foreach ($block['content']['location']['opening_times_primary']['section_openingTimes_times'] as $key =>  $items): ?>
 
                                     <tr>
@@ -81,10 +81,10 @@
                         </div>
                     <?php endif; ?>
 
-                    <?php if (!empty($block['content']['location']['location_note'])): ?>
+                    <?php if (!empty($block['content']['location']['location_note']['title']) || !empty($block['content']['location']['location_note']['content'])): ?>
                     <div class="clearfix mb2">
 
-                        <h4 class="clearfix mt4 mb2 gray mb0"><?=$block['content']['location']['location_note']['title']?></h4>
+                        <h4 class="clearfix grey mt4 mb2 gray mb0"><?=$block['content']['location']['location_note']['title']?></h4>
 
                         <?=$block['content']['location']['location_note']['content']?>
 

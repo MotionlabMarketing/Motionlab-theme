@@ -15,7 +15,7 @@
 
     <?=($block['grid'] == 'container')? '<div class="container '.$block['padding'].'">' : ""?>
 
-        <div class="block">
+        <div class="block mx4 md-mx0">
 
             <hr class="relative <?=get_sub_field($current . '_rule')?> border-<?=get_sub_field($current . '_ruleSize')?> <?=get_sub_field($current . '_ruleStyle')?>">
 

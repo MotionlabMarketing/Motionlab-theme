@@ -122,28 +122,27 @@
 
                 <?php if ($block['content']['buttons'] || $block['content']['cta']['append'] || $block['content']['cta']['link']):?>
 
+                    <div class="mt4 <?=$alignment?>">
 
-                <div class="mt4 <?=$alignment?> border-top border-smoke pt3">
+                        <?php foreach ($block['content']['buttons'] as $button): if (!empty($button['button_link']['url'])): ?>
 
-                    <?php foreach ($block['content']['buttons'] as $button): if (!empty($button['button_link']['url'])): ?>
+                            <a id="<?=$button['button_custom_id']?>" href="<?=$button['button_link']['url']?>" class="btn btn-<?=$button['system_background_colours']?> btn-medium <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> role="button"><div class="flex items-center justify-center"><?= wp_get_attachment_image($button['button_icon'], array(32, 32), '', ["class" => "size-32x32 mr2"]); ?><?php if($button['button_icon_font']->class):?><i class="fa mr2 <?= $button['button_icon_font']->class ?>"></i><?php endif; ?><?= $button['button_link']['title']?></div></a>
 
-                        <a id="<?=$button['button_custom_id']?>" href="<?=$button['button_link']['url']?>" class="btn btn-<?=$button['system_background_colours']?> btn-medium <?=$button['system_text_colours']?> <?=$button['system_background_colours']?>" <?=($button['button_link']['title'] ? 'title="'.$button['button_link']['title'].'"' : '')?> <?=($button['button_link']['target'] ? 'target="'.$button['button_link']['target'].'"' : '')?> role="button"><div class="flex items-center justify-center"><?= wp_get_attachment_image($button['button_icon'], array(32, 32), '', ["class" => "size-32x32 mr2"]); ?><?php if($button['button_icon_font']->class):?><i class="fa mr2 <?= $button['button_icon_font']->class ?>"></i><?php endif; ?><?= $button['button_link']['title']?></div></a>
+                        <?php endif; endforeach;  ?>
 
-                    <?php endif; endforeach;  ?>
+                        <?php if (!empty($block['content']['cta']['append'])): ?>
 
-                    <?php if (!empty($block['content']['cta']['append'])): ?>
+                            <p class="lg-inline bold mb2 mt3 lg-mt0 lg-mb0 lg-mb0 lg-ml4 lg-mr2"><?=$block['content']['cta']['append']?></p>
 
-                        <p class="lg-inline bold mb2 mt3 lg-mt0 lg-mb0 lg-mb0 lg-ml4 lg-mr2"><?=$block['content']['cta']['append']?></p>
+                        <?php endif; ?>
 
-                    <?php endif; ?>
+                        <?php if (!empty($block['content']['cta']['link'])):?>
 
-                    <?php if (!empty($block['content']['cta']['link'])):?>
+                            <a href="<?=$block['content']['cta']['link']['url']?>" class="h3 bold brand-primary mx2"><?=$block['content']['cta']['link']['title']?></a>
 
-                        <a href="<?=$block['content']['cta']['link']['url']?>" class="h3 bold brand-primary mx2"><?=$block['content']['cta']['link']['title']?></a>
+                        <?php endif; ?>
 
-                    <?php endif; ?>
-
-                </div>
+                    </div>
 
                 <?php endif;?>
 

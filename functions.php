@@ -116,7 +116,12 @@ function ml_update_news()
 {
 
     /* Load in team block controller to access posts easily. */
-    include_once(MODELS_DIR . '_block_news.php');
+    if (file_exists(CHILD_MODELS_DIR . '_block_news.php')):
+        include_once(CHILD_MODELS_DIR . '_block_news.php'); 
+    else:
+        include_once(MODELS_DIR . '_block_news.php');
+    endif;
+
     $news_controller = new _block_news(null, null);
 
     $count = 8;
@@ -125,11 +130,22 @@ function ml_update_news()
     endif;
 
     $block = $news_controller->fetchFeedPosts($count, $_POST['news_page']);
-
-    if (file_exists(CHILD_AJAX_DIR . 'template-news-ajax.php')) :
-        include_once(CHILD_AJAX_DIR . 'template-news-ajax.php'); else:
-        include_once(AJAX_DIR . 'template-news-ajax.php');
+    
+    if (!empty($_POST['template'])):
+        if (file_exists(CHILD_AJAX_DIR . $_POST['template'] . '.php')):
+            include_once(CHILD_AJAX_DIR . $_POST['template'] . '.php'); 
+        else:
+            include_once(AJAX_DIR . $_POST['template'] . '.php');
+        endif;
+    else:
+        if (file_exists(CHILD_AJAX_DIR . 'template-news-ajax.php')):
+            include_once(CHILD_AJAX_DIR . 'template-news-ajax.php'); 
+        else:
+            include_once(AJAX_DIR . 'template-news-ajax.php');
+        endif;
     endif;
+
+    
 
     die();
 }
@@ -776,11 +792,19 @@ add_action('admin_enqueue_scripts', 'ml_custom_admin_styles');
  */
 
 // PRINT ALL FUNCTION
-function pa($value)
-{
-    print_r("<pre style='background-color: #f1f1f1; color: black; text-align: left; padding: 1rem;'>");
-    print_r($value);
-    print_r("</pre>");
+function pa() {
+
+    $args = func_get_args();
+
+    if (is_array($args) || is_object($args)):
+
+        foreach ($args as $value):
+            print_r("<pre style='background-color: #f1f1f1; color: black; text-align: left; padding: 1rem;'>");
+            print_r($value);
+            print_r("</pre>");
+        endforeach;
+
+    endif;
 }
 
 // SHORTEN CONTENT TO NUMBER OF WORDS

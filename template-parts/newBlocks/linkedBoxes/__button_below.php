@@ -32,7 +32,7 @@ $block['content']['button'] = get_sub_field($current . '_button_button_link'); ?
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-        <div class="clearfix pt5 pb3">
+        <div class="clearfix pb4">
 
             <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 

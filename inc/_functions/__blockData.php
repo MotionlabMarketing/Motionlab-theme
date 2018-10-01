@@ -9,7 +9,7 @@
 
 function get_blockData(&$block) {
 
-    return 'data-block-id="'. $block['id'] . '" data-block-name="' . $block['name'] . '" data-block-layout="' . $block['layout'] . '"';
+    return 'data-block-id="'. $block['id'] . '" data-block-name="' . $block['name'] . '" data-block-layout="' . $block['layout'] . '" data-block-position="' . $block['position'] . '"';
 
 }
 
@@ -22,6 +22,6 @@ function get_blockData(&$block) {
 
 function the_blockData(&$block) {
 
-    echo 'data-block-id="'. $block['id'] . '" data-block-name="' . $block['name'] . '" data-block-layout="' . $block['layout'] . '"';
+    echo 'data-block-id="'. $block['id'] . '" data-block-name="' . $block['name'] . '" data-block-layout="' . $block['layout'] . '" data-block-position="' . $block['position'] . '"';
 
 }

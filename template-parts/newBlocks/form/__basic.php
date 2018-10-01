@@ -14,13 +14,7 @@
 
     <div class="container">
 
-            <div class="text-center mb4">
-
-                <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}"); ?>
-
-                <?php render_wysiwyg("{$block['intro']}", true); ?>
-
-            </div>
+            <div class="px3"><?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?></div>
 
             <div class="clearfix">
 
