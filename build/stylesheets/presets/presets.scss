@@ -10,7 +10,7 @@ $debug: false;
 
 $brand-smoke: #f1f1f1;
 
-$block-spacing: 2rem;  
+$block-spacing: 1rem;  
 $block-padding: 1rem;  
 
 // BREAKPOINTS
@@ -37,6 +37,14 @@ $breakpoint-xxl: 95rem;
     @if $debug == true {
         background: rgba(252, 169, 45, 0.4);
     }
+}
+
+[data-element="introduction"] {
+    margin-bottom: 1rem;
+}
+
+[data-function="__heading"] {
+    margin-bottom: 1rem;
 }
 
 [data-element="news-introduction"] {
@@ -131,7 +139,10 @@ $breakpoint-xxl: 95rem;
   * SPACER BLOCKS
   * ---------- ---------- ---------- ---------- ----------
   */
+
 [data-block-name="block_spacers"] {
+    margin: 0;
+
     @if $debug==true {
         background: rgba(180, 252, 45, 0.4);
     }
@@ -150,15 +161,48 @@ $breakpoint-xxl: 95rem;
     padding: 0;
 }
 
+
+
 /**
   * ---------- ---------- ---------- ---------- ----------
   * FORM BLOCKS
   * ---------- ---------- ---------- ---------- ----------
   */
+
 [data-block-name="block_form"] {
     .container {
         max-width: 60rem;
         padding: 2rem 4rem;
         background-color: $brand-smoke;
     }
+}
+
+
+
+/**
+  * ---------- ---------- ---------- ---------- ----------
+  * REVIEWS BLOCKS
+  * ---------- ---------- ---------- ---------- ----------
+  */
+
+[data-block-name="block_reviews"][data-block-layout="basic"] {
+    margin-top: 0; 
+}
+
+
+
+/**
+  * ---------- ---------- ---------- ---------- ----------
+  * GLOBAL CTA BLOCKS
+  * ---------- ---------- ---------- ---------- ----------
+  */
+
+[data-block-name="global_cta"] {
+    padding: 0;
+    margin-bottom: 2em;
+}
+
+[data-block-name="global_cta"][data-block-layout="strip"] {
+    margin: 0;
+    padding: 0;
 }
