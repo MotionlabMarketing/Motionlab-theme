@@ -16,7 +16,7 @@
 
 function render_heading($title = "", $type = "h3", $size = "h4", $color = "brand-primary", $case = "", $attr = ["class" => "mb4 p0"]) {
 
-    // if (!empty($attr['class'])) { BLOCKING CLASS RENDERING...
+    // if (!empty($attr['class'])) {
         $attr['class'] = "{$size} {$color} {$case} " . $attr['class'];
     // }
     
