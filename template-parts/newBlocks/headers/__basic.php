@@ -9,11 +9,6 @@
  *
  * @version 2.00
  */
-
-
- $block['headings'][0]->class = ["class" => "demo"];
-
- pa( $block['headings'][0]);
 ?>
 <section <?=get_blockID($block)?> <?=get_blockClasses($block, "")?> <?=get_blockData($block)?>>
 
