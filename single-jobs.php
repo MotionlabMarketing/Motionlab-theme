@@ -13,6 +13,7 @@ $job_id              = get_field('jobs_role_id') ?: 'Unspecified';
 $job_salary          = get_field('jobs_role_salary') ? get_field('jobs_role_salary') : 'Salary Unspecified';
 $job_title           = get_field('jobs_role_title') ?: get_the_title();
 $job_expiry          = get_field('jobs_role_expiryDate') ? date("jS M Y", strtotime(get_field('jobs_role_expiryDate'))) : 'Unspecified';
+$job_expiry_json     = get_field('jobs_role_expiryDate') ? date('c', strtotime(get_field('jobs_role_expiryDate'))) : 'Unspecified';
 
 // pull job sector details
 $job_sectors = get_the_terms( $post->ID , 'sectors' );
@@ -25,6 +26,7 @@ if($job_sectors_string != ''):
 endif;
 
 get_header();
+
 ?>
 
 <script type="application/ld+json"> {
@@ -39,7 +41,7 @@ get_header();
     "value": ""
   },
   "datePosted" : "<?=$job_date?>",
-  "validThrough" : "",
+  "validThrough" : "<?=$job_expiry_json?>",
   "employmentType" : "<?=$job_type[0]->name?>",
   "hiringOrganization" : {
     "@type" : "Organization",
