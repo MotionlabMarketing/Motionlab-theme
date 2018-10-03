@@ -236,7 +236,7 @@ header{
   top: 100%;
   //overflow: hidden;
   opacity: 0;
-  transition: $transition;
+  //transition: $transition;
   right: 0;
   left: 50%;
   width: 300px;
@@ -283,7 +283,7 @@ header{
     top: 75%;
     overflow: hidden;
     opacity: 0;
-    transition: $transition;
+    //transition: $transition;
     left: 0;
     right: 0;
     width: 250%;
@@ -291,8 +291,8 @@ header{
     z-index: 0;
 }
 
-.has-sidemenu{
-    &:hover{
+.has-sidemenu {
+    &:hover {
         .sidemenu{
             visibility: visible;
             opacity: 1;
@@ -311,7 +311,7 @@ header{
     }
 }
 
-.sidemenu{
+.sidemenu {
     position: absolute;
     top: 0;
     left: 100%;
