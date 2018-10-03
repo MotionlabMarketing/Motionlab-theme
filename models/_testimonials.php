@@ -64,6 +64,7 @@ Class _testimonials
 			'post_type'         => 'reviews',
 			'orderby'           => 'date',
 			'order'             => 'DESC',
+			'post_status'       => 'publish',
 			'tax_query'         => $tax_query
 		);
 

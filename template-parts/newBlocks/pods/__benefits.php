@@ -57,7 +57,7 @@ endif;
             <div class="item col <?=$col?> px4 mb5 text-center js-match-height">
 
                 <?php if ($item['enable_custom_icons'] == true): ?>
-                    <img src="<?=wp_get_attachment_image_url($item['pod_item_custom_icon'], array(70, 70))?>" style="max-width: 6rem; max-height: 6rem;" class="svg-img">
+                    <img src="<?=wp_get_attachment_image_url($item['pod_item_custom_icon'], array(70, 70))?>" style="max-width: 56px; max-height: 56px;" class="svg-img">
                 <?php else: ?>
                     <p class="block mb2 brand-primary text-center"><?=$item['pod_item_icon']?></p>
                 <?php endif; ?>

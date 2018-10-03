@@ -9,9 +9,9 @@ $testimonials = $testimonials->getBlock();
 
 get_header(); ?>
 
-    <section class="clearfix mt6 mb4 mb4" id="listing-testimonials">
+    <section class="clearfix mt6 mb4" id="listing-testimonials">
 
-        <div class="container">
+        <div class="container mt4 pt4 md-mt0 md-pt0">
 
             <div class="px4">
                 <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
@@ -38,12 +38,19 @@ get_header(); ?>
 
         <div class="container clearfix">
 
-            <div class="grid" id="testimonials-listing">
+            <div class="grid clearfix overflow-hidden" id="testimonials-listing">
 
             </div>
 
-            <div class="loadmore-holder clearfix col-12 text-center py4" data-element="load-more">
-                <span data-loadcount="<?=$testimonials['posts']->query['paged']?>" class="btn cursor-pointer block filter-more">Load More...</span>
+            <div id="load-more" class="loadmore-holder clearfix col-12 text-center py4" data-element="load-more">
+                <?php
+
+                $button['button_link']['url']        = "#";
+                $button['button_link']['title']      = "View More...";
+                $button['system_text_colours']       = "white";
+                $button['system_background_colours'] = "bg-brand-primary";
+
+                render_button($button, "medium", ["class" => "btn cursor-pointer block filter-more", "data-loadcount" => $testimonials['posts']->query['paged']]) ?>
             </div>
 
         </div>
@@ -81,6 +88,12 @@ get_header(); ?>
                         $('#testimonials-listing').append(response);
                     }
                 }
+
+                $('.grid').masonry().masonry('destroy');
+                $('.grid').masonry().masonry();
+                $('.grid').imagesLoaded( function() {
+                    $('.grid').masonry('layout');
+                });
             }
         });
     }
@@ -105,9 +118,9 @@ get_header(); ?>
             updateFilterState(value);
     };
 
-    $(document).on('click', '.filter-more', function () {
+    $('.filter-more').on('click', function (e) {
+        e.preventDefault();
         var page_number = $(this).data('loadcount');
-
         fetchTestimonialPosts(page_number);
     });
 

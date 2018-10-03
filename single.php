@@ -20,7 +20,7 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
                 $narrow = "measure-wide";
             endif;
             ?>
-            
+
             <h1 class="mt4 mb3 m0 h2 text-center brand-primary">
                 <?php the_title(); ?>
             </h1>
@@ -28,8 +28,9 @@ $taxonomies = get_the_terms(get_the_ID(), 'category');
             <div class="mx-auto container measure-wide">
                 
                 <div class="measure-wide">
-                    <p class="left mt1 h5"><?=ml_time_elapsed_string(get_the_date())?></p>
-                    
+
+                    <a href="<?php echo $_SERVER['HTTP_REFERER']?>" class="left mt1 h5"><i class="fa fa-arrow-left mr2"></i>Back to news</a>
+
                     <ul class="mt2 tags tags-right border-radius">
                         <?php if (is_array($taxonomies)): foreach($taxonomies as $category) :?>
                             <li><a href="/news/<?=$category->slug?>"><?=$category->name?></a></li>

@@ -28,7 +28,7 @@ get_header(); ?>
 
         <?php foreach ($gallery['select_terms'] as $item): ?>
 
-            <span data-category="<?=$item->slug?>" class="btn btn-large inline-block border-top border-left border-right border-light brand-primary bg-white cursor-pointer <?=get_query_var('gallery_category') == $item->slug ? "filter-active" : ""?> filter-option"><?=$item->name?></span>
+            <span data-category="<?=$item->slug?>" class="display-none md-block btn btn-large inline-block border-top border-left border-right border-light brand-primary bg-white cursor-pointer <?=get_query_var('gallery_category') == $item->slug ? "filter-active" : ""?> filter-option"><?=$item->name?></span>
 
         <?php endforeach; ?>
 

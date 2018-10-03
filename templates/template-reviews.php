@@ -22,7 +22,7 @@ $testimonials = $testimonials->getBlock();
 
         <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
 
-        <div class="container clearfix">
+        <div class="container clearfix clearfix overflow-hidden">
 
             <div class="grid" id="testimonials-listing">
 

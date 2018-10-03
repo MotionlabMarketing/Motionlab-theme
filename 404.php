@@ -8,7 +8,7 @@
 
         <h1 class="brand-primary">Whoops, we couldn't find that!</h1>
 
-        <p class="lead">We're sorry to report that we couldn't find what your looking for.</p>
+        <p class="lead">We're sorry to report that we couldn't find what you're looking for.</p>
 
         <p>This page may have been moved or removed from the site.</p>
 
