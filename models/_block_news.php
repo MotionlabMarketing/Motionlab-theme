@@ -111,6 +111,9 @@ Class _block_news
 			'post_status'       => array( 'publish' )
 		);
 
+		if(is_category())
+			$args['cat'] = the_category_ID(false);
+
 		$this->block['posts'] = new WP_Query( $args );
 
 		foreach($this->block['posts']->posts as $key => $post) {
@@ -209,7 +212,7 @@ Class _block_news
 			endif;
 
 			/*If we don't have 3 posts selected to show then fill the remaining slots with latest news articles*/
-			if(sizeof(get_sub_field('block_news_articles')) < 3) :
+			if(sizeof(get_sub_field('block_news_articles')) < 3):
 				$args = array(
 					'posts_per_page'    => 3 - sizeof(get_sub_field('block_news_articles')),
 					'paged'             => 1,
