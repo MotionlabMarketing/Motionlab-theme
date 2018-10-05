@@ -19,11 +19,17 @@
 
         <div class="relative col col-12 lg-col-6 <?=$block['content']['position']?> <?=$block['content']['padding']?> overflow-hidden <?=($block['content']['type'] == "video")? "flex items-center" : "" ?>">
 
-            <?php if ($block['content']['type'] == "image"): ?>
+            <?php if ($block['content']['type'] == "image"): $image = get_attachment_image_url($block['content']['image'], 'small'); ?>
 
                 <?=($block['content']['padding'] !== 'p0')? '<div class="relative height-100 overflow-hidden '.$block['content']['padding'].'">' : '' ?>
 
-                    <div class="image-holder bg-cover bg-center min-height-v50 height-100" data-mh="panelHeight" style="background-image: url('<?=get_attachment_image_url($block['content']['image'], 'small')?>')"></div>
+                    <?php if (!empty($image)): 
+                        // HAS IMAGE ?>
+                        <div class="image-holder bg-grey bg-cover bg-center min-height-v50 height-100" data-mh="panelHeight" style="background-image: url('<?=get_attachment_image_url($block['content']['image'], 'small')?>')"></div>
+                    <?php else: 
+                        // NO IMAGE FOUND ?>
+                        <div class="image-holder bg-grey bg-cover bg-center min-height-v50 height-100 white flex items-center justify-center" data-mh="panelHeight"><p class="lead text-center"><strong>ALTERNATING MEDIA BLOCK</strong><br/>Please select or upload some images into this block!</p></div>
+                    <?php endif; ?>    
 
                 <?=($block['content']['padding'] !== 'p0')? '</div>' : '' ?>
 

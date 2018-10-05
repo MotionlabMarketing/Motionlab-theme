@@ -69,78 +69,91 @@ endif;
 
         <div class="relative image-holder flex bg-<?=$banner['image']['position']?> min-height-20  md-<?=$banner['height']?>" style="background-image: url('<?=$banner['image']['url']?>');">
 
-            <?php if ($banner['image']['overlay'] == true || $banner['image']['overlayOld']): ?>
+            <?php
+            // If image is missing or not set.
+            if (empty($banner['image']['url'])): ?>
+                <div class="content-container bg-smoke flex items-center justify-<?=$banner['align']?> width-100 relative z-index-50 p3 md-p6">
+                    <p class="lead text-center"><strong>BANNER BLOCK</strong><br/>Please select or upload some images into this block!</p>
+                </div>
+            <?php else: ?>
 
-                <div class="absolute top-0 left-0 width-100 height-100 z-index-10 bg-<?=$banner['image']['overlayType']?>-<?=$banner['image']['overlayStrength']?> <?=$banner['image']['overlayOld']?>"></div>
+                <?php 
+                // Banner overlay.
+                if ($banner['image']['overlay'] == true || $banner['image']['overlayOld']): ?>
 
-            <?php endif; ?>
+                    <div class="absolute top-0 left-0 width-100 height-100 z-index-10 bg-<?=$banner['image']['overlayType']?>-<?=$banner['image']['overlayStrength']?> <?=$banner['image']['overlayOld']?>"></div>
 
-            <div class="content-container flex items-center justify-<?=$banner['align']?> width-100 relative z-index-50 p3 md-p6">
+                <?php endif;
+                // Content area. ?>
 
-                <div class="content col-12 lg-col-9 xl-col-7 p4 relative z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
+                <div class="content-container bg-smoke flex items-center justify-<?=$banner['align']?> width-100 relative z-index-50 p3 md-p6">
 
-                    <?php if (!empty($banner['logos']['before']['url'])): ?>
+                    <div class="content col-12 lg-col-9 xl-col-7 p4 relative z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
 
-                        <img src="<?=$banner['logos']['before']['url']?>" alt="<?=$banner['logos']['before']['alt']?>" class="logo-top || block mb4 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
+                        <?php if (!empty($banner['logos']['before']['url'])): ?>
 
-                    <?php endif; ?>
+                            <img src="<?=$banner['logos']['before']['url']?>" alt="<?=$banner['logos']['before']['alt']?>" class="logo-top || block mb4 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
 
-                    <?php /*SUBTITLE*/ if ($banner['subheading']['position'] == "top" && !empty($banner['subheading']['title']['title'])): ?>
+                        <?php endif; ?>
 
-                        <?php $blockTitle = $banner['subheading']['title']['title'];
+                        <?php /*SUBTITLE*/ if ($banner['subheading']['position'] == "top" && !empty($banner['subheading']['title']['title'])): ?>
+
+                            <?php $blockTitle = $banner['subheading']['title']['title'];
+                            if (!empty($blockTitle[0]['title'])): ?>
+
+                                <div class="subheading || mb2">
+
+                                    <?php render_heading( "{$blockTitle[0]['title']}", "{$blockTitle[0]['type']['heading']}", "{$blockTitle[0]['size']['heading_size']}", "{$blockTitle[0]['color']['system_text_colours']}", "{$blockTitle[0]['title_case']['system_text_transform']}"); ?>
+
+                                </div>
+
+                            <?php endif; endif; ?>
+
+                        <?php /*MAIN*/ $blockTitle = $banner['title'];
                         if (!empty($blockTitle[0]['title'])): ?>
 
-                            <div class="subheading || mb2">
+                            <div class="title"> <?php // pb2 h2 sm-h1 lg-h00 || mb0 || white text-none ?>
 
                                 <?php render_heading( "{$blockTitle[0]['title']}", "{$blockTitle[0]['type']['heading']}", "{$blockTitle[0]['size']['heading_size']}", "{$blockTitle[0]['color']['system_text_colours']}", "{$blockTitle[0]['title_case']['system_text_transform']}"); ?>
 
                             </div>
 
-                        <?php endif; endif; ?>
+                        <?php endif; ?>
 
-                    <?php /*MAIN*/ $blockTitle = $banner['title'];
-                    if (!empty($blockTitle[0]['title'])): ?>
+                        <?php /*SUBTITLE*/ if ($banner['subheading']['position'] == "bottom" && !empty($banner['subheading']['title']['title'])): ?>
 
-                        <div class="title"> <?php // pb2 h2 sm-h1 lg-h00 || mb0 || white text-none ?>
+                            <?php $blockTitle = $banner['subheading']['title']['title'];
+                            if (!empty($blockTitle[0]['title'])): ?>
 
-                            <?php render_heading( "{$blockTitle[0]['title']}", "{$blockTitle[0]['type']['heading']}", "{$blockTitle[0]['size']['heading_size']}", "{$blockTitle[0]['color']['system_text_colours']}", "{$blockTitle[0]['title_case']['system_text_transform']}"); ?>
+                                <div class="subheading || mb2">
 
-                        </div>
+                                    <?php render_heading( "{$blockTitle[0]['title']}", "{$blockTitle[0]['type']['heading']}", "{$blockTitle[0]['size']['heading_size']}", "{$blockTitle[0]['color']['system_text_colours']}", "{$blockTitle[0]['title_case']['system_text_transform']}"); ?>
 
-                    <?php endif; ?>
+                                </div>
 
-                    <?php /*SUBTITLE*/ if ($banner['subheading']['position'] == "bottom" && !empty($banner['subheading']['title']['title'])): ?>
+                            <?php endif; endif; ?>
 
-                        <?php $blockTitle = $banner['subheading']['title']['title'];
-                        if (!empty($blockTitle[0]['title'])): ?>
+                        <?php render_wysiwyg($banner['content'], false, ["class" => "md-h3 "]) ?>
 
-                            <div class="subheading || mb2">
+                        <?php if ($banner['buttons']): ?>
+                            <div class="mt4">
 
-                                <?php render_heading( "{$blockTitle[0]['title']}", "{$blockTitle[0]['type']['heading']}", "{$blockTitle[0]['size']['heading_size']}", "{$blockTitle[0]['color']['system_text_colours']}", "{$blockTitle[0]['title_case']['system_text_transform']}"); ?>
+                                <?php render_buttons($banner['buttons'], "medium"); ?>
 
                             </div>
+                        <?php endif; ?>
 
-                        <?php endif; endif; ?>
+                        <?php if (!empty($banner['logos']['after']['url'])): ?>
 
-                    <?php render_wysiwyg($banner['content'], false, ["class" => "md-h3 "]) ?>
+                            <img src="<?=$banner['logos']['after']['url']?>" alt="<?=$banner['logos']['after']['alt']?>" class="logo-bottom || block mt3 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
 
-                    <?php if ($banner['buttons']): ?>
-                        <div class="mt4">
+                        <?php endif; ?>
 
-                            <?php render_buttons($banner['buttons'], "medium"); ?>
-
-                        </div>
-                    <?php endif; ?>
-
-                    <?php if (!empty($banner['logos']['after']['url'])): ?>
-
-                        <img src="<?=$banner['logos']['after']['url']?>" alt="<?=$banner['logos']['after']['alt']?>" class="logo-bottom || block mt3 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
-
-                    <?php endif; ?>
+                    </div>
 
                 </div>
 
-            </div>
+            <?php endif; ?>
 
         </div>
 
