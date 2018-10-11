@@ -67,7 +67,7 @@ endif;
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-        <div class="relative image-holder flex bg-<?=$banner['image']['position']?> min-height-20  md-<?=$banner['height']?>" style="background-image: url('<?=$banner['image']['url']?>');">
+        <div class="relative image-holder flex bg-<?=$banner['image']['position']?> min-height-20  md-<?=$banner['height']?> <?php if (empty($banner['image']['url'])):?>bg-smoke<?php endif; ?>" style="background-image: url('<?=$banner['image']['url']?>');">
 
             <?php
             // If image is missing or not set.
@@ -86,7 +86,7 @@ endif;
                 <?php endif;
                 // Content area. ?>
 
-                <div class="content-container bg-smoke flex items-center justify-<?=$banner['align']?> width-100 relative z-index-50 p3 md-p6">
+                <div class="content-container flex items-center justify-<?=$banner['align']?> width-100 relative z-index-50 p3 md-p6">
 
                     <div class="content col-12 lg-col-9 xl-col-7 p4 relative z9 <?=$banner['text-align']?> <?=$banner['text-color']?>">
 
@@ -133,12 +133,16 @@ endif;
 
                             <?php endif; endif; ?>
 
-                        <?php render_wysiwyg($banner['content'], false, ["class" => "md-h3 "]) ?>
+                        <?php 
+                            if ($banner['text-align'] == "text-center")
+                                $extra = "mx-auto";
+                                
+                            render_wysiwyg($banner['content'], false, ["class" => "md-h3 width-70 {$extra}"]) ?>
 
                         <?php if ($banner['buttons']): ?>
-                            <div class="mt4">
+                            <div class="mt4 button-first">
 
-                                <?php render_buttons($banner['buttons'], "medium"); ?>
+                                <?php render_buttons($banner['buttons'], "medium", ["class" => "mr2"]); ?>
 
                             </div>
                         <?php endif; ?>

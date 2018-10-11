@@ -16,7 +16,7 @@
 
         <?php include(BLOCKS_DIR . '_parts/__basic_introduction.php'); ?>
 
-        <div class="mxn3 flex justify-center flex-wrap">
+        <div class="clearfix mxn3 flex justify-center flex-wrap ">
 
             <?php 
             $count = count($block['content']);
@@ -29,11 +29,9 @@
 
                         <?php if ($item['type'] == "image"): ?>
 
-                            <div class="flex items-center justify-center">
+                            <div class="flex items-center justify-center bg-cover bg-center" style="min-height: 16rem; background-image: url('<?=wp_get_attachment_image_url($item['image'],'medium')?>')">
 
                                 <?=(!empty($item['button']['button_link']['url'])? '<a href="'. $item['button']['button_link']['url'] .'" class="block overflow-hidden hover-zoom">' : "")?>
-
-                                    <?=wp_get_attachment_image($item['image'],'medium')?>
 
                                 <?=(!empty($item['button']['button_link']['url'])? '</a>' : "")?>
 
@@ -96,7 +94,7 @@
                                     <div class="h4 <?php if(!empty($item['button']['button_link']['url'])):?>mb3<?php endif;?>" data-mh="pod-content-description"><?=$item['pod_content']?></div>
                                 <?php endif;?>
 
-                                <?php render_button($item['button'], "medium"); ?>
+                                <?php render_button($item['button'], "medium", ["class" => "mb4"]); ?>
 
                             </div>
                         <?php endif;?>

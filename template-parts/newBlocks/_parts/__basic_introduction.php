@@ -1,6 +1,6 @@
 <?php if (!empty($block['heading']->title) || !empty($block['intro'])): ?>
 
-    <div class="mb4 text-center" data-element="introduction">
+    <div class="clearfix mb4 text-center" data-element="introduction">
 
         <?php render_heading( "{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}"); ?>
 

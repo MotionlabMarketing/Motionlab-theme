@@ -17,7 +17,7 @@
 
         <div class="flex flex-wrap justify-center mxn2">
 
-            <?php foreach($block['posts']->posts as $post): ?>
+            <?php foreach((array)$block['posts']->posts as $post): ?>
 
                 <div class="member-box || col col-grid-5 p3 || hover-zoom" data-mh="team-member">
 

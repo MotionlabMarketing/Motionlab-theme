@@ -11,7 +11,7 @@
 
 function render_wysiwyg($data, $limitWidth = false, $attr = ["class" => ""]) {
 
-    $attr['class'] = "wysiwyg" . $attr['class'];
+    $attr['class'] = "wysiwyg " . $attr['class'];
 
     if ($limitWidth == true)
         $attr['class'] = $attr['class'] . " limit-p limit-p-70";

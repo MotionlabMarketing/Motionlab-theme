@@ -14,6 +14,6 @@
 
     <?php render_wysiwyg("{$content}", $block['content']['limitWidth'], ["data-mh" => "{$block['id']}-content-wysiwyg"]); ?>
 
-    <?php render_buttons($column['column_buttons'], "medium", ["class" => "mb2 mr2"])?>
+    <?php render_buttons($column['column_buttons'], "medium", ["class" => "mt4 mb2 mr2"])?>
 
 </div>

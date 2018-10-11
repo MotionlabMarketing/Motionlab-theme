@@ -121,7 +121,7 @@ function get_render_button($data, $size = "btn-medium",  $classes = ["class" => 
 function render_buttons($data, $size, $classes = ["class" => "mb2"]) {
 
     $btn = "";
-    $classes['class'] = $classes['class'] . " ml2 mr2";
+    $classes['class'] = $classes['class'];
 
     if (!empty($data)) {
         foreach ($data as $button) {

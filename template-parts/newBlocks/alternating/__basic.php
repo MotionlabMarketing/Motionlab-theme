@@ -106,7 +106,7 @@
 
         </div>
 
-        <div class="col col-12 lg-col-6 p4 md-p6 <?=$block['content']['align']?> <?=$block['content']['color']?> flex items-center <?php if ($block['content']['type'] == "video"): ?>flex items-center<?php endif; ?>" data-mh="panelHeight">
+        <div class="col col-12 lg-col-6 p4 md-p6 <?=$block['content']['align']?> flex items-center <?php if ($block['content']['type'] == "video"): ?>flex items-center<?php endif; ?>" data-mh="panelHeight">
 
             <?php if ($block['content']['type'] == "video"): ?>
                 <div class="height-100 width-100" data-imatchto="video">
@@ -116,7 +116,7 @@
 
                 <?php render_heading("{$block['heading']->title}", "{$block['heading']->type}", "{$block['heading']->size}", "{$block['heading']->color}", "{$block['heading']->case}", ["class" => "mb2"]); ?>
 
-                <?php render_wysiwyg($block['intro']); ?>
+                <?php render_wysiwyg($block['intro'], false, ["class" => $block['content']['color']]); ?>
 
                 <?php
                     if (!empty($block['content']['cta']['append']) && !empty($block['content']['cta']['link'])) {
@@ -138,13 +138,13 @@
 
                         <?php if (!empty($block['content']['cta']['append'])): ?>
 
-                            <p class="lg-inline bold mb2 mt3 lg-mt0 lg-mb0 lg-mb0 lg-ml4 lg-mr2"><?=$block['content']['cta']['append']?></p>
+                            <p class="lg-inline bold mb2 mt3 lg-mt0 lg-mb0 lg-mb0 lg-ml4 lg-mr4 h4 <?=$block['content']['color']?>"><?=$block['content']['cta']['append']?></p>
 
                         <?php endif; ?>
 
                         <?php if (!empty($block['content']['cta']['link'])):?>
 
-                            <a href="<?=$block['content']['cta']['link']['url']?>" class="h3 bold brand-primary mx2"><?=$block['content']['cta']['link']['title']?></a>
+                            <a href="<?=$block['content']['cta']['link']['url']?>" class="btn-outline btn-small h4 bold <?=$block['content']['color']?> hover-<?=$block['content']['color']?>"><?=$block['content']['cta']['link']['title']?></a>
 
                         <?php endif; ?>
 

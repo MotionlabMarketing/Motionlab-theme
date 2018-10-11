@@ -11,7 +11,7 @@ get_header(); ?>
 
     <section class="clearfix my4 mb4" id="listing-team">
 
-        <div class="container clearfix mt6">
+        <div class="container clearfix mt7 mb4">
 
             <?php include_once(get_template_directory() . '/templates/_parts/__introductions.php')?>
 
@@ -48,7 +48,7 @@ get_header(); ?>
 
                                     <div class="overlay || absolute top-0 left-0 width-100 height-100 p2 bg-brand-primary-overlay white flex items-center justify-center">
 
-                                        <p class="h4 text-center">Read More about <?=$member_name?></p>
+                                        <p class="h4 text-center">Read more <br/>about <?=$member_name?></p>
 
                                     </div>
 
@@ -76,7 +76,7 @@ get_header(); ?>
 
                                     <div class="overlay || absolute top-0 left-0 width-100 height-100 p2 bg-brand-primary-overlay white flex items-center justify-center">
 
-                                        <p class="h4 text-center">Read More about <?=$member_name?></p>
+                                        <p class="h4 text-center">Read more<br/> about <?=$member_name?></p>
 
                                     </div>
 
