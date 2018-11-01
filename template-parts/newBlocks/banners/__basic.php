@@ -72,7 +72,7 @@ endif;
             <?php
             // If image is missing or not set.
             if (empty($banner['image']['url'])): ?>
-                <div class="content-container bg-smoke flex items-center justify-<?=$banner['align']?> width-100 relative z-index-50 p3 md-p6">
+                <div class="content-container flex items-center justify-<?=$banner['align']?> width-100 relative z-index-50 p3 md-p6">
                     <p class="lead text-center"><strong>BANNER BLOCK</strong><br/>Please select or upload some images into this block!</p>
                 </div>
             <?php else: ?>

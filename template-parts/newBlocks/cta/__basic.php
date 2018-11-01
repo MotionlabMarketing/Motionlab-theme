@@ -34,10 +34,4 @@
 
     <?=($block['link']['enabled'] == true)? '</a>' : ''?>
 
-     <?php if($block['bgImage']['enable'] == true): ?>
-
-        <div class="bg-image || absolute width-100 height-100 top-0 left-0 zn1 <?=$block['bgImage']['occupancy']?> <?=$block['bgImage']['tint']?> <?=$block['bgImage']['tintStrength']?>" style="background-image: url('<?=$block['bgImage']['image']['url']?>'); background-position: center; background-size: cover"></div>
-
-     <?php endif; ?>
-
 </section>

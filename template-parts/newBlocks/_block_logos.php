@@ -11,8 +11,9 @@
  */
 
 $block['title']   = get_sub_field($current . '_title_title');
-$block['content'] = get_sub_field($current . '_content');
+$block['content']['content'] = get_sub_field($current . '_content');
 $block['logos']   = get_sub_field($current . '_items');
+$block['content']['txtColor'] = get_sub_field($current . '_txtColour_system_text_colours');
 
 $blockTitle = $block['title']; // REPLACE WHEN HEADER UPDATED.
 

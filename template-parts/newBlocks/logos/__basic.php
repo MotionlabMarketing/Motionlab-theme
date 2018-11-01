@@ -43,7 +43,7 @@ $blockItems = $blockItems['logos'];
 */
 ?>
 
-<section <?=get_blockID($block)?> <?=get_blockClasses($block, "")?> <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "{$block['content']['txtColor']}")?> <?=get_blockData($block)?>>
     
     <?= ($block['grid'] == 'container') ? '<div class="container">' : "" ?>
         
