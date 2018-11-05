@@ -82,18 +82,18 @@ $breakpoint-xxl: 95rem;
   * ---------- ---------- ---------- ---------- ----------
   */
 
-[data-block-name="block_banners"] {
+// [data-block-name="block_banners"] {
 
-    &[data-block-position="1"] {
-        > div { 
-            min-height: 20rem; 
+//     &[data-block-position="1"] {
+//         > div { 
+//             // min-height: 20rem; 
 
-            @media (min-width: $breakpoint-md) {
-                min-height: 36rem;
-            }
-        }
-    }
-}
+//             // @media (min-width: $breakpoint-md) {
+//             //     min-height: 36rem;
+//             // }
+//         }
+//     }
+// }
 
 [data-block-name="block_banners"][data-block-layout="basic"] {
     padding: 0;

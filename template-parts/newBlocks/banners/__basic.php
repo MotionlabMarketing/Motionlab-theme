@@ -67,7 +67,7 @@ endif;
 
     <?=($block['grid'] == 'container')? '<div class="container">' : ""?>
 
-        <div class="relative image-holder flex bg-<?=$banner['image']['position']?> min-height-20  md-<?=$banner['height']?> <?php if (empty($banner['image']['url'])):?>bg-smoke<?php endif; ?>" style="background-image: url('<?=$banner['image']['url']?>');">
+        <div class="relative image-holder flex bg-<?=$banner['image']['position']?> min-height-v20  md-<?=$banner['height']?> <?php if (empty($banner['image']['url'])):?>bg-smoke<?php endif; ?>" style="background-image: url('<?=$banner['image']['url']?>');">
 
             <?php
             // If image is missing or not set.
