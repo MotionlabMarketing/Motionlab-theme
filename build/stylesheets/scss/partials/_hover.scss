@@ -98,6 +98,7 @@
   .zoom {
     transform: scale(1, 1);
     transition: $transition;
+    -webkit-transition: all 0.3s ease-in-out;
   }
 
   &:hover,
@@ -105,8 +106,9 @@
 
     .zoom {
       z-index: 100;
-      transform: scale($zoom-val, $zoom-val);
       transition: $transition;
+      transform: scale($zoom-val, $zoom-val);
+      -webkit-transition: all 0.3s ease-in-out;
     }
   }
 }
@@ -126,6 +128,7 @@
 
       .zoom {
         z-index: 100;
+        -webkit-transition: all 0.3s ease-in-out;
         transform: scale($zoom-val, $zoom-val);
       }
     }

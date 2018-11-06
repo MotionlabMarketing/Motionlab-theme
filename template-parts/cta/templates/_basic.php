@@ -14,7 +14,7 @@ if ($columns == 3)
     $columns = "col col-12 md-col-6 lg-col-3";
 ?>
 
-<section <?=get_blockID($block)?> <?=get_blockClasses($block, "container mx-auto mxn2")?> <?=get_blockData($block)?>>
+<section <?=get_blockID($block)?> <?=get_blockClasses($block, "mx-auto mxn2")?> <?=get_blockData($block)?>>
 
     <div class="flex flex-column md-flex-row">
         
@@ -27,11 +27,11 @@ if ($columns == 3)
             <a href="<?=$box[$i]['cta_buttons']['button_link']['url']?>" class="block <?=$columns?> bg-cover bg-center py6 relative hover-reveal" style="background-image:url('<?=$box[$i]['cta_image']['sizes']['medium_large']?>');">
                 <div class="absolute bg-darken-3 top-0 left-0 right-0 bottom-0 z1 reveal"></div>
                 <div class="absolute bg-darken-3 top-0 left-0 right-0 bottom-0 z1"></div>
-                <div class="p4 text-center relative z2">
+                <div class="container p4 text-center relative z2">
                     <h2 class="h1 mb2 white"><?=$box[$i]['cta_heading']?></h2>
                     <h5 class="ls2 h4 white mb3 lh1"><?=$box[$i]['cta_sub_heading']?></h5>
-                    <p class="white"><?=$box[$i]['cta_message']?></p>
-                    <span class="btn btn-large bold inline-block <?=$box[$i]['cta_buttons']['system_text_colours']?> <?=$box[$i]['cta_buttons']['system_background_colours']?>"><?=$box[$i]['cta_buttons']['button_link']['title']?></span>
+                    <p class="white width-70 mx-auto"><?=$box[$i]['cta_message']?></p>
+                    <span class="btn btn-large bold inline-block h4 <?=$box[$i]['cta_buttons']['system_text_colours']?> <?=$box[$i]['cta_buttons']['system_background_colours']?>"><?=$box[$i]['cta_buttons']['button_link']['title']?></span>
                 </div>
             </a> 
             
