@@ -380,6 +380,7 @@ add_image_size('mediumCrop', 400, 280, true);
 add_image_size('gallerySlim', 290, 220, true);
 add_image_size('galleryMedium', 800, 560, true);
 add_image_size('mediumSquare', 600, 600, true);
+add_image_size('pods_columns', 500, 500, false);
 add_image_size('linkedBoxes', 570, 260, true);
 add_image_size('linkedBoxesTall', 560, 700, true);
 
