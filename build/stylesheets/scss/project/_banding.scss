@@ -1393,7 +1393,7 @@ hr.border-5 {
       .member {
 
         .profile {
-          height: (($itemHeight * 2) + 5.5);
+          height: (($itemHeight * 2) + 5);
 
           @media (max-width: 700px) {
             height: ($itemHeight * 2);
