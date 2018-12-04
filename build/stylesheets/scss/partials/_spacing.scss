@@ -20,6 +20,8 @@
     .mxn#{$space-num} { margin-left: -$space-val; margin-right: -$space-val; }
     .mtn#{$space-num} { margin-top: -$space-val; }
     .mbn#{$space-num} { margin-bottom: -$space-val; }
+    .mln#{$space-num} { margin-left: -$space-val; }
+    .mrn#{$space-num} { margin-right: -$space-val; }
 
   }
 
@@ -50,6 +52,8 @@
       &mxn#{$space-num} { margin-left: -$space-val; margin-right: -$space-val; }
       &mtn#{$space-num} { margin-top: -$space-val; }
       &mbn#{$space-num} { margin-bottom: -$space-val; }
+      &mln#{$space-num} { margin-left: -$space-val; }
+      &mrn#{$space-num} { margin-right: -$space-val; }
     }
     &p#{$space-num} { padding: $space-val; }
     &pt#{$space-num} { padding-top: $space-val; }

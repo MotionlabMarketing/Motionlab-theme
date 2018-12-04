@@ -750,7 +750,6 @@ jQuery(document).ready(function ($) {
     $('.gallery-img').magnificPopup({
         delegate: 'img',
         type: 'image',
-        removalDelay: 500, //delay removal by X to allow out-animation
         closeOnContentClick: false,
         midClick: true,
         removalDelay: 300,

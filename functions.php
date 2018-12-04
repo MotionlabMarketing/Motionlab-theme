@@ -35,6 +35,8 @@ foreach (glob(get_template_directory() . "/inc/plugins/*.php") as $filename) {
     include $filename;
 }
 
+include_once(CONTROLLERS_DIR . "ML_Theme.php");
+
 /*==================================================================
 UNDERSCORES STUFF
 ==================================================================*/
