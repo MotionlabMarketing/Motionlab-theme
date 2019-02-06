@@ -39,7 +39,7 @@ $banner['subheading']['position'] = get_sub_field($current . '_subheading_positi
                         <div class="pb4">
                             <?php if ($slide['logo_enableBefore'] == true && !empty($slide['logo_before']['url'])): ?>
 
-                                <img src="<?=$slide['logo_before']['url']?>" alt="<?=$slide['logo_before']['alt']?>" class="logo-top || block mb3 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>">
+                                <img src="<?=$slide['logo_before']['url']?>" alt="<?=$slide['logo_before']['alt']?>" class="logo-top || block mb3 <?=($banner['align'] == 'center')? "mx-auto" : "" ?>" style="max-width: 14rem;">
 
                             <?php endif; ?>
 
@@ -85,7 +85,7 @@ $banner['subheading']['position'] = get_sub_field($current . '_subheading_positi
                             <?php if ($slide['button_buttons']): ?>
                                 <div class="mt4">
 
-                                    <?php render_buttons($slide['button_buttons'], "medium"); ?>
+                                    <?php render_buttons($slide['button_buttons'], "medium", ["class" => "mx2"]); ?>
 
                                 </div>
                             <?php endif; ?>
@@ -109,7 +109,7 @@ $banner['subheading']['position'] = get_sub_field($current . '_subheading_positi
 
                 <?php if ($slide['add_overlay'] == true): ?>
 
-                    <div class="absolute top-0 left-0 width-100 height-100 z-index-10 bg-<?=$slide['overlayType']?>-<?=$slide['overlayStrength']?>"></div>
+                    <div class="absolute top-0 left-0 width-100 height-100 z-index-10 bg-<?=$slide['type']?>-<?=$slide['strength']?>"></div>
 
                 <?php endif; ?>
 
