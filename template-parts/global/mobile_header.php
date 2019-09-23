@@ -1,4 +1,4 @@
-<div class="p3 bg-brand-primary flex items-center h3">
+<div class="p3 bg-brand-primary flex items-center h3 relative z3">
     <a href="/" class="flex items-center height-100 border-box">
         <img src="<?php the_field('brand_logo_white', 'options') ?>" alt="" class="block mx-auto width-100" style="max-width:12rem;">
     </a>
